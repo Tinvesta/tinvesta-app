@@ -4,7 +4,7 @@ import '@fontsource/raleway';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import type { AppProps } from 'next/app';
 
-import '../src/styles/globals.css';
+import '../styles/globals.css';
 import lightThemeOptions from '../styles/theme/lightThemeOptions';
 import createEmotionCache from '../utility/createEmotionCache';
 
