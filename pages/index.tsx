@@ -1,7 +1,6 @@
-import type { NextPage } from 'next'
 import styled from '@emotion/styled';
-import Head from 'next/head'
-import Image from 'next/image'
+import type { NextPage } from 'next';
+import Head from 'next/head';
 
 const StyledBackgroundWrapper = styled.main`
   background: #fff;
@@ -19,8 +18,8 @@ const StyledHeading = styled.h1`
   font-weight: 300;
   margin: 0;
   padding: 0;
-  font-family: "Montserrat", sans-serif;
-`
+  font-family: 'Montserrat', sans-serif;
+`;
 
 const Home: NextPage = () => {
   return (
@@ -31,12 +30,10 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.svg" />
       </Head>
       <StyledBackgroundWrapper>
-        <StyledHeading>
-          SOON...
-        </StyledHeading>
+        <StyledHeading>SOON...</StyledHeading>
       </StyledBackgroundWrapper>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;

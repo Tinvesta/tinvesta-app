@@ -1,13 +1,12 @@
-import type { AppProps } from 'next/app';
 import { CacheProvider, EmotionCache } from '@emotion/react';
-import { ThemeProvider, CssBaseline, createTheme } from '@mui/material';
+import '@fontsource/montserrat';
+import '@fontsource/raleway';
+import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
+import type { AppProps } from 'next/app';
 
-import "@fontsource/raleway"
-import "@fontsource/montserrat"
-
-import createEmotionCache from '../utility/createEmotionCache';
-import lightThemeOptions from '../styles/theme/lightThemeOptions';
 import '../styles/globals.css';
+import lightThemeOptions from '../styles/theme/lightThemeOptions';
+import createEmotionCache from '../utility/createEmotionCache';
 
 interface MyAppProps extends AppProps {
   emotionCache?: EmotionCache;

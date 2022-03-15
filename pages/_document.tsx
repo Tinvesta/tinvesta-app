@@ -1,6 +1,6 @@
-import { Children } from 'react';
-import Document, { Html, Main, Head, NextScript } from 'next/document';
 import createEmotionServer from '@emotion/server/create-instance';
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import { Children } from 'react';
 
 import createEmotionCache from '../utility/createEmotionCache';
 
@@ -53,8 +53,7 @@ MyDocument.getInitialProps = async (ctx) => {
   /* eslint-disable */
   ctx.renderPage = () =>
     originalRenderPage({
-      enhanceApp: (App: any) => (props) =>
-        <App emotionCache={cache} {...props} />,
+      enhanceApp: (App: any) => (props) => <App emotionCache={cache} {...props} />,
     });
   /* eslint-enable */
 
@@ -74,9 +73,6 @@ MyDocument.getInitialProps = async (ctx) => {
   return {
     ...initialProps,
     // Styles fragment is rendered after the app and page rendering finish.
-    styles: [
-      ...Children.toArray(initialProps.styles),
-      ...emotionStyleTags,
-    ],
+    styles: [...Children.toArray(initialProps.styles), ...emotionStyleTags],
   };
 };
