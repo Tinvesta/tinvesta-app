@@ -23,4 +23,4 @@ jobs:
       - name: Run prettier
         run: yarn format:check
       - name: Run typecheck
-        run: yarn typechec
+        run: yarn typecheck

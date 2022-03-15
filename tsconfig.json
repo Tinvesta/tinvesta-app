@@ -2,11 +2,7 @@
   "extends": "./tsconfig.paths.json",
   "compilerOptions": {
     "target": "ESNEXT",
-    "lib": [
-      "dom",
-      "esnext",
-      "dom.iterable"
-    ],
+    "lib": ["dom", "esnext", "dom.iterable"],
     "baseUrl": ".",
     "allowJs": true,
     "skipLibCheck": true,
@@ -30,12 +26,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": [
-    "src/types.d.ts",
-    "**/*.ts",
-    "**/*.tsx"
-  ],
-  "exclude": [
-    "node_modules"
-  ]
+  "include": ["src/types.d.ts", "**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }
