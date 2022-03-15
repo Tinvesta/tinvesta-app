@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "yarn prettier --write",
+    "typecheck": "tsc --noEmit -p . --pretty",
     "prettier": "prettier \"**/*.+(js|jsx|ts|tsx|json)\"",
     "format:check": "yarn prettier --check",
     "gcb": "bash ./scripts/shell/git-create-branch.sh",

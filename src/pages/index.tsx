@@ -22,6 +22,8 @@ const StyledHeading = styled.h1`
 `;
 
 const Home: NextPage = () => {
+  console.log(process.env.NEXT_PUBLIC_APP_ENV);
+
   return (
     <div>
       <Head>
