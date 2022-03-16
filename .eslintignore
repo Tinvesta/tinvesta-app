@@ -1,0 +1,16 @@
+*.ttf
+*.css
+*.svg
+*.png
+*.txt
+*.scss
+
+.next
+build
+scripts
+coverage
+node_modules
+
+.eslintrc.js
+next.config.js
+commitlint.config.js

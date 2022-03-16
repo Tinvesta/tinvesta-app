@@ -21,21 +21,17 @@ const StyledHeading = styled.h1`
   font-family: 'Montserrat', sans-serif;
 `;
 
-const Home: NextPage = () => {
-  console.log(process.env.NEXT_PUBLIC_APP_ENV);
-
-  return (
-    <div>
-      <Head>
-        <title>Tinvesta</title>
-        <meta name="description" content="Tinvesta app" />
-        <link rel="icon" href="/favicon.svg" />
-      </Head>
-      <StyledBackgroundWrapper>
-        <StyledHeading>SOON...</StyledHeading>
-      </StyledBackgroundWrapper>
-    </div>
-  );
-};
+const Home: NextPage = () => (
+  <div>
+    <Head>
+      <title>Tinvesta</title>
+      <meta content="Tinvesta app" name="description" />
+      <link href="/favicon.svg" rel="icon" />
+    </Head>
+    <StyledBackgroundWrapper>
+      <StyledHeading>SOON...</StyledHeading>
+    </StyledBackgroundWrapper>
+  </div>
+);
 
 export default Home;
