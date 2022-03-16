@@ -63,5 +63,9 @@
     "hooks": {
       "pre-commit": "lint-staged"
     }
+  },
+  "volta": {
+    "node": "16.14.1",
+    "yarn": "1.22.17"
   }
 }
