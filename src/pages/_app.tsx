@@ -5,10 +5,10 @@ import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import type { AppProps } from 'next/app';
 
 import '../styles/globals.css';
-import lightThemeOptions from '../styles/theme/lightThemeOptions';
-import createEmotionCache from '../utility/createEmotionCache';
+import lightThemeOptions from '../styles/theme/light-theme-options';
+import createEmotionCache from '../utility/create-emotion-cache';
 
-interface MyAppProps extends AppProps {
+export interface IMyAppProps extends AppProps {
   emotionCache?: EmotionCache;
 }
 
@@ -16,7 +16,7 @@ const clientSideEmotionCache = createEmotionCache();
 
 const lightTheme = createTheme(lightThemeOptions);
 
-const MyApp: React.FunctionComponent<MyAppProps> = (props) => {
+const MyApp: React.FunctionComponent<IMyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
