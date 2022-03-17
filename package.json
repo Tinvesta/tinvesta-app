@@ -60,14 +60,6 @@
     "typescript": "4.6.2",
     "yarnhook": ">=0.4.3"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "post-checkout": "yarnhook",
-      "post-merge": "yarnhook",
-      "post-rewrite": "yarnhook"
-    }
-  },
   "volta": {
     "node": "16.14.1",
     "yarn": "1.22.17"
