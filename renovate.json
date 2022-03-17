@@ -3,5 +3,6 @@
   "extends": ["config:base"],
   "prCreation": "not-pending",
   "labels": ["type: dependencies"],
-  "packageRules": [{ "enabled": false, "matchPackageNames": ["node"] }]
+  "packageRules": [{ "enabled": false, "matchPackageNames": ["node"] }],
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json"
 }
