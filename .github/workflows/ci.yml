@@ -3,7 +3,7 @@ name: CI
 on: [pull_request]
 
 jobs:
-  check-all:
+  ci:
     runs-on: ubuntu-latest
     strategy:
       matrix:
