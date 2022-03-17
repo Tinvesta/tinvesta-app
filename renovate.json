@@ -1,0 +1,7 @@
+{
+  "repositories": ["amperio-com/amperio-marketplace"],
+  "extends": ["config:base"],
+  "prCreation": "not-pending",
+  "labels": ["type: dependencies"],
+  "packageRules": [{ "enabled": false, "matchPackageNames": ["node"] }]
+}

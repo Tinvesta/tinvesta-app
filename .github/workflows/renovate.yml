@@ -1,8 +1,9 @@
 name: Renovate
 
 on:
-  schedule:
-    - cron: "0 0 * * FRI"
+  [pull_request]
+  # schedule:
+  #   - cron: "0 0 * * FRI"
 
 jobs:
   renovate:
@@ -13,4 +14,5 @@ jobs:
       - name: Self-hosted Renovate
         uses: renovatebot/github-action@v32.0.1
         with:
+          configurationFile: renovate.json
           token: ${{ secrets.RENOVATE_TOKEN }}
