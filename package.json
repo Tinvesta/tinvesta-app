@@ -61,7 +61,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "lint-staged"
+      "pre-commit": "lint-staged",
+      "post-merge": "./scripts/shell/post-merge-hook.sh"
     }
   },
   "volta": {
