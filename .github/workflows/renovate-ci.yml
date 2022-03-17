@@ -1,9 +1,8 @@
 name: Renovate
 
 on:
-  [pull_request]
-  # schedule:
-  #   - cron: "0 0 * * FRI"
+  schedule:
+    - cron: "0 0 * * FRI"
 
 jobs:
   renovate:
