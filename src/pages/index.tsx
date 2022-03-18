@@ -26,7 +26,6 @@ const Home: NextPage = () => (
     <Head>
       <title>Tinvesta</title>
       <meta content="Tinvesta app" name="description" />
-      <link href="/favicon.svg" rel="icon" />
     </Head>
     <StyledBackgroundWrapper>
       <StyledHeading>SOON...</StyledHeading>
