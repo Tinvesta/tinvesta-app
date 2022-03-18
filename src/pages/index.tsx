@@ -31,7 +31,7 @@ const Home: NextPage = () => (
       <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
     </Head>
     <StyledBackgroundWrapper>
-      <StyledHeading>SOON...</StyledHeading>
+      <StyledHeading>26.05.2022</StyledHeading>
     </StyledBackgroundWrapper>
   </div>
 );
