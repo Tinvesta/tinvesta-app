@@ -6,7 +6,7 @@ import type { AppProps } from 'next/app';
 
 import '../styles/globals.css';
 import lightThemeOptions from '../styles/theme/light-theme-options';
-import createEmotionCache from '../utility/create-emotion-cache';
+import createEmotionCache from '../utils/create-emotion-cache';
 
 export interface IMyAppProps extends AppProps {
   emotionCache?: EmotionCache;

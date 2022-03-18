@@ -29,11 +29,14 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      - name: Run prettier
-        run: yarn format:check
+      - name: Run lint
+        run: yarn lint
 
       - name: Run typecheck
         run: yarn typecheck
 
-      - name: Run lint
-        run: yarn lint
+      - name: Run prettier
+        run: yarn format:check
+
+      - name: Run test
+        run: yarn test:ci

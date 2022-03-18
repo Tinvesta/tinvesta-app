@@ -26,6 +26,6 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["src/types.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["."],
   "exclude": ["node_modules"]
 }
