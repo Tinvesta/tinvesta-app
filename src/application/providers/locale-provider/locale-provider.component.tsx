@@ -1,5 +1,4 @@
 import * as R from 'ramda';
-import { DEFAULT_LOCALE } from '@constants';
 import { useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 
@@ -9,6 +8,8 @@ import { LocaleContext } from '@infrastructure';
 import { translations } from '@infrastructure/i18n/translations';
 
 import { ELocale } from '@enums';
+
+import { DEFAULT_LOCALE } from '@constants';
 
 import { ILocaleProviderProps } from './locale-provider.types';
 
