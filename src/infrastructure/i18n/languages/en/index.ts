@@ -1,3 +1,1 @@
-export default {
-  test: 'Test translation',
-};
+export default {};
