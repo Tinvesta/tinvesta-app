@@ -3,7 +3,7 @@ import { AppType } from 'next/dist/shared/lib/utils';
 import Document, { Head, Html, Main, NextScript } from 'next/document';
 import { Children } from 'react';
 
-import createEmotionCache from '../utils/create-emotion-cache';
+import { createEmotionCache } from '@utils';
 
 export default class MyDocument extends Document {
   render() {

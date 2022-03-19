@@ -3,7 +3,7 @@ import type { AppProps } from 'next/app';
 
 import { AppProvider } from '@application';
 
-import createEmotionCache from '../utils/create-emotion-cache';
+import { createEmotionCache } from '@utils';
 
 export interface IMyAppProps extends AppProps {
   emotionCache?: EmotionCache;
