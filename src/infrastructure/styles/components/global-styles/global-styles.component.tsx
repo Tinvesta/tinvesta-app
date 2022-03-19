@@ -10,12 +10,9 @@ export const GlobalStyles = (): JSX.Element => {
       styles={css`
         html,
         body {
-          padding: 0;
-          margin: 0;
           color: ${theme.color.brand.secondary};
           background-color: ${theme.color.brand.primary};
           font-size: ${theme.typography.size.fixed.small};
-          font-family: ${theme.typography.font.montserrat};
         }
 
         * {
