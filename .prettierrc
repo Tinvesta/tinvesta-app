@@ -19,6 +19,7 @@
     "([.]svg|[.]jpg|[.]jpeg|[.]gif|[.]png)$",
     "^@enums",
     "^@interfaces",
+    "^@constants",
     "^[./]"
   ],
   "importOrderSeparation": true,

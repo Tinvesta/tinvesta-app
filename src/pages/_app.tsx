@@ -4,6 +4,8 @@ import '@fontsource/raleway';
 import { CssBaseline, ThemeProvider, createTheme } from '@mui/material';
 import type { AppProps } from 'next/app';
 
+import { AppProvider } from '@application';
+
 import '../styles/globals.css';
 import lightThemeOptions from '../styles/theme/light-theme-options';
 import createEmotionCache from '../utils/create-emotion-cache';
@@ -20,12 +22,14 @@ const MyApp: React.FunctionComponent<IMyAppProps> = (props) => {
   const { Component, emotionCache = clientSideEmotionCache, pageProps } = props;
 
   return (
-    <CacheProvider value={emotionCache}>
-      <ThemeProvider theme={lightTheme}>
-        <CssBaseline />
-        <Component {...pageProps} />
-      </ThemeProvider>
-    </CacheProvider>
+    <AppProvider>
+      <CacheProvider value={emotionCache}>
+        <ThemeProvider theme={lightTheme}>
+          <CssBaseline />
+          <Component {...pageProps} />
+        </ThemeProvider>
+      </CacheProvider>
+    </AppProvider>
   );
 };
 
