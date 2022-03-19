@@ -1,6 +1,6 @@
 const font = {
-  raleway: '"Raleway", sans-serif',
-  montserrat: '"Montserrat", sans-serif',
+  raleway: 'Raleway, sans-serif',
+  montserrat: 'Montserrat, sans-serif',
 } as const;
 
 const lineHeight = {
