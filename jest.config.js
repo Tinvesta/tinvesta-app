@@ -10,8 +10,8 @@ module.exports = {
   roots: ['<rootDir>/src'],
   testEnvironment: 'jsdom',
   moduleNameMapper: mapPathsFromTsConfig(),
-  modulePathIgnorePatterns: ['node_modules'],
   transform: { '^.+\\.(ts|tsx)$': 'ts-jest' },
   testMatch: ['**/?(*.)+(spec).+(ts|tsx)'],
+  modulePathIgnorePatterns: ['/node_modules/', '/.next/'],
   setupFilesAfterEnv: ['<rootDir>/src/infrastructure/jest/setup-tests.ts'],
 };
