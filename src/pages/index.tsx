@@ -3,7 +3,6 @@ import type { NextPage } from 'next';
 import Head from 'next/head';
 
 const StyledBackgroundWrapper = styled.main`
-  background: #111111;
   display: flex;
   justify-content: center;
   align-items: center;

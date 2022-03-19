@@ -1,6 +1,8 @@
-import { LocaleProvider } from '..';
+import { LocaleProvider, ThemeProvider } from '..';
 import { IAppProviderProps } from './app-provider.types';
 
 export const AppProvider = ({ children }: IAppProviderProps): JSX.Element => (
-  <LocaleProvider>{children}</LocaleProvider>
+  <ThemeProvider>
+    <LocaleProvider>{children}</LocaleProvider>
+  </ThemeProvider>
 );
