@@ -1,12 +1,15 @@
 name: Lighthouse CI
 
-on: [pull_request]
+on:
+  push:
+    branches:
+      - main
 
 jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
+      - uses: actions/checkout@v3.0.0
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
