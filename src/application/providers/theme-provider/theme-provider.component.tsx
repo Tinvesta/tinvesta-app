@@ -1,3 +1,4 @@
+import { ThemeProvider as EmotionThemeProvider } from '@emotion/react';
 import { CssBaseline, ThemeProvider as MuiThemeProvider } from '@mui/material';
 
 import { defaultTheme } from '@infrastructure';
@@ -7,9 +8,11 @@ import { IThemeProviderProps } from './theme-provider.types';
 
 export const ThemeProvider = ({ children }: IThemeProviderProps): JSX.Element => (
   <MuiThemeProvider theme={defaultTheme}>
-    <ResetStyles />
-    <GlobalStyles />
-    <CssBaseline />
-    {children}
+    <EmotionThemeProvider theme={defaultTheme}>
+      <ResetStyles />
+      <GlobalStyles />
+      <CssBaseline />
+      {children}
+    </EmotionThemeProvider>
   </MuiThemeProvider>
 );
