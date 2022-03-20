@@ -51,7 +51,20 @@ const yellow = {
   900: '#e67700',
 } as const;
 
+const blue = {
+  100: '#eef8fb',
+  200: '#def2f8',
+  300: '#cdecf5',
+  400: '#bde5f1',
+  500: '#addfee',
+  600: '#9cd9eb',
+  700: '#8cd2e7',
+  800: '#7bcce4',
+  900: '#6bc6e1',
+} as const;
+
 export const color = {
+  blue,
   brand,
   gray,
   red,

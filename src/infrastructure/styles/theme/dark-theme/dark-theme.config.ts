@@ -2,7 +2,7 @@ import { createTheme } from '@mui/material';
 
 import { color } from '@infrastructure/styles/variables';
 
-export const defaultTheme = createTheme({
+export const darkTheme = createTheme({
   palette: {
     grey: color.gray,
     error: color.red,
@@ -17,7 +17,7 @@ export const defaultTheme = createTheme({
     },
     warning: color.yellow,
     background: {
-      paper: color.gray[400],
+      paper: color.gray[900],
       default: color.gray[900],
     },
     text: {
@@ -29,10 +29,29 @@ export const defaultTheme = createTheme({
       black: color.gray[900],
       white: color.gray[200],
     },
+    info: color.blue,
     mode: 'dark',
     divider: color.gray[400],
   },
   typography: {
+    fontSize: 16,
     fontFamily: 'Montserrat, sans-serif',
+    button: {
+      textTransform: 'none',
+    },
   },
+  zIndex: {
+    appBar: 20,
+    drawer: 25,
+    fab: 15,
+    mobileStepper: 10,
+    modal: 30,
+    snackbar: 35,
+    speedDial: 15,
+    tooltip: 40,
+  },
+  shape: {
+    borderRadius: 30,
+  },
+  spacing: [0, 4, 8, 16, 32, 64],
 });
