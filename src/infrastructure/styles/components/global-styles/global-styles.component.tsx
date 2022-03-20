@@ -11,9 +11,8 @@ export const GlobalStyles = (): JSX.Element => {
         styles={css`
           html,
           body {
-            color: ${theme.color.brand.secondary};
-            background-color: ${theme.color.brand.primary};
-            font-size: ${theme.typography.size.fixed.small};
+            color: ${theme.palette.primary.main};
+            background-color: ${theme.palette.secondary.main};
           }
 
           * {
