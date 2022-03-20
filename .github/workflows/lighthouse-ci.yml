@@ -1,0 +1,13 @@
+name: Lighthouse CI
+
+on: [pull_request]
+
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Lighthouse
+        uses: foo-software/lighthouse-check-action@master
+        with:
+          urls: "https://www.tinvesta.io"
