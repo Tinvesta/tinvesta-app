@@ -10,6 +10,8 @@ jobs:
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
+          locale: 'ja'
           device: 'mobile'
+          prCommentSaveOld: true
           urls: "https://www.tinvesta.io"
           gitHubAccessToken: ${{ secrets.RENOVATE_TOKEN }}
