@@ -27,7 +27,7 @@ export const ResetStyles = (): JSX.Element => {
           padding: 0;
           font-size: 100%;
           vertical-align: baseline;
-          font-family: ${theme.typography.font.montserrat};
+          font-family: ${theme.typography.fontFamily};
         }
       `}
     />

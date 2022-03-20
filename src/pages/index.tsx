@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Typography } from '@mui/material';
 import type { NextPage } from 'next';
 import Head from 'next/head';
 
@@ -11,11 +12,6 @@ const StyledBackgroundWrapper = styled.main`
   flex-direction: column;
 `;
 
-const StyledHeading = styled.h1`
-  color: #e9e9e9;
-  font-size: ${({ theme }) => theme.typography.size.fixed.epic};
-`;
-
 const Home: NextPage = () => (
   <div>
     <Head>
@@ -26,7 +22,7 @@ const Home: NextPage = () => (
       <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
     </Head>
     <StyledBackgroundWrapper>
-      <StyledHeading>26.05.2022</StyledHeading>
+      <Typography variant="h2">26.05.2022</Typography>
     </StyledBackgroundWrapper>
   </div>
 );
