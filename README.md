@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tinvesta/Tinvesta-app">
-    <img src="images/readme/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://www.tinvesta.io/images/readme/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Tinvesta</h3>
@@ -145,4 +145,4 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[product-screenshot]: images/readme/screenshot.png
+[product-screenshot]: https://www.tinvesta.io/images/readme/screenshot.png
