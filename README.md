@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tinvesta/Tinvesta-app">
-    <img src="https://www.tinvesta.io/images/icon-256x256.png" alt="Tinvesta" width="100" height="100" />
+    <img src="https://www.tinvesta.io/icon-256x256.png" alt="Tinvesta" width="100" height="100" />
   </a>
 
   <h3 align="center">Tinvesta</h3>
