@@ -1,10 +1,10 @@
 const withPWA = require('next-pwa');
 
 const ContentSecurityPolicy = `
-  script-src 'self';
-  style-src 'self' blob:;
-  img-src 'self' data: blob:;
-  media-src 'self'
+  script-src * 'unsafe-inline' 'unsafe-eval';
+  style-src * 'unsafe-inline' blob:;
+  img-src * data: blob:;
+  media-src * data:
 `;
 
 // https://nextjs.org/docs/advanced-features/security-headers
