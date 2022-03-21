@@ -4,7 +4,7 @@
 <br />
 <div align="center">
   <a href="https://github.com/tinvesta/Tinvesta-app">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="images/readme/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Tinvesta</h3>
@@ -201,4 +201,4 @@ Use this space to list resources you find helpful and would like to give credit 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
-[product-screenshot]: images/screenshot.png
+[product-screenshot]: images/readme/screenshot.png
