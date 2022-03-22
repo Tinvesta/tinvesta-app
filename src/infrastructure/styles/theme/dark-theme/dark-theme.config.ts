@@ -2,6 +2,14 @@ import { createTheme } from '@mui/material';
 
 import { color } from '@infrastructure/styles/variables';
 
+import {
+  LARGE_SCREEN_BREAKPOINT,
+  MEDIUM_SCREEN_BREAKPOINT,
+  MOBILE_SCREEN_BREAKPOINT,
+  SMALL_SCREEN_BREAKPOINT,
+  XMOBILE_SCREEN_BREAKPOINT,
+} from '@constants';
+
 export const darkTheme = createTheme({
   palette: {
     grey: color.gray,
@@ -54,4 +62,13 @@ export const darkTheme = createTheme({
     borderRadius: 30,
   },
   spacing: [0, 4, 8, 16, 32, 64],
+  breakpoints: {
+    values: {
+      lg: MEDIUM_SCREEN_BREAKPOINT,
+      md: SMALL_SCREEN_BREAKPOINT,
+      sm: MOBILE_SCREEN_BREAKPOINT,
+      xl: LARGE_SCREEN_BREAKPOINT,
+      xs: XMOBILE_SCREEN_BREAKPOINT,
+    },
+  },
 });
