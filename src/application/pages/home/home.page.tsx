@@ -1,4 +1,5 @@
 import { Button, Typography } from '@mui/material';
+import Head from 'next/head';
 import Image from 'next/image';
 
 import { CenterBlockLayout } from '@ui';
@@ -7,6 +8,10 @@ import S from './home.styles';
 
 export const Home = (): JSX.Element => (
   <CenterBlockLayout>
+    <Head>
+      <title>Tinvesta</title>
+      <meta content="Tinvesta app" name="description" />
+    </Head>
     <Image alt="Tinvesta" height={200} src="/images/animated-full-logo.svg" width={200} />
     {process.env.NEXT_PUBLIC_ENABLE_HOME_PAGE === 'true' && (
       <>
