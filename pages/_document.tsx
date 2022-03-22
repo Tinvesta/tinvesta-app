@@ -14,6 +14,10 @@ export default class MyDocument extends Document {
           <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
           <link color="#111111" href="/safari-pinned-tab.svg" rel="mask-icon" />
           <meta content="#e9ecef" name="theme-color" />
+          <link href="/favicon.ico" rel="icon" />
+          <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
+          <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+          <meta content="Tinvesta app" name="description" />
         </Head>
         <body>
           <Main />
