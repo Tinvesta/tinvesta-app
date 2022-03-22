@@ -19,7 +19,7 @@ const getDeviceData = () => {
   const xs = width < XMOBILE_SCREEN_BREAKPOINT;
   const sm = width >= XMOBILE_SCREEN_BREAKPOINT && width < MOBILE_SCREEN_BREAKPOINT;
   const md = width >= MOBILE_SCREEN_BREAKPOINT && width < SMALL_SCREEN_BREAKPOINT;
-  const lg = width >= SMALL_SCREEN_BREAKPOINT && width <= MEDIUM_SCREEN_BREAKPOINT;
+  const lg = width >= SMALL_SCREEN_BREAKPOINT && width < MEDIUM_SCREEN_BREAKPOINT;
   const xl = width >= MEDIUM_SCREEN_BREAKPOINT && width <= LARGE_SCREEN_BREAKPOINT;
 
   return { xs, sm, md, lg, xl, xxl };
