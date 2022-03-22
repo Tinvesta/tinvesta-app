@@ -13,5 +13,7 @@ declare namespace NodeJS {
   interface ProcessEnv {
     NEXT_PUBLIC_APP_ENV: 'test' | 'local' | 'staging' | 'production';
     NEXT_PUBLIC_ENABLE_HOME_PAGE: 'true' | 'false' | undefined;
+    NEXT_PUBLIC_SUPABASE_KEY: string | undefined;
+    NEXT_PUBLIC_SUPABASE_URL: string | undefined;
   }
 }
