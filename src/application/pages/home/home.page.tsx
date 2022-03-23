@@ -4,6 +4,7 @@ import Image from 'next/image';
 
 import { CenterBlockLayout, useModal } from '@ui';
 
+import { ParticlesBackground } from './atoms';
 import S from './home.styles';
 
 export const Home = (): JSX.Element => {
@@ -18,6 +19,7 @@ export const Home = (): JSX.Element => {
       <Modal>
         <h1>Modal</h1>
       </Modal>
+      <ParticlesBackground />
       <Image alt="Tinvesta" height={200} src="/images/animated-full-logo.svg" width={200} />
       {process.env.NEXT_PUBLIC_ENABLE_HOME_PAGE === 'true' && (
         <>

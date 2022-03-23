@@ -1,6 +1,7 @@
 import { Typography } from '@mui/material';
 import Head from 'next/head';
 
+import { ParticlesBackground } from '../home/atoms';
 import S from './release-date.styles';
 
 export const ReleaseDate = (): JSX.Element => (
@@ -9,6 +10,7 @@ export const ReleaseDate = (): JSX.Element => (
       <title>Tinvesta</title>
       <meta content="Tinvesta app" name="description" />
     </Head>
-    <Typography variant="h2">26.05.2022</Typography>
+    <ParticlesBackground />
+    <Typography variant="h3">26.05.2022</Typography>
   </S.StyledWrapper>
 );
