@@ -4,6 +4,4 @@ import { useModal } from './use-modal.hook';
 
 describe('useModal hook', () => {
   functionImportTest(useModal);
-
-  it('', () => {});
 });
