@@ -12,3 +12,8 @@ export enum EInvestorProfileType {
   INSTITUTIONAL = 'institutional',
   PRIVATE = 'private',
 }
+
+export enum EFocusMarket {
+  B2B = 'b2b',
+  B2C = 'b2c',
+}
