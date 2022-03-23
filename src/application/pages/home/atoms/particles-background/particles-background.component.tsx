@@ -58,7 +58,7 @@ export const ParticlesBackground = (): JSX.Element => {
             value: 0.5,
           },
           shape: {
-            type: 'triangle',
+            type: 'circle',
           },
           size: {
             random: true,
