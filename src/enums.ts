@@ -25,12 +25,6 @@ export enum EStartupSector {
   SOFTWARE = 'software',
 }
 
-export enum EInvestorProfileType {
-  CORPORATE = 'corporate',
-  INSTITUTIONAL = 'institutional',
-  PRIVATE = 'private',
-}
-
 export enum EIndustrialSector {
   EDUCATION = 'education',
   ELECTRONICS_AND_AUTOMATION = 'electronics-and-automation',
@@ -48,4 +42,10 @@ export enum EIndustrialSector {
   TELECOM = 'telecom',
   TRAVEL_AND_HOSPITALITY = 'travel-and-hospitality',
   WELLNESS_AND_BEAUTY = 'wellness-and-beauty',
+}
+
+export enum EInvestorProfileType {
+  CORPORATE = 'corporate',
+  INSTITUTIONAL = 'institutional',
+  PRIVATE = 'private',
 }
