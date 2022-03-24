@@ -7,7 +7,7 @@ import { CenterBlockLayout, useModal } from '@ui';
 import { ParticlesBackground } from './atoms';
 import S from './home.styles';
 
-export const Home = (): JSX.Element => {
+export const HomePage = (): JSX.Element => {
   const { Modal, show } = useModal();
 
   return (

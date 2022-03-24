@@ -5,7 +5,7 @@ import Image from 'next/image';
 import { ParticlesBackground } from '../home/atoms';
 import S from './release-date.styles';
 
-export const ReleaseDate = (): JSX.Element => (
+export const ReleaseDatePage = (): JSX.Element => (
   <S.StyledWrapper>
     <Head>
       <title>Tinvesta</title>
