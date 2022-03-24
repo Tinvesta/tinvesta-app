@@ -30,3 +30,22 @@ export enum EInvestorProfileType {
   INSTITUTIONAL = 'institutional',
   PRIVATE = 'private',
 }
+
+export enum EIndustrialSector {
+  EDUCATION = 'education',
+  ELECTRONICS_AND_AUTOMATION = 'electronics-and-automation',
+  ENERGY = 'energy',
+  ENVIRONMENT = 'environment',
+  INFRASTRUCTURE = 'infrastructure',
+  JOBS_RECRUITMENT = 'jobs-recruitment',
+  LIVING_AND_FAMILY = 'living-and-family',
+  MATERIALS = 'materials',
+  MEDIA_AND_ENTERTAINMENT = 'media-and-entertainment',
+  REAL_ESTATE = 'real-estate',
+  SECURITY = 'security',
+  SOCIAL = 'social',
+  SPORTS_AND_FASHION = 'sports-and-fashion',
+  TELECOM = 'telecom',
+  TRAVEL_AND_HOSPITALITY = 'travel-and-hospitality',
+  WELLNESS_AND_BEAUTY = 'wellness-and-beauty',
+}
