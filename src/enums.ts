@@ -63,3 +63,13 @@ export enum EInvestmentStage {
   SERIES_A = 'series-a',
   SERIES_B = 'series-b',
 }
+
+export enum EInvestorDemand {
+  CO_FOUNDER = 'co-founder',
+  DEBT_CAPITAL_WITHOUT_SHARES = 'debt-capital-without-shares',
+  LOCATION = 'location',
+  MONEY_FOR_SHARES = 'money-for-shares',
+  NETWORK_AND_SUPPORT = 'network-and-support',
+  TALENT = 'talent',
+  TECHNOLOGY = 'technology',
+}
