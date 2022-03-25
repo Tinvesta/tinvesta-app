@@ -68,6 +68,14 @@ export enum EIndustrialSector {
   WELLNESS_AND_BEAUTY = 'wellness-and-beauty',
 }
 
+export enum EInvestmentSize {
+  LARGE = 'large',
+  MEDIUM = 'medium',
+  SMALL = 'small',
+  VERY_LARGE = 'very-large',
+  VERY_SMALL = 'very-small',
+}
+
 export enum EInvestorProfileType {
   CORPORATE = 'corporate',
   INSTITUTIONAL = 'institutional',
@@ -78,12 +86,4 @@ export enum EStartupProfileCreator {
   CO_FOUNDER = 'co-founder',
   EMPLOYEE = 'employee',
   FOUNDER = 'founder',
-}
-
-export enum EInvestmentSize {
-  LARGE = 'large',
-  MEDIUM = 'medium',
-  SMALL = 'small',
-  VERY_LARGE = 'very-large',
-  VERY_SMALL = 'very-small',
 }
