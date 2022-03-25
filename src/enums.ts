@@ -26,10 +26,15 @@ export enum EStartupSector {
 }
 
 export enum EIndustrialSector {
+  ARTIFICIAL_INTELLIGENCE = 'artificial-intelligence',
+  BIOTECHNOLOGY = 'biotechnology',
+  CLOUD_COMPUTING = 'cloud-computing',
+  DATA_ANALYTICS = 'data-analytics',
   EDUCATION = 'education',
   ELECTRONICS_AND_AUTOMATION = 'electronics-and-automation',
   ENERGY = 'energy',
   ENVIRONMENT = 'environment',
+  E_COMMERCE = 'e-commerce',
   INFRASTRUCTURE = 'infrastructure',
   JOBS_RECRUITMENT = 'jobs-recruitment',
   LIVING_AND_FAMILY = 'living-and-family',
@@ -41,6 +46,7 @@ export enum EIndustrialSector {
   SPORTS_AND_FASHION = 'sports-and-fashion',
   TELECOM = 'telecom',
   TRAVEL_AND_HOSPITALITY = 'travel-and-hospitality',
+  WEB3 = 'web3',
   WELLNESS_AND_BEAUTY = 'wellness-and-beauty',
 }
 
@@ -48,4 +54,12 @@ export enum EInvestorProfileType {
   CORPORATE = 'corporate',
   INSTITUTIONAL = 'institutional',
   PRIVATE = 'private',
+}
+
+export enum EInvestmentStage {
+  GROWTH = 'growth',
+  IDEA = 'idea',
+  SEED = 'seed',
+  SERIES_A = 'series-a',
+  SERIES_B = 'series-b',
 }
