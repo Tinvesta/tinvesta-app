@@ -20,6 +20,7 @@
     "lint:fix": "yarn lint --fix",
     "prepare": "husky install",
     "reinstall-node-modules": "bash ./scripts/shell/reinstall-node-modules.sh",
+    "rlb": "bash ./scripts/shell/remove-local-branches.sh",
     "start": "next start",
     "test": "NEXT_PUBLIC_APP_ENV=test jest",
     "test:ci": "NEXT_PUBLIC_APP_ENV=test jest --ci --coverage --forceExit",
