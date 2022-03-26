@@ -1,7 +1,4 @@
-import { AutocompleteProps, ChipTypeMap } from '@mui/material';
+import { AutocompleteProps } from '@mui/material';
 
 export interface ILocationAutocompleteProps
-  extends Omit<
-    AutocompleteProps<string, false, false, false, ChipTypeMap['defaultComponent']>,
-    'options' | 'renderInput'
-  > {}
+  extends Omit<AutocompleteProps<string, false, false, false>, 'options' | 'renderInput'> {}
