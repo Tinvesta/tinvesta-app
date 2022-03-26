@@ -18,6 +18,7 @@
     "grlc": "bash ./scripts/shell/git-reset-local-changes.sh",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
+    "open:coverage": "yarn test:coverage && open ./coverage/lcov-report/index.html",
     "prepare": "husky install",
     "reinstall-node-modules": "bash ./scripts/shell/reinstall-node-modules.sh",
     "rlb": "bash ./scripts/shell/remove-local-branches.sh",
