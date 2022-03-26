@@ -1,11 +1,19 @@
-import { CacheProvider, LocaleProvider, ThemeProvider, UserProvider } from '..';
+import {
+  CacheProvider,
+  LocaleProvider,
+  QueryClientProvider,
+  ThemeProvider,
+  UserProvider,
+} from '..';
 import { IAppProviderProps } from './app-provider.types';
 
 export const AppProvider = ({ children }: IAppProviderProps): JSX.Element => (
   <ThemeProvider>
     <LocaleProvider>
       <UserProvider>
-        <CacheProvider>{children}</CacheProvider>
+        <QueryClientProvider>
+          <CacheProvider>{children}</CacheProvider>
+        </QueryClientProvider>
       </UserProvider>
     </LocaleProvider>
   </ThemeProvider>

@@ -7,4 +7,4 @@ export const MOBILE_SCREEN_BREAKPOINT = 768;
 export const XMOBILE_SCREEN_BREAKPOINT = 480;
 
 export const DEFAULT_LOCALE: ELocale =
-  (process.env.REACT_APP_DEFAULT_LOCALE as ELocale) ?? ELocale.EN;
+  (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as ELocale) ?? ELocale.EN;
