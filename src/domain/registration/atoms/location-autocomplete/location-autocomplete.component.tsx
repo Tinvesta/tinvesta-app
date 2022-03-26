@@ -1,4 +1,4 @@
-import { Autocomplete, TextField, useTheme } from '@mui/material';
+import { Autocomplete, TextField } from '@mui/material';
 import { ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
@@ -15,7 +15,6 @@ const LocationAutocompleteComponent = (
     isLoading: islocationsByNameLoading,
     mutate: locationsByNameMutation,
   } = useMutation(locationsByNameAction);
-  const theme = useTheme();
 
   useEffect(() => {
     if (!inputValue) {
@@ -33,8 +32,6 @@ const LocationAutocompleteComponent = (
       setOptions(newOptions);
     }
   }, [locationsByNameData?.data, islocationsByNameLoading]);
-
-  console.log(theme);
 
   return (
     <Autocomplete
