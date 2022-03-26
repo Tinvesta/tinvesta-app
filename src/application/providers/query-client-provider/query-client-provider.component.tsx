@@ -4,7 +4,7 @@ import { ReactQueryDevtools } from 'react-query/devtools';
 import { IQueryClientProviderProps } from './query-client-provider.types';
 
 const queryClient = new QueryClient();
-const isDevelopment = process.env.REACT_APP_ENV === 'local';
+const isDevelopment = process.env.NEXT_PUBLIC_APP_ENV === 'local';
 
 export const QueryClientProvider = ({ children }: IQueryClientProviderProps): JSX.Element => (
   <QueryClientProviderWrapper client={queryClient}>
