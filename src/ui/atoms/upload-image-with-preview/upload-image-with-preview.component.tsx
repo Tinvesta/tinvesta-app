@@ -70,7 +70,7 @@ export const UploadImageWithPreview = (): JSX.Element => {
             scale={1}
             width={400}
           />
-          <Button variant="contained" onClick={onClickSave}>
+          <Button variant="outlined" onClick={onClickSave}>
             Save image
           </Button>
         </>
