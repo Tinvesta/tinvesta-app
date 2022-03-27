@@ -1,6 +1,8 @@
 import { ModalProps, Modal as MuiModal } from '@mui/material';
 import { useCallback, useState } from 'react';
 
+import S from './use-modal.styles';
+
 export const useModal = (defaultIsOpenState: boolean = false) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpenState);
   const show = () => setIsOpen(true);
@@ -17,7 +19,12 @@ export const useModal = (defaultIsOpenState: boolean = false) => {
 
     return (
       <MuiModal open={isOpen} onClose={handleClose} {...restProps}>
-        {children}
+        <S.StyledContentWrapper>
+          <>
+            <S.StyledCloseIcon />
+            {children}
+          </>
+        </S.StyledContentWrapper>
       </MuiModal>
     );
   };
