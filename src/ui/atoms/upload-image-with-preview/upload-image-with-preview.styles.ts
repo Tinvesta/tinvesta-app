@@ -1,11 +1,10 @@
 import styled from '@emotion/styled';
-import { Paper } from '@mui/material';
 
 const StyledWrapper = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(4)};
+  gap: ${({ theme }) => theme.spacing(3)};
 `;
 
 const StyledImage = styled.img`
@@ -21,12 +20,18 @@ const StyledImagePlaceholder = styled.div`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 `;
 
-const StyledModalContentWrapper = styled(Paper)`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  padding: ${({ theme }) => theme.spacing(4)};
+const StyledModalContentWrapper = styled.div`
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+
+  > canvas {
+    overflow: hidden;
+    border: 1px dashed;
+    margin-top: ${({ theme }) => theme.spacing(2)};
+    margin-bottom: ${({ theme }) => theme.spacing(3)};
+    border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+  }
 `;
 
 const S = {

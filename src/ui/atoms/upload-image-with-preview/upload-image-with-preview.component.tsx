@@ -57,7 +57,7 @@ export const UploadImageWithPreview = (): JSX.Element => {
   return (
     <S.StyledWrapper>
       <Modal>
-        <>
+        <S.StyledModalContentWrapper>
           <Typography variant="h6">Cut your representative image</Typography>
           <AvatarEditor
             ref={avatarEditorRef}
@@ -73,7 +73,7 @@ export const UploadImageWithPreview = (): JSX.Element => {
           <Button variant="outlined" onClick={onClickSave}>
             Save image
           </Button>
-        </>
+        </S.StyledModalContentWrapper>
       </Modal>
       {scaledImageSource ? (
         <S.StyledImage alt="user representative image" src={scaledImageSource} />
