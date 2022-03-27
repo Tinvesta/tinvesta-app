@@ -1,4 +1,5 @@
 import {
+  AlertProvider,
   CacheProvider,
   LocaleProvider,
   QueryClientProvider,
@@ -12,7 +13,9 @@ export const AppProvider = ({ children }: IAppProviderProps): JSX.Element => (
     <LocaleProvider>
       <UserProvider>
         <QueryClientProvider>
-          <CacheProvider>{children}</CacheProvider>
+          <CacheProvider>
+            <AlertProvider>{children}</AlertProvider>
+          </CacheProvider>
         </QueryClientProvider>
       </UserProvider>
     </LocaleProvider>

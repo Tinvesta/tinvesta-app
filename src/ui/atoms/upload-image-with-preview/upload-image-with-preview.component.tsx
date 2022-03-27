@@ -5,12 +5,13 @@ import AvatarEditor from 'react-avatar-editor';
 
 import { useModal } from '@ui';
 
-import { isNumber } from '@utils';
+import { isNumber, useAlert } from '@utils';
 
 import { UploadImageButton } from './parts';
 import S from './upload-image-with-preview.styles';
 
 export const UploadImageWithPreview = (): JSX.Element => {
+  const { showWarningAlert } = useAlert();
   const [imageSource, setImageSource] = useState<string>('');
   const [scaledImageSource, setScaledImageSource] = useState<string>();
 
@@ -28,7 +29,7 @@ export const UploadImageWithPreview = (): JSX.Element => {
     const fileSizeInMegabytes = firstFile.size / 1024 / 1024;
 
     if (fileSizeInMegabytes > 5) {
-      alert('File size exceeds 5 MiB');
+      showWarningAlert('File size exceeds 5 MiB');
 
       return;
     }
