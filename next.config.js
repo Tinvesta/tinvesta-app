@@ -1,7 +1,7 @@
 const withPWA = require('next-pwa');
 
 const ContentSecurityPolicy = `
-  script-src * 'unsafe-inline' 'unsafe-eval';
+  script-src * 'unsafe-inline' 'unsafe-eval' blob:;
   style-src * 'unsafe-inline' blob:;
   img-src * data: blob:;
   media-src * data:
