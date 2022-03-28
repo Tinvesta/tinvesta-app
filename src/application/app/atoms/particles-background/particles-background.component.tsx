@@ -8,6 +8,10 @@ export const ParticlesBackground = (): JSX.Element => {
     <Particles
       options={{
         fpsLimit: 120,
+        backgroundMode: {
+          enable: true,
+          zIndex: 0,
+        },
         interactivity: {
           events: {
             resize: true,
@@ -30,10 +34,10 @@ export const ParticlesBackground = (): JSX.Element => {
         },
         particles: {
           color: {
-            value: theme.palette.grey[500],
+            value: theme.palette.grey[700],
           },
           links: {
-            color: theme.palette.grey[500],
+            color: theme.palette.grey[700],
             distance: 150,
             enable: true,
             opacity: 0.5,
@@ -44,7 +48,7 @@ export const ParticlesBackground = (): JSX.Element => {
             enable: true,
             outMode: 'bounce',
             random: false,
-            speed: 1.5,
+            speed: 0.9,
             straight: false,
           },
           number: {
@@ -52,17 +56,17 @@ export const ParticlesBackground = (): JSX.Element => {
               enable: true,
               area: 1600,
             },
-            value: 80,
+            value: 100,
           },
           opacity: {
-            value: 0.5,
+            value: 0.3,
           },
           shape: {
             type: 'circle',
           },
           size: {
             random: true,
-            value: 5,
+            value: 4,
           },
         },
         detectRetina: true,
