@@ -31,7 +31,7 @@ export const darkTheme = createTheme({
     text: {
       primary: color.gray[200],
       disabled: color.gray[400],
-      secondary: color.gray[700],
+      secondary: color.gray[600],
     },
     common: {
       black: color.gray[900],
@@ -59,7 +59,7 @@ export const darkTheme = createTheme({
     tooltip: 40,
   },
   shape: {
-    borderRadius: 30,
+    borderRadius: 10,
   },
   spacing: [0, 4, 8, 16, 32, 64],
   breakpoints: {
