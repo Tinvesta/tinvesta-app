@@ -20,7 +20,9 @@
     "^@enums",
     "^@interfaces",
     "^@constants",
-    "^[./]"
+    "^[./]",
+    "^[./](?!.*([.]css|[.]scss))",
+    "([.]css|[.]scss)$"
   ],
   "importOrderSeparation": true,
   "importOrderSortSpecifiers": true,
