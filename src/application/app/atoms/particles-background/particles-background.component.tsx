@@ -62,11 +62,11 @@ export const ParticlesBackground = (): JSX.Element => {
             value: 0.3,
           },
           shape: {
-            type: 'triangle',
+            type: 'circle',
           },
           size: {
             random: true,
-            value: 5,
+            value: 4,
           },
         },
         detectRetina: true,
