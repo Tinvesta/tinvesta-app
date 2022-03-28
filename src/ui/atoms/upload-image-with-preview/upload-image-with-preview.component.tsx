@@ -2,16 +2,16 @@ import { Button, Typography, useTheme } from '@mui/material';
 import imageCompression from 'browser-image-compression';
 import { ChangeEvent, createRef, useState } from 'react';
 import AvatarEditor from 'react-avatar-editor';
+import { toast } from 'react-toastify';
 
 import { useModal } from '@ui';
 
-import { isNumber, useAlert } from '@utils';
+import { isNumber } from '@utils';
 
 import { UploadImageButton } from './parts';
 import S from './upload-image-with-preview.styles';
 
 export const UploadImageWithPreview = (): JSX.Element => {
-  const { showWarningAlert } = useAlert();
   const [imageSource, setImageSource] = useState<string>('');
   const [scaledImageSource, setScaledImageSource] = useState<string>();
 
@@ -29,7 +29,7 @@ export const UploadImageWithPreview = (): JSX.Element => {
     const fileSizeInMegabytes = firstFile.size / 1024 / 1024;
 
     if (fileSizeInMegabytes > 5) {
-      showWarningAlert('File size exceeds 5 MiB');
+      toast.warning('File size exceeds 5 MiB');
 
       return;
     }

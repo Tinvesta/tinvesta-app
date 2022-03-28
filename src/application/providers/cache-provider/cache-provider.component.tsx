@@ -6,6 +6,8 @@ import { ICacheProviderProps } from './cache-provider.types';
 
 const clientSideEmotionCache = createEmotionCache();
 
-export const CacheProvider = ({ children }: ICacheProviderProps): JSX.Element => (
-  <EmotionCacheProvider value={clientSideEmotionCache}>{children}</EmotionCacheProvider>
+export const CacheProvider = ({ children, emotionCache }: ICacheProviderProps): JSX.Element => (
+  <EmotionCacheProvider value={emotionCache || clientSideEmotionCache}>
+    {children}
+  </EmotionCacheProvider>
 );
