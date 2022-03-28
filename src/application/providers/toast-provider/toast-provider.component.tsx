@@ -9,7 +9,7 @@ export const ToastProvider = ({ children }: IToastProviderProps): JSX.Element =>
     <S.StyledToastContainer
       closeOnClick
       newestOnTop
-      autoClose={500_000}
+      autoClose={5000}
       closeButton={false}
       draggable={false}
       limit={5}
