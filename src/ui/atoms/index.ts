@@ -1,2 +1,4 @@
+export * from './password-field/password-field.component';
 export * from './upload-image-with-preview/upload-image-with-preview.component';
-export * from './text-field-with-controller/text-field-with-controller.component';
+
+export * from './password-field/password-field.types';
