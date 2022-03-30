@@ -16,4 +16,4 @@ const SelectComponent = (
   </MuiSelect>
 );
 
-export const Dropdown = memo(forwardRef(SelectComponent));
+export const Select = memo(forwardRef(SelectComponent));
