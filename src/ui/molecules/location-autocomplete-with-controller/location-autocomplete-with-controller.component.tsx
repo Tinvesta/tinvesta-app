@@ -17,8 +17,6 @@ export const LocationAutocompleteWithController = <TFieldValues,>({
         {...autocompleteProps}
         {...field}
         id={field.name}
-        // @ts-expect-error
-        inputValue={field.value.inputValue}
         renderInput={(params) => (
           <TextField
             error={invalid}
@@ -29,18 +27,8 @@ export const LocationAutocompleteWithController = <TFieldValues,>({
           />
         )}
         // @ts-expect-error
-        value={field.value.value}
-        onChange={(e, data) => {
-          field.onChange({ value: data || '', inputValue: '' });
-        }}
-        onInputChange={(event) => {
-          if (!event) {
-            return;
-          }
-
-          // @ts-expect-error
-          field.onChange({ ...field.value, inputValue: event.target.value });
-        }}
+        value={field.value}
+        onChange={(e, data) => field.onChange(data)}
       />
     )}
   />

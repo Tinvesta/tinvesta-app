@@ -7,8 +7,6 @@ import {
   TextFieldWithController,
 } from '@ui';
 
-import { isString } from '@utils';
-
 import S from './registration.styles';
 
 export const Registration = (): JSX.Element => {
@@ -17,7 +15,7 @@ export const Registration = (): JSX.Element => {
       name: '',
       selectedValue: '',
       description: '',
-      location: { value: '', inputValue: '' },
+      location: '',
     },
   });
 
@@ -75,13 +73,7 @@ export const Registration = (): JSX.Element => {
             control,
             name: 'location',
             rules: {
-              validate: (value) => {
-                if (isString(value)) {
-                  return !!value;
-                }
-
-                return !!value.value;
-              },
+              required: true,
             },
           }}
           inputProps={{
