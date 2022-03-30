@@ -6,7 +6,7 @@ import { locationsByNameAction } from './api';
 import { ILocationAutocompleteProps } from './location-autocomplete.types';
 
 const LocationAutocompleteComponent = (
-  { ...restProps }: ILocationAutocompleteProps,
+  props: ILocationAutocompleteProps,
   ref: ForwardedRef<HTMLInputElement>,
 ): JSX.Element => {
   const {
@@ -46,7 +46,7 @@ const LocationAutocompleteComponent = (
       openOnFocus={false}
       options={options}
       onInputChange={(_, newValue) => setInputValue(newValue)}
-      {...restProps}
+      {...props}
     />
   );
 };
