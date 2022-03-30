@@ -1,13 +1,22 @@
 import { Button } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { SelectWithController, TextFieldWithController } from '@ui';
+import {
+  LocationAutocompleteWithController,
+  SelectWithController,
+  TextFieldWithController,
+} from '@ui';
 
 import S from './registration.styles';
 
 export const Registration = (): JSX.Element => {
   const { control, handleSubmit } = useForm({
-    defaultValues: { name: '', selectedValue: '', description: '' },
+    defaultValues: {
+      name: '',
+      selectedValue: '',
+      description: '',
+      location: '',
+    },
   });
 
   const onSubmit = handleSubmit((data) => console.log(data));
@@ -57,6 +66,18 @@ export const Registration = (): JSX.Element => {
             ],
             labelId: 'customers-dropdown-label',
             label: 'Test Label',
+          }}
+        />
+        <LocationAutocompleteWithController
+          controllerProps={{
+            control,
+            name: 'location',
+            rules: {
+              required: true,
+            },
+          }}
+          inputProps={{
+            label: 'Location',
           }}
         />
         <TextFieldWithController

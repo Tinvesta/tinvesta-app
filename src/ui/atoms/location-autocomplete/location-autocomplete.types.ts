@@ -1,4 +1,4 @@
 import { AutocompleteProps } from '@mui/material';
 
 export interface ILocationAutocompleteProps
-  extends Omit<AutocompleteProps<string, false, false, false>, 'options' | 'renderInput'> {}
+  extends Omit<AutocompleteProps<string, false, false, false>, 'options'> {}
