@@ -1,4 +1,4 @@
-import { Autocomplete, TextField } from '@mui/material';
+import { Autocomplete } from '@mui/material';
 import { ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
@@ -9,12 +9,13 @@ const LocationAutocompleteComponent = (
   { inputValue, ...restProps }: ILocationAutocompleteProps,
   ref: ForwardedRef<HTMLInputElement>,
 ): JSX.Element => {
-  const [options, setOptions] = useState<string[]>([]);
   const {
     data: locationsByNameData,
     isLoading: islocationsByNameLoading,
     mutate: locationsByNameMutation,
   } = useMutation(locationsByNameAction);
+
+  const [options, setOptions] = useState<string[]>([]);
 
   useEffect(() => {
     if (!inputValue) {
@@ -36,7 +37,6 @@ const LocationAutocompleteComponent = (
   return (
     <Autocomplete
       ref={ref}
-      {...restProps}
       disablePortal
       filterOptions={(options) => options}
       inputValue={inputValue}
@@ -44,7 +44,7 @@ const LocationAutocompleteComponent = (
       loadingText="Loading..."
       openOnFocus={false}
       options={options}
-      renderInput={(params) => <TextField {...params} label="Location" />}
+      {...restProps}
     />
   );
 };
