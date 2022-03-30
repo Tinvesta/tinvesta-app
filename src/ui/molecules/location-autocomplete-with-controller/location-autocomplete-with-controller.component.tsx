@@ -28,7 +28,7 @@ export const LocationAutocompleteWithController = <TFieldValues,>({
         )}
         // @ts-expect-error
         value={field.value}
-        onChange={(e, data) => field.onChange(data)}
+        onChange={(_, newValue) => field.onChange(newValue)}
       />
     )}
   />
