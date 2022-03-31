@@ -9,8 +9,11 @@ import { useTranslation } from '@utils';
 import { CropImageModalContent, UploadImageButton } from './parts';
 import { translationStrings } from './upload-image-with-preview.defaults';
 import S from './upload-image-with-preview.styles';
+import { IUploadImageWithPreviewProps } from './upload-image-with-preview.types';
 
-export const UploadImageWithPreview = (): JSX.Element => {
+export const UploadImageWithPreview = ({
+  imageSizeLimitInMegabytes = 5,
+}: IUploadImageWithPreviewProps): JSX.Element => {
   const [imageSource, setImageSource] = useState<string>('');
   const [scaledImageSource, setScaledImageSource] = useState<string>();
 
@@ -27,8 +30,8 @@ export const UploadImageWithPreview = (): JSX.Element => {
     const firstFile = event.target.files[0];
     const fileSizeInMegabytes = firstFile.size / 1024 / 1024;
 
-    if (fileSizeInMegabytes > 5) {
-      toast.warning('File size exceeds 5 MiB');
+    if (fileSizeInMegabytes > imageSizeLimitInMegabytes) {
+      toast.warning(`File size exceeds ${imageSizeLimitInMegabytes} MiB`);
 
       return;
     }
