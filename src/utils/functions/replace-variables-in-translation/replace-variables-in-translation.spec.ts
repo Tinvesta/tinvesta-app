@@ -30,4 +30,10 @@ describe('replaceVariablesInTranslation function', () => {
       'My super example',
     );
   });
+
+  it('should not replace values when there is nothig to replace', () => {
+    expect(replaceVariablesInTranslation('My {{0}} example {{1}}', 'super')).toStrictEqual(
+      'My super example {{1}}',
+    );
+  });
 });
