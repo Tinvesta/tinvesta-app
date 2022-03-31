@@ -34,7 +34,7 @@ export const UploadImageWithPreview = ({
       toast.warning(
         replaceVariablesInTranslation(
           translations.componentUploadImageWithPreviewWarningFileSizeExceeds,
-          imageSizeLimitInMegabytes.toString(),
+          imageSizeLimitInMegabytes,
         ),
       );
 
