@@ -1,23 +1,23 @@
-import { Button, Typography, useTheme } from '@mui/material';
 import imageCompression from 'browser-image-compression';
-import { ChangeEvent, createRef, useState } from 'react';
-import AvatarEditor from 'react-avatar-editor';
+import { ChangeEvent, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { useModal } from '@ui';
 
-import { isNumber } from '@utils';
-
-import { UploadImageButton } from './parts';
+import { CropImageModalContent, UploadImageButton } from './parts';
 import S from './upload-image-with-preview.styles';
+import { IUploadImageWithPreviewProps } from './upload-image-with-preview.types';
 
-export const UploadImageWithPreview = (): JSX.Element => {
+export const UploadImageWithPreview = ({
+  imageUploadButtonText,
+  modalButtonText,
+  modalTitle,
+  scaledImageAlt,
+}: IUploadImageWithPreviewProps): JSX.Element => {
   const [imageSource, setImageSource] = useState<string>('');
   const [scaledImageSource, setScaledImageSource] = useState<string>();
 
   const { hide, Modal, show } = useModal();
-  const theme = useTheme();
-  const avatarEditorRef = createRef<AvatarEditor>();
 
   const onSelectFile = async (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files || event.target.files.length === 0) {
@@ -46,42 +46,28 @@ export const UploadImageWithPreview = (): JSX.Element => {
     reader.readAsDataURL(compressedFile);
   };
 
-  const onClickSave = () => {
-    if (avatarEditorRef.current) {
-      const canvasScaled = avatarEditorRef.current.getImageScaledToCanvas();
+  const onClickSave = (scaledImage: string) => {
+    setScaledImageSource(scaledImage);
 
-      setScaledImageSource(canvasScaled.toDataURL());
-      hide();
-    }
+    hide();
   };
 
   return (
     <S.StyledWrapper>
       <Modal>
-        <S.StyledModalContentWrapper>
-          <Typography variant="h6">Cut your representative image</Typography>
-          <AvatarEditor
-            ref={avatarEditorRef}
-            disableDrop
-            border={0}
-            borderRadius={isNumber(theme.shape.borderRadius) ? theme.shape.borderRadius : 30}
-            height={600}
-            image={imageSource}
-            rotate={0}
-            scale={1}
-            width={400}
-          />
-          <Button variant="outlined" onClick={onClickSave}>
-            Save image
-          </Button>
-        </S.StyledModalContentWrapper>
+        <CropImageModalContent
+          buttonText={modalButtonText}
+          image={imageSource}
+          setScaledImage={onClickSave}
+          title={modalTitle}
+        />
       </Modal>
       {scaledImageSource ? (
-        <S.StyledImage alt="user representative image" src={scaledImageSource} />
+        <S.StyledImage alt={scaledImageAlt} src={scaledImageSource} />
       ) : (
         <S.StyledImagePlaceholder />
       )}
-      <UploadImageButton buttonText="Upload your representative photo" onChange={onSelectFile} />
+      <UploadImageButton buttonText={imageUploadButtonText} onChange={onSelectFile} />
     </S.StyledWrapper>
   );
 };
