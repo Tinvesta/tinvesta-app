@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Cancel as CancelIcon } from '@mui/icons-material';
 import { FormHelperText } from '@mui/material';
 
 const StyledWrapper = styled.span`
@@ -43,12 +44,33 @@ const StyledFormHelperText = styled(FormHelperText)`
   color: ${({ theme }) => theme.palette.error.main};
 `;
 
+const StyledCloseIcon = styled(CancelIcon)`
+  cursor: pointer;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: all 150ms ease-in-out;
+  top: -${({ theme }) => theme.spacing(3)};
+  right: -${({ theme }) => theme.spacing(3)};
+  fill: ${({ theme }) => theme.palette.error.main};
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+`;
+
+const StyledScaledImagePreviewWrapper = styled.span`
+  display: flex;
+  position: relative;
+`;
+
 const S = {
   StyledImage,
   StyledWrapper,
+  StyledCloseIcon,
   StyledFormHelperText,
   StyledImagePlaceholder,
   StyledModalContentWrapper,
+  StyledScaledImagePreviewWrapper,
 };
 
 export default S;

@@ -25,7 +25,7 @@ const UploadImageWithPreviewComponent = (
 
   const translations = useTranslation(translationStrings);
 
-  const { hide, Modal, show } = useModal();
+  const { hide, Modal, show } = useModal({ withCloseIcon: false });
 
   const onSelectFile = async (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files || event.target.files.length === 0) {
@@ -65,6 +65,8 @@ const UploadImageWithPreviewComponent = (
     hide();
   };
 
+  const handleRemoveScaledImage = () => setScaledImageSource('');
+
   return (
     <div>
       <Modal>
@@ -77,10 +79,13 @@ const UploadImageWithPreviewComponent = (
       </Modal>
       <S.StyledWrapper ref={ref}>
         {scaledImageSource ? (
-          <S.StyledImage
-            alt={translations.componentUploadImageWithPreviewImageScaledImageAlt}
-            src={scaledImageSource}
-          />
+          <S.StyledScaledImagePreviewWrapper>
+            <S.StyledCloseIcon onClick={handleRemoveScaledImage} />
+            <S.StyledImage
+              alt={translations.componentUploadImageWithPreviewImageScaledImageAlt}
+              src={scaledImageSource}
+            />
+          </S.StyledScaledImagePreviewWrapper>
         ) : (
           <S.StyledImagePlaceholder error={error} />
         )}
