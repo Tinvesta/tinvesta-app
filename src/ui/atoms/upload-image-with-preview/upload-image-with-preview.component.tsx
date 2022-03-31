@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import { useModal } from '@ui';
 
-import { useTranslation } from '@utils';
+import { replaceVariablesInTranslation, useTranslation } from '@utils';
 
 import { CropImageModalContent, UploadImageButton } from './parts';
 import { translationStrings } from './upload-image-with-preview.defaults';
@@ -31,7 +31,12 @@ export const UploadImageWithPreview = ({
     const fileSizeInMegabytes = firstFile.size / 1024 / 1024;
 
     if (fileSizeInMegabytes > imageSizeLimitInMegabytes) {
-      toast.warning(`File size exceeds ${imageSizeLimitInMegabytes} MiB`);
+      toast.warning(
+        replaceVariablesInTranslation(
+          translations.componentUploadImageWithPreviewWarningFileSizeExceeds,
+          imageSizeLimitInMegabytes.toString(),
+        ),
+      );
 
       return;
     }
