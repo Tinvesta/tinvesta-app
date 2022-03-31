@@ -31,7 +31,6 @@ export const CropImageModalContent = ({
       <Typography variant="h6">{title}</Typography>
       <AvatarEditor
         ref={avatarEditorRef}
-        disableDrop
         border={0}
         borderRadius={isNumber(theme.shape.borderRadius) ? theme.shape.borderRadius : 30}
         height={600}

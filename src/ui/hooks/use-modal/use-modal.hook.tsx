@@ -21,7 +21,7 @@ export const useModal = (defaultIsOpenState: boolean = false) => {
       <MuiModal open={isOpen} onClose={handleClose} {...restProps}>
         <S.StyledContentWrapper>
           <>
-            <S.StyledCloseIcon />
+            <S.StyledCloseIcon onClick={hide} />
             {children}
           </>
         </S.StyledContentWrapper>

@@ -6,6 +6,7 @@ import { IUploadImageButtonProps } from './upload-image-button.types';
 
 const UploadImageButtonComponent = ({
   buttonText,
+  error,
   onChange,
 }: IUploadImageButtonProps): JSX.Element => (
   <label htmlFor="upload-image-button">
@@ -15,7 +16,7 @@ const UploadImageButtonComponent = ({
       type="file"
       onChange={onChange}
     />
-    <Button component="span" variant="outlined">
+    <Button color={error ? 'error' : 'primary'} component="span" variant="outlined">
       {buttonText}
     </Button>
   </label>

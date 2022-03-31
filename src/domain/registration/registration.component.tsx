@@ -5,7 +5,7 @@ import {
   LocationAutocompleteWithController,
   SelectWithController,
   TextFieldWithController,
-  UploadImageWithPreview,
+  UploadImageWithPreviewWithController,
 } from '@ui';
 
 import S from './registration.styles';
@@ -17,6 +17,7 @@ export const Registration = (): JSX.Element => {
       selectedValue: '',
       description: '',
       location: '',
+      representativeImage: '',
     },
   });
 
@@ -29,11 +30,28 @@ export const Registration = (): JSX.Element => {
   return (
     <S.StyledWrapper>
       Registration
-      <UploadImageWithPreview />
       <form
-        style={{ padding: '20px', display: 'flex', flexDirection: 'column', maxWidth: '300px' }}
+        style={{
+          padding: '20px',
+          display: 'flex',
+          flexDirection: 'column',
+          maxWidth: '500px',
+          margin: '0 auto',
+        }}
         onSubmit={onSubmit}
       >
+        <UploadImageWithPreviewWithController
+          controllerProps={{
+            control,
+            name: 'representativeImage',
+            rules: {
+              required: {
+                value: true,
+                message: 'Test error message for upload image component',
+              },
+            },
+          }}
+        />
         <TextFieldWithController
           controllerProps={{
             control,

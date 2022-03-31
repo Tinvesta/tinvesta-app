@@ -1,5 +1,5 @@
 import imageCompression from 'browser-image-compression';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, ForwardedRef, forwardRef, memo, useState } from 'react';
 import { toast } from 'react-toastify';
 
 import { useModal } from '@ui';
@@ -11,11 +11,17 @@ import { translationStrings } from './upload-image-with-preview.defaults';
 import S from './upload-image-with-preview.styles';
 import { IUploadImageWithPreviewProps } from './upload-image-with-preview.types';
 
-export const UploadImageWithPreview = ({
-  imageSizeLimitInMegabytes = 5,
-}: IUploadImageWithPreviewProps): JSX.Element => {
+const UploadImageWithPreviewComponent = (
+  {
+    error,
+    helperText,
+    imageSizeLimitInMegabytes = 5,
+    scaledImageSource,
+    setScaledImageSource,
+  }: IUploadImageWithPreviewProps,
+  ref: ForwardedRef<HTMLDivElement>,
+): JSX.Element => {
   const [imageSource, setImageSource] = useState<string>('');
-  const [scaledImageSource, setScaledImageSource] = useState<string>();
 
   const translations = useTranslation(translationStrings);
 
@@ -60,7 +66,7 @@ export const UploadImageWithPreview = ({
   };
 
   return (
-    <S.StyledWrapper>
+    <div>
       <Modal>
         <CropImageModalContent
           buttonText={translations.componentUploadImageWithPreviewModalButtonText}
@@ -69,18 +75,24 @@ export const UploadImageWithPreview = ({
           title={translations.componentUploadImageWithPreviewModalTitle}
         />
       </Modal>
-      {scaledImageSource ? (
-        <S.StyledImage
-          alt={translations.componentUploadImageWithPreviewImageScaledImageAlt}
-          src={scaledImageSource}
+      <S.StyledWrapper ref={ref}>
+        {scaledImageSource ? (
+          <S.StyledImage
+            alt={translations.componentUploadImageWithPreviewImageScaledImageAlt}
+            src={scaledImageSource}
+          />
+        ) : (
+          <S.StyledImagePlaceholder error={error} />
+        )}
+        <UploadImageButton
+          buttonText={translations.componentUploadImageWithPreviewImageUploadButtonText}
+          error={error}
+          onChange={onSelectFile}
         />
-      ) : (
-        <S.StyledImagePlaceholder />
-      )}
-      <UploadImageButton
-        buttonText={translations.componentUploadImageWithPreviewImageUploadButtonText}
-        onChange={onSelectFile}
-      />
-    </S.StyledWrapper>
+      </S.StyledWrapper>
+      {helperText && <S.StyledFormHelperText>{helperText}</S.StyledFormHelperText>}
+    </div>
   );
 };
+
+export const UploadImageWithPreview = memo(forwardRef(UploadImageWithPreviewComponent));

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { FormHelperText } from '@mui/material';
 
 const StyledWrapper = styled.span`
   display: flex;
@@ -13,11 +14,14 @@ const StyledImage = styled.img`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 `;
 
-const StyledImagePlaceholder = styled.div`
+const StyledImagePlaceholder = styled.div<{ error?: boolean }>`
   width: 150px;
   height: 225px;
   border: 1px dashed;
+  transition: all 150ms ease-in-out;
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+
+  ${({ error, theme }) => error && `border-color: ${theme.palette.error.main};`}
 `;
 
 const StyledModalContentWrapper = styled.div`
@@ -34,9 +38,15 @@ const StyledModalContentWrapper = styled.div`
   }
 `;
 
+const StyledFormHelperText = styled(FormHelperText)`
+  text-align: center;
+  color: ${({ theme }) => theme.palette.error.main};
+`;
+
 const S = {
   StyledImage,
   StyledWrapper,
+  StyledFormHelperText,
   StyledImagePlaceholder,
   StyledModalContentWrapper,
 };
