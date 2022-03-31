@@ -5,6 +5,7 @@ import {
   LocationAutocompleteWithController,
   SelectWithController,
   TextFieldWithController,
+  UploadImageWithPreview,
 } from '@ui';
 
 import S from './registration.styles';
@@ -28,6 +29,12 @@ export const Registration = (): JSX.Element => {
   return (
     <S.StyledWrapper>
       Registration
+      <UploadImageWithPreview
+        imageUploadButtonText="Submit"
+        modalButtonText="Submit"
+        modalTitle="Modal title"
+        scaledImageAlt="scaled image alt"
+      />
       <form
         style={{ padding: '20px', display: 'flex', flexDirection: 'column', maxWidth: '300px' }}
         onSubmit={onSubmit}
