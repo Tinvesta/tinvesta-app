@@ -29,12 +29,7 @@ export const Registration = (): JSX.Element => {
   return (
     <S.StyledWrapper>
       Registration
-      <UploadImageWithPreview
-        imageUploadButtonText="Submit"
-        modalButtonText="Submit"
-        modalTitle="Modal title"
-        scaledImageAlt="scaled image alt"
-      />
+      <UploadImageWithPreview />
       <form
         style={{ padding: '20px', display: 'flex', flexDirection: 'column', maxWidth: '300px' }}
         onSubmit={onSubmit}

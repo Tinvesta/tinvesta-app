@@ -4,18 +4,20 @@ import { toast } from 'react-toastify';
 
 import { useModal } from '@ui';
 
+import { replaceVariablesInTranslation, useTranslation } from '@utils';
+
 import { CropImageModalContent, UploadImageButton } from './parts';
+import { translationStrings } from './upload-image-with-preview.defaults';
 import S from './upload-image-with-preview.styles';
 import { IUploadImageWithPreviewProps } from './upload-image-with-preview.types';
 
 export const UploadImageWithPreview = ({
-  imageUploadButtonText,
-  modalButtonText,
-  modalTitle,
-  scaledImageAlt,
+  imageSizeLimitInMegabytes = 5,
 }: IUploadImageWithPreviewProps): JSX.Element => {
   const [imageSource, setImageSource] = useState<string>('');
   const [scaledImageSource, setScaledImageSource] = useState<string>();
+
+  const translations = useTranslation(translationStrings);
 
   const { hide, Modal, show } = useModal();
 
@@ -28,8 +30,13 @@ export const UploadImageWithPreview = ({
     const firstFile = event.target.files[0];
     const fileSizeInMegabytes = firstFile.size / 1024 / 1024;
 
-    if (fileSizeInMegabytes > 5) {
-      toast.warning('File size exceeds 5 MiB');
+    if (fileSizeInMegabytes > imageSizeLimitInMegabytes) {
+      toast.warning(
+        replaceVariablesInTranslation(
+          translations.componentUploadImageWithPreviewWarningFileSizeExceeds,
+          imageSizeLimitInMegabytes,
+        ),
+      );
 
       return;
     }
@@ -56,18 +63,24 @@ export const UploadImageWithPreview = ({
     <S.StyledWrapper>
       <Modal>
         <CropImageModalContent
-          buttonText={modalButtonText}
+          buttonText={translations.componentUploadImageWithPreviewModalButtonText}
           image={imageSource}
           setScaledImage={onClickSave}
-          title={modalTitle}
+          title={translations.componentUploadImageWithPreviewModalTitle}
         />
       </Modal>
       {scaledImageSource ? (
-        <S.StyledImage alt={scaledImageAlt} src={scaledImageSource} />
+        <S.StyledImage
+          alt={translations.componentUploadImageWithPreviewImageScaledImageAlt}
+          src={scaledImageSource}
+        />
       ) : (
         <S.StyledImagePlaceholder />
       )}
-      <UploadImageButton buttonText={imageUploadButtonText} onChange={onSelectFile} />
+      <UploadImageButton
+        buttonText={translations.componentUploadImageWithPreviewImageUploadButtonText}
+        onChange={onSelectFile}
+      />
     </S.StyledWrapper>
   );
 };
