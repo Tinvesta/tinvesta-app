@@ -4,6 +4,8 @@ import { useEffect, useState } from 'react';
 
 import { IUser, UserContext, supabaseInstance } from '@infrastructure';
 
+import { ERoutes } from '@enums';
+
 import { IUserProviderProps } from './user-provider.types';
 
 export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
@@ -58,7 +60,8 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
   const logout = () =>
     supabaseInstance.auth.signOut().then(() => {
       setUser(null);
-      router.push('/');
+
+      router.push(ERoutes.RELEASE_DATE);
     });
 
   const providerValue = {

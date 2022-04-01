@@ -34,10 +34,10 @@ export const ParticlesBackground = (): JSX.Element => {
         },
         particles: {
           color: {
-            value: theme.palette.grey[700],
+            value: theme.palette.grey[600],
           },
           links: {
-            color: theme.palette.grey[700],
+            color: theme.palette.grey[600],
             distance: 150,
             enable: true,
             opacity: 0.5,

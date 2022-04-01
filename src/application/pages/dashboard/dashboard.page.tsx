@@ -4,6 +4,8 @@ import { Dashboard } from '@domain';
 
 import { supabaseInstance } from '@infrastructure';
 
+import { ERoutes } from '@enums';
+
 import S from './dashboard.styles';
 
 export const DashboardPage = (): JSX.Element => (
@@ -20,7 +22,7 @@ export const getServerSideProps = async ({ req }: GetServerSideProps) => {
     return {
       redirect: {
         permanent: false,
-        destination: '/home',
+        destination: ERoutes.HOME,
       },
       props: {},
     };
