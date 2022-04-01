@@ -1,6 +1,6 @@
 import { registrationPage } from '@application';
 
-const { RegistrationPage } = registrationPage;
+const { getServerSideProps, RegistrationPage } = registrationPage;
 
 // eslint-disable-next-line no-restricted-exports
-export { RegistrationPage as default };
+export { RegistrationPage as default, getServerSideProps };

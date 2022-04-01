@@ -1,3 +1,4 @@
+import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 
@@ -36,6 +37,13 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
       getUserProfile();
     });
   }, []);
+
+  useEffect(() => {
+    axios.post('/api/set-supabase-cookie', {
+      event: user ? 'SIGNED_IN' : 'SIGNED_OUT',
+      session: supabaseInstance.auth.session(),
+    });
+  }, [user]);
 
   const loginViaGithubProvider = () =>
     supabaseInstance.auth.signIn({

@@ -1,3 +1,4 @@
+export * from './home/home.component';
 export * from './terms/terms.component';
 export * from './pricing/pricing.component';
 export * from './dashboard/dashboard.component';
