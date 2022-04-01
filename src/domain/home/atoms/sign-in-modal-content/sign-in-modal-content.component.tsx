@@ -18,10 +18,10 @@ export const SignInModalContent = (): JSX.Element => {
   return (
     <S.StyledWrapper>
       <Button variant="outlined" onClick={signIn('google')}>
-        Sign in with github
+        Sign in with google
       </Button>
       <Button variant="outlined" onClick={signIn('github')}>
-        Sign in with google
+        Sign in with github
       </Button>
     </S.StyledWrapper>
   );
