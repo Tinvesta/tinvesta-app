@@ -21,7 +21,7 @@ export const Home = (): JSX.Element => {
       return show();
     }
 
-    // TODO - desice where user should be redirected based on user data
+    // TODO - decide where user should be redirected based on user data
     router.push('/registration');
   };
 
