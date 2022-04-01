@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 
 import { useModal } from '@ui';
 
-import { replaceVariablesInTranslation, useTranslation } from '@utils';
+import { asyncTryCatchWrapper, replaceVariablesInTranslation, useTranslation } from '@utils';
 
 import { CropImageModalContent, UploadImageButton } from './parts';
 import { translationStrings } from './upload-image-with-preview.defaults';
@@ -27,12 +27,29 @@ const UploadImageWithPreviewComponent = (
 
   const { hide, Modal, show } = useModal({ withCloseIcon: false });
 
+  const compressAndSetImageSource = (file: File) => async () => {
+    const reader = new FileReader();
+    const compressedFile = await imageCompression(file, { maxWidthOrHeight: 640 });
+
+    reader.addEventListener('load', () => {
+      if (reader.result) {
+        setImageSource(reader.result.toString());
+      }
+
+      show();
+    });
+
+    reader.readAsDataURL(compressedFile);
+  };
+
+  const onCompressAndSetImageSourceError = () =>
+    toast.error(translations.componentUploadImageWithPreviewErrorCompression);
+
   const onSelectFile = async (event: ChangeEvent<HTMLInputElement>) => {
     if (!event.target.files || event.target.files.length === 0) {
       return;
     }
 
-    const reader = new FileReader();
     const firstFile = event.target.files[0];
     const fileSizeInMegabytes = firstFile.size / 1024 / 1024;
 
@@ -47,16 +64,7 @@ const UploadImageWithPreviewComponent = (
       return;
     }
 
-    const compressedFile = await imageCompression(firstFile, { maxWidthOrHeight: 640 });
-
-    reader.addEventListener('load', () => {
-      if (reader.result) {
-        setImageSource(reader.result.toString());
-      }
-
-      show();
-    });
-    reader.readAsDataURL(compressedFile);
+    asyncTryCatchWrapper(compressAndSetImageSource(firstFile), onCompressAndSetImageSourceError);
   };
 
   const onClickSave = (scaledImage: string) => {
