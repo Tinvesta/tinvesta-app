@@ -2,6 +2,16 @@ export enum ELocale {
   EN = 'en',
 }
 
+export enum ERoutes {
+  DASHBOARD = '/dashboard',
+  HOME = '/home',
+  PRICING = '/pricing',
+  PRIVACY_POLICY = '/privacy-policy',
+  REGISTRATION = '/registration',
+  RELEASE_DATE = '/',
+  TERMS = '/terms',
+}
+
 export enum EFocusMarket {
   B2B = 'b2b',
   B2C = 'b2c',

@@ -6,6 +6,8 @@ import { useModal } from '@ui';
 
 import { useUser } from '@utils';
 
+import { ERoutes } from '@enums';
+
 import { SignInModalContent } from './atoms';
 import S from './home.styles';
 
@@ -22,7 +24,7 @@ export const Home = (): JSX.Element => {
     }
 
     // TODO - decide where user should be redirected based on user data
-    router.push('/registration');
+    router.push(ERoutes.REGISTRATION);
   };
 
   return (
