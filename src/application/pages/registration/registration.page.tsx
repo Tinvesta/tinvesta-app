@@ -16,8 +16,6 @@ export const RegistrationPage = (): JSX.Element => (
 export const getServerSideProps = async ({ req }: GetServerSideProps) => {
   const { user } = await supabaseInstance.auth.api.getUserByCookie(req);
 
-  console.log(user);
-
   if (!user) {
     return {
       redirect: {
