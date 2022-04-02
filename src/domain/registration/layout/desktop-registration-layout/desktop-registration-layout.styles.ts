@@ -16,10 +16,10 @@ const StyledContentWrapper = styled.div`
   z-index: 1;
   width: 100%;
   margin-right: 0;
+  backdrop-filter: blur(6px);
   margin: ${({ theme }) => theme.spacing(5)};
   padding: ${({ theme }) => theme.spacing(5)};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-  backdrop-filter: blur(6px);
 `;
 
 const StyledChildrenWrapper = styled.div`
