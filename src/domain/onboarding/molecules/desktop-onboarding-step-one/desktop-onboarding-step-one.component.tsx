@@ -8,9 +8,9 @@ import {
   UploadImageWithPreviewWithController,
 } from '@ui';
 
-import { DesktopRegistrationLayout } from '../../layout';
+import { DesktopOnboardingLayout } from '../../layout';
 
-export const DesktopRegistrationStepOne = (): JSX.Element => {
+export const DesktopoOnboardingStepOne = (): JSX.Element => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
       name: '',
@@ -24,7 +24,7 @@ export const DesktopRegistrationStepOne = (): JSX.Element => {
   const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
-    <DesktopRegistrationLayout progress={10}>
+    <DesktopOnboardingLayout>
       <form
         style={{
           padding: '20px',
@@ -112,6 +112,6 @@ export const DesktopRegistrationStepOne = (): JSX.Element => {
           Submit
         </Button>
       </form>
-    </DesktopRegistrationLayout>
+    </DesktopOnboardingLayout>
   );
 };

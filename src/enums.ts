@@ -5,9 +5,9 @@ export enum ELocale {
 export enum ERoutes {
   DASHBOARD = '/dashboard',
   HOME = '/home',
+  ONBOARDING = '/onboarding',
   PRICING = '/pricing',
   PRIVACY_POLICY = '/privacy-policy',
-  REGISTRATION = '/registration',
   RELEASE_DATE = '/',
   TERMS = '/terms',
 }
