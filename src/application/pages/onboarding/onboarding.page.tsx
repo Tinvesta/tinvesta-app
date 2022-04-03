@@ -1,16 +1,16 @@
 import { GetServerSideProps } from 'next';
 
-import { Registration } from '@domain';
+import { Onboarding } from '@domain';
 
 import { supabaseInstance } from '@infrastructure';
 
 import { ERoutes } from '@enums';
 
-import S from './registration.styles';
+import S from './onboarding.styles';
 
-export const RegistrationPage = (): JSX.Element => (
+export const OnboardingPage = (): JSX.Element => (
   <S.StyledWrapper>
-    <Registration />
+    <Onboarding />
   </S.StyledWrapper>
 );
 

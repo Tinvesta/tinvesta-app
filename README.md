@@ -101,8 +101,8 @@ _Below is an example of how you can instruct your audience on installing and set
 
 - [ ] Error pages (400, 404, 500, 403, 402)
 - [ ] Add react-toastify
-- [ ] Desktop - startup registration
-- [ ] Desktop - investor registration
+- [ ] Desktop - startup onboarding
+- [ ] Desktop - investor onboarding
 - [ ] Login / Registration via google
 - [ ] Login / Registration via github
 - [ ] Login / Registration via apple

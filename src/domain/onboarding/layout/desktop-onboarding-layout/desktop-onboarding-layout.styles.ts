@@ -6,12 +6,6 @@ const StyledWrapper = styled.div`
   flex-direction: row;
 `;
 
-const StyledAside = styled.aside`
-  width: 600px;
-  display: flex;
-  justify-content: center;
-`;
-
 const StyledContentWrapper = styled.div`
   z-index: 1;
   width: 100%;
@@ -27,7 +21,6 @@ const StyledChildrenWrapper = styled.div`
 `;
 
 const S = {
-  StyledAside,
   StyledWrapper,
   StyledContentWrapper,
   StyledChildrenWrapper,
