@@ -7,7 +7,9 @@ export const DesktopOnboardingLayout = ({
   children,
 }: IDesktopOnboardingLayoutProps): JSX.Element => (
   <S.StyledWrapper>
-    <Typography variant="h3">Create an account</Typography>
+    <Typography fontWeight={700} variant="h4">
+      Create an account
+    </Typography>
     <S.StyledChildrenWrapper>{children}</S.StyledChildrenWrapper>
   </S.StyledWrapper>
 );
