@@ -1,11 +1,11 @@
 import styled from '@emotion/styled';
 
 const StyledWrapper = styled.div`
+  width: 100%;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  width: 100%;
   align-items: center;
+  flex-direction: column;
   padding: ${({ theme }) => theme.spacing(5)};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 `;

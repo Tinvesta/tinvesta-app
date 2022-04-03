@@ -25,6 +25,7 @@ export enum ETeamSize {
 }
 
 export enum EClientType {
+  ALL = 'all',
   INVESTOR = 'investor',
   STARTUP = 'startup',
 }
@@ -45,7 +46,7 @@ export enum EInvestorDemand {
   TECHNOLOGY = 'technology',
 }
 
-export enum EInvestmentStage {
+export enum EInvestmentStageType {
   GROWTH = 'growth',
   IDEA = 'idea',
   SEED = 'seed',
@@ -92,7 +93,7 @@ export enum EInvestorProfileType {
   PRIVATE = 'private',
 }
 
-export enum EStartupProfileCreator {
+export enum EStartupProfileCreatorType {
   CO_FOUNDER = 'co-founder',
   EMPLOYEE = 'employee',
   FOUNDER = 'founder',
