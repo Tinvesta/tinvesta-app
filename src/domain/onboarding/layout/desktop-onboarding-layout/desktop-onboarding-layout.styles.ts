@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Typography } from '@mui/material';
 
 const StyledWrapper = styled.div`
   width: 100%;
@@ -15,8 +16,13 @@ const StyledChildrenWrapper = styled.div`
   margin-top: ${({ theme }) => theme.spacing(3)};
 `;
 
+const StyledHeading = styled(Typography)`
+  margin-bottom: ${({ theme }) => theme.spacing(3)};
+`;
+
 const S = {
   StyledWrapper,
+  StyledHeading,
   StyledChildrenWrapper,
 };
 
