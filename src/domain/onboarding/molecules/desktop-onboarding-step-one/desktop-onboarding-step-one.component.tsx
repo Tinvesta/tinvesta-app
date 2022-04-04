@@ -7,13 +7,13 @@ import {
   TextFieldWithController,
 } from '@ui';
 
-import { DesktopOnboardingLayout } from '../../layout';
-import { IDesktopoOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
+import { DesktopOnboardingLayout } from '../../atoms';
+import { IDesktopOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
 import { mapClientTypesToDropdownOptions } from './utils';
 
-export const DesktopoOnboardingStepOne = ({
+export const DesktopOnboardingStepOne = ({
   clientTypes,
-}: IDesktopoOnboardingStepOneProps): JSX.Element => {
+}: IDesktopOnboardingStepOneProps): JSX.Element => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
       location: '',
@@ -29,10 +29,9 @@ export const DesktopoOnboardingStepOne = ({
   const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
-    <DesktopOnboardingLayout>
+    <DesktopOnboardingLayout heading="Create an account">
       <form
         style={{
-          padding: '20px',
           display: 'flex',
           flexDirection: 'column',
           maxWidth: '600px',

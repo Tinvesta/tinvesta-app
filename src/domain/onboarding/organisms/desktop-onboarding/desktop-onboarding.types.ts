@@ -1,5 +1,5 @@
 import { IClientType } from '@interfaces';
 
-export interface IDesktopOnboardingStepOneProps {
+export interface IDesktopOnboardingProps {
   clientTypes: IClientType[];
 }
