@@ -6,6 +6,7 @@ const StyledWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  justify-content: center;
   padding: ${({ theme }) => theme.spacing(5)};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 `;
