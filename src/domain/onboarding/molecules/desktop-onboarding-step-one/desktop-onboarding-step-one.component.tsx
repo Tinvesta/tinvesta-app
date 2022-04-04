@@ -7,7 +7,7 @@ import {
   TextFieldWithController,
 } from '@ui';
 
-import { DesktopOnboardingLayout } from '../../layout';
+import { DesktopOnboardingLayout } from '../../atoms';
 import { IDesktopoOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
 import { mapClientTypesToDropdownOptions } from './utils';
 
