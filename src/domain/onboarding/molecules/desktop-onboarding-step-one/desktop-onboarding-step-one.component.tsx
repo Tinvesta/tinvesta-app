@@ -1,25 +1,30 @@
-import { Button } from '@mui/material';
+import { Button, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import {
   LocationAutocompleteWithController,
   SelectWithController,
   TextFieldWithController,
-  UploadImageWithPreviewWithController,
 } from '@ui';
 
 import { DesktopOnboardingLayout } from '../../layout';
+import { IDesktopoOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
+import { mapClientTypesToDropdownOptions } from './utils';
 
-export const DesktopoOnboardingStepOne = (): JSX.Element => {
+export const DesktopoOnboardingStepOne = ({
+  clientTypes,
+}: IDesktopoOnboardingStepOneProps): JSX.Element => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
-      name: '',
-      selectedValue: '',
-      description: '',
       location: '',
-      representativeImage: '',
+      lastName: '',
+      firstName: '',
+      contactEmail: '',
+      clientTypeId: '',
     },
   });
+
+  const clientTypeDropdownOptions = mapClientTypesToDropdownOptions(clientTypes);
 
   const onSubmit = handleSubmit((data) => console.log(data));
 
@@ -30,87 +35,100 @@ export const DesktopoOnboardingStepOne = (): JSX.Element => {
           padding: '20px',
           display: 'flex',
           flexDirection: 'column',
-          maxWidth: '500px',
+          maxWidth: '600px',
           margin: '0 auto',
         }}
         onSubmit={onSubmit}
       >
-        <UploadImageWithPreviewWithController
-          controllerProps={{
-            control,
-            name: 'representativeImage',
-            rules: {
-              required: {
-                value: true,
-                message: 'Test error message for upload image component',
-              },
-            },
-          }}
-        />
-        <TextFieldWithController
-          controllerProps={{
-            control,
-            name: 'name',
-            rules: {
-              required: true,
-            },
-          }}
-          inputProps={{
-            autoComplete: 'general.phoneNumber',
-            label: 'Name',
-          }}
-        />
-        <SelectWithController
-          controllerProps={{
-            control,
-            name: 'selectedValue',
-            rules: {
-              required: true,
-            },
-          }}
-          selectProps={{
-            options: [
-              {
-                label: 'Test 1',
-                value: 'test-1',
-              },
-              {
-                label: 'Test 2',
-                value: 'test-2',
-              },
-            ],
-            labelId: 'customers-dropdown-label',
-            label: 'Test Label',
-          }}
-        />
-        <LocationAutocompleteWithController
-          controllerProps={{
-            control,
-            name: 'location',
-            rules: {
-              required: true,
-            },
-          }}
-          inputProps={{
-            label: 'Location',
-          }}
-        />
-        <TextFieldWithController
-          controllerProps={{
-            control,
-            name: 'description',
-            rules: {
-              required: true,
-            },
-          }}
-          inputProps={{
-            autoComplete: 'general.phoneNumber',
-            label: 'Description',
-          }}
-        />
-        <Button type="submit" variant="outlined">
-          Submit
-        </Button>
+        <Grid container columnSpacing={4} rowSpacing={3}>
+          <Grid item xs={6}>
+            <TextFieldWithController
+              controllerProps={{
+                control,
+                name: 'firstName',
+                rules: {
+                  required: true,
+                },
+              }}
+              inputProps={{
+                fullWidth: true,
+                label: 'First Name',
+                autoComplete: 'firstName',
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextFieldWithController
+              controllerProps={{
+                control,
+                name: 'lastName',
+                rules: {
+                  required: true,
+                },
+              }}
+              inputProps={{
+                fullWidth: true,
+                label: 'Last Name',
+                autoComplete: 'lastName',
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextFieldWithController
+              controllerProps={{
+                control,
+                name: 'contactEmail',
+                rules: {
+                  required: true,
+                },
+              }}
+              inputProps={{
+                fullWidth: true,
+                label: 'Contact Email',
+                autoComplete: 'contactEmail',
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <SelectWithController
+              controllerProps={{
+                control,
+                name: 'clientTypeId',
+                rules: {
+                  required: true,
+                },
+              }}
+              formControlProps={{
+                fullWidth: true,
+              }}
+              selectProps={{
+                label: 'Profile Type',
+                autoComplete: 'clientTypeId',
+                options: clientTypeDropdownOptions,
+                labelId: 'desktop-onboarding-step-one-client-types',
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <LocationAutocompleteWithController
+              controllerProps={{
+                control,
+                name: 'location',
+                rules: {
+                  required: true,
+                },
+              }}
+              inputProps={{
+                label: 'Location',
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <Button size="large" type="submit" variant="contained">
+              Continue
+            </Button>
+          </Grid>
+        </Grid>
       </form>
     </DesktopOnboardingLayout>
   );

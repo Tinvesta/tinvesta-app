@@ -21,15 +21,11 @@ import {
 import S from './onboarding.styles';
 import { IOnboardingPageProps } from './onboarding.types';
 
-export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => {
-  console.log(props);
-
-  return (
-    <S.StyledWrapper>
-      <Onboarding />
-    </S.StyledWrapper>
-  );
-};
+export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => (
+  <S.StyledWrapper>
+    <Onboarding {...props} />
+  </S.StyledWrapper>
+);
 
 // @ts-expect-error
 export const getServerSideProps = async ({ req }: GetServerSideProps) => {
