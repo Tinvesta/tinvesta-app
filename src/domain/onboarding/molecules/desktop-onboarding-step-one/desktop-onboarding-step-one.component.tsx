@@ -8,12 +8,12 @@ import {
 } from '@ui';
 
 import { DesktopOnboardingLayout } from '../../atoms';
-import { IDesktopoOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
+import { IDesktopOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
 import { mapClientTypesToDropdownOptions } from './utils';
 
 export const DesktopOnboardingStepOne = ({
   clientTypes,
-}: IDesktopoOnboardingStepOneProps): JSX.Element => {
+}: IDesktopOnboardingStepOneProps): JSX.Element => {
   const { control, handleSubmit } = useForm({
     defaultValues: {
       location: '',
