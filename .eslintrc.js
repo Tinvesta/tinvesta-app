@@ -14,7 +14,7 @@ module.exports = {
     node: true,
     browser: true,
   },
-  plugins: ['react', 'react-hooks', 'folders', 'sort-destructure-keys'],
+  plugins: ['react', 'folders', 'sort-destructure-keys'],
   overrides: [
     {
       files: ['*.js', '*.ts', '*.tsx'],
