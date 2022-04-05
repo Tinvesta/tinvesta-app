@@ -1,11 +1,7 @@
+import { IDesktopOnboardingBaseData } from '../../../../onboarding.types';
+
 export interface IDesktopOnboardingMachineContext {
-  base: {
-    clientTypeId: number;
-    contractEmail: string;
-    firstName: string;
-    lastName: string;
-    location: string;
-  } | null;
+  base: IDesktopOnboardingBaseData | null;
 }
 
 export enum EDesktopOnboardingMachineStates {
