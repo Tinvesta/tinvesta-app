@@ -2,31 +2,33 @@ import { Button, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import {
-  HorizontalButtonGroupWithController,
   LocationAutocompleteWithController,
+  SelectWithController,
   TextFieldWithController,
 } from '@ui';
 
 import { DesktopOnboardingLayout } from '../../atoms';
+import { IDesktopOnboardingBaseData } from '../../onboarding.types';
 import { IDesktopOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
 import { mapClientTypesToDropdownOptions } from './utils';
 
 export const DesktopOnboardingStepOne = ({
   clientTypes,
+  onContinueButtonClick,
 }: IDesktopOnboardingStepOneProps): JSX.Element => {
-  const { control, handleSubmit } = useForm({
+  const { control, handleSubmit } = useForm<IDesktopOnboardingBaseData>({
     defaultValues: {
       location: '',
       lastName: '',
       firstName: '',
+      clientTypeId: '',
       contactEmail: '',
-      clientTypeId: 2,
     },
   });
 
   const clientTypeDropdownOptions = mapClientTypesToDropdownOptions(clientTypes);
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingLayout heading="Create an account">
@@ -89,7 +91,7 @@ export const DesktopOnboardingStepOne = ({
             />
           </Grid>
           <Grid item xs={6}>
-            <HorizontalButtonGroupWithController
+            <SelectWithController
               controllerProps={{
                 control,
                 name: 'clientTypeId',
@@ -100,11 +102,11 @@ export const DesktopOnboardingStepOne = ({
               formControlProps={{
                 fullWidth: true,
               }}
-              horizontalButtonGroupProps={{
-                size: 'large',
+              selectProps={{
                 fullWidth: true,
-                sx: { height: 60 },
+                label: 'Profile Type',
                 options: clientTypeDropdownOptions,
+                labelId: 'desktop-onboarding-step-one-client-type-id-select',
               }}
             />
           </Grid>
