@@ -2,7 +2,6 @@ import { Typography } from '@mui/material';
 import { useMachine } from '@xstate/react';
 
 import { DesktopOnboardingStepOne } from '../../molecules';
-import S from './desktop-onboarding.styles';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
   EDesktopOnboardingMachineEvents,
@@ -17,18 +16,9 @@ export const DesktopOnboarding = ({ clientTypes }: IDesktopOnboardingProps): JSX
 
   if (current.matches(EDesktopOnboardingMachineStates.INIT)) {
     return (
-      <S.StyledWrapper>
-        <DesktopOnboardingStepOne
-          clientTypes={clientTypes}
-          onContinueButtonClick={onStepOneSubmit}
-        />
-      </S.StyledWrapper>
+      <DesktopOnboardingStepOne clientTypes={clientTypes} onContinueButtonClick={onStepOneSubmit} />
     );
   }
 
-  return (
-    <S.StyledWrapper>
-      <Typography>Pogczamp</Typography>
-    </S.StyledWrapper>
-  );
+  return <Typography>Pogczamp</Typography>;
 };
