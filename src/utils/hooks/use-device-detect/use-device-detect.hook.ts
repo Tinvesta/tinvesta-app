@@ -15,14 +15,43 @@ import { IDeviceDetectData } from './use-device-detect.types';
 const getDeviceData = () => {
   const { width } = getWindowSize();
 
-  const xxl = width > LARGE_SCREEN_BREAKPOINT;
-  const xs = width < XMOBILE_SCREEN_BREAKPOINT;
-  const sm = width >= XMOBILE_SCREEN_BREAKPOINT && width < MOBILE_SCREEN_BREAKPOINT;
-  const md = width >= MOBILE_SCREEN_BREAKPOINT && width < SMALL_SCREEN_BREAKPOINT;
-  const lg = width >= SMALL_SCREEN_BREAKPOINT && width < MEDIUM_SCREEN_BREAKPOINT;
-  const xl = width >= MEDIUM_SCREEN_BREAKPOINT && width <= LARGE_SCREEN_BREAKPOINT;
+  const isXXL = width > LARGE_SCREEN_BREAKPOINT;
+  const isXS = width < XMOBILE_SCREEN_BREAKPOINT;
+  const isSM = width >= XMOBILE_SCREEN_BREAKPOINT && width < MOBILE_SCREEN_BREAKPOINT;
+  const isMD = width >= MOBILE_SCREEN_BREAKPOINT && width < SMALL_SCREEN_BREAKPOINT;
+  const isLG = width >= SMALL_SCREEN_BREAKPOINT && width < MEDIUM_SCREEN_BREAKPOINT;
+  const isXL = width >= MEDIUM_SCREEN_BREAKPOINT && width <= LARGE_SCREEN_BREAKPOINT;
 
-  return { xs, sm, md, lg, xl, xxl };
+  const isBiggerThanXL = width > LARGE_SCREEN_BREAKPOINT;
+  const isBiggerThanLG = width > MEDIUM_SCREEN_BREAKPOINT;
+  const isBiggerThanMD = width > SMALL_SCREEN_BREAKPOINT;
+  const isBiggerThanSM = width > MOBILE_SCREEN_BREAKPOINT;
+  const isBiggerThanXS = width > XMOBILE_SCREEN_BREAKPOINT;
+
+  const isSmallerThanXL = width < LARGE_SCREEN_BREAKPOINT;
+  const isSmallerThanLG = width < MEDIUM_SCREEN_BREAKPOINT;
+  const isSmallerThanMD = width < SMALL_SCREEN_BREAKPOINT;
+  const isSmallerThanSM = width < MOBILE_SCREEN_BREAKPOINT;
+  const isSmallerThanXS = width < XMOBILE_SCREEN_BREAKPOINT;
+
+  return {
+    isXXL,
+    isXS,
+    isSM,
+    isMD,
+    isLG,
+    isXL,
+    isBiggerThanXL,
+    isBiggerThanLG,
+    isBiggerThanMD,
+    isBiggerThanSM,
+    isBiggerThanXS,
+    isSmallerThanXL,
+    isSmallerThanLG,
+    isSmallerThanMD,
+    isSmallerThanSM,
+    isSmallerThanXS,
+  };
 };
 
 export const useDeviceDetect = () => {
