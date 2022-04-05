@@ -21,3 +21,11 @@ export interface IOnboardingProps {
   startupSectors: IStartupSector[];
   teamSizes: ITeamSize[];
 }
+
+export interface IDesktopOnboardingBaseData {
+  clientTypeId: number;
+  contactEmail: string;
+  firstName: string;
+  lastName: string;
+  location: string;
+}
