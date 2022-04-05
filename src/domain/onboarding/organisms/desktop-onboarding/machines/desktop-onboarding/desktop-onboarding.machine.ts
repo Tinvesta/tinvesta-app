@@ -15,7 +15,7 @@ export const onboardingStateMachine = createMachine<IDesktopOnboardingMachineCon
   states: {
     [EDesktopOnboardingMachineStates.INIT]: {
       on: {
-        NEXT: EDesktopOnboardingMachineStates.COMPLETE,
+        [EDesktopOnboardingMachineEvents.NEXT]: EDesktopOnboardingMachineStates.COMPLETE,
       },
     },
     [EDesktopOnboardingMachineStates.COMPLETE]: {
