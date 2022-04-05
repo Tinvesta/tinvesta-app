@@ -2,8 +2,8 @@ import { Button, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
 import {
+  HorizontalButtonGroupWithController,
   LocationAutocompleteWithController,
-  SelectWithController,
   TextFieldWithController,
 } from '@ui';
 
@@ -20,7 +20,7 @@ export const DesktopOnboardingStepOne = ({
       lastName: '',
       firstName: '',
       contactEmail: '',
-      clientTypeId: '',
+      clientTypeId: 2,
     },
   });
 
@@ -89,7 +89,7 @@ export const DesktopOnboardingStepOne = ({
             />
           </Grid>
           <Grid item xs={6}>
-            <SelectWithController
+            <HorizontalButtonGroupWithController
               controllerProps={{
                 control,
                 name: 'clientTypeId',
@@ -100,11 +100,11 @@ export const DesktopOnboardingStepOne = ({
               formControlProps={{
                 fullWidth: true,
               }}
-              selectProps={{
-                label: 'Profile Type',
-                autoComplete: 'clientTypeId',
+              horizontalButtonGroupProps={{
+                size: 'large',
+                fullWidth: true,
+                sx: { height: 60 },
                 options: clientTypeDropdownOptions,
-                labelId: 'desktop-onboarding-step-one-client-types',
               }}
             />
           </Grid>
