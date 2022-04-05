@@ -21,7 +21,7 @@ export const DesktopOnboardingStepOne = ({
       location: '',
       lastName: '',
       firstName: '',
-      clientTypeId: 0,
+      clientTypeId: '',
       contactEmail: '',
     },
   });
