@@ -1,7 +1,6 @@
-import { Typography } from '@mui/material';
 import { useMachine } from '@xstate/react';
 
-import { DesktopOnboardingStepOne } from '../../molecules';
+import { DesktopOnboardingStepOne, DesktopOnboardingStepTwoStartup } from '../../molecules';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
   EDesktopOnboardingMachineEvents,
@@ -9,16 +8,30 @@ import {
   onboardingStateMachine,
 } from './machines';
 
-export const DesktopOnboarding = ({ clientTypes }: IDesktopOnboardingProps): JSX.Element => {
+export const DesktopOnboarding = ({
+  clientTypes,
+  focusMarkets,
+  startupProfileCreatorTypes,
+  startupSectors,
+  teamSizes,
+}: IDesktopOnboardingProps): JSX.Element => {
   const [current, send] = useMachine(onboardingStateMachine);
 
   const onStepOneSubmit = () => send(EDesktopOnboardingMachineEvents.NEXT);
 
-  if (current.matches(EDesktopOnboardingMachineStates.INIT)) {
+  if (current.matches(EDesktopOnboardingMachineStates.COMPLETE)) {
     return (
       <DesktopOnboardingStepOne clientTypes={clientTypes} onContinueButtonClick={onStepOneSubmit} />
     );
   }
 
-  return <Typography>Pogczamp</Typography>;
+  return (
+    <DesktopOnboardingStepTwoStartup
+      focusMarkets={focusMarkets}
+      startupProfileCreatorTypes={startupProfileCreatorTypes}
+      startupSectors={startupSectors}
+      teamSizes={teamSizes}
+      onContinueButtonClick={onStepOneSubmit}
+    />
+  );
 };
