@@ -11,6 +11,7 @@ import {
 export const DesktopOnboarding = ({
   clientTypes,
   focusMarkets,
+  industrialSectors,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
@@ -28,6 +29,7 @@ export const DesktopOnboarding = ({
   return (
     <DesktopOnboardingStepTwoStartup
       focusMarkets={focusMarkets}
+      industrialSectors={industrialSectors}
       startupProfileCreatorTypes={startupProfileCreatorTypes}
       startupSectors={startupSectors}
       teamSizes={teamSizes}
