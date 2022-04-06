@@ -26,7 +26,7 @@ export const DesktopOnboardingStepTwoStartup = ({
       teamSizeId: '',
       focusMarketIds: [],
       startupSectorIds: [],
-      industrialSectors: [],
+      industrialSectorIds: [],
       startupProfileCreatorTypeId: '',
     },
   });
@@ -145,7 +145,7 @@ export const DesktopOnboardingStepTwoStartup = ({
               }}
               controllerProps={{
                 control,
-                name: 'industrialSectors',
+                name: 'industrialSectorIds',
                 rules: {
                   required: true,
                 },

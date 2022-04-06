@@ -11,6 +11,7 @@ const AutocompleteComponent = (
     ref={ref}
     autoHighlight
     getOptionLabel={(option) => option.label}
+    isOptionEqualToValue={(option, value) => value.value === option.value}
     options={options}
     {...restProps}
   />

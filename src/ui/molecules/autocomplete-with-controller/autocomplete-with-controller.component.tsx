@@ -28,7 +28,7 @@ export const AutocompleteWithController = <TFieldValues,>({
         )}
         // @ts-expect-error
         value={field.value}
-        onChange={(_, newValue) => field.onChange(newValue)}
+        onChange={(_, newValue) => field.onChange(newValue.map((_value) => _value.value))}
       />
     )}
   />
