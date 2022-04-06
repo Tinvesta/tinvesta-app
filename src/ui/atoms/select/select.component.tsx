@@ -4,10 +4,14 @@ import { ForwardedRef, forwardRef, memo } from 'react';
 import { ISelectProps } from './select.types';
 
 const SelectComponent = (
-  { children, className, inputRef, options, ...restProps }: ISelectProps,
+  { children, inputRef, options, ...restProps }: ISelectProps,
   ref: ForwardedRef<HTMLDivElement>,
 ): JSX.Element => (
-  <MuiSelect inputRef={inputRef || ref} {...restProps}>
+  <MuiSelect
+    inputRef={inputRef || ref}
+    {...restProps}
+    MenuProps={{ PaperProps: { sx: { maxHeight: 200 } } }}
+  >
     {options.map((_option) => (
       <MuiMenuItem key={_option.key || _option.value} value={_option.value}>
         {_option.label}

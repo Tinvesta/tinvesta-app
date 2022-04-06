@@ -69,7 +69,7 @@ export const DesktopOnboardingStepOne = ({
               inputProps={{
                 fullWidth: true,
                 label: 'First Name',
-                autoComplete: 'firstName',
+                autoComplete: 'disabled',
               }}
             />
           </Grid>
@@ -85,7 +85,7 @@ export const DesktopOnboardingStepOne = ({
               inputProps={{
                 fullWidth: true,
                 label: 'Last Name',
-                autoComplete: 'lastName',
+                autoComplete: 'disabled',
               }}
             />
           </Grid>
@@ -101,7 +101,7 @@ export const DesktopOnboardingStepOne = ({
               inputProps={{
                 fullWidth: true,
                 label: 'Contact Email',
-                autoComplete: 'contactEmail',
+                autoComplete: 'disabled',
               }}
             />
           </Grid>
@@ -117,7 +117,7 @@ export const DesktopOnboardingStepOne = ({
               inputProps={{
                 fullWidth: true,
                 label: 'Company Name',
-                autoComplete: 'companyName',
+                autoComplete: 'disabled',
               }}
             />
           </Grid>

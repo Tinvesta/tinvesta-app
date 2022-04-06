@@ -1,12 +1,13 @@
 import { Button, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { SelectWithController } from '@ui';
+import { AutocompleteWithController, SelectWithController } from '@ui';
 
 import { DesktopOnboardingLayout } from '../../atoms';
 import { IDesktopOnboardingStartupData } from '../../onboarding.types';
 import {
   mapFocusMarketsToDropdownOptions,
+  mapIndustrialSectorsToDropdownOptions,
   mapStartupProfileCreatorTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
@@ -15,7 +16,7 @@ import { IDesktopOnboardingStepTwoStartupProps } from './desktop-onboarding-step
 
 export const DesktopOnboardingStepTwoStartup = ({
   focusMarkets,
-  onContinueButtonClick,
+  industrialSectors,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
@@ -25,6 +26,7 @@ export const DesktopOnboardingStepTwoStartup = ({
       teamSizeId: '',
       focusMarketIds: [],
       startupSectorIds: [],
+      industrialSectorIds: [],
       startupProfileCreatorTypeId: '',
     },
   });
@@ -32,11 +34,12 @@ export const DesktopOnboardingStepTwoStartup = ({
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes);
   const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets);
   const mapStartupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(startupSectors);
+  const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(industrialSectors);
   const startupProfileCreatorTypesDropdownOptions = mapStartupProfileCreatorTypesToDropdownOptions(
     startupProfileCreatorTypes,
   );
 
-  const onSubmit = handleSubmit(onContinueButtonClick);
+  const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
     <DesktopOnboardingLayout heading="Setup Startup">
@@ -130,6 +133,25 @@ export const DesktopOnboardingStepTwoStartup = ({
                 fullWidth: true,
                 options: mapStartupSectorsDropdownOptions,
                 labelId: 'desktop-onboarding-step-two-startup-startup-sector-ids-select',
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <AutocompleteWithController
+              autocompleteProps={{
+                multiple: true,
+                fullWidth: true,
+                options: industrialSectorsDropdownOptions,
+              }}
+              controllerProps={{
+                control,
+                name: 'industrialSectorIds',
+                rules: {
+                  required: true,
+                },
+              }}
+              inputProps={{
+                label: 'Industrial Sector',
               }}
             />
           </Grid>

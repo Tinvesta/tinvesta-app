@@ -5,6 +5,7 @@ import { DesktopOnboarding } from './organisms';
 export const Onboarding = ({
   clientTypes,
   focusMarkets,
+  industrialSectors,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
@@ -13,6 +14,7 @@ export const Onboarding = ({
     <DesktopOnboarding
       clientTypes={clientTypes}
       focusMarkets={focusMarkets}
+      industrialSectors={industrialSectors}
       startupProfileCreatorTypes={startupProfileCreatorTypes}
       startupSectors={startupSectors}
       teamSizes={teamSizes}
