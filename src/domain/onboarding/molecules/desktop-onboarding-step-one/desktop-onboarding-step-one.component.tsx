@@ -5,12 +5,13 @@ import {
   LocationAutocompleteWithController,
   SelectWithController,
   TextFieldWithController,
+  UploadImageWithPreviewWithController,
 } from '@ui';
 
 import { DesktopOnboardingLayout } from '../../atoms';
 import { IDesktopOnboardingBaseData } from '../../onboarding.types';
+import { mapClientTypesToDropdownOptions } from '../../utils';
 import { IDesktopOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
-import { mapClientTypesToDropdownOptions } from './utils';
 
 export const DesktopOnboardingStepOne = ({
   clientTypes,
@@ -21,8 +22,11 @@ export const DesktopOnboardingStepOne = ({
       location: '',
       lastName: '',
       firstName: '',
+      companyName: '',
       clientTypeId: '',
       contactEmail: '',
+      clientTypeIdToShow: '',
+      representativeImage: '',
     },
   });
 
@@ -36,12 +40,23 @@ export const DesktopOnboardingStepOne = ({
         style={{
           display: 'flex',
           flexDirection: 'column',
-          maxWidth: '600px',
           margin: '0 auto',
+          width: '700px',
         }}
         onSubmit={onSubmit}
       >
         <Grid container columnSpacing={4} rowSpacing={3}>
+          <Grid item xs={12}>
+            <UploadImageWithPreviewWithController
+              controllerProps={{
+                control,
+                name: 'representativeImage',
+                rules: {
+                  required: true,
+                },
+              }}
+            />
+          </Grid>
           <Grid item xs={6}>
             <TextFieldWithController
               controllerProps={{
@@ -91,6 +106,22 @@ export const DesktopOnboardingStepOne = ({
             />
           </Grid>
           <Grid item xs={6}>
+            <TextFieldWithController
+              controllerProps={{
+                control,
+                name: 'companyName',
+                rules: {
+                  required: true,
+                },
+              }}
+              inputProps={{
+                fullWidth: true,
+                label: 'Company Name',
+                autoComplete: 'companyName',
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
             <SelectWithController
               controllerProps={{
                 control,
@@ -107,6 +138,26 @@ export const DesktopOnboardingStepOne = ({
                 label: 'Profile Type',
                 options: clientTypeDropdownOptions,
                 labelId: 'desktop-onboarding-step-one-client-type-id-select',
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <SelectWithController
+              controllerProps={{
+                control,
+                name: 'clientTypeIdToShow',
+                rules: {
+                  required: true,
+                },
+              }}
+              formControlProps={{
+                fullWidth: true,
+              }}
+              selectProps={{
+                fullWidth: true,
+                label: 'Show Me',
+                options: clientTypeDropdownOptions,
+                labelId: 'desktop-onboarding-step-one-client-type-id-to-show-select',
               }}
             />
           </Grid>
