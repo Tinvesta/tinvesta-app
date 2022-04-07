@@ -41,7 +41,7 @@ export const DesktopOnboardingStepOne = ({
           display: 'flex',
           flexDirection: 'column',
           margin: '0 auto',
-          width: '700px',
+          width: '800px',
         }}
         onSubmit={onSubmit}
       >

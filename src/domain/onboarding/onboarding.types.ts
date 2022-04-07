@@ -36,7 +36,13 @@ export interface IDesktopOnboardingBaseData {
 export interface IDesktopOnboardingStartupData {
   focusMarketIds: number[];
   industrialSectorIds: number[];
+  investmentSizeIds: number[];
+  investmentStageTypeIds: number[];
+  missionStatement: string;
+  startupClaim: string;
   startupProfileCreatorTypeId: string | number;
   startupSectorIds: number[];
   teamSizeId: string | number;
+  visionStatement: string;
+  whatYouAreLookingFor: string;
 }
