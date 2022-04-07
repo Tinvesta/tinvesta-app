@@ -11,6 +11,6 @@ export const ReleaseDatePage = (): JSX.Element => (
       <meta content="Tinvesta app" name="description" />
     </Head>
     <Image priority alt="Tinvesta" height={200} src="/images/animated-full-logo.svg" width={200} />
-    <Typography variant="h3">26.05.2022</Typography>
+    <Typography variant="h3">28.05.2022</Typography>
   </S.StyledWrapper>
 );
