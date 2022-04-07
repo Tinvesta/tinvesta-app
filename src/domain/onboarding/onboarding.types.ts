@@ -46,3 +46,11 @@ export interface IDesktopOnboardingStartupData {
   visionStatement: string;
   whatYouAreLookingFor: string;
 }
+
+export interface IDesktopOnboardingInvestorData {
+  focusMarketIds: number[];
+  industrialSectorIds: number[];
+  investorProfileTypeId: string | number;
+  startupSectorIds: number[];
+  teamSizeIds: number[];
+}

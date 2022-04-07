@@ -7,6 +7,7 @@ export const Onboarding = ({
   industrialSectors,
   investmentSizes,
   investmentStageTypes,
+  investorProfileTypes,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
@@ -17,6 +18,7 @@ export const Onboarding = ({
     industrialSectors={industrialSectors}
     investmentSizes={investmentSizes}
     investmentStageTypes={investmentStageTypes}
+    investorProfileTypes={investorProfileTypes}
     startupProfileCreatorTypes={startupProfileCreatorTypes}
     startupSectors={startupSectors}
     teamSizes={teamSizes}
