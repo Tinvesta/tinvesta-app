@@ -1,23 +1,18 @@
 import {
-  IClientType,
   IFocusMarket,
   IIndustrialSector,
-  IInvestmentSize,
-  IInvestmentStageType,
   IInvestorProfileType,
-  IStartupProfileCreatorType,
   IStartupSector,
   ITeamSize,
 } from '@interfaces';
 
-export interface IDesktopOnboardingProps {
-  clientTypes: IClientType[];
+import { IDesktopOnboardingInvestorData } from '../../onboarding.types';
+
+export interface IDesktopOnboardingStepTwoInvestorProps {
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
-  investmentSizes: IInvestmentSize[];
-  investmentStageTypes: IInvestmentStageType[];
   investorProfileTypes: IInvestorProfileType[];
-  startupProfileCreatorTypes: IStartupProfileCreatorType[];
+  onContinueButtonClick: (data: IDesktopOnboardingInvestorData) => void;
   startupSectors: IStartupSector[];
   teamSizes: ITeamSize[];
 }

@@ -45,8 +45,8 @@ export const DesktopOnboardingStepTwoStartup = ({
     mapInvestmentStageTypestoDropdownOptions(investmentStageTypes);
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes);
   const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets);
+  const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(startupSectors);
   const investmentSizesDropdownOptions = mapInvestmentSizesToDropdownOptions(investmentSizes);
-  const mapStartupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(startupSectors);
   const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(industrialSectors);
   const startupProfileCreatorTypesDropdownOptions = mapStartupProfileCreatorTypesToDropdownOptions(
     startupProfileCreatorTypes,
@@ -144,7 +144,7 @@ export const DesktopOnboardingStepTwoStartup = ({
                 multiple: true,
                 label: 'Sector',
                 fullWidth: true,
-                options: mapStartupSectorsDropdownOptions,
+                options: startupSectorsDropdownOptions,
                 labelId: 'desktop-onboarding-step-two-startup-startup-sector-ids-select',
               }}
             />

@@ -1,6 +1,10 @@
 import { useMachine } from '@xstate/react';
 
-import { DesktopOnboardingStepOne, DesktopOnboardingStepTwoStartup } from '../../molecules';
+import {
+  DesktopOnboardingStepOne,
+  DesktopOnboardingStepTwoInvestor,
+  DesktopOnboardingStepTwoStartup,
+} from '../../molecules';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
   EDesktopOnboardingMachineEvents,
@@ -14,6 +18,7 @@ export const DesktopOnboarding = ({
   industrialSectors,
   investmentSizes,
   investmentStageTypes,
+  investorProfileTypes,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
@@ -25,6 +30,19 @@ export const DesktopOnboarding = ({
   if (current.matches(EDesktopOnboardingMachineStates.COMPLETE)) {
     return (
       <DesktopOnboardingStepOne clientTypes={clientTypes} onContinueButtonClick={onStepOneSubmit} />
+    );
+  }
+
+  if (true) {
+    return (
+      <DesktopOnboardingStepTwoInvestor
+        focusMarkets={focusMarkets}
+        industrialSectors={industrialSectors}
+        investorProfileTypes={investorProfileTypes}
+        startupSectors={startupSectors}
+        teamSizes={teamSizes}
+        onContinueButtonClick={onStepOneSubmit}
+      />
     );
   }
 
