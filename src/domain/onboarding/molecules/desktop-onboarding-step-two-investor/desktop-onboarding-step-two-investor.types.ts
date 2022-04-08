@@ -1,6 +1,9 @@
 import {
   IFocusMarket,
   IIndustrialSector,
+  IInvestmentSize,
+  IInvestmentStageType,
+  IInvestorDemandType,
   IInvestorProfileType,
   IStartupSector,
   ITeamSize,
@@ -11,6 +14,9 @@ import { IDesktopOnboardingInvestorData } from '../../onboarding.types';
 export interface IDesktopOnboardingStepTwoInvestorProps {
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
+  investmentSizes: IInvestmentSize[];
+  investmentStageTypes: IInvestmentStageType[];
+  investorDemandTypes: IInvestorDemandType[];
   investorProfileTypes: IInvestorProfileType[];
   onContinueButtonClick: (data: IDesktopOnboardingInvestorData) => void;
   startupSectors: IStartupSector[];

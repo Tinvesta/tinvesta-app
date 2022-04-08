@@ -1,13 +1,16 @@
 import { Button, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { AutocompleteWithController, SelectWithController } from '@ui';
+import { AutocompleteWithController, SelectWithController, TextFieldWithController } from '@ui';
 
 import { DesktopOnboardingLayout } from '../../atoms';
 import { IDesktopOnboardingInvestorData } from '../../onboarding.types';
 import {
   mapFocusMarketsToDropdownOptions,
   mapIndustrialSectorsToDropdownOptions,
+  mapInvestmentSizesToDropdownOptions,
+  mapInvestmentStageTypestoDropdownOptions,
+  mapInvestorDemandTypesToDropdownOptions,
   mapInvestorProfileTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
@@ -17,6 +20,9 @@ import { IDesktopOnboardingStepTwoInvestorProps } from './desktop-onboarding-ste
 export const DesktopOnboardingStepTwoInvestor = ({
   focusMarkets,
   industrialSectors,
+  investmentSizes,
+  investmentStageTypes,
+  investorDemandTypes,
   investorProfileTypes,
   startupSectors,
   teamSizes,
@@ -26,16 +32,25 @@ export const DesktopOnboardingStepTwoInvestor = ({
       teamSizeIds: [],
       focusMarketIds: [],
       startupSectorIds: [],
+      investmentSizeIds: [],
       industrialSectorIds: [],
+      whatYouAreLookingFor: '',
+      investorDemandTypeIds: [],
       investorProfileTypeId: '',
+      investmentStageTypeIds: [],
     },
   });
 
+  const investorDemandTypesDropdownOptions =
+    mapInvestorDemandTypesToDropdownOptions(investorDemandTypes);
   const investorProfileTypesDropdownOptions =
     mapInvestorProfileTypesToDropdownOptions(investorProfileTypes);
+  const investmentStageTypesDropdownOptions =
+    mapInvestmentStageTypestoDropdownOptions(investmentStageTypes);
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes);
   const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets);
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(startupSectors);
+  const investmentSizesDropdownOptions = mapInvestmentSizesToDropdownOptions(investmentSizes);
   const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(industrialSectors);
 
   const onSubmit = handleSubmit((data) => console.log(data));
@@ -132,15 +147,16 @@ export const DesktopOnboardingStepTwoInvestor = ({
                 fullWidth: true,
                 label: 'Preferred Team Size',
                 options: teamSizesDropdownOptions,
-                labelId: 'desktop-onboarding-step-two-startup-team-size-id-select',
+                labelId: 'desktop-onboarding-step-two-investor-team-size-id-select',
               }}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item maxHeight={80} xs={6}>
             <AutocompleteWithController
               autocompleteProps={{
                 multiple: true,
                 fullWidth: true,
+                disableCloseOnSelect: true,
                 options: industrialSectorsDropdownOptions,
               }}
               controllerProps={{
@@ -152,6 +168,87 @@ export const DesktopOnboardingStepTwoInvestor = ({
               }}
               inputProps={{
                 label: 'Industrial Sector',
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <SelectWithController
+              controllerProps={{
+                control,
+                name: 'investmentStageTypeIds',
+                rules: {
+                  required: true,
+                },
+              }}
+              formControlProps={{
+                fullWidth: true,
+              }}
+              selectProps={{
+                multiple: true,
+                fullWidth: true,
+                label: 'Preferred Investment Stage',
+                options: investmentStageTypesDropdownOptions,
+                labelId: 'desktop-onboarding-step-two-investor-investment-stage-type-ids-select',
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <SelectWithController
+              controllerProps={{
+                control,
+                name: 'investmentSizeIds',
+                rules: {
+                  required: true,
+                },
+              }}
+              formControlProps={{
+                fullWidth: true,
+              }}
+              selectProps={{
+                multiple: true,
+                fullWidth: true,
+                options: investmentSizesDropdownOptions,
+                label: "How much money you'd like to give?",
+                labelId: 'desktop-onboarding-step-two-investor-investment-size-ids-select',
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <SelectWithController
+              controllerProps={{
+                control,
+                name: 'investorDemandTypeIds',
+                rules: {
+                  required: true,
+                },
+              }}
+              formControlProps={{
+                fullWidth: true,
+              }}
+              selectProps={{
+                multiple: true,
+                fullWidth: true,
+                label: 'Demand',
+                options: investorDemandTypesDropdownOptions,
+                labelId: 'desktop-onboarding-step-two-investor-investor-demand-type-ids-select',
+              }}
+            />
+          </Grid>
+          <Grid item xs={6}>
+            <TextFieldWithController
+              controllerProps={{
+                control,
+                name: 'whatYouAreLookingFor',
+                rules: {
+                  required: true,
+                },
+              }}
+              inputProps={{
+                rows: 3,
+                fullWidth: true,
+                multiline: true,
+                autoComplete: 'disabled',
+                label: 'Why should a startup match with you?',
               }}
             />
           </Grid>

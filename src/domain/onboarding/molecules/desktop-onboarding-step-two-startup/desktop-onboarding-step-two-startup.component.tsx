@@ -225,7 +225,6 @@ export const DesktopOnboardingStepTwoStartup = ({
                 multiline: true,
                 autoComplete: 'disabled',
                 label: 'What are you looking for?',
-                placeholder: 'Describe one sentence what you are looking for on Tinvesta.',
               }}
             />
           </Grid>

@@ -4,6 +4,7 @@ import {
   EIndustrialSector,
   EInvestmentSize,
   EInvestmentStageType,
+  EInvestorDemandType,
   EInvestorProfileType,
   EStartupProfileCreatorType,
   EStartupSector,
@@ -53,4 +54,9 @@ export interface IStartupSector {
 export interface ITeamSize {
   id: string;
   name: ETeamSize;
+}
+
+export interface IInvestorDemandType {
+  id: string;
+  name: EInvestorDemandType;
 }

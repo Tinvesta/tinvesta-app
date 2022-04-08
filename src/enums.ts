@@ -36,7 +36,7 @@ export enum EStartupSector {
   SOFTWARE = 'software',
 }
 
-export enum EInvestorDemand {
+export enum EInvestorDemandType {
   CO_FOUNDER = 'co-founder',
   DEBT_CAPITAL_WITHOUT_SHARES = 'debt-capital-without-shares',
   LOCATION = 'location',
