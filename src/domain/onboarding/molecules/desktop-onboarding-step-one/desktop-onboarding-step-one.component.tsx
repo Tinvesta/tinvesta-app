@@ -4,13 +4,13 @@ import { useForm } from 'react-hook-form';
 import { LocationAutocompleteWithController, TextFieldWithController } from '@ui';
 
 import { DesktopOnboardingFormLayout } from '../../atoms';
-import { IDesktopOnboardingBaseData } from '../../onboarding.types';
+import { IDesktopOnboardingStepOneData } from '../../onboarding.types';
 import { IDesktopOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
 
 export const DesktopOnboardingStepOne = ({
   onContinueButtonClick,
 }: IDesktopOnboardingStepOneProps): JSX.Element => {
-  const { control, handleSubmit } = useForm<IDesktopOnboardingBaseData>({
+  const { control, handleSubmit } = useForm<IDesktopOnboardingStepOneData>({
     defaultValues: {
       location: '',
       lastName: '',
@@ -22,21 +22,9 @@ export const DesktopOnboardingStepOne = ({
 
   const onSubmit = handleSubmit(onContinueButtonClick);
 
-  // TODO - upload image + profile type in the next step
   return (
-    <DesktopOnboardingFormLayout heading="Create an account" onSubmit={onSubmit}>
+    <DesktopOnboardingFormLayout heading="General" subHeading="Step 1/4" onSubmit={onSubmit}>
       <Grid container columnSpacing={4} rowSpacing={3}>
-        {/* <Grid item xs={12}>
-            <UploadImageWithPreviewWithController
-              controllerProps={{
-                control,
-                name: 'representativeImage',
-                rules: {
-                  required: true,
-                },
-              }}
-            />
-          </Grid> */}
         <Grid item xs={6}>
           <TextFieldWithController
             controllerProps={{
@@ -101,26 +89,6 @@ export const DesktopOnboardingStepOne = ({
             }}
           />
         </Grid>
-        {/* <Grid item xs={6}>
-          <SelectWithController
-            controllerProps={{
-              control,
-              name: 'clientTypeId',
-              rules: {
-                required: true,
-              },
-            }}
-            formControlProps={{
-              fullWidth: true,
-            }}
-            selectProps={{
-              fullWidth: true,
-              label: 'Profile Type',
-              options: clientTypeDropdownOptions,
-              labelId: 'desktop-onboarding-step-one-client-type-id-select',
-            }}
-          />
-        </Grid> */}
         <Grid item xs={12}>
           <LocationAutocompleteWithController
             controllerProps={{
@@ -135,7 +103,7 @@ export const DesktopOnboardingStepOne = ({
             }}
           />
         </Grid>
-        <Grid item xs={12}>
+        <Grid item display="flex" justifyContent="flex-end" xs={12}>
           <Button size="large" type="submit" variant="contained">
             Continue
           </Button>

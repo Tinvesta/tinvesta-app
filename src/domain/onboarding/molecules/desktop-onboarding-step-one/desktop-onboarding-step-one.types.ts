@@ -1,5 +1,5 @@
-import { IDesktopOnboardingBaseData } from '../../onboarding.types';
+import { IDesktopOnboardingStepOneData } from '../../onboarding.types';
 
 export interface IDesktopOnboardingStepOneProps {
-  onContinueButtonClick: (data: IDesktopOnboardingBaseData) => void;
+  onContinueButtonClick: (data: IDesktopOnboardingStepOneData) => void;
 }
