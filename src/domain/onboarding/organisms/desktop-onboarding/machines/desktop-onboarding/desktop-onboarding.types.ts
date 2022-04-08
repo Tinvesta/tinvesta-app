@@ -1,7 +1,7 @@
-import { IDesktopOnboardingBaseData } from '../../../../onboarding.types';
+import { IDesktopOnboardingStepOneData } from '../../../../onboarding.types';
 
 export interface IDesktopOnboardingMachineContext {
-  base: IDesktopOnboardingBaseData | null;
+  base: IDesktopOnboardingStepOneData | null;
 }
 
 export enum EDesktopOnboardingMachineStates {

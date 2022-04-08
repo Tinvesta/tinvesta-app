@@ -2,6 +2,7 @@ import { useMachine } from '@xstate/react';
 
 import {
   DesktopOnboardingStepOne,
+  DesktopOnboardingStepTwo,
   DesktopOnboardingStepTwoInvestor,
   DesktopOnboardingStepTwoStartup,
 } from '../../molecules';
@@ -13,6 +14,7 @@ import {
 } from './machines';
 
 export const DesktopOnboarding = ({
+  clientTypes,
   focusMarkets,
   industrialSectors,
   investmentSizes,
@@ -27,8 +29,20 @@ export const DesktopOnboarding = ({
 
   const onStepOneSubmit = () => send(EDesktopOnboardingMachineEvents.NEXT);
 
+  const onBackClick = () => send(EDesktopOnboardingMachineEvents.BACK);
+
   if (current.matches(EDesktopOnboardingMachineStates.INIT)) {
     return <DesktopOnboardingStepOne onContinueButtonClick={onStepOneSubmit} />;
+  }
+
+  if (current.matches(EDesktopOnboardingMachineStates.COMPLETE)) {
+    return (
+      <DesktopOnboardingStepTwo
+        clientTypes={clientTypes}
+        onBackClick={onBackClick}
+        onContinueButtonClick={onStepOneSubmit}
+      />
+    );
   }
 
   if (true) {

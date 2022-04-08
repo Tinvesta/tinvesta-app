@@ -24,12 +24,17 @@ export interface IOnboardingProps {
   teamSizes: ITeamSize[];
 }
 
-export interface IDesktopOnboardingBaseData {
+export interface IDesktopOnboardingStepOneData {
   companyName: string;
   contactEmail: string;
   firstName: string;
   lastName: string;
   location: string;
+}
+
+export interface IDesktopOnboardingStepTwoData {
+  clientTypeId: string | number;
+  representativeImage: string;
 }
 
 export interface IDesktopOnboardingStartupData {

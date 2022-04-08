@@ -9,6 +9,7 @@ import { IDesktopOnboardingFormLayoutProps } from './desktop-onboarding-form-lay
 const DesktopOnboardingFormLayoutComponent = ({
   children,
   heading,
+  subHeading,
   ...formProps
 }: IDesktopOnboardingFormLayoutProps): JSX.Element => (
   <CenterBlockLayout>
@@ -23,7 +24,8 @@ const DesktopOnboardingFormLayoutComponent = ({
         />
       </S.StyledImageWrapper>
       <S.StyledContentWrapper>
-        <S.StyledHeading align="left" fontWeight={700} variant="h4">
+        {subHeading && <S.StyledHeading variant="caption">{subHeading}</S.StyledHeading>}
+        <S.StyledHeading fontWeight={700} variant="h5">
           {heading}
         </S.StyledHeading>
         <S.StyledFormWrapper {...formProps}>{children}</S.StyledFormWrapper>

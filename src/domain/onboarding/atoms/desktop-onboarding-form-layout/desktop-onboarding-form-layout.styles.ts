@@ -5,6 +5,7 @@ const StyledWrapper = styled.div`
   display: grid;
   overflow: hidden;
   max-width: 1300px;
+  min-width: 1300px;
   backdrop-filter: blur(5px);
   grid-template-columns: 1fr 1fr;
   margin: ${({ theme }) => theme.spacing(5)};
@@ -30,6 +31,8 @@ const StyledFormWrapper = styled.form`
 `;
 
 const StyledHeading = styled(Typography)`
+  width: 100%;
+  text-align: left;
   margin-bottom: ${({ theme }) => theme.spacing(3)};
 `;
 
