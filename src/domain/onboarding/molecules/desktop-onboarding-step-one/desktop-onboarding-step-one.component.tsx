@@ -16,7 +16,6 @@ export const DesktopOnboardingStepOne = ({
       lastName: '',
       firstName: '',
       companyName: '',
-      // clientTypeId: '',
       contactEmail: '',
     },
   });

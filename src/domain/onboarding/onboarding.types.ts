@@ -25,7 +25,6 @@ export interface IOnboardingProps {
 }
 
 export interface IDesktopOnboardingBaseData {
-  clientTypeId: string | number;
   companyName: string;
   contactEmail: string;
   firstName: string;
