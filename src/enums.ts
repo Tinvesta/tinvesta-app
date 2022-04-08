@@ -25,7 +25,6 @@ export enum ETeamSize {
 }
 
 export enum EClientType {
-  ALL = 'all',
   INVESTOR = 'investor',
   STARTUP = 'startup',
 }
