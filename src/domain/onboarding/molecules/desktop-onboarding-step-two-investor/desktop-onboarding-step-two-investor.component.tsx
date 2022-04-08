@@ -151,7 +151,7 @@ export const DesktopOnboardingStepTwoInvestor = ({
               }}
             />
           </Grid>
-          <Grid item maxHeight={80} xs={6}>
+          <Grid item xs={12}>
             <AutocompleteWithController
               autocompleteProps={{
                 multiple: true,
