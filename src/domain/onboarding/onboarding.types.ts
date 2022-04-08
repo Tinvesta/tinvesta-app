@@ -4,6 +4,7 @@ import {
   IIndustrialSector,
   IInvestmentSize,
   IInvestmentStageType,
+  IInvestorDemandType,
   IInvestorProfileType,
   IStartupProfileCreatorType,
   IStartupSector,
@@ -16,6 +17,7 @@ export interface IOnboardingProps {
   industrialSectors: IIndustrialSector[];
   investmentSizes: IInvestmentSize[];
   investmentStageTypes: IInvestmentStageType[];
+  investorDemandTypes: IInvestorDemandType[];
   investorProfileTypes: IInvestorProfileType[];
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];
@@ -50,7 +52,11 @@ export interface IDesktopOnboardingStartupData {
 export interface IDesktopOnboardingInvestorData {
   focusMarketIds: number[];
   industrialSectorIds: number[];
+  investmentSizeIds: number[];
+  investmentStageTypeIds: number[];
+  investorDemandTypeIds: number[];
   investorProfileTypeId: string | number;
   startupSectorIds: number[];
   teamSizeIds: number[];
+  whatYouAreLookingFor: string;
 }

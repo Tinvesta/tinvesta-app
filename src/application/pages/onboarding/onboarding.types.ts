@@ -4,6 +4,7 @@ import {
   IIndustrialSector,
   IInvestmentSize,
   IInvestmentStageType,
+  IInvestorDemandType,
   IInvestorProfileType,
   IStartupProfileCreatorType,
   IStartupSector,
@@ -16,6 +17,7 @@ export interface IOnboardingPageProps {
   industrialSectors: IIndustrialSector[];
   investmentSizes: IInvestmentSize[];
   investmentStageTypes: IInvestmentStageType[];
+  investorDemandTypes: IInvestorDemandType[];
   investorProfileTypes: IInvestorProfileType[];
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];

@@ -18,6 +18,7 @@ export const DesktopOnboarding = ({
   industrialSectors,
   investmentSizes,
   investmentStageTypes,
+  investorDemandTypes,
   investorProfileTypes,
   startupProfileCreatorTypes,
   startupSectors,
@@ -38,6 +39,9 @@ export const DesktopOnboarding = ({
       <DesktopOnboardingStepTwoInvestor
         focusMarkets={focusMarkets}
         industrialSectors={industrialSectors}
+        investmentSizes={investmentSizes}
+        investmentStageTypes={investmentStageTypes}
+        investorDemandTypes={investorDemandTypes}
         investorProfileTypes={investorProfileTypes}
         startupSectors={startupSectors}
         teamSizes={teamSizes}
