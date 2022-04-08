@@ -9,6 +9,7 @@ const StyledWrapper = styled.div`
   grid-template-columns: 1fr 1fr;
   margin: ${({ theme }) => theme.spacing(5)};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+  background-color: ${({ theme }) => theme.palette.grey[800]};
 `;
 
 const StyledImageWrapper = styled.div`
@@ -22,7 +23,6 @@ const StyledContentWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   padding: ${({ theme }) => theme.spacing(5)};
-  background-color: ${({ theme }) => theme.palette.grey[800]};
 `;
 
 const StyledFormWrapper = styled.form`
