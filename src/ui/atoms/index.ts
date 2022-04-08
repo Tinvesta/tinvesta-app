@@ -1,6 +1,7 @@
 export * from './select/select.component';
 export * from './autocomplete/autocomplete.component';
 export * from './password-field/password-field.component';
+export * from './particles-background/particles-background.component';
 export * from './location-autocomplete/location-autocomplete.component';
 export * from './horizontal-button-group/horizontal-button-group.component';
 export * from './upload-image-with-preview/upload-image-with-preview.component';

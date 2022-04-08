@@ -1,1 +1,1 @@
-export * from './desktop-onboarding-layout/desktop-onboarding-layout.layout';
+export * from './desktop-onboarding-form-layout/desktop-onboarding-form-layout.layout';
