@@ -10,6 +10,7 @@ import { IDesktopOnboardingStepTwoProps } from './desktop-onboarding-step-two.ty
 
 export const DesktopOnboardingStepTwo = ({
   clientTypes,
+  onBackClick,
   onContinueButtonClick,
 }: IDesktopOnboardingStepTwoProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepTwoData>({
@@ -57,10 +58,17 @@ export const DesktopOnboardingStepTwo = ({
             }}
           />
         </Grid>
-        <Grid item display="flex" justifyContent="flex-end" xs={12}>
-          <Button size="large" type="submit" variant="contained">
-            Continue
-          </Button>
+        <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
+          <Grid item xs={3}>
+            <Button fullWidth size="large" variant="outlined" onClick={onBackClick}>
+              Back
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button fullWidth size="large" type="submit" variant="contained">
+              Continue
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </DesktopOnboardingFormLayout>
