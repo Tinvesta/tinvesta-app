@@ -26,13 +26,11 @@ export interface IOnboardingProps {
 
 export interface IDesktopOnboardingBaseData {
   clientTypeId: string | number;
-  clientTypeIdToShow: string;
   companyName: string;
   contactEmail: string;
   firstName: string;
   lastName: string;
   location: string;
-  representativeImage: string;
 }
 
 export interface IDesktopOnboardingStartupData {

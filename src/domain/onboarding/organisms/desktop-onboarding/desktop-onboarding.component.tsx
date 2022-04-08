@@ -13,7 +13,6 @@ import {
 } from './machines';
 
 export const DesktopOnboarding = ({
-  clientTypes,
   focusMarkets,
   industrialSectors,
   investmentSizes,
@@ -28,10 +27,8 @@ export const DesktopOnboarding = ({
 
   const onStepOneSubmit = () => send(EDesktopOnboardingMachineEvents.NEXT);
 
-  if (current.matches(EDesktopOnboardingMachineStates.COMPLETE)) {
-    return (
-      <DesktopOnboardingStepOne clientTypes={clientTypes} onContinueButtonClick={onStepOneSubmit} />
-    );
+  if (current.matches(EDesktopOnboardingMachineStates.INIT)) {
+    return <DesktopOnboardingStepOne onContinueButtonClick={onStepOneSubmit} />;
   }
 
   if (true) {
