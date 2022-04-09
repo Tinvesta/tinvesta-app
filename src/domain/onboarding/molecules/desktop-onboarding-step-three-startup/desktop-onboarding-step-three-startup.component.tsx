@@ -1,52 +1,39 @@
 import { Button, Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { AutocompleteWithController, SelectWithController, TextFieldWithController } from '@ui';
+import { AutocompleteWithController, SelectWithController } from '@ui';
 
 import { DesktopOnboardingFormLayout } from '../../atoms';
-import { IDesktopOnboardingStartupData } from '../../onboarding.types';
+import { IDesktopOnboardingStepThreeStartupData } from '../../onboarding.types';
 import {
   mapFocusMarketsToDropdownOptions,
   mapIndustrialSectorsToDropdownOptions,
-  mapInvestmentSizesToDropdownOptions,
-  mapInvestmentStageTypestoDropdownOptions,
   mapStartupProfileCreatorTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
 } from '../../utils';
-import { IDesktopOnboardingStepTwoStartupProps } from './desktop-onboarding-step-two-startup.types';
+import { IDesktopOnboardingStepThreeStartupProps } from './desktop-onboarding-step-three-startup.types';
 
-export const DesktopOnboardingStepTwoStartup = ({
+export const DesktopOnboardingStepThreeStartup = ({
   focusMarkets,
   industrialSectors,
-  investmentSizes,
-  investmentStageTypes,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
-}: IDesktopOnboardingStepTwoStartupProps): JSX.Element => {
-  const { control, handleSubmit } = useForm<IDesktopOnboardingStartupData>({
+}: IDesktopOnboardingStepThreeStartupProps): JSX.Element => {
+  const { control, handleSubmit } = useForm<IDesktopOnboardingStepThreeStartupData>({
     defaultValues: {
       teamSizeId: '',
-      startupClaim: '',
       focusMarketIds: [],
-      visionStatement: '',
-      missionStatement: '',
       startupSectorIds: [],
-      investmentSizeIds: [],
       industrialSectorIds: [],
-      whatYouAreLookingFor: '',
-      investmentStageTypeIds: [],
       startupProfileCreatorTypeId: '',
     },
   });
 
-  const investmentStageTypesDropdownOptions =
-    mapInvestmentStageTypestoDropdownOptions(investmentStageTypes);
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes);
   const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets);
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(startupSectors);
-  const investmentSizesDropdownOptions = mapInvestmentSizesToDropdownOptions(investmentSizes);
   const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(industrialSectors);
   const startupProfileCreatorTypesDropdownOptions = mapStartupProfileCreatorTypesToDropdownOptions(
     startupProfileCreatorTypes,
@@ -55,7 +42,7 @@ export const DesktopOnboardingStepTwoStartup = ({
   const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
-    <DesktopOnboardingFormLayout heading="Setup Startup" onSubmit={onSubmit}>
+    <DesktopOnboardingFormLayout heading="Setup Startup" subHeading="Step 3/4" onSubmit={onSubmit}>
       <Grid container columnSpacing={4} rowSpacing={3}>
         <Grid item xs={6}>
           <SelectWithController
@@ -142,8 +129,10 @@ export const DesktopOnboardingStepTwoStartup = ({
         <Grid item xs={12}>
           <AutocompleteWithController
             autocompleteProps={{
+              limit: 5,
               multiple: true,
               fullWidth: true,
+              disableCloseOnSelect: true,
               options: industrialSectorsDropdownOptions,
             }}
             controllerProps={{
@@ -158,7 +147,7 @@ export const DesktopOnboardingStepTwoStartup = ({
             }}
           />
         </Grid>
-        <Grid item xs={6}>
+        {/* <Grid item xs={6}>
           <SelectWithController
             controllerProps={{
               control,
@@ -273,19 +262,22 @@ export const DesktopOnboardingStepTwoStartup = ({
               autoComplete: 'disabled',
               label: 'What is your vision statement?',
               placeholder:
-                '"We will be the leading provider of simple matchmaking services to startups and investors worldwide."',
+                '"We will be the leading provider of simple matchmaking
+                services to startups and investors worldwide."',
             }}
           />
-        </Grid>
-        <Grid item xs={3}>
-          <Button fullWidth size="large" variant="outlined">
-            Back
-          </Button>
-        </Grid>
-        <Grid item xs={3}>
-          <Button fullWidth size="large" type="submit" variant="contained">
-            Continue
-          </Button>
+        </Grid> */}
+        <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
+          <Grid item xs={3}>
+            <Button fullWidth size="large" variant="outlined">
+              Back
+            </Button>
+          </Grid>
+          <Grid item xs={3}>
+            <Button fullWidth size="large" type="submit" variant="contained">
+              Continue
+            </Button>
+          </Grid>
         </Grid>
       </Grid>
     </DesktopOnboardingFormLayout>

@@ -8,5 +8,6 @@ export interface IAutocompleteOption {
 
 export interface IAutocompleteProps
   extends Omit<AutocompleteProps<IAutocompleteOption, true, false, false>, 'options'> {
+  limit?: number;
   options: IAutocompleteOption[];
 }

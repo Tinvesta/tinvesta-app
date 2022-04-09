@@ -37,18 +37,12 @@ export interface IDesktopOnboardingStepTwoData {
   representativeImage: string;
 }
 
-export interface IDesktopOnboardingStartupData {
+export interface IDesktopOnboardingStepThreeStartupData {
   focusMarketIds: number[];
   industrialSectorIds: number[];
-  investmentSizeIds: number[];
-  investmentStageTypeIds: number[];
-  missionStatement: string;
-  startupClaim: string;
   startupProfileCreatorTypeId: string | number;
   startupSectorIds: number[];
   teamSizeId: string | number;
-  visionStatement: string;
-  whatYouAreLookingFor: string;
 }
 
 export interface IDesktopOnboardingInvestorData {
