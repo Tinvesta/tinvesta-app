@@ -23,7 +23,7 @@ export const DesktopOnboardingStepOne = ({
   const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
-    <DesktopOnboardingFormLayout heading="General" subHeading="Step 1/4" onSubmit={onSubmit}>
+    <DesktopOnboardingFormLayout heading="General" subHeading="Step 1/2" onSubmit={onSubmit}>
       <Grid container columnSpacing={4} rowSpacing={3}>
         <Grid item xs={6}>
           <TextFieldWithController
