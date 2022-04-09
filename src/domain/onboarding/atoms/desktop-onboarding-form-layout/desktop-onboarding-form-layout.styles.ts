@@ -27,6 +27,7 @@ const StyledContentWrapper = styled.div`
 `;
 
 const StyledFormWrapper = styled.form`
+  width: 100%;
   margin-top: ${({ theme }) => theme.spacing(3)};
 `;
 

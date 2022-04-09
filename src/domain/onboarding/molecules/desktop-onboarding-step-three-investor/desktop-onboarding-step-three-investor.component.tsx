@@ -4,51 +4,46 @@ import { useForm } from 'react-hook-form';
 import { AutocompleteWithController, SelectWithController } from '@ui';
 
 import { DesktopOnboardingFormLayout } from '../../atoms';
-import { IDesktopOnboardingStepThreeStartupData } from '../../onboarding.types';
+import { IDesktopOnboardingStepThreeInvestorData } from '../../onboarding.types';
 import {
   mapFocusMarketsToDropdownOptions,
   mapIndustrialSectorsToDropdownOptions,
-  mapStartupProfileCreatorTypesToDropdownOptions,
+  mapInvestorProfileTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
-  mapTeamSizesToDropdownOptions,
 } from '../../utils';
-import { IDesktopOnboardingStepThreeStartupProps } from './desktop-onboarding-step-three-startup.types';
+import { IDesktopOnboardingStepThreeInvestorProps } from './desktop-onboarding-step-three-investor.types';
 
-export const DesktopOnboardingStepThreeStartup = ({
+export const DesktopOnboardingStepThreeInvestor = ({
   focusMarkets,
   industrialSectors,
-  startupProfileCreatorTypes,
+  investorProfileTypes,
   startupSectors,
-  teamSizes,
-}: IDesktopOnboardingStepThreeStartupProps): JSX.Element => {
-  const { control, handleSubmit } = useForm<IDesktopOnboardingStepThreeStartupData>({
+}: IDesktopOnboardingStepThreeInvestorProps): JSX.Element => {
+  const { control, handleSubmit } = useForm<IDesktopOnboardingStepThreeInvestorData>({
     defaultValues: {
-      teamSizeId: '',
       focusMarketIds: [],
       startupSectorIds: [],
       industrialSectorIds: [],
-      startupProfileCreatorTypeId: '',
+      investorProfileTypeId: '',
     },
   });
 
-  const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes);
+  const investorProfileTypesDropdownOptions =
+    mapInvestorProfileTypesToDropdownOptions(investorProfileTypes);
   const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets);
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(startupSectors);
   const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(industrialSectors);
-  const startupProfileCreatorTypesDropdownOptions = mapStartupProfileCreatorTypesToDropdownOptions(
-    startupProfileCreatorTypes,
-  );
 
   const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
-    <DesktopOnboardingFormLayout heading="Setup Startup" subHeading="Step 3/5" onSubmit={onSubmit}>
+    <DesktopOnboardingFormLayout heading="Setup Investor" subHeading="Step 3/5" onSubmit={onSubmit}>
       <Grid container columnSpacing={4} rowSpacing={3}>
         <Grid item xs={6}>
           <SelectWithController
             controllerProps={{
               control,
-              name: 'startupProfileCreatorTypeId',
+              name: 'investorProfileTypeId',
               rules: {
                 required: true,
               },
@@ -58,30 +53,9 @@ export const DesktopOnboardingStepThreeStartup = ({
             }}
             selectProps={{
               fullWidth: true,
-              label: 'Your Position',
-              options: startupProfileCreatorTypesDropdownOptions,
-              labelId:
-                'desktop-onboarding-step-three-startup-startup-profile-creator-type-id-select',
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <SelectWithController
-            controllerProps={{
-              control,
-              name: 'teamSizeId',
-              rules: {
-                required: true,
-              },
-            }}
-            formControlProps={{
-              fullWidth: true,
-            }}
-            selectProps={{
-              fullWidth: true,
-              label: 'Team Size',
-              options: teamSizesDropdownOptions,
-              labelId: 'desktop-onboarding-step-three-startup-team-size-id-select',
+              label: 'Investor Profile Type',
+              options: investorProfileTypesDropdownOptions,
+              labelId: 'desktop-onboarding-step-two-investor-investor-profile-type-id-select',
             }}
           />
         </Grid>
@@ -100,13 +74,13 @@ export const DesktopOnboardingStepThreeStartup = ({
             selectProps={{
               multiple: true,
               fullWidth: true,
-              label: 'Focus Market',
+              label: 'Investment Focus',
               options: focusMarketsDropdownOptions,
-              labelId: 'desktop-onboarding-step-three-startup-focus-market-ids-select',
+              labelId: 'desktop-onboarding-step-two-investor-focus-market-ids-select',
             }}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12}>
           <SelectWithController
             controllerProps={{
               control,
@@ -120,10 +94,10 @@ export const DesktopOnboardingStepThreeStartup = ({
             }}
             selectProps={{
               multiple: true,
-              label: 'Sector',
               fullWidth: true,
+              label: 'Preferred Startup Sector',
               options: startupSectorsDropdownOptions,
-              labelId: 'desktop-onboarding-step-three-startup-startup-sector-ids-select',
+              labelId: 'desktop-onboarding-step-two-investor-startup-sector-ids-select',
             }}
           />
         </Grid>

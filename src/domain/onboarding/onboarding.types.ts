@@ -57,14 +57,20 @@ export interface IDesktopOnboardingStepFiveStartupData {
   visionStatement: string;
 }
 
-export interface IDesktopOnboardingInvestorData {
+export interface IDesktopOnboardingStepThreeInvestorData {
   focusMarketIds: number[];
   industrialSectorIds: number[];
-  investmentSizeIds: number[];
-  investmentStageTypeIds: number[];
-  investorDemandTypeIds: number[];
   investorProfileTypeId: string | number;
   startupSectorIds: number[];
+}
+
+export interface IDesktopOnboardingStepFourInvestorData {
+  investmentSizeIds: number[];
+  investmentStageTypeIds: number[];
   teamSizeIds: number[];
+}
+
+export interface IDesktopOnboardingStepFiveInvestorData {
+  investorDemandTypeIds: number[];
   whatYouAreLookingFor: string;
 }

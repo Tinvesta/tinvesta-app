@@ -18,7 +18,7 @@ export const DesktopOnboardingStepFiveStartup = (): JSX.Element => {
   const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
-    <DesktopOnboardingFormLayout heading="Setup Startup" subHeading="Step 3/3" onSubmit={onSubmit}>
+    <DesktopOnboardingFormLayout heading="Setup Startup" subHeading="Step 5/5" onSubmit={onSubmit}>
       <Grid container columnSpacing={4} rowSpacing={3}>
         <Grid item xs={12}>
           <TextFieldWithController
