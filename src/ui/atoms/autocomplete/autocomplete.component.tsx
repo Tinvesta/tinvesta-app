@@ -10,7 +10,7 @@ const AutocompleteComponent = (
   ref: ForwardedRef<HTMLDivElement>,
 ): JSX.Element => {
   const checkDisable = useCallback(
-    () => isNumber(limit) && !!value && value.length >= 5,
+    () => isNumber(limit) && !!value && value.length >= limit,
     [value?.length],
   );
 
