@@ -1,12 +1,14 @@
 import { useMachine } from '@xstate/react';
 
 import {
+  DesktopOnboardingStepFiveInvestor,
   DesktopOnboardingStepFiveStartup,
+  DesktopOnboardingStepFourInvestor,
   DesktopOnboardingStepFourStartup,
   DesktopOnboardingStepOne,
+  DesktopOnboardingStepThreeInvestor,
   DesktopOnboardingStepThreeStartup,
   DesktopOnboardingStepTwo,
-  DesktopOnboardingStepTwoInvestor,
 } from '../../molecules';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
@@ -32,6 +34,32 @@ export const DesktopOnboarding = ({
   const onStepOneSubmit = () => send(EDesktopOnboardingMachineEvents.NEXT);
 
   const onBackClick = () => send(EDesktopOnboardingMachineEvents.BACK);
+
+  return (
+    <DesktopOnboardingStepFiveInvestor
+      investorDemandTypes={investorDemandTypes}
+      onContinueButtonClick={onStepOneSubmit}
+    />
+  );
+
+  return (
+    <DesktopOnboardingStepFourInvestor
+      investmentSizes={investmentSizes}
+      investmentStageTypes={investmentStageTypes}
+      teamSizes={teamSizes}
+      onContinueButtonClick={onStepOneSubmit}
+    />
+  );
+
+  return (
+    <DesktopOnboardingStepThreeInvestor
+      focusMarkets={focusMarkets}
+      industrialSectors={industrialSectors}
+      investorProfileTypes={investorProfileTypes}
+      startupSectors={startupSectors}
+      onContinueButtonClick={onStepOneSubmit}
+    />
+  );
 
   return <DesktopOnboardingStepFiveStartup />;
 
@@ -68,19 +96,13 @@ export const DesktopOnboarding = ({
     );
   }
 
-  if (true) {
-    return (
-      <DesktopOnboardingStepTwoInvestor
-        focusMarkets={focusMarkets}
-        industrialSectors={industrialSectors}
-        investmentSizes={investmentSizes}
-        investmentStageTypes={investmentStageTypes}
-        investorDemandTypes={investorDemandTypes}
-        investorProfileTypes={investorProfileTypes}
-        startupSectors={startupSectors}
-        teamSizes={teamSizes}
-        onContinueButtonClick={onStepOneSubmit}
-      />
-    );
-  }
+  return (
+    <DesktopOnboardingStepThreeInvestor
+      focusMarkets={focusMarkets}
+      industrialSectors={industrialSectors}
+      investorProfileTypes={investorProfileTypes}
+      startupSectors={startupSectors}
+      onContinueButtonClick={onStepOneSubmit}
+    />
+  );
 };
