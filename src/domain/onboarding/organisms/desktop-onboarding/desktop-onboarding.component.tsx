@@ -2,9 +2,9 @@ import { useMachine } from '@xstate/react';
 
 import {
   DesktopOnboardingStepOne,
+  DesktopOnboardingStepThreeStartup,
   DesktopOnboardingStepTwo,
   DesktopOnboardingStepTwoInvestor,
-  DesktopOnboardingStepTwoStartup,
 } from '../../molecules';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
@@ -30,6 +30,17 @@ export const DesktopOnboarding = ({
   const onStepOneSubmit = () => send(EDesktopOnboardingMachineEvents.NEXT);
 
   const onBackClick = () => send(EDesktopOnboardingMachineEvents.BACK);
+
+  return (
+    <DesktopOnboardingStepThreeStartup
+      focusMarkets={focusMarkets}
+      industrialSectors={industrialSectors}
+      startupProfileCreatorTypes={startupProfileCreatorTypes}
+      startupSectors={startupSectors}
+      teamSizes={teamSizes}
+      onContinueButtonClick={onStepOneSubmit}
+    />
+  );
 
   if (current.matches(EDesktopOnboardingMachineStates.INIT)) {
     return <DesktopOnboardingStepOne onContinueButtonClick={onStepOneSubmit} />;
@@ -60,17 +71,4 @@ export const DesktopOnboarding = ({
       />
     );
   }
-
-  return (
-    <DesktopOnboardingStepTwoStartup
-      focusMarkets={focusMarkets}
-      industrialSectors={industrialSectors}
-      investmentSizes={investmentSizes}
-      investmentStageTypes={investmentStageTypes}
-      startupProfileCreatorTypes={startupProfileCreatorTypes}
-      startupSectors={startupSectors}
-      teamSizes={teamSizes}
-      onContinueButtonClick={onStepOneSubmit}
-    />
-  );
 };
