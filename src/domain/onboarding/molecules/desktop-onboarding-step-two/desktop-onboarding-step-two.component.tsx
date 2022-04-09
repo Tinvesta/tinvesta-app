@@ -25,7 +25,7 @@ export const DesktopOnboardingStepTwo = ({
   const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
-    <DesktopOnboardingFormLayout heading="General" subHeading="Step 2/4" onSubmit={onSubmit}>
+    <DesktopOnboardingFormLayout heading="General" subHeading="Step 2/2" onSubmit={onSubmit}>
       <Grid container columnSpacing={4} display="flex" justifyContent="center" rowSpacing={3}>
         <Grid item xs={12}>
           <UploadImageWithPreviewWithController

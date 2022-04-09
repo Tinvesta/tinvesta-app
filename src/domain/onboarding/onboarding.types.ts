@@ -45,6 +45,18 @@ export interface IDesktopOnboardingStepThreeStartupData {
   teamSizeId: string | number;
 }
 
+export interface IDesktopOnboardingStepFourStartupData {
+  investmentSizeIds: number[];
+  investmentStageTypeIds: number[];
+  whatYouAreLookingFor: string;
+}
+
+export interface IDesktopOnboardingStepFiveStartupData {
+  missionStatement: string;
+  startupClaim: string;
+  visionStatement: string;
+}
+
 export interface IDesktopOnboardingInvestorData {
   focusMarketIds: number[];
   industrialSectorIds: number[];

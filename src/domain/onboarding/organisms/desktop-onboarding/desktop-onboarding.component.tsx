@@ -1,6 +1,8 @@
 import { useMachine } from '@xstate/react';
 
 import {
+  DesktopOnboardingStepFiveStartup,
+  DesktopOnboardingStepFourStartup,
   DesktopOnboardingStepOne,
   DesktopOnboardingStepThreeStartup,
   DesktopOnboardingStepTwo,
@@ -30,6 +32,16 @@ export const DesktopOnboarding = ({
   const onStepOneSubmit = () => send(EDesktopOnboardingMachineEvents.NEXT);
 
   const onBackClick = () => send(EDesktopOnboardingMachineEvents.BACK);
+
+  return <DesktopOnboardingStepFiveStartup />;
+
+  return (
+    <DesktopOnboardingStepFourStartup
+      investmentSizes={investmentSizes}
+      investmentStageTypes={investmentStageTypes}
+      onContinueButtonClick={onStepOneSubmit}
+    />
+  );
 
   return (
     <DesktopOnboardingStepThreeStartup

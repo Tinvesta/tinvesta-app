@@ -42,7 +42,7 @@ export const DesktopOnboardingStepThreeStartup = ({
   const onSubmit = handleSubmit((data) => console.log(data));
 
   return (
-    <DesktopOnboardingFormLayout heading="Setup Startup" subHeading="Step 3/4" onSubmit={onSubmit}>
+    <DesktopOnboardingFormLayout heading="Setup Startup" subHeading="Step 1/3" onSubmit={onSubmit}>
       <Grid container columnSpacing={4} rowSpacing={3}>
         <Grid item xs={6}>
           <SelectWithController
@@ -60,7 +60,8 @@ export const DesktopOnboardingStepThreeStartup = ({
               fullWidth: true,
               label: 'Your Position',
               options: startupProfileCreatorTypesDropdownOptions,
-              labelId: 'desktop-onboarding-step-two-startup-startup-profile-creator-type-id-select',
+              labelId:
+                'desktop-onboarding-step-three-startup-startup-profile-creator-type-id-select',
             }}
           />
         </Grid>
@@ -80,7 +81,7 @@ export const DesktopOnboardingStepThreeStartup = ({
               fullWidth: true,
               label: 'Team Size',
               options: teamSizesDropdownOptions,
-              labelId: 'desktop-onboarding-step-two-startup-team-size-id-select',
+              labelId: 'desktop-onboarding-step-three-startup-team-size-id-select',
             }}
           />
         </Grid>
@@ -101,7 +102,7 @@ export const DesktopOnboardingStepThreeStartup = ({
               fullWidth: true,
               label: 'Focus Market',
               options: focusMarketsDropdownOptions,
-              labelId: 'desktop-onboarding-step-two-startup-focus-market-ids-select',
+              labelId: 'desktop-onboarding-step-three-startup-focus-market-ids-select',
             }}
           />
         </Grid>
@@ -122,7 +123,7 @@ export const DesktopOnboardingStepThreeStartup = ({
               label: 'Sector',
               fullWidth: true,
               options: startupSectorsDropdownOptions,
-              labelId: 'desktop-onboarding-step-two-startup-startup-sector-ids-select',
+              labelId: 'desktop-onboarding-step-three-startup-startup-sector-ids-select',
             }}
           />
         </Grid>
@@ -147,126 +148,6 @@ export const DesktopOnboardingStepThreeStartup = ({
             }}
           />
         </Grid>
-        {/* <Grid item xs={6}>
-          <SelectWithController
-            controllerProps={{
-              control,
-              name: 'investmentStageTypeIds',
-              rules: {
-                required: true,
-              },
-            }}
-            formControlProps={{
-              fullWidth: true,
-            }}
-            selectProps={{
-              multiple: true,
-              fullWidth: true,
-              label: 'Investment stage type',
-              options: investmentStageTypesDropdownOptions,
-              labelId: 'desktop-onboarding-step-two-startup-investment-stage-type-ids-select',
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <SelectWithController
-            controllerProps={{
-              control,
-              name: 'investmentSizeIds',
-              rules: {
-                required: true,
-              },
-            }}
-            formControlProps={{
-              fullWidth: true,
-            }}
-            selectProps={{
-              multiple: true,
-              fullWidth: true,
-              label: 'How much money do I need?',
-              options: investmentSizesDropdownOptions,
-              labelId: 'desktop-onboarding-step-two-startup-investment-size-ids-select',
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextFieldWithController
-            controllerProps={{
-              control,
-              name: 'whatYouAreLookingFor',
-              rules: {
-                required: true,
-              },
-            }}
-            inputProps={{
-              rows: 3,
-              fullWidth: true,
-              multiline: true,
-              autoComplete: 'disabled',
-              label: 'What are you looking for?',
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextFieldWithController
-            controllerProps={{
-              control,
-              name: 'missionStatement',
-              rules: {
-                required: true,
-              },
-            }}
-            inputProps={{
-              rows: 3,
-              fullWidth: true,
-              multiline: true,
-              autoComplete: 'disabled',
-              label: 'What is your mission statement?',
-              placeholder: '"Tinvesta builds an efficient and scalable matchmaking service."',
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextFieldWithController
-            controllerProps={{
-              control,
-              name: 'startupClaim',
-              rules: {
-                required: true,
-              },
-            }}
-            inputProps={{
-              rows: 3,
-              fullWidth: true,
-              multiline: true,
-              autoComplete: 'disabled',
-              label: 'What is your startup claim?',
-              placeholder:
-                '"Tinvesta enables startups and investors to find each other in the easiest way!"',
-            }}
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextFieldWithController
-            controllerProps={{
-              control,
-              name: 'visionStatement',
-              rules: {
-                required: true,
-              },
-            }}
-            inputProps={{
-              rows: 3,
-              fullWidth: true,
-              multiline: true,
-              autoComplete: 'disabled',
-              label: 'What is your vision statement?',
-              placeholder:
-                '"We will be the leading provider of simple matchmaking
-                services to startups and investors worldwide."',
-            }}
-          />
-        </Grid> */}
         <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
           <Grid item xs={3}>
             <Button fullWidth size="large" variant="outlined">
