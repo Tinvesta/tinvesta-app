@@ -5,17 +5,19 @@ import { TextFieldWithController } from '@ui';
 
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepFiveStartupData } from '../../onboarding.types';
+import { defaultDesktopOnboardingStepFiveStartupFormData } from './desktop-onboarding-step-five-startup.defaults';
+import { IDesktopOnboardingStepFiveStartupProps } from './desktop-onboarding-step-five-startup.types';
 
-export const DesktopOnboardingStepFiveStartup = (): JSX.Element => {
+export const DesktopOnboardingStepFiveStartup = ({
+  onBackButtonClick,
+  onContinueButtonClick,
+  defaultValues = defaultDesktopOnboardingStepFiveStartupFormData,
+}: IDesktopOnboardingStepFiveStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepFiveStartupData>({
-    defaultValues: {
-      startupClaim: '',
-      visionStatement: '',
-      missionStatement: '',
-    },
+    defaultValues,
   });
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
@@ -23,6 +25,7 @@ export const DesktopOnboardingStepFiveStartup = (): JSX.Element => {
       continueButtonText="Finish"
       heading="Setup Startup"
       subHeading="Step 5/5"
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

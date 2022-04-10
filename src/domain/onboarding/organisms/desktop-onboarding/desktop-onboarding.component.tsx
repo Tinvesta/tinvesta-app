@@ -10,6 +10,16 @@ import {
   DesktopOnboardingStepThreeStartup,
   DesktopOnboardingStepTwo,
 } from '../../molecules';
+import {
+  IDesktopOnboardingStepFiveInvestorData,
+  IDesktopOnboardingStepFiveStartupData,
+  IDesktopOnboardingStepFourInvestorData,
+  IDesktopOnboardingStepFourStartupData,
+  IDesktopOnboardingStepOneData,
+  IDesktopOnboardingStepThreeInvestorData,
+  IDesktopOnboardingStepThreeStartupData,
+  IDesktopOnboardingStepTwoData,
+} from '../../onboarding.types';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
   EDesktopOnboardingMachineEvents,
@@ -31,78 +41,110 @@ export const DesktopOnboarding = ({
 }: IDesktopOnboardingProps): JSX.Element => {
   const [current, send] = useMachine(onboardingStateMachine);
 
-  const onStepOneSubmit = () => send(EDesktopOnboardingMachineEvents.NEXT);
+  const onContinueButtonClick = (
+    data:
+      | IDesktopOnboardingStepOneData
+      | IDesktopOnboardingStepTwoData
+      | IDesktopOnboardingStepThreeStartupData
+      | IDesktopOnboardingStepThreeInvestorData
+      | IDesktopOnboardingStepFourInvestorData
+      | IDesktopOnboardingStepFourStartupData
+      | IDesktopOnboardingStepFiveInvestorData
+      | IDesktopOnboardingStepFiveStartupData,
+  ) => send({ type: EDesktopOnboardingMachineEvents.NEXT, data });
 
-  const onBackClick = () => send(EDesktopOnboardingMachineEvents.BACK);
+  const onBackButtonClick = () => send(EDesktopOnboardingMachineEvents.BACK);
 
-  return (
-    <DesktopOnboardingStepFiveInvestor
-      investorDemandTypes={investorDemandTypes}
-      onContinueButtonClick={onStepOneSubmit}
-    />
-  );
-
-  return (
-    <DesktopOnboardingStepFourInvestor
-      investmentSizes={investmentSizes}
-      investmentStageTypes={investmentStageTypes}
-      teamSizes={teamSizes}
-      onContinueButtonClick={onStepOneSubmit}
-    />
-  );
-
-  return (
-    <DesktopOnboardingStepThreeInvestor
-      focusMarkets={focusMarkets}
-      industrialSectors={industrialSectors}
-      investorProfileTypes={investorProfileTypes}
-      startupSectors={startupSectors}
-      onContinueButtonClick={onStepOneSubmit}
-    />
-  );
-
-  return <DesktopOnboardingStepFiveStartup />;
-
-  return (
-    <DesktopOnboardingStepFourStartup
-      investmentSizes={investmentSizes}
-      investmentStageTypes={investmentStageTypes}
-      onContinueButtonClick={onStepOneSubmit}
-    />
-  );
-
-  return (
-    <DesktopOnboardingStepThreeStartup
-      focusMarkets={focusMarkets}
-      industrialSectors={industrialSectors}
-      startupProfileCreatorTypes={startupProfileCreatorTypes}
-      startupSectors={startupSectors}
-      teamSizes={teamSizes}
-      onContinueButtonClick={onStepOneSubmit}
-    />
-  );
-
-  if (current.matches(EDesktopOnboardingMachineStates.INIT)) {
-    return <DesktopOnboardingStepOne onContinueButtonClick={onStepOneSubmit} />;
-  }
-
-  if (current.matches(EDesktopOnboardingMachineStates.COMPLETE)) {
+  if (current.matches(EDesktopOnboardingMachineStates.STEP_ONE)) {
     return (
-      <DesktopOnboardingStepTwo
-        clientTypes={clientTypes}
-        onBackClick={onBackClick}
-        onContinueButtonClick={onStepOneSubmit}
+      <DesktopOnboardingStepOne
+        defaultValues={current.context.stepOneData}
+        onContinueButtonClick={onContinueButtonClick}
       />
     );
   }
 
-  return (
-    <DesktopOnboardingStepThreeInvestor
-      focusMarkets={focusMarkets}
-      industrialSectors={industrialSectors}
-      investorProfileTypes={investorProfileTypes}
-      startupSectors={startupSectors}
-      onContinueButtonClick={onStepOneSubmit}
-    />
-  );
+  if (current.matches(EDesktopOnboardingMachineStates.STEP_TWO)) {
+    return (
+      <DesktopOnboardingStepTwo
+        clientTypes={clientTypes}
+        defaultValues={current.context.stepTwoData}
+        onBackButtonClick={onBackButtonClick}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
+  // STARTUP PATH
+  if (current.matches(EDesktopOnboardingMachineStates.STEP_THREE_STARTUP)) {
+    return (
+      <DesktopOnboardingStepThreeStartup
+        focusMarkets={focusMarkets}
+        industrialSectors={industrialSectors}
+        startupProfileCreatorTypes={startupProfileCreatorTypes}
+        startupSectors={startupSectors}
+        teamSizes={teamSizes}
+        onBackButtonClick={onBackButtonClick}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
+  if (current.matches(EDesktopOnboardingMachineStates.STEP_FOUR_STARTUP)) {
+    return (
+      <DesktopOnboardingStepFourStartup
+        investmentSizes={investmentSizes}
+        investmentStageTypes={investmentStageTypes}
+        onBackButtonClick={onBackButtonClick}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
+  if (current.matches(EDesktopOnboardingMachineStates.STEP_FIVE_STARTUP)) {
+    return (
+      <DesktopOnboardingStepFiveStartup
+        onBackButtonClick={onBackButtonClick}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
+  // INVESTOR PATH
+  if (current.matches(EDesktopOnboardingMachineStates.STEP_THREE_INVESTOR)) {
+    return (
+      <DesktopOnboardingStepThreeInvestor
+        focusMarkets={focusMarkets}
+        industrialSectors={industrialSectors}
+        investorProfileTypes={investorProfileTypes}
+        startupSectors={startupSectors}
+        onBackButtonClick={onBackButtonClick}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
+  if (current.matches(EDesktopOnboardingMachineStates.STEP_FOUR_INVESTOR)) {
+    return (
+      <DesktopOnboardingStepFourInvestor
+        investmentSizes={investmentSizes}
+        investmentStageTypes={investmentStageTypes}
+        teamSizes={teamSizes}
+        onBackButtonClick={onBackButtonClick}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
+  if (current.matches(EDesktopOnboardingMachineStates.STEP_FIVE_INVESTOR)) {
+    return (
+      <DesktopOnboardingStepFiveInvestor
+        investorDemandTypes={investorDemandTypes}
+        onBackButtonClick={onBackButtonClick}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
+  return <div>Done</div>;
 };

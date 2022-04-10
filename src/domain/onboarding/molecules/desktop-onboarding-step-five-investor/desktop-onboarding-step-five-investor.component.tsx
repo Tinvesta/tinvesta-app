@@ -6,22 +6,23 @@ import { SelectWithController, TextFieldWithController } from '@ui';
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepFiveInvestorData } from '../../onboarding.types';
 import { mapInvestorDemandTypesToDropdownOptions } from '../../utils';
+import { defaultDesktopOnboardingStepFiveInvestorFormData } from './desktop-onboarding-step-five-investor.defaults';
 import { IDesktopOnboardingStepFiveInvestorProps } from './desktop-onboarding-step-five-investor.types';
 
 export const DesktopOnboardingStepFiveInvestor = ({
+  defaultValues = defaultDesktopOnboardingStepFiveInvestorFormData,
   investorDemandTypes,
+  onBackButtonClick,
+  onContinueButtonClick,
 }: IDesktopOnboardingStepFiveInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepFiveInvestorData>({
-    defaultValues: {
-      whatYouAreLookingFor: '',
-      investorDemandTypeIds: [],
-    },
+    defaultValues,
   });
 
   const investorDemandTypesDropdownOptions =
     mapInvestorDemandTypesToDropdownOptions(investorDemandTypes);
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
@@ -29,6 +30,7 @@ export const DesktopOnboardingStepFiveInvestor = ({
       continueButtonText="Finish"
       heading="Setup Investor"
       subHeading="Step 5/5"
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

@@ -5,19 +5,15 @@ import { LocationAutocompleteWithController, TextFieldWithController } from '@ui
 
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepOneData } from '../../onboarding.types';
+import { defaultDesktopOnboardingStepOneFormData } from './desktop-onboarding-step-one.defaults';
 import { IDesktopOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
 
 export const DesktopOnboardingStepOne = ({
+  defaultValues = defaultDesktopOnboardingStepOneFormData,
   onContinueButtonClick,
 }: IDesktopOnboardingStepOneProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepOneData>({
-    defaultValues: {
-      location: '',
-      lastName: '',
-      firstName: '',
-      companyName: '',
-      contactEmail: '',
-    },
+    defaultValues,
   });
 
   const onSubmit = handleSubmit(onContinueButtonClick);

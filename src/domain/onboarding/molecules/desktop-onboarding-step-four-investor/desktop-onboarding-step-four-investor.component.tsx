@@ -10,19 +10,19 @@ import {
   mapInvestmentStageTypesToDropdownOptions,
   mapTeamSizesToDropdownOptions,
 } from '../../utils';
+import { defaultDesktopOnboardingStepFourInvestorFormData } from './desktop-onboarding-step-four-investor.defaults';
 import { IDesktopOnboardingStepFourInvestorProps } from './desktop-onboarding-step-four-investor.types';
 
 export const DesktopOnboardingStepFourInvestor = ({
+  defaultValues = defaultDesktopOnboardingStepFourInvestorFormData,
   investmentSizes,
   investmentStageTypes,
   teamSizes,
+  onBackButtonClick,
+  onContinueButtonClick,
 }: IDesktopOnboardingStepFourInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepFourInvestorData>({
-    defaultValues: {
-      teamSizeIds: [],
-      investmentSizeIds: [],
-      investmentStageTypeIds: [],
-    },
+    defaultValues,
   });
 
   const investmentStageTypesDropdownOptions =
@@ -30,7 +30,7 @@ export const DesktopOnboardingStepFourInvestor = ({
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes);
   const investmentSizesDropdownOptions = mapInvestmentSizesToDropdownOptions(investmentSizes);
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
@@ -38,6 +38,7 @@ export const DesktopOnboardingStepFourInvestor = ({
       continueButtonText="Continue"
       heading="Setup Investor"
       subHeading="Step 4/5"
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>
