@@ -33,7 +33,7 @@ const DesktopOnboardingFormLayoutComponent = ({
           {heading}
         </S.StyledHeading>
         <S.StyledFormWrapper {...formProps}>
-          <Grid container columnSpacing={4} rowSpacing={3} xs={12}>
+          <Grid container columnSpacing={4} rowSpacing={3}>
             {children}
             <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
               {backButtonText && (

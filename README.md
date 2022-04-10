@@ -99,6 +99,11 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ## Roadmap
 
+- [ ] Homepage
+- [ ] Privacy policy
+- [ ] Terms
+- [ ] Magic link
+- [ ] Reports / ban system
 - [ ] Error pages (400, 404, 500, 403, 402)
 - [ ] Add react-toastify
 - [ ] Desktop - startup onboarding

@@ -6,18 +6,17 @@ import { SelectWithController, UploadImageWithPreviewWithController } from '@ui'
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepTwoData } from '../../onboarding.types';
 import { mapClientTypesToDropdownOptions } from '../../utils';
+import { defaultDesktopOnboardingStepTwoFormData } from './desktop-onboarding-step-two.defaults';
 import { IDesktopOnboardingStepTwoProps } from './desktop-onboarding-step-two.types';
 
 export const DesktopOnboardingStepTwo = ({
   clientTypes,
-  onBackClick,
+  onBackButtonClick,
+  defaultValues = defaultDesktopOnboardingStepTwoFormData,
   onContinueButtonClick,
 }: IDesktopOnboardingStepTwoProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepTwoData>({
-    defaultValues: {
-      clientTypeId: '',
-      representativeImage: '',
-    },
+    defaultValues,
   });
 
   const clientTypesDropdownOptions = mapClientTypesToDropdownOptions(clientTypes);
@@ -30,7 +29,7 @@ export const DesktopOnboardingStepTwo = ({
       continueButtonText="Continue"
       heading="General"
       subHeading="Step 2/5"
-      onBackButtonClick={onBackClick}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

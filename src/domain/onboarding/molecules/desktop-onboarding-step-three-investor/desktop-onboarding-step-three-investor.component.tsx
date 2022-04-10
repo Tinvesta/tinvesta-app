@@ -11,6 +11,7 @@ import {
   mapInvestorProfileTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
 } from '../../utils';
+import { defaultDesktopOnboardingStepThreeInvestorFormData } from './desktop-onboarding-step-three-investor.defaults';
 import { IDesktopOnboardingStepThreeInvestorProps } from './desktop-onboarding-step-three-investor.types';
 
 export const DesktopOnboardingStepThreeInvestor = ({
@@ -18,14 +19,12 @@ export const DesktopOnboardingStepThreeInvestor = ({
   industrialSectors,
   investorProfileTypes,
   startupSectors,
+  onBackButtonClick,
+  onContinueButtonClick,
+  defaultValues = defaultDesktopOnboardingStepThreeInvestorFormData,
 }: IDesktopOnboardingStepThreeInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepThreeInvestorData>({
-    defaultValues: {
-      focusMarketIds: [],
-      startupSectorIds: [],
-      industrialSectorIds: [],
-      investorProfileTypeId: '',
-    },
+    defaultValues,
   });
 
   const investorProfileTypesDropdownOptions =
@@ -34,7 +33,7 @@ export const DesktopOnboardingStepThreeInvestor = ({
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(startupSectors);
   const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(industrialSectors);
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
@@ -42,6 +41,7 @@ export const DesktopOnboardingStepThreeInvestor = ({
       continueButtonText="Continue"
       heading="Setup Investor"
       subHeading="Step 3/5"
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={6}>

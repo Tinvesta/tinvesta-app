@@ -12,6 +12,7 @@ import {
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
 } from '../../utils';
+import { defaultDesktopOnboardingStepThreeStartupFormData } from './desktop-onboarding-step-three-startup.defaults';
 import { IDesktopOnboardingStepThreeStartupProps } from './desktop-onboarding-step-three-startup.types';
 
 export const DesktopOnboardingStepThreeStartup = ({
@@ -20,15 +21,12 @@ export const DesktopOnboardingStepThreeStartup = ({
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
+  onBackButtonClick,
+  onContinueButtonClick,
+  defaultValues = defaultDesktopOnboardingStepThreeStartupFormData,
 }: IDesktopOnboardingStepThreeStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepThreeStartupData>({
-    defaultValues: {
-      teamSizeId: '',
-      focusMarketIds: [],
-      startupSectorIds: [],
-      industrialSectorIds: [],
-      startupProfileCreatorTypeId: '',
-    },
+    defaultValues,
   });
 
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes);
@@ -39,7 +37,7 @@ export const DesktopOnboardingStepThreeStartup = ({
     startupProfileCreatorTypes,
   );
 
-  const onSubmit = handleSubmit((data) => console.log(data));
+  const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
@@ -47,6 +45,7 @@ export const DesktopOnboardingStepThreeStartup = ({
       continueButtonText="Continue"
       heading="Setup Startup"
       subHeading="Step 3/5"
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={6}>
