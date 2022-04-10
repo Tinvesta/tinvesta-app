@@ -26,6 +26,10 @@ describe('getFileExtensionFromBase64 function', () => {
   });
 
   it('should return file extension from base64', () => {
-    expect(getFileExtensionFromBase64('data:image/png;base64')).toStrictEqual('png');
+    expect(
+      getFileExtensionFromBase64(
+        'data:image/png;base64,iVBORw0KGgoAAAANSUhEAk4gAAgkQcAECQiAMACBJxAABB/z/wILeriOVNAAAAAElFTkSuQmCC',
+      ),
+    ).toStrictEqual('png');
   });
 });
