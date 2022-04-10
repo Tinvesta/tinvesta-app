@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 
 import { IUser, UserContext, supabaseInstance } from '@infrastructure';
 
-import { ERoutes } from '@enums';
+import { EApiEndpoint, ERoutes } from '@enums';
 
 import { IUserProviderProps } from './user-provider.types';
 
@@ -41,7 +41,7 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
   }, []);
 
   useEffect(() => {
-    axios.post('/api/set-supabase-cookie', {
+    axios.post(EApiEndpoint.SET_SUPABASE_COOKIE, {
       event: user ? 'SIGNED_IN' : 'SIGNED_OUT',
       session: supabaseInstance.auth.session(),
     });

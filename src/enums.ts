@@ -2,6 +2,15 @@ export enum ELocale {
   EN = 'en',
 }
 
+export enum EApiError {
+  UNAUTHORIZED = 'UNAUTHORIZED',
+}
+
+export enum EApiEndpoint {
+  CREATE_PROFILE = '/api/create-profile',
+  SET_SUPABASE_COOKIE = '/api/set-supabase-cookie',
+}
+
 export enum ERoutes {
   DASHBOARD = '/dashboard',
   HOME = '/home',
