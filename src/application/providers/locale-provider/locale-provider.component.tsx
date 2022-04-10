@@ -13,6 +13,10 @@ import { DEFAULT_LOCALE } from '@constants';
 
 import { ILocaleProviderProps } from './locale-provider.types';
 
+// TODO - wait for types update
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const IntlProviderComponent = IntlProvider as any;
+
 export const LocaleProvider = ({ children }: ILocaleProviderProps) => {
   const [locale, setLocale] = useState<ELocale>(DEFAULT_LOCALE);
 
@@ -46,7 +50,11 @@ export const LocaleProvider = ({ children }: ILocaleProviderProps) => {
   }, []);
 
   return (
-    <IntlProvider defaultLocale={DEFAULT_LOCALE} locale={locale} messages={translations[locale]}>
+    <IntlProviderComponent
+      defaultLocale={DEFAULT_LOCALE}
+      locale={locale}
+      messages={translations[locale]}
+    >
       <LocaleContext.Provider
         value={{
           locale,
@@ -56,6 +64,6 @@ export const LocaleProvider = ({ children }: ILocaleProviderProps) => {
       >
         {children}
       </LocaleContext.Provider>
-    </IntlProvider>
+    </IntlProviderComponent>
   );
 };
