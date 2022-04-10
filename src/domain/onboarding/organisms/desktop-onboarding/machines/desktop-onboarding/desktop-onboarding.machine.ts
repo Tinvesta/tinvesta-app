@@ -79,8 +79,7 @@ export const onboardingStateMachine = createMachine<IDesktopOnboardingMachineCon
             actions: 'assignStepFourStartupData',
             target: EDesktopOnboardingMachineStates.COMPLETE,
           },
-          [EDesktopOnboardingMachineEvents.BACK]:
-            EDesktopOnboardingMachineStates.STEP_THREE_STARTUP,
+          [EDesktopOnboardingMachineEvents.BACK]: EDesktopOnboardingMachineStates.STEP_FOUR_STARTUP,
         },
       },
       [EDesktopOnboardingMachineStates.STEP_THREE_INVESTOR]: {
@@ -109,7 +108,7 @@ export const onboardingStateMachine = createMachine<IDesktopOnboardingMachineCon
             target: EDesktopOnboardingMachineStates.COMPLETE,
           },
           [EDesktopOnboardingMachineEvents.BACK]:
-            EDesktopOnboardingMachineStates.STEP_THREE_INVESTOR,
+            EDesktopOnboardingMachineStates.STEP_FOUR_INVESTOR,
         },
       },
       [EDesktopOnboardingMachineStates.COMPLETE]: {

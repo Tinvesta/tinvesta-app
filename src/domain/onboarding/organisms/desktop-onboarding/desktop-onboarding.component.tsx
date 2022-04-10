@@ -55,6 +55,8 @@ export const DesktopOnboarding = ({
 
   const onBackButtonClick = () => send(EDesktopOnboardingMachineEvents.BACK);
 
+  console.log(current.context);
+
   if (current.matches(EDesktopOnboardingMachineStates.STEP_ONE)) {
     return (
       <DesktopOnboardingStepOne
@@ -79,6 +81,7 @@ export const DesktopOnboarding = ({
   if (current.matches(EDesktopOnboardingMachineStates.STEP_THREE_STARTUP)) {
     return (
       <DesktopOnboardingStepThreeStartup
+        defaultValues={current.context.stepThreeStartupData}
         focusMarkets={focusMarkets}
         industrialSectors={industrialSectors}
         startupProfileCreatorTypes={startupProfileCreatorTypes}
@@ -93,6 +96,7 @@ export const DesktopOnboarding = ({
   if (current.matches(EDesktopOnboardingMachineStates.STEP_FOUR_STARTUP)) {
     return (
       <DesktopOnboardingStepFourStartup
+        defaultValues={current.context.stepFourStartupData}
         investmentSizes={investmentSizes}
         investmentStageTypes={investmentStageTypes}
         onBackButtonClick={onBackButtonClick}
@@ -104,6 +108,7 @@ export const DesktopOnboarding = ({
   if (current.matches(EDesktopOnboardingMachineStates.STEP_FIVE_STARTUP)) {
     return (
       <DesktopOnboardingStepFiveStartup
+        defaultValues={current.context.stepFiveStartupData}
         onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
@@ -114,6 +119,7 @@ export const DesktopOnboarding = ({
   if (current.matches(EDesktopOnboardingMachineStates.STEP_THREE_INVESTOR)) {
     return (
       <DesktopOnboardingStepThreeInvestor
+        defaultValues={current.context.stepThreeInvestorData}
         focusMarkets={focusMarkets}
         industrialSectors={industrialSectors}
         investorProfileTypes={investorProfileTypes}
@@ -127,6 +133,7 @@ export const DesktopOnboarding = ({
   if (current.matches(EDesktopOnboardingMachineStates.STEP_FOUR_INVESTOR)) {
     return (
       <DesktopOnboardingStepFourInvestor
+        defaultValues={current.context.stepFourInvestorData}
         investmentSizes={investmentSizes}
         investmentStageTypes={investmentStageTypes}
         teamSizes={teamSizes}
@@ -139,6 +146,7 @@ export const DesktopOnboarding = ({
   if (current.matches(EDesktopOnboardingMachineStates.STEP_FIVE_INVESTOR)) {
     return (
       <DesktopOnboardingStepFiveInvestor
+        defaultValues={current.context.stepFiveInvestorData}
         investorDemandTypes={investorDemandTypes}
         onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
@@ -146,5 +154,6 @@ export const DesktopOnboarding = ({
     );
   }
 
+  // TODO - display modal regarding app rules
   return <div>Done</div>;
 };

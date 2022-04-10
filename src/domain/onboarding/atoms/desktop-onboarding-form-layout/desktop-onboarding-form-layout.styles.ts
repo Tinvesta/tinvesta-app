@@ -6,6 +6,7 @@ const StyledWrapper = styled.div`
   overflow: hidden;
   max-width: 1300px;
   min-width: 1300px;
+  min-height: 750px;
   backdrop-filter: blur(5px);
   grid-template-columns: 1fr 1fr;
   margin: ${({ theme }) => theme.spacing(5)};
