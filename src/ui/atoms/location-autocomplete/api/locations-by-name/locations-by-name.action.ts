@@ -2,7 +2,7 @@ import { AxiosResponse } from 'axios';
 
 import { isString, objectToQueryString } from '@utils';
 
-import { axiosInstance } from '@infrastructure';
+import { mapboxAxiosInstance } from '@infrastructure';
 
 import { IMapboxPlacesApiResponse } from './locations-by-name.types';
 
@@ -17,5 +17,5 @@ export const locationsByNameAction = async (
     types: 'place,locality',
   });
 
-  return axiosInstance.get(`/mapbox.places/${parsedName}.json${queryString}`);
+  return mapboxAxiosInstance.get(`/mapbox.places/${parsedName}.json${queryString}`);
 };
