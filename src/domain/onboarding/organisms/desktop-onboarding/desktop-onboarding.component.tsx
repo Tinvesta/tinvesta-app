@@ -55,8 +55,6 @@ export const DesktopOnboarding = ({
 
   const onBackButtonClick = () => send(EDesktopOnboardingMachineEvents.BACK);
 
-  console.log(current.context);
-
   if (current.matches(EDesktopOnboardingMachineStates.STEP_ONE)) {
     return (
       <DesktopOnboardingStepOne
