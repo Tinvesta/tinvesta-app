@@ -7,4 +7,5 @@ export * from './create-emotion-cache/create-emotion-cache.function';
 export * from './object-to-query-string/object-to-query-string.function';
 export * from './async-try-catch-wrapper/async-try-catch-wrapper.function';
 export * from './get-available-languages/get-available-languages.function';
+export * from './get-file-extension-from-base64/get-file-extension-from-base64.function';
 export * from './replace-variables-in-translation/replace-variables-in-translation.function';
