@@ -3,9 +3,12 @@ import Particles from 'react-tsparticles';
 
 export const ParticlesBackground = (): JSX.Element => {
   const theme = useTheme();
+  // TODO - wait for types update
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const ParticlesComponent = Particles as any;
 
   return (
-    <Particles
+    <ParticlesComponent
       options={{
         fpsLimit: 120,
         backgroundMode: {
