@@ -1,5 +1,7 @@
 import { assign, createMachine } from 'xstate';
 
+import { STARTUP_CLIENT_TYPE_ID } from '@constants';
+
 import {
   defaultDesktopOnboardingStepFiveInvestorFormData,
   defaultDesktopOnboardingStepFiveStartupFormData,
@@ -153,7 +155,7 @@ export const onboardingStateMachine = createMachine<IDesktopOnboardingMachineCon
       }),
     },
     guards: {
-      isStartupPath: (context) => context.stepTwoData.clientTypeId === 1,
+      isStartupPath: (context) => context.stepTwoData.clientTypeId === STARTUP_CLIENT_TYPE_ID,
     },
   },
 );
