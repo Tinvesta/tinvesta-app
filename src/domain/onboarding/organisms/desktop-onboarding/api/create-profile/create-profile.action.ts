@@ -1,3 +1,5 @@
+import { hasOwnProperty } from '@utils';
+
 import { nextAxiosInstance } from '@infrastructure';
 
 import { EApiEndpoint } from '@enums';
@@ -17,10 +19,10 @@ export const createAccountAction = async (data: IDesktopOnboardingMachineContext
 
     const currentObject = data[_value as keyof IDesktopOnboardingMachineContext];
 
-    // @ts-expect-error
-    if (currentObject.teamSizeId) {
-      // @ts-expect-error
+    if (hasOwnProperty(currentObject, 'teamSizeId')) {
       currentObject.teamSizeIds = [currentObject.teamSizeId];
+
+      delete currentObject.teamSizeId;
     }
 
     return { ..._accumulator, ...currentObject };
