@@ -1,4 +1,5 @@
-import { Button, Grid } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import { Grid } from '@mui/material';
 import Image from 'next/image';
 import { memo } from 'react';
 
@@ -12,6 +13,7 @@ const DesktopOnboardingFormLayoutComponent = ({
   children,
   continueButtonText,
   heading,
+  isLoading,
   onBackButtonClick,
   subHeading,
   ...formProps
@@ -40,16 +42,28 @@ const DesktopOnboardingFormLayoutComponent = ({
             <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
               {backButtonText && (
                 <Grid item xs={3}>
-                  <Button fullWidth size="large" variant="outlined" onClick={onBackButtonClick}>
+                  <LoadingButton
+                    fullWidth
+                    disabled={isLoading}
+                    size="large"
+                    variant="outlined"
+                    onClick={onBackButtonClick}
+                  >
                     {backButtonText}
-                  </Button>
+                  </LoadingButton>
                 </Grid>
               )}
               {continueButtonText && (
                 <Grid item xs={3}>
-                  <Button fullWidth size="large" type="submit" variant="contained">
+                  <LoadingButton
+                    fullWidth
+                    loading={isLoading}
+                    size="large"
+                    type="submit"
+                    variant="contained"
+                  >
                     {continueButtonText}
-                  </Button>
+                  </LoadingButton>
                 </Grid>
               )}
             </Grid>

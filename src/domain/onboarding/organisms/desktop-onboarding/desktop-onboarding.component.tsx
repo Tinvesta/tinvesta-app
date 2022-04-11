@@ -1,4 +1,6 @@
 import { useMachine } from '@xstate/react';
+import { useEffect } from 'react';
+import { useMutation } from 'react-query';
 
 import {
   DesktopOnboardingStepFiveInvestor,
@@ -21,6 +23,7 @@ import {
   IDesktopOnboardingStepThreeStartupData,
   IDesktopOnboardingStepTwoData,
 } from '../../onboarding.types';
+import { createAccountAction } from './api';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
   EDesktopOnboardingMachineEvents,
@@ -41,6 +44,15 @@ export const DesktopOnboarding = ({
   teamSizes,
 }: IDesktopOnboardingProps): JSX.Element => {
   const [current, send] = useMachine(onboardingStateMachine);
+
+  const { isLoading: isCreateAccountActionLoading, mutateAsync: mutateAsyncCreateAccountAction } =
+    useMutation(createAccountAction);
+
+  useEffect(() => {
+    if (current.matches(EDesktopOnboardingMachineStates.COMPLETE)) {
+      mutateAsyncCreateAccountAction(current.context);
+    }
+  }, [current.matches(EDesktopOnboardingMachineStates.COMPLETE)]);
 
   const onContinueButtonClick = (
     data:
@@ -159,6 +171,7 @@ export const DesktopOnboarding = ({
 
   return (
     <HouseRulesAgreements
+      isLoading={isCreateAccountActionLoading}
       onAgreementButtonClick={onAcceptHouseRulesAgreements}
       onBackButtonClick={onBackButtonClick}
     />
