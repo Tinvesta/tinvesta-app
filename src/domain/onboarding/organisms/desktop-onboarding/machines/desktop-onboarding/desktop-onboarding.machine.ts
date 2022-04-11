@@ -76,8 +76,8 @@ export const onboardingStateMachine = createMachine<IDesktopOnboardingMachineCon
       [EDesktopOnboardingMachineStates.STEP_FIVE_STARTUP]: {
         on: {
           [EDesktopOnboardingMachineEvents.NEXT]: {
-            actions: 'assignStepFourStartupData',
-            target: EDesktopOnboardingMachineStates.COMPLETE,
+            actions: 'assignStepFiveStartupData',
+            target: EDesktopOnboardingMachineStates.HOUSE_RULES_AGREEMENTS,
           },
           [EDesktopOnboardingMachineEvents.BACK]: EDesktopOnboardingMachineStates.STEP_FOUR_STARTUP,
         },
@@ -104,11 +104,20 @@ export const onboardingStateMachine = createMachine<IDesktopOnboardingMachineCon
       [EDesktopOnboardingMachineStates.STEP_FIVE_INVESTOR]: {
         on: {
           [EDesktopOnboardingMachineEvents.NEXT]: {
-            actions: 'assignStepFourInvestorData',
-            target: EDesktopOnboardingMachineStates.COMPLETE,
+            actions: 'assignStepFiveInvestorData',
+            target: EDesktopOnboardingMachineStates.HOUSE_RULES_AGREEMENTS,
           },
           [EDesktopOnboardingMachineEvents.BACK]:
             EDesktopOnboardingMachineStates.STEP_FOUR_INVESTOR,
+        },
+      },
+      [EDesktopOnboardingMachineStates.HOUSE_RULES_AGREEMENTS]: {
+        on: {
+          [EDesktopOnboardingMachineEvents.NEXT]: EDesktopOnboardingMachineStates.COMPLETE,
+          [EDesktopOnboardingMachineEvents.BACK]: [
+            { target: EDesktopOnboardingMachineStates.STEP_FIVE_STARTUP, cond: 'isStartupPath' },
+            { target: EDesktopOnboardingMachineStates.STEP_FIVE_INVESTOR },
+          ],
         },
       },
       [EDesktopOnboardingMachineStates.COMPLETE]: {

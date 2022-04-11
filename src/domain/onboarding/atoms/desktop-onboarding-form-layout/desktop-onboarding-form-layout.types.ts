@@ -4,7 +4,7 @@ export interface IDesktopOnboardingFormLayoutProps extends FormHTMLAttributes<HT
   backButtonText?: string;
   children: ReactNode;
   continueButtonText?: string;
-  heading: string;
+  heading?: string;
   onBackButtonClick?: () => void;
   subHeading?: string;
 }

@@ -29,11 +29,13 @@ const DesktopOnboardingFormLayoutComponent = ({
       </S.StyledImageWrapper>
       <S.StyledContentWrapper>
         {subHeading && <S.StyledHeading variant="caption">{subHeading}</S.StyledHeading>}
-        <S.StyledHeading fontWeight={700} variant="h5">
-          {heading}
-        </S.StyledHeading>
+        {heading && (
+          <S.StyledHeading fontWeight={700} variant="h5">
+            {heading}
+          </S.StyledHeading>
+        )}
         <S.StyledFormWrapper {...formProps}>
-          <Grid container columnSpacing={4} rowSpacing={3}>
+          <Grid container columnSpacing={4} justifyContent="center" rowSpacing={3}>
             {children}
             <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
               {backButtonText && (
