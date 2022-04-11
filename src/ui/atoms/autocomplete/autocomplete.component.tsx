@@ -14,6 +14,9 @@ const AutocompleteComponent = (
     [value?.length],
   );
 
+  // @ts-expect-error
+  const optionValues = options.filter((_option) => value?.includes(_option.value));
+
   return (
     <MuiAutocomplete
       ref={ref}
@@ -22,6 +25,7 @@ const AutocompleteComponent = (
       getOptionLabel={(_option) => _option.label}
       isOptionEqualToValue={(_option, _value) => _option.value === _value.value}
       options={options}
+      value={optionValues}
       {...restProps}
     />
   );

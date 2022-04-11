@@ -9,6 +9,7 @@ import {
   DesktopOnboardingStepThreeInvestor,
   DesktopOnboardingStepThreeStartup,
   DesktopOnboardingStepTwo,
+  HouseRulesAgreements,
 } from '../../molecules';
 import {
   IDesktopOnboardingStepFiveInvestorData,
@@ -52,6 +53,10 @@ export const DesktopOnboarding = ({
       | IDesktopOnboardingStepFiveInvestorData
       | IDesktopOnboardingStepFiveStartupData,
   ) => send({ type: EDesktopOnboardingMachineEvents.NEXT, data });
+
+  const onAcceptHouseRulesAgreements = () => {
+    send(EDesktopOnboardingMachineEvents.NEXT);
+  };
 
   const onBackButtonClick = () => send(EDesktopOnboardingMachineEvents.BACK);
 
@@ -152,6 +157,10 @@ export const DesktopOnboarding = ({
     );
   }
 
-  // TODO - display modal regarding app rules
-  return <div>Done</div>;
+  return (
+    <HouseRulesAgreements
+      onAgreementButtonClick={onAcceptHouseRulesAgreements}
+      onBackButtonClick={onBackButtonClick}
+    />
+  );
 };

@@ -26,8 +26,6 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  console.log(user);
-
   response.send({
     status: 'success',
   });

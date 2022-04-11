@@ -22,6 +22,7 @@ export interface IDesktopOnboardingMachineContext {
 
 export enum EDesktopOnboardingMachineStates {
   COMPLETE = 'complete',
+  HOUSE_RULES_AGREEMENTS = 'house-rules-agreements',
   STEP_FIVE_INVESTOR = 'step-five-investor',
   STEP_FIVE_STARTUP = 'step-five-startup',
   STEP_FOUR_INVESTOR = 'step-four-investor',
