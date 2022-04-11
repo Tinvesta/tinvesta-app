@@ -10,12 +10,14 @@ import { IHouseRulesAgreementsProps } from './house-rules-agreements.types';
 
 // TODO - select image based on theme
 export const HouseRulesAgreements = ({
+  isLoading,
   onAgreementButtonClick,
   onBackButtonClick,
 }: IHouseRulesAgreementsProps): JSX.Element => (
   <DesktopOnboardingFormLayout
     backButtonText="I disagree"
     continueButtonText="I Agree"
+    isLoading={isLoading}
     onBackButtonClick={onBackButtonClick}
     onSubmit={(event) => {
       event.preventDefault();

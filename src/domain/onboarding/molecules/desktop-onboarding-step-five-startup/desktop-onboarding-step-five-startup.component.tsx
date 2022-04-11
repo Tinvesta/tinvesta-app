@@ -22,7 +22,7 @@ export const DesktopOnboardingStepFiveStartup = ({
   return (
     <DesktopOnboardingFormLayout
       backButtonText="Back"
-      continueButtonText="Finish"
+      continueButtonText="Continue"
       heading="Setup Startup"
       subHeading="Step 5/5"
       onBackButtonClick={onBackButtonClick}
