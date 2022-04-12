@@ -26,8 +26,29 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
+  const userData = request.body;
+
+  const { data: profilesData, error: profilesError } = await supabaseInstance
+    .from('profiles')
+    .update({
+      location: userData.location,
+      last_name: userData.lastName,
+      first_name: userData.firstName,
+      company_name: userData.companyName,
+      startup_claim: userData.startupClaim,
+      client_type_id: userData.clientTypeId,
+      vision_statement: userData.visionStatement,
+      mission_statement: userData.missionStatement,
+      what_you_are_looking_for: userData.whatYouAreLookingFor,
+      investor_profile_type_id: userData.investorProfileTypeId,
+    })
+    .eq('id', user.id);
+
+  console.log(profilesData, profilesError);
+
   response.send({
-    status: 'success',
+    user,
+    profileData: request.body,
   });
 };
 
