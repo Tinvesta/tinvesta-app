@@ -75,6 +75,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(EApiError.PROBLEM_WITH_AVATAR_UPLOAD);
   }
 
+  // assign focus markets
   const { error: assignProfilesFocusMarketsError } = await assignWithBulkInsert(
     user.id,
     'profiles_focus_markets',
@@ -86,7 +87,43 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(EApiError.PROBLEM_WITH_PROFILES_FOCUS_MARKETS);
   }
 
-  const { data: profilesData, error: profilesError } = await supabaseInstance
+  // assign industrial sectors
+  const { error: assignProfilesIndustrialSectorsError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_industrial_sectors',
+    'industrial_sector_id',
+    userData.industrialSectorIds,
+  );
+
+  if (assignProfilesIndustrialSectorsError) {
+    return response.status(500).send(EApiError.PROBLEM_WITH_PROFILES_INDUSTRIAL_SECTORS);
+  }
+
+  // assign investment sizes
+  const { error: assignProfilesInvestmentSizesError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_investment_sizes',
+    'investment_size_id',
+    userData.investmentSizeIds,
+  );
+
+  if (assignProfilesInvestmentSizesError) {
+    return response.status(500).send(EApiError.PROBLEM_WITH_PROFILES_INVESTMENT_SIZES);
+  }
+
+  // assign investment stage types
+  const { error: assignProfilesInvestmentStageTypesError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_investment_stage_types',
+    'investment_stage_type_id',
+    userData.investmentStageTypeIds,
+  );
+
+  if (assignProfilesInvestmentStageTypesError) {
+    return response.status(500).send(EApiError.PROBLEM_WITH_PROFILES_INVESTMENT_STAGE_TYPES);
+  }
+
+  await supabaseInstance
     .from('profiles')
     .update({
       avatar_id: avatarId,
@@ -105,12 +142,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     })
     .eq('id', user.id);
 
-  console.log(profilesData, profilesError);
-
-  response.send({
-    user,
-    profileData: request.body,
-  });
+  response.send('success');
 };
 
 export default handler;
