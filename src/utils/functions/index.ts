@@ -1,4 +1,6 @@
 export * from './camel-case/camel-case.function';
+export * from './count-words/count-words.function';
+export * from './base64-to-file/base64-to-file.function';
 export * from './get-window-size/get-window-size.function';
 export * from './get-window-width/get-window-width.function';
 export * from './get-window-height/get-window-height.function';
