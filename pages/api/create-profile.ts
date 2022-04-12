@@ -83,7 +83,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesFocusMarketsError) {
-    return response.status(500).send(EApiError.PROBILEM_WITH_PROFILES_FOCUS_MARKETS);
+    return response.status(500).send(EApiError.PROBLEM_WITH_PROFILES_FOCUS_MARKETS);
   }
 
   const { data: profilesData, error: profilesError } = await supabaseInstance
