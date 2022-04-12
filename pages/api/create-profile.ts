@@ -35,6 +35,19 @@ const createAvatarRecord = async (avatarKey: string) => {
   return avatarData[0].id;
 };
 
+const assignWithBulkInsert = async (
+  userId: string,
+  table: string,
+  idColumnName: string,
+  arrayOfIds: number[],
+) => {
+  const recordsToInsert = arrayOfIds.map((_id) => ({ [idColumnName]: _id, profile_id: userId }));
+
+  await supabaseInstance.from(table).delete().eq('profile_id', userId);
+
+  return supabaseInstance.from(table).insert(recordsToInsert);
+};
+
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
     return response.status(401).send(EApiError.UNAUTHORIZED);
@@ -58,6 +71,21 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   const avatarId = await createAvatarRecord(userData.avatarKey);
 
+  if (!avatarId) {
+    return response.status(500).send(EApiError.PROBLEM_WITH_AVATAR_UPLOAD);
+  }
+
+  const { error: assignProfilesFocusMarketsError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_focus_markets',
+    'focus_market_id',
+    userData.focusMarketIds,
+  );
+
+  if (assignProfilesFocusMarketsError) {
+    return response.status(500).send(EApiError.PROBILEM_WITH_PROFILES_FOCUS_MARKETS);
+  }
+
   const { data: profilesData, error: profilesError } = await supabaseInstance
     .from('profiles')
     .update({
@@ -73,6 +101,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       mission_statement: userData.missionStatement,
       what_you_are_looking_for: userData.whatYouAreLookingFor,
       investor_profile_type_id: userData.investorProfileTypeId,
+      startup_profile_creator_type_id: userData.startupProfileCreatorTypeId,
     })
     .eq('id', user.id);
 
