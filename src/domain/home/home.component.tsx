@@ -23,8 +23,7 @@ export const Home = (): JSX.Element => {
       return show();
     }
 
-    // TODO - decide where user should be redirected based on user data
-    router.push(ERoutes.ONBOARDING);
+    router.push(user.client_type_id ? ERoutes.DASHBOARD : ERoutes.ONBOARDING);
   };
 
   return (
