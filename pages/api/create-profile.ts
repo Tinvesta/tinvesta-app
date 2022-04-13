@@ -72,7 +72,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const avatarId = await createAvatarRecord(userData.avatarKey);
 
   if (!avatarId) {
-    return response.status(500).send(EApiError.PROBLEM_WITH_AVATAR_UPLOAD);
+    return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_AVATAR_UPLOAD);
   }
 
   // assign focus markets
@@ -84,7 +84,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesFocusMarketsError) {
-    return response.status(500).send(EApiError.PROBLEM_WITH_PROFILES_FOCUS_MARKETS);
+    return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_FOCUS_MARKETS);
   }
 
   // assign industrial sectors
@@ -96,7 +96,9 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesIndustrialSectorsError) {
-    return response.status(500).send(EApiError.PROBLEM_WITH_PROFILES_INDUSTRIAL_SECTORS);
+    return response
+      .status(500)
+      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_INDUSTRIAL_SECTORS);
   }
 
   // assign investment sizes
@@ -108,7 +110,9 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesInvestmentSizesError) {
-    return response.status(500).send(EApiError.PROBLEM_WITH_PROFILES_INVESTMENT_SIZES);
+    return response
+      .status(500)
+      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_SIZES);
   }
 
   // assign investment stage types
@@ -120,7 +124,35 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesInvestmentStageTypesError) {
-    return response.status(500).send(EApiError.PROBLEM_WITH_PROFILES_INVESTMENT_STAGE_TYPES);
+    return response
+      .status(500)
+      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_STAGE_TYPES);
+  }
+
+  // assign startup sectors
+  const { error: assignProfilesStartupSectorsError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_startup_sectors',
+    'startup_sector_id',
+    userData.startupSectorIds,
+  );
+
+  if (assignProfilesStartupSectorsError) {
+    return response
+      .status(500)
+      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_STARTUP_SECTORS);
+  }
+
+  // assign team sizes
+  const { error: assignProfilesTeamSizesError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_team_sizes',
+    'team_size_id',
+    userData.teamSizeIds,
+  );
+
+  if (assignProfilesTeamSizesError) {
+    return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_TEAM_SIZES);
   }
 
   await supabaseInstance
