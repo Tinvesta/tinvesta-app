@@ -6,6 +6,8 @@ import { IUser, UserContext, supabaseInstance } from '@infrastructure';
 
 import { EApiEndpoint, ERoutes } from '@enums';
 
+import { STARTUP_CLIENT_TYPE_ID } from '@constants';
+
 import { IUserProviderProps } from './user-provider.types';
 
 export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
@@ -17,7 +19,7 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
     const sessionUser = supabaseInstance.auth.user();
 
     if (sessionUser) {
-      const { data: profile } = await supabaseInstance
+      const { data: profileData } = await supabaseInstance
         .from('profiles')
         .select('*')
         .eq('id', sessionUser.id)
@@ -25,7 +27,7 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
 
       setUser({
         ...sessionUser,
-        ...profile,
+        ...profileData,
       });
 
       setIsLoading(false);
@@ -42,8 +44,8 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
 
   useEffect(() => {
     axios.post(EApiEndpoint.SET_SUPABASE_COOKIE, {
-      event: user ? 'SIGNED_IN' : 'SIGNED_OUT',
       session: supabaseInstance.auth.session(),
+      event: user ? 'SIGNED_IN' : 'SIGNED_OUT',
     });
   }, [user]);
 
@@ -64,10 +66,13 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
       router.push(ERoutes.RELEASE_DATE);
     });
 
+  const isStartupProfile = () => user?.client_type_id === STARTUP_CLIENT_TYPE_ID;
+
   const providerValue = {
     user,
     logout,
     isLoading,
+    isStartupProfile,
     loginViaGithubProvider,
     loginViaGoogleProvider,
   };

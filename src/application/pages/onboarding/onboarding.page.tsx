@@ -42,6 +42,22 @@ export const getServerSideProps = async ({ req }: GetServerSideProps) => {
     };
   }
 
+  const { data: profileData } = await supabaseInstance
+    .from('profiles')
+    .select('client_type_id')
+    .eq('id', user.id)
+    .single();
+
+  if (profileData.client_type_id) {
+    return {
+      redirect: {
+        permanent: false,
+        destination: ERoutes.DASHBOARD,
+      },
+      props: {},
+    };
+  }
+
   const [
     { data: teamSizes },
     { data: clientTypes },
