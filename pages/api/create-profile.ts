@@ -7,6 +7,8 @@ import { supabaseInstance } from '@infrastructure';
 
 import { EApiError } from '@enums';
 
+import { STARTUP_CLIENT_TYPE_ID } from '@constants';
+
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const createAvatarRecord = async (avatarKey: string) => {
@@ -68,6 +70,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   });
 
   const userData = request.body;
+  const isStartupProfile = STARTUP_CLIENT_TYPE_ID === userData.clientTypeId;
 
   const avatarId = await createAvatarRecord(userData.avatarKey);
 
@@ -155,6 +158,27 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_TEAM_SIZES);
   }
 
+  if (!isStartupProfile) {
+    // assign investor demand types
+    const { error: assignInvestorDemandTypesError } = await assignWithBulkInsert(
+      user.id,
+      'profiles_investor_demand_types',
+      'investor_demand_type_id',
+      userData.investorDemandTypeIds,
+    );
+
+    if (assignInvestorDemandTypesError) {
+      return response
+        .status(500)
+        .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTOR_DEMAND_TYPES);
+    }
+  } else {
+    await supabaseInstance
+      .from('profiles_investor_demand_types')
+      .delete()
+      .eq('profile_id', user.id);
+  }
+
   await supabaseInstance
     .from('profiles')
     .update({
@@ -174,7 +198,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     })
     .eq('id', user.id);
 
-  response.send('success');
+  response.send({ status: 'success' });
 };
 
 export default handler;
