@@ -29,7 +29,12 @@ const UploadImageWithPreviewComponent = (
 
   const compressAndSetImageSource = (file: File) => async () => {
     const reader = new FileReader();
-    const compressedFile = await imageCompression(file, { maxWidthOrHeight: 640 });
+    const compressedFile = await imageCompression(file, {
+      maxWidthOrHeight: 640,
+      useWebWorker: true,
+      maxSizeMB: 1,
+      maxIteration: 5,
+    });
 
     reader.addEventListener('load', () => {
       if (reader.result) {

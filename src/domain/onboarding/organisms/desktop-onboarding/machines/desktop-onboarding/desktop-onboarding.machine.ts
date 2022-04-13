@@ -115,15 +115,11 @@ export const onboardingStateMachine = createMachine<IDesktopOnboardingMachineCon
       },
       [EDesktopOnboardingMachineStates.HOUSE_RULES_AGREEMENTS]: {
         on: {
-          [EDesktopOnboardingMachineEvents.NEXT]: EDesktopOnboardingMachineStates.COMPLETE,
           [EDesktopOnboardingMachineEvents.BACK]: [
             { target: EDesktopOnboardingMachineStates.STEP_FIVE_STARTUP, cond: 'isStartupPath' },
             { target: EDesktopOnboardingMachineStates.STEP_FIVE_INVESTOR },
           ],
         },
-      },
-      [EDesktopOnboardingMachineStates.COMPLETE]: {
-        type: 'final',
       },
     },
   },

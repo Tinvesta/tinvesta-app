@@ -1,6 +1,9 @@
 import { useMachine } from '@xstate/react';
-import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
+
+import { ERoutes } from '@enums';
 
 import {
   DesktopOnboardingStepFiveInvestor,
@@ -45,14 +48,10 @@ export const DesktopOnboarding = ({
 }: IDesktopOnboardingProps): JSX.Element => {
   const [current, send] = useMachine(onboardingStateMachine);
 
+  const router = useRouter();
+
   const { isLoading: isCreateAccountActionLoading, mutateAsync: mutateAsyncCreateAccountAction } =
     useMutation(createAccountAction);
-
-  useEffect(() => {
-    if (current.matches(EDesktopOnboardingMachineStates.COMPLETE)) {
-      mutateAsyncCreateAccountAction(current.context);
-    }
-  }, [current.matches(EDesktopOnboardingMachineStates.COMPLETE)]);
 
   const onContinueButtonClick = (
     data:
@@ -66,9 +65,11 @@ export const DesktopOnboarding = ({
       | IDesktopOnboardingStepFiveStartupData,
   ) => send({ type: EDesktopOnboardingMachineEvents.NEXT, data });
 
-  const onAcceptHouseRulesAgreements = () => {
-    send(EDesktopOnboardingMachineEvents.NEXT);
-  };
+  const onAcceptHouseRulesAgreements = () =>
+    mutateAsyncCreateAccountAction(current.context)
+      .then(() => router.push(ERoutes.DASHBOARD))
+      // TODO - take translation based on error response
+      .catch(() => toast.error('Something went wrong'));
 
   const onBackButtonClick = () => send(EDesktopOnboardingMachineEvents.BACK);
 
