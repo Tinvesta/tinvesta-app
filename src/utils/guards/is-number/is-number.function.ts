@@ -1,9 +1,11 @@
+import { isString } from '@utils';
+
 export function isNumber(value: unknown): value is number {
   if (typeof value === 'number') {
     return value - value === 0;
   }
 
-  if (typeof value === 'string' && value.trim() !== '') {
+  if (isString(value) && value.trim() !== '') {
     return Number.isFinite(+value);
   }
 
