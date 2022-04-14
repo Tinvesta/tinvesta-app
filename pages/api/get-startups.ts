@@ -22,13 +22,21 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
-  const { data: profileData } = await supabaseInstance
+  const { data: loggedUserProfileData } = await supabaseInstance
     .from('profiles')
-    .select('client_type_id')
+    .select(
+      `
+      id,
+      client_type_id,
+      industrial_sectors:profiles_industrial_sectors (
+        industrial_sector_id
+      )
+    `,
+    )
     .eq('id', user.id)
     .single();
 
-  if (isStartupProfile(profileData.client_type_id)) {
+  if (isStartupProfile(loggedUserProfileData.client_type_id)) {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
@@ -39,6 +47,8 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     token_type: '',
     access_token: token,
   });
+
+  console.log(loggedUserProfileData);
 
   const { data: matchingStartups } = await supabaseInstance
     .from('profiles')
@@ -52,7 +62,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       )
     `,
     )
-    .eq('client_type_id', STARTUP_CLIENT_TYPE_ID);
+    .match({ client_type_id: STARTUP_CLIENT_TYPE_ID });
 
   response.send({ startups: matchingStartups });
 };
