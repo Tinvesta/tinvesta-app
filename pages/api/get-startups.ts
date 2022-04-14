@@ -7,8 +7,6 @@ import { supabaseInstance } from '@infrastructure';
 
 import { EApiError } from '@enums';
 
-import { STARTUP_CLIENT_TYPE_ID } from '@constants';
-
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
@@ -24,15 +22,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   const { data: loggedUserProfileData } = await supabaseInstance
     .from('profiles')
-    .select(
-      `
-      id,
-      client_type_id,
-      industrial_sectors:profiles_industrial_sectors (
-        industrial_sector_id
-      )
-    `,
-    )
+    .select('client_type_id')
     .eq('id', user.id)
     .single();
 
@@ -48,21 +38,9 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  console.log(loggedUserProfileData);
-
-  const { data: matchingStartups } = await supabaseInstance
-    .from('profiles')
-    .select(
-      `
-      id,
-      first_name,
-      client_type_id,
-      focus_markets:profiles_focus_markets (
-        focus_market_id
-      )
-    `,
-    )
-    .match({ client_type_id: STARTUP_CLIENT_TYPE_ID });
+  const { data: matchingStartups } = await supabaseInstance.rpc('get_startups', {
+    profile_id_input: user.id,
+  });
 
   response.send({ startups: matchingStartups });
 };
