@@ -1,8 +1,6 @@
 import styled from '@emotion/styled';
 
-const StyledWrapper = styled.div`
-  height: 100%;
-`;
+const StyledWrapper = styled.div``;
 
 const S = {
   StyledWrapper,
