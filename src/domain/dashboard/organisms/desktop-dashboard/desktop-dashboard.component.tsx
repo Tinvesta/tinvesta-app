@@ -4,15 +4,20 @@ import { useMutation } from 'react-query';
 
 import { useUser } from '@utils';
 
-import { getStartupsAction } from '../../api';
+import { getProfilesAction, getStartupsAction } from '../../api';
 import { DesktopDashboardLayout } from '../../atoms';
 
 export const DesktopDashboard = (): JSX.Element => {
-  const { logout } = useUser();
+  const { logout, user } = useUser();
   const { mutate: mutateGetStartupsAction } = useMutation(getStartupsAction);
+  const { mutate: mutateGetProfilesAction } = useMutation(getProfilesAction);
 
   useEffect(() => {
     mutateGetStartupsAction();
+
+    if (user) {
+      mutateGetProfilesAction(user.id);
+    }
   }, []);
 
   return (
