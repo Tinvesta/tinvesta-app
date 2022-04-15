@@ -14,14 +14,14 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
-  if (!hasOwnProperty(request.query, 'profileId')) {
-    return response.status(400).send(EApiError.BAD_REQUEST);
-  }
-
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
 
   if (!user) {
     return response.status(401).send(EApiError.UNAUTHORIZED);
+  }
+
+  if (!hasOwnProperty(request.query, 'profileId')) {
+    return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
   const token = cookie.parse(request.headers.cookie || '')['sb:token'];
