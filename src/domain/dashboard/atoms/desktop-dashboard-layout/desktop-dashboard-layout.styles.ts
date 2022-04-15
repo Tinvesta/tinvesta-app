@@ -6,7 +6,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledAsideWrapper = styled.aside`
-  width: 400px;
+  width: 350px;
   background-color: ${({ theme }) => theme.palette.grey[800]};
 `;
 
