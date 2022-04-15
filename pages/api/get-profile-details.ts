@@ -34,7 +34,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   const { profileId } = request.query;
 
-  const { data: profileData, error } = await supabaseInstance
+  const { data: profileData } = await supabaseInstance
     .from('profiles')
     .select(
       `
@@ -76,8 +76,6 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     )
     .eq('id', profileId)
     .single();
-
-  console.log(error);
 
   response.send(profileData);
 };
