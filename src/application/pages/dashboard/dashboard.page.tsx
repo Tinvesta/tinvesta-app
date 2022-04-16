@@ -2,7 +2,7 @@ import { GetServerSideProps } from 'next';
 
 import { Dashboard } from '@domain';
 
-import { isStartupProfile } from '@utils';
+import { convertObjectKeysToCamelCase, isStartupProfile } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
@@ -59,7 +59,7 @@ export const getServerSideProps = async ({ req }: GetServerSideProps) => {
 
     return {
       props: {
-        startups,
+        startups: startups?.map(convertObjectKeysToCamelCase) || [],
       },
     };
   }
