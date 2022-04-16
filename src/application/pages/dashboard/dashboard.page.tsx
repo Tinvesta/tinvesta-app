@@ -2,17 +2,24 @@ import { GetServerSideProps } from 'next';
 
 import { Dashboard } from '@domain';
 
+import { isStartupProfile } from '@utils';
+
 import { supabaseInstance } from '@infrastructure';
 
 import { ERoutes } from '@enums';
 
 import S from './dashboard.styles';
+import { IDashboardPageProps } from './dashboard.types';
 
-export const DashboardPage = (): JSX.Element => (
-  <S.StyledWrapper>
-    <Dashboard />
-  </S.StyledWrapper>
-);
+export const DashboardPage = ({ startups }: IDashboardPageProps): JSX.Element => {
+  console.log(startups);
+
+  return (
+    <S.StyledWrapper>
+      <Dashboard />
+    </S.StyledWrapper>
+  );
+};
 
 // @ts-expect-error
 export const getServerSideProps = async ({ req }: GetServerSideProps) => {
@@ -41,6 +48,19 @@ export const getServerSideProps = async ({ req }: GetServerSideProps) => {
         destination: ERoutes.ONBOARDING,
       },
       props: {},
+    };
+  }
+
+  // TODO - add similar check for startup client_type_id
+  if (!isStartupProfile(profileData.client_type_id)) {
+    const { data: startups } = await supabaseInstance.rpc('get_startups', {
+      profile_id_input: user.id,
+    });
+
+    return {
+      props: {
+        startups,
+      },
     };
   }
 
