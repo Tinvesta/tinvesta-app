@@ -1,6 +1,8 @@
 export * from './camel-case/camel-case.function';
 export * from './count-words/count-words.function';
+export * from './to-camel-case/to-camel-case.function';
 export * from './base64-to-file/base64-to-file.function';
+export * from './string-to-words/string-to-words.function';
 export * from './get-window-size/get-window-size.function';
 export * from './get-window-width/get-window-width.function';
 export * from './get-window-height/get-window-height.function';
@@ -13,4 +15,5 @@ export * from './async-try-catch-wrapper/async-try-catch-wrapper.function';
 export * from './get-available-languages/get-available-languages.function';
 export * from './get-file-extension-from-base64/get-file-extension-from-base64.function';
 export * from './replace-variables-in-translation/replace-variables-in-translation.function';
+export * from './convert-object-keys-to-camel-case/convert-object-keys-to-camel-case.function';
 export * from './array-of-objects-to-array-of-numbers/array-of-objects-to-array-of-numbers.function';
