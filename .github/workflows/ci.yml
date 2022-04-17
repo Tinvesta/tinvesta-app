@@ -9,7 +9,7 @@ jobs:
       matrix:
         node-version: [16.x]
     steps:
-      - uses: actions/checkout@v3.0.0
+      - uses: actions/checkout@v3.0.1
         with:
           fetch-depth: 0
 
@@ -20,7 +20,7 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - uses: actions/cache@v3.0.1
+      - uses: actions/cache@v3.0.2
         with:
           path: "**/node_modules"
           key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
