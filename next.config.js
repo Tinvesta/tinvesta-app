@@ -60,4 +60,13 @@ module.exports = withPWA({
       },
     ];
   },
+  async redirects() {
+    return [
+      {
+        permanent: true,
+        source: '/dashboard',
+        destination: '/dashboard/discover',
+      },
+    ];
+  },
 });

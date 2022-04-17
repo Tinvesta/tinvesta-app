@@ -1,6 +1,6 @@
 import { GetServerSideProps } from 'next';
 
-import { Dashboard } from '@domain';
+import { Discover } from '@domain';
 
 import { convertObjectKeysToCamelCase, isStartupProfile } from '@utils';
 
@@ -8,18 +8,16 @@ import { supabaseInstance } from '@infrastructure';
 
 import { ERoutes } from '@enums';
 
-import S from './dashboard.styles';
-import { IDashboardPageProps } from './dashboard.types';
+import { DesktopDashboardLayout } from '../layouts';
+import { IDiscoverPageProps } from './discover.types';
 
-export const DashboardPage = ({ startups }: IDashboardPageProps): JSX.Element => {
+export const DiscoverPage = ({ startups }: IDiscoverPageProps): JSX.Element => {
   console.log(startups);
 
-  return (
-    <S.StyledWrapper>
-      <Dashboard />
-    </S.StyledWrapper>
-  );
+  return <Discover />;
 };
+
+DiscoverPage.Layout = DesktopDashboardLayout;
 
 // @ts-expect-error
 export const getServerSideProps = async ({ req }: GetServerSideProps) => {
