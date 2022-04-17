@@ -1,4 +1,4 @@
-import { camelCase, useLocale } from '@utils';
+import { toCamelCase, useLocale } from '@utils';
 
 import { TMessages } from './use-translation.types';
 
@@ -7,7 +7,7 @@ export const useTranslation = <T extends readonly string[]>(key: T): TMessages<T
 
   return Object.fromEntries(
     key.map((translationKey) => [
-      camelCase(translationKey).split('.').join(''),
+      toCamelCase(translationKey).split('.').join(''),
       formatMessage({ id: translationKey }),
     ]),
   ) as TMessages<T>;
