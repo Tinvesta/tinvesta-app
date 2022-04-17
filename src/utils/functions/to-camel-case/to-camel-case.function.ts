@@ -8,10 +8,6 @@ export const toCamelCase = (string: string) => {
   let result = '';
   const words = stringToWords(string);
 
-  if (!words) {
-    return result;
-  }
-
   for (const [_index, _currentString] of words.entries()) {
     let temporaryString = _currentString.toLowerCase();
 
@@ -21,5 +17,6 @@ export const toCamelCase = (string: string) => {
 
     result += temporaryString;
   }
+
   return result;
 };
