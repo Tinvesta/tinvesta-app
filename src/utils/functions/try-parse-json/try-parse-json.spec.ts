@@ -7,10 +7,8 @@ describe('tryParseJson Function', () => {
 
   it('should return null when provided parameter is not a string value', () => {
     expect(tryParseJson('')).toBeNull();
-
     // @ts-ignore
     expect(tryParseJson(null)).toBeNull();
-
     // @ts-ignore
     expect(tryParseJson(undefined)).toBeNull();
   });
