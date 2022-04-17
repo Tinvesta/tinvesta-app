@@ -13,10 +13,12 @@ import { IDiscoverPageProps } from './discover.types';
 export const DiscoverPage = ({ startups }: IDiscoverPageProps): JSX.Element => {
   console.log(startups);
 
-  return <Discover />;
+  return (
+    <DesktopDashboardLayout>
+      <Discover />
+    </DesktopDashboardLayout>
+  );
 };
-
-DiscoverPage.Layout = DesktopDashboardLayout;
 
 export const getServerSideProps = async (serverSideProps: GetServerSideProps) => {
   const result = await verifyUserAccess(serverSideProps);

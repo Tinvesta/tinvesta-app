@@ -7,9 +7,11 @@ import { hasOwnProperty } from '@utils';
 import { DesktopDashboardLayout } from '../layouts';
 import { verifyUserAccess } from '../utils';
 
-export const MatchesPage = (): JSX.Element => <Matches />;
-
-MatchesPage.Layout = DesktopDashboardLayout;
+export const MatchesPage = (): JSX.Element => (
+  <DesktopDashboardLayout>
+    <Matches />
+  </DesktopDashboardLayout>
+);
 
 export const getServerSideProps = async (serverSideProps: GetServerSideProps) => {
   const result = await verifyUserAccess(serverSideProps);
