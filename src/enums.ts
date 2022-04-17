@@ -25,6 +25,8 @@ export enum EApiEndpoint {
 export enum ERoutes {
   DASHBOARD = '/dashboard',
   DASHBOARD_DISCOVER = '/dashboard/discover',
+  DASHBOARD_LIKES = '/dashboard/likes',
+  DASHBOARD_MATCHES = '/dashboard/matches',
   HOME = '/home',
   ONBOARDING = '/onboarding',
   PRICING = '/pricing',

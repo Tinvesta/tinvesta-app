@@ -7,7 +7,10 @@ export const useLocalStorage = <T>(
   initialValue?: T,
 ): [T | undefined, (value: T) => void] => {
   const [storedValue, setStoredValue] = useState<T | undefined>(() => {
-    const item = tryCatchWrapper(() => localStorage.getItem(key), console.log);
+    const item = tryCatchWrapper(
+      () => localStorage.getItem(key),
+      (_error) => console.error('[use-local-storage]', _error),
+    );
 
     return tryParseJson<T>(item ?? '') ?? initialValue;
   });

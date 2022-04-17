@@ -7,7 +7,10 @@ export const useSessionStorage = <T>(
   initialValue?: T,
 ): [T | undefined, (value: T) => void] => {
   const [storedValue, setStoredValue] = useState<T | undefined>(() => {
-    const item = tryCatchWrapper(() => sessionStorage.getItem(key), console.log);
+    const item = tryCatchWrapper(
+      () => sessionStorage.getItem(key),
+      (_error) => console.error('[use-session-storage]', _error),
+    );
 
     return tryParseJson<T>(item ?? '') ?? initialValue;
   });
