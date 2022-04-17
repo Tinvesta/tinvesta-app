@@ -1,25 +1,10 @@
 import { GetServerSideProps } from 'next';
 
-import { Dashboard } from '@domain';
-
 import { convertObjectKeysToCamelCase, isStartupProfile } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
 import { ERoutes } from '@enums';
-
-import S from './dashboard.styles';
-import { IDashboardPageProps } from './dashboard.types';
-
-export const DashboardPage = ({ startups }: IDashboardPageProps): JSX.Element => {
-  console.log(startups);
-
-  return (
-    <S.StyledWrapper>
-      <Dashboard />
-    </S.StyledWrapper>
-  );
-};
 
 // @ts-expect-error
 export const getServerSideProps = async ({ req }: GetServerSideProps) => {
