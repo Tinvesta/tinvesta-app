@@ -1,4 +1,5 @@
 export * from './home/home.component';
+export * from './likes/likes.component';
 export * from './terms/terms.component';
 export * from './pricing/pricing.component';
 export * from './discover/discover.component';
