@@ -8,7 +8,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledAsideWrapper = styled.aside`
-  width: 350px;
+  width: 400px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -46,7 +46,7 @@ const StyledMenu = styled.div`
 const StyledMenuItem = styled.a<{ active: boolean }>`
   display: flex;
   text-decoration: none;
-  padding: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(3)};
   color: ${({ theme }) => theme.palette.text.primary};
   background-color: ${({ theme }) => rgba(theme.palette.grey[700], 0.5)};
 
