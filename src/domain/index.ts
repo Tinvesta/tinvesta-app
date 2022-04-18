@@ -5,4 +5,5 @@ export * from './matches/matches.component';
 export * from './pricing/pricing.component';
 export * from './discover/discover.component';
 export * from './onboarding/onboarding.component';
+export * from './subscription/subscription.component';
 export * from './privacy-policy/privacy-policy.component';

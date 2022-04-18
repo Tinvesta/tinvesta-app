@@ -27,6 +27,7 @@ export enum ERoutes {
   DASHBOARD_DISCOVER = '/dashboard/discover',
   DASHBOARD_LIKES = '/dashboard/likes',
   DASHBOARD_MATCHES = '/dashboard/matches',
+  DASHBOARD_SUBSCRIPTION = '/dashboard/subscription',
   HOME = '/home',
   ONBOARDING = '/onboarding',
   PRICING = '/pricing',
