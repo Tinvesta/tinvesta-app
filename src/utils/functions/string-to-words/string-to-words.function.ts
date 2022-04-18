@@ -10,6 +10,8 @@ export const stringToWords = (value: string): string[] => {
 
   const matchResult = value.match(REGEX);
 
+  console.log(value, matchResult);
+
   if (!matchResult) {
     return [];
   }
