@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Icon } from '@mui/material';
 
 const StyledWrapper = styled.div`
   height: 100%;
@@ -28,12 +29,38 @@ const StyledUserInfoWrapper = styled.div`
 
 const StyledUserInfoDetails = styled.div``;
 
+const StyledMenu = styled.div`
+  overflow: hidden;
+  margin-top: ${({ theme }) => theme.spacing(4)};
+  border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+
+  & > a:not(:last-child) {
+    border-bottom: 1px solid ${({ theme }) => theme.palette.divider};
+  }
+`;
+
+const StyledMenuItem = styled.a`
+  display: flex;
+  text-decoration: none;
+  padding: ${({ theme }) => theme.spacing(2)};
+  color: ${({ theme }) => theme.palette.text.primary};
+  background-color: ${({ theme }) => theme.palette.grey[700]};
+`;
+
+const StyledMenuItemIcon = styled(Icon)`
+  display: flex;
+  margin-right: ${({ theme }) => theme.spacing(2)};
+`;
+
 const StyledContentWrapper = styled.div``;
 
 const S = {
+  StyledMenu,
   StyledWrapper,
+  StyledMenuItem,
   StyledLogoWrapper,
   StyledAsideWrapper,
+  StyledMenuItemIcon,
   StyledContentWrapper,
   StyledUserInfoDetails,
   StyledUserInfoWrapper,

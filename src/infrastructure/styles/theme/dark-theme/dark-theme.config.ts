@@ -39,7 +39,7 @@ export const darkTheme = createTheme({
     },
     info: color.blue,
     mode: 'dark',
-    divider: color.gray[700],
+    divider: color.gray[500],
   },
   typography: {
     fontSize: 16,
