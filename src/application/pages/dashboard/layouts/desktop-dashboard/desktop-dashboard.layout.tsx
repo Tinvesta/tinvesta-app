@@ -22,11 +22,7 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
   const { logout, user } = useUser();
   const router = useRouter();
 
-  const isActiveOption = (route: ERoutes): boolean => {
-    console.log(router.pathname === route);
-
-    return router.pathname === route;
-  };
+  const isActiveOption = (route: ERoutes): boolean => router.pathname === route;
 
   return (
     <S.StyledWrapper>
