@@ -19,3 +19,4 @@ export * from './string-array-to-lower-case/string-array-to-lower-case.function'
 export * from './get-file-extension-from-base64/get-file-extension-from-base64.function';
 export * from './replace-variables-in-translation/replace-variables-in-translation.function';
 export * from './array-of-objects-to-array-of-numbers/array-of-objects-to-array-of-numbers.function';
+export * from './get-first-name-and-last-name-from-multi-part-full-name/get-first-name-and-last-name-from-multi-part-full-name.function';
