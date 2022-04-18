@@ -9,8 +9,6 @@ import { IDesktopDashboardLayoutProps } from './desktop-dashboard.types';
 export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProps): JSX.Element => {
   const { user } = useUser();
 
-  console.log(user);
-
   return (
     <S.StyledWrapper>
       <S.StyledAsideWrapper>
@@ -18,10 +16,10 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
           <Image
             priority
             alt="Tinvesta"
-            height={35}
+            height={28}
             objectFit="fill"
             src="/images/brandmark-full-logo-transparent-white.png"
-            width={256}
+            width={200}
           />
         </S.StyledLogoWrapper>
         <S.StyledUserInfoWrapper>
