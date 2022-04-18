@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Icon } from '@mui/material';
+import { rgba } from 'polished';
 
 const StyledWrapper = styled.div`
   height: 100%;
@@ -7,7 +8,10 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledAsideWrapper = styled.aside`
-  width: 350px;
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(3)};
   background-color: ${({ theme }) => theme.palette.grey[800]};
 `;
@@ -23,8 +27,8 @@ const StyledUserInfoWrapper = styled.div`
   align-items: center;
   gap: ${({ theme }) => theme.spacing(3)};
   padding: ${({ theme }) => theme.spacing(3)};
-  background-color: ${({ theme }) => theme.palette.grey[700]};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+  background-color: ${({ theme }) => rgba(theme.palette.grey[700], 0.5)};
 `;
 
 const StyledUserInfoDetails = styled.div``;
@@ -39,12 +43,14 @@ const StyledMenu = styled.div`
   }
 `;
 
-const StyledMenuItem = styled.a`
+const StyledMenuItem = styled.a<{ active: boolean }>`
   display: flex;
   text-decoration: none;
-  padding: ${({ theme }) => theme.spacing(2)};
+  padding: ${({ theme }) => theme.spacing(3)};
   color: ${({ theme }) => theme.palette.text.primary};
-  background-color: ${({ theme }) => theme.palette.grey[700]};
+  background-color: ${({ theme }) => rgba(theme.palette.grey[700], 0.5)};
+
+  ${({ active, theme }) => active && `color: ${rgba(theme.palette.text.primary, 0.5)};`}
 `;
 
 const StyledMenuItemIcon = styled(Icon)`
