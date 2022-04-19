@@ -1,8 +1,6 @@
 import {
   CardMembership as CardMembershipIcon,
-  Gavel as GavelIcon,
   JoinInner as JoinInnerIcon,
-  Policy as PolicyIcon,
   StarBorder as StarBorderIcon,
   Style as StyleIcon,
 } from '@mui/icons-material';
@@ -30,7 +28,6 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
         <span>
           <S.StyledLogoWrapper>
             <Image
-              priority
               alt="Tinvesta"
               height={28}
               objectFit="fill"
@@ -77,24 +74,6 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
                   <CardMembershipIcon />
                 </S.StyledMenuItemIcon>
                 Subscription
-              </S.StyledMenuItem>
-            </Link>
-          </S.StyledMenu>
-          <S.StyledMenu>
-            <Link passHref href={ERoutes.DASHBOARD_DISCOVER}>
-              <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_DISCOVER)}>
-                <S.StyledMenuItemIcon>
-                  <PolicyIcon />
-                </S.StyledMenuItemIcon>
-                Privacy and Policy
-              </S.StyledMenuItem>
-            </Link>
-            <Link passHref href={ERoutes.DASHBOARD_MATCHES}>
-              <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_MATCHES)}>
-                <S.StyledMenuItemIcon>
-                  <GavelIcon />
-                </S.StyledMenuItemIcon>
-                Terms and Conditions
               </S.StyledMenuItem>
             </Link>
           </S.StyledMenu>

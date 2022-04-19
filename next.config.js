@@ -51,6 +51,9 @@ module.exports = withPWA({
     skipWaiting: true,
     disable: process.env.NEXT_PUBLIC_APP_ENV === 'local',
   },
+  images: {
+    domains: ['fkntlethkbyborzenxpp.supabase.co'],
+  },
   async headers() {
     return [
       {
