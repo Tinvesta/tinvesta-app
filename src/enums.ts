@@ -18,7 +18,7 @@ export enum EApiError {
 export enum EApiEndpoint {
   CREATE_PROFILE = '/api/create-profile',
   GET_PROFILE_DETAILS = '/api/get-profile-details',
-  GET_STARTUPS = '/api/get-startups',
+  GET_RECORDS = '/api/get-records',
   SET_SUPABASE_COOKIE = '/api/set-supabase-cookie',
 }
 

@@ -58,7 +58,9 @@ const StyledMenuItemIcon = styled(Icon)`
   margin-right: ${({ theme }) => theme.spacing(2)};
 `;
 
-const StyledContentWrapper = styled.div``;
+const StyledContentWrapper = styled.div`
+  width: 100%;
+`;
 
 const S = {
   StyledMenu,
