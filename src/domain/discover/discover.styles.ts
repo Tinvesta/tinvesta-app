@@ -12,6 +12,7 @@ const StyledImageWrapper = styled.div`
   font-size: 80px;
   background: #f9fafb;
   align-items: center;
+  pointer-events: none;
   justify-content: center;
   text-shadow: 0 10px 10px #d1d5db;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);

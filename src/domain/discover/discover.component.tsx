@@ -9,7 +9,7 @@ import { MotionCardsStack } from './atoms';
 import S from './discover.styles';
 
 export const Discover = (): JSX.Element => {
-  const { isLoading, mutate } = useMutation(getRecordsAction);
+  const { data, isLoading, mutate } = useMutation(getRecordsAction);
 
   useEffect(() => {
     mutate();
@@ -32,9 +32,16 @@ export const Discover = (): JSX.Element => {
   return (
     <CenterBlockLayout>
       <MotionCardsStack>
-        <S.StyledImageWrapper data-value="waffles">🧇</S.StyledImageWrapper>
-        <S.StyledImageWrapper data-value="pancakes">🥞</S.StyledImageWrapper>
-        <S.StyledImageWrapper data-value="donuts">🍩</S.StyledImageWrapper>
+        {data?.data.map((_record: { avatars: { avatar_public_url: string } }) => (
+          <S.StyledImageWrapper key={_record.avatars.avatar_public_url}>
+            <Image
+              alt="Profile image"
+              height={600}
+              src={_record.avatars.avatar_public_url}
+              width={400}
+            />
+          </S.StyledImageWrapper>
+        ))}
       </MotionCardsStack>
     </CenterBlockLayout>
   );
