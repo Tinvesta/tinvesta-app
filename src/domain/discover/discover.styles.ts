@@ -17,11 +17,6 @@ const StyledImageWrapper = styled.div`
   text-shadow: 0 10px 10px #d1d5db;
   box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-  transform: ${() => {
-    const rotation = Math.random() * (5 - -5) + -5;
-
-    return `rotate(${rotation}deg)`;
-  }};
 `;
 
 const S = {

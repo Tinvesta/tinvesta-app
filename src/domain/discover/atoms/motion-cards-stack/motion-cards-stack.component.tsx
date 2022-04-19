@@ -26,11 +26,10 @@ export const MotionCardsStack = ({
   return (
     <S.StyledWrapper {...restProps}>
       {stack.map((item, index) => {
-        const isTop = index === stack.length - 1;
         const key = hasOwnProperty(item, 'key') ? (item.key as string) || index : index;
 
         return (
-          <MotionCardWrapper key={key} drag={isTop} onVote={handleVote}>
+          <MotionCardWrapper key={key} onVote={handleVote}>
             {item}
           </MotionCardWrapper>
         );
