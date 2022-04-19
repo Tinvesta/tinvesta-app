@@ -52,7 +52,7 @@ module.exports = withPWA({
     disable: process.env.NEXT_PUBLIC_APP_ENV === 'local',
   },
   images: {
-    domains: ['fkntlethkbyborzenxpp.supabase.co'],
+    domains: ['fkntlethkbyborzenxpp.supabase.co', 'lh3.googleusercontent.com'],
   },
   async headers() {
     return [
