@@ -6,8 +6,6 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledImageWrapper = styled.div`
-  width: 250px;
-  height: 250px;
   display: flex;
   font-size: 80px;
   background: #f9fafb;
