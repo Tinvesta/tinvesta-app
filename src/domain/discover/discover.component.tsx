@@ -5,6 +5,7 @@ import { useMutation } from 'react-query';
 import { CenterBlockLayout } from '@ui';
 
 import { getRecordsAction } from './api';
+import { MotionCardsStack } from './atoms';
 import S from './discover.styles';
 
 export const Discover = (): JSX.Element => {
@@ -30,16 +31,18 @@ export const Discover = (): JSX.Element => {
 
   return (
     <CenterBlockLayout>
-      {data?.data.map((_record: { avatars: { avatar_public_url: string } }) => (
-        <S.StyledImageWrapper key={_record.avatars.avatar_public_url}>
-          <Image
-            alt="Profile image"
-            height={600}
-            src={_record.avatars.avatar_public_url}
-            width={400}
-          />
-        </S.StyledImageWrapper>
-      ))}
+      <MotionCardsStack>
+        {data?.data.map((_record: { avatars: { avatar_public_url: string } }) => (
+          <S.StyledImageWrapper key={_record.avatars.avatar_public_url}>
+            <Image
+              alt="Profile image"
+              height={600}
+              src={_record.avatars.avatar_public_url}
+              width={400}
+            />
+          </S.StyledImageWrapper>
+        ))}
+      </MotionCardsStack>
     </CenterBlockLayout>
   );
 };
