@@ -1,4 +1,7 @@
-import { ThumbDown as ThumbDownIcon, ThumbUp as ThumbUpIcon } from '@mui/icons-material';
+import {
+  CheckCircleOutlined as CheckCircleOutlinedIcon,
+  HighlightOffOutlined as HighlightOffOutlinedIcon,
+} from '@mui/icons-material';
 import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
 
 import S from './motion-card-wrapper.styles';
@@ -37,12 +40,12 @@ export const MotionCardWrapper = ({
       }}
       {...restProps}
     >
-      <S.StyledThumbUpIconWrapper style={{ opacity: rightIconOpacity }}>
-        <ThumbUpIcon color="success" />
-      </S.StyledThumbUpIconWrapper>
-      <S.StyledThumbDownIconWrapper style={{ opacity: leftIconOpacity }}>
-        <ThumbDownIcon color="error" />
-      </S.StyledThumbDownIconWrapper>
+      <S.StyledCheckCircleOutlinedIconWrapper style={{ opacity: rightIconOpacity }}>
+        <CheckCircleOutlinedIcon color="success" />
+      </S.StyledCheckCircleOutlinedIconWrapper>
+      <S.StyledHighlightOffOutlinedIconWrapper style={{ opacity: leftIconOpacity }}>
+        <HighlightOffOutlinedIcon color="error" />
+      </S.StyledHighlightOffOutlinedIconWrapper>
       {children}
     </S.StyledWrapper>
   );
