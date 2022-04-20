@@ -1,15 +1,17 @@
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { isArray, isStartupProfile } from '@utils';
+import {
+  arrayOfObjectsToArrayOfNumbers,
+  convertObjectKeysToCamelCase,
+  isArray,
+  isObject,
+  isStartupProfile,
+} from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
 import { EApiError } from '@enums';
-
-import { arrayOfObjectsToArrayOfNumbers } from '../../src/utils/functions/array-of-objects-to-array-of-numbers/array-of-objects-to-array-of-numbers.function';
-import { convertObjectKeysToCamelCase } from '../../src/utils/functions/convert-object-keys/convert-object-keys.function';
-import { isObject } from '../../src/utils/guards/is-object/is-object.function';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
