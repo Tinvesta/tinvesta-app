@@ -38,10 +38,10 @@ export const MotionCardWrapper = ({
       {...restProps}
     >
       <S.StyledThumbUpIconWrapper style={{ opacity: rightIconOpacity }}>
-        <ThumbUpIcon color="success" fontSize="large" />
+        <ThumbUpIcon color="success" />
       </S.StyledThumbUpIconWrapper>
       <S.StyledThumbDownIconWrapper style={{ opacity: leftIconOpacity }}>
-        <ThumbDownIcon color="error" fontSize="large" />
+        <ThumbDownIcon color="error" />
       </S.StyledThumbDownIconWrapper>
       {children}
     </S.StyledWrapper>
