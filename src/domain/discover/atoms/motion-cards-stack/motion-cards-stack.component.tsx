@@ -29,7 +29,7 @@ export const MotionCardsStack = ({
         const key = hasOwnProperty(item, 'key') ? (item.key as string) || index : index;
 
         return (
-          <MotionCardWrapper key={key} onVote={handleVote}>
+          <MotionCardWrapper key={key} zIndex={index + 2} onVote={handleVote}>
             {item}
           </MotionCardWrapper>
         );

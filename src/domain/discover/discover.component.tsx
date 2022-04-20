@@ -6,7 +6,7 @@ import { CenterBlockLayout } from '@ui';
 
 import { getRecordsAction } from './api';
 import { MotionCardsStack } from './atoms';
-import S from './discover.styles';
+import { Card } from './molecules';
 
 export const Discover = (): JSX.Element => {
   const { data, isLoading, mutate } = useMutation(getRecordsAction);
@@ -33,14 +33,7 @@ export const Discover = (): JSX.Element => {
     <CenterBlockLayout>
       <MotionCardsStack>
         {data?.data.map((_record) => (
-          <S.StyledImageWrapper key={_record.avatars.avatarPublicUrl}>
-            <Image
-              alt="Profile image"
-              height={600}
-              src={_record.avatars.avatarPublicUrl}
-              width={400}
-            />
-          </S.StyledImageWrapper>
+          <Card key={_record.id} record={_record} />
         ))}
       </MotionCardsStack>
     </CenterBlockLayout>
