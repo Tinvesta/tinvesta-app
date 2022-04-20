@@ -8,12 +8,10 @@ const StyledWrapper = styled.div`
 const StyledImageWrapper = styled.div`
   display: flex;
   font-size: 80px;
-  background: #f9fafb;
+  overflow: hidden;
   align-items: center;
   pointer-events: none;
   justify-content: center;
-  text-shadow: 0 10px 10px #d1d5db;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 `;
 

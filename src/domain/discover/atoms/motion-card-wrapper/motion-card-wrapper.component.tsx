@@ -1,3 +1,4 @@
+import { ThumbDown as ThumbDownIcon, ThumbUp as ThumbUpIcon } from '@mui/icons-material';
 import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
 
 import S from './motion-card-wrapper.styles';
@@ -12,6 +13,8 @@ export const MotionCardWrapper = ({
   const x = useMotionValue(0);
   const animControls = useAnimation();
   const rotate = useTransform(x, [-500, 500], [-35, 35]);
+  const rightIconOpacity = useTransform(x, [50, 200], [0, 200]);
+  const leftIconOpacity = useTransform(x, [-200, -50], [200, 0]);
 
   return (
     <S.StyledWrapper
@@ -24,7 +27,7 @@ export const MotionCardWrapper = ({
         rotate,
       }}
       onDragEnd={(_, info) => {
-        if (Math.abs(info.offset.x) < 250) {
+        if (Math.abs(info.offset.x) < 200) {
           animControls.start({ x: 0, y: 0 });
         } else {
           animControls.start({ x: info.offset.x < 0 ? -1500 : 1500 }).then(() => {
@@ -34,6 +37,12 @@ export const MotionCardWrapper = ({
       }}
       {...restProps}
     >
+      <S.StyledThumbUpIconWrapper style={{ opacity: rightIconOpacity }}>
+        <ThumbUpIcon color="success" fontSize="large" />
+      </S.StyledThumbUpIconWrapper>
+      <S.StyledThumbDownIconWrapper style={{ opacity: leftIconOpacity }}>
+        <ThumbDownIcon color="error" fontSize="large" />
+      </S.StyledThumbDownIconWrapper>
       {children}
     </S.StyledWrapper>
   );
