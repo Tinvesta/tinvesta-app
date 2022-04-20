@@ -32,12 +32,12 @@ export const Discover = (): JSX.Element => {
   return (
     <CenterBlockLayout>
       <MotionCardsStack>
-        {data?.data.map((_record: { avatars: { avatar_public_url: string } }) => (
-          <S.StyledImageWrapper key={_record.avatars.avatar_public_url}>
+        {data?.data.map((_record) => (
+          <S.StyledImageWrapper key={_record.avatars.avatarPublicUrl}>
             <Image
               alt="Profile image"
               height={600}
-              src={_record.avatars.avatar_public_url}
+              src={_record.avatars.avatarPublicUrl}
               width={400}
             />
           </S.StyledImageWrapper>
