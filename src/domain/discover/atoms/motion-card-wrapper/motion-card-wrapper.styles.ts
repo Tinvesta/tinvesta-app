@@ -13,8 +13,8 @@ const StyledCheckCircleOutlinedIconWrapper = styled(motion.div)`
   left: ${({ theme }) => theme.spacing(4)};
 
   > svg {
-    width: 3em;
-    height: 3em;
+    width: 4em;
+    height: 4em;
   }
 `;
 
@@ -26,8 +26,8 @@ const StyledHighlightOffOutlinedIconWrapper = styled(motion.div)`
   right: ${({ theme }) => theme.spacing(4)};
 
   > svg {
-    width: 3em;
-    height: 3em;
+    width: 4em;
+    height: 4em;
   }
 `;
 
