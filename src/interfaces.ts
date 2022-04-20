@@ -67,6 +67,7 @@ export interface IDiscoverRecord {
   };
   companyName: string;
   firstName: string;
+  id: string;
   investorProfileTypeId: string | null;
   lastName: string;
   location: string;

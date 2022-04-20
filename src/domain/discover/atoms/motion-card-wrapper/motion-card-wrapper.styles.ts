@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { IconButton } from '@mui/material';
 import { motion } from 'framer-motion';
 
 const StyledWrapper = styled(motion.div)`
@@ -31,9 +32,45 @@ const StyledHighlightOffOutlinedIconWrapper = styled(motion.div)`
   }
 `;
 
+const StyledFavouriteIconButtonWrapper = styled(IconButton)`
+  z-index: 1;
+  border: 1px solid;
+  position: absolute;
+  right: ${({ theme }) => theme.spacing(5)};
+  bottom: ${({ theme }) => theme.spacing(3)};
+
+  &.MuiIconButton-root {
+    padding: ${({ theme }) => theme.spacing(3)};
+
+    > .MuiSvgIcon-root {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+`;
+
+const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
+  z-index: 1;
+  border: 1px solid;
+  position: absolute;
+  bottom: ${({ theme }) => theme.spacing(3)};
+  left: calc(${({ theme }) => theme.spacing(5)} + 10px);
+
+  &.MuiIconButton-root {
+    padding: ${({ theme }) => theme.spacing(3)};
+
+    > .MuiSvgIcon-root {
+      width: 1.5em;
+      height: 1.5em;
+    }
+  }
+`;
+
 const S = {
   StyledWrapper,
+  StyledFavouriteIconButtonWrapper,
   StyledCheckCircleOutlinedIconWrapper,
+  StyledCloseOutlinedIconButtonWrapper,
   StyledHighlightOffOutlinedIconWrapper,
 };
 

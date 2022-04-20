@@ -1,1 +1,5 @@
-export interface ICardProps {}
+import { IDiscoverRecord } from '@interfaces';
+
+export interface ICardProps {
+  record: IDiscoverRecord;
+}

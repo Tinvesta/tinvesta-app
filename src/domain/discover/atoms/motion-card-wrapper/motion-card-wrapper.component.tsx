@@ -1,5 +1,7 @@
 import {
   CheckCircleOutlined as CheckCircleOutlinedIcon,
+  CloseOutlined as CloseOutlinedIcon,
+  FavoriteOutlined as FavoriteOutlinedIcon,
   HighlightOffOutlined as HighlightOffOutlinedIcon,
 } from '@mui/icons-material';
 import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
@@ -11,6 +13,7 @@ export const MotionCardWrapper = ({
   children,
   id,
   onVote,
+  zIndex,
   ...restProps
 }: IMotionCardWrapperProps): JSX.Element => {
   const x = useMotionValue(0);
@@ -18,6 +21,16 @@ export const MotionCardWrapper = ({
   const rotate = useTransform(x, [-500, 500], [-35, 35]);
   const rightIconOpacity = useTransform(x, [50, 200], [0, 200]);
   const leftIconOpacity = useTransform(x, [-200, -50], [200, 0]);
+
+  const markAsVoted = () =>
+    animControls.start({ x: 1500 }).then(() => {
+      onVote(true);
+    });
+
+  const markAsNotVoted = () =>
+    animControls.start({ x: -1500 }).then(() => {
+      onVote(false);
+    });
 
   return (
     <S.StyledWrapper
@@ -28,6 +41,7 @@ export const MotionCardWrapper = ({
       style={{
         x,
         rotate,
+        zIndex,
       }}
       onDragEnd={(_, info) => {
         if (Math.abs(info.offset.x) < 200) {
@@ -47,6 +61,22 @@ export const MotionCardWrapper = ({
         <HighlightOffOutlinedIcon color="error" />
       </S.StyledHighlightOffOutlinedIconWrapper>
       {children}
+      <S.StyledFavouriteIconButtonWrapper
+        color="success"
+        edge="start"
+        size="large"
+        onClick={markAsVoted}
+      >
+        <FavoriteOutlinedIcon />
+      </S.StyledFavouriteIconButtonWrapper>
+      <S.StyledCloseOutlinedIconButtonWrapper
+        color="error"
+        edge="start"
+        size="large"
+        onClick={markAsNotVoted}
+      >
+        <CloseOutlinedIcon />
+      </S.StyledCloseOutlinedIconButtonWrapper>
     </S.StyledWrapper>
   );
 };
