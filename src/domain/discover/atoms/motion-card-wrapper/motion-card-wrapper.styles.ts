@@ -10,7 +10,7 @@ const StyledCheckCircleOutlinedIconWrapper = styled(motion.div)`
   position: absolute;
   transition: all 250ms ease-in;
   top: ${({ theme }) => theme.spacing(4)};
-  right: ${({ theme }) => theme.spacing(4)};
+  left: ${({ theme }) => theme.spacing(4)};
 
   > svg {
     width: 3em;
@@ -23,7 +23,7 @@ const StyledHighlightOffOutlinedIconWrapper = styled(motion.div)`
   position: absolute;
   transition: all 250ms ease-in;
   top: ${({ theme }) => theme.spacing(4)};
-  left: ${({ theme }) => theme.spacing(4)};
+  right: ${({ theme }) => theme.spacing(4)};
 
   > svg {
     width: 3em;
