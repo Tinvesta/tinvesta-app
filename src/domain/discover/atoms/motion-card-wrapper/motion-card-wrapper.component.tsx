@@ -1,3 +1,7 @@
+import {
+  CheckCircleOutlined as CheckCircleOutlinedIcon,
+  HighlightOffOutlined as HighlightOffOutlinedIcon,
+} from '@mui/icons-material';
 import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
 
 import S from './motion-card-wrapper.styles';
@@ -12,6 +16,8 @@ export const MotionCardWrapper = ({
   const x = useMotionValue(0);
   const animControls = useAnimation();
   const rotate = useTransform(x, [-500, 500], [-35, 35]);
+  const rightIconOpacity = useTransform(x, [50, 200], [0, 200]);
+  const leftIconOpacity = useTransform(x, [-200, -50], [200, 0]);
 
   return (
     <S.StyledWrapper
@@ -24,7 +30,7 @@ export const MotionCardWrapper = ({
         rotate,
       }}
       onDragEnd={(_, info) => {
-        if (Math.abs(info.offset.x) < 250) {
+        if (Math.abs(info.offset.x) < 200) {
           animControls.start({ x: 0, y: 0 });
         } else {
           animControls.start({ x: info.offset.x < 0 ? -1500 : 1500 }).then(() => {
@@ -34,6 +40,12 @@ export const MotionCardWrapper = ({
       }}
       {...restProps}
     >
+      <S.StyledCheckCircleOutlinedIconWrapper style={{ opacity: rightIconOpacity }}>
+        <CheckCircleOutlinedIcon color="success" />
+      </S.StyledCheckCircleOutlinedIconWrapper>
+      <S.StyledHighlightOffOutlinedIconWrapper style={{ opacity: leftIconOpacity }}>
+        <HighlightOffOutlinedIcon color="error" />
+      </S.StyledHighlightOffOutlinedIconWrapper>
       {children}
     </S.StyledWrapper>
   );
