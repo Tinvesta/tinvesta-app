@@ -17,14 +17,14 @@ export const MotionCardWrapper = ({
     <S.StyledWrapper
       drag
       animate={animControls}
-      dragConstraints={{ left: -750, right: 750 }}
+      dragConstraints={{ left: -500, right: 500 }}
       exit={{ opacity: 0 }}
       style={{
         x,
         rotate,
       }}
       onDragEnd={(_, info) => {
-        if (Math.abs(info.offset.x) < 150) {
+        if (Math.abs(info.offset.x) < 250) {
           animControls.start({ x: 0, y: 0 });
         } else {
           animControls.start({ x: info.offset.x < 0 ? -1500 : 1500 }).then(() => {
