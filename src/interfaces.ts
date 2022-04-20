@@ -60,3 +60,26 @@ export interface IInvestorDemandType {
   id: string;
   name: EInvestorDemandType;
 }
+
+export interface IDiscoverRecord {
+  avatars: {
+    avatarPublicUrl: string;
+  };
+  companyName: string;
+  firstName: string;
+  investorProfileTypeId: string | null;
+  lastName: string;
+  location: string;
+  missionStatement: string | null;
+  profilesFocusMarkets: number[];
+  profilesIndustrialSectors: number[];
+  profilesInvestmentSizes: number[];
+  profilesInvestmentStageTypes: number[];
+  profilesInvestorDemandTypes: number[];
+  profilesStartupSectors: number[];
+  profilesTeamSizes: number[];
+  startupClaim: string | null;
+  startupProfileCreatorTypeId: string | null;
+  visionStatement: string | null;
+  whatYouAreLookingFor: string;
+}

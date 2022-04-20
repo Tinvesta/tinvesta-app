@@ -1,11 +1,15 @@
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { isStartupProfile } from '@utils';
+import { isArray, isStartupProfile } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
 import { EApiError } from '@enums';
+
+import { arrayOfObjectsToArrayOfNumbers } from '../../src/utils/functions/array-of-objects-to-array-of-numbers/array-of-objects-to-array-of-numbers.function';
+import { convertObjectKeysToCamelCase } from '../../src/utils/functions/convert-object-keys/convert-object-keys.function';
+import { isObject } from '../../src/utils/guards/is-object/is-object.function';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
@@ -86,7 +90,32 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     )
     .in('id', profileIds);
 
-  response.send(recordsWithDetails);
+  const parsedRecords =
+    (recordsWithDetails?.map(convertObjectKeysToCamelCase) || [])?.map((_record) => {
+      const newRecord = _record;
+
+      if (!isObject(newRecord)) {
+        return newRecord;
+      }
+
+      for (const _key of Object.keys(newRecord)) {
+        const currentRecord = (_record as Record<string, unknown>)[_key];
+
+        if (isArray(currentRecord) && isObject(currentRecord[0])) {
+          const arrayOfNumbers = arrayOfObjectsToArrayOfNumbers(
+            currentRecord,
+            Object.keys(currentRecord[0])[0],
+          );
+
+          // @ts-expect-error
+          newRecord[_key] = arrayOfNumbers;
+        }
+      }
+
+      return newRecord;
+    }) || [];
+
+  response.send(parsedRecords);
 };
 
 export default handler;
