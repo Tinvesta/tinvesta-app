@@ -5,7 +5,6 @@ const StyledWrapper = styled.div`
   width: 400px;
   height: 700px;
   display: flex;
-  font-size: 80px;
   overflow: hidden;
   position: relative;
   pointer-events: none;
