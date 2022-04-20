@@ -93,7 +93,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     .in('id', profileIds);
 
   const parsedRecords =
-    (recordsWithDetails?.map(convertObjectKeysToCamelCase) || [])?.map((_record) => {
+    recordsWithDetails?.map(convertObjectKeysToCamelCase)?.map((_record) => {
       const newRecord = _record;
 
       if (!isObject(newRecord)) {
