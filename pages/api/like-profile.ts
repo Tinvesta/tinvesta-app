@@ -66,12 +66,14 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const hasBeenLiked = await hasAlreadyBeenLiked(loggedUserId, profileIdToLike);
 
   if (!hasBeenLiked) {
-    response.send(await createLikeRecord(loggedUserId, profileIdToLike, vote));
+    await createLikeRecord(loggedUserId, profileIdToLike, vote);
+
+    response.send({ isMatch: false });
 
     return;
   }
 
-  response.send('xd');
+  response.send({ isMatch: false });
 };
 
 export default handler;
