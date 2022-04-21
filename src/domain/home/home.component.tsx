@@ -38,6 +38,13 @@ export const Home = (): JSX.Element => {
         src="/images/animated-full-logo.svg"
         width={200}
       />
+      <Image
+        priority
+        alt="Tinvesta"
+        layout="fill"
+        src="/images/desktop-polygon-scatter-haikei.svg"
+      />
+      <Image priority alt="Tinvesta" layout="fill" src="/images/desktop-blob-scatter-haikei.svg" />
       {process.env.NEXT_PUBLIC_ENABLE_HOME_PAGE === 'true' && (
         <>
           <Typography fontWeight={700} sx={{ zIndex: 1 }} variant="h1">
