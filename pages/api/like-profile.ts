@@ -51,7 +51,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const loggedUserId = user.id;
   const { profileIdToLike, vote } = request.body;
 
-  if (profileIdToLike !== loggedUserId) {
+  if (profileIdToLike === loggedUserId) {
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
