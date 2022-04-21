@@ -1,26 +1,25 @@
-import { Children, ReactChild, ReactFragment, ReactPortal, useState } from 'react';
+import { Children, ReactElement, useState } from 'react';
 
 import { hasOwnProperty } from '@utils';
 
 import { MotionCardWrapper } from '..';
 import S from './motion-cards-stack.styles';
-import { IMotionCardsStackProps } from './motion-cards-stack.types';
+import { ICardProps, IMotionCardsStackProps } from './motion-cards-stack.types';
 
-// return new array with last item removed
-const pop = (array: (ReactChild | ReactFragment | ReactPortal)[]) =>
+const pop = (array: ReactElement<ICardProps>[]) =>
   array.filter((_, index) => index < array.length - 1);
 
 export const MotionCardsStack = ({
   children,
+  onVote,
   ...restProps
 }: IMotionCardsStackProps): JSX.Element => {
-  const [stack, setStack] = useState(Children.toArray(children));
+  const [stack, setStack] = useState(Children.toArray(children) as ReactElement<ICardProps>[]);
 
-  const handleVote = () => {
-    // update the stack
-    const newStack = pop(stack);
+  const handleVote = (item: ReactElement<ICardProps>) => (vote: boolean) => {
+    onVote(item.props.record.id, vote);
 
-    setStack(newStack);
+    setStack(pop(stack));
   };
 
   return (
@@ -29,7 +28,7 @@ export const MotionCardsStack = ({
         const key = hasOwnProperty(item, 'key') ? (item.key as string) || index : index;
 
         return (
-          <MotionCardWrapper key={key} zIndex={index + 2} onVote={handleVote}>
+          <MotionCardWrapper key={key} zIndex={index + 2} onVote={handleVote(item)}>
             {item}
           </MotionCardWrapper>
         );

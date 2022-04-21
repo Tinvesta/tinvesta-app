@@ -6,7 +6,6 @@ import {
   convertObjectKeysToCamelCase,
   isArray,
   isObject,
-  isStartupProfile,
 } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
@@ -23,16 +22,6 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
 
   if (!user) {
-    return response.status(401).send(EApiError.UNAUTHORIZED);
-  }
-
-  const { data: loggedUserProfileData } = await supabaseInstance
-    .from('profiles')
-    .select('client_type_id')
-    .eq('id', user.id)
-    .single();
-
-  if (isStartupProfile(loggedUserProfileData.client_type_id)) {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 

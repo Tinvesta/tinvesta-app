@@ -4,7 +4,7 @@ import Image from 'next/image';
 import S from './card.styles';
 import { ICardProps } from './card.types';
 
-export const Card = ({ record }: ICardProps): JSX.Element => (
+export const Card = ({ record }: ICardProps) => (
   <S.StyledWrapper>
     <S.StyledImageWrapper>
       <S.StyledImageGradient />
