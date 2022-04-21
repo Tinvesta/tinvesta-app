@@ -28,13 +28,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const { data: likes } = await supabaseInstance.rpc('get_likes', {
+  const { data: matches } = await supabaseInstance.rpc('get_matches', {
     profile_id_input: user.id,
   });
 
-  const parsedLikes = likes?.map(convertObjectKeysToCamelCase) || [];
+  const parsedMatches = matches?.map(convertObjectKeysToCamelCase) || [];
 
-  response.send(parsedLikes);
+  response.send(parsedMatches);
 };
 
 export default handler;
