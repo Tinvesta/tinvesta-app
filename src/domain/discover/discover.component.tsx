@@ -30,9 +30,7 @@ export const Discover = (): JSX.Element => {
     );
   }
 
-  const onVote = (profileId: string, vote: boolean) => {
-    mutateAsync({ profileId, vote });
-  };
+  const onVote = (profileId: string, vote: boolean) => mutateAsync({ profileId, vote });
 
   return (
     <CenterBlockLayout>
