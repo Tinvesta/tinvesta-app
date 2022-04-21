@@ -8,8 +8,9 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledAsideWrapper = styled.aside`
-  width: 400px;
   display: flex;
+  min-width: 400px;
+  max-width: 400px;
   flex-direction: column;
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(3)};
@@ -60,6 +61,7 @@ const StyledMenuItemIcon = styled(Icon)`
 
 const StyledContentWrapper = styled.div`
   width: 100%;
+  overflow: scroll;
 `;
 
 const S = {

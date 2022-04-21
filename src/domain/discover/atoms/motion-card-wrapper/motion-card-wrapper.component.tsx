@@ -18,7 +18,7 @@ export const MotionCardWrapper = ({
 }: IMotionCardWrapperProps): JSX.Element => {
   const x = useMotionValue(0);
   const animControls = useAnimation();
-  const rotate = useTransform(x, [-500, 500], [-35, 35]);
+  const rotate = useTransform(x, [-750, 750], [-35, 35]);
   const rightIconOpacity = useTransform(x, [50, 200], [0, 200]);
   const leftIconOpacity = useTransform(x, [-200, -50], [200, 0]);
 
@@ -36,7 +36,7 @@ export const MotionCardWrapper = ({
     <S.StyledWrapper
       drag
       animate={animControls}
-      dragConstraints={{ left: -500, right: 500 }}
+      dragConstraints={{ left: -750, right: 750 }}
       exit={{ opacity: 0 }}
       style={{
         x,
