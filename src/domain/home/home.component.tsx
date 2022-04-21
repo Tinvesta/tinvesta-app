@@ -34,9 +34,9 @@ export const Home = (): JSX.Element => {
       <Image
         priority
         alt="Tinvesta"
-        height={200}
+        height={250}
         src="/images/animated-full-logo.svg"
-        width={200}
+        width={250}
       />
       <Image
         priority
