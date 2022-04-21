@@ -9,17 +9,17 @@ import { EApiError } from '@enums';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
-const hasAlreadyBeenLiked = async (loggedUserId: string, profileIdToLike: string) => {
+const findLikesRecordByUserIds = async (fromProfileId: string, toProfileId: string) => {
   const { data } = await supabaseInstance
     .from('likes')
-    .select('id')
-    .match({ from_profile_id: loggedUserId, to_profile_id: profileIdToLike })
+    .select('*')
+    .match({ from_profile_id: fromProfileId, to_profile_id: toProfileId })
     .single();
 
-  return !!data?.id;
+  return data;
 };
 
-const createLikeRecord = async (loggedUserId: string, profileIdToLike: string, vote: number) => {
+const createLikeRecord = async (loggedUserId: string, profileIdToLike: string, vote: boolean) => {
   const { data } = await supabaseInstance.from('likes').insert({
     liked: vote,
     from_profile_id: loggedUserId,
@@ -31,6 +31,29 @@ const createLikeRecord = async (loggedUserId: string, profileIdToLike: string, v
   }
 
   return data[0].id;
+};
+
+const updateLikeRecord = async (
+  id: string,
+  fromProfileId: string,
+  toProfileId: string,
+  vote: boolean,
+) => {
+  const { data } = await supabaseInstance
+    .from('likes')
+    .update({
+      seen: true,
+      liked: vote,
+      to_profile_id: toProfileId,
+      from_profile_id: fromProfileId,
+    })
+    .eq('id', id);
+
+  if (!data) {
+    return null;
+  }
+
+  return data[0];
 };
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
@@ -63,15 +86,35 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const hasBeenLiked = await hasAlreadyBeenLiked(loggedUserId, profileIdToLike);
+  const foundLikeFromOtherProfile = await findLikesRecordByUserIds(profileIdToLike, loggedUserId);
 
-  if (!hasBeenLiked) {
-    await createLikeRecord(loggedUserId, profileIdToLike, vote);
+  if (foundLikeFromOtherProfile && foundLikeFromOtherProfile.liked === true) {
+    const updatedLike = await updateLikeRecord(
+      foundLikeFromOtherProfile.id,
+      profileIdToLike,
+      loggedUserId,
+      vote,
+    );
 
-    response.send({ isMatch: false });
+    response.send({ isMatch: updatedLike.liked });
 
     return;
   }
+
+  if (foundLikeFromOtherProfile && foundLikeFromOtherProfile.liked === false) {
+    const updatedLike = await updateLikeRecord(
+      foundLikeFromOtherProfile.id,
+      profileIdToLike,
+      loggedUserId,
+      false,
+    );
+
+    response.send({ isMatch: updatedLike.liked });
+
+    return;
+  }
+
+  await createLikeRecord(loggedUserId, profileIdToLike, vote);
 
   response.send({ isMatch: false });
 };
