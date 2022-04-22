@@ -1,7 +1,10 @@
 import { useMachine } from '@xstate/react';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
+
+import { CenterBlockLayout, Loader } from '@ui';
 
 import { useUser } from '@utils';
 
@@ -31,6 +34,7 @@ import {
 import { createAccountAction } from './api';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
+  EDesktopOnboardingMachineAdditionalEvents,
   EDesktopOnboardingMachineEvents,
   EDesktopOnboardingMachineStates,
   onboardingStateMachine,
@@ -48,18 +52,23 @@ export const DesktopOnboarding = ({
   startupSectors,
   teamSizes,
 }: IDesktopOnboardingProps): JSX.Element => {
-  const { user } = useUser();
+  const { isLoading: isProfileLoading, user } = useUser();
   const router = useRouter();
-
-  const [current, send] = useMachine(
-    onboardingStateMachine({
-      contactEmail: user?.contact_email,
-      fullName: user?.user_metadata?.full_name,
-    }),
-  );
 
   const { isLoading: isCreateAccountActionLoading, mutateAsync: mutateAsyncCreateAccountAction } =
     useMutation(createAccountAction);
+
+  const [current, send] = useMachine(onboardingStateMachine);
+
+  useEffect(() => {
+    if (!isProfileLoading && user?.contact_email) {
+      send({
+        type: EDesktopOnboardingMachineAdditionalEvents.SET_PROFILE_DATA_FROM_SUPABASE,
+        fullName: user.user_metadata.full_name,
+        contactEmail: user.contact_email,
+      });
+    }
+  }, [isProfileLoading, user?.contact_email]);
 
   const onContinueButtonClick = (
     data:
@@ -80,6 +89,14 @@ export const DesktopOnboarding = ({
       .catch(() => toast.error('Something went wrong'));
 
   const onBackButtonClick = () => send(EDesktopOnboardingMachineEvents.BACK);
+
+  if (isProfileLoading || !user?.contact_email || current.context.stepOneData.contactEmail === '') {
+    return (
+      <CenterBlockLayout>
+        <Loader size="large" />
+      </CenterBlockLayout>
+    );
+  }
 
   if (current.matches(EDesktopOnboardingMachineStates.STEP_ONE)) {
     return (
