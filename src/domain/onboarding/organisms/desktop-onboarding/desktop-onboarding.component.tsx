@@ -3,6 +3,8 @@ import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
+import { useUser } from '@utils';
+
 import { ERoutes } from '@enums';
 
 import {
@@ -46,9 +48,15 @@ export const DesktopOnboarding = ({
   startupSectors,
   teamSizes,
 }: IDesktopOnboardingProps): JSX.Element => {
-  const [current, send] = useMachine(onboardingStateMachine);
-
+  const { user } = useUser();
   const router = useRouter();
+
+  const [current, send] = useMachine(
+    onboardingStateMachine({
+      contactEmail: user?.contact_email,
+      fullName: user?.user_metadata?.full_name,
+    }),
+  );
 
   const { isLoading: isCreateAccountActionLoading, mutateAsync: mutateAsyncCreateAccountAction } =
     useMutation(createAccountAction);
