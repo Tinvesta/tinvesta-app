@@ -37,3 +37,8 @@ export enum EDesktopOnboardingMachineEvents {
   BACK = 'BACK',
   NEXT = 'NEXT',
 }
+
+export interface IVariables {
+  contactEmail: string | undefined;
+  fullName: string | undefined;
+}
