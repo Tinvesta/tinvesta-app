@@ -20,9 +20,9 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
 
     if (sessionUser) {
       const { data: profileData } = await supabaseInstance
-        .from('profiles')
-        .select('*')
-        .eq('id', sessionUser.id)
+        .rpc('profile_details', {
+          profile_id_input: sessionUser.id,
+        })
         .single();
 
       setUser({
