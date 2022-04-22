@@ -31,7 +31,7 @@ export const darkTheme = createTheme({
     text: {
       primary: color.gray[200],
       disabled: color.gray[400],
-      secondary: color.gray[700],
+      secondary: color.gray[500],
     },
     common: {
       black: color.gray[900],

@@ -1,3 +1,4 @@
+import { ArrowBack as ArrowBackIcon } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import Image from 'next/image';
@@ -19,20 +20,18 @@ const DesktopOnboardingFormLayoutComponent = ({
   ...formProps
 }: IDesktopOnboardingFormLayoutProps): JSX.Element => (
   <CenterBlockLayout>
+    <Image
+      priority
+      alt="Tinvesta"
+      layout="fill"
+      objectFit="cover"
+      src="/images/desktop-onboarding-wave-haikei.svg"
+    />
     <S.StyledWrapper>
-      <S.StyledImageWrapper>
-        <Image
-          priority
-          alt="Triangles"
-          layout="fill"
-          objectFit="cover"
-          src="/images/triangles.svg"
-        />
-      </S.StyledImageWrapper>
       <S.StyledContentWrapper>
-        {subHeading && <S.StyledHeading variant="caption">{subHeading}</S.StyledHeading>}
+        {subHeading && <S.StyledHeading variant="body1">{subHeading}</S.StyledHeading>}
         {heading && (
-          <S.StyledHeading fontWeight={700} variant="h5">
+          <S.StyledHeading fontWeight={700} variant="h3">
             {heading}
           </S.StyledHeading>
         )}
@@ -46,7 +45,8 @@ const DesktopOnboardingFormLayoutComponent = ({
                     fullWidth
                     disabled={isLoading}
                     size="large"
-                    variant="outlined"
+                    startIcon={<ArrowBackIcon />}
+                    variant="text"
                     onClick={onBackButtonClick}
                   >
                     {backButtonText}
