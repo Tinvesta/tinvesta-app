@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout } from '@ui';
+import { CenterBlockLayout, Loader } from '@ui';
 
 import { getMatchesAction } from './api';
 import S from './matches.styles';
@@ -17,13 +17,7 @@ export const Matches = (): JSX.Element => {
   if (isLoading) {
     return (
       <CenterBlockLayout>
-        <Image
-          alt="Tinvesta"
-          height={200}
-          objectFit="fill"
-          src="/images/brandmark-loader.svg"
-          width={200}
-        />
+        <Loader size="large" />
       </CenterBlockLayout>
     );
   }

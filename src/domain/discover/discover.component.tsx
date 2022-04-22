@@ -1,8 +1,7 @@
-import Image from 'next/image';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout } from '@ui';
+import { CenterBlockLayout, Loader } from '@ui';
 
 import { getRecordsAction, likeProfileAction } from './api';
 import { MotionCardsStack } from './atoms';
@@ -19,13 +18,7 @@ export const Discover = (): JSX.Element => {
   if (isLoading) {
     return (
       <CenterBlockLayout>
-        <Image
-          alt="Tinvesta"
-          height={200}
-          objectFit="fill"
-          src="/images/brandmark-loader.svg"
-          width={200}
-        />
+        <Loader size="large" />
       </CenterBlockLayout>
     );
   }

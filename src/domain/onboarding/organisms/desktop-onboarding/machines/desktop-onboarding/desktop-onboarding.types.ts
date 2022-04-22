@@ -38,6 +38,10 @@ export enum EDesktopOnboardingMachineEvents {
   NEXT = 'NEXT',
 }
 
+export enum EDesktopOnboardingMachineAdditionalEvents {
+  SET_PROFILE_DATA_FROM_SUPABASE = 'SET_PROFILE_DATA_FROM_SUPABASE',
+}
+
 export interface IVariables {
   contactEmail: string | undefined;
   fullName: string | undefined;
