@@ -5,6 +5,7 @@ export * from './base64-to-file/base64-to-file.function';
 export * from './try-parse-json/try-parse-json.function';
 export * from './string-to-words/string-to-words.function';
 export * from './get-window-size/get-window-size.function';
+export * from './repeat-component/repeat-component.function';
 export * from './get-window-width/get-window-width.function';
 export * from './get-window-height/get-window-height.function';
 export * from './try-catch-wrapper/try-catch-wrapper.function';

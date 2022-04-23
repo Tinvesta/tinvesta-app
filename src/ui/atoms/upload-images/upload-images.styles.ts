@@ -1,6 +1,7 @@
 import styled from '@emotion/styled';
 import { AddCircleOutlined as AddIcon, Cancel as CancelIcon } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
+import { FormHelperText } from '@mui/material';
 
 const StyledWrapper = styled.span`
   display: flex;
@@ -80,11 +81,18 @@ const StyledImagePlaceholder = styled(LoadingButton)<{ error?: boolean }>`
   ${({ error, theme }) => error && `border-color: ${theme.palette.error.main};`}
 `;
 
+const StyledFormHelperText = styled(FormHelperText)`
+  text-align: center;
+  margin-top: ${({ theme }) => theme.spacing(3)};
+  color: ${({ theme }) => theme.palette.error.main};
+`;
+
 const S = {
   StyledImage,
   StyledWrapper,
   StyledAddIcon,
   StyledCancelIcon,
+  StyledFormHelperText,
   StyledImagePlaceholder,
   StyledModalContentWrapper,
   StyledImagePlaceholderWrapper,
