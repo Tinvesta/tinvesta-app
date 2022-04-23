@@ -1,4 +1,5 @@
 import { useMachine } from '@xstate/react';
+import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
@@ -93,6 +94,13 @@ export const DesktopOnboarding = ({
   if (isProfileLoading || !user?.contact_email || current.context.stepOneData.contactEmail === '') {
     return (
       <CenterBlockLayout>
+        <Image
+          priority
+          alt="Tinvesta"
+          layout="fill"
+          objectFit="cover"
+          src="/images/desktop-onboarding-wave-haikei.svg"
+        />
         <Loader size="large" />
       </CenterBlockLayout>
     );
