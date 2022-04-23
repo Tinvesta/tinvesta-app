@@ -2,10 +2,7 @@ import { IDesktopOnboardingStepTwoData } from '../../onboarding.types';
 
 export const defaultDesktopOnboardingStepTwoFormData: IDesktopOnboardingStepTwoData = {
   clientTypeId: '',
-  firstImage: '',
-  secondImage: '',
-  thirdImage: '',
-  fourthImage: '',
+  images: [],
 };
 
 export const translationStrings = [
@@ -16,5 +13,4 @@ export const translationStrings = [
   'component.desktop.onboarding.step.two.heading',
   'component.desktop.onboarding.step.two.subheading',
   'component.desktop.onboarding.step.two.profile.type.field.label',
-  'component.desktop.onboarding.step.two.info.upload.at.least.one.image',
 ] as const;

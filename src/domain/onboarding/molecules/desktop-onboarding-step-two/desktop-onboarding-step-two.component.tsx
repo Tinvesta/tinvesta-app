@@ -1,10 +1,9 @@
 import { Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
-import { toast } from 'react-toastify';
 
-import { SelectWithController, UploadImageWithPreviewWithController } from '@ui';
+import { SelectWithController, UploadImagesWithController } from '@ui';
 
-import { useTranslation } from '@utils';
+import { formArrayMinLength, useTranslation } from '@utils';
 
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepTwoData } from '../../onboarding.types';
@@ -29,15 +28,7 @@ export const DesktopOnboardingStepTwo = ({
 
   const clientTypesDropdownOptions = mapClientTypesToDropdownOptions(clientTypes);
 
-  const onSubmit = handleSubmit((data) => {
-    if (!data.firstImage && !data.secondImage && !data.thirdImage && !data.fourthImage) {
-      toast.info(translations.componentDesktopOnboardingStepTwoInfoUploadAtLeastOneImage);
-
-      return;
-    }
-
-    onContinueButtonClick(data);
-  });
+  const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
@@ -48,41 +39,20 @@ export const DesktopOnboardingStepTwo = ({
       onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
-      <Grid container marginBottom={4} marginTop={2} xs={10}>
-        <Grid item xs={3}>
-          <UploadImageWithPreviewWithController
-            controllerProps={{
-              control,
-              name: 'firstImage',
-            }}
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <UploadImageWithPreviewWithController
-            controllerProps={{
-              control,
-              name: 'secondImage',
-            }}
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <UploadImageWithPreviewWithController
-            controllerProps={{
-              control,
-              name: 'thirdImage',
-            }}
-          />
-        </Grid>
-        <Grid item xs={3}>
-          <UploadImageWithPreviewWithController
-            controllerProps={{
-              control,
-              name: 'fourthImage',
-            }}
-          />
-        </Grid>
+      <Grid item xs={6}>
+        <UploadImagesWithController
+          controllerProps={{
+            control,
+            name: 'images',
+            rules: {
+              validate: {
+                formArrayMinLength: formArrayMinLength(1, 'Please upload at least one image'),
+              },
+            },
+          }}
+        />
       </Grid>
-      <Grid item xs={10}>
+      <Grid item xs={6}>
         <SelectWithController
           controllerProps={{
             control,

@@ -1,3 +1,4 @@
+import { Grid } from '@mui/material';
 import imageCompression from 'browser-image-compression';
 import { ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
@@ -5,20 +6,26 @@ import { useFilePicker } from 'use-file-picker';
 
 import { useModal } from '@ui';
 
-import { asyncTryCatchWrapper, replaceVariablesInTranslation, useTranslation } from '@utils';
+import {
+  asyncTryCatchWrapper,
+  repeatComponent,
+  replaceVariablesInTranslation,
+  useTranslation,
+} from '@utils';
 
 import { CropImageModalContent } from './parts';
-import { translationStrings } from './upload-image-with-preview.defaults';
-import S from './upload-image-with-preview.styles';
-import { IUploadImageWithPreviewProps } from './upload-image-with-preview.types';
+import { translationStrings } from './upload-images.defaults';
+import S from './upload-images.styles';
+import { IUploadImagesProps } from './upload-images.types';
 
-const UploadImageWithPreviewComponent = (
+const UploadImagesComponent = (
   {
     error,
+    helperText,
     imageSizeLimitInMegabytes = 5,
-    scaledImageSource,
-    setScaledImageSource,
-  }: IUploadImageWithPreviewProps,
+    scaledImages,
+    setScaledImages,
+  }: IUploadImagesProps,
   ref: ForwardedRef<HTMLDivElement>,
 ): JSX.Element => {
   const [imageSource, setImageSource] = useState<string>('');
@@ -87,19 +94,22 @@ const UploadImageWithPreviewComponent = (
   }, [loading, plainFiles.length]);
 
   const onClickSave = (scaledImage: string) => {
-    setScaledImageSource(scaledImage);
+    clear();
+    setImageSource('');
+    setScaledImages([...scaledImages, scaledImage]);
 
     hide();
   };
 
-  const handleRemoveScaledImage = () => {
+  const handleRemoveScaledImage = (index: number) => () => {
     clear();
     setImageSource('');
-    setScaledImageSource('');
+
+    setScaledImages(scaledImages.filter((_, _scaledImageIndex) => _scaledImageIndex !== index));
   };
 
   return (
-    <div>
+    <div ref={ref}>
       <Modal>
         <CropImageModalContent
           buttonText={translations.componentUploadImageWithPreviewModalButtonText}
@@ -108,24 +118,39 @@ const UploadImageWithPreviewComponent = (
           title={translations.componentUploadImageWithPreviewModalTitle}
         />
       </Modal>
-      <S.StyledWrapper ref={ref}>
-        {scaledImageSource ? (
-          <S.StyledScaledImagePreviewWrapper>
-            <S.StyledCancelIcon onClick={handleRemoveScaledImage} />
-            <S.StyledImage
-              alt={translations.componentUploadImageWithPreviewImageScaledImageAlt}
-              src={scaledImageSource}
-            />
-          </S.StyledScaledImagePreviewWrapper>
-        ) : (
-          <S.StyledImagePlaceholderWrapper>
-            <S.StyledAddIcon onClick={openFileSelector} />
-            <S.StyledImagePlaceholder error={error} loading={loading} onClick={openFileSelector} />
-          </S.StyledImagePlaceholderWrapper>
-        )}
-      </S.StyledWrapper>
+      <Grid container rowSpacing={4} xs={12}>
+        {repeatComponent((_index) => {
+          const currentElement = scaledImages[_index] || '';
+
+          return (
+            <Grid item xs={6}>
+              <S.StyledWrapper>
+                {currentElement ? (
+                  <S.StyledScaledImagePreviewWrapper>
+                    <S.StyledCancelIcon onClick={handleRemoveScaledImage(_index)} />
+                    <S.StyledImage
+                      alt={translations.componentUploadImageWithPreviewImageScaledImageAlt}
+                      src={currentElement}
+                    />
+                  </S.StyledScaledImagePreviewWrapper>
+                ) : (
+                  <S.StyledImagePlaceholderWrapper>
+                    <S.StyledAddIcon onClick={openFileSelector} />
+                    <S.StyledImagePlaceholder
+                      error={error}
+                      loading={loading}
+                      onClick={openFileSelector}
+                    />
+                  </S.StyledImagePlaceholderWrapper>
+                )}
+              </S.StyledWrapper>
+            </Grid>
+          );
+        }, 4)}
+      </Grid>
+      {helperText && <S.StyledFormHelperText>{helperText}</S.StyledFormHelperText>}
     </div>
   );
 };
 
-export const UploadImageWithPreview = memo(forwardRef(UploadImageWithPreviewComponent));
+export const UploadImages = memo(forwardRef(UploadImagesComponent));

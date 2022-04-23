@@ -5,8 +5,4 @@ export default {
 
   // Profile Type
   'component.desktop.onboarding.step.two.profile.type.field.label': 'Profile Type',
-
-  // Errors
-  'component.desktop.onboarding.step.two.info.upload.at.least.one.image':
-    'Please upload at least one image',
 };
