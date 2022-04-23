@@ -2,7 +2,10 @@ import { Autocomplete } from '@mui/material';
 import { ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
+import { useTranslation } from '@utils';
+
 import { locationsByNameAction } from './api';
+import { translationStrings } from './location-autocomplete.defaults';
 import { ILocationAutocompleteProps } from './location-autocomplete.types';
 
 const LocationAutocompleteComponent = (
@@ -17,6 +20,8 @@ const LocationAutocompleteComponent = (
 
   const [options, setOptions] = useState<string[]>([]);
   const [inputValue, setInputValue] = useState<string>('');
+
+  const translations = useTranslation(translationStrings);
 
   useEffect(() => {
     if (!inputValue) {
@@ -42,7 +47,8 @@ const LocationAutocompleteComponent = (
       filterOptions={(options) => options}
       inputValue={inputValue}
       loading={islocationsByNameLoading}
-      loadingText="Loading..."
+      loadingText={translations.componentLocationAutocompleteLoadingText}
+      noOptionsText={translations.componentLocationAutocompleteNoOptionsText}
       openOnFocus={false}
       options={options}
       onInputChange={(_, newValue) => setInputValue(newValue)}

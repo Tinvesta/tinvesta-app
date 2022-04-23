@@ -1,11 +1,24 @@
 import { Grid } from '@mui/material';
+import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
 
 import { LocationAutocompleteWithController, TextFieldWithController } from '@ui';
 
+import {
+  containEntersOrSpaces,
+  containSingleWord,
+  startsOrEndsWithWhitespace,
+  useTranslation,
+} from '@utils';
+
+import { EMAIL_UNIVERSAL_REGEX } from '@constants';
+
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepOneData } from '../../onboarding.types';
-import { defaultDesktopOnboardingStepOneFormData } from './desktop-onboarding-step-one.defaults';
+import {
+  defaultDesktopOnboardingStepOneFormData,
+  translationStrings,
+} from './desktop-onboarding-step-one.defaults';
 import { IDesktopOnboardingStepOneProps } from './desktop-onboarding-step-one.types';
 
 export const DesktopOnboardingStepOne = ({
@@ -16,13 +29,15 @@ export const DesktopOnboardingStepOne = ({
     defaultValues,
   });
 
+  const translations = useTranslation(translationStrings);
+
   const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
-      continueButtonText="Continue"
-      heading="General"
-      subHeading="Step 1/5"
+      continueButtonText={translations.commonButtonsContinue}
+      heading={translations.componentDesktopOnboardingStepOneHeading}
+      subHeading={translations.componentDesktopOnboardingStepOneSubheading}
       onSubmit={onSubmit}
     >
       <Grid item xs={6}>
@@ -31,13 +46,28 @@ export const DesktopOnboardingStepOne = ({
             control,
             name: 'firstName',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              maxLength: {
+                value: 50,
+                message: translations.componentDesktopOnboardingStepOneFirstNameFieldMaxLengthError,
+              },
+              validate: {
+                startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
+                  translations.commonFormFieldErrorStartsOrEndsWithWhitespace,
+                ),
+                containSingleWord: containSingleWord(
+                  translations.commonFormFieldErrorContainSingleWord,
+                ),
+              },
             },
           }}
           inputProps={{
             fullWidth: true,
-            label: 'First Name',
-            autoComplete: 'disabled',
+            autoComplete: nanoid(),
+            label: translations.componentDesktopOnboardingStepOneFirstNameFieldLabel,
           }}
         />
       </Grid>
@@ -47,13 +77,28 @@ export const DesktopOnboardingStepOne = ({
             control,
             name: 'lastName',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              maxLength: {
+                value: 50,
+                message: translations.componentDesktopOnboardingStepOneLastNameFieldMaxLengthError,
+              },
+              validate: {
+                startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
+                  translations.commonFormFieldErrorStartsOrEndsWithWhitespace,
+                ),
+                containSingleWord: containSingleWord(
+                  translations.commonFormFieldErrorContainSingleWord,
+                ),
+              },
             },
           }}
           inputProps={{
             fullWidth: true,
-            label: 'Last Name',
-            autoComplete: 'disabled',
+            autoComplete: nanoid(),
+            label: translations.componentDesktopOnboardingStepOneLastNameFieldLabel,
           }}
         />
       </Grid>
@@ -63,13 +108,26 @@ export const DesktopOnboardingStepOne = ({
             control,
             name: 'contactEmail',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              pattern: {
+                value: EMAIL_UNIVERSAL_REGEX,
+                message:
+                  translations.componentDesktopOnboardingStepOneContactEmailFieldPatternMatchError,
+              },
+              maxLength: {
+                value: 100,
+                message:
+                  translations.componentDesktopOnboardingStepOneContactEmailFieldMaxLengthError,
+              },
             },
           }}
           inputProps={{
             fullWidth: true,
-            label: 'Contact Email',
-            autoComplete: 'disabled',
+            autoComplete: nanoid(),
+            label: translations.componentDesktopOnboardingStepOneContactEmailFieldLabel,
           }}
         />
       </Grid>
@@ -79,13 +137,29 @@ export const DesktopOnboardingStepOne = ({
             control,
             name: 'companyName',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              maxLength: {
+                value: 100,
+                message:
+                  translations.componentDesktopOnboardingStepOneCompanyNameFieldMaxLengthError,
+              },
+              validate: {
+                startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
+                  translations.commonFormFieldErrorStartsOrEndsWithWhitespace,
+                ),
+                containEntersOrSpaces: containEntersOrSpaces(
+                  translations.commonFormFieldErrorContainEntersOrSpaces,
+                ),
+              },
             },
           }}
           inputProps={{
             fullWidth: true,
-            label: 'Company Name',
-            autoComplete: 'disabled',
+            autoComplete: nanoid(),
+            label: translations.componentDesktopOnboardingStepOneCompanyNameFieldLabel,
           }}
         />
       </Grid>
@@ -95,11 +169,14 @@ export const DesktopOnboardingStepOne = ({
             control,
             name: 'location',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           inputProps={{
-            label: 'Location',
+            label: translations.componentDesktopOnboardingStepOneLocationFieldLabel,
           }}
         />
       </Grid>
