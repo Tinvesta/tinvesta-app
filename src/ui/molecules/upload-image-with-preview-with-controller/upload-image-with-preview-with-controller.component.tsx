@@ -10,12 +10,11 @@ export const UploadImageWithPreviewWithController = <TFieldValues,>({
 }: IUploadImageWithPreviewWithControllerProps<TFieldValues>): JSX.Element => (
   <Controller
     {...controllerProps}
-    render={({ field, fieldState: { error, invalid } }) => (
+    render={({ field, fieldState: { invalid } }) => (
       <UploadImageWithPreview
         {...uploadImageWithProviderProps}
         {...field}
         error={invalid}
-        helperText={error?.message || ' '}
         id={field.name}
         // @ts-expect-error
         scaledImageSource={field.value}

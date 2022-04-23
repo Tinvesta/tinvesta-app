@@ -34,7 +34,10 @@ export interface IDesktopOnboardingStepOneData {
 
 export interface IDesktopOnboardingStepTwoData {
   clientTypeId: string | number;
-  representativeImage: string;
+  firstImage: string;
+  fourthImage: string;
+  secondImage: string;
+  thirdImage: string;
 }
 
 export interface IDesktopOnboardingStepThreeStartupData {

@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
-import { Cancel as CancelIcon } from '@mui/icons-material';
-import { FormHelperText } from '@mui/material';
+import { AddCircleOutlined as AddIcon, Cancel as CancelIcon } from '@mui/icons-material';
+import { LoadingButton } from '@mui/lab';
 
 const StyledWrapper = styled.span`
   display: flex;
@@ -10,19 +10,10 @@ const StyledWrapper = styled.span`
 `;
 
 const StyledImage = styled.img`
-  width: 150px;
-  height: 225px;
+  width: 115px;
+  height: 175px;
+  background-color: ${({ theme }) => theme.palette.grey[400]};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-`;
-
-const StyledImagePlaceholder = styled.div<{ error?: boolean }>`
-  width: 150px;
-  height: 225px;
-  border: 1px dashed;
-  transition: all 150ms ease-in-out;
-  border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-
-  ${({ error, theme }) => error && `border-color: ${theme.palette.error.main};`}
 `;
 
 const StyledModalContentWrapper = styled.div`
@@ -39,17 +30,27 @@ const StyledModalContentWrapper = styled.div`
   }
 `;
 
-const StyledFormHelperText = styled(FormHelperText)`
-  text-align: center;
-  color: ${({ theme }) => theme.palette.error.main};
-`;
-
-const StyledCloseIcon = styled(CancelIcon)`
+const StyledCancelIcon = styled(CancelIcon)`
   cursor: pointer;
   position: absolute;
   transform: rotate(0deg);
   transition: all 150ms ease-in-out;
-  top: -${({ theme }) => theme.spacing(3)};
+  bottom: -${({ theme }) => theme.spacing(3)};
+  right: -${({ theme }) => theme.spacing(3)};
+  fill: ${({ theme }) => theme.palette.error.main};
+
+  &:hover {
+    transform: rotate(90deg);
+  }
+`;
+
+const StyledAddIcon = styled(AddIcon)`
+  z-index: 1;
+  cursor: pointer;
+  position: absolute;
+  transform: rotate(0deg);
+  transition: all 150ms ease-in-out;
+  bottom: -${({ theme }) => theme.spacing(3)};
   right: -${({ theme }) => theme.spacing(3)};
   fill: ${({ theme }) => theme.palette.error.main};
 
@@ -63,13 +64,30 @@ const StyledScaledImagePreviewWrapper = styled.span`
   position: relative;
 `;
 
+const StyledImagePlaceholderWrapper = styled.span`
+  display: flex;
+  position: relative;
+`;
+
+const StyledImagePlaceholder = styled(LoadingButton)<{ error?: boolean }>`
+  width: 115px;
+  height: 175px;
+  cursor: pointer;
+  border: 1px dashed;
+  transition: all 150ms ease-in-out;
+  border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+
+  ${({ error, theme }) => error && `border-color: ${theme.palette.error.main};`}
+`;
+
 const S = {
   StyledImage,
   StyledWrapper,
-  StyledCloseIcon,
-  StyledFormHelperText,
+  StyledAddIcon,
+  StyledCancelIcon,
   StyledImagePlaceholder,
   StyledModalContentWrapper,
+  StyledImagePlaceholderWrapper,
   StyledScaledImagePreviewWrapper,
 };
 
