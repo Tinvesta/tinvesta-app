@@ -6,13 +6,13 @@ import { IUploadImagesWithControllerProps } from './upload-images-with-controlle
 
 export const UploadImagesWithController = <TFieldValues,>({
   controllerProps,
-  uploadImageWithProviderProps,
+  uploadImagesProps,
 }: IUploadImagesWithControllerProps<TFieldValues>): JSX.Element => (
   <Controller
     {...controllerProps}
     render={({ field, fieldState: { error, invalid } }) => (
       <UploadImages
-        {...uploadImageWithProviderProps}
+        {...uploadImagesProps}
         {...field}
         error={invalid}
         helperText={error?.message || ' '}

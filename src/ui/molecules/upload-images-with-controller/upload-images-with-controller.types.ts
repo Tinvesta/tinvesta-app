@@ -4,5 +4,5 @@ import { IUploadImagesProps } from '@ui';
 
 export interface IUploadImagesWithControllerProps<TFieldValues> {
   controllerProps: Omit<UseControllerProps<TFieldValues>, 'render'>;
-  uploadImageWithProviderProps?: Omit<IUploadImagesProps, 'scaledImages' | 'setScaledImages'>;
+  uploadImagesProps?: Omit<IUploadImagesProps, 'scaledImages' | 'setScaledImages'>;
 }
