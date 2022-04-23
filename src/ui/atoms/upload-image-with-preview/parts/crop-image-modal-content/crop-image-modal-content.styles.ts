@@ -3,6 +3,7 @@ import styled from '@emotion/styled';
 const StyledModalContentWrapper = styled.div`
   display: flex;
   text-align: center;
+  align-items: center;
   flex-direction: column;
 
   > canvas {

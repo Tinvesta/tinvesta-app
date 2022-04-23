@@ -7,5 +7,5 @@ export default {
 
   // modal
   'component.upload.image.with.preview.modal.button.text': 'Crop',
-  'component.upload.image.with.preview.modal.title': 'Crop representative image',
+  'component.upload.image.with.preview.modal.title': 'Crop image',
 };

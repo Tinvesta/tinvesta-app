@@ -1,12 +1,13 @@
 import imageCompression from 'browser-image-compression';
-import { ChangeEvent, ForwardedRef, forwardRef, memo, useState } from 'react';
+import { ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { useFilePicker } from 'use-file-picker';
 
 import { useModal } from '@ui';
 
 import { asyncTryCatchWrapper, replaceVariablesInTranslation, useTranslation } from '@utils';
 
-import { CropImageModalContent, UploadImageButton } from './parts';
+import { CropImageModalContent } from './parts';
 import { translationStrings } from './upload-image-with-preview.defaults';
 import S from './upload-image-with-preview.styles';
 import { IUploadImageWithPreviewProps } from './upload-image-with-preview.types';
@@ -14,7 +15,6 @@ import { IUploadImageWithPreviewProps } from './upload-image-with-preview.types'
 const UploadImageWithPreviewComponent = (
   {
     error,
-    helperText,
     imageSizeLimitInMegabytes = 5,
     scaledImageSource,
     setScaledImageSource,
@@ -22,18 +22,20 @@ const UploadImageWithPreviewComponent = (
   ref: ForwardedRef<HTMLDivElement>,
 ): JSX.Element => {
   const [imageSource, setImageSource] = useState<string>('');
+  const [openFileSelector, { clear, loading, plainFiles }] = useFilePicker({
+    multiple: false,
+    accept: 'image/jpg, image/jpeg, image/png',
+  });
 
   const translations = useTranslation(translationStrings);
-
   const { hide, Modal, show } = useModal({ withCloseIcon: false });
 
   const compressAndSetImageSource = (file: File) => async () => {
     const reader = new FileReader();
     const compressedFile = await imageCompression(file, {
-      maxWidthOrHeight: 640,
       useWebWorker: true,
-      maxSizeMB: 1,
-      maxIteration: 5,
+      maxSizeMB: 2,
+      maxIteration: 4,
     });
 
     reader.addEventListener('load', () => {
@@ -47,15 +49,18 @@ const UploadImageWithPreviewComponent = (
     reader.readAsDataURL(compressedFile);
   };
 
-  const onCompressAndSetImageSourceError = () =>
+  const onCompressAndSetImageSourceError = () => {
+    clear();
+    setImageSource('');
     toast.error(translations.componentUploadImageWithPreviewErrorCompression);
+  };
 
-  const onSelectFile = async (event: ChangeEvent<HTMLInputElement>) => {
-    if (!event.target.files || event.target.files.length === 0) {
+  const onSelectFiles = async (files: File[]) => {
+    if (!files || files.length === 0) {
       return;
     }
 
-    const firstFile = event.target.files[0];
+    const firstFile = files[0];
     const fileSizeInMegabytes = firstFile.size / 1024 / 1024;
 
     if (fileSizeInMegabytes > imageSizeLimitInMegabytes) {
@@ -66,11 +71,20 @@ const UploadImageWithPreviewComponent = (
         ),
       );
 
+      clear();
+      setImageSource('');
+
       return;
     }
 
     asyncTryCatchWrapper(compressAndSetImageSource(firstFile), onCompressAndSetImageSourceError);
   };
+
+  useEffect(() => {
+    if (!imageSource && !loading && plainFiles.length > 0) {
+      onSelectFiles(plainFiles);
+    }
+  }, [loading, plainFiles.length]);
 
   const onClickSave = (scaledImage: string) => {
     setScaledImageSource(scaledImage);
@@ -78,7 +92,11 @@ const UploadImageWithPreviewComponent = (
     hide();
   };
 
-  const handleRemoveScaledImage = () => setScaledImageSource('');
+  const handleRemoveScaledImage = () => {
+    clear();
+    setImageSource('');
+    setScaledImageSource('');
+  };
 
   return (
     <div>
@@ -93,22 +111,19 @@ const UploadImageWithPreviewComponent = (
       <S.StyledWrapper ref={ref}>
         {scaledImageSource ? (
           <S.StyledScaledImagePreviewWrapper>
-            <S.StyledCloseIcon onClick={handleRemoveScaledImage} />
+            <S.StyledCancelIcon onClick={handleRemoveScaledImage} />
             <S.StyledImage
               alt={translations.componentUploadImageWithPreviewImageScaledImageAlt}
               src={scaledImageSource}
             />
           </S.StyledScaledImagePreviewWrapper>
         ) : (
-          <S.StyledImagePlaceholder error={error} />
+          <S.StyledImagePlaceholderWrapper>
+            <S.StyledAddIcon onClick={openFileSelector} />
+            <S.StyledImagePlaceholder error={error} loading={loading} onClick={openFileSelector} />
+          </S.StyledImagePlaceholderWrapper>
         )}
-        <UploadImageButton
-          buttonText={translations.componentUploadImageWithPreviewImageUploadButtonText}
-          error={error}
-          onChange={onSelectFile}
-        />
       </S.StyledWrapper>
-      {helperText && <S.StyledFormHelperText>{helperText}</S.StyledFormHelperText>}
     </div>
   );
 };
