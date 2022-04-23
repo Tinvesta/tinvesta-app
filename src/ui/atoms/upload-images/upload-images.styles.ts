@@ -56,7 +56,7 @@ const StyledAddIcon = styled(AddIcon)`
   fill: ${({ theme }) => theme.palette.error.main};
 
   &:hover {
-    transform: rotate(90deg);
+    transform: scale(1.2);
   }
 `;
 
