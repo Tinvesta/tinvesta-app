@@ -24,6 +24,8 @@ export * from './map-client-types-to-dropdown-options/map-client-types-to-dropdo
 export * from './array-of-objects-to-array-of-numbers/array-of-objects-to-array-of-numbers.function';
 export * from './map-focus-markets-to-dropdown-options/map-focus-markets-to-dropdown-options.function';
 export * from './map-startup-sectors-to-dropdown-options/map-startup-sectors-to-dropdown-options.function';
+export * from './map-investment-sizes-to-dropdown-options/map-investment-sizes-to-dropdown-options.function';
 export * from './map-industrial-sectors-to-dropdown-options/map-industrial-sectors-to-dropdown-options.function';
+export * from './map-investment-stage-types-to-dropdown-options/map-investment-stage-types-to-dropdown-options.function';
 export * from './map-startup-profile-creator-types-to-dropdown-options/map-startup-profile-creator-types-to-dropdown-options.function';
 export * from './get-first-name-and-last-name-from-multi-part-full-name/get-first-name-and-last-name-from-multi-part-full-name.function';

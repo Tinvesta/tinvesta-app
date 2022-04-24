@@ -49,7 +49,7 @@ export interface IDesktopOnboardingStepThreeStartupData {
 export interface IDesktopOnboardingStepFourStartupData {
   investmentSizeIds: number[];
   investmentStageTypeIds: number[];
-  whatAreYouLookingFor: string;
+  startupClaim: string;
 }
 
 export interface IDesktopOnboardingStepFiveStartupData {
