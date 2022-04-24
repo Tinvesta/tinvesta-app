@@ -10,10 +10,10 @@ export default {
   'component.desktop.onboarding.step.three.startup.team.size.field.label': 'Team Size',
 
   // Focus Market
-  'component.desktop.onboarding.step.three.startup.focus.market.field.label': 'Focus Market',
+  'component.desktop.onboarding.step.three.startup.focus.market.field.label': 'Focus Markets',
 
   // Sector
-  'component.desktop.onboarding.step.three.startup.sector.field.label': 'Sector',
+  'component.desktop.onboarding.step.three.startup.sector.field.label': 'Sectors',
 
   // Industrial Sectors
   'component.desktop.onboarding.step.three.startup.industrial.sectors.field.label':

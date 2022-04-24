@@ -10,6 +10,9 @@ export const defaultDesktopOnboardingStepThreeInvestorFormData: IDesktopOnboardi
   };
 
 export const translationStrings = [
+  'common.buttons.back',
+  'common.buttons.continue',
+  'common.form.field.error.required',
   'common.focus.markets.b2b',
   'common.focus.markets.b2c',
   'common.industrial.sectors.web3',
@@ -42,4 +45,14 @@ export const translationStrings = [
   'common.startup.sectors.software',
   'common.startup.sectors.service.industry',
   'common.startup.sectors.physical.product',
+  'common.investor.profile.types.private',
+  'common.investor.profile.types.corporate',
+  'common.investor.profile.types.institutional',
+
+  'component.desktop.onboarding.step.three.investor.heading',
+  'component.desktop.onboarding.step.three.investor.subheading',
+  'component.desktop.onboarding.step.three.investor.focus.market.field.label',
+  'component.desktop.onboarding.step.three.investor.your.position.field.label',
+  'component.desktop.onboarding.step.three.investor.startup.sector.field.label',
+  'component.desktop.onboarding.step.three.investor.industrial.sectors.field.label',
 ] as const;
