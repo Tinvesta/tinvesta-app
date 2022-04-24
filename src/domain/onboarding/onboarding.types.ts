@@ -35,6 +35,7 @@ export interface IDesktopOnboardingStepOneData {
 export interface IDesktopOnboardingStepTwoData {
   clientTypeId: string | number;
   images: string[];
+  whatYouAreLookingFor: string;
 }
 
 export interface IDesktopOnboardingStepThreeStartupData {

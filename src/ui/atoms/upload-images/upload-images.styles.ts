@@ -41,7 +41,7 @@ const StyledCancelIcon = styled(CancelIcon)`
   fill: ${({ theme }) => theme.palette.error.main};
 
   &:hover {
-    transform: rotate(90deg);
+    transform: scale(1.2);
   }
 `;
 

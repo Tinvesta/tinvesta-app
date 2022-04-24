@@ -1,5 +1,4 @@
 import { Grid } from '@mui/material';
-import { nanoid } from 'nanoid';
 import { useForm } from 'react-hook-form';
 
 import { LocationAutocompleteWithController, TextFieldWithController } from '@ui';
@@ -66,7 +65,7 @@ export const DesktopOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
-            autoComplete: nanoid(),
+            autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepOneFirstNameFieldLabel,
           }}
         />
@@ -97,7 +96,7 @@ export const DesktopOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
-            autoComplete: nanoid(),
+            autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepOneLastNameFieldLabel,
           }}
         />
@@ -126,7 +125,7 @@ export const DesktopOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
-            autoComplete: nanoid(),
+            autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepOneContactEmailFieldLabel,
           }}
         />
@@ -137,10 +136,6 @@ export const DesktopOnboardingStepOne = ({
             control,
             name: 'companyName',
             rules: {
-              required: {
-                value: true,
-                message: translations.commonFormFieldErrorRequired,
-              },
               maxLength: {
                 value: 100,
                 message:
@@ -158,7 +153,7 @@ export const DesktopOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
-            autoComplete: nanoid(),
+            autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepOneCompanyNameFieldLabel,
           }}
         />
