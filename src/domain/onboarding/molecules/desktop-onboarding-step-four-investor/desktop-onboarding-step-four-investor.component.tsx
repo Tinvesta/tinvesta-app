@@ -45,10 +45,10 @@ export const DesktopOnboardingStepFourInvestor = ({
 
   return (
     <DesktopOnboardingFormLayout
-      backButtonText="Back"
-      continueButtonText="Continue"
-      heading="Setup Investor"
-      subHeading="Step 4/5"
+      backButtonText={translations.commonButtonsBack}
+      continueButtonText={translations.commonButtonsContinue}
+      heading={translations.componentDesktopOnboardingStepFourInvestorHeading}
+      subHeading={translations.componentDesktopOnboardingStepFourInvestorSubheading}
       onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
@@ -58,7 +58,10 @@ export const DesktopOnboardingStepFourInvestor = ({
             control,
             name: 'teamSizeIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -67,9 +70,9 @@ export const DesktopOnboardingStepFourInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
-            label: 'Preferred Team Size',
             options: teamSizesDropdownOptions,
             labelId: 'desktop-onboarding-step-two-investor-team-size-id-select',
+            label: translations.componentDesktopOnboardingStepFourInvestorTeamSizeFieldLabel,
           }}
         />
       </Grid>
@@ -79,7 +82,10 @@ export const DesktopOnboardingStepFourInvestor = ({
             control,
             name: 'investmentStageTypeIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -88,9 +94,9 @@ export const DesktopOnboardingStepFourInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
-            label: 'Preferred Investment Stage',
             options: investmentStageTypesDropdownOptions,
             labelId: 'desktop-onboarding-step-two-investor-investment-stage-type-ids-select',
+            label: translations.componentDesktopOnboardingStepFourInvestorInvestmentStageFieldLabel,
           }}
         />
       </Grid>
@@ -100,7 +106,10 @@ export const DesktopOnboardingStepFourInvestor = ({
             control,
             name: 'investmentSizeIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -110,8 +119,8 @@ export const DesktopOnboardingStepFourInvestor = ({
             multiple: true,
             fullWidth: true,
             options: investmentSizesDropdownOptions,
-            label: "How much money you'd like to give?",
             labelId: 'desktop-onboarding-step-two-investor-investment-size-ids-select',
+            label: translations.componentDesktopOnboardingStepFourInvestorInvestmentSizeFieldLabel,
           }}
         />
       </Grid>
