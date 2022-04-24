@@ -3,9 +3,14 @@ import { useForm } from 'react-hook-form';
 
 import { TextFieldWithController } from '@ui';
 
+import { containEntersOrSpaces, startsOrEndsWithWhitespace, useTranslation } from '@utils';
+
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepFiveStartupData } from '../../onboarding.types';
-import { defaultDesktopOnboardingStepFiveStartupFormData } from './desktop-onboarding-step-five-startup.defaults';
+import {
+  defaultDesktopOnboardingStepFiveStartupFormData,
+  translationStrings,
+} from './desktop-onboarding-step-five-startup.defaults';
 import { IDesktopOnboardingStepFiveStartupProps } from './desktop-onboarding-step-five-startup.types';
 
 export const DesktopOnboardingStepFiveStartup = ({
@@ -17,14 +22,16 @@ export const DesktopOnboardingStepFiveStartup = ({
     defaultValues,
   });
 
+  const translations = useTranslation(translationStrings);
+
   const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
-      backButtonText="Back"
-      continueButtonText="Continue"
-      heading="Setup Startup"
-      subHeading="Step 5/5"
+      backButtonText={translations.commonButtonsBack}
+      continueButtonText={translations.commonButtonsContinue}
+      heading={translations.componentDesktopOnboardingStepFiveStartupHeading}
+      subHeading={translations.componentDesktopOnboardingStepFiveStartupSubheading}
       onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
@@ -34,36 +41,35 @@ export const DesktopOnboardingStepFiveStartup = ({
             control,
             name: 'missionStatement',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              maxLength: {
+                value: 160,
+                message:
+                  // eslint-disable-next-line max-len
+                  translations.componentDesktopOnboardingStepFiveStartupMissionStatementFieldMaxLengthError,
+              },
+              validate: {
+                startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
+                  translations.commonFormFieldErrorStartsOrEndsWithWhitespace,
+                ),
+                containEntersOrSpaces: containEntersOrSpaces(
+                  translations.commonFormFieldErrorContainEntersOrSpaces,
+                ),
+              },
             },
           }}
           inputProps={{
-            rows: 3,
+            rows: 4,
             fullWidth: true,
             multiline: true,
             autoComplete: 'disabled',
-            label: 'Mission Statement',
-            placeholder: '"Tinvesta builds an efficient and scalable matchmaking service."',
-          }}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextFieldWithController
-          controllerProps={{
-            control,
-            name: 'startupClaim',
-            rules: {
-              required: true,
-            },
-          }}
-          inputProps={{
-            rows: 3,
-            fullWidth: true,
-            multiline: true,
-            autoComplete: 'disabled',
-            label: 'Startup Claim',
+            label: translations.componentDesktopOnboardingStepFiveStartupMissionStatementFieldLabel,
             placeholder:
-              '"Tinvesta enables startups and investors to find each other in the easiest way!"',
+              // eslint-disable-next-line max-len
+              translations.componentDesktopOnboardingStepFiveStartupMissionStatementFieldPlaceholder,
           }}
         />
       </Grid>
@@ -73,17 +79,34 @@ export const DesktopOnboardingStepFiveStartup = ({
             control,
             name: 'visionStatement',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              maxLength: {
+                value: 160,
+                message:
+                  // eslint-disable-next-line max-len
+                  translations.componentDesktopOnboardingStepFiveStartupVisionStatementFieldMaxLengthError,
+              },
+              validate: {
+                startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
+                  translations.commonFormFieldErrorStartsOrEndsWithWhitespace,
+                ),
+                containEntersOrSpaces: containEntersOrSpaces(
+                  translations.commonFormFieldErrorContainEntersOrSpaces,
+                ),
+              },
             },
           }}
           inputProps={{
-            rows: 3,
+            rows: 4,
             fullWidth: true,
             multiline: true,
             autoComplete: 'disabled',
-            label: 'Vision Statement',
+            label: translations.componentDesktopOnboardingStepFiveStartupVisionStatementFieldLabel,
             placeholder:
-              '"We will be the leading provider of simple matchmaking services to startups and investors worldwide."',
+              translations.componentDesktopOnboardingStepFiveStartupVisionStatementFieldPlaceholder,
           }}
         />
       </Grid>
