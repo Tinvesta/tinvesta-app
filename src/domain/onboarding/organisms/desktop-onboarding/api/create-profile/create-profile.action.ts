@@ -1,6 +1,6 @@
 import { nanoid } from 'nanoid';
 
-import { base64ToFile, getFileExtensionFromBase64, hasOwnProperty, isString } from '@utils';
+import { base64ToFile, getFileExtensionFromBase64, hasOwnProperty, isArray } from '@utils';
 
 import { nextAxiosInstance, supabaseInstance } from '@infrastructure';
 
@@ -29,23 +29,26 @@ export const createAccountAction = async (data: IDesktopOnboardingMachineContext
       delete currentObject.teamSizeId;
     }
 
-    if (
-      hasOwnProperty(currentObject, 'representativeImage') &&
-      isString(currentObject.representativeImage)
-    ) {
-      const fileExtension = getFileExtensionFromBase64(currentObject.representativeImage);
-      const fileName = `${nanoid()}.${fileExtension}`;
-      const base64AsFile = base64ToFile(currentObject.representativeImage, fileName);
+    if (hasOwnProperty(currentObject, 'images') && isArray(currentObject.images)) {
+      const result = [];
 
-      delete currentObject.representativeImage;
+      for (const _image of currentObject.images) {
+        const fileExtension = getFileExtensionFromBase64(_image);
+        const fileName = `${nanoid()}.${fileExtension}`;
+        const base64AsFile = base64ToFile(_image, fileName);
 
-      if (base64AsFile) {
-        const { data: avatarUploadData } = await supabaseInstance.storage
-          .from('avatars')
-          .upload(fileName, base64AsFile);
+        if (base64AsFile) {
+          // eslint-disable-next-line no-await-in-loop
+          const { data: avatarUploadData } = await supabaseInstance.storage
+            .from('avatars')
+            .upload(fileName, base64AsFile);
 
-        currentObject.avatarKey = avatarUploadData?.Key;
+          result.push(avatarUploadData?.Key);
+        }
       }
+
+      currentObject.imageKeys = result;
+      delete currentObject.images;
     }
 
     return { ..._accumulator, ...currentObject };

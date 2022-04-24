@@ -1,19 +1,17 @@
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { countWords } from '@utils';
+import { countWords, isStartupProfile } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
 import { EApiError } from '@enums';
 
-import { STARTUP_CLIENT_TYPE_ID } from '@constants';
-
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
-const createAvatarRecord = async (avatarKey: string) => {
+const createAvatarRecord = async (profileId: string, imageKey: string) => {
   const { data: storagePublicUrlData, error: storagePublicUrlError } =
-    await supabaseInstance.storage.from('avatars').getPublicUrl(avatarKey);
+    await supabaseInstance.storage.from('avatars').getPublicUrl(imageKey);
 
   if (storagePublicUrlError || !storagePublicUrlData) {
     return null;
@@ -25,16 +23,11 @@ const createAvatarRecord = async (avatarKey: string) => {
       ? storagePublicUrlData.publicURL.replace('/avatars', '')
       : storagePublicUrlData.publicURL;
 
-  const { data: avatarData, error: avatarError } = await supabaseInstance.from('avatars').insert({
-    avatar_key: avatarKey,
+  await supabaseInstance.from('avatars').insert({
+    avatar_key: imageKey,
+    profile_id: profileId,
     avatar_public_url: parsedPublicUrl,
   });
-
-  if (avatarError) {
-    return null;
-  }
-
-  return avatarData[0].id;
 };
 
 const assignWithBulkInsert = async (
@@ -70,12 +63,15 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   });
 
   const userData = request.body;
-  const isStartupProfile = STARTUP_CLIENT_TYPE_ID === userData.clientTypeId;
+  const isStartup = isStartupProfile(userData.clientTypeId);
 
-  const avatarId = await createAvatarRecord(userData.avatarKey);
-
-  if (!avatarId) {
+  if (!userData.imageKeys || userData.imageKeys.length === 0) {
     return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_AVATAR_UPLOAD);
+  }
+
+  for (const _imageKey of userData.imageKeys) {
+    // eslint-disable-next-line no-await-in-loop
+    await createAvatarRecord(user.id, _imageKey);
   }
 
   // assign focus markets
@@ -158,7 +154,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_TEAM_SIZES);
   }
 
-  if (!isStartupProfile) {
+  if (!isStartup) {
     // assign investor demand types
     const { error: assignInvestorDemandTypesError } = await assignWithBulkInsert(
       user.id,
@@ -182,21 +178,30 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   await supabaseInstance
     .from('profiles')
     .update({
-      avatar_id: avatarId,
       location: userData.location,
       last_name: userData.lastName,
       first_name: userData.firstName,
       company_name: userData.companyName,
       contact_email: userData.contactEmail,
-      startup_claim: userData.startupClaim,
       client_type_id: userData.clientTypeId,
-      vision_statement: userData.visionStatement,
-      mission_statement: userData.missionStatement,
-      what_you_are_looking_for: userData.whatAreYouLookingFor,
-      investor_profile_type_id: userData.investorProfileTypeId,
-      startup_profile_creator_type_id: userData.startupProfileCreatorTypeId,
+      what_are_you_looking_for: userData.whatAreYouLookingFor,
     })
     .eq('id', user.id);
+
+  await (!isStartup
+    ? supabaseInstance.from('investors').insert({
+        profile_id: user.id,
+        investor_profile_type_id: userData.investorProfileTypeId,
+        why_startup_should_match_with_you: userData.whyStartupShouldMatchWithYou,
+      })
+    : supabaseInstance.from('startups').insert({
+        profile_id: user.id,
+        startup_claim: userData.startupClaim,
+        vision_statement: userData.visionStatement,
+        mission_statement: userData.missionStatement,
+        investor_profile_type_id: userData.investorProfileTypeId,
+        startup_profile_creator_type_id: userData.startupProfileCreatorTypeId,
+      }));
 
   response.send({ status: 'success' });
 };
