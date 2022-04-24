@@ -3,15 +3,20 @@ import { useForm } from 'react-hook-form';
 
 import { AutocompleteWithController, SelectWithController } from '@ui';
 
-import { DesktopOnboardingFormLayout } from '../../atoms';
-import { IDesktopOnboardingStepThreeInvestorData } from '../../onboarding.types';
 import {
   mapFocusMarketsToDropdownOptions,
   mapIndustrialSectorsToDropdownOptions,
-  mapInvestorProfileTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
-} from '../../utils';
-import { defaultDesktopOnboardingStepThreeInvestorFormData } from './desktop-onboarding-step-three-investor.defaults';
+  useTranslation,
+} from '@utils';
+
+import { DesktopOnboardingFormLayout } from '../../atoms';
+import { IDesktopOnboardingStepThreeInvestorData } from '../../onboarding.types';
+import { mapInvestorProfileTypesToDropdownOptions } from '../../utils';
+import {
+  defaultDesktopOnboardingStepThreeInvestorFormData,
+  translationStrings,
+} from './desktop-onboarding-step-three-investor.defaults';
 import { IDesktopOnboardingStepThreeInvestorProps } from './desktop-onboarding-step-three-investor.types';
 
 export const DesktopOnboardingStepThreeInvestor = ({
@@ -27,11 +32,18 @@ export const DesktopOnboardingStepThreeInvestor = ({
     defaultValues,
   });
 
+  const translations = useTranslation(translationStrings);
   const investorProfileTypesDropdownOptions =
     mapInvestorProfileTypesToDropdownOptions(investorProfileTypes);
-  const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets);
-  const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(startupSectors);
-  const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(industrialSectors);
+  const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
+  const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
+    startupSectors,
+    translations,
+  );
+  const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(
+    industrialSectors,
+    translations,
+  );
 
   const onSubmit = handleSubmit(onContinueButtonClick);
 
