@@ -99,7 +99,7 @@ export const DesktopOnboarding = ({
           alt="Tinvesta"
           layout="fill"
           objectFit="cover"
-          src="/images/desktop-onboarding-wave-haikei.svg"
+          src="/images/desktop-onboarding-background.svg"
         />
         <Loader size="large" />
       </CenterBlockLayout>
