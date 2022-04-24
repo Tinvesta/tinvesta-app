@@ -54,7 +54,6 @@ export interface IDesktopOnboardingStepFourStartupData {
 
 export interface IDesktopOnboardingStepFiveStartupData {
   missionStatement: string;
-  startupClaim: string;
   visionStatement: string;
 }
 

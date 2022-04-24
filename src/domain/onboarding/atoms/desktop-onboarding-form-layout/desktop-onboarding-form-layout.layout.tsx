@@ -10,7 +10,9 @@ import S from './desktop-onboarding-form-layout.styles';
 import { IDesktopOnboardingFormLayoutProps } from './desktop-onboarding-form-layout.types';
 
 const DesktopOnboardingFormLayoutComponent = ({
+  addArrowToBackButton = true,
   backButtonText,
+  centerActionButton = false,
   children,
   continueButtonText,
   heading,
@@ -38,14 +40,20 @@ const DesktopOnboardingFormLayoutComponent = ({
         <S.StyledFormWrapper {...formProps}>
           <Grid container columnSpacing={4} justifyContent="center" rowSpacing={3}>
             {children}
-            <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
+            <Grid
+              item
+              display="flex"
+              gap={4}
+              justifyContent={centerActionButton ? 'center' : 'flex-end'}
+              xs={12}
+            >
               {backButtonText && (
                 <Grid item xs={3}>
                   <LoadingButton
                     fullWidth
                     disabled={isLoading}
                     size="large"
-                    startIcon={<ArrowBackIcon />}
+                    startIcon={addArrowToBackButton && <ArrowBackIcon />}
                     variant="text"
                     onClick={onBackButtonClick}
                   >
