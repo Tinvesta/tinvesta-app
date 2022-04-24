@@ -35,7 +35,7 @@ export interface IDesktopOnboardingStepOneData {
 export interface IDesktopOnboardingStepTwoData {
   clientTypeId: string | number;
   images: string[];
-  whatYouAreLookingFor: string;
+  whatAreYouLookingFor: string;
 }
 
 export interface IDesktopOnboardingStepThreeStartupData {
@@ -49,7 +49,7 @@ export interface IDesktopOnboardingStepThreeStartupData {
 export interface IDesktopOnboardingStepFourStartupData {
   investmentSizeIds: number[];
   investmentStageTypeIds: number[];
-  whatYouAreLookingFor: string;
+  whatAreYouLookingFor: string;
 }
 
 export interface IDesktopOnboardingStepFiveStartupData {
@@ -73,5 +73,5 @@ export interface IDesktopOnboardingStepFourInvestorData {
 
 export interface IDesktopOnboardingStepFiveInvestorData {
   investorDemandTypeIds: number[];
-  whatYouAreLookingFor: string;
+  whatAreYouLookingFor: string;
 }

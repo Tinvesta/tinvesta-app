@@ -3,7 +3,7 @@ import { IDesktopOnboardingStepTwoData } from '../../onboarding.types';
 export const defaultDesktopOnboardingStepTwoFormData: IDesktopOnboardingStepTwoData = {
   clientTypeId: '',
   images: [],
-  whatYouAreLookingFor: '',
+  whatAreYouLookingFor: '',
 };
 
 export const translationStrings = [

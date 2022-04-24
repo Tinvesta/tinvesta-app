@@ -85,7 +85,7 @@ export const DesktopOnboardingStepTwo = ({
             <TextFieldWithController
               controllerProps={{
                 control,
-                name: 'whatYouAreLookingFor',
+                name: 'whatAreYouLookingFor',
                 rules: {
                   maxLength: {
                     value: 160,

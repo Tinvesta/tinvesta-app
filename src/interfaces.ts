@@ -82,5 +82,5 @@ export interface IDiscoverRecord {
   startupClaim: string | null;
   startupProfileCreatorTypeId: string | null;
   visionStatement: string | null;
-  whatYouAreLookingFor: string;
+  whatAreYouLookingFor: string;
 }
