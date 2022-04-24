@@ -1,8 +1,8 @@
 export const translationStrings = [
-  'component.upload.image.with.preview.modal.title',
-  'component.upload.image.with.preview.error.compression',
-  'component.upload.image.with.preview.modal.button.text',
-  'component.upload.image.with.preview.image.scaled.image.alt',
-  'component.upload.image.with.preview.image.upload.button.text',
-  'component.upload.image.with.preview.warning.file.size.exceeds',
+  'component.upload.images.modal.title',
+  'component.upload.images.error.compression',
+  'component.upload.images.modal.button.text',
+  'component.upload.images.image.scaled.image.alt',
+  'component.upload.images.image.upload.button.text',
+  'component.upload.images.warning.file.size.exceeds',
 ] as const;

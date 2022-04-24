@@ -10,10 +10,10 @@ export const defaultDesktopOnboardingStepOneFormData: IDesktopOnboardingStepOneD
 
 export const translationStrings = [
   'common.buttons.continue',
-  'common.form.field.error.starts.or.ends.with.whitespace',
-  'common.form.field.error.contain.enters.or.spaces',
   'common.form.field.error.required',
   'common.form.field.error.contain.single.word',
+  'common.form.field.error.contain.enters.or.spaces',
+  'common.form.field.error.starts.or.ends.with.whitespace',
 
   'component.desktop.onboarding.step.one.heading',
   'component.desktop.onboarding.step.one.subheading',

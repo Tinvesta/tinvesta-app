@@ -59,7 +59,7 @@ const UploadImagesComponent = (
   const onCompressAndSetImageSourceError = () => {
     clear();
     setImageSource('');
-    toast.error(translations.componentUploadImageWithPreviewErrorCompression);
+    toast.error(translations.componentUploadImagesErrorCompression);
   };
 
   const onSelectFiles = async (files: File[]) => {
@@ -73,7 +73,7 @@ const UploadImagesComponent = (
     if (fileSizeInMegabytes > imageSizeLimitInMegabytes) {
       toast.warning(
         replaceVariablesInTranslation(
-          translations.componentUploadImageWithPreviewWarningFileSizeExceeds,
+          translations.componentUploadImagesWarningFileSizeExceeds,
           imageSizeLimitInMegabytes,
         ),
       );
@@ -104,7 +104,6 @@ const UploadImagesComponent = (
   const handleRemoveScaledImage = (index: number) => () => {
     clear();
     setImageSource('');
-
     setScaledImages(scaledImages.filter((_, _scaledImageIndex) => _scaledImageIndex !== index));
   };
 
@@ -112,10 +111,10 @@ const UploadImagesComponent = (
     <div ref={ref}>
       <Modal>
         <CropImageModalContent
-          buttonText={translations.componentUploadImageWithPreviewModalButtonText}
+          buttonText={translations.componentUploadImagesModalButtonText}
           image={imageSource}
           setScaledImage={onClickSave}
-          title={translations.componentUploadImageWithPreviewModalTitle}
+          title={translations.componentUploadImagesModalTitle}
         />
       </Modal>
       <Grid container rowSpacing={4} xs={12}>
@@ -129,7 +128,7 @@ const UploadImagesComponent = (
                   <S.StyledScaledImagePreviewWrapper>
                     <S.StyledCancelIcon onClick={handleRemoveScaledImage(_index)} />
                     <S.StyledImage
-                      alt={translations.componentUploadImageWithPreviewImageScaledImageAlt}
+                      alt={translations.componentUploadImagesImageScaledImageAlt}
                       src={currentElement}
                     />
                   </S.StyledScaledImagePreviewWrapper>
