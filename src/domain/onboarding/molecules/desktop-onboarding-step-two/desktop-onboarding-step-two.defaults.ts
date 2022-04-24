@@ -9,6 +9,8 @@ export const defaultDesktopOnboardingStepTwoFormData: IDesktopOnboardingStepTwoD
 export const translationStrings = [
   'common.buttons.back',
   'common.buttons.continue',
+  'common.client.types.startup',
+  'common.client.types.investor',
   'common.form.field.error.required',
   'common.form.field.error.contain.enters.or.spaces',
   'common.form.field.error.starts.or.ends.with.whitespace',
