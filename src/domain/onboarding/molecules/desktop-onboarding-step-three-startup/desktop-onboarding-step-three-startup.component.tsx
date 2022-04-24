@@ -3,16 +3,21 @@ import { useForm } from 'react-hook-form';
 
 import { AutocompleteWithController, SelectWithController } from '@ui';
 
-import { DesktopOnboardingFormLayout } from '../../atoms';
-import { IDesktopOnboardingStepThreeStartupData } from '../../onboarding.types';
 import {
   mapFocusMarketsToDropdownOptions,
   mapIndustrialSectorsToDropdownOptions,
   mapStartupProfileCreatorTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
-} from '../../utils';
-import { defaultDesktopOnboardingStepThreeStartupFormData } from './desktop-onboarding-step-three-startup.defaults';
+  useTranslation,
+} from '@utils';
+
+import { DesktopOnboardingFormLayout } from '../../atoms';
+import { IDesktopOnboardingStepThreeStartupData } from '../../onboarding.types';
+import {
+  defaultDesktopOnboardingStepThreeStartupFormData,
+  translationStrings,
+} from './desktop-onboarding-step-three-startup.defaults';
 import { IDesktopOnboardingStepThreeStartupProps } from './desktop-onboarding-step-three-startup.types';
 
 export const DesktopOnboardingStepThreeStartup = ({
@@ -29,22 +34,31 @@ export const DesktopOnboardingStepThreeStartup = ({
     defaultValues,
   });
 
-  const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes);
-  const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets);
-  const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(startupSectors);
-  const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(industrialSectors);
+  const translations = useTranslation(translationStrings);
+
+  const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
+    startupSectors,
+    translations,
+  );
+  const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(
+    industrialSectors,
+    translations,
+  );
+  const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
+  const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
   const startupProfileCreatorTypesDropdownOptions = mapStartupProfileCreatorTypesToDropdownOptions(
     startupProfileCreatorTypes,
+    translations,
   );
 
   const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
-      backButtonText="Back"
-      continueButtonText="Continue"
-      heading="Setup Startup"
-      subHeading="Step 3/5"
+      backButtonText={translations.commonButtonsBack}
+      continueButtonText={translations.commonButtonsContinue}
+      heading={translations.componentDesktopOnboardingStepThreeStartupHeading}
+      subHeading={translations.componentDesktopOnboardingStepThreeStartupSubheading}
       onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
@@ -54,7 +68,10 @@ export const DesktopOnboardingStepThreeStartup = ({
             control,
             name: 'startupProfileCreatorTypeId',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -62,8 +79,8 @@ export const DesktopOnboardingStepThreeStartup = ({
           }}
           selectProps={{
             fullWidth: true,
-            label: 'Your Position',
             options: startupProfileCreatorTypesDropdownOptions,
+            label: translations.componentDesktopOnboardingStepThreeStartupYourPositionFieldLabel,
             labelId: 'desktop-onboarding-step-three-startup-startup-profile-creator-type-id-select',
           }}
         />
@@ -74,7 +91,10 @@ export const DesktopOnboardingStepThreeStartup = ({
             control,
             name: 'teamSizeId',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -82,9 +102,9 @@ export const DesktopOnboardingStepThreeStartup = ({
           }}
           selectProps={{
             fullWidth: true,
-            label: 'Team Size',
             options: teamSizesDropdownOptions,
             labelId: 'desktop-onboarding-step-three-startup-team-size-id-select',
+            label: translations.componentDesktopOnboardingStepThreeStartupTeamSizeFieldLabel,
           }}
         />
       </Grid>
@@ -94,7 +114,10 @@ export const DesktopOnboardingStepThreeStartup = ({
             control,
             name: 'focusMarketIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -103,9 +126,9 @@ export const DesktopOnboardingStepThreeStartup = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
-            label: 'Focus Market',
             options: focusMarketsDropdownOptions,
             labelId: 'desktop-onboarding-step-three-startup-focus-market-ids-select',
+            label: translations.componentDesktopOnboardingStepThreeStartupFocusMarketFieldLabel,
           }}
         />
       </Grid>
@@ -115,7 +138,10 @@ export const DesktopOnboardingStepThreeStartup = ({
             control,
             name: 'startupSectorIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -123,10 +149,10 @@ export const DesktopOnboardingStepThreeStartup = ({
           }}
           selectProps={{
             multiple: true,
-            label: 'Sector',
             fullWidth: true,
             options: startupSectorsDropdownOptions,
             labelId: 'desktop-onboarding-step-three-startup-startup-sector-ids-select',
+            label: translations.componentDesktopOnboardingStepThreeStartupSectorFieldLabel,
           }}
         />
       </Grid>
@@ -143,11 +169,15 @@ export const DesktopOnboardingStepThreeStartup = ({
             control,
             name: 'industrialSectorIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           inputProps={{
-            label: 'Industrial Sector',
+            label:
+              translations.componentDesktopOnboardingStepThreeStartupIndustrialSectorsFieldLabel,
           }}
         />
       </Grid>

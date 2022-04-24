@@ -3,14 +3,18 @@ import { useForm } from 'react-hook-form';
 
 import { SelectWithController } from '@ui';
 
+import { mapTeamSizesToDropdownOptions, useTranslation } from '@utils';
+
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepFourInvestorData } from '../../onboarding.types';
 import {
   mapInvestmentSizesToDropdownOptions,
   mapInvestmentStageTypesToDropdownOptions,
-  mapTeamSizesToDropdownOptions,
 } from '../../utils';
-import { defaultDesktopOnboardingStepFourInvestorFormData } from './desktop-onboarding-step-four-investor.defaults';
+import {
+  defaultDesktopOnboardingStepFourInvestorFormData,
+  translationStrings,
+} from './desktop-onboarding-step-four-investor.defaults';
 import { IDesktopOnboardingStepFourInvestorProps } from './desktop-onboarding-step-four-investor.types';
 
 export const DesktopOnboardingStepFourInvestor = ({
@@ -25,9 +29,10 @@ export const DesktopOnboardingStepFourInvestor = ({
     defaultValues,
   });
 
+  const translations = useTranslation(translationStrings);
   const investmentStageTypesDropdownOptions =
     mapInvestmentStageTypesToDropdownOptions(investmentStageTypes);
-  const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes);
+  const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
   const investmentSizesDropdownOptions = mapInvestmentSizesToDropdownOptions(investmentSizes);
 
   const onSubmit = handleSubmit(onContinueButtonClick);
