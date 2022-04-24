@@ -13,7 +13,7 @@ const getInvestorDemandTypeLabel = (
     [EInvestorDemandType.LOCATION]: translations.commonInvestorDemandTypesLocation,
     [EInvestorDemandType.CO_FOUNDER]: translations.commonInvestorDemandTypesCoFounder,
     [EInvestorDemandType.TECHNOLOGY]: translations.commonInvestorDemandTypesTechnology,
-    [EInvestorDemandType.MONEY_FOR_SHARES]: translations.commonInvestorDemandTypesMoneyforShares,
+    [EInvestorDemandType.MONEY_FOR_SHARES]: translations.commonInvestorDemandTypesMoneyForShares,
     [EInvestorDemandType.NETWORK_AND_SUPPORT]:
       translations.commonInvestorDemandTypesNetworkAndSupport,
     [EInvestorDemandType.DEBT_CAPITAL_WITHOUT_SHARES]:
