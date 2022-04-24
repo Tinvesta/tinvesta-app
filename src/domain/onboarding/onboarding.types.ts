@@ -72,5 +72,5 @@ export interface IDesktopOnboardingStepFourInvestorData {
 
 export interface IDesktopOnboardingStepFiveInvestorData {
   investorDemandTypeIds: number[];
-  whatAreYouLookingFor: string;
+  whyStartupShouldMatchWithYou: string;
 }

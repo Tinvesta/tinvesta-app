@@ -3,10 +3,19 @@ import { useForm } from 'react-hook-form';
 
 import { SelectWithController, TextFieldWithController } from '@ui';
 
+import {
+  containEntersOrSpaces,
+  mapInvestorDemandTypesToDropdownOptions,
+  startsOrEndsWithWhitespace,
+  useTranslation,
+} from '@utils';
+
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepFiveInvestorData } from '../../onboarding.types';
-import { mapInvestorDemandTypesToDropdownOptions } from '../../utils';
-import { defaultDesktopOnboardingStepFiveInvestorFormData } from './desktop-onboarding-step-five-investor.defaults';
+import {
+  defaultDesktopOnboardingStepFiveInvestorFormData,
+  translationStrings,
+} from './desktop-onboarding-step-five-investor.defaults';
 import { IDesktopOnboardingStepFiveInvestorProps } from './desktop-onboarding-step-five-investor.types';
 
 export const DesktopOnboardingStepFiveInvestor = ({
@@ -19,17 +28,21 @@ export const DesktopOnboardingStepFiveInvestor = ({
     defaultValues,
   });
 
-  const investorDemandTypesDropdownOptions =
-    mapInvestorDemandTypesToDropdownOptions(investorDemandTypes);
+  const translations = useTranslation(translationStrings);
+
+  const investorDemandTypesDropdownOptions = mapInvestorDemandTypesToDropdownOptions(
+    investorDemandTypes,
+    translations,
+  );
 
   const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
-      backButtonText="Back"
-      continueButtonText="Continue"
-      heading="Setup Investor"
-      subHeading="Step 5/5"
+      backButtonText={translations.commonButtonsBack}
+      continueButtonText={translations.commonButtonsContinue}
+      heading={translations.componentDesktopOnboardingStepFiveInvestorHeading}
+      subHeading={translations.componentDesktopOnboardingStepFiveInvestorSubheading}
       onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
@@ -39,7 +52,10 @@ export const DesktopOnboardingStepFiveInvestor = ({
             control,
             name: 'investorDemandTypeIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -48,8 +64,8 @@ export const DesktopOnboardingStepFiveInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
-            label: 'Demand',
             options: investorDemandTypesDropdownOptions,
+            label: translations.componentDesktopOnboardingStepFiveInvestorDemandFieldLabel,
             labelId: 'desktop-onboarding-step-five-investor-investor-demand-type-ids-select',
           }}
         />
@@ -58,17 +74,36 @@ export const DesktopOnboardingStepFiveInvestor = ({
         <TextFieldWithController
           controllerProps={{
             control,
-            name: 'whatAreYouLookingFor',
+            name: 'whyStartupShouldMatchWithYou',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              maxLength: {
+                value: 160,
+                message:
+                  // eslint-disable-next-line max-len
+                  translations.componentDesktopOnboardingStepFiveInvestorWhyStartupShouldMatchWithYouFieldMaxLengthError,
+              },
+              validate: {
+                startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
+                  translations.commonFormFieldErrorStartsOrEndsWithWhitespace,
+                ),
+                containEntersOrSpaces: containEntersOrSpaces(
+                  translations.commonFormFieldErrorContainEntersOrSpaces,
+                ),
+              },
             },
           }}
           inputProps={{
-            rows: 4,
+            rows: 5,
             fullWidth: true,
             multiline: true,
             autoComplete: 'disabled',
-            label: 'Why should a startup match with you?',
+            label:
+              // eslint-disable-next-line max-len
+              translations.componentDesktopOnboardingStepFiveInvestorWhyStartupShouldMatchWithYouFieldLabel,
           }}
         />
       </Grid>
