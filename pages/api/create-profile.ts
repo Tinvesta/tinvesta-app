@@ -192,7 +192,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       client_type_id: userData.clientTypeId,
       vision_statement: userData.visionStatement,
       mission_statement: userData.missionStatement,
-      what_you_are_looking_for: userData.whatYouAreLookingFor,
+      what_you_are_looking_for: userData.whatAreYouLookingFor,
       investor_profile_type_id: userData.investorProfileTypeId,
       startup_profile_creator_type_id: userData.startupProfileCreatorTypeId,
     })

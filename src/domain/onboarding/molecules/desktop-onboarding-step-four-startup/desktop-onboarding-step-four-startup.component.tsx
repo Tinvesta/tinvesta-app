@@ -84,7 +84,7 @@ export const DesktopOnboardingStepFourStartup = ({
         <TextFieldWithController
           controllerProps={{
             control,
-            name: 'whatYouAreLookingFor',
+            name: 'whatAreYouLookingFor',
             rules: {
               required: true,
             },

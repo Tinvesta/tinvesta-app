@@ -58,7 +58,7 @@ export const DesktopOnboardingStepFiveInvestor = ({
         <TextFieldWithController
           controllerProps={{
             control,
-            name: 'whatYouAreLookingFor',
+            name: 'whatAreYouLookingFor',
             rules: {
               required: true,
             },

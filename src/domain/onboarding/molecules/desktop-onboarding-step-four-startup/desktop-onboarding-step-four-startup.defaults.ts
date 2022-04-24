@@ -4,6 +4,6 @@ import { IDesktopOnboardingStepFourStartupData } from '../../onboarding.types';
 export const defaultDesktopOnboardingStepFourStartupFormData: IDesktopOnboardingStepFourStartupData =
   {
     investmentSizeIds: [],
-    whatYouAreLookingFor: '',
+    whatAreYouLookingFor: '',
     investmentStageTypeIds: [],
   };

@@ -6,13 +6,13 @@ import { SelectWithController, TextFieldWithController, UploadImagesWithControll
 import {
   containEntersOrSpaces,
   formArrayMinLength,
+  mapClientTypesToDropdownOptions,
   startsOrEndsWithWhitespace,
   useTranslation,
 } from '@utils';
 
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepTwoData } from '../../onboarding.types';
-import { mapClientTypesToDropdownOptions } from '../../utils';
 import {
   defaultDesktopOnboardingStepTwoFormData,
   translationStrings,
@@ -30,8 +30,7 @@ export const DesktopOnboardingStepTwo = ({
   });
 
   const translations = useTranslation(translationStrings);
-
-  const clientTypesDropdownOptions = mapClientTypesToDropdownOptions(clientTypes);
+  const clientTypesDropdownOptions = mapClientTypesToDropdownOptions(clientTypes, translations);
 
   const onSubmit = handleSubmit(onContinueButtonClick);
 
@@ -86,7 +85,7 @@ export const DesktopOnboardingStepTwo = ({
             <TextFieldWithController
               controllerProps={{
                 control,
-                name: 'whatYouAreLookingFor',
+                name: 'whatAreYouLookingFor',
                 rules: {
                   maxLength: {
                     value: 160,
