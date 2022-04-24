@@ -27,6 +27,14 @@ const AutocompleteComponent = (
       options={options}
       value={optionValues}
       {...restProps}
+      ListboxProps={{
+        style: { maxHeight: 200 },
+      }}
+      componentsProps={{
+        paper: {
+          sx: { maxHeight: 200 },
+        },
+      }}
     />
   );
 };
