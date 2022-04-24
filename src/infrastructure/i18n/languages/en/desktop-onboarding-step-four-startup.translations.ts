@@ -4,7 +4,8 @@ export default {
   'component.desktop.onboarding.step.four.startup.heading': 'Setup Startup',
 
   // Investment Stage
-  'component.desktop.onboarding.step.four.startup.investment.stage.field.label': 'Investment Stage',
+  'component.desktop.onboarding.step.four.startup.investment.stage.field.label':
+    'Investment Stages',
 
   // Investment Size
   'component.desktop.onboarding.step.four.startup.investment.size.field.label':

@@ -6,13 +6,13 @@ import { AutocompleteWithController, SelectWithController } from '@ui';
 import {
   mapFocusMarketsToDropdownOptions,
   mapIndustrialSectorsToDropdownOptions,
+  mapInvestorProfileTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
   useTranslation,
 } from '@utils';
 
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepThreeInvestorData } from '../../onboarding.types';
-import { mapInvestorProfileTypesToDropdownOptions } from '../../utils';
 import {
   defaultDesktopOnboardingStepThreeInvestorFormData,
   translationStrings,
@@ -33,9 +33,6 @@ export const DesktopOnboardingStepThreeInvestor = ({
   });
 
   const translations = useTranslation(translationStrings);
-  const investorProfileTypesDropdownOptions =
-    mapInvestorProfileTypesToDropdownOptions(investorProfileTypes);
-  const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
     startupSectors,
     translations,
@@ -44,15 +41,20 @@ export const DesktopOnboardingStepThreeInvestor = ({
     industrialSectors,
     translations,
   );
+  const investorProfileTypesDropdownOptions = mapInvestorProfileTypesToDropdownOptions(
+    investorProfileTypes,
+    translations,
+  );
+  const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
 
   const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
-      backButtonText="Back"
-      continueButtonText="Continue"
-      heading="Setup Investor"
-      subHeading="Step 3/5"
+      backButtonText={translations.commonButtonsBack}
+      continueButtonText={translations.commonButtonsContinue}
+      heading={translations.componentDesktopOnboardingStepThreeInvestorHeading}
+      subHeading={translations.componentDesktopOnboardingStepThreeInvestorSubheading}
       onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
@@ -62,7 +64,10 @@ export const DesktopOnboardingStepThreeInvestor = ({
             control,
             name: 'investorProfileTypeId',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -70,9 +75,9 @@ export const DesktopOnboardingStepThreeInvestor = ({
           }}
           selectProps={{
             fullWidth: true,
-            label: 'Investor Profile Type',
             options: investorProfileTypesDropdownOptions,
             labelId: 'desktop-onboarding-step-two-investor-investor-profile-type-id-select',
+            label: translations.componentDesktopOnboardingStepThreeInvestorYourPositionFieldLabel,
           }}
         />
       </Grid>
@@ -82,7 +87,10 @@ export const DesktopOnboardingStepThreeInvestor = ({
             control,
             name: 'focusMarketIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -91,9 +99,9 @@ export const DesktopOnboardingStepThreeInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
-            label: 'Investment Focus',
             options: focusMarketsDropdownOptions,
             labelId: 'desktop-onboarding-step-two-investor-focus-market-ids-select',
+            label: translations.componentDesktopOnboardingStepThreeInvestorFocusMarketFieldLabel,
           }}
         />
       </Grid>
@@ -103,7 +111,10 @@ export const DesktopOnboardingStepThreeInvestor = ({
             control,
             name: 'startupSectorIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -112,9 +123,9 @@ export const DesktopOnboardingStepThreeInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
-            label: 'Preferred Startup Sector',
             options: startupSectorsDropdownOptions,
             labelId: 'desktop-onboarding-step-two-investor-startup-sector-ids-select',
+            label: translations.componentDesktopOnboardingStepThreeInvestorStartupSectorFieldLabel,
           }}
         />
       </Grid>
@@ -131,11 +142,15 @@ export const DesktopOnboardingStepThreeInvestor = ({
             control,
             name: 'industrialSectorIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           inputProps={{
-            label: 'Industrial Sector',
+            label:
+              translations.componentDesktopOnboardingStepThreeInvestorIndustrialSectorsFieldLabel,
           }}
         />
       </Grid>
