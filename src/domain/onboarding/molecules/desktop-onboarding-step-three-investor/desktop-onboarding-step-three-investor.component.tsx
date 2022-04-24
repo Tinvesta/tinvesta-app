@@ -76,7 +76,7 @@ export const DesktopOnboardingStepThreeInvestor = ({
           selectProps={{
             fullWidth: true,
             options: investorProfileTypesDropdownOptions,
-            labelId: 'desktop-onboarding-step-two-investor-investor-profile-type-id-select',
+            labelId: 'desktop-onboarding-step-three-investor-investor-profile-type-id-select',
             label: translations.componentDesktopOnboardingStepThreeInvestorYourPositionFieldLabel,
           }}
         />
@@ -100,7 +100,7 @@ export const DesktopOnboardingStepThreeInvestor = ({
             multiple: true,
             fullWidth: true,
             options: focusMarketsDropdownOptions,
-            labelId: 'desktop-onboarding-step-two-investor-focus-market-ids-select',
+            labelId: 'desktop-onboarding-step-three-investor-focus-market-ids-select',
             label: translations.componentDesktopOnboardingStepThreeInvestorFocusMarketFieldLabel,
           }}
         />
@@ -124,7 +124,7 @@ export const DesktopOnboardingStepThreeInvestor = ({
             multiple: true,
             fullWidth: true,
             options: startupSectorsDropdownOptions,
-            labelId: 'desktop-onboarding-step-two-investor-startup-sector-ids-select',
+            labelId: 'desktop-onboarding-step-three-investor-startup-sector-ids-select',
             label: translations.componentDesktopOnboardingStepThreeInvestorStartupSectorFieldLabel,
           }}
         />
