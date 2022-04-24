@@ -15,7 +15,7 @@ export const HouseRulesAgreements = ({
   onBackButtonClick,
 }: IHouseRulesAgreementsProps): JSX.Element => (
   <DesktopOnboardingFormLayout
-    centerActionButton
+    centerActionButtons
     addArrowToBackButton={false}
     backButtonText="I disagree"
     continueButtonText="I Agree"

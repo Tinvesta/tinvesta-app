@@ -12,7 +12,7 @@ import { IDesktopOnboardingFormLayoutProps } from './desktop-onboarding-form-lay
 const DesktopOnboardingFormLayoutComponent = ({
   addArrowToBackButton = true,
   backButtonText,
-  centerActionButton = false,
+  centerActionButtons = false,
   children,
   continueButtonText,
   heading,
@@ -44,7 +44,7 @@ const DesktopOnboardingFormLayoutComponent = ({
               item
               display="flex"
               gap={4}
-              justifyContent={centerActionButton ? 'center' : 'flex-end'}
+              justifyContent={centerActionButtons ? 'center' : 'flex-end'}
               xs={12}
             >
               {backButtonText && (
