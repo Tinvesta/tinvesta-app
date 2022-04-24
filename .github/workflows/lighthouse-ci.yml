@@ -9,7 +9,7 @@ jobs:
   lighthouse:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3.0.1
+      - uses: actions/checkout@v3.0.2
       - name: Lighthouse
         uses: foo-software/lighthouse-check-action@master
         with:
