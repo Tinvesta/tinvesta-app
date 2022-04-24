@@ -26,6 +26,7 @@ export * from './map-focus-markets-to-dropdown-options/map-focus-markets-to-drop
 export * from './map-startup-sectors-to-dropdown-options/map-startup-sectors-to-dropdown-options.function';
 export * from './map-investment-sizes-to-dropdown-options/map-investment-sizes-to-dropdown-options.function';
 export * from './map-industrial-sectors-to-dropdown-options/map-industrial-sectors-to-dropdown-options.function';
+export * from './map-investor-demand-types-to-dropdown-options/map-investor-demand-types-to-dropdown-options.function';
 export * from './map-investor-profile-types-to-dropdown-options/map-investor-profile-types-to-dropdown-options.function';
 export * from './map-investment-stage-types-to-dropdown-options/map-investment-stage-types-to-dropdown-options.function';
 export * from './map-startup-profile-creator-types-to-dropdown-options/map-startup-profile-creator-types-to-dropdown-options.function';

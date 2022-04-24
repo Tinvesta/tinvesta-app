@@ -1,4 +1,5 @@
 import commonTranslations from './common.translations';
+import desktopOnboardingStepFiveInvestorTranslations from './desktop-onboarding-step-five-investor.translations';
 import desktopOnboardingStepFiveStartupTranslations from './desktop-onboarding-step-five-startup.translations';
 import desktopOnboardingStepFourInvestorTranslations from './desktop-onboarding-step-four-investor.translations';
 import desktopOnboardingStepFourStartupTranslations from './desktop-onboarding-step-four-startup.translations';
@@ -19,5 +20,6 @@ export default {
   ...desktopOnboardingStepFiveStartupTranslations,
   ...desktopOnboardingStepThreeStartupTranslations,
   ...desktopOnboardingStepFourInvestorTranslations,
+  ...desktopOnboardingStepFiveInvestorTranslations,
   ...desktopOnboardingStepThreeInvestorTranslations,
 };
