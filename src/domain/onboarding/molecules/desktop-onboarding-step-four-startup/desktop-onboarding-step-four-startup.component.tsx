@@ -3,13 +3,20 @@ import { useForm } from 'react-hook-form';
 
 import { SelectWithController, TextFieldWithController } from '@ui';
 
+import {
+  containEntersOrSpaces,
+  mapInvestmentSizesToDropdownOptions,
+  mapInvestmentStageTypesToDropdownOptions,
+  startsOrEndsWithWhitespace,
+  useTranslation,
+} from '@utils';
+
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepFourStartupData } from '../../onboarding.types';
 import {
-  mapInvestmentSizesToDropdownOptions,
-  mapInvestmentStageTypesToDropdownOptions,
-} from '../../utils';
-import { defaultDesktopOnboardingStepFourStartupFormData } from './desktop-onboarding-step-four-startup.defaults';
+  defaultDesktopOnboardingStepFourStartupFormData,
+  translationStrings,
+} from './desktop-onboarding-step-four-startup.defaults';
 import { IDesktopOnboardingStepFourStartupProps } from './desktop-onboarding-step-four-startup.types';
 
 export const DesktopOnboardingStepFourStartup = ({
@@ -23,18 +30,24 @@ export const DesktopOnboardingStepFourStartup = ({
     defaultValues,
   });
 
-  const investmentStageTypesDropdownOptions =
-    mapInvestmentStageTypesToDropdownOptions(investmentStageTypes);
-  const investmentSizesDropdownOptions = mapInvestmentSizesToDropdownOptions(investmentSizes);
+  const translations = useTranslation(translationStrings);
+  const investmentSizesDropdownOptions = mapInvestmentSizesToDropdownOptions(
+    investmentSizes,
+    translations,
+  );
+  const investmentStageTypesDropdownOptions = mapInvestmentStageTypesToDropdownOptions(
+    investmentStageTypes,
+    translations,
+  );
 
   const onSubmit = handleSubmit(onContinueButtonClick);
 
   return (
     <DesktopOnboardingFormLayout
-      backButtonText="Back"
-      continueButtonText="Continue"
-      heading="Setup Startup"
-      subHeading="Step 4/5"
+      backButtonText={translations.commonButtonsBack}
+      continueButtonText={translations.commonButtonsContinue}
+      heading={translations.componentDesktopOnboardingStepFourStartupHeading}
+      subHeading={translations.componentDesktopOnboardingStepFourStartupSubheading}
       onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
@@ -44,7 +57,10 @@ export const DesktopOnboardingStepFourStartup = ({
             control,
             name: 'investmentStageTypeIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -53,9 +69,9 @@ export const DesktopOnboardingStepFourStartup = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
-            label: 'Investment Stage',
             options: investmentStageTypesDropdownOptions,
             labelId: 'desktop-onboarding-step-four-startup-investment-stage-type-ids-select',
+            label: translations.componentDesktopOnboardingStepFourStartupInvestmentStageFieldLabel,
           }}
         />
       </Grid>
@@ -65,7 +81,10 @@ export const DesktopOnboardingStepFourStartup = ({
             control,
             name: 'investmentSizeIds',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
             },
           }}
           formControlProps={{
@@ -74,9 +93,9 @@ export const DesktopOnboardingStepFourStartup = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
-            label: 'How much money do I need?',
             options: investmentSizesDropdownOptions,
             labelId: 'desktop-onboarding-step-four-startup-investment-size-ids-select',
+            label: translations.componentDesktopOnboardingStepFourStartupInvestmentSizeFieldLabel,
           }}
         />
       </Grid>
@@ -84,9 +103,26 @@ export const DesktopOnboardingStepFourStartup = ({
         <TextFieldWithController
           controllerProps={{
             control,
-            name: 'whatAreYouLookingFor',
+            name: 'startupClaim',
             rules: {
-              required: true,
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              maxLength: {
+                value: 160,
+                message:
+                  // eslint-disable-next-line max-len
+                  translations.componentDesktopOnboardingStepFourStartupStartupClaimFieldMaxLengthError,
+              },
+              validate: {
+                startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
+                  translations.commonFormFieldErrorStartsOrEndsWithWhitespace,
+                ),
+                containEntersOrSpaces: containEntersOrSpaces(
+                  translations.commonFormFieldErrorContainEntersOrSpaces,
+                ),
+              },
             },
           }}
           inputProps={{
@@ -94,7 +130,9 @@ export const DesktopOnboardingStepFourStartup = ({
             fullWidth: true,
             multiline: true,
             autoComplete: 'disabled',
-            label: 'What are you looking for?',
+            label: translations.componentDesktopOnboardingStepFourStartupStartupClaimFieldLabel,
+            placeholder:
+              translations.componentDesktopOnboardingStepFourStartupStartupClaimFieldPlaceholder,
           }}
         />
       </Grid>
