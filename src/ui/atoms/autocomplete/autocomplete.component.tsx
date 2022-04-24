@@ -5,6 +5,8 @@ import { isNumber } from '@utils';
 
 import { IAutocompleteProps } from './autocomplete.types';
 
+const MAX_HEIGHT = 200;
+
 const AutocompleteComponent = (
   { className, limit, options, value, ...restProps }: IAutocompleteProps,
   ref: ForwardedRef<HTMLDivElement>,
@@ -28,11 +30,11 @@ const AutocompleteComponent = (
       value={optionValues}
       {...restProps}
       ListboxProps={{
-        style: { maxHeight: 200 },
+        style: { maxHeight: MAX_HEIGHT },
       }}
       componentsProps={{
         paper: {
-          sx: { maxHeight: 200 },
+          sx: { maxHeight: MAX_HEIGHT },
         },
       }}
     />
