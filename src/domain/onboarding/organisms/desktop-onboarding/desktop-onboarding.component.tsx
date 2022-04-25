@@ -32,7 +32,7 @@ import {
   IDesktopOnboardingStepThreeStartupData,
   IDesktopOnboardingStepTwoData,
 } from '../../onboarding.types';
-import { createAccountAction } from './api';
+import { createAccountAction } from '../api';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
   EDesktopOnboardingMachineAdditionalEvents,
@@ -207,7 +207,6 @@ export const DesktopOnboarding = ({
     <HouseRulesAgreements
       isLoading={isCreateAccountActionLoading}
       onAgreementButtonClick={onAcceptHouseRulesAgreements}
-      onBackButtonClick={onBackButtonClick}
     />
   );
 };

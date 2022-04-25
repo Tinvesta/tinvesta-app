@@ -3,7 +3,6 @@ import { createTheme } from '@mui/material';
 import { color } from '@infrastructure/styles/variables';
 
 import {
-  LARGE_SCREEN_BREAKPOINT,
   MEDIUM_SCREEN_BREAKPOINT,
   MOBILE_SCREEN_BREAKPOINT,
   SMALL_SCREEN_BREAKPOINT,
@@ -61,14 +60,14 @@ export const darkTheme = createTheme({
   shape: {
     borderRadius: 10,
   },
-  spacing: [0, 4, 8, 16, 32, 64],
+  spacing: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   breakpoints: {
     values: {
-      lg: MEDIUM_SCREEN_BREAKPOINT,
-      md: SMALL_SCREEN_BREAKPOINT,
-      sm: MOBILE_SCREEN_BREAKPOINT,
-      xl: LARGE_SCREEN_BREAKPOINT,
-      xs: XMOBILE_SCREEN_BREAKPOINT,
+      xs: 0,
+      lg: SMALL_SCREEN_BREAKPOINT,
+      md: MOBILE_SCREEN_BREAKPOINT,
+      sm: XMOBILE_SCREEN_BREAKPOINT,
+      xl: MEDIUM_SCREEN_BREAKPOINT,
     },
   },
 });

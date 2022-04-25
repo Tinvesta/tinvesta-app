@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`respondToMax mixin snapshot test should match snapshot 1`] = `
+Object {
+  "map": undefined,
+  "name": "xg27cz",
+  "next": undefined,
+  "styles": "
+      @media (max-width: 1600px) {
+        background-color: red;;;
+      }
+    ",
+  "toString": [Function],
+}
+`;
+
+exports[`respondToMin mixin snapshot test should match snapshot 1`] = `
+Object {
+  "map": undefined,
+  "name": "r1m74f",
+  "next": undefined,
+  "styles": "
+      @media (min-width: 1600px) {
+        background-color: red;;;
+      }
+    ",
+  "toString": [Function],
+}
+`;
