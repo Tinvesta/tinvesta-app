@@ -5,8 +5,6 @@ import { TextFieldWithController } from '@ui';
 
 import { containSingleWord, startsOrEndsWithWhitespace, useTranslation } from '@utils';
 
-import { EMAIL_UNIVERSAL_REGEX } from '@constants';
-
 import { MobileOnboardingFormLayout } from '../../atoms';
 import { IMobileOnboardingStepOneData } from '../../onboarding.types';
 import {
@@ -93,35 +91,6 @@ export const MobileOnboardingStepOne = ({
             fullWidth: true,
             autoComplete: 'disabled',
             label: translations.componentMobileOnboardingStepOneLastNameFieldLabel,
-          }}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <TextFieldWithController
-          controllerProps={{
-            control,
-            name: 'contactEmail',
-            rules: {
-              required: {
-                value: true,
-                message: translations.commonFormFieldErrorRequired,
-              },
-              pattern: {
-                value: EMAIL_UNIVERSAL_REGEX,
-                message:
-                  translations.componentMobileOnboardingStepOneContactEmailFieldPatternMatchError,
-              },
-              maxLength: {
-                value: 100,
-                message:
-                  translations.componentMobileOnboardingStepOneContactEmailFieldMaxLengthError,
-              },
-            },
-          }}
-          inputProps={{
-            fullWidth: true,
-            autoComplete: 'disabled',
-            label: translations.componentMobileOnboardingStepOneContactEmailFieldLabel,
           }}
         />
       </Grid>

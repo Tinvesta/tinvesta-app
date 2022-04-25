@@ -9,6 +9,7 @@ import desktopOnboardingStepThreeStartupTranslations from './desktop-onboarding-
 import desktopOnboardingStepTwoTranslations from './desktop-onboarding-step-two.translations';
 import locationAutocompleteTranslations from './location-autocomplete.translations';
 import mobileOnboardingStepOneTranslations from './mobile-onboarding-step-one.translations';
+import mobileOnboardingStepTwoTranslations from './mobile-onboarding-step-two.translations';
 import uploadImagesTranslations from './upload-images.translations';
 
 export default {
@@ -24,4 +25,5 @@ export default {
   ...desktopOnboardingStepFiveInvestorTranslations,
   ...desktopOnboardingStepThreeInvestorTranslations,
   ...mobileOnboardingStepOneTranslations,
+  ...mobileOnboardingStepTwoTranslations,
 };
