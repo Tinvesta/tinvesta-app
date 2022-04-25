@@ -21,4 +21,5 @@ export const translationStrings = [
   'component.desktop.onboarding.step.two.what.are.you.looking.for.field.label',
   'component.desktop.onboarding.step.two.what.are.you.looking.for.field.placeholder',
   'component.desktop.onboarding.step.two.what.are.you.looking.for.field.max.length.error',
+  'component.desktop.onboarding.step.two.images.field.min.length.error',
 ] as const;

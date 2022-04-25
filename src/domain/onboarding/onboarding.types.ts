@@ -89,3 +89,7 @@ export interface IMobileOnboardingStepThreeData {
   location: string;
   whatAreYouLookingFor: string;
 }
+
+export interface IMobileOnboardingStepFourData {
+  images: string[];
+}
