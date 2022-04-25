@@ -84,3 +84,8 @@ export interface IMobileOnboardingStepTwoData {
   companyName: string;
   contactEmail: string;
 }
+
+export interface IMobileOnboardingStepThreeData {
+  location: string;
+  whatAreYouLookingFor: string;
+}
