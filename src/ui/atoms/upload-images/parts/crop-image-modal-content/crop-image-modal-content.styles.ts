@@ -9,6 +9,7 @@ const StyledModalContentWrapper = styled.div`
   > canvas {
     overflow: hidden;
     border: 1px dashed;
+    touch-action: none;
     margin-top: ${({ theme }) => theme.spacing(2)};
     margin-bottom: ${({ theme }) => theme.spacing(3)};
     border-radius: ${({ theme }) => theme.shape.borderRadius}px;
