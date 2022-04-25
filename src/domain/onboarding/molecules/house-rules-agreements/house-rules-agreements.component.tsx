@@ -12,15 +12,11 @@ import { IHouseRulesAgreementsProps } from './house-rules-agreements.types';
 export const HouseRulesAgreements = ({
   isLoading,
   onAgreementButtonClick,
-  onBackButtonClick,
 }: IHouseRulesAgreementsProps): JSX.Element => (
   <DesktopOnboardingFormLayout
     centerActionButtons
-    addArrowToBackButton={false}
-    backButtonText="I disagree"
     continueButtonText="I Agree"
     isLoading={isLoading}
-    onBackButtonClick={onBackButtonClick}
     onSubmit={(event) => {
       event.preventDefault();
 

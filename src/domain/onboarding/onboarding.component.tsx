@@ -1,6 +1,12 @@
-import { IOnboardingProps } from './onboarding.types';
-import { DesktopOnboarding } from './organisms';
+import { useDeviceDetect } from '@utils';
 
-export const Onboarding = (props: IOnboardingProps): JSX.Element => (
-  <DesktopOnboarding {...props} />
-);
+import { IOnboardingProps } from './onboarding.types';
+import { DesktopOnboarding, MobileOnboarding } from './organisms';
+
+export const Onboarding = (props: IOnboardingProps): JSX.Element => {
+  const { deviceData } = useDeviceDetect();
+
+  const OnboardingComponent = deviceData.isSmallerThanLG ? MobileOnboarding : DesktopOnboarding;
+
+  return <OnboardingComponent {...props} />;
+};
