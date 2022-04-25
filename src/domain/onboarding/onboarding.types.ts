@@ -74,3 +74,9 @@ export interface IDesktopOnboardingStepFiveInvestorData {
   investorDemandTypeIds: number[];
   whyStartupShouldMatchWithYou: string;
 }
+
+export interface IMobileOnboardingStepOneData {
+  contactEmail: string;
+  firstName: string;
+  lastName: string;
+}
