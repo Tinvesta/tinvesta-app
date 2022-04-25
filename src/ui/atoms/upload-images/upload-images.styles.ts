@@ -3,6 +3,17 @@ import { AddCircleOutlined as AddIcon, Cancel as CancelIcon } from '@mui/icons-m
 import { LoadingButton } from '@mui/lab';
 import { FormHelperText } from '@mui/material';
 
+import { respondToMax } from '@infrastructure';
+
+const StyledUploadImagesWrapper = styled.div`
+  margin: 0 auto;
+  max-width: 350px;
+
+  ${respondToMax.small`
+    max-width: 275px;
+  `}
+`;
+
 const StyledWrapper = styled.span`
   display: flex;
   flex-direction: column;
@@ -15,6 +26,11 @@ const StyledImage = styled.img`
   height: 175px;
   background-color: ${({ theme }) => theme.palette.grey[400]};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+
+  ${respondToMax.small`
+    width: 100px;
+    height: 150px;
+  `}
 `;
 
 const StyledModalContentWrapper = styled.div`
@@ -79,6 +95,11 @@ const StyledImagePlaceholder = styled(LoadingButton)<{ error?: boolean }>`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 
   ${({ error, theme }) => error && `border-color: ${theme.palette.error.main};`}
+
+  ${respondToMax.small`
+    width: 100px;
+    height: 150px;
+  `}
 `;
 
 const StyledFormHelperText = styled(FormHelperText)`
@@ -95,6 +116,7 @@ const S = {
   StyledFormHelperText,
   StyledImagePlaceholder,
   StyledModalContentWrapper,
+  StyledUploadImagesWrapper,
   StyledImagePlaceholderWrapper,
   StyledScaledImagePreviewWrapper,
 };

@@ -108,7 +108,7 @@ const UploadImagesComponent = (
   };
 
   return (
-    <div ref={ref}>
+    <S.StyledUploadImagesWrapper ref={ref}>
       <Modal>
         <CropImageModalContent
           buttonText={translations.componentUploadImagesModalButtonText}
@@ -148,7 +148,7 @@ const UploadImagesComponent = (
         }, 4)}
       </Grid>
       {helperText && <S.StyledFormHelperText>{helperText}</S.StyledFormHelperText>}
-    </div>
+    </S.StyledUploadImagesWrapper>
   );
 };
 

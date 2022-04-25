@@ -13,4 +13,8 @@ export default {
     'Describe in short form what you are looking for on Tinvesta',
   'component.desktop.onboarding.step.two.what.are.you.looking.for.field.max.length.error':
     'Maximum length is 160',
+
+  // Images
+  'component.desktop.onboarding.step.two.images.field.min.length.error':
+    'Please upload at least one image',
 };

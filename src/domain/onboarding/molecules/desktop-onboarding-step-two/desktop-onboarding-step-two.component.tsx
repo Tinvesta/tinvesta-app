@@ -50,7 +50,10 @@ export const DesktopOnboardingStepTwo = ({
             name: 'images',
             rules: {
               validate: {
-                formArrayMinLength: formArrayMinLength(1, 'Please upload at least one image'),
+                formArrayMinLength: formArrayMinLength(
+                  1,
+                  translations.componentDesktopOnboardingStepTwoImagesFieldMinLengthError,
+                ),
               },
             },
           }}
