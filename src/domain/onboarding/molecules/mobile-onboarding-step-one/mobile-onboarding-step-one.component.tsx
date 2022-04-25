@@ -1,0 +1,130 @@
+import { Grid } from '@mui/material';
+import { useForm } from 'react-hook-form';
+
+import { TextFieldWithController } from '@ui';
+
+import { containSingleWord, startsOrEndsWithWhitespace, useTranslation } from '@utils';
+
+import { EMAIL_UNIVERSAL_REGEX } from '@constants';
+
+import { MobileOnboardingFormLayout } from '../../atoms';
+import { IMobileOnboardingStepOneData } from '../../onboarding.types';
+import {
+  defaultMobileOnboardingStepOneFormData,
+  translationStrings,
+} from './mobile-onboarding-step-one.defaults';
+import { IMobileOnboardingStepOneProps } from './mobile-onboarding-step-one.types';
+
+export const MobileOnboardingStepOne = ({
+  defaultValues = defaultMobileOnboardingStepOneFormData,
+  onContinueButtonClick,
+}: IMobileOnboardingStepOneProps): JSX.Element => {
+  const { control, handleSubmit } = useForm<IMobileOnboardingStepOneData>({
+    defaultValues,
+  });
+
+  const translations = useTranslation(translationStrings);
+
+  const onSubmit = handleSubmit(onContinueButtonClick);
+
+  return (
+    <MobileOnboardingFormLayout
+      continueButtonText={translations.commonButtonsContinue}
+      heading={translations.componentMobileOnboardingStepOneHeading}
+      subHeading={translations.componentMobileOnboardingStepOneSubheading}
+      onSubmit={onSubmit}
+    >
+      <Grid item xs={12}>
+        <TextFieldWithController
+          controllerProps={{
+            control,
+            name: 'firstName',
+            rules: {
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              maxLength: {
+                value: 50,
+                message: translations.componentMobileOnboardingStepOneFirstNameFieldMaxLengthError,
+              },
+              validate: {
+                startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
+                  translations.commonFormFieldErrorStartsOrEndsWithWhitespace,
+                ),
+                containSingleWord: containSingleWord(
+                  translations.commonFormFieldErrorContainSingleWord,
+                ),
+              },
+            },
+          }}
+          inputProps={{
+            fullWidth: true,
+            autoComplete: 'disabled',
+            label: translations.componentMobileOnboardingStepOneFirstNameFieldLabel,
+          }}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <TextFieldWithController
+          controllerProps={{
+            control,
+            name: 'lastName',
+            rules: {
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              maxLength: {
+                value: 50,
+                message: translations.componentMobileOnboardingStepOneLastNameFieldMaxLengthError,
+              },
+              validate: {
+                startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
+                  translations.commonFormFieldErrorStartsOrEndsWithWhitespace,
+                ),
+                containSingleWord: containSingleWord(
+                  translations.commonFormFieldErrorContainSingleWord,
+                ),
+              },
+            },
+          }}
+          inputProps={{
+            fullWidth: true,
+            autoComplete: 'disabled',
+            label: translations.componentMobileOnboardingStepOneLastNameFieldLabel,
+          }}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <TextFieldWithController
+          controllerProps={{
+            control,
+            name: 'contactEmail',
+            rules: {
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+              pattern: {
+                value: EMAIL_UNIVERSAL_REGEX,
+                message:
+                  translations.componentMobileOnboardingStepOneContactEmailFieldPatternMatchError,
+              },
+              maxLength: {
+                value: 100,
+                message:
+                  translations.componentMobileOnboardingStepOneContactEmailFieldMaxLengthError,
+              },
+            },
+          }}
+          inputProps={{
+            fullWidth: true,
+            autoComplete: 'disabled',
+            label: translations.componentMobileOnboardingStepOneContactEmailFieldLabel,
+          }}
+        />
+      </Grid>
+    </MobileOnboardingFormLayout>
+  );
+};
