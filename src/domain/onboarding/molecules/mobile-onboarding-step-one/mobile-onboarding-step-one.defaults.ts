@@ -3,7 +3,6 @@ import { IMobileOnboardingStepOneData } from '../../onboarding.types';
 export const defaultMobileOnboardingStepOneFormData: IMobileOnboardingStepOneData = {
   lastName: '',
   firstName: '',
-  contactEmail: '',
 };
 
 export const translationStrings = [
@@ -19,7 +18,4 @@ export const translationStrings = [
   'component.mobile.onboarding.step.one.first.name.field.max.length.error',
   'component.mobile.onboarding.step.one.last.name.field.label',
   'component.mobile.onboarding.step.one.last.name.field.max.length.error',
-  'component.mobile.onboarding.step.one.contact.email.field.label',
-  'component.mobile.onboarding.step.one.contact.email.field.max.length.error',
-  'component.mobile.onboarding.step.one.contact.email.field.pattern.match.error',
 ] as const;

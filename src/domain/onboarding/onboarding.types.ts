@@ -76,7 +76,11 @@ export interface IDesktopOnboardingStepFiveInvestorData {
 }
 
 export interface IMobileOnboardingStepOneData {
-  contactEmail: string;
   firstName: string;
   lastName: string;
+}
+
+export interface IMobileOnboardingStepTwoData {
+  companyName: string;
+  contactEmail: string;
 }

@@ -8,6 +8,7 @@ export * from './desktop-onboarding-step-four-investor/desktop-onboarding-step-f
 export * from './desktop-onboarding-step-five-investor/desktop-onboarding-step-five-investor.component';
 export * from './desktop-onboarding-step-three-investor/desktop-onboarding-step-three-investor.component';
 export * from './mobile-onboarding-step-one/mobile-onboarding-step-one.component';
+export * from './mobile-onboarding-step-two/mobile-onboarding-step-two.component';
 
 export { defaultDesktopOnboardingStepTwoFormData } from './desktop-onboarding-step-two/desktop-onboarding-step-two.defaults';
 export { defaultDesktopOnboardingStepOneFormData } from './desktop-onboarding-step-one/desktop-onboarding-step-one.defaults';
@@ -18,3 +19,4 @@ export { defaultDesktopOnboardingStepThreeStartupFormData } from './desktop-onbo
 export { defaultDesktopOnboardingStepFourInvestorFormData } from './desktop-onboarding-step-four-investor/desktop-onboarding-step-four-investor.defaults';
 export { defaultDesktopOnboardingStepThreeInvestorFormData } from './desktop-onboarding-step-three-investor/desktop-onboarding-step-three-investor.defaults';
 export { defaultMobileOnboardingStepOneFormData } from './mobile-onboarding-step-one/mobile-onboarding-step-one.defaults';
+export { defaultMobileOnboardingStepTwoFormData } from './mobile-onboarding-step-two/mobile-onboarding-step-two.defaults';
