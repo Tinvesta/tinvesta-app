@@ -4,12 +4,14 @@ import { useEffect } from 'react';
 import { useUser } from '@utils';
 
 import {
+  MobileOnboardingStepFiveStartup,
   MobileOnboardingStepFour,
   MobileOnboardingStepOne,
   MobileOnboardingStepThree,
   MobileOnboardingStepTwo,
 } from '../../molecules';
 import {
+  IMobileOnboardingStepFiveStartupData,
   IMobileOnboardingStepFourData,
   IMobileOnboardingStepOneData,
   IMobileOnboardingStepThreeData,
@@ -23,7 +25,12 @@ import {
 } from './machines';
 import { IMobileOnboardingProps } from './mobile-onboarding.types';
 
-export const MobileOnboarding = ({ clientTypes }: IMobileOnboardingProps): JSX.Element => {
+export const MobileOnboarding = ({
+  clientTypes,
+  focusMarkets,
+  startupProfileCreatorTypes,
+  startupSectors,
+}: IMobileOnboardingProps): JSX.Element => {
   const { isLoading: isProfileLoading, user } = useUser();
 
   const [current, send] = useMachine(onboardingStateMachine);
@@ -43,7 +50,8 @@ export const MobileOnboarding = ({ clientTypes }: IMobileOnboardingProps): JSX.E
       | IMobileOnboardingStepOneData
       | IMobileOnboardingStepTwoData
       | IMobileOnboardingStepThreeData
-      | IMobileOnboardingStepFourData,
+      | IMobileOnboardingStepFourData
+      | IMobileOnboardingStepFiveStartupData,
   ) => send({ type: EMobileOnboardingMachineEvents.NEXT, data });
 
   if (current.matches(EMobileOnboardingMachineStates.STEP_ONE)) {
@@ -74,9 +82,21 @@ export const MobileOnboarding = ({ clientTypes }: IMobileOnboardingProps): JSX.E
     );
   }
 
+  if (current.matches(EMobileOnboardingMachineStates.STEP_FOUR)) {
+    return (
+      <MobileOnboardingStepFour
+        defaultValues={current.context.stepFourData}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
   return (
-    <MobileOnboardingStepFour
-      defaultValues={current.context.stepFourData}
+    <MobileOnboardingStepFiveStartup
+      defaultValues={current.context.stepFiveStartupData}
+      focusMarkets={focusMarkets}
+      startupProfileCreatorTypes={startupProfileCreatorTypes}
+      startupSectors={startupSectors}
       onContinueButtonClick={onContinueButtonClick}
     />
   );

@@ -35,7 +35,6 @@ export const DesktopOnboardingStepThreeStartup = ({
   });
 
   const translations = useTranslation(translationStrings);
-
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
     startupSectors,
     translations,

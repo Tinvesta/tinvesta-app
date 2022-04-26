@@ -1,4 +1,5 @@
 import {
+  IMobileOnboardingStepFiveStartupData,
   IMobileOnboardingStepFourData,
   IMobileOnboardingStepOneData,
   IMobileOnboardingStepThreeData,
@@ -6,6 +7,7 @@ import {
 } from '../../../../onboarding.types';
 
 export interface IMobileOnboardingMachineContext {
+  stepFiveStartupData: IMobileOnboardingStepFiveStartupData;
   stepFourData: IMobileOnboardingStepFourData;
   stepOneData: IMobileOnboardingStepOneData;
   stepThreeData: IMobileOnboardingStepThreeData;
@@ -13,6 +15,8 @@ export interface IMobileOnboardingMachineContext {
 }
 
 export enum EMobileOnboardingMachineStates {
+  STEP_FIVE_HUB = 'step-five-hub',
+  STEP_FIVE_STARTUP = 'step-five-startup',
   STEP_FOUR = 'step-four',
   STEP_ONE = 'step-one',
   STEP_THREE = 'step-three',

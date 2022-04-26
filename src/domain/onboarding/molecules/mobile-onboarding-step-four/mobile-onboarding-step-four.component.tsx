@@ -21,6 +21,7 @@ export const MobileOnboardingStepFour = ({
     defaultValues,
   });
 
+  console.log(defaultValues);
   const translations = useTranslation(translationStrings);
 
   const onSubmit = handleSubmit(onContinueButtonClick);
