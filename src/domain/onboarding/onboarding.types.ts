@@ -81,6 +81,7 @@ export interface IMobileOnboardingStepOneData {
 }
 
 export interface IMobileOnboardingStepTwoData {
+  clientTypeId: string | number;
   companyName: string;
   contactEmail: string;
 }

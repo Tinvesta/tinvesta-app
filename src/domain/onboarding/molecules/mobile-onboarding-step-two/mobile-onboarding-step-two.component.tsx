@@ -1,9 +1,14 @@
 import { Grid } from '@mui/material';
 import { useForm } from 'react-hook-form';
 
-import { TextFieldWithController } from '@ui';
+import { SelectWithController, TextFieldWithController } from '@ui';
 
-import { containEntersOrSpaces, startsOrEndsWithWhitespace, useTranslation } from '@utils';
+import {
+  containEntersOrSpaces,
+  mapClientTypesToDropdownOptions,
+  startsOrEndsWithWhitespace,
+  useTranslation,
+} from '@utils';
 
 import { EMAIL_UNIVERSAL_REGEX } from '@constants';
 
@@ -16,6 +21,7 @@ import {
 import { IMobileOnboardingStepTwoProps } from './mobile-onboarding-step-two.types';
 
 export const MobileOnboardingStepTwo = ({
+  clientTypes,
   defaultValues = defaultMobileOnboardingStepTwoFormData,
   onContinueButtonClick,
 }: IMobileOnboardingStepTwoProps): JSX.Element => {
@@ -24,6 +30,7 @@ export const MobileOnboardingStepTwo = ({
   });
 
   const translations = useTranslation(translationStrings);
+  const clientTypesDropdownOptions = mapClientTypesToDropdownOptions(clientTypes, translations);
 
   const onSubmit = handleSubmit(onContinueButtonClick);
 
@@ -34,6 +41,29 @@ export const MobileOnboardingStepTwo = ({
       subHeading={translations.componentMobileOnboardingStepTwoSubheading}
       onSubmit={onSubmit}
     >
+      <Grid item xs={12}>
+        <SelectWithController
+          controllerProps={{
+            control,
+            name: 'clientTypeId',
+            rules: {
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+            },
+          }}
+          formControlProps={{
+            fullWidth: true,
+          }}
+          selectProps={{
+            fullWidth: true,
+            options: clientTypesDropdownOptions,
+            labelId: 'mobile-onboarding-step-two-client-type-id-select',
+            label: translations.componentMobileOnboardingStepTwoProfileTypeFieldLabel,
+          }}
+        />
+      </Grid>
       <Grid item xs={12}>
         <TextFieldWithController
           controllerProps={{

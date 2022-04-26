@@ -1,8 +1,11 @@
-import { MobileOnboardingStepFour } from '../../molecules';
+import { MobileOnboardingStepTwo } from '../../molecules';
 import { IMobileOnboardingProps } from './mobile-onboarding.types';
 
-export const MobileOnboarding = ({ teamSizes }: IMobileOnboardingProps): JSX.Element => {
+export const MobileOnboarding = ({
+  clientTypes,
+  teamSizes,
+}: IMobileOnboardingProps): JSX.Element => {
   console.log(teamSizes);
 
-  return <MobileOnboardingStepFour onContinueButtonClick={console.log} />;
+  return <MobileOnboardingStepTwo clientTypes={clientTypes} onContinueButtonClick={console.log} />;
 };
