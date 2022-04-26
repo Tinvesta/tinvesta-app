@@ -3,6 +3,9 @@ export default {
   'component.mobile.onboarding.step.two.heading': 'General',
   'component.mobile.onboarding.step.two.subheading': 'Step 2/5',
 
+  // Profile Type
+  'component.mobile.onboarding.step.two.profile.type.field.label': 'Profile Type',
+
   // Contact Email
   'component.mobile.onboarding.step.two.contact.email.field.label': 'Contact Email',
   'component.mobile.onboarding.step.two.contact.email.field.max.length.error':
