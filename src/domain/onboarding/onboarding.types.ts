@@ -94,3 +94,9 @@ export interface IMobileOnboardingStepThreeData {
 export interface IMobileOnboardingStepFourData {
   images: string[];
 }
+
+export interface IMobileOnboardingStepFiveStartupData {
+  focusMarketIds: number[];
+  startupProfileCreatorTypeId: string | number;
+  startupSectorIds: number[];
+}

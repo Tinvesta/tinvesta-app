@@ -3,6 +3,7 @@ import { assign, createMachine } from 'xstate';
 import { getFirstNameAndLastNameFromMultiPartFullName, isStartupProfile } from '@utils';
 
 import {
+  defaultMobileOnboardingStepFiveStartupFormData,
   defaultMobileOnboardingStepFourFormData,
   defaultMobileOnboardingStepOneFormData,
   defaultMobileOnboardingStepThreeFormData,
@@ -24,6 +25,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       stepTwoData: defaultMobileOnboardingStepTwoFormData,
       stepFourData: defaultMobileOnboardingStepFourFormData,
       stepThreeData: defaultMobileOnboardingStepThreeFormData,
+      stepFiveStartupData: defaultMobileOnboardingStepFiveStartupFormData,
     },
     states: {
       [EMobileOnboardingMachineStates.STEP_ONE]: {
@@ -56,9 +58,24 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         on: {
           [EMobileOnboardingMachineEvents.NEXT]: {
             actions: 'assignStepFourData',
-            target: EMobileOnboardingMachineStates.STEP_ONE,
+            target: EMobileOnboardingMachineStates.STEP_FIVE_HUB,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_THREE,
+        },
+      },
+      [EMobileOnboardingMachineStates.STEP_FIVE_HUB]: {
+        always: [
+          { target: EMobileOnboardingMachineStates.STEP_FIVE_STARTUP, cond: 'isStartupPath' },
+          { target: EMobileOnboardingMachineStates.STEP_ONE },
+        ],
+      },
+      [EMobileOnboardingMachineStates.STEP_FIVE_STARTUP]: {
+        on: {
+          [EMobileOnboardingMachineEvents.NEXT]: {
+            actions: 'assignStepFiveStartupData',
+            target: EMobileOnboardingMachineStates.STEP_ONE,
+          },
+          [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_FOUR,
         },
       },
     },
@@ -93,6 +110,9 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       }),
       assignStepFourData: assign({
         stepFourData: (_, event) => event.data,
+      }),
+      assignStepFiveStartupData: assign({
+        stepFiveStartupData: (_, event) => event.data,
       }),
     },
     guards: {
