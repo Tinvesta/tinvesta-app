@@ -6,6 +6,7 @@ import {
   defaultMobileOnboardingStepFiveStartupFormData,
   defaultMobileOnboardingStepFourFormData,
   defaultMobileOnboardingStepOneFormData,
+  defaultMobileOnboardingStepSixStartupFormData,
   defaultMobileOnboardingStepThreeFormData,
   defaultMobileOnboardingStepTwoFormData,
 } from '../../../../molecules';
@@ -25,6 +26,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       stepTwoData: defaultMobileOnboardingStepTwoFormData,
       stepFourData: defaultMobileOnboardingStepFourFormData,
       stepThreeData: defaultMobileOnboardingStepThreeFormData,
+      stepSixStartupData: defaultMobileOnboardingStepSixStartupFormData,
       stepFiveStartupData: defaultMobileOnboardingStepFiveStartupFormData,
     },
     states: {
@@ -73,9 +75,18 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         on: {
           [EMobileOnboardingMachineEvents.NEXT]: {
             actions: 'assignStepFiveStartupData',
-            target: EMobileOnboardingMachineStates.STEP_ONE,
+            target: EMobileOnboardingMachineStates.STEP_SIX_STARTUP,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_FOUR,
+        },
+      },
+      [EMobileOnboardingMachineStates.STEP_SIX_STARTUP]: {
+        on: {
+          [EMobileOnboardingMachineEvents.NEXT]: {
+            actions: 'assignStepSixStartupData',
+            target: EMobileOnboardingMachineStates.STEP_ONE,
+          },
+          [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_FIVE_STARTUP,
         },
       },
     },
@@ -113,6 +124,9 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       }),
       assignStepFiveStartupData: assign({
         stepFiveStartupData: (_, event) => event.data,
+      }),
+      assignStepSixStartupData: assign({
+        stepSixStartupData: (_, event) => event.data,
       }),
     },
     guards: {

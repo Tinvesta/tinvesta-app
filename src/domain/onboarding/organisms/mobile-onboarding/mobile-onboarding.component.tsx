@@ -7,6 +7,7 @@ import {
   MobileOnboardingStepFiveStartup,
   MobileOnboardingStepFour,
   MobileOnboardingStepOne,
+  MobileOnboardingStepSixStartup,
   MobileOnboardingStepThree,
   MobileOnboardingStepTwo,
 } from '../../molecules';
@@ -14,6 +15,7 @@ import {
   IMobileOnboardingStepFiveStartupData,
   IMobileOnboardingStepFourData,
   IMobileOnboardingStepOneData,
+  IMobileOnboardingStepSixStartupData,
   IMobileOnboardingStepThreeData,
   IMobileOnboardingStepTwoData,
 } from '../../onboarding.types';
@@ -28,8 +30,10 @@ import { IMobileOnboardingProps } from './mobile-onboarding.types';
 export const MobileOnboarding = ({
   clientTypes,
   focusMarkets,
+  industrialSectors,
   startupProfileCreatorTypes,
   startupSectors,
+  teamSizes,
 }: IMobileOnboardingProps): JSX.Element => {
   const { isLoading: isProfileLoading, user } = useUser();
 
@@ -51,7 +55,8 @@ export const MobileOnboarding = ({
       | IMobileOnboardingStepTwoData
       | IMobileOnboardingStepThreeData
       | IMobileOnboardingStepFourData
-      | IMobileOnboardingStepFiveStartupData,
+      | IMobileOnboardingStepFiveStartupData
+      | IMobileOnboardingStepSixStartupData,
   ) => send({ type: EMobileOnboardingMachineEvents.NEXT, data });
 
   if (current.matches(EMobileOnboardingMachineStates.STEP_ONE)) {
@@ -91,12 +96,23 @@ export const MobileOnboarding = ({
     );
   }
 
+  if (current.matches(EMobileOnboardingMachineStates.STEP_FIVE_STARTUP)) {
+    return (
+      <MobileOnboardingStepFiveStartup
+        defaultValues={current.context.stepFiveStartupData}
+        focusMarkets={focusMarkets}
+        startupProfileCreatorTypes={startupProfileCreatorTypes}
+        startupSectors={startupSectors}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
   return (
-    <MobileOnboardingStepFiveStartup
-      defaultValues={current.context.stepFiveStartupData}
-      focusMarkets={focusMarkets}
-      startupProfileCreatorTypes={startupProfileCreatorTypes}
-      startupSectors={startupSectors}
+    <MobileOnboardingStepSixStartup
+      defaultValues={current.context.stepSixStartupData}
+      industrialSectors={industrialSectors}
+      teamSizes={teamSizes}
       onContinueButtonClick={onContinueButtonClick}
     />
   );
