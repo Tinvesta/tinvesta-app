@@ -1,8 +1,6 @@
 import { assign, createMachine } from 'xstate';
 
-import { getFirstNameAndLastNameFromMultiPartFullName } from '@utils';
-
-import { STARTUP_CLIENT_TYPE_ID } from '@constants';
+import { getFirstNameAndLastNameFromMultiPartFullName, isStartupProfile } from '@utils';
 
 import {
   defaultDesktopOnboardingStepFiveInvestorFormData,
@@ -171,7 +169,7 @@ export const onboardingStateMachine = createMachine<IDesktopOnboardingMachineCon
       }),
     },
     guards: {
-      isStartupPath: (context) => context.stepTwoData.clientTypeId === STARTUP_CLIENT_TYPE_ID,
+      isStartupPath: (context) => isStartupProfile(context.stepTwoData.clientTypeId),
     },
   },
 );

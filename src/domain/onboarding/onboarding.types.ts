@@ -94,3 +94,8 @@ export interface IMobileOnboardingStepThreeData {
 export interface IMobileOnboardingStepFourData {
   images: string[];
 }
+
+export interface IVariables {
+  contactEmail: string | undefined;
+  fullName: string | undefined;
+}
