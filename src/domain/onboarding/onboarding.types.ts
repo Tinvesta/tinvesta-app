@@ -100,3 +100,8 @@ export interface IMobileOnboardingStepFiveStartupData {
   startupProfileCreatorTypeId: string | number;
   startupSectorIds: number[];
 }
+
+export interface IMobileOnboardingStepSixStartupData {
+  industrialSectorIds: number[];
+  teamSizeId: string | number;
+}
