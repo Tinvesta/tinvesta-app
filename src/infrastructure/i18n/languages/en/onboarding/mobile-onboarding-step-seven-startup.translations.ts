@@ -1,6 +1,6 @@
 export default {
   // General
-  'component.mobile.onboarding.step.seven.startup.subheading': 'Step 7/5',
+  'component.mobile.onboarding.step.seven.startup.subheading': 'Step 7/9',
   'component.mobile.onboarding.step.seven.startup.heading': 'Setup Startup',
 
   // Focus Market

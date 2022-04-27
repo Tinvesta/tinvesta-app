@@ -1,6 +1,6 @@
 export default {
   // General
-  'component.mobile.onboarding.step.eight.startup.subheading': 'Step 8/5',
+  'component.mobile.onboarding.step.eight.startup.subheading': 'Step 8/9',
   'component.mobile.onboarding.step.eight.startup.heading': 'Setup Startup',
 
   // Investment Stage

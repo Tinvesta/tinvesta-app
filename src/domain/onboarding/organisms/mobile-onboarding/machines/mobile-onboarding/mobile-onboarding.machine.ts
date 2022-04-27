@@ -6,6 +6,7 @@ import {
   defaultMobileOnboardingStepEightStartupFormData,
   defaultMobileOnboardingStepFiveStartupFormData,
   defaultMobileOnboardingStepFourFormData,
+  defaultMobileOnboardingStepNineStartupFormData,
   defaultMobileOnboardingStepOneFormData,
   defaultMobileOnboardingStepSevenStartupFormData,
   defaultMobileOnboardingStepSixStartupFormData,
@@ -30,6 +31,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       stepThreeData: defaultMobileOnboardingStepThreeFormData,
       stepSixStartupData: defaultMobileOnboardingStepSixStartupFormData,
       stepFiveStartupData: defaultMobileOnboardingStepFiveStartupFormData,
+      stepNineStartupData: defaultMobileOnboardingStepNineStartupFormData,
       stepSevenStartupData: defaultMobileOnboardingStepSevenStartupFormData,
       stepEightStartupData: defaultMobileOnboardingStepEightStartupFormData,
     },
@@ -106,9 +108,18 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         on: {
           [EMobileOnboardingMachineEvents.NEXT]: {
             actions: 'assignStepEightStartupData',
-            target: EMobileOnboardingMachineStates.STEP_ONE,
+            target: EMobileOnboardingMachineStates.STEP_NINE_STARTUP,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_SEVEN_STARTUP,
+        },
+      },
+      [EMobileOnboardingMachineStates.STEP_NINE_STARTUP]: {
+        on: {
+          [EMobileOnboardingMachineEvents.NEXT]: {
+            actions: 'assignStepNineStartupData',
+            target: EMobileOnboardingMachineStates.STEP_ONE,
+          },
+          [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_EIGHT_STARTUP,
         },
       },
     },
@@ -155,6 +166,9 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       }),
       assignStepEightStartupData: assign({
         stepEightStartupData: (_, event) => event.data,
+      }),
+      assignStepNineStartupData: assign({
+        stepNineStartupData: (_, event) => event.data,
       }),
     },
     guards: {

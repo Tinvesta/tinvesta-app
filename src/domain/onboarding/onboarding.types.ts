@@ -114,3 +114,8 @@ export interface IMobileOnboardingStepEightStartupData {
   investmentStageTypeIds: number[];
   startupClaim: string;
 }
+
+export interface IMobileOnboardingStepNineStartupData {
+  missionStatement: string;
+  visionStatement: string;
+}

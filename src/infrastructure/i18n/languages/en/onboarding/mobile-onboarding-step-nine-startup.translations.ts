@@ -1,6 +1,6 @@
 export default {
   // General
-  'component.mobile.onboarding.step.nine.startup.subheading': 'Step 9/5',
+  'component.mobile.onboarding.step.nine.startup.subheading': 'Step 9/9',
   'component.mobile.onboarding.step.nine.startup.heading': 'Setup Startup',
 
   // Mission Statement

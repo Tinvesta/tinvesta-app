@@ -1,7 +1,7 @@
 export default {
   // General
   'component.mobile.onboarding.step.three.heading': 'General',
-  'component.mobile.onboarding.step.three.subheading': 'Step 3/5',
+  'component.mobile.onboarding.step.three.subheading': 'Step 3/9',
 
   // Location
   'component.mobile.onboarding.step.three.location.field.label': 'Location',

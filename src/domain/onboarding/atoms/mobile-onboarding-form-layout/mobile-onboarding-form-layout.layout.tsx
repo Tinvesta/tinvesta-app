@@ -51,7 +51,7 @@ const MobileOnboardingFormLayoutComponent = ({
           <Grid container columnSpacing={4} justifyContent="center" rowSpacing={3}>
             {children}
             {continueButtonText && (
-              <Grid item marginTop={4} xs={12}>
+              <Grid item marginTop={deviceData.isSmallerThanXS ? 3 : 4} xs={12}>
                 <LoadingButton
                   fullWidth
                   loading={isLoading}
