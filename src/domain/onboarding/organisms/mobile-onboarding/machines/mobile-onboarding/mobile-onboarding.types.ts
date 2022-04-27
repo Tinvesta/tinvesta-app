@@ -2,6 +2,7 @@ import {
   IMobileOnboardingStepEightStartupData,
   IMobileOnboardingStepFiveStartupData,
   IMobileOnboardingStepFourData,
+  IMobileOnboardingStepNineStartupData,
   IMobileOnboardingStepOneData,
   IMobileOnboardingStepSevenStartupData,
   IMobileOnboardingStepSixStartupData,
@@ -13,6 +14,7 @@ export interface IMobileOnboardingMachineContext {
   stepEightStartupData: IMobileOnboardingStepEightStartupData;
   stepFiveStartupData: IMobileOnboardingStepFiveStartupData;
   stepFourData: IMobileOnboardingStepFourData;
+  stepNineStartupData: IMobileOnboardingStepNineStartupData;
   stepOneData: IMobileOnboardingStepOneData;
   stepSevenStartupData: IMobileOnboardingStepSevenStartupData;
   stepSixStartupData: IMobileOnboardingStepSixStartupData;
@@ -25,6 +27,7 @@ export enum EMobileOnboardingMachineStates {
   STEP_FIVE_HUB = 'step-five-hub',
   STEP_FIVE_STARTUP = 'step-five-startup',
   STEP_FOUR = 'step-four',
+  STEP_NINE_STARTUP = 'step-nine-startup',
   STEP_ONE = 'step-one',
   STEP_SEVEN_STARTUP = 'step-seven-startup',
   STEP_SIX_STARTUP = 'step-six-startup',

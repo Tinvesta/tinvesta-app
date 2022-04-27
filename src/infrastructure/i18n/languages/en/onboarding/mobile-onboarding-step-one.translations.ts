@@ -1,7 +1,7 @@
 export default {
   // General
   'component.mobile.onboarding.step.one.heading': 'General',
-  'component.mobile.onboarding.step.one.subheading': 'Step 1/5',
+  'component.mobile.onboarding.step.one.subheading': 'Step 1/9',
 
   // First Name
   'component.mobile.onboarding.step.one.first.name.field.label': 'First Name',

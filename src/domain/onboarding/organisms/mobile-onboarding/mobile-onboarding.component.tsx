@@ -7,6 +7,7 @@ import {
   MobileOnboardingStepEightStartup,
   MobileOnboardingStepFiveStartup,
   MobileOnboardingStepFour,
+  MobileOnboardingStepNineStartup,
   MobileOnboardingStepOne,
   MobileOnboardingStepSevenStartup,
   MobileOnboardingStepSixStartup,
@@ -17,6 +18,7 @@ import {
   IMobileOnboardingStepEightStartupData,
   IMobileOnboardingStepFiveStartupData,
   IMobileOnboardingStepFourData,
+  IMobileOnboardingStepNineStartupData,
   IMobileOnboardingStepOneData,
   IMobileOnboardingStepSevenStartupData,
   IMobileOnboardingStepSixStartupData,
@@ -64,7 +66,8 @@ export const MobileOnboarding = ({
       | IMobileOnboardingStepFiveStartupData
       | IMobileOnboardingStepSixStartupData
       | IMobileOnboardingStepSevenStartupData
-      | IMobileOnboardingStepEightStartupData,
+      | IMobileOnboardingStepEightStartupData
+      | IMobileOnboardingStepNineStartupData,
   ) => send({ type: EMobileOnboardingMachineEvents.NEXT, data });
 
   if (current.matches(EMobileOnboardingMachineStates.STEP_ONE)) {
@@ -137,10 +140,19 @@ export const MobileOnboarding = ({
     );
   }
 
+  if (current.matches(EMobileOnboardingMachineStates.STEP_EIGHT_STARTUP)) {
+    return (
+      <MobileOnboardingStepEightStartup
+        defaultValues={current.context.stepEightStartupData}
+        investmentStageTypes={investmentStageTypes}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
   return (
-    <MobileOnboardingStepEightStartup
-      defaultValues={current.context.stepEightStartupData}
-      investmentStageTypes={investmentStageTypes}
+    <MobileOnboardingStepNineStartup
+      defaultValues={current.context.stepNineStartupData}
       onContinueButtonClick={onContinueButtonClick}
     />
   );
