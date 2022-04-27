@@ -9,7 +9,7 @@ const StyledUploadImagesWrapper = styled.div`
   margin: 0 auto;
   max-width: 350px;
 
-  ${respondToMax.small`
+  ${respondToMax.xmobile`
     max-width: 275px;
   `}
 `;
@@ -27,7 +27,7 @@ const StyledImage = styled.img`
   background-color: ${({ theme }) => theme.palette.grey[400]};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 
-  ${respondToMax.small`
+  ${respondToMax.xmobile`
     width: 100px;
     height: 150px;
   `}
@@ -96,7 +96,7 @@ const StyledImagePlaceholder = styled(LoadingButton)<{ error?: boolean }>`
 
   ${({ error, theme }) => error && `border-color: ${theme.palette.error.main};`}
 
-  ${respondToMax.small`
+  ${respondToMax.xmobile`
     width: 100px;
     height: 150px;
   `}

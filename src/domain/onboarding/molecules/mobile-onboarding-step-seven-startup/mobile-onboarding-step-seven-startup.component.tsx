@@ -39,8 +39,8 @@ export const MobileOnboardingStepSevenStartup = ({
   return (
     <MobileOnboardingFormLayout
       continueButtonText={translations.commonButtonsContinue}
+      currentStep={7}
       heading={translations.componentMobileOnboardingStepSevenStartupHeading}
-      subHeading={translations.componentMobileOnboardingStepSevenStartupSubheading}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

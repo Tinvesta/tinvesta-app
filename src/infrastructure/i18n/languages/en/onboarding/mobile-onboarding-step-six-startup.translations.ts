@@ -1,6 +1,5 @@
 export default {
   // General
-  'component.mobile.onboarding.step.six.startup.subheading': 'Step 6/9',
   'component.mobile.onboarding.step.six.startup.heading': 'Setup Startup',
 
   // Industrial Sectors

@@ -18,7 +18,6 @@ export const translationStrings = [
   'common.investment.sizes.large',
   'common.investment.sizes.very.large',
 
-  'component.mobile.onboarding.step.seven.startup.subheading',
   'component.mobile.onboarding.step.seven.startup.heading',
   'component.mobile.onboarding.step.seven.startup.focus.market.field.label',
   'component.mobile.onboarding.step.seven.startup.investment.size.field.label',

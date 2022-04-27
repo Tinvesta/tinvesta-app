@@ -20,7 +20,6 @@ export const translationStrings = [
   'common.startup.profile.creator.types.employee',
   'common.startup.profile.creator.types.co.founder',
 
-  'component.mobile.onboarding.step.five.startup.subheading',
   'component.mobile.onboarding.step.five.startup.heading',
   'component.mobile.onboarding.step.five.startup.your.position.field.label',
   'component.mobile.onboarding.step.five.startup.focus.market.field.label',

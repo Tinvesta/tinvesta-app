@@ -1,7 +1,6 @@
 export default {
   // General
   'component.mobile.onboarding.step.two.heading': 'General',
-  'component.mobile.onboarding.step.two.subheading': 'Step 2/9',
 
   // Profile Type
   'component.mobile.onboarding.step.two.profile.type.field.label': 'Profile Type',

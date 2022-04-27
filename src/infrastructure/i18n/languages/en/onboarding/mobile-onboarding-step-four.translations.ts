@@ -1,7 +1,6 @@
 export default {
   // General
   'component.mobile.onboarding.step.four.heading': 'General',
-  'component.mobile.onboarding.step.four.subheading': 'Step 4/9',
 
   // Images
   'component.mobile.onboarding.step.four.images.field.min.length.error':

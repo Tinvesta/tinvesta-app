@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Typography } from '@mui/material';
+import { LinearProgress, Typography } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
@@ -54,11 +54,20 @@ const StyledHeading = styled(Typography)`
   margin-bottom: ${({ theme }) => theme.spacing(3)};
 `;
 
+const StyledLinearProgress = styled(LinearProgress)`
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  height: ${({ theme }) => theme.spacing(2)};
+`;
+
 const S = {
   StyledWrapper,
   StyledHeading,
   StyledFormWrapper,
   StyledContentWrapper,
+  StyledLinearProgress,
 };
 
 export default S;

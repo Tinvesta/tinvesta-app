@@ -13,7 +13,6 @@ export const translationStrings = [
   'common.form.field.error.starts.or.ends.with.whitespace',
 
   'component.mobile.onboarding.step.one.heading',
-  'component.mobile.onboarding.step.one.subheading',
   'component.mobile.onboarding.step.one.first.name.field.label',
   'component.mobile.onboarding.step.one.first.name.field.max.length.error',
   'component.mobile.onboarding.step.one.last.name.field.label',

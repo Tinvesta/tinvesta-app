@@ -12,7 +12,6 @@ export const translationStrings = [
   'common.form.field.error.starts.or.ends.with.whitespace',
 
   'component.mobile.onboarding.step.three.heading',
-  'component.mobile.onboarding.step.three.subheading',
   'component.mobile.onboarding.step.three.location.field.label',
   'component.mobile.onboarding.step.three.what.are.you.looking.for.field.label',
   'component.mobile.onboarding.step.three.what.are.you.looking.for.field.placeholder',

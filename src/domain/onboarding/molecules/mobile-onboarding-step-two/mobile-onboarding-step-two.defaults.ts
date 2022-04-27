@@ -15,7 +15,6 @@ export const translationStrings = [
   'common.form.field.error.starts.or.ends.with.whitespace',
 
   'component.mobile.onboarding.step.two.heading',
-  'component.mobile.onboarding.step.two.subheading',
   'component.mobile.onboarding.step.two.profile.type.field.label',
   'component.mobile.onboarding.step.two.contact.email.field.label',
   'component.mobile.onboarding.step.two.contact.email.field.max.length.error',

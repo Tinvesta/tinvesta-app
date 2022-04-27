@@ -28,8 +28,8 @@ export const MobileOnboardingStepFour = ({
   return (
     <MobileOnboardingFormLayout
       continueButtonText={translations.commonButtonsContinue}
+      currentStep={4}
       heading={translations.componentMobileOnboardingStepFourHeading}
-      subHeading={translations.componentMobileOnboardingStepFourSubheading}
       onSubmit={onSubmit}
     >
       <Grid item alignItems="center" justifyContent="center" xs={12}>
