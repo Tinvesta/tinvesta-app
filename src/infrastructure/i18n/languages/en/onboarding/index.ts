@@ -6,8 +6,10 @@ import desktopOnboardingStepOneTranslations from './desktop-onboarding-step-one.
 import desktopOnboardingStepThreeInvestorTranslations from './desktop-onboarding-step-three-investor.translations';
 import desktopOnboardingStepThreeStartupTranslations from './desktop-onboarding-step-three-startup.translations';
 import desktopOnboardingStepTwoTranslations from './desktop-onboarding-step-two.translations';
+import mobileOnboardingStepEightStartupTranslations from './mobile-onboarding-step-eight-startup.translations';
 import mobileOnboardingStepFiveStartupTranslations from './mobile-onboarding-step-five-startup.translations';
 import mobileOnboardingStepFourTranslations from './mobile-onboarding-step-four.translations';
+import mobileOnboardingStepNineStartupTranslations from './mobile-onboarding-step-nine-startup.translations';
 import mobileOnboardingStepOneTranslations from './mobile-onboarding-step-one.translations';
 import mobileOnboardingStepSevenStartupTranslations from './mobile-onboarding-step-seven-startup.translations';
 import mobileOnboardingStepSixStartupTranslations from './mobile-onboarding-step-six-startup.translations';
@@ -30,4 +32,6 @@ export default {
   ...mobileOnboardingStepFiveStartupTranslations,
   ...mobileOnboardingStepSixStartupTranslations,
   ...mobileOnboardingStepSevenStartupTranslations,
+  ...mobileOnboardingStepEightStartupTranslations,
+  ...mobileOnboardingStepNineStartupTranslations,
 };

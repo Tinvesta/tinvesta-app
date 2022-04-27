@@ -3,6 +3,7 @@ import { assign, createMachine } from 'xstate';
 import { getFirstNameAndLastNameFromMultiPartFullName, isStartupProfile } from '@utils';
 
 import {
+  defaultMobileOnboardingStepEightStartupFormData,
   defaultMobileOnboardingStepFiveStartupFormData,
   defaultMobileOnboardingStepFourFormData,
   defaultMobileOnboardingStepOneFormData,
@@ -30,6 +31,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       stepSixStartupData: defaultMobileOnboardingStepSixStartupFormData,
       stepFiveStartupData: defaultMobileOnboardingStepFiveStartupFormData,
       stepSevenStartupData: defaultMobileOnboardingStepSevenStartupFormData,
+      stepEightStartupData: defaultMobileOnboardingStepEightStartupFormData,
     },
     states: {
       [EMobileOnboardingMachineStates.STEP_ONE]: {
@@ -95,9 +97,18 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         on: {
           [EMobileOnboardingMachineEvents.NEXT]: {
             actions: 'assignStepSevenStartupData',
-            target: EMobileOnboardingMachineStates.STEP_ONE,
+            target: EMobileOnboardingMachineStates.STEP_EIGHT_STARTUP,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_SIX_STARTUP,
+        },
+      },
+      [EMobileOnboardingMachineStates.STEP_EIGHT_STARTUP]: {
+        on: {
+          [EMobileOnboardingMachineEvents.NEXT]: {
+            actions: 'assignStepEightStartupData',
+            target: EMobileOnboardingMachineStates.STEP_ONE,
+          },
+          [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_SEVEN_STARTUP,
         },
       },
     },
@@ -141,6 +152,9 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       }),
       assignStepSevenStartupData: assign({
         stepSevenStartupData: (_, event) => event.data,
+      }),
+      assignStepEightStartupData: assign({
+        stepEightStartupData: (_, event) => event.data,
       }),
     },
     guards: {

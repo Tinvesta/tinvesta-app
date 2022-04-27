@@ -109,3 +109,8 @@ export interface IMobileOnboardingStepSevenStartupData {
   focusMarketIds: number[];
   investmentSizeIds: number[];
 }
+
+export interface IMobileOnboardingStepEightStartupData {
+  investmentStageTypeIds: number[];
+  startupClaim: string;
+}
