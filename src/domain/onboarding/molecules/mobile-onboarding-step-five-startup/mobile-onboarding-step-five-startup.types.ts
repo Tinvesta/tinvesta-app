@@ -1,4 +1,4 @@
-import { IFocusMarket, IStartupProfileCreatorType, IStartupSector } from '@interfaces';
+import { IFocusMarket, IStartupProfileCreatorType, ITeamSize } from '@interfaces';
 
 import { IMobileOnboardingStepFiveStartupData } from '../../onboarding.types';
 
@@ -7,5 +7,5 @@ export interface IMobileOnboardingStepFiveStartupProps {
   focusMarkets: IFocusMarket[];
   onContinueButtonClick: (data: IMobileOnboardingStepFiveStartupData) => void;
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
-  startupSectors: IStartupSector[];
+  teamSizes: ITeamSize[];
 }

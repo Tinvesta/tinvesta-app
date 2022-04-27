@@ -2,7 +2,7 @@ import { IMobileOnboardingStepSixStartupData } from '../../onboarding.types';
 
 // eslint-disable-next-line max-len
 export const defaultMobileOnboardingStepSixStartupFormData: IMobileOnboardingStepSixStartupData = {
-  teamSizeId: '',
+  startupSectorIds: [],
   industrialSectorIds: [],
 };
 
@@ -36,13 +36,12 @@ export const translationStrings = [
   'common.industrial.sectors.artificial.intelligence',
   'common.industrial.sectors.media.and.entertainment',
   'common.industrial.sectors.electronics.and.automation',
-  'common.team.sizes.very.small',
-  'common.team.sizes.small',
-  'common.team.sizes.medium',
-  'common.team.sizes.large',
+  'common.startup.sectors.software',
+  'common.startup.sectors.service.industry',
+  'common.startup.sectors.physical.product',
 
   'component.mobile.onboarding.step.six.startup.heading',
   'component.mobile.onboarding.step.six.startup.subheading',
-  'component.mobile.onboarding.step.six.startup.team.size.field.label',
+  'component.mobile.onboarding.step.six.startup.sectors.field.label',
   'component.mobile.onboarding.step.six.startup.industrial.sectors.field.label',
 ] as const;
