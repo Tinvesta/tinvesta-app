@@ -4,6 +4,7 @@ import { getFirstNameAndLastNameFromMultiPartFullName, isStartupProfile } from '
 
 import {
   defaultMobileOnboardingStepEightStartupFormData,
+  defaultMobileOnboardingStepFiveInvestorFormData,
   defaultMobileOnboardingStepFiveStartupFormData,
   defaultMobileOnboardingStepFourFormData,
   defaultMobileOnboardingStepNineStartupFormData,
@@ -34,6 +35,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       stepNineStartupData: defaultMobileOnboardingStepNineStartupFormData,
       stepSevenStartupData: defaultMobileOnboardingStepSevenStartupFormData,
       stepEightStartupData: defaultMobileOnboardingStepEightStartupFormData,
+      stepFiveInvestorData: defaultMobileOnboardingStepFiveInvestorFormData,
     },
     states: {
       [EMobileOnboardingMachineStates.STEP_ONE]: {
@@ -74,7 +76,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       [EMobileOnboardingMachineStates.STEP_FIVE_HUB]: {
         always: [
           { target: EMobileOnboardingMachineStates.STEP_FIVE_STARTUP, cond: 'isStartupPath' },
-          { target: EMobileOnboardingMachineStates.STEP_ONE },
+          { target: EMobileOnboardingMachineStates.STEP_FIVE_INVESTOR },
         ],
       },
       [EMobileOnboardingMachineStates.STEP_FIVE_STARTUP]: {
@@ -120,6 +122,15 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
             target: EMobileOnboardingMachineStates.STEP_ONE,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_EIGHT_STARTUP,
+        },
+      },
+      [EMobileOnboardingMachineStates.STEP_FIVE_INVESTOR]: {
+        on: {
+          [EMobileOnboardingMachineEvents.NEXT]: {
+            actions: 'assignStepFiveInvestorData',
+            target: EMobileOnboardingMachineStates.STEP_ONE,
+          },
+          [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_FOUR,
         },
       },
     },
@@ -169,6 +180,9 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       }),
       assignStepNineStartupData: assign({
         stepNineStartupData: (_, event) => event.data,
+      }),
+      assignStepFiveInvestorData: assign({
+        stepFiveInvestorData: (_, event) => event.data,
       }),
     },
     guards: {
