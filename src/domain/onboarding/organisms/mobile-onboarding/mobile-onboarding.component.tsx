@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useUser } from '@utils';
 
 import {
+  MobileOnboardingStepEightStartup,
   MobileOnboardingStepFiveStartup,
   MobileOnboardingStepFour,
   MobileOnboardingStepOne,
@@ -13,6 +14,7 @@ import {
   MobileOnboardingStepTwo,
 } from '../../molecules';
 import {
+  IMobileOnboardingStepEightStartupData,
   IMobileOnboardingStepFiveStartupData,
   IMobileOnboardingStepFourData,
   IMobileOnboardingStepOneData,
@@ -34,6 +36,7 @@ export const MobileOnboarding = ({
   focusMarkets,
   industrialSectors,
   investmentSizes,
+  investmentStageTypes,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
@@ -60,7 +63,8 @@ export const MobileOnboarding = ({
       | IMobileOnboardingStepFourData
       | IMobileOnboardingStepFiveStartupData
       | IMobileOnboardingStepSixStartupData
-      | IMobileOnboardingStepSevenStartupData,
+      | IMobileOnboardingStepSevenStartupData
+      | IMobileOnboardingStepEightStartupData,
   ) => send({ type: EMobileOnboardingMachineEvents.NEXT, data });
 
   if (current.matches(EMobileOnboardingMachineStates.STEP_ONE)) {
@@ -122,11 +126,21 @@ export const MobileOnboarding = ({
     );
   }
 
+  if (current.matches(EMobileOnboardingMachineStates.STEP_SEVEN_STARTUP)) {
+    return (
+      <MobileOnboardingStepSevenStartup
+        defaultValues={current.context.stepSevenStartupData}
+        focusMarkets={focusMarkets}
+        investmentSizes={investmentSizes}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
   return (
-    <MobileOnboardingStepSevenStartup
-      defaultValues={current.context.stepSevenStartupData}
-      focusMarkets={focusMarkets}
-      investmentSizes={investmentSizes}
+    <MobileOnboardingStepEightStartup
+      defaultValues={current.context.stepEightStartupData}
+      investmentStageTypes={investmentStageTypes}
       onContinueButtonClick={onContinueButtonClick}
     />
   );

@@ -14,6 +14,7 @@ export * from './mobile-onboarding-step-four/mobile-onboarding-step-four.compone
 export * from './mobile-onboarding-step-five-startup/mobile-onboarding-step-five-startup.component';
 export * from './mobile-onboarding-step-six-startup/mobile-onboarding-step-six-startup.component';
 export * from './mobile-onboarding-step-seven-startup/mobile-onboarding-step-seven-startup.component';
+export * from './mobile-onboarding-step-eight-startup/mobile-onboarding-step-eight-startup.component';
 
 export { defaultDesktopOnboardingStepTwoFormData } from './desktop-onboarding-step-two/desktop-onboarding-step-two.defaults';
 export { defaultDesktopOnboardingStepOneFormData } from './desktop-onboarding-step-one/desktop-onboarding-step-one.defaults';
@@ -30,3 +31,4 @@ export { defaultMobileOnboardingStepFourFormData } from './mobile-onboarding-ste
 export { defaultMobileOnboardingStepFiveStartupFormData } from './mobile-onboarding-step-five-startup/mobile-onboarding-step-five-startup.defaults';
 export { defaultMobileOnboardingStepSixStartupFormData } from './mobile-onboarding-step-six-startup/mobile-onboarding-step-six-startup.defaults';
 export { defaultMobileOnboardingStepSevenStartupFormData } from './mobile-onboarding-step-seven-startup/mobile-onboarding-step-seven-startup.defaults';
+export { defaultMobileOnboardingStepEightStartupFormData } from './mobile-onboarding-step-eight-startup/mobile-onboarding-step-eight-startup.defaults';
