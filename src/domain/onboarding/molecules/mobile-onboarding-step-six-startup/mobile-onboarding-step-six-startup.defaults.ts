@@ -41,7 +41,6 @@ export const translationStrings = [
   'common.startup.sectors.physical.product',
 
   'component.mobile.onboarding.step.six.startup.heading',
-  'component.mobile.onboarding.step.six.startup.subheading',
   'component.mobile.onboarding.step.six.startup.sectors.field.label',
   'component.mobile.onboarding.step.six.startup.industrial.sectors.field.label',
 ] as const;

@@ -8,6 +8,5 @@ export const translationStrings = [
   'common.buttons.continue',
 
   'component.mobile.onboarding.step.four.heading',
-  'component.mobile.onboarding.step.four.subheading',
   'component.mobile.onboarding.step.four.images.field.min.length.error',
 ] as const;

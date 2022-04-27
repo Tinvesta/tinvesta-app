@@ -19,7 +19,6 @@ export const translationStrings = [
   'common.investment.stage.types.series.b',
 
   'component.mobile.onboarding.step.eight.startup.heading',
-  'component.mobile.onboarding.step.eight.startup.subheading',
   'component.mobile.onboarding.step.eight.startup.investment.stage.field.label',
   'component.mobile.onboarding.step.eight.startup.startup.claim.field.label',
   'component.mobile.onboarding.step.eight.startup.startup.claim.field.placeholder',

@@ -8,28 +8,28 @@ import { useDeviceDetect } from '@utils';
 import S from './mobile-onboarding-form-layout.styles';
 import { IMobileOnboardingFormLayoutProps } from './mobile-onboarding-form-layout.types';
 
+const ALL_STEPS = 9;
+
 const MobileOnboardingFormLayoutComponent = ({
   children,
   continueButtonText,
+  currentStep,
   heading,
   isLoading,
   onBackButtonClick,
-  subHeading,
   ...formProps
 }: IMobileOnboardingFormLayoutProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
 
   const getHeaderVariant = () => {
-    if (deviceData.isSmallerThanXS) {
-      return 'h5';
-    }
-
     if (deviceData.isSmallerThanSM) {
       return 'h4';
     }
 
     return 'h3';
   };
+
+  const progress = ((currentStep || 1) / ALL_STEPS) * 100;
 
   return (
     <S.StyledWrapper>
@@ -40,8 +40,10 @@ const MobileOnboardingFormLayoutComponent = ({
         objectFit="cover"
         src="/images/mobile-onboarding-background.svg"
       />
+      {currentStep !== undefined && (
+        <S.StyledLinearProgress color="inherit" value={progress} variant="determinate" />
+      )}
       <S.StyledContentWrapper>
-        {subHeading && <S.StyledHeading variant="body1">{subHeading}</S.StyledHeading>}
         {heading && (
           <S.StyledHeading fontWeight={700} variant={getHeaderVariant()}>
             {heading}

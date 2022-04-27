@@ -13,7 +13,6 @@ export const translationStrings = [
   'common.form.field.error.contain.enters.or.spaces',
   'common.form.field.error.starts.or.ends.with.whitespace',
 
-  'component.mobile.onboarding.step.nine.startup.subheading',
   'component.mobile.onboarding.step.nine.startup.heading',
   'component.mobile.onboarding.step.nine.startup.mission.statement.field.label',
   'component.mobile.onboarding.step.nine.startup.mission.statement.field.placeholder',
