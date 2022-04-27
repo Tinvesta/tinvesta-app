@@ -7,6 +7,7 @@ import {
   MobileOnboardingStepFiveStartup,
   MobileOnboardingStepFour,
   MobileOnboardingStepOne,
+  MobileOnboardingStepSevenStartup,
   MobileOnboardingStepSixStartup,
   MobileOnboardingStepThree,
   MobileOnboardingStepTwo,
@@ -15,6 +16,7 @@ import {
   IMobileOnboardingStepFiveStartupData,
   IMobileOnboardingStepFourData,
   IMobileOnboardingStepOneData,
+  IMobileOnboardingStepSevenStartupData,
   IMobileOnboardingStepSixStartupData,
   IMobileOnboardingStepThreeData,
   IMobileOnboardingStepTwoData,
@@ -31,6 +33,7 @@ export const MobileOnboarding = ({
   clientTypes,
   focusMarkets,
   industrialSectors,
+  investmentSizes,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
@@ -56,7 +59,8 @@ export const MobileOnboarding = ({
       | IMobileOnboardingStepThreeData
       | IMobileOnboardingStepFourData
       | IMobileOnboardingStepFiveStartupData
-      | IMobileOnboardingStepSixStartupData,
+      | IMobileOnboardingStepSixStartupData
+      | IMobileOnboardingStepSevenStartupData,
   ) => send({ type: EMobileOnboardingMachineEvents.NEXT, data });
 
   if (current.matches(EMobileOnboardingMachineStates.STEP_ONE)) {
@@ -100,7 +104,6 @@ export const MobileOnboarding = ({
     return (
       <MobileOnboardingStepFiveStartup
         defaultValues={current.context.stepFiveStartupData}
-        focusMarkets={focusMarkets}
         startupProfileCreatorTypes={startupProfileCreatorTypes}
         teamSizes={teamSizes}
         onContinueButtonClick={onContinueButtonClick}
@@ -108,11 +111,22 @@ export const MobileOnboarding = ({
     );
   }
 
+  if (current.matches(EMobileOnboardingMachineStates.STEP_SIX_STARTUP)) {
+    return (
+      <MobileOnboardingStepSixStartup
+        defaultValues={current.context.stepSixStartupData}
+        industrialSectors={industrialSectors}
+        startupSectors={startupSectors}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
   return (
-    <MobileOnboardingStepSixStartup
-      defaultValues={current.context.stepSixStartupData}
-      industrialSectors={industrialSectors}
-      startupSectors={startupSectors}
+    <MobileOnboardingStepSevenStartup
+      defaultValues={current.context.stepSevenStartupData}
+      focusMarkets={focusMarkets}
+      investmentSizes={investmentSizes}
       onContinueButtonClick={onContinueButtonClick}
     />
   );

@@ -6,6 +6,7 @@ import {
   defaultMobileOnboardingStepFiveStartupFormData,
   defaultMobileOnboardingStepFourFormData,
   defaultMobileOnboardingStepOneFormData,
+  defaultMobileOnboardingStepSevenStartupFormData,
   defaultMobileOnboardingStepSixStartupFormData,
   defaultMobileOnboardingStepThreeFormData,
   defaultMobileOnboardingStepTwoFormData,
@@ -28,6 +29,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       stepThreeData: defaultMobileOnboardingStepThreeFormData,
       stepSixStartupData: defaultMobileOnboardingStepSixStartupFormData,
       stepFiveStartupData: defaultMobileOnboardingStepFiveStartupFormData,
+      stepSevenStartupData: defaultMobileOnboardingStepSevenStartupFormData,
     },
     states: {
       [EMobileOnboardingMachineStates.STEP_ONE]: {
@@ -84,9 +86,18 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         on: {
           [EMobileOnboardingMachineEvents.NEXT]: {
             actions: 'assignStepSixStartupData',
-            target: EMobileOnboardingMachineStates.STEP_ONE,
+            target: EMobileOnboardingMachineStates.STEP_SEVEN_STARTUP,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_FIVE_STARTUP,
+        },
+      },
+      [EMobileOnboardingMachineStates.STEP_SEVEN_STARTUP]: {
+        on: {
+          [EMobileOnboardingMachineEvents.NEXT]: {
+            actions: 'assignStepSevenStartupData',
+            target: EMobileOnboardingMachineStates.STEP_ONE,
+          },
+          [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_SIX_STARTUP,
         },
       },
     },
@@ -127,6 +138,9 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       }),
       assignStepSixStartupData: assign({
         stepSixStartupData: (_, event) => event.data,
+      }),
+      assignStepSevenStartupData: assign({
+        stepSevenStartupData: (_, event) => event.data,
       }),
     },
     guards: {

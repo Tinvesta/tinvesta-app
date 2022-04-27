@@ -96,7 +96,6 @@ export interface IMobileOnboardingStepFourData {
 }
 
 export interface IMobileOnboardingStepFiveStartupData {
-  focusMarketIds: number[];
   startupProfileCreatorTypeId: string | number;
   teamSizeId: string | number;
 }
@@ -104,4 +103,9 @@ export interface IMobileOnboardingStepFiveStartupData {
 export interface IMobileOnboardingStepSixStartupData {
   industrialSectorIds: number[];
   startupSectorIds: number[];
+}
+
+export interface IMobileOnboardingStepSevenStartupData {
+  focusMarketIds: number[];
+  investmentSizeIds: number[];
 }

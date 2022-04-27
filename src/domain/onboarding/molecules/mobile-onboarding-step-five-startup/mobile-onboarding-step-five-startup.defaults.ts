@@ -3,7 +3,6 @@ import { IMobileOnboardingStepFiveStartupData } from '../../onboarding.types';
 // eslint-disable-next-line max-len
 export const defaultMobileOnboardingStepFiveStartupFormData: IMobileOnboardingStepFiveStartupData =
   {
-    focusMarketIds: [],
     teamSizeId: '',
     startupProfileCreatorTypeId: '',
   };
