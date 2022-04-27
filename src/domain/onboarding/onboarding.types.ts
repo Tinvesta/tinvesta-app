@@ -119,3 +119,8 @@ export interface IMobileOnboardingStepNineStartupData {
   missionStatement: string;
   visionStatement: string;
 }
+
+export interface IMobileOnboardingStepFiveInvestorData {
+  focusMarketIds: number[];
+  investorProfileTypeId: string | number;
+}
