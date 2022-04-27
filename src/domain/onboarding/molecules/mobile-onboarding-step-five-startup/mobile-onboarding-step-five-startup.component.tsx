@@ -6,7 +6,7 @@ import { SelectWithController } from '@ui';
 import {
   mapFocusMarketsToDropdownOptions,
   mapStartupProfileCreatorTypesToDropdownOptions,
-  mapStartupSectorsToDropdownOptions,
+  mapTeamSizesToDropdownOptions,
   useTranslation,
 } from '@utils';
 
@@ -21,7 +21,7 @@ import { IMobileOnboardingStepFiveStartupProps } from './mobile-onboarding-step-
 export const MobileOnboardingStepFiveStartup = ({
   focusMarkets,
   startupProfileCreatorTypes,
-  startupSectors,
+  teamSizes,
   defaultValues = defaultMobileOnboardingStepFiveStartupFormData,
   onContinueButtonClick,
 }: IMobileOnboardingStepFiveStartupProps): JSX.Element => {
@@ -30,10 +30,7 @@ export const MobileOnboardingStepFiveStartup = ({
   });
 
   const translations = useTranslation(translationStrings);
-  const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
-    startupSectors,
-    translations,
-  );
+  const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
   const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
   const startupProfileCreatorTypesDropdownOptions = mapStartupProfileCreatorTypesToDropdownOptions(
     startupProfileCreatorTypes,
@@ -76,6 +73,29 @@ export const MobileOnboardingStepFiveStartup = ({
         <SelectWithController
           controllerProps={{
             control,
+            name: 'teamSizeId',
+            rules: {
+              required: {
+                value: true,
+                message: translations.commonFormFieldErrorRequired,
+              },
+            },
+          }}
+          formControlProps={{
+            fullWidth: true,
+          }}
+          selectProps={{
+            fullWidth: true,
+            options: teamSizesDropdownOptions,
+            labelId: 'mobile-onboarding-step-five-startup-team-size-id-select',
+            label: translations.componentMobileOnboardingStepFiveStartupTeamSizeFieldLabel,
+          }}
+        />
+      </Grid>
+      <Grid item xs={12}>
+        <SelectWithController
+          controllerProps={{
+            control,
             name: 'focusMarketIds',
             rules: {
               required: {
@@ -93,30 +113,6 @@ export const MobileOnboardingStepFiveStartup = ({
             options: focusMarketsDropdownOptions,
             labelId: 'mobile-onboarding-step-five-startup-focus-market-ids-select',
             label: translations.componentMobileOnboardingStepFiveStartupFocusMarketFieldLabel,
-          }}
-        />
-      </Grid>
-      <Grid item xs={12}>
-        <SelectWithController
-          controllerProps={{
-            control,
-            name: 'startupSectorIds',
-            rules: {
-              required: {
-                value: true,
-                message: translations.commonFormFieldErrorRequired,
-              },
-            },
-          }}
-          formControlProps={{
-            fullWidth: true,
-          }}
-          selectProps={{
-            multiple: true,
-            fullWidth: true,
-            options: startupSectorsDropdownOptions,
-            labelId: 'mobile-onboarding-step-five-startup-startup-sector-ids-select',
-            label: translations.componentMobileOnboardingStepFiveStartupSectorFieldLabel,
           }}
         />
       </Grid>

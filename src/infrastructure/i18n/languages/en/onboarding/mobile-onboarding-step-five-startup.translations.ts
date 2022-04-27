@@ -9,6 +9,6 @@ export default {
   // Focus Market
   'component.mobile.onboarding.step.five.startup.focus.market.field.label': 'Focus Markets',
 
-  // Sector
-  'component.mobile.onboarding.step.five.startup.sector.field.label': 'Sectors',
+  // Team Size
+  'component.mobile.onboarding.step.five.startup.team.size.field.label': 'Team Size',
 };

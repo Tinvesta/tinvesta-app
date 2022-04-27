@@ -4,7 +4,7 @@ import { IMobileOnboardingStepFiveStartupData } from '../../onboarding.types';
 export const defaultMobileOnboardingStepFiveStartupFormData: IMobileOnboardingStepFiveStartupData =
   {
     focusMarketIds: [],
-    startupSectorIds: [],
+    teamSizeId: '',
     startupProfileCreatorTypeId: '',
   };
 
@@ -13,9 +13,10 @@ export const translationStrings = [
   'common.form.field.error.required',
   'common.focus.markets.b2b',
   'common.focus.markets.b2c',
-  'common.startup.sectors.software',
-  'common.startup.sectors.service.industry',
-  'common.startup.sectors.physical.product',
+  'common.team.sizes.very.small',
+  'common.team.sizes.small',
+  'common.team.sizes.medium',
+  'common.team.sizes.large',
   'common.startup.profile.creator.types.founder',
   'common.startup.profile.creator.types.employee',
   'common.startup.profile.creator.types.co.founder',
@@ -24,5 +25,5 @@ export const translationStrings = [
   'component.mobile.onboarding.step.five.startup.heading',
   'component.mobile.onboarding.step.five.startup.your.position.field.label',
   'component.mobile.onboarding.step.five.startup.focus.market.field.label',
-  'component.mobile.onboarding.step.five.startup.sector.field.label',
+  'component.mobile.onboarding.step.five.startup.team.size.field.label',
 ] as const;

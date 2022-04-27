@@ -5,7 +5,7 @@ import { AutocompleteWithController, SelectWithController } from '@ui';
 
 import {
   mapIndustrialSectorsToDropdownOptions,
-  mapTeamSizesToDropdownOptions,
+  mapStartupSectorsToDropdownOptions,
   useTranslation,
 } from '@utils';
 
@@ -19,20 +19,23 @@ import { IMobileOnboardingStepSixStartupProps } from './mobile-onboarding-step-s
 
 export const MobileOnboardingStepSixStartup = ({
   industrialSectors,
-  teamSizes,
   defaultValues = defaultMobileOnboardingStepSixStartupFormData,
   onContinueButtonClick,
+  startupSectors,
 }: IMobileOnboardingStepSixStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepSixStartupData>({
     defaultValues,
   });
 
   const translations = useTranslation(translationStrings);
+  const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
+    startupSectors,
+    translations,
+  );
   const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(
     industrialSectors,
     translations,
   );
-  const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
 
   const onSubmit = handleSubmit(onContinueButtonClick);
 
@@ -47,7 +50,7 @@ export const MobileOnboardingStepSixStartup = ({
         <SelectWithController
           controllerProps={{
             control,
-            name: 'teamSizeId',
+            name: 'startupSectorIds',
             rules: {
               required: {
                 value: true,
@@ -59,10 +62,11 @@ export const MobileOnboardingStepSixStartup = ({
             fullWidth: true,
           }}
           selectProps={{
+            multiple: true,
             fullWidth: true,
-            options: teamSizesDropdownOptions,
-            labelId: 'mobile-onboarding-step-six-startup-team-size-id-select',
-            label: translations.componentMobileOnboardingStepSixStartupTeamSizeFieldLabel,
+            options: startupSectorsDropdownOptions,
+            labelId: 'mobile-onboarding-step-six-startup-startup-sector-ids-select',
+            label: translations.componentMobileOnboardingStepSixStartupSectorsFieldLabel,
           }}
         />
       </Grid>

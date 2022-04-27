@@ -98,10 +98,10 @@ export interface IMobileOnboardingStepFourData {
 export interface IMobileOnboardingStepFiveStartupData {
   focusMarketIds: number[];
   startupProfileCreatorTypeId: string | number;
-  startupSectorIds: number[];
+  teamSizeId: string | number;
 }
 
 export interface IMobileOnboardingStepSixStartupData {
   industrialSectorIds: number[];
-  teamSizeId: string | number;
+  startupSectorIds: number[];
 }

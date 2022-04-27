@@ -102,7 +102,7 @@ export const MobileOnboarding = ({
         defaultValues={current.context.stepFiveStartupData}
         focusMarkets={focusMarkets}
         startupProfileCreatorTypes={startupProfileCreatorTypes}
-        startupSectors={startupSectors}
+        teamSizes={teamSizes}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -112,7 +112,7 @@ export const MobileOnboarding = ({
     <MobileOnboardingStepSixStartup
       defaultValues={current.context.stepSixStartupData}
       industrialSectors={industrialSectors}
-      teamSizes={teamSizes}
+      startupSectors={startupSectors}
       onContinueButtonClick={onContinueButtonClick}
     />
   );
