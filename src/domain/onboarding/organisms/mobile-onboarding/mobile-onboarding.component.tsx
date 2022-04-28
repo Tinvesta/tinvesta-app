@@ -9,6 +9,7 @@ import {
   MobileOnboardingStepFiveInvestor,
   MobileOnboardingStepFiveStartup,
   MobileOnboardingStepFour,
+  MobileOnboardingStepNineInvestor,
   MobileOnboardingStepNineStartup,
   MobileOnboardingStepOne,
   MobileOnboardingStepSevenInvestor,
@@ -24,6 +25,7 @@ import {
   IMobileOnboardingStepFiveInvestorData,
   IMobileOnboardingStepFiveStartupData,
   IMobileOnboardingStepFourData,
+  IMobileOnboardingStepNineInvestorData,
   IMobileOnboardingStepNineStartupData,
   IMobileOnboardingStepOneData,
   IMobileOnboardingStepSevenInvestorData,
@@ -81,7 +83,8 @@ export const MobileOnboarding = ({
       | IMobileOnboardingStepFiveInvestorData
       | IMobileOnboardingStepSixInvestorData
       | IMobileOnboardingStepSevenInvestorData
-      | IMobileOnboardingStepEightInvestorData,
+      | IMobileOnboardingStepEightInvestorData
+      | IMobileOnboardingStepNineInvestorData,
   ) => send({ type: EMobileOnboardingMachineEvents.NEXT, data });
 
   if (current.matches(EMobileOnboardingMachineStates.STEP_ONE)) {
@@ -206,11 +209,20 @@ export const MobileOnboarding = ({
     );
   }
 
+  if (current.matches(EMobileOnboardingMachineStates.STEP_EIGHT_INVESTOR)) {
+    return (
+      <MobileOnboardingStepEightInvestor
+        defaultValues={current.context.stepEightInvestorData}
+        investorDemandTypes={investorDemandTypes}
+        teamSizes={teamSizes}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
   return (
-    <MobileOnboardingStepEightInvestor
-      defaultValues={current.context.stepEightInvestorData}
-      investorDemandTypes={investorDemandTypes}
-      teamSizes={teamSizes}
+    <MobileOnboardingStepNineInvestor
+      defaultValues={current.context.stepNineInvestorData}
       onContinueButtonClick={onContinueButtonClick}
     />
   );
