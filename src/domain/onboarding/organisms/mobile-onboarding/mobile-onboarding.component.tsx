@@ -1,9 +1,18 @@
 import { useMachine } from '@xstate/react';
+import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
+
+import { CenterBlockLayout, Loader } from '@ui';
 
 import { useUser } from '@utils';
 
+import { ERoutes } from '@enums';
+
 import {
+  MobileHouseRulesAgreements,
   MobileOnboardingStepEightInvestor,
   MobileOnboardingStepEightStartup,
   MobileOnboardingStepFiveInvestor,
@@ -35,6 +44,7 @@ import {
   IMobileOnboardingStepThreeData,
   IMobileOnboardingStepTwoData,
 } from '../../onboarding.types';
+import { createAccountAction } from '../api';
 import {
   EMobileOnboardingMachineAdditionalEvents,
   EMobileOnboardingMachineEvents,
@@ -56,6 +66,10 @@ export const MobileOnboarding = ({
   teamSizes,
 }: IMobileOnboardingProps): JSX.Element => {
   const { isLoading: isProfileLoading, user } = useUser();
+  const router = useRouter();
+
+  const { isLoading: isCreateAccountActionLoading, mutateAsync: mutateAsyncCreateAccountAction } =
+    useMutation(createAccountAction);
 
   const [current, send] = useMachine(onboardingStateMachine);
 
@@ -86,6 +100,28 @@ export const MobileOnboarding = ({
       | IMobileOnboardingStepEightInvestorData
       | IMobileOnboardingStepNineInvestorData,
   ) => send({ type: EMobileOnboardingMachineEvents.NEXT, data });
+
+  const onAcceptHouseRulesAgreements = () =>
+    // @ts-expect-error
+    mutateAsyncCreateAccountAction(current.context)
+      .then(() => router.push(ERoutes.DASHBOARD))
+      // TODO - take translation based on error response
+      .catch(() => toast.error('Something went wrong'));
+
+  if (isProfileLoading || !user?.contact_email || current.context.stepTwoData.contactEmail === '') {
+    return (
+      <CenterBlockLayout>
+        <Image
+          priority
+          alt="Tinvesta"
+          layout="fill"
+          objectFit="cover"
+          src="/images/mobile-onboarding-background.svg"
+        />
+        <Loader size="large" />
+      </CenterBlockLayout>
+    );
+  }
 
   if (current.matches(EMobileOnboardingMachineStates.STEP_ONE)) {
     return (
@@ -220,10 +256,19 @@ export const MobileOnboarding = ({
     );
   }
 
+  if (current.matches(EMobileOnboardingMachineStates.STEP_NINE_INVESTOR)) {
+    return (
+      <MobileOnboardingStepNineInvestor
+        defaultValues={current.context.stepNineInvestorData}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
   return (
-    <MobileOnboardingStepNineInvestor
-      defaultValues={current.context.stepNineInvestorData}
-      onContinueButtonClick={onContinueButtonClick}
+    <MobileHouseRulesAgreements
+      isLoading={isCreateAccountActionLoading}
+      onAgreementButtonClick={onAcceptHouseRulesAgreements}
     />
   );
 };
