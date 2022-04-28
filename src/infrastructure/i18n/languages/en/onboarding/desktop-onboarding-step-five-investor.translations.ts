@@ -3,7 +3,7 @@ export default {
   'component.desktop.onboarding.step.five.investor.subheading': 'Step 5/5',
   'component.desktop.onboarding.step.five.investor.heading': 'Setup Investor',
 
-  // Demand
+  // Demands
   'component.desktop.onboarding.step.five.investor.demand.field.label': 'Demands',
 
   // Why should a startup match with you?

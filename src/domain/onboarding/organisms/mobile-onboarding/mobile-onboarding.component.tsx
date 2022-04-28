@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { useUser } from '@utils';
 
 import {
+  MobileOnboardingStepEightInvestor,
   MobileOnboardingStepEightStartup,
   MobileOnboardingStepFiveInvestor,
   MobileOnboardingStepFiveStartup,
@@ -18,6 +19,7 @@ import {
   MobileOnboardingStepTwo,
 } from '../../molecules';
 import {
+  IMobileOnboardingStepEightInvestorData,
   IMobileOnboardingStepEightStartupData,
   IMobileOnboardingStepFiveInvestorData,
   IMobileOnboardingStepFiveStartupData,
@@ -45,6 +47,7 @@ export const MobileOnboarding = ({
   industrialSectors,
   investmentSizes,
   investmentStageTypes,
+  investorDemandTypes,
   investorProfileTypes,
   startupProfileCreatorTypes,
   startupSectors,
@@ -77,7 +80,8 @@ export const MobileOnboarding = ({
       | IMobileOnboardingStepNineStartupData
       | IMobileOnboardingStepFiveInvestorData
       | IMobileOnboardingStepSixInvestorData
-      | IMobileOnboardingStepSevenInvestorData,
+      | IMobileOnboardingStepSevenInvestorData
+      | IMobileOnboardingStepEightInvestorData,
   ) => send({ type: EMobileOnboardingMachineEvents.NEXT, data });
 
   if (current.matches(EMobileOnboardingMachineStates.STEP_ONE)) {
@@ -191,11 +195,22 @@ export const MobileOnboarding = ({
     );
   }
 
+  if (current.matches(EMobileOnboardingMachineStates.STEP_SEVEN_INVESTOR)) {
+    return (
+      <MobileOnboardingStepSevenInvestor
+        defaultValues={current.context.stepSevenInvestorData}
+        investmentSizes={investmentSizes}
+        investmentStageTypes={investmentStageTypes}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
   return (
-    <MobileOnboardingStepSevenInvestor
-      defaultValues={current.context.stepSevenInvestorData}
-      investmentSizes={investmentSizes}
-      investmentStageTypes={investmentStageTypes}
+    <MobileOnboardingStepEightInvestor
+      defaultValues={current.context.stepEightInvestorData}
+      investorDemandTypes={investorDemandTypes}
+      teamSizes={teamSizes}
       onContinueButtonClick={onContinueButtonClick}
     />
   );
