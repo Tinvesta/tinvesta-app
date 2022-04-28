@@ -139,3 +139,7 @@ export interface IMobileOnboardingStepEightInvestorData {
   investorDemandTypeIds: number[];
   teamSizeIds: number[];
 }
+
+export interface IMobileOnboardingStepNineInvestorData {
+  whyStartupShouldMatchWithYou: string;
+}

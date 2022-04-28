@@ -39,7 +39,7 @@ export const MobileOnboardingStepEightInvestor = ({
   return (
     <MobileOnboardingFormLayout
       continueButtonText={translations.commonButtonsContinue}
-      currentStep={7}
+      currentStep={8}
       heading={translations.componentMobileOnboardingStepEightInvestorHeading}
       onSubmit={onSubmit}
     >
