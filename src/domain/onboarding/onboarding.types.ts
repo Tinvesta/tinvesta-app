@@ -134,3 +134,8 @@ export interface IMobileOnboardingStepSevenInvestorData {
   investmentSizeIds: number[];
   investmentStageTypeIds: number[];
 }
+
+export interface IMobileOnboardingStepEightInvestorData {
+  investorDemandTypeIds: number[];
+  teamSizeIds: number[];
+}

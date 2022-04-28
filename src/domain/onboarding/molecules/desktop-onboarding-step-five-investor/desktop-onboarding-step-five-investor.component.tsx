@@ -29,7 +29,6 @@ export const DesktopOnboardingStepFiveInvestor = ({
   });
 
   const translations = useTranslation(translationStrings);
-
   const investorDemandTypesDropdownOptions = mapInvestorDemandTypesToDropdownOptions(
     investorDemandTypes,
     translations,
