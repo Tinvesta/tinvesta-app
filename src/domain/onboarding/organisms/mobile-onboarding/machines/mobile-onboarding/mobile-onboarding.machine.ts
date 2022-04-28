@@ -127,7 +127,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         on: {
           [EMobileOnboardingMachineEvents.NEXT]: {
             actions: 'assignStepNineStartupData',
-            target: EMobileOnboardingMachineStates.STEP_ONE,
+            target: EMobileOnboardingMachineStates.HOUSE_RULES_AGREEMENTS,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_EIGHT_STARTUP,
         },
@@ -172,9 +172,17 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         on: {
           [EMobileOnboardingMachineEvents.NEXT]: {
             actions: 'assignStepNineInvestorData',
-            target: EMobileOnboardingMachineStates.STEP_ONE,
+            target: EMobileOnboardingMachineStates.HOUSE_RULES_AGREEMENTS,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_EIGHT_INVESTOR,
+        },
+      },
+      [EMobileOnboardingMachineStates.HOUSE_RULES_AGREEMENTS]: {
+        on: {
+          [EMobileOnboardingMachineEvents.BACK]: [
+            { target: EMobileOnboardingMachineStates.STEP_NINE_STARTUP, cond: 'isStartupPath' },
+            { target: EMobileOnboardingMachineStates.STEP_NINE_INVESTOR },
+          ],
         },
       },
     },
@@ -190,16 +198,19 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         stepOneData: (_, event) => event.data,
       }),
       assignFirstNameLastNameAndContactEmail: assign({
-        stepOneData: (_, { contactEmail, fullName }) => {
+        stepOneData: (_, { fullName }) => {
           const { firstName, lastName } = getFirstNameAndLastNameFromMultiPartFullName(fullName);
 
           return {
             ...defaultMobileOnboardingStepOneFormData,
             firstName,
             lastName,
-            contactEmail,
           };
         },
+        stepTwoData: (_, { contactEmail }) => ({
+          ...defaultMobileOnboardingStepTwoFormData,
+          contactEmail,
+        }),
       }),
       assignStepTwoData: assign({
         stepTwoData: (_, event) => event.data,

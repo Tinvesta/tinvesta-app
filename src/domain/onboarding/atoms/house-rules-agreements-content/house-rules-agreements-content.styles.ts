@@ -1,9 +1,15 @@
 import styled from '@emotion/styled';
 import { Icon } from '@mui/material';
 
+import { respondToMax } from '@infrastructure';
+
 const StyledWrapper = styled.div`
   width: 400px;
   margin-bottom: ${({ theme }) => theme.spacing(4)};
+
+  ${respondToMax.xmobile`
+    width: 100%;
+  `}
 `;
 
 const StyledHeadingWrapper = styled.div`

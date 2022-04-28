@@ -7,6 +7,7 @@ export * from './desktop-onboarding-step-three-startup/desktop-onboarding-step-t
 export * from './desktop-onboarding-step-four-investor/desktop-onboarding-step-four-investor.component';
 export * from './desktop-onboarding-step-five-investor/desktop-onboarding-step-five-investor.component';
 export * from './desktop-onboarding-step-three-investor/desktop-onboarding-step-three-investor.component';
+export * from './mobile-house-rules-agreements/mobile-house-rules-agreements.component';
 export * from './mobile-onboarding-step-one/mobile-onboarding-step-one.component';
 export * from './mobile-onboarding-step-two/mobile-onboarding-step-two.component';
 export * from './mobile-onboarding-step-three/mobile-onboarding-step-three.component';

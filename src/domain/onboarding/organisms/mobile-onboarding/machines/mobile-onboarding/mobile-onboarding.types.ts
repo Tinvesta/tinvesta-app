@@ -33,6 +33,7 @@ export interface IMobileOnboardingMachineContext {
 }
 
 export enum EMobileOnboardingMachineStates {
+  HOUSE_RULES_AGREEMENTS = 'house-rules-agreements',
   STEP_EIGHT_INVESTOR = 'step-eight-investor',
   STEP_EIGHT_STARTUP = 'step-eight-startup',
   STEP_FIVE_HUB = 'step-five-hub',

@@ -8,15 +8,17 @@ import { useDeviceDetect } from '@utils';
 import S from './mobile-onboarding-form-layout.styles';
 import { IMobileOnboardingFormLayoutProps } from './mobile-onboarding-form-layout.types';
 
-const ALL_STEPS = 9;
+const ALL_STEPS = 10;
 
 const MobileOnboardingFormLayoutComponent = ({
   children,
+  columnSpacing = 4,
   continueButtonText,
   currentStep,
   heading,
   isLoading,
   onBackButtonClick,
+  rowSpacing = 3,
   ...formProps
 }: IMobileOnboardingFormLayoutProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
@@ -50,7 +52,12 @@ const MobileOnboardingFormLayoutComponent = ({
           </S.StyledHeading>
         )}
         <S.StyledFormWrapper {...formProps}>
-          <Grid container columnSpacing={4} justifyContent="center" rowSpacing={3}>
+          <Grid
+            container
+            columnSpacing={columnSpacing}
+            justifyContent="center"
+            rowSpacing={rowSpacing}
+          >
             {children}
             {continueButtonText && (
               <Grid item marginTop={deviceData.isSmallerThanXS ? 3 : 4} xs={12}>
