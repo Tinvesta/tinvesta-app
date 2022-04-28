@@ -12,6 +12,7 @@ import { useUser } from '@utils';
 import { ERoutes } from '@enums';
 
 import {
+  DesktopHouseRulesAgreements,
   DesktopOnboardingStepFiveInvestor,
   DesktopOnboardingStepFiveStartup,
   DesktopOnboardingStepFourInvestor,
@@ -20,7 +21,6 @@ import {
   DesktopOnboardingStepThreeInvestor,
   DesktopOnboardingStepThreeStartup,
   DesktopOnboardingStepTwo,
-  HouseRulesAgreements,
 } from '../../molecules';
 import {
   IDesktopOnboardingStepFiveInvestorData,
@@ -204,9 +204,10 @@ export const DesktopOnboarding = ({
   }
 
   return (
-    <HouseRulesAgreements
+    <DesktopHouseRulesAgreements
       isLoading={isCreateAccountActionLoading}
       onAgreementButtonClick={onAcceptHouseRulesAgreements}
+      onBackButtonClick={onBackButtonClick}
     />
   );
 };

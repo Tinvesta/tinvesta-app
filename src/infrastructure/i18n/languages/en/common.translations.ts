@@ -1,9 +1,11 @@
 export default {
-  // buttons
+  // Buttons
   'common.buttons.back': 'Back',
+  'common.buttons.agree': 'I Agree',
   'common.buttons.continue': 'Continue',
+  'common.buttons.disagree': 'I Disagree',
 
-  // forms
+  // Forms
   'common.form.field.error.starts.or.ends.with.whitespace':
     'The field cannot begin or end with a space',
   'common.form.field.error.contain.single.word': 'The field should be a single word',
@@ -11,15 +13,15 @@ export default {
     'The field cannot contain blank lines or contain double spaces',
   'common.form.field.error.required': 'Field is required',
 
-  // client types
+  // Client Types
   'common.client.types.startup': 'Startup',
   'common.client.types.investor': 'Investor',
 
-  // focus markets
+  // Focus Markets
   'common.focus.markets.b2b': 'B2B',
   'common.focus.markets.b2c': 'B2C',
 
-  // industrial sectors
+  // Industrial Sectors
   'common.industrial.sectors.web3': 'Web3',
   'common.industrial.sectors.energy': 'Energy',
   'common.industrial.sectors.social': 'Social',
@@ -48,21 +50,21 @@ export default {
   'common.industrial.sectors.media.and.entertainment': 'Media and Entertainment',
   'common.industrial.sectors.electronics.and.automation': 'Electronics and Automation',
 
-  // investment sizes
+  // Investment Sizes
   'common.investment.sizes.very.small': '10k-100k',
   'common.investment.sizes.small': '100k-300k',
   'common.investment.sizes.medium': '300k-1M',
   'common.investment.sizes.large': '1M-5M',
   'common.investment.sizes.very.large': '>5M',
 
-  // investment stage types
+  // Investment Stage Types
   'common.investment.stage.types.idea': 'Idea',
   'common.investment.stage.types.seed': 'Seed',
   'common.investment.stage.types.growth': 'Growth',
   'common.investment.stage.types.series.a': 'Series A',
   'common.investment.stage.types.series.b': 'Series B',
 
-  // investor demand types
+  // Investor Demand Types
   'common.investor.demand.types.talent': 'Talent',
   'common.investor.demand.types.location': 'Location',
   'common.investor.demand.types.technology': 'Technology',
@@ -71,22 +73,22 @@ export default {
   'common.investor.demand.types.network.and.support': 'Network and Support',
   'common.investor.demand.types.debt.capital.without.shares': 'Debt Capital without Shares',
 
-  // investor profile types
+  // Investor Profile Types
   'common.investor.profile.types.private': 'Private',
   'common.investor.profile.types.corporate': 'Corporate',
   'common.investor.profile.types.institutional': 'Institutional',
 
-  // startup profile creator types
+  // Startup Profile Creator Types
   'common.startup.profile.creator.types.founder': 'Founder',
   'common.startup.profile.creator.types.employee': 'Employee',
   'common.startup.profile.creator.types.co.founder': 'Co-Founder',
 
-  // startup sectors
+  // Startup Sectors
   'common.startup.sectors.software': 'Software',
   'common.startup.sectors.service.industry': 'Service Industry',
   'common.startup.sectors.physical.product': 'Physical Product',
 
-  // team sizes
+  // Team Sizes
   'common.team.sizes.very.small': '1-5',
   'common.team.sizes.small': '6-20',
   'common.team.sizes.medium': '21-100',

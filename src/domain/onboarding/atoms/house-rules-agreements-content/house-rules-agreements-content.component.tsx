@@ -4,25 +4,16 @@ import Image from 'next/image';
 
 import { CenterBlockLayout } from '@ui';
 
-import { DesktopOnboardingFormLayout } from '../../atoms';
-import S from './house-rules-agreements.styles';
-import { IHouseRulesAgreementsProps } from './house-rules-agreements.types';
+import { useTranslation } from '@utils';
+
+import { translationStrings } from './house-rules-agreements-content.defaults';
+import S from './house-rules-agreements-content.styles';
 
 // TODO - select image based on theme
-export const HouseRulesAgreements = ({
-  isLoading,
-  onAgreementButtonClick,
-}: IHouseRulesAgreementsProps): JSX.Element => (
-  <DesktopOnboardingFormLayout
-    centerActionButtons
-    continueButtonText="I Agree"
-    isLoading={isLoading}
-    onSubmit={(event) => {
-      event.preventDefault();
+export const HouseRulesAgreementsContent = (): JSX.Element => {
+  const translations = useTranslation(translationStrings);
 
-      onAgreementButtonClick();
-    }}
-  >
+  return (
     <CenterBlockLayout>
       <S.StyledWrapper>
         <S.StyledHeadingWrapper>
@@ -35,19 +26,23 @@ export const HouseRulesAgreements = ({
             width={50}
           />
           <Typography fontWeight={900} variant="body1">
-            Welcome to Tinvesta family!
+            {translations.componentHouseRulesAgreementsContentHeader}
           </Typography>
-          <Typography variant="caption">Please follow these house rules</Typography>
+          <Typography variant="caption">
+            {translations.componentHouseRulesAgreementsContentSubheader}
+          </Typography>
         </S.StyledHeadingWrapper>
         <S.StyledHouseRuleWrapper>
           <Typography display="flex" flexDirection="row">
             <S.StyledHouseRuleIcon fontSize="small">
               <DoneIcon />
             </S.StyledHouseRuleIcon>
-            <Typography variant="body1">Be yourself</Typography>
+            <Typography variant="body1">
+              {translations.componentHouseRulesAgreementsContentFirstRuleHeader}
+            </Typography>
           </Typography>
           <Typography variant="caption">
-            Make sure your photo and all other informations are true to who you are.
+            {translations.componentHouseRulesAgreementsContentFirstRuleDescription}
           </Typography>
         </S.StyledHouseRuleWrapper>
         <S.StyledHouseRuleWrapper>
@@ -55,10 +50,12 @@ export const HouseRulesAgreements = ({
             <S.StyledHouseRuleIcon fontSize="small">
               <DoneIcon />
             </S.StyledHouseRuleIcon>
-            <Typography variant="body1">Respect others</Typography>
+            <Typography variant="body1">
+              {translations.componentHouseRulesAgreementsContentSecondRuleHeader}
+            </Typography>
           </Typography>
           <Typography variant="caption">
-            Respect others and treat them as you would like to be treated.
+            {translations.componentHouseRulesAgreementsContentSecondRuleDescription}
           </Typography>
         </S.StyledHouseRuleWrapper>
         <S.StyledHouseRuleWrapper>
@@ -66,13 +63,15 @@ export const HouseRulesAgreements = ({
             <S.StyledHouseRuleIcon fontSize="small">
               <DoneIcon />
             </S.StyledHouseRuleIcon>
-            <Typography variant="body1">Be proactive</Typography>
+            <Typography variant="body1">
+              {translations.componentHouseRulesAgreementsContentThirdRuleHeader}
+            </Typography>
           </Typography>
           <Typography variant="caption">
-            Always report bad behavior or suspicious accounts.
+            {translations.componentHouseRulesAgreementsContentThirdRuleDescription}
           </Typography>
         </S.StyledHouseRuleWrapper>
       </S.StyledWrapper>
     </CenterBlockLayout>
-  </DesktopOnboardingFormLayout>
-);
+  );
+};
