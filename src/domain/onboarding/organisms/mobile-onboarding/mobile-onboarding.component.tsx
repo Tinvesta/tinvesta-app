@@ -11,6 +11,7 @@ import {
   MobileOnboardingStepNineStartup,
   MobileOnboardingStepOne,
   MobileOnboardingStepSevenStartup,
+  MobileOnboardingStepSixInvestor,
   MobileOnboardingStepSixStartup,
   MobileOnboardingStepThree,
   MobileOnboardingStepTwo,
@@ -23,6 +24,7 @@ import {
   IMobileOnboardingStepNineStartupData,
   IMobileOnboardingStepOneData,
   IMobileOnboardingStepSevenStartupData,
+  IMobileOnboardingStepSixInvestorData,
   IMobileOnboardingStepSixStartupData,
   IMobileOnboardingStepThreeData,
   IMobileOnboardingStepTwoData,
@@ -71,7 +73,8 @@ export const MobileOnboarding = ({
       | IMobileOnboardingStepSevenStartupData
       | IMobileOnboardingStepEightStartupData
       | IMobileOnboardingStepNineStartupData
-      | IMobileOnboardingStepFiveInvestorData,
+      | IMobileOnboardingStepFiveInvestorData
+      | IMobileOnboardingStepSixInvestorData,
   ) => send({ type: EMobileOnboardingMachineEvents.NEXT, data });
 
   if (current.matches(EMobileOnboardingMachineStates.STEP_ONE)) {
@@ -163,11 +166,22 @@ export const MobileOnboarding = ({
     );
   }
 
+  if (current.matches(EMobileOnboardingMachineStates.STEP_FIVE_INVESTOR)) {
+    return (
+      <MobileOnboardingStepFiveInvestor
+        defaultValues={current.context.stepFiveInvestorData}
+        focusMarkets={focusMarkets}
+        investorProfileTypes={investorProfileTypes}
+        onContinueButtonClick={onContinueButtonClick}
+      />
+    );
+  }
+
   return (
-    <MobileOnboardingStepFiveInvestor
-      defaultValues={current.context.stepFiveInvestorData}
-      focusMarkets={focusMarkets}
-      investorProfileTypes={investorProfileTypes}
+    <MobileOnboardingStepSixInvestor
+      defaultValues={current.context.stepSixInvestorData}
+      industrialSectors={industrialSectors}
+      startupSectors={startupSectors}
       onContinueButtonClick={onContinueButtonClick}
     />
   );

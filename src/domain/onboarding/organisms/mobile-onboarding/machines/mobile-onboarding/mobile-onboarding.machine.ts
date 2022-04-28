@@ -10,6 +10,7 @@ import {
   defaultMobileOnboardingStepNineStartupFormData,
   defaultMobileOnboardingStepOneFormData,
   defaultMobileOnboardingStepSevenStartupFormData,
+  defaultMobileOnboardingStepSixInvestorFormData,
   defaultMobileOnboardingStepSixStartupFormData,
   defaultMobileOnboardingStepThreeFormData,
   defaultMobileOnboardingStepTwoFormData,
@@ -33,6 +34,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       stepSixStartupData: defaultMobileOnboardingStepSixStartupFormData,
       stepFiveStartupData: defaultMobileOnboardingStepFiveStartupFormData,
       stepNineStartupData: defaultMobileOnboardingStepNineStartupFormData,
+      stepSixInvestorData: defaultMobileOnboardingStepSixInvestorFormData,
       stepSevenStartupData: defaultMobileOnboardingStepSevenStartupFormData,
       stepEightStartupData: defaultMobileOnboardingStepEightStartupFormData,
       stepFiveInvestorData: defaultMobileOnboardingStepFiveInvestorFormData,
@@ -128,9 +130,18 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         on: {
           [EMobileOnboardingMachineEvents.NEXT]: {
             actions: 'assignStepFiveInvestorData',
-            target: EMobileOnboardingMachineStates.STEP_ONE,
+            target: EMobileOnboardingMachineStates.STEP_SIX_INVESTOR,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_FOUR,
+        },
+      },
+      [EMobileOnboardingMachineStates.STEP_SIX_INVESTOR]: {
+        on: {
+          [EMobileOnboardingMachineEvents.NEXT]: {
+            actions: 'assignStepSixInvestorData',
+            target: EMobileOnboardingMachineStates.STEP_ONE,
+          },
+          [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_FIVE_INVESTOR,
         },
       },
     },
@@ -183,6 +194,9 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       }),
       assignStepFiveInvestorData: assign({
         stepFiveInvestorData: (_, event) => event.data,
+      }),
+      assignStepSixInvestorData: assign({
+        stepSixInvestorData: (_, event) => event.data,
       }),
     },
     guards: {
