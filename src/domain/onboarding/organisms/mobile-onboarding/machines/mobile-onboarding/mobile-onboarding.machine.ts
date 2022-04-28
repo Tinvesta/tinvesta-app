@@ -9,6 +9,7 @@ import {
   defaultMobileOnboardingStepFourFormData,
   defaultMobileOnboardingStepNineStartupFormData,
   defaultMobileOnboardingStepOneFormData,
+  defaultMobileOnboardingStepSevenInvestorFormData,
   defaultMobileOnboardingStepSevenStartupFormData,
   defaultMobileOnboardingStepSixInvestorFormData,
   defaultMobileOnboardingStepSixStartupFormData,
@@ -38,6 +39,7 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       stepSevenStartupData: defaultMobileOnboardingStepSevenStartupFormData,
       stepEightStartupData: defaultMobileOnboardingStepEightStartupFormData,
       stepFiveInvestorData: defaultMobileOnboardingStepFiveInvestorFormData,
+      stepSevenInvestorData: defaultMobileOnboardingStepSevenInvestorFormData,
     },
     states: {
       [EMobileOnboardingMachineStates.STEP_ONE]: {
@@ -139,9 +141,18 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
         on: {
           [EMobileOnboardingMachineEvents.NEXT]: {
             actions: 'assignStepSixInvestorData',
-            target: EMobileOnboardingMachineStates.STEP_ONE,
+            target: EMobileOnboardingMachineStates.STEP_SEVEN_INVESTOR,
           },
           [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_FIVE_INVESTOR,
+        },
+      },
+      [EMobileOnboardingMachineStates.STEP_SEVEN_INVESTOR]: {
+        on: {
+          [EMobileOnboardingMachineEvents.NEXT]: {
+            actions: 'assignStepSevenInvestorData',
+            target: EMobileOnboardingMachineStates.STEP_ONE,
+          },
+          [EMobileOnboardingMachineEvents.BACK]: EMobileOnboardingMachineStates.STEP_SIX_INVESTOR,
         },
       },
     },
@@ -197,6 +208,9 @@ export const onboardingStateMachine = createMachine<IMobileOnboardingMachineCont
       }),
       assignStepSixInvestorData: assign({
         stepSixInvestorData: (_, event) => event.data,
+      }),
+      assignStepSevenInvestorData: assign({
+        stepSevenInvestorData: (_, event) => event.data,
       }),
     },
     guards: {

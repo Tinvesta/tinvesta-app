@@ -129,3 +129,8 @@ export interface IMobileOnboardingStepSixInvestorData {
   industrialSectorIds: number[];
   startupSectorIds: number[];
 }
+
+export interface IMobileOnboardingStepSevenInvestorData {
+  investmentSizeIds: number[];
+  investmentStageTypeIds: number[];
+}
