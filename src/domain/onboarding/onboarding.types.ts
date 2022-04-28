@@ -124,3 +124,8 @@ export interface IMobileOnboardingStepFiveInvestorData {
   focusMarketIds: number[];
   investorProfileTypeId: string | number;
 }
+
+export interface IMobileOnboardingStepSixInvestorData {
+  industrialSectorIds: number[];
+  startupSectorIds: number[];
+}
