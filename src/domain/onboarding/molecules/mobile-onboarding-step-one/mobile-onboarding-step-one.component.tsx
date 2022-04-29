@@ -16,6 +16,7 @@ import { IMobileOnboardingStepOneProps } from './mobile-onboarding-step-one.type
 export const MobileOnboardingStepOne = ({
   defaultValues = defaultMobileOnboardingStepOneFormData,
   onContinueButtonClick,
+  onBackButtonClick,
 }: IMobileOnboardingStepOneProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepOneData>({
     defaultValues,
@@ -30,6 +31,7 @@ export const MobileOnboardingStepOne = ({
       continueButtonText={translations.commonButtonsContinue}
       currentStep={1}
       heading={translations.componentMobileOnboardingStepOneHeading}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

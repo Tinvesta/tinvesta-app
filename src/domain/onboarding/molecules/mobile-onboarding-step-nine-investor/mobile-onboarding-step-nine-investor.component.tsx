@@ -16,6 +16,7 @@ import { IMobileOnboardingStepNineInvestorProps } from './mobile-onboarding-step
 export const MobileOnboardingStepNineInvestor = ({
   defaultValues = defaultMobileOnboardingStepNineInvestorFormData,
   onContinueButtonClick,
+  onBackButtonClick,
 }: IMobileOnboardingStepNineInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepNineInvestorData>({
     defaultValues,
@@ -30,6 +31,7 @@ export const MobileOnboardingStepNineInvestor = ({
       continueButtonText={translations.commonButtonsContinue}
       currentStep={9}
       heading={translations.componentMobileOnboardingStepNineInvestorHeading}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

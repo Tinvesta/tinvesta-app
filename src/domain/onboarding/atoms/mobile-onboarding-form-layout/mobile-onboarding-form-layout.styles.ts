@@ -7,14 +7,10 @@ const StyledWrapper = styled.div`
   height: 100%;
   min-width: 100%;
   position: relative;
-  padding: ${({ theme }) => theme.spacing(6)};
-
-  ${({ theme }) => respondToMax.small`
-    padding: ${theme.spacing(6, 5)};
-  `}
+  padding: ${({ theme }) => theme.spacing(5)};
 
   ${({ theme }) => respondToMax.mobile`
-    padding: ${theme.spacing(5, 4)};
+    padding: ${theme.spacing(4, 4)};
   `}
 
   ${({ theme }) => respondToMax.xmobile`
@@ -28,11 +24,7 @@ const StyledContentWrapper = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: flex-start;
-  width: calc(100% - ${({ theme }) => theme.spacing(6)} * 2);
-
-  ${({ theme }) => respondToMax.small`
-    width: calc(100% - ${theme.spacing(5)} * 2);
-  `}
+  width: calc(100% - ${({ theme }) => theme.spacing(5)} * 2);
 
   ${({ theme }) => respondToMax.mobile`
     width: calc(100% - ${theme.spacing(4)} * 2);
@@ -62,12 +54,23 @@ const StyledLinearProgress = styled(LinearProgress)`
   height: ${({ theme }) => theme.spacing(2)};
 `;
 
+const StyledBackButtonWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  margin-bottom: ${({ theme }) => theme.spacing(4)};
+
+  ${({ theme }) => respondToMax.mobile`
+    margin-bottom: ${theme.spacing(3)};
+  `}
+`;
+
 const S = {
   StyledWrapper,
   StyledHeading,
   StyledFormWrapper,
   StyledContentWrapper,
   StyledLinearProgress,
+  StyledBackButtonWrapper,
 };
 
 export default S;

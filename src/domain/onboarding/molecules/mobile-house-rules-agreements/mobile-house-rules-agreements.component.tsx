@@ -7,6 +7,7 @@ import { IMobileHouseRulesAgreementsProps } from './mobile-house-rules-agreement
 export const MobileHouseRulesAgreements = ({
   isLoading,
   onAgreementButtonClick,
+  onBackButtonClick,
 }: IMobileHouseRulesAgreementsProps): JSX.Element => {
   const translations = useTranslation(translationStrings);
 
@@ -17,6 +18,7 @@ export const MobileHouseRulesAgreements = ({
       currentStep={10}
       isLoading={isLoading}
       rowSpacing={0}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={(event) => {
         event.preventDefault();
 

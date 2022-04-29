@@ -20,6 +20,7 @@ import { IMobileOnboardingStepFiveStartupProps } from './mobile-onboarding-step-
 export const MobileOnboardingStepFiveStartup = ({
   startupProfileCreatorTypes,
   teamSizes,
+  onBackButtonClick,
   defaultValues = defaultMobileOnboardingStepFiveStartupFormData,
   onContinueButtonClick,
 }: IMobileOnboardingStepFiveStartupProps): JSX.Element => {
@@ -41,6 +42,7 @@ export const MobileOnboardingStepFiveStartup = ({
       continueButtonText={translations.commonButtonsContinue}
       currentStep={5}
       heading={translations.componentMobileOnboardingStepFiveStartupHeading}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

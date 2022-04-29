@@ -22,6 +22,7 @@ export const MobileOnboardingStepSixStartup = ({
   defaultValues = defaultMobileOnboardingStepSixStartupFormData,
   onContinueButtonClick,
   startupSectors,
+  onBackButtonClick,
 }: IMobileOnboardingStepSixStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepSixStartupData>({
     defaultValues,
@@ -44,6 +45,7 @@ export const MobileOnboardingStepSixStartup = ({
       continueButtonText={translations.commonButtonsContinue}
       currentStep={6}
       heading={translations.componentMobileOnboardingStepSixStartupHeading}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

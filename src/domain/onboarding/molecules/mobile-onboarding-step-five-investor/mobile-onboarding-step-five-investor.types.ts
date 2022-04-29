@@ -6,5 +6,6 @@ export interface IMobileOnboardingStepFiveInvestorProps {
   defaultValues?: IMobileOnboardingStepFiveInvestorData;
   focusMarkets: IFocusMarket[];
   investorProfileTypes: IInvestorProfileType[];
+  onBackButtonClick: () => void;
   onContinueButtonClick: (data: IMobileOnboardingStepFiveInvestorData) => void;
 }

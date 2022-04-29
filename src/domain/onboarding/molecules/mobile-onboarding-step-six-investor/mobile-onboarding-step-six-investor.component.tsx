@@ -21,6 +21,7 @@ export const MobileOnboardingStepSixInvestor = ({
   industrialSectors,
   defaultValues = defaultMobileOnboardingStepSixInvestorFormData,
   onContinueButtonClick,
+  onBackButtonClick,
   startupSectors,
 }: IMobileOnboardingStepSixInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepSixInvestorData>({
@@ -44,6 +45,7 @@ export const MobileOnboardingStepSixInvestor = ({
       continueButtonText={translations.commonButtonsContinue}
       currentStep={6}
       heading={translations.componentMobileOnboardingStepSixInvestorHeading}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

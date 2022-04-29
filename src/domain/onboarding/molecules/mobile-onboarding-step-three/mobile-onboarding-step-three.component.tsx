@@ -16,6 +16,7 @@ import { IMobileOnboardingStepThreeProps } from './mobile-onboarding-step-three.
 export const MobileOnboardingStepThree = ({
   defaultValues = defaultMobileOnboardingStepThreeFormData,
   onContinueButtonClick,
+  onBackButtonClick,
 }: IMobileOnboardingStepThreeProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepThreeData>({
     defaultValues,
@@ -30,6 +31,7 @@ export const MobileOnboardingStepThree = ({
       continueButtonText={translations.commonButtonsContinue}
       currentStep={3}
       heading={translations.componentMobileOnboardingStepThreeHeading}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

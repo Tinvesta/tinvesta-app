@@ -108,6 +108,10 @@ export const MobileOnboarding = ({
       // TODO - take translation based on error response
       .catch(() => toast.error('Something went wrong'));
 
+  const onBackButtonClick = () => send(EMobileOnboardingMachineEvents.BACK);
+
+  const onFirstStepBackButtonClick = () => router.push(ERoutes.HOME);
+
   if (isProfileLoading || !user?.contact_email || current.context.stepTwoData.contactEmail === '') {
     return (
       <CenterBlockLayout>
@@ -127,6 +131,7 @@ export const MobileOnboarding = ({
     return (
       <MobileOnboardingStepOne
         defaultValues={current.context.stepOneData}
+        onBackButtonClick={onFirstStepBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -137,6 +142,7 @@ export const MobileOnboarding = ({
       <MobileOnboardingStepTwo
         clientTypes={clientTypes}
         defaultValues={current.context.stepTwoData}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -146,6 +152,7 @@ export const MobileOnboarding = ({
     return (
       <MobileOnboardingStepThree
         defaultValues={current.context.stepThreeData}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -155,6 +162,7 @@ export const MobileOnboarding = ({
     return (
       <MobileOnboardingStepFour
         defaultValues={current.context.stepFourData}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -166,6 +174,7 @@ export const MobileOnboarding = ({
         defaultValues={current.context.stepFiveStartupData}
         startupProfileCreatorTypes={startupProfileCreatorTypes}
         teamSizes={teamSizes}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -177,6 +186,7 @@ export const MobileOnboarding = ({
         defaultValues={current.context.stepSixStartupData}
         industrialSectors={industrialSectors}
         startupSectors={startupSectors}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -188,6 +198,7 @@ export const MobileOnboarding = ({
         defaultValues={current.context.stepSevenStartupData}
         focusMarkets={focusMarkets}
         investmentSizes={investmentSizes}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -198,6 +209,7 @@ export const MobileOnboarding = ({
       <MobileOnboardingStepEightStartup
         defaultValues={current.context.stepEightStartupData}
         investmentStageTypes={investmentStageTypes}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -207,6 +219,7 @@ export const MobileOnboarding = ({
     return (
       <MobileOnboardingStepNineStartup
         defaultValues={current.context.stepNineStartupData}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -218,6 +231,7 @@ export const MobileOnboarding = ({
         defaultValues={current.context.stepFiveInvestorData}
         focusMarkets={focusMarkets}
         investorProfileTypes={investorProfileTypes}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -229,6 +243,7 @@ export const MobileOnboarding = ({
         defaultValues={current.context.stepSixInvestorData}
         industrialSectors={industrialSectors}
         startupSectors={startupSectors}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -240,6 +255,7 @@ export const MobileOnboarding = ({
         defaultValues={current.context.stepSevenInvestorData}
         investmentSizes={investmentSizes}
         investmentStageTypes={investmentStageTypes}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -251,6 +267,7 @@ export const MobileOnboarding = ({
         defaultValues={current.context.stepEightInvestorData}
         investorDemandTypes={investorDemandTypes}
         teamSizes={teamSizes}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -260,6 +277,7 @@ export const MobileOnboarding = ({
     return (
       <MobileOnboardingStepNineInvestor
         defaultValues={current.context.stepNineInvestorData}
+        onBackButtonClick={onBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );
@@ -269,6 +287,7 @@ export const MobileOnboarding = ({
     <MobileHouseRulesAgreements
       isLoading={isCreateAccountActionLoading}
       onAgreementButtonClick={onAcceptHouseRulesAgreements}
+      onBackButtonClick={onBackButtonClick}
     />
   );
 };

@@ -8,6 +8,6 @@ export interface IMobileOnboardingFormLayoutProps extends FormHTMLAttributes<HTM
   displayBackButton?: boolean;
   heading?: string;
   isLoading?: boolean;
-  onBackButtonClick?: () => void;
+  onBackButtonClick: () => void;
   rowSpacing?: number;
 }
