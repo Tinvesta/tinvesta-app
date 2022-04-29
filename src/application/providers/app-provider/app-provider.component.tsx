@@ -1,5 +1,6 @@
 import {
   CacheProvider,
+  ConfirmationModalProvider,
   LocaleProvider,
   QueryClientProvider,
   ThemeProvider,
@@ -13,9 +14,11 @@ export const AppProvider = ({ children, emotionCache }: IAppProviderProps): JSX.
     <CacheProvider emotionCache={emotionCache}>
       <ToastProvider>
         <LocaleProvider>
-          <UserProvider>
-            <QueryClientProvider>{children}</QueryClientProvider>
-          </UserProvider>
+          <ConfirmationModalProvider>
+            <UserProvider>
+              <QueryClientProvider>{children}</QueryClientProvider>
+            </UserProvider>
+          </ConfirmationModalProvider>
         </LocaleProvider>
       </ToastProvider>
     </CacheProvider>

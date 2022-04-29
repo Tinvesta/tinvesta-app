@@ -26,8 +26,10 @@ export const useModal = ({
 
     const onCloseIconClick = () => handleClose({}, 'closeIconClick');
 
+    const finalOpenState = restProps.open === undefined ? isOpen : restProps.open;
+
     return (
-      <MuiModal open={isOpen} onClose={handleClose} {...restProps}>
+      <MuiModal onClose={handleClose} {...restProps} open={finalOpenState}>
         <S.StyledContentWrapper>
           <>
             {withCloseIcon && <S.StyledCloseIcon onClick={onCloseIconClick} />}
