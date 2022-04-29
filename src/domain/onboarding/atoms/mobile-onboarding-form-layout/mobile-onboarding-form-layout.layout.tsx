@@ -1,3 +1,4 @@
+import { ArrowBackIos as ArrowBackIosIcon, Close as CloseIcon } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import Image from 'next/image';
@@ -23,15 +24,9 @@ const MobileOnboardingFormLayoutComponent = ({
 }: IMobileOnboardingFormLayoutProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
 
-  const getHeaderVariant = () => {
-    if (deviceData.isSmallerThanSM) {
-      return 'h4';
-    }
-
-    return 'h3';
-  };
-
+  const isFirstStep = currentStep === 1;
   const progress = ((currentStep || 1) / ALL_STEPS) * 100;
+  const BackIconComponent = isFirstStep ? CloseIcon : ArrowBackIosIcon;
 
   return (
     <S.StyledWrapper>
@@ -46,8 +41,15 @@ const MobileOnboardingFormLayoutComponent = ({
         <S.StyledLinearProgress color="inherit" value={progress} variant="determinate" />
       )}
       <S.StyledContentWrapper>
+        <S.StyledBackButtonWrapper>
+          <BackIconComponent
+            cursor="pointer"
+            fontSize={deviceData.isSmallerThanXS ? 'medium' : 'large'}
+            onClick={onBackButtonClick}
+          />
+        </S.StyledBackButtonWrapper>
         {heading && (
-          <S.StyledHeading fontWeight={700} variant={getHeaderVariant()}>
+          <S.StyledHeading fontWeight={700} variant={deviceData.isSmallerThanSM ? 'h4' : 'h3'}>
             {heading}
           </S.StyledHeading>
         )}

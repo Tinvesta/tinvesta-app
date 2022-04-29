@@ -24,6 +24,7 @@ export const MobileOnboardingStepTwo = ({
   clientTypes,
   defaultValues = defaultMobileOnboardingStepTwoFormData,
   onContinueButtonClick,
+  onBackButtonClick,
 }: IMobileOnboardingStepTwoProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepTwoData>({
     defaultValues,
@@ -39,6 +40,7 @@ export const MobileOnboardingStepTwo = ({
       continueButtonText={translations.commonButtonsContinue}
       currentStep={2}
       heading={translations.componentMobileOnboardingStepTwoHeading}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={12}>

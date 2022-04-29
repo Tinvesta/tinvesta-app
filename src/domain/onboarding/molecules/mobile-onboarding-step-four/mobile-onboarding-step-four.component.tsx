@@ -16,6 +16,7 @@ import { IMobileOnboardingStepFourProps } from './mobile-onboarding-step-four.ty
 export const MobileOnboardingStepFour = ({
   defaultValues = defaultMobileOnboardingStepFourFormData,
   onContinueButtonClick,
+  onBackButtonClick,
 }: IMobileOnboardingStepFourProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepFourData>({
     defaultValues,
@@ -30,6 +31,7 @@ export const MobileOnboardingStepFour = ({
       continueButtonText={translations.commonButtonsContinue}
       currentStep={4}
       heading={translations.componentMobileOnboardingStepFourHeading}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item alignItems="center" justifyContent="center" xs={12}>
