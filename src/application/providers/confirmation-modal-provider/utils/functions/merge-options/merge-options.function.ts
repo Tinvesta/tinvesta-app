@@ -5,6 +5,11 @@ export const mergeOptions = (
   defaultOptions: IConfirmationModalOptions,
   options: IConfirmationModalOptions,
 ) => {
+  const modalProps = {
+    ...(defaultOptions.modalProps || baseOptions.modalProps),
+    ...options.modalProps,
+  };
+
   const confirmationButtonProps = {
     ...(defaultOptions.confirmationButtonProps || baseOptions.confirmationButtonProps),
     ...options.confirmationButtonProps,
@@ -29,6 +34,7 @@ export const mergeOptions = (
     ...baseOptions,
     ...defaultOptions,
     ...options,
+    modalProps,
     titleProps,
     contentProps,
     confirmationButtonProps,
