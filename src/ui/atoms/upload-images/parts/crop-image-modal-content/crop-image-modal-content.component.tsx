@@ -2,7 +2,7 @@ import { Button, Typography, useTheme } from '@mui/material';
 import { createRef } from 'react';
 import AvatarEditor from 'react-avatar-editor';
 
-import { isNumber, useDeviceDetect } from '@utils';
+import { isNumber } from '@utils';
 
 import S from './crop-image-modal-content.styles';
 import { ICropImageModalContentProps } from './crop-image-modal-content.types';
@@ -14,7 +14,6 @@ export const CropImageModalContent = ({
   title,
 }: ICropImageModalContentProps): JSX.Element => {
   const theme = useTheme();
-  const { deviceData } = useDeviceDetect();
   const avatarEditorRef = createRef<AvatarEditor>();
 
   const onSubmit = () => {
@@ -34,11 +33,11 @@ export const CropImageModalContent = ({
         ref={avatarEditorRef}
         border={0}
         borderRadius={isNumber(theme.shape.borderRadius) ? theme.shape.borderRadius : 30}
-        height={deviceData.isSmallerThanSM ? 350 : 600}
+        height={600}
         image={image}
         rotate={0}
         scale={1}
-        width={deviceData.isSmallerThanSM ? 250 : 400}
+        width={400}
       />
       <Button fullWidth variant="outlined" onClick={onSubmit}>
         {buttonText}
