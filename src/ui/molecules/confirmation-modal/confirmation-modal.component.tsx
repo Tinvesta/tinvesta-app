@@ -1,4 +1,4 @@
-import { Button, DialogActions, DialogContent, Typography } from '@mui/material';
+import { Button, DialogContent, Typography } from '@mui/material';
 
 import { useModal } from '@ui';
 
@@ -26,13 +26,19 @@ export const ConfirmationModal = ({
   } = {},
 }: IConfirmationModalProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
-  const { Modal } = useModal();
+  const { Modal } = useModal({ withCloseIcon: false });
 
   return (
     <Modal {...modalProps} open={open} onClose={onClose}>
       <S.StyledWrapper>
         {title && (
-          <Typography align="center" fontWeight={700} marginTop={3} variant="h4" {...titleProps}>
+          <Typography
+            align="center"
+            fontWeight={700}
+            marginTop={3}
+            variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
+            {...titleProps}
+          >
             {title}
           </Typography>
         )}
@@ -41,14 +47,17 @@ export const ConfirmationModal = ({
         ) : (
           description && (
             <DialogContent {...contentProps}>
-              <Typography variant="body1">{description}</Typography>
+              <Typography align="center" variant="body2">
+                {description}
+              </Typography>
             </DialogContent>
           )
         )}
         {(cancellationText || confirmationText) && (
-          <DialogActions>
+          <S.StyledDialogActions>
             {cancellationText && (
               <Button
+                fullWidth
                 {...cancellationButtonProps}
                 size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
                 variant="outlined"
@@ -59,6 +68,7 @@ export const ConfirmationModal = ({
             )}
             {confirmationText && (
               <Button
+                fullWidth
                 color="primary"
                 size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
                 variant="contained"
@@ -68,7 +78,7 @@ export const ConfirmationModal = ({
                 {confirmationText}
               </Button>
             )}
-          </DialogActions>
+          </S.StyledDialogActions>
         )}
       </S.StyledWrapper>
     </Modal>

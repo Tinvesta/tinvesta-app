@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 import { CenterBlockLayout, Loader } from '@ui';
 
-import { useUser } from '@utils';
+import { useConfirmationModal, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -33,6 +33,7 @@ import {
   IDesktopOnboardingStepTwoData,
 } from '../../onboarding.types';
 import { createAccountAction } from '../api';
+import { translationStrings } from './desktop-onboarding.defaults';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {
   EDesktopOnboardingMachineAdditionalEvents,
@@ -53,8 +54,10 @@ export const DesktopOnboarding = ({
   startupSectors,
   teamSizes,
 }: IDesktopOnboardingProps): JSX.Element => {
-  const { isLoading: isProfileLoading, user } = useUser();
   const router = useRouter();
+  const { confirm } = useConfirmationModal();
+  const translations = useTranslation(translationStrings);
+  const { isLoading: isProfileLoading, user } = useUser();
 
   const { isLoading: isCreateAccountActionLoading, mutateAsync: mutateAsyncCreateAccountAction } =
     useMutation(createAccountAction);
@@ -86,10 +89,17 @@ export const DesktopOnboarding = ({
   const onAcceptHouseRulesAgreements = () =>
     mutateAsyncCreateAccountAction(current.context)
       .then(() => router.push(ERoutes.DASHBOARD))
-      // TODO - take translation based on error response
-      .catch(() => toast.error('Something went wrong'));
+      .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
 
   const onBackButtonClick = () => send(EDesktopOnboardingMachineEvents.BACK);
+
+  const onFirstStepBackButtonClick = () =>
+    confirm({
+      title: translations.commonPromptUnsavedTitle,
+      cancellationText: translations.commonButtonsCancel,
+      confirmationText: translations.commonButtonsContinue,
+      description: translations.commonPromptUnsavedDescription,
+    }).then(() => router.push(ERoutes.HOME));
 
   if (isProfileLoading || !user?.contact_email || current.context.stepOneData.contactEmail === '') {
     return (
@@ -110,6 +120,7 @@ export const DesktopOnboarding = ({
     return (
       <DesktopOnboardingStepOne
         defaultValues={current.context.stepOneData}
+        onBackButtonClick={onFirstStepBackButtonClick}
         onContinueButtonClick={onContinueButtonClick}
       />
     );

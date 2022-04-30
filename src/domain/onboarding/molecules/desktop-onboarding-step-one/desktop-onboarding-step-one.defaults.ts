@@ -9,6 +9,7 @@ export const defaultDesktopOnboardingStepOneFormData: IDesktopOnboardingStepOneD
 };
 
 export const translationStrings = [
+  'common.buttons.quit',
   'common.buttons.continue',
   'common.form.field.error.required',
   'common.form.field.error.contain.single.word',
