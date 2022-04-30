@@ -8,7 +8,6 @@ export const HomePage = (): JSX.Element => (
   <CenterBlockLayout>
     <Head>
       <title>Tinvesta</title>
-      <meta content="Tinvesta app" name="description" />
     </Head>
     <Home />
   </CenterBlockLayout>

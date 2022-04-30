@@ -1,4 +1,5 @@
 import { GetServerSideProps } from 'next';
+import Head from 'next/head';
 
 import { Onboarding } from '@domain';
 
@@ -24,6 +25,9 @@ import { IOnboardingPageProps } from './onboarding.types';
 
 export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => (
   <S.StyledWrapper>
+    <Head>
+      <title>Tinvesta</title>
+    </Head>
     <Onboarding {...props} />
   </S.StyledWrapper>
 );
