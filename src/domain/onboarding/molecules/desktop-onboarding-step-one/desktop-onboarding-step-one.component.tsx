@@ -35,6 +35,7 @@ export const DesktopOnboardingStepOne = ({
 
   return (
     <DesktopOnboardingFormLayout
+      addArrowToBackButton={false}
       backButtonText={translations.commonButtonsQuit}
       continueButtonText={translations.commonButtonsContinue}
       heading={translations.componentDesktopOnboardingStepOneHeading}
