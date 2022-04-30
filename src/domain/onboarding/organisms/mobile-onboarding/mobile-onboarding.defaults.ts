@@ -4,4 +4,5 @@ export const translationStrings = [
   'common.prompt.unsaved.title',
   'common.prompt.unsaved.description',
   'common.errors.something.went.wrong',
+  'component.onboarding.common.success.toast.message',
 ] as const;

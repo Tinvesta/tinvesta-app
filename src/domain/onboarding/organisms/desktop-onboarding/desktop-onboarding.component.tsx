@@ -88,7 +88,10 @@ export const DesktopOnboarding = ({
 
   const onAcceptHouseRulesAgreements = () =>
     mutateAsyncCreateAccountAction(current.context)
-      .then(() => router.push(ERoutes.DASHBOARD))
+      .then(() => {
+        toast.success(translations.componentOnboardingCommonSuccessToastMessage);
+        router.push(ERoutes.DASHBOARD);
+      })
       .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
 
   const onBackButtonClick = () => send(EDesktopOnboardingMachineEvents.BACK);
