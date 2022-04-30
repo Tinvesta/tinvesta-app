@@ -1,7 +1,13 @@
 export default {
   // Buttons
+  'common.buttons.ok': 'Ok',
+  'common.buttons.edit': 'Edit',
   'common.buttons.back': 'Back',
+  'common.buttons.save': 'Save',
+  'common.buttons.quit': 'Quit',
   'common.buttons.agree': 'I Agree',
+  'common.buttons.cancel': 'Cancel',
+  'common.buttons.logout': 'Logout',
   'common.buttons.continue': 'Continue',
   'common.buttons.disagree': 'I Disagree',
 
@@ -93,4 +99,12 @@ export default {
   'common.team.sizes.small': '6-20',
   'common.team.sizes.medium': '21-100',
   'common.team.sizes.large': '>100',
+
+  // Prompt
+  'common.prompt.unsaved.title': 'Are you sure?',
+  'common.prompt.unsaved.description':
+    'You will exit this process and all your information will be deleted.',
+
+  // Errors
+  'common.errors.something.went.wrong': 'Something went wrong',
 };

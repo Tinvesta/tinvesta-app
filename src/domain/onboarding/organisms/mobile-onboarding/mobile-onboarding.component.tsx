@@ -7,7 +7,7 @@ import { toast } from 'react-toastify';
 
 import { CenterBlockLayout, Loader } from '@ui';
 
-import { useUser } from '@utils';
+import { useConfirmationModal, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -51,6 +51,7 @@ import {
   EMobileOnboardingMachineStates,
   onboardingStateMachine,
 } from './machines';
+import { translationStrings } from './mobile-onboarding.defaults';
 import { IMobileOnboardingProps } from './mobile-onboarding.types';
 
 export const MobileOnboarding = ({
@@ -65,8 +66,10 @@ export const MobileOnboarding = ({
   startupSectors,
   teamSizes,
 }: IMobileOnboardingProps): JSX.Element => {
-  const { isLoading: isProfileLoading, user } = useUser();
   const router = useRouter();
+  const { confirm } = useConfirmationModal();
+  const { isLoading: isProfileLoading, user } = useUser();
+  const translations = useTranslation(translationStrings);
 
   const { isLoading: isCreateAccountActionLoading, mutateAsync: mutateAsyncCreateAccountAction } =
     useMutation(createAccountAction);
@@ -105,12 +108,17 @@ export const MobileOnboarding = ({
     // @ts-expect-error
     mutateAsyncCreateAccountAction(current.context)
       .then(() => router.push(ERoutes.DASHBOARD))
-      // TODO - take translation based on error response
-      .catch(() => toast.error('Something went wrong'));
+      .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
 
   const onBackButtonClick = () => send(EMobileOnboardingMachineEvents.BACK);
 
-  const onFirstStepBackButtonClick = () => router.push(ERoutes.HOME);
+  const onFirstStepBackButtonClick = () =>
+    confirm({
+      title: translations.commonPromptUnsavedTitle,
+      cancellationText: translations.commonButtonsCancel,
+      confirmationText: translations.commonButtonsContinue,
+      description: translations.commonPromptUnsavedDescription,
+    }).then(() => router.push(ERoutes.HOME));
 
   if (isProfileLoading || !user?.contact_email || current.context.stepTwoData.contactEmail === '') {
     return (

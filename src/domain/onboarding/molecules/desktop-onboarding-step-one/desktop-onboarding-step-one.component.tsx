@@ -23,6 +23,7 @@ import { IDesktopOnboardingStepOneProps } from './desktop-onboarding-step-one.ty
 export const DesktopOnboardingStepOne = ({
   defaultValues = defaultDesktopOnboardingStepOneFormData,
   onContinueButtonClick,
+  onBackButtonClick,
 }: IDesktopOnboardingStepOneProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepOneData>({
     defaultValues,
@@ -34,9 +35,12 @@ export const DesktopOnboardingStepOne = ({
 
   return (
     <DesktopOnboardingFormLayout
+      addArrowToBackButton={false}
+      backButtonText={translations.commonButtonsQuit}
       continueButtonText={translations.commonButtonsContinue}
       heading={translations.componentDesktopOnboardingStepOneHeading}
       subHeading={translations.componentDesktopOnboardingStepOneSubheading}
+      onBackButtonClick={onBackButtonClick}
       onSubmit={onSubmit}
     >
       <Grid item xs={6}>
