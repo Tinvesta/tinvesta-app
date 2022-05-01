@@ -12,16 +12,18 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { useUser } from '@utils';
+import { useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
+import { translationStrings } from './desktop-dashboard.defaults';
 import S from './desktop-dashboard.styles';
 import { IDesktopDashboardLayoutProps } from './desktop-dashboard.types';
 
 export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProps): JSX.Element => {
-  const { logout, user } = useUser();
   const router = useRouter();
+  const { logout, user } = useUser();
+  const translations = useTranslation(translationStrings);
 
   const isActiveOption = (route: ERoutes): boolean => router.pathname === route;
 
@@ -51,7 +53,7 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
             </Link>
             <S.StyledUserInfoDetails>
               <S.StyledWelcomeTypography variant="caption">
-                Hi, {user?.first_name}
+                {translations.componentDashboardSidemenuFirstNamePrefix} {user?.first_name}
               </S.StyledWelcomeTypography>
             </S.StyledUserInfoDetails>
           </S.StyledUserInfoWrapper>
@@ -63,7 +65,9 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
                   <StyleIcon />
                 </S.StyledMenuItemIcon>
                 {isActiveOption(ERoutes.DASHBOARD_DISCOVER) && (
-                  <Typography variant="caption">Discover</Typography>
+                  <Typography variant="caption">
+                    {translations.componentDashboardSidemenuOptionDiscover}
+                  </Typography>
                 )}
                 <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
@@ -75,7 +79,9 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
                   <JoinInnerIcon />
                 </S.StyledMenuItemIcon>
                 {isActiveOption(ERoutes.DASHBOARD_MATCHES) && (
-                  <Typography variant="caption">Matches</Typography>
+                  <Typography variant="caption">
+                    {translations.componentDashboardSidemenuOptionMatches}
+                  </Typography>
                 )}
                 <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
@@ -87,7 +93,9 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
                   <StarBorderIcon />
                 </S.StyledMenuItemIcon>
                 {isActiveOption(ERoutes.DASHBOARD_LIKES) && (
-                  <Typography variant="caption">Likes</Typography>
+                  <Typography variant="caption">
+                    {translations.componentDashboardSidemenuOptionLikes}
+                  </Typography>
                 )}
                 <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
@@ -99,7 +107,9 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
                   <CardMembershipIcon />
                 </S.StyledMenuItemIcon>
                 {isActiveOption(ERoutes.DASHBOARD_SUBSCRIPTION) && (
-                  <Typography variant="caption">Subscription</Typography>
+                  <Typography variant="caption">
+                    {translations.componentDashboardSidemenuOptionSubscription}
+                  </Typography>
                 )}
                 <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
@@ -111,7 +121,9 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
                   <SettingsIcon />
                 </S.StyledMenuItemIcon>
                 {isActiveOption(ERoutes.DASHBOARD_SETTINGS) && (
-                  <Typography variant="caption">Settings</Typography>
+                  <Typography variant="caption">
+                    {translations.componentDashboardSidemenuOptionSettings}
+                  </Typography>
                 )}
                 <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
