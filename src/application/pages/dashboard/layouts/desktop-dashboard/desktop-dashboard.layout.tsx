@@ -12,7 +12,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 
-import { useTranslation, useUser } from '@utils';
+import { parseProfileAvatarUrl, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -47,7 +47,7 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
           <S.StyledUserInfoWrapper>
             <Link passHref href={ERoutes.DASHBOARD_PROFILE}>
               <Avatar
-                src={user?.user_metadata?.avatar_url}
+                src={parseProfileAvatarUrl(user?.profile_avatar_url)}
                 sx={{ width: 65, height: 65, cursor: 'pointer' }}
               />
             </Link>
