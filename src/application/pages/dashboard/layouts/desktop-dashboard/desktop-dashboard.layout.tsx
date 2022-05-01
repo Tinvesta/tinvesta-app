@@ -2,6 +2,7 @@ import {
   CardMembership as CardMembershipIcon,
   JoinInner as JoinInnerIcon,
   Logout as LogoutIcon,
+  Settings as SettingsIcon,
   StarBorder as StarBorderIcon,
   Style as StyleIcon,
 } from '@mui/icons-material';
@@ -38,7 +39,12 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
             />
           </S.StyledLogoWrapper>
           <S.StyledUserInfoWrapper>
-            <Avatar src={user?.user_metadata?.avatar_url} sx={{ width: 65, height: 65 }} />
+            <Link passHref href={ERoutes.DASHBOARD_PROFILE}>
+              <Avatar
+                src={user?.user_metadata?.avatar_url}
+                sx={{ width: 65, height: 65, cursor: 'pointer' }}
+              />
+            </Link>
             <S.StyledUserInfoDetails>
               <S.StyledWelcomeTypography variant="caption">
                 Hi, {user?.first_name}
@@ -90,6 +96,18 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
                 </S.StyledMenuItemIcon>
                 {isActiveOption(ERoutes.DASHBOARD_SUBSCRIPTION) && (
                   <Typography variant="caption">Subscription</Typography>
+                )}
+                <S.StyledMenuItemBottomBox />
+              </S.StyledMenuItem>
+            </Link>
+            <Link passHref href={ERoutes.DASHBOARD_SETTINGS}>
+              <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_SETTINGS)}>
+                <S.StyledMenuItemTopBox />
+                <S.StyledMenuItemIcon>
+                  <SettingsIcon />
+                </S.StyledMenuItemIcon>
+                {isActiveOption(ERoutes.DASHBOARD_SETTINGS) && (
+                  <Typography variant="caption">Settings</Typography>
                 )}
                 <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
