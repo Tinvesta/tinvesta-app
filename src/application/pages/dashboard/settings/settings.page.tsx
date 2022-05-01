@@ -2,16 +2,24 @@ import { GetServerSideProps } from 'next';
 
 import { Settings } from '@domain';
 
-import { hasOwnProperty } from '@utils';
+import { hasOwnProperty, useDeviceDetect } from '@utils';
 
-import { DesktopDashboardLayout } from '../layouts';
+import { DesktopDashboardLayout, MobileDashboardLayout } from '../layouts';
 import { verifyUserAccess } from '../utils';
 
-export const SettingsPage = (): JSX.Element => (
-  <DesktopDashboardLayout>
-    <Settings />
-  </DesktopDashboardLayout>
-);
+export const SettingsPage = (): JSX.Element => {
+  const { deviceData } = useDeviceDetect();
+
+  const DashboardLayout = deviceData.isSmallerThanLG
+    ? MobileDashboardLayout
+    : DesktopDashboardLayout;
+
+  return (
+    <DashboardLayout>
+      <Settings />
+    </DashboardLayout>
+  );
+};
 
 export const getServerSideProps = async (serverSideProps: GetServerSideProps) => {
   const result = await verifyUserAccess(serverSideProps);
