@@ -7,6 +7,7 @@ import {
   Style as StyleIcon,
 } from '@mui/icons-material';
 import { Avatar, IconButton, Typography } from '@mui/material';
+import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -26,6 +27,9 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
 
   return (
     <S.StyledWrapper>
+      <Head>
+        <title>Tinvesta</title>
+      </Head>
       <S.StyledAsideWrapper>
         <span>
           <S.StyledLogoWrapper>
