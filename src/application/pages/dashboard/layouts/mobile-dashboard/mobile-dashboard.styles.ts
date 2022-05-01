@@ -18,6 +18,8 @@ const StyledBottomNavigation = styled(BottomNavigation)`
 `;
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)<{ active: boolean }>`
+  min-width: 50px;
+
   ${({ active, theme }) => active && `color: ${theme.palette.text.primary};`};
 `;
 
