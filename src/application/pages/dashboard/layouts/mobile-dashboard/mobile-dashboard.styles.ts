@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 
+import { respondToMax } from '@infrastructure';
+
 const StyledWrapper = styled.div`
   height: 100%;
   display: flex;
@@ -23,8 +25,23 @@ const StyledBottomNavigationAction = styled(BottomNavigationAction)<{ active: bo
   ${({ active, theme }) => active && `color: ${theme.palette.text.primary};`};
 `;
 
+const StyledTopNavigation = styled.nav`
+  height: 85px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: ${({ theme }) => theme.spacing(0, 3)};
+  background-color: ${({ theme }) => theme.palette.grey[800]};
+
+  ${({ theme }) => respondToMax.xmobile`
+    height: 65px;
+    padding: ${theme.spacing(0, 2)};
+  `}
+`;
+
 const S = {
   StyledWrapper,
+  StyledTopNavigation,
   StyledContentWrapper,
   StyledBottomNavigation,
   StyledBottomNavigationAction,
