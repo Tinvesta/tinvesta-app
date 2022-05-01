@@ -1,11 +1,4 @@
-import {
-  CardMembership as CardMembershipIcon,
-  JoinInner as JoinInnerIcon,
-  Logout as LogoutIcon,
-  Settings as SettingsIcon,
-  StarBorder as StarBorderIcon,
-  Style as StyleIcon,
-} from '@mui/icons-material';
+import { Logout as LogoutIcon } from '@mui/icons-material';
 import { Avatar, IconButton, Typography } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -16,7 +9,7 @@ import { parseProfileAvatarUrl, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { translationStrings } from './desktop-dashboard.defaults';
+import { getSideMenuOptions, translationStrings } from './desktop-dashboard.defaults';
 import S from './desktop-dashboard.styles';
 import { IDesktopDashboardLayoutProps } from './desktop-dashboard.types';
 
@@ -26,6 +19,8 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
   const translations = useTranslation(translationStrings);
 
   const isActiveOption = (route: ERoutes): boolean => router.pathname === route;
+
+  const sideMenuOptions = getSideMenuOptions(translations);
 
   return (
     <S.StyledWrapper>
@@ -58,76 +53,20 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
             </S.StyledUserInfoDetails>
           </S.StyledUserInfoWrapper>
           <S.StyledMenu>
-            <Link passHref href={ERoutes.DASHBOARD_DISCOVER}>
-              <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_DISCOVER)}>
-                <S.StyledMenuItemTopBox />
-                <S.StyledMenuItemIcon>
-                  <StyleIcon />
-                </S.StyledMenuItemIcon>
-                {isActiveOption(ERoutes.DASHBOARD_DISCOVER) && (
-                  <Typography variant="caption">
-                    {translations.componentDashboardSidemenuOptionDiscover}
-                  </Typography>
-                )}
-                <S.StyledMenuItemBottomBox />
-              </S.StyledMenuItem>
-            </Link>
-            <Link passHref href={ERoutes.DASHBOARD_MATCHES}>
-              <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_MATCHES)}>
-                <S.StyledMenuItemTopBox />
-                <S.StyledMenuItemIcon>
-                  <JoinInnerIcon />
-                </S.StyledMenuItemIcon>
-                {isActiveOption(ERoutes.DASHBOARD_MATCHES) && (
-                  <Typography variant="caption">
-                    {translations.componentDashboardSidemenuOptionMatches}
-                  </Typography>
-                )}
-                <S.StyledMenuItemBottomBox />
-              </S.StyledMenuItem>
-            </Link>
-            <Link passHref href={ERoutes.DASHBOARD_LIKES}>
-              <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_LIKES)}>
-                <S.StyledMenuItemTopBox />
-                <S.StyledMenuItemIcon>
-                  <StarBorderIcon />
-                </S.StyledMenuItemIcon>
-                {isActiveOption(ERoutes.DASHBOARD_LIKES) && (
-                  <Typography variant="caption">
-                    {translations.componentDashboardSidemenuOptionLikes}
-                  </Typography>
-                )}
-                <S.StyledMenuItemBottomBox />
-              </S.StyledMenuItem>
-            </Link>
-            <Link passHref href={ERoutes.DASHBOARD_SUBSCRIPTION}>
-              <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_SUBSCRIPTION)}>
-                <S.StyledMenuItemTopBox />
-                <S.StyledMenuItemIcon>
-                  <CardMembershipIcon />
-                </S.StyledMenuItemIcon>
-                {isActiveOption(ERoutes.DASHBOARD_SUBSCRIPTION) && (
-                  <Typography variant="caption">
-                    {translations.componentDashboardSidemenuOptionSubscription}
-                  </Typography>
-                )}
-                <S.StyledMenuItemBottomBox />
-              </S.StyledMenuItem>
-            </Link>
-            <Link passHref href={ERoutes.DASHBOARD_SETTINGS}>
-              <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_SETTINGS)}>
-                <S.StyledMenuItemTopBox />
-                <S.StyledMenuItemIcon>
-                  <SettingsIcon />
-                </S.StyledMenuItemIcon>
-                {isActiveOption(ERoutes.DASHBOARD_SETTINGS) && (
-                  <Typography variant="caption">
-                    {translations.componentDashboardSidemenuOptionSettings}
-                  </Typography>
-                )}
-                <S.StyledMenuItemBottomBox />
-              </S.StyledMenuItem>
-            </Link>
+            {sideMenuOptions.map((_sideMenuOption) => {
+              const isActive = isActiveOption(_sideMenuOption.route);
+
+              return (
+                <Link key={_sideMenuOption.label} passHref href={_sideMenuOption.route}>
+                  <S.StyledMenuItem active={isActive}>
+                    <S.StyledMenuItemTopBox />
+                    <S.StyledMenuItemIcon>{_sideMenuOption.icon}</S.StyledMenuItemIcon>
+                    {isActive && <Typography variant="caption">{_sideMenuOption.label}</Typography>}
+                    <S.StyledMenuItemBottomBox />
+                  </S.StyledMenuItem>
+                </Link>
+              );
+            })}
           </S.StyledMenu>
         </span>
         <S.StyledAsideBottomContentWrapper>
