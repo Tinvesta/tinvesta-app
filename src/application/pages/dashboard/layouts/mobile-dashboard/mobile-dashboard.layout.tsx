@@ -1,4 +1,3 @@
-import { BottomNavigation } from '@mui/material';
 import Head from 'next/head';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -25,14 +24,13 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
         <title>Tinvesta</title>
       </Head>
       <S.StyledContentWrapper>{children}</S.StyledContentWrapper>
-      <BottomNavigation>
+      <S.StyledBottomNavigation>
         {bottomNavigationOptions.map((_bottomNavigationOption) => {
           const isActive = isActiveOption(_bottomNavigationOption.route);
 
           return (
             <Link key={_bottomNavigationOption.label} passHref href={_bottomNavigationOption.route}>
               <S.StyledBottomNavigationAction
-                showLabel
                 active={isActive}
                 icon={_bottomNavigationOption.icon}
                 label={_bottomNavigationOption.label}
@@ -40,7 +38,7 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
             </Link>
           );
         })}
-      </BottomNavigation>
+      </S.StyledBottomNavigation>
     </S.StyledWrapper>
   );
 };

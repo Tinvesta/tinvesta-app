@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { BottomNavigationAction } from '@mui/material';
+import { BottomNavigation, BottomNavigationAction } from '@mui/material';
 
 const StyledWrapper = styled.div`
   height: 100%;
@@ -13,6 +13,10 @@ const StyledContentWrapper = styled.div`
   overflow: scroll;
 `;
 
+const StyledBottomNavigation = styled(BottomNavigation)`
+  background-color: ${({ theme }) => theme.palette.grey[800]};
+`;
+
 const StyledBottomNavigationAction = styled(BottomNavigationAction)<{ active: boolean }>`
   ${({ active, theme }) => active && `color: ${theme.palette.text.primary};`};
 `;
@@ -20,6 +24,7 @@ const StyledBottomNavigationAction = styled(BottomNavigationAction)<{ active: bo
 const S = {
   StyledWrapper,
   StyledContentWrapper,
+  StyledBottomNavigation,
   StyledBottomNavigationAction,
 };
 
