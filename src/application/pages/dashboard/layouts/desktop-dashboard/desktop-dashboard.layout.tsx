@@ -1,10 +1,11 @@
 import {
   CardMembership as CardMembershipIcon,
   JoinInner as JoinInnerIcon,
+  Logout as LogoutIcon,
   StarBorder as StarBorderIcon,
   Style as StyleIcon,
 } from '@mui/icons-material';
-import { Avatar, Button, Typography } from '@mui/material';
+import { Avatar, IconButton, Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -28,59 +29,78 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
         <span>
           <S.StyledLogoWrapper>
             <Image
+              priority
               alt="Tinvesta"
-              height={28}
+              height={50}
               objectFit="fill"
-              src="/images/brandmark-full-logo-transparent-white.png"
-              width={200}
+              src="/images/brandmark-transparent-white.png"
+              width={50}
             />
           </S.StyledLogoWrapper>
           <S.StyledUserInfoWrapper>
-            <Avatar src={user?.user_metadata?.avatar_url} sx={{ width: 56, height: 56 }} />
+            <Avatar src={user?.user_metadata?.avatar_url} sx={{ width: 65, height: 65 }} />
             <S.StyledUserInfoDetails>
-              <Typography>
-                {user?.first_name} {user?.last_name}
-              </Typography>
+              <S.StyledWelcomeTypography variant="caption">
+                Hi, {user?.first_name}
+              </S.StyledWelcomeTypography>
             </S.StyledUserInfoDetails>
           </S.StyledUserInfoWrapper>
           <S.StyledMenu>
             <Link passHref href={ERoutes.DASHBOARD_DISCOVER}>
               <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_DISCOVER)}>
+                <S.StyledMenuItemTopBox />
                 <S.StyledMenuItemIcon>
                   <StyleIcon />
                 </S.StyledMenuItemIcon>
-                Discover
+                {isActiveOption(ERoutes.DASHBOARD_DISCOVER) && (
+                  <Typography variant="caption">Discover</Typography>
+                )}
+                <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
             </Link>
             <Link passHref href={ERoutes.DASHBOARD_MATCHES}>
               <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_MATCHES)}>
+                <S.StyledMenuItemTopBox />
                 <S.StyledMenuItemIcon>
                   <JoinInnerIcon />
                 </S.StyledMenuItemIcon>
-                Matches
+                {isActiveOption(ERoutes.DASHBOARD_MATCHES) && (
+                  <Typography variant="caption">Matches</Typography>
+                )}
+                <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
             </Link>
             <Link passHref href={ERoutes.DASHBOARD_LIKES}>
               <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_LIKES)}>
+                <S.StyledMenuItemTopBox />
                 <S.StyledMenuItemIcon>
                   <StarBorderIcon />
                 </S.StyledMenuItemIcon>
-                Likes
+                {isActiveOption(ERoutes.DASHBOARD_LIKES) && (
+                  <Typography variant="caption">Likes</Typography>
+                )}
+                <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
             </Link>
             <Link passHref href={ERoutes.DASHBOARD_SUBSCRIPTION}>
               <S.StyledMenuItem active={isActiveOption(ERoutes.DASHBOARD_SUBSCRIPTION)}>
+                <S.StyledMenuItemTopBox />
                 <S.StyledMenuItemIcon>
                   <CardMembershipIcon />
                 </S.StyledMenuItemIcon>
-                Subscription
+                {isActiveOption(ERoutes.DASHBOARD_SUBSCRIPTION) && (
+                  <Typography variant="caption">Subscription</Typography>
+                )}
+                <S.StyledMenuItemBottomBox />
               </S.StyledMenuItem>
             </Link>
           </S.StyledMenu>
         </span>
-        <Button variant="outlined" onClick={logout}>
-          Logout
-        </Button>
+        <S.StyledAsideBottomContentWrapper>
+          <IconButton color="primary" size="large" onClick={logout}>
+            <LogoutIcon />
+          </IconButton>
+        </S.StyledAsideBottomContentWrapper>
       </S.StyledAsideWrapper>
       <S.StyledContentWrapper>{children}</S.StyledContentWrapper>
     </S.StyledWrapper>
