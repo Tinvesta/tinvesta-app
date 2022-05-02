@@ -8,7 +8,9 @@ export const translationStrings = [
   'component.dashboard.subscription.benefit.four',
   'component.dashboard.subscription.monthly.header',
   'component.dashboard.subscription.monthly.button',
+  'component.dashboard.subscription.monthly.manage.button',
   'component.dashboard.subscription.yearly.header',
   'component.dashboard.subscription.yearly.subheader',
   'component.dashboard.subscription.yearly.button',
+  'component.dashboard.subscription.yearly.manage.button',
 ] as const;
