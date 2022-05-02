@@ -44,9 +44,9 @@ export const getServerSideProps = async (serverSideProps: GetServerSideProps) =>
 
       return {
         id: _price.id,
-        name: product.name,
         currency: _price.currency,
         price: _price.unit_amount,
+        name: product?.name?.toLowerCase(),
         interval: _price.recurring?.interval,
       };
     }),
