@@ -1,1 +1,5 @@
-export interface ISubscriptionProps {}
+import { ISubscriptionPlan } from '@interfaces';
+
+export interface ISubscriptionProps {
+  plans: ISubscriptionPlan[];
+}

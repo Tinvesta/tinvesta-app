@@ -84,3 +84,11 @@ export interface IDiscoverRecord {
   visionStatement: string | null;
   whatAreYouLookingFor: string;
 }
+
+export interface ISubscriptionPlan {
+  currency: string;
+  id: string;
+  interval: string;
+  name: string;
+  price: number;
+}
