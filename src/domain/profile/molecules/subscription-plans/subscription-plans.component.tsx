@@ -1,9 +1,11 @@
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
 import { ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
+import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
 
 import { CenterBlockLayout } from '@ui';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { useDeviceDetect, useTranslation, useUser } from '@utils';
 
 import { ESubscriptionInterval } from '@enums';
 
@@ -12,9 +14,22 @@ import { translationStrings } from './subscription-plans.defaults';
 import S from './subscription-plans.styles';
 import { ISubscriptionPlansProps } from './subscription-plans.types';
 
+// TODO - move to react-query and handle loading and errors
+const processSubscription = (planId: string) => async () => {
+  const { data } = await axios.get(`/api/subscription/${planId}`);
+
+  const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+
+  await stripe?.redirectToCheckout({ sessionId: data.id });
+};
+
 export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Element => {
+  const { isLoading, user } = useUser();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
+
+  const showSubscribeButton = !!user && !user.is_subscribed;
+  const showManageSubscriptionButton = !!user && user.is_subscribed;
 
   return (
     <SectionWrapperLayout title={translations.componentDashboardSubscriptionHeader}>
@@ -71,13 +86,37 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                     </Typography>
                   )}
                 </span>
-                <S.StyledSubscriptionPaperButton endIcon={<ArrowForwardIcon />} variant="outlined">
-                  {
-                    translations[
-                      `componentDashboardSubscription${isMonth ? 'Month' : 'Year'}lyButton`
-                    ]
-                  }
-                </S.StyledSubscriptionPaperButton>
+                {!isLoading && (
+                  <>
+                    {showSubscribeButton && (
+                      <S.StyledSubscriptionPaperButton
+                        endIcon={<ArrowForwardIcon />}
+                        variant="outlined"
+                        onClick={processSubscription(_plan.id)}
+                      >
+                        {
+                          translations[
+                            `componentDashboardSubscription${isMonth ? 'Month' : 'Year'}lyButton`
+                          ]
+                        }
+                      </S.StyledSubscriptionPaperButton>
+                    )}
+                    {showManageSubscriptionButton && (
+                      <S.StyledSubscriptionPaperButton
+                        endIcon={<ArrowForwardIcon />}
+                        variant="outlined"
+                      >
+                        {
+                          translations[
+                            `componentDashboardSubscription${
+                              isMonth ? 'Month' : 'Year'
+                            }lyManageButton`
+                          ]
+                        }
+                      </S.StyledSubscriptionPaperButton>
+                    )}
+                  </>
+                )}
               </S.StyledPaper>
             );
           })}
