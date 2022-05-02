@@ -8,6 +8,7 @@ import {
   EInvestorProfileType,
   EStartupProfileCreatorType,
   EStartupSector,
+  ESubscriptionInterval,
   ETeamSize,
 } from '@enums';
 
@@ -88,7 +89,7 @@ export interface IDiscoverRecord {
 export interface ISubscriptionPlan {
   currency: string;
   id: string;
-  interval: string;
+  interval: ESubscriptionInterval;
   name: string;
   price: number;
 }

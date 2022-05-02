@@ -129,3 +129,8 @@ export enum EStartupProfileCreatorType {
   EMPLOYEE = 'employee',
   FOUNDER = 'founder',
 }
+
+export enum ESubscriptionInterval {
+  MONTH = 'month',
+  YEAR = 'year',
+}
