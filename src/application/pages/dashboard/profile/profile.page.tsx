@@ -18,11 +18,9 @@ export const ProfilePage = ({ plans }: IProfileProps): JSX.Element => {
     ? MobileDashboardLayout
     : DesktopDashboardLayout;
 
-  console.log(plans);
-
   return (
     <DashboardLayout>
-      <Profile />
+      <Profile plans={plans} />
     </DashboardLayout>
   );
 };
