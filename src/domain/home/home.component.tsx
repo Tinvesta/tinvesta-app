@@ -12,9 +12,9 @@ import { SignInModalContent } from './atoms';
 import S from './home.styles';
 
 export const Home = (): JSX.Element => {
-  const { isLoading, user } = useUser();
   const router = useRouter();
   const { Modal, show } = useModal();
+  const { isLoading, user } = useUser();
 
   const isSignedIn = !!user && !isLoading;
 
