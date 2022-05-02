@@ -7,7 +7,9 @@ declare namespace NodeJS {
     NEXT_PUBLIC_ENABLE_HOME_PAGE: 'true' | 'false' | undefined;
     NEXT_PUBLIC_MAPBOX_KEY: string;
     NEXT_PUBLIC_MAPBOX_URL: string;
+    NEXT_PUBLIC_STRIPE_KEY: string;
     NEXT_PUBLIC_SUPABASE_KEY: string;
     NEXT_PUBLIC_SUPABASE_URL: string;
+    STRIPE_SECRET_KEY: string;
   }
 }
