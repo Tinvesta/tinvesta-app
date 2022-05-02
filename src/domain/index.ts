@@ -5,7 +5,5 @@ export * from './profile/profile.component';
 export * from './matches/matches.component';
 export * from './pricing/pricing.component';
 export * from './discover/discover.component';
-export * from './settings/settings.component';
 export * from './onboarding/onboarding.component';
-export * from './subscription/subscription.component';
 export * from './privacy-policy/privacy-policy.component';
