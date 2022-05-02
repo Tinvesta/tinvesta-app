@@ -1,5 +1,6 @@
 import {
   EClientType,
+  ECurrency,
   EFocusMarket,
   EIndustrialSector,
   EInvestmentSize,
@@ -8,8 +9,10 @@ import {
   EInvestorProfileType,
   EStartupProfileCreatorType,
   EStartupSector,
+  ESubscriptionInterval,
+  ESubscriptionName,
   ETeamSize,
-} from '@enums';
+} from './enums';
 
 export interface IClientType {
   id: string;
@@ -86,9 +89,9 @@ export interface IDiscoverRecord {
 }
 
 export interface ISubscriptionPlan {
-  currency: string;
+  currency: ECurrency;
   id: string;
-  interval: string;
-  name: string;
+  interval: ESubscriptionInterval;
+  name: ESubscriptionName;
   price: number;
 }
