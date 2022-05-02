@@ -15,7 +15,7 @@ const StyledHeader = styled(Typography)`
   `}
 `;
 
-const StyledWrapper = styled.div`
+const StyledPapersWrapper = styled.div`
   display: flex;
   gap: ${({ theme }) => theme.spacing(4)};
   margin-top: ${({ theme }) => theme.spacing(3)};
@@ -63,7 +63,7 @@ const S = {
   StyledList,
   StyledPaper,
   StyledHeader,
-  StyledWrapper,
+  StyledPapersWrapper,
   StyledSubscriptionPaperButton,
 };
 

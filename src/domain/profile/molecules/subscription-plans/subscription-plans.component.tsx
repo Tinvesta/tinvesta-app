@@ -48,7 +48,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
             <ListItemText>{translations.componentDashboardSubscriptionBenefitFour}</ListItemText>
           </ListItem>
         </S.StyledList>
-        <S.StyledWrapper>
+        <S.StyledPapersWrapper>
           {plans.map((_plan) => {
             const isMonth = _plan.interval === ESubscriptionInterval.MONTH;
 
@@ -81,7 +81,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
               </S.StyledPaper>
             );
           })}
-        </S.StyledWrapper>
+        </S.StyledPapersWrapper>
       </CenterBlockLayout>
     </SectionWrapperLayout>
   );
