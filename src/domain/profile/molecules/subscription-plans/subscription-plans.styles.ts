@@ -1,7 +1,19 @@
 import styled from '@emotion/styled';
-import { Button, List, Paper } from '@mui/material';
+import { Button, List, Paper, Typography } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
+
+const StyledHeader = styled(Typography)`
+  margin-bottom: ${({ theme }) => theme.spacing(3)};
+
+  ${({ theme }) => respondToMax.mobile`
+    margin-bottom: ${theme.spacing(2)};
+  `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    margin-bottom: ${theme.spacing(1)};
+  `}
+`;
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -50,6 +62,7 @@ const StyledList = styled(List)`
 const S = {
   StyledList,
   StyledPaper,
+  StyledHeader,
   StyledWrapper,
   StyledSubscriptionPaperButton,
 };

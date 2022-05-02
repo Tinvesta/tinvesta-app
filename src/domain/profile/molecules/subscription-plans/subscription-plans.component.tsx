@@ -19,9 +19,9 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
   return (
     <SectionWrapperLayout title={translations.componentDashboardSubscriptionHeader}>
       <CenterBlockLayout>
-        <Typography variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}>
+        <S.StyledHeader variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}>
           {translations.componentDashboardSubscriptionBenefits}
-        </Typography>
+        </S.StyledHeader>
         <S.StyledList dense={deviceData.isSmallerThanXS}>
           <ListItem>
             <ListItemAvatar>
