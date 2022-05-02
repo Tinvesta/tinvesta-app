@@ -1,5 +1,5 @@
 import { ISubscriptionPlan } from '@interfaces';
 
-export interface IProfileProps {
+export interface IMobileProfileProps {
   plans: ISubscriptionPlan[];
 }
