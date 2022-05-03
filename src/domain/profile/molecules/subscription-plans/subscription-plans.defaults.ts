@@ -14,4 +14,5 @@ export const translationStrings = [
   'component.dashboard.subscription.yearly.button',
   'component.dashboard.subscription.yearly.manage.button',
   'component.dashboard.subscription.payment.success',
+  'common.errors.something.went.wrong',
 ] as const;

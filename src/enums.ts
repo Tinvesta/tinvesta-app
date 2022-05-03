@@ -23,6 +23,7 @@ export enum EApiEndpoint {
   LIKE_PROFILE = '/api/like-profile',
   PROFILE_DETAILS = '/api/profile-details',
   SET_SUPABASE_COOKIE = '/api/set-supabase-cookie',
+  SUBSCRIPTION = '/api/subscription',
 }
 
 export enum ERoutes {

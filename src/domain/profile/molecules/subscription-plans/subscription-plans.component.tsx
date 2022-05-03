@@ -1,7 +1,7 @@
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
 import { ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { loadStripe } from '@stripe/stripe-js';
-import axios from 'axios';
+import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import { StringParam, useQueryParam } from 'use-query-params';
 
@@ -11,19 +11,11 @@ import { isSomeEnum, useDeviceDetect, useDidMountEffect, useTranslation, useUser
 
 import { EPaymentStatus, ESubscriptionInterval } from '@enums';
 
+import { subscriptionAction } from '../../api';
 import { SectionWrapperLayout } from '../../atoms';
 import { translationStrings } from './subscription-plans.defaults';
 import S from './subscription-plans.styles';
 import { ISubscriptionPlansProps } from './subscription-plans.types';
-
-// TODO - move to react-query and handle loading and errors
-const processSubscription = (planId: string) => async () => {
-  const { data } = await axios.get(`/api/subscription/${planId}`);
-
-  const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
-
-  await stripe?.redirectToCheckout({ sessionId: data.id });
-};
 
 export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Element => {
   const { isLoading, user } = useUser();
@@ -33,6 +25,13 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
     'paymentStatus',
     StringParam,
   );
+
+  const { isLoading: isSubscriptionActionLoading, mutateAsync: mutateAsyncSubscriptionAction } =
+    useMutation(subscriptionAction, {
+      onError: () => {
+        toast.error(translations.commonErrorsSomethingWentWrong);
+      },
+    });
 
   useDidMountEffect(() => {
     if (!isSomeEnum(EPaymentStatus)(paymentStatusQueryParam)) {
@@ -44,6 +43,14 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
       toast.success(translations.componentDashboardSubscriptionPaymentSuccess);
     }
   }, [paymentStatusQueryParam]);
+
+  const processSubscription = (planId: string) => async () => {
+    const { data } = await mutateAsyncSubscriptionAction(planId);
+
+    const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+
+    await stripe?.redirectToCheckout({ sessionId: data.id });
+  };
 
   const showSubscribeButton = !!user && !user.is_subscribed;
   const showManageSubscriptionButton = !!user && user.is_subscribed;
@@ -108,6 +115,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                     {showSubscribeButton && (
                       <S.StyledSubscriptionPaperButton
                         endIcon={<ArrowForwardIcon />}
+                        loading={isSubscriptionActionLoading}
                         variant="outlined"
                         onClick={processSubscription(_plan.id)}
                       >

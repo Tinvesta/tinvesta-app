@@ -11,12 +11,12 @@ import { EApiError, EPaymentStatus, ERoutes } from '@enums';
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
-  // TODO - enable validation
-  // if (request.headers.authorization !== apiRouteSecret) {
-  //   return response.status(401).send(EApiError.UNAUTHORIZED);
-  // }
+  if (request.headers.authorization !== apiRouteSecret) {
+    return response.status(401).send(EApiError.UNAUTHORIZED);
+  }
 
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
 
@@ -24,7 +24,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
-  if (!request.query.priceId) {
+  if (!request.query.planId) {
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
@@ -45,12 +45,12 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     .single();
 
   const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
-  const { priceId } = request.query as { priceId: string };
+  const { planId } = request.query as { planId: string };
 
   const lineItems = [
     {
       quantity: 1,
-      price: priceId,
+      price: planId,
     },
   ];
 
