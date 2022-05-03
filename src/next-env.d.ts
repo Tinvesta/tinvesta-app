@@ -12,5 +12,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_SUPABASE_KEY: string;
     NEXT_PUBLIC_SUPABASE_URL: string;
     STRIPE_SECRET_KEY: string;
+    STRIPE_SIGNING_SECRET: string;
   }
 }

@@ -1,6 +1,8 @@
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
 import { ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { loadStripe } from '@stripe/stripe-js';
+import axios from 'axios';
+import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import { StringParam, useQueryParam } from 'use-query-params';
@@ -18,6 +20,7 @@ import S from './subscription-plans.styles';
 import { ISubscriptionPlansProps } from './subscription-plans.types';
 
 export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Element => {
+  const router = useRouter();
   const { isLoading, user } = useUser();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
@@ -50,6 +53,13 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
     const stripe = await loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
     await stripe?.redirectToCheckout({ sessionId: data.id });
+  };
+
+  const loadPortal = async () => {
+    // TODO - react-query
+    const { data } = await axios.get('/api/stripe-portal');
+
+    router.push(data.url);
   };
 
   const showSubscribeButton = !!user && !user.is_subscribed;
@@ -130,6 +140,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                       <S.StyledSubscriptionPaperButton
                         endIcon={<ArrowForwardIcon />}
                         variant="outlined"
+                        onClick={loadPortal}
                       >
                         {
                           translations[
