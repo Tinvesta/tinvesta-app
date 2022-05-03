@@ -8,11 +8,17 @@ export const translationStrings = [
   'component.dashboard.subscription.benefit.four',
   'component.dashboard.subscription.monthly.header',
   'component.dashboard.subscription.monthly.button',
-  'component.dashboard.subscription.monthly.manage.button',
   'component.dashboard.subscription.yearly.header',
   'component.dashboard.subscription.yearly.subheader',
   'component.dashboard.subscription.yearly.button',
-  'component.dashboard.subscription.yearly.manage.button',
+  'component.dashboard.subscription.manage.button',
   'component.dashboard.subscription.payment.success',
   'common.errors.something.went.wrong',
 ] as const;
+
+export const getSubscriptionBenefits = (translations: Record<string, string>) => [
+  translations.componentDashboardSubscriptionBenefitOne,
+  translations.componentDashboardSubscriptionBenefitTwo,
+  translations.componentDashboardSubscriptionBenefitThree,
+  translations.componentDashboardSubscriptionBenefitFour,
+];

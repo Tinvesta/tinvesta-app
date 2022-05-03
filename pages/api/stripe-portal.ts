@@ -8,9 +8,13 @@ import { EApiError, ERoutes } from '@enums';
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
+const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
-  // TODO - add api route secret validation
+  if (request.headers.authorization !== apiRouteSecret) {
+    return response.status(401).send(EApiError.UNAUTHORIZED);
+  }
+
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
 
   if (!user) {

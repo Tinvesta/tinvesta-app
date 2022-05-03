@@ -9,15 +9,14 @@ export default {
   'component.dashboard.subscription.benefit.three': 'Matches with any account from likes view',
   'component.dashboard.subscription.benefit.four':
     'Unlimited contact with all pairs (default is 2 contacts per day)',
+  'component.dashboard.subscription.manage.button': 'Manage subscription',
 
   // Monthly
   'component.dashboard.subscription.monthly.header': 'Monthly',
   'component.dashboard.subscription.monthly.button': 'Select monthly subscription',
-  'component.dashboard.subscription.monthly.manage.button': 'Manage monthly subscription',
 
   // Yearly
   'component.dashboard.subscription.yearly.header': 'Yearly',
   'component.dashboard.subscription.yearly.subheader': 'Save 23 USD',
   'component.dashboard.subscription.yearly.button': 'Select yearly subscription',
-  'component.dashboard.subscription.yearly.manage.button': 'Manage yearly subscription',
 };
