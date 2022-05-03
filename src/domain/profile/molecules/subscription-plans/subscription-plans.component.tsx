@@ -61,11 +61,10 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
     await stripe?.redirectToCheckout({ sessionId: data.id });
   };
 
-  const loadStripePortal = async () => {
-    const { data } = await mutateAsyncStripePortalAction();
-
-    router.push(data.url);
-  };
+  const loadStripePortal = () =>
+    mutateAsyncStripePortalAction().then(({ data }) => {
+      router.push(data.url);
+    });
 
   const showSubscribeButton = !!user && !user.is_subscribed;
   const showManageSubscriptionButton = !!user && user.is_subscribed;
