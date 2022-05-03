@@ -143,3 +143,8 @@ export enum ESubscriptionName {
   BASIC = 'basic',
   PREMIUM = 'premium',
 }
+
+export enum EPaymentStatus {
+  CANCEL = 'cancel',
+  SUCCESS = 'success',
+}
