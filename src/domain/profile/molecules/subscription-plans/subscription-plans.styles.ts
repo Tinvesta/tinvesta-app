@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
-import { Button, List, Paper, Typography } from '@mui/material';
+import { LoadingButton } from '@mui/lab';
+import { List, Paper, Typography } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
@@ -43,7 +44,7 @@ const StyledPaper = styled(Paper)`
   `}
 `;
 
-const StyledSubscriptionPaperButton = styled(Button)`
+const StyledSubscriptionPaperButton = styled(LoadingButton)`
   margin-top: ${({ theme }) => theme.spacing(4)};
 `;
 

@@ -11,6 +11,7 @@ import { useConfirmationModal, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
+import { createAccountAction } from '../../api';
 import {
   DesktopHouseRulesAgreements,
   DesktopOnboardingStepFiveInvestor,
@@ -32,7 +33,6 @@ import {
   IDesktopOnboardingStepThreeStartupData,
   IDesktopOnboardingStepTwoData,
 } from '../../onboarding.types';
-import { createAccountAction } from '../api';
 import { translationStrings } from './desktop-onboarding.defaults';
 import { IDesktopOnboardingProps } from './desktop-onboarding.types';
 import {

@@ -11,6 +11,7 @@ import { useConfirmationModal, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
+import { createAccountAction } from '../../api';
 import {
   MobileHouseRulesAgreements,
   MobileOnboardingStepEightInvestor,
@@ -44,7 +45,6 @@ import {
   IMobileOnboardingStepThreeData,
   IMobileOnboardingStepTwoData,
 } from '../../onboarding.types';
-import { createAccountAction } from '../api';
 import {
   EMobileOnboardingMachineAdditionalEvents,
   EMobileOnboardingMachineEvents,
