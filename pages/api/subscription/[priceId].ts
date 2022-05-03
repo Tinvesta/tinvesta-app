@@ -3,10 +3,13 @@ import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 import { Stripe } from 'stripe';
 
+import { objectToQueryString } from '@utils';
+
 import { supabaseInstance } from '@infrastructure';
 
-import { EApiError } from '@enums';
+import { EApiError, EPaymentStatus, ERoutes } from '@enums';
 
+const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
@@ -56,10 +59,12 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     line_items: lineItems,
     customer: stripe_customer,
     payment_method_types: ['card'],
-    // TODO - handle this via query params
-    cancel_url: 'http://localhost:3000/dashboard/profile',
-    // TODO - handle this via query params
-    success_url: 'http://localhost:3000/dashboard/profile',
+    cancel_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}${objectToQueryString({
+      paymentStatus: EPaymentStatus.CANCEL,
+    })}`,
+    success_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}${objectToQueryString({
+      paymentStatus: EPaymentStatus.SUCCESS,
+    })}`,
   });
 
   response.send({
