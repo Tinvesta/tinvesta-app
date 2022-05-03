@@ -1,7 +1,6 @@
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
 import { ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { loadStripe } from '@stripe/stripe-js';
-import axios from 'axios';
 import { useRouter } from 'next/router';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
@@ -13,9 +12,9 @@ import { isSomeEnum, useDeviceDetect, useDidMountEffect, useTranslation, useUser
 
 import { EPaymentStatus, ESubscriptionInterval } from '@enums';
 
-import { subscriptionAction } from '../../api';
+import { stripePortalAction, subscriptionAction } from '../../api';
 import { SectionWrapperLayout } from '../../atoms';
-import { translationStrings } from './subscription-plans.defaults';
+import { getSubscriptionBenefits, translationStrings } from './subscription-plans.defaults';
 import S from './subscription-plans.styles';
 import { ISubscriptionPlansProps } from './subscription-plans.types';
 
@@ -31,6 +30,13 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
 
   const { isLoading: isSubscriptionActionLoading, mutateAsync: mutateAsyncSubscriptionAction } =
     useMutation(subscriptionAction, {
+      onError: () => {
+        toast.error(translations.commonErrorsSomethingWentWrong);
+      },
+    });
+
+  const { isLoading: isStripePortalActionLoading, mutateAsync: mutateAsyncStripePortalAction } =
+    useMutation(stripePortalAction, {
       onError: () => {
         toast.error(translations.commonErrorsSomethingWentWrong);
       },
@@ -55,15 +61,14 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
     await stripe?.redirectToCheckout({ sessionId: data.id });
   };
 
-  const loadPortal = async () => {
-    // TODO - react-query
-    const { data } = await axios.get('/api/stripe-portal');
-
-    router.push(data.url);
-  };
+  const loadStripePortal = () =>
+    mutateAsyncStripePortalAction().then(({ data }) => {
+      router.push(data.url);
+    });
 
   const showSubscribeButton = !!user && !user.is_subscribed;
   const showManageSubscriptionButton = !!user && user.is_subscribed;
+  const subscriptionBenefits = getSubscriptionBenefits(translations);
 
   return (
     <SectionWrapperLayout title={translations.componentDashboardSubscriptionHeader}>
@@ -72,30 +77,14 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
           {translations.componentDashboardSubscriptionBenefits}
         </S.StyledHeader>
         <S.StyledList dense={deviceData.isSmallerThanXS}>
-          <ListItem>
-            <ListItemAvatar>
-              <StarIcon />
-            </ListItemAvatar>
-            <ListItemText>{translations.componentDashboardSubscriptionBenefitOne}</ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemAvatar>
-              <StarIcon />
-            </ListItemAvatar>
-            <ListItemText>{translations.componentDashboardSubscriptionBenefitTwo}</ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemAvatar>
-              <StarIcon />
-            </ListItemAvatar>
-            <ListItemText>{translations.componentDashboardSubscriptionBenefitThree}</ListItemText>
-          </ListItem>
-          <ListItem>
-            <ListItemAvatar>
-              <StarIcon />
-            </ListItemAvatar>
-            <ListItemText>{translations.componentDashboardSubscriptionBenefitFour}</ListItemText>
-          </ListItem>
+          {subscriptionBenefits.map((_subscriptionBenefit) => (
+            <ListItem key={_subscriptionBenefit}>
+              <ListItemAvatar>
+                <StarIcon />
+              </ListItemAvatar>
+              <ListItemText>{_subscriptionBenefit}</ListItemText>
+            </ListItem>
+          ))}
         </S.StyledList>
         <S.StyledPapersWrapper>
           {plans.map((_plan) => {
@@ -120,38 +109,29 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                     </Typography>
                   )}
                 </span>
-                {!isLoading && (
-                  <>
-                    {showSubscribeButton && (
-                      <S.StyledSubscriptionPaperButton
-                        endIcon={<ArrowForwardIcon />}
-                        loading={isSubscriptionActionLoading}
-                        variant="outlined"
-                        onClick={processSubscription(_plan.id)}
-                      >
-                        {
-                          translations[
-                            `componentDashboardSubscription${isMonth ? 'Month' : 'Year'}lyButton`
-                          ]
-                        }
-                      </S.StyledSubscriptionPaperButton>
-                    )}
-                    {showManageSubscriptionButton && (
-                      <S.StyledSubscriptionPaperButton
-                        endIcon={<ArrowForwardIcon />}
-                        variant="outlined"
-                        onClick={loadPortal}
-                      >
-                        {
-                          translations[
-                            `componentDashboardSubscription${
-                              isMonth ? 'Month' : 'Year'
-                            }lyManageButton`
-                          ]
-                        }
-                      </S.StyledSubscriptionPaperButton>
-                    )}
-                  </>
+                {showSubscribeButton && (
+                  <S.StyledSubscriptionPaperButton
+                    endIcon={<ArrowForwardIcon />}
+                    loading={isLoading || isSubscriptionActionLoading}
+                    variant="outlined"
+                    onClick={processSubscription(_plan.id)}
+                  >
+                    {
+                      translations[
+                        `componentDashboardSubscription${isMonth ? 'Month' : 'Year'}lyButton`
+                      ]
+                    }
+                  </S.StyledSubscriptionPaperButton>
+                )}
+                {showManageSubscriptionButton && (
+                  <S.StyledSubscriptionPaperButton
+                    endIcon={<ArrowForwardIcon />}
+                    loading={isLoading || isStripePortalActionLoading}
+                    variant="outlined"
+                    onClick={loadStripePortal}
+                  >
+                    {translations.componentDashboardSubscriptionManageButton}
+                  </S.StyledSubscriptionPaperButton>
                 )}
               </S.StyledPaper>
             );
