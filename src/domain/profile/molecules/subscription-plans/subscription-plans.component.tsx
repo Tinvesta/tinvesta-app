@@ -29,7 +29,10 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
   const { isLoading, user } = useUser();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
-  const [paymentStatusQueryParam] = useQueryParam('paymentStatus', StringParam);
+  const [paymentStatusQueryParam, setPaymentStatusQueryParam] = useQueryParam(
+    'paymentStatus',
+    StringParam,
+  );
 
   useDidMountEffect(() => {
     if (!isSomeEnum(EPaymentStatus)(paymentStatusQueryParam)) {
@@ -37,6 +40,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
     }
 
     if (paymentStatusQueryParam === EPaymentStatus.SUCCESS) {
+      setPaymentStatusQueryParam('');
       toast.success(translations.componentDashboardSubscriptionPaymentSuccess);
     }
   }, [paymentStatusQueryParam]);
