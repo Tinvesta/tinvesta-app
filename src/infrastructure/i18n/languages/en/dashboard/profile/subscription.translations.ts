@@ -1,5 +1,6 @@
 export default {
   // General
+  'component.dashboard.subscription.payment.success': 'The transaction succeeded!',
   'component.dashboard.subscription.currency': 'USD',
   'component.dashboard.subscription.header': 'Subscription',
   'component.dashboard.subscription.benefits': 'Having a subscription gives you:',

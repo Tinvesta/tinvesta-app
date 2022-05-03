@@ -145,6 +145,5 @@ export enum ESubscriptionName {
 }
 
 export enum EPaymentStatus {
-  CANCEL = 'cancel',
   SUCCESS = 'success',
 }

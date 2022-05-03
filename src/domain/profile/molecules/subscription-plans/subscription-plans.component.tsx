@@ -2,12 +2,14 @@ import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-m
 import { ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { loadStripe } from '@stripe/stripe-js';
 import axios from 'axios';
+import { toast } from 'react-toastify';
+import { StringParam, useQueryParam } from 'use-query-params';
 
 import { CenterBlockLayout } from '@ui';
 
-import { useDeviceDetect, useTranslation, useUser } from '@utils';
+import { isSomeEnum, useDeviceDetect, useDidMountEffect, useTranslation, useUser } from '@utils';
 
-import { ESubscriptionInterval } from '@enums';
+import { EPaymentStatus, ESubscriptionInterval } from '@enums';
 
 import { SectionWrapperLayout } from '../../atoms';
 import { translationStrings } from './subscription-plans.defaults';
@@ -27,6 +29,21 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
   const { isLoading, user } = useUser();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
+  const [paymentStatusQueryParam, setPaymentStatusQueryParam] = useQueryParam(
+    'paymentStatus',
+    StringParam,
+  );
+
+  useDidMountEffect(() => {
+    if (!isSomeEnum(EPaymentStatus)(paymentStatusQueryParam)) {
+      return;
+    }
+
+    if (paymentStatusQueryParam === EPaymentStatus.SUCCESS) {
+      setPaymentStatusQueryParam('');
+      toast.success(translations.componentDashboardSubscriptionPaymentSuccess);
+    }
+  }, [paymentStatusQueryParam]);
 
   const showSubscribeButton = !!user && !user.is_subscribed;
   const showManageSubscriptionButton = !!user && user.is_subscribed;
