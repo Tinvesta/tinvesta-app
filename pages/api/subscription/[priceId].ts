@@ -59,9 +59,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     line_items: lineItems,
     customer: stripe_customer,
     payment_method_types: ['card'],
-    cancel_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}${objectToQueryString({
-      paymentStatus: EPaymentStatus.CANCEL,
-    })}`,
+    cancel_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}`,
     success_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}${objectToQueryString({
       paymentStatus: EPaymentStatus.SUCCESS,
     })}`,
