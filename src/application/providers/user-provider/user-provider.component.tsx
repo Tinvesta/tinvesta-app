@@ -49,6 +49,26 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
     });
   }, [user]);
 
+  useEffect(() => {
+    if (user) {
+      const subscription = supabaseInstance
+        .from(`subscriptions:profile_id=eq.${user.id}`)
+        .on('UPDATE', (payload) => {
+          setUser({
+            ...user,
+            interval: payload.new.interval,
+            is_subscribed: payload.new.is_subscribed,
+            stripe_customer: payload.new.stripe_customer,
+          });
+        })
+        .subscribe();
+
+      return () => {
+        supabaseInstance.removeSubscription(subscription);
+      };
+    }
+  }, [user]);
+
   const loginViaGithubProvider = () =>
     supabaseInstance.auth.signIn({
       provider: 'github',
