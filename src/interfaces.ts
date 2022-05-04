@@ -88,7 +88,7 @@ export interface IProfileDetails {
   startupSectors: number[];
   teamSizes: number[];
   visionStatement: string | null;
-  whyStartupShouldMatchWithYou: string | null;
+  whyStartupShouldMatchWithYou: string;
 }
 
 export interface ISubscriptionPlan {
