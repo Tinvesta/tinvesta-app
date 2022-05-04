@@ -6,7 +6,7 @@ export default {
   // Your Position
   'component.desktop.onboarding.step.three.investor.your.position.field.label': 'Your Position',
 
-  // Focus Market
+  // Focus Markets
   'component.desktop.onboarding.step.three.investor.focus.market.field.label': 'Focus Markets',
 
   // Preferred Startup Sector

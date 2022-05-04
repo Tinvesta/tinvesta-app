@@ -3,20 +3,38 @@ import { useQuery } from 'react-query';
 import { useUser } from '@utils';
 
 import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '../../api';
-import { SectionWrapperLayout } from '../../atoms';
+import { InvestorEditProfileForm, SectionWrapperLayout } from '../../atoms';
 import { IEditProfileFormProps } from './edit-profile-form.types';
 
 export const EditProfileForm = ({
-  clientTypes,
   focusMarkets,
+  industrialSectors,
+  investmentSizes,
+  investmentStageTypes,
+  investorDemandTypes,
+  investorProfileTypes,
+  startupSectors,
+  teamSizes,
 }: IEditProfileFormProps): JSX.Element => {
   const { user } = useUser();
-  const { data: profileDetailsActionData, isLoading: isProfileDetailsActionLoading } = useQuery(
+  const { data: profileDetailsActionData } = useQuery(
     [PROFILE_DETAILS_ACTION_QUERY_KEY, user?.id],
     profileDetailsAction(user?.id),
   );
 
-  console.log(clientTypes, focusMarkets, profileDetailsActionData, isProfileDetailsActionLoading);
-
-  return <SectionWrapperLayout title="Edit profile">EditProfileForm</SectionWrapperLayout>;
+  return (
+    <SectionWrapperLayout title="Edit Investor Profile">
+      <InvestorEditProfileForm
+        focusMarkets={focusMarkets}
+        industrialSectors={industrialSectors}
+        investmentSizes={investmentSizes}
+        investmentStageTypes={investmentStageTypes}
+        investorDemandTypes={investorDemandTypes}
+        investorProfileTypes={investorProfileTypes}
+        profileDetails={profileDetailsActionData?.data}
+        startupSectors={startupSectors}
+        teamSizes={teamSizes}
+      />
+    </SectionWrapperLayout>
+  );
 };
