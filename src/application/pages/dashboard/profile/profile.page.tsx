@@ -5,13 +5,28 @@ import { Profile } from '@domain';
 
 import { hasOwnProperty, useDeviceDetect } from '@utils';
 
+import { supabaseInstance } from '@infrastructure';
+
+import {
+  IClientType,
+  IFocusMarket,
+  IIndustrialSector,
+  IInvestmentSize,
+  IInvestmentStageType,
+  IInvestorDemandType,
+  IInvestorProfileType,
+  IStartupProfileCreatorType,
+  IStartupSector,
+  ITeamSize,
+} from '@interfaces';
+
 import { DesktopDashboardLayout, MobileDashboardLayout } from '../layouts';
 import { verifyUserAccess } from '../utils';
 import { IProfileProps } from './profile.types';
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
-export const ProfilePage = ({ plans }: IProfileProps): JSX.Element => {
+export const ProfilePage = (props: IProfileProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
 
   const DashboardLayout = deviceData.isSmallerThanLG
@@ -20,7 +35,7 @@ export const ProfilePage = ({ plans }: IProfileProps): JSX.Element => {
 
   return (
     <DashboardLayout>
-      <Profile plans={plans} />
+      <Profile {...props} />
     </DashboardLayout>
   );
 };
@@ -32,6 +47,7 @@ export const getServerSideProps = async (serverSideProps: GetServerSideProps) =>
     return result;
   }
 
+  // Fetch data required for subscriptions section
   const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
 
   const { data: prices } = await stripe.prices.list();
@@ -52,8 +68,45 @@ export const getServerSideProps = async (serverSideProps: GetServerSideProps) =>
 
   const sortedPlans = plans.sort((a, b) => (a.price || 0) - (b.price || 0));
 
+  // Fetch data required for edit profile section
+  const [
+    { data: teamSizes },
+    { data: clientTypes },
+    { data: focusMarkets },
+    { data: startupSectors },
+    { data: investmentSizes },
+    { data: industrialSectors },
+    { data: investorDemandTypes },
+    { data: investmentStageTypes },
+    { data: investorProfileTypes },
+    { data: startupProfileCreatorTypes },
+  ] = await Promise.all([
+    supabaseInstance.from<ITeamSize>('team_sizes').select('id,name'),
+    supabaseInstance.from<IClientType>('client_types').select('id,name'),
+    supabaseInstance.from<IFocusMarket>('focus_markets').select('id,name'),
+    supabaseInstance.from<IStartupSector>('startup_sectors').select('id,name'),
+    supabaseInstance.from<IInvestmentSize>('investment_sizes').select('id,name'),
+    supabaseInstance.from<IIndustrialSector>('industrial_sectors').select('id,name'),
+    supabaseInstance.from<IInvestorDemandType>('investor_demand_types').select('id,name'),
+    supabaseInstance.from<IInvestmentStageType>('investment_stage_types').select('id,name'),
+    supabaseInstance.from<IInvestorProfileType>('investor_profile_types').select('id,name'),
+    supabaseInstance
+      .from<IStartupProfileCreatorType>('startup_profile_creator_types')
+      .select('id,name'),
+  ]);
+
   return {
     props: {
+      teamSizes,
+      clientTypes,
+      focusMarkets,
+      startupSectors,
+      investmentSizes,
+      industrialSectors,
+      investorDemandTypes,
+      investmentStageTypes,
+      investorProfileTypes,
+      startupProfileCreatorTypes,
       plans: sortedPlans,
     },
   };
