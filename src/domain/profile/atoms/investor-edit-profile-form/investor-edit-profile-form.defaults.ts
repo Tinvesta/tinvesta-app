@@ -101,6 +101,5 @@ export const defaultFormFieldsValues: IFormFieldsData = {
   investorProfileTypeId: '',
   startupSectorIds: [],
   teamSizeIds: [],
-  whatAreYouLookingFor: '',
   whyStartupShouldMatchWithYou: '',
 };

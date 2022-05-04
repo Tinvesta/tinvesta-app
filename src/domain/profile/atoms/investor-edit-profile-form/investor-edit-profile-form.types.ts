@@ -37,6 +37,5 @@ export interface IFormFieldsData {
   location: string;
   startupSectorIds: number[];
   teamSizeIds: number[];
-  whatAreYouLookingFor: string;
   whyStartupShouldMatchWithYou: string;
 }
