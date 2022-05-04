@@ -1,7 +1,7 @@
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { hasOwnProperty } from '@utils';
+import { convertObjectKeysToCamelCase, hasOwnProperty } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
@@ -32,13 +32,15 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const { data: profileData } = await supabaseInstance
+  const { data: profileDetails } = await supabaseInstance
     .rpc('profile_details', {
       profile_id_input: request.query.profileId,
     })
     .single();
 
-  response.send(profileData);
+  const parsedProfileDetails = convertObjectKeysToCamelCase(profileDetails);
+
+  response.send(parsedProfileDetails);
 };
 
 export default handler;

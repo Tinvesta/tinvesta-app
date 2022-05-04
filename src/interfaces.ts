@@ -64,28 +64,31 @@ export interface IInvestorDemandType {
   name: EInvestorDemandType;
 }
 
-export interface IDiscoverRecord {
-  avatars: {
-    avatarPublicUrl: string;
-  };
+export interface IProfileDetails {
+  avatars: string[];
+  clientTypeId: number;
   companyName: string;
+  contactEmail: string;
   firstName: string;
+  focusMarkets: number[];
   id: string;
+  industrialSectors: number[];
+  interval: string | null;
+  investmentSizes: number[];
+  investmentStageTypes: number[];
+  investorDemandTypes: number[];
   investorProfileTypeId: string | null;
+  isSubscribed: boolean;
   lastName: string;
   location: string;
   missionStatement: string | null;
-  profilesFocusMarkets: number[];
-  profilesIndustrialSectors: number[];
-  profilesInvestmentSizes: number[];
-  profilesInvestmentStageTypes: number[];
-  profilesInvestorDemandTypes: number[];
-  profilesStartupSectors: number[];
-  profilesTeamSizes: number[];
+  profileAvatarUrl: string;
   startupClaim: string | null;
   startupProfileCreatorTypeId: string | null;
+  startupSectors: number[];
+  teamSizes: number[];
   visionStatement: string | null;
-  whatAreYouLookingFor: string;
+  whyStartupShouldMatchWithYou: string | null;
 }
 
 export interface ISubscriptionPlan {
