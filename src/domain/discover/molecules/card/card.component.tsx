@@ -12,7 +12,7 @@ export const Card = ({ record }: ICardProps) => (
         alt="Profile image"
         height={600}
         objectFit="cover"
-        src={record.avatars.avatarPublicUrl}
+        src={record.avatars[0]}
         width={400}
       />
     </S.StyledImageWrapper>

@@ -1,5 +1,5 @@
-import { IDiscoverRecord } from '@interfaces';
+import { IProfileDetails } from '@interfaces';
 
 export interface ICardProps {
-  record: IDiscoverRecord;
+  record: IProfileDetails;
 }

@@ -4,7 +4,7 @@ import { nextAxiosInstance } from '@infrastructure';
 
 import { EApiEndpoint } from '@enums';
 
-import { IDiscoverRecord } from '@interfaces';
+import { IProfileDetails } from '@interfaces';
 
-export const getRecordsAction = async (): Promise<AxiosResponse<IDiscoverRecord[]>> =>
+export const getRecordsAction = async (): Promise<AxiosResponse<IProfileDetails[]>> =>
   nextAxiosInstance.get(EApiEndpoint.GET_RECORDS);
