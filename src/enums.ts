@@ -35,7 +35,6 @@ export enum ERoutes {
   DASHBOARD_PROFILE = '/dashboard/profile',
   HOME = '/home',
   ONBOARDING = '/onboarding',
-  PRICING = '/pricing',
   PRIVACY_POLICY = '/privacy-policy',
   RELEASE_DATE = '/',
   TERMS = '/terms',

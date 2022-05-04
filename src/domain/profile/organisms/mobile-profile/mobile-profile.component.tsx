@@ -1,8 +1,8 @@
 import { SubscriptionPlans } from '../../molecules';
+import { IProfileProps } from '../../profile.types';
 import S from './mobile-profile.styles';
-import { IMobileProfileProps } from './mobile-profile.types';
 
-export const MobileProfile = ({ plans }: IMobileProfileProps): JSX.Element => (
+export const MobileProfile = ({ plans }: IProfileProps): JSX.Element => (
   <S.StyledWrapper>
     <SubscriptionPlans plans={plans} />
   </S.StyledWrapper>
