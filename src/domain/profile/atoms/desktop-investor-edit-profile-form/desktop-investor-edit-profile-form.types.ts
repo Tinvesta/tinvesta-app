@@ -10,7 +10,7 @@ import {
   ITeamSize,
 } from '@interfaces';
 
-export interface IInvestorEditProfileFormProps {
+export interface IDesktopInvestorEditProfileFormProps {
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
   investmentSizes: IInvestmentSize[];

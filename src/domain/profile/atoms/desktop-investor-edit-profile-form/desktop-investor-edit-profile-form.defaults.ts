@@ -1,4 +1,4 @@
-import { IFormFieldsData } from './investor-edit-profile-form.types';
+import { IFormFieldsData } from './desktop-investor-edit-profile-form.types';
 
 export const translationStrings = [
   'common.form.field.error.required',
