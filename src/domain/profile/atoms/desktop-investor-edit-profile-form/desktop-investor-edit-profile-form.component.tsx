@@ -138,8 +138,8 @@ export const DesktopInvestorEditProfileForm = ({
     <CenterBlockLayout>
       <S.StyledWrapper onSubmit={handleSubmit(onSubmit)}>
         <Grid container rowGap={3}>
-          <Grid container>
-            <Grid container columnSpacing={4} rowSpacing={3} xs={8}>
+          <Grid container columnGap={3}>
+            <Grid container columnSpacing={4} rowGap={3} xs={8}>
               <Grid item xs={6}>
                 <TextFieldWithController
                   controllerProps={{
