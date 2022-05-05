@@ -1,9 +1,18 @@
-import { useQuery } from 'react-query';
+import { useEffect, useState } from 'react';
+import { useForm } from 'react-hook-form';
+import { useMutation, useQuery } from 'react-query';
+import { toast } from 'react-toastify';
 
-import { useUser } from '@utils';
+import { useTranslation, useUser } from '@utils';
 
-import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '../../api';
-import { DesktopInvestorEditProfileForm, SectionWrapperLayout } from '../../atoms';
+import {
+  PROFILE_DETAILS_ACTION_QUERY_KEY,
+  profileDetailsAction,
+  updateProfileAction,
+} from '../../api';
+import { InvestorEditProfileForm, SectionWrapperLayout } from '../../atoms';
+import { IEditProfileFormFieldsData } from '../../profile.types';
+import { defaultFormFieldsValues, translationStrings } from './edit-profile-form.defaults';
 import { IEditProfileFormProps } from './edit-profile-form.types';
 
 export const EditProfileForm = ({
@@ -21,19 +30,93 @@ export const EditProfileForm = ({
     [PROFILE_DETAILS_ACTION_QUERY_KEY, user?.id],
     profileDetailsAction(user?.id),
   );
+  const translations = useTranslation(translationStrings);
+  const [defaultValues, setDefaultValues] = useState(defaultFormFieldsValues);
+  const { control, formState, handleSubmit, reset, setValue } = useForm<IEditProfileFormFieldsData>(
+    {
+      defaultValues,
+    },
+  );
+
+  const { isLoading: isUpdateProfileActionLoading, mutateAsync: mutateAsyncUpdateProfileAction } =
+    useMutation(updateProfileAction);
+
+  useEffect(() => {
+    const profileDetails = profileDetailsActionData?.data;
+
+    if (profileDetails) {
+      setValue('images', profileDetails.avatars, { shouldValidate: true });
+      setValue('location', profileDetails.location, { shouldValidate: true });
+      setValue('lastName', profileDetails.lastName, { shouldValidate: true });
+      setValue('firstName', profileDetails.firstName, { shouldValidate: true });
+      setValue('teamSizeIds', profileDetails.teamSizes, { shouldValidate: true });
+      setValue('companyName', profileDetails.companyName, { shouldValidate: true });
+      setValue('contactEmail', profileDetails.contactEmail, { shouldValidate: true });
+      setValue('focusMarketIds', profileDetails.focusMarkets, { shouldValidate: true });
+      setValue('startupSectorIds', profileDetails.startupSectors, { shouldValidate: true });
+      setValue('investmentSizeIds', profileDetails.investmentSizes, { shouldValidate: true });
+      setValue('industrialSectorIds', profileDetails.industrialSectors, { shouldValidate: true });
+      setValue('investorDemandTypeIds', profileDetails.investorDemandTypes, {
+        shouldValidate: true,
+      });
+      setValue('investmentStageTypeIds', profileDetails.investmentStageTypes, {
+        shouldValidate: true,
+      });
+      setValue('investorProfileTypeId', profileDetails.investorProfileTypeId || '', {
+        shouldValidate: true,
+      });
+      setValue('whyStartupShouldMatchWithYou', profileDetails.whyStartupShouldMatchWithYou, {
+        shouldValidate: true,
+      });
+
+      setDefaultValues((prev) => ({
+        ...prev,
+        images: profileDetails.avatars,
+        location: profileDetails.location,
+        lastName: profileDetails.lastName,
+        firstName: profileDetails.firstName,
+        teamSizeIds: profileDetails.teamSizes,
+        companyName: profileDetails.companyName,
+        contactEmail: profileDetails.contactEmail,
+        focusMarketIds: profileDetails.focusMarkets,
+        startupSectorIds: profileDetails.startupSectors,
+        investmentSizeIds: profileDetails.investmentSizes,
+        industrialSectorIds: profileDetails.industrialSectors,
+        investorDemandTypeIds: profileDetails.investorDemandTypes,
+        investmentStageTypeIds: profileDetails.investmentStageTypes,
+        investorProfileTypeId: profileDetails.investorProfileTypeId || '',
+        whyStartupShouldMatchWithYou: profileDetails.whyStartupShouldMatchWithYou,
+      }));
+    }
+  }, [profileDetailsActionData?.data]);
+
+  const onSubmit = (data: IEditProfileFormFieldsData) => {
+    mutateAsyncUpdateProfileAction(data)
+      .then(() => {
+        reset(data);
+        toast.success(translations.componentDashboardEditProfileFormMessagesSuccess);
+      })
+      .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
+  };
+
+  const handleResetButtonClick = () => reset(defaultValues);
 
   return (
-    <SectionWrapperLayout title="Edit Investor Profile">
-      <DesktopInvestorEditProfileForm
+    <SectionWrapperLayout title={translations.componentDashboardEditProfileFormInvestorHeading}>
+      <InvestorEditProfileForm
+        control={control}
         focusMarkets={focusMarkets}
         industrialSectors={industrialSectors}
         investmentSizes={investmentSizes}
         investmentStageTypes={investmentStageTypes}
         investorDemandTypes={investorDemandTypes}
         investorProfileTypes={investorProfileTypes}
-        profileDetails={profileDetailsActionData?.data}
+        isDirty={formState.isDirty}
+        isLoading={isUpdateProfileActionLoading}
         startupSectors={startupSectors}
         teamSizes={teamSizes}
+        onResetButtonClick={handleResetButtonClick}
+        onSubmit={handleSubmit(onSubmit)}
       />
     </SectionWrapperLayout>
   );

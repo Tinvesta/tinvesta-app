@@ -11,7 +11,7 @@ export const SectionWrapperLayout = ({ children, title }: ISectionWrapperProps):
   return (
     <S.StyledWrapper>
       <Divider>
-        <Typography fontWeight={700} variant={deviceData.isSmallerThanXS ? 'h5' : 'h4'}>
+        <Typography fontWeight={700} variant={deviceData.isSmallerThanXS ? 'h6' : 'h4'}>
           {title}
         </Typography>
       </Divider>

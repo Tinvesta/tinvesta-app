@@ -12,6 +12,7 @@ const StyledHeader = styled(Typography)`
   `}
 
   ${({ theme }) => respondToMax.xmobile`
+    text-align: center;
     margin-bottom: ${theme.spacing(1)};
   `}
 `;

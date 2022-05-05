@@ -20,10 +20,6 @@ const StyledContentWrapper = styled.div`
   ${({ theme }) => respondToMax.mobile`
     padding-top: ${theme.spacing(3)};
   `}
-
-  ${({ theme }) => respondToMax.xmobile`
-    padding-top: ${theme.spacing(2)};
-  `}
 `;
 
 const S = {
