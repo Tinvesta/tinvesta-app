@@ -10,6 +10,8 @@ import {
   ITeamSize,
 } from '@interfaces';
 
+import { IEditProfileFormFieldsData } from '../../profile.types';
+
 export interface IDesktopInvestorEditProfileFormProps {
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
@@ -17,25 +19,8 @@ export interface IDesktopInvestorEditProfileFormProps {
   investmentStageTypes: IInvestmentStageType[];
   investorDemandTypes: IInvestorDemandType[];
   investorProfileTypes: IInvestorProfileType[];
+  onSubmit: (data: IEditProfileFormFieldsData) => void;
   profileDetails: IProfileDetails | undefined;
   startupSectors: IStartupSector[];
   teamSizes: ITeamSize[];
-}
-
-export interface IFormFieldsData {
-  companyName: string;
-  contactEmail: string;
-  firstName: string;
-  focusMarketIds: number[];
-  images: string[];
-  industrialSectorIds: number[];
-  investmentSizeIds: number[];
-  investmentStageTypeIds: number[];
-  investorDemandTypeIds: number[];
-  investorProfileTypeId: string | number;
-  lastName: string;
-  location: string;
-  startupSectorIds: number[];
-  teamSizeIds: number[];
-  whyStartupShouldMatchWithYou: string;
 }

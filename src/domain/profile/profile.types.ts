@@ -25,3 +25,39 @@ export interface IProfileProps {
   startupSectors: IStartupSector[];
   teamSizes: ITeamSize[];
 }
+
+export interface IFormFieldsData {
+  companyName: string;
+  contactEmail: string;
+  firstName: string;
+  focusMarketIds: number[];
+  images: string[];
+  industrialSectorIds: number[];
+  investmentSizeIds: number[];
+  investmentStageTypeIds: number[];
+  investorDemandTypeIds: number[];
+  investorProfileTypeId: string | number;
+  lastName: string;
+  location: string;
+  startupSectorIds: number[];
+  teamSizeIds: number[];
+  whyStartupShouldMatchWithYou: string;
+}
+
+export interface IEditProfileFormFieldsData {
+  companyName: string;
+  contactEmail: string;
+  firstName: string;
+  focusMarketIds: number[];
+  images: string[];
+  industrialSectorIds: number[];
+  investmentSizeIds: number[];
+  investmentStageTypeIds: number[];
+  investorDemandTypeIds: number[];
+  investorProfileTypeId: string | number;
+  lastName: string;
+  location: string;
+  startupSectorIds: number[];
+  teamSizeIds: number[];
+  whyStartupShouldMatchWithYou: string;
+}

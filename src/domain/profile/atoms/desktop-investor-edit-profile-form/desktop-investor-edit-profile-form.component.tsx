@@ -1,5 +1,6 @@
-import { Grid } from '@mui/material';
-import { useEffect } from 'react';
+import { LoadingButton } from '@mui/lab';
+import { Button, Grid } from '@mui/material';
+import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
 import {
@@ -29,15 +30,13 @@ import {
 
 import { EMAIL_UNIVERSAL_REGEX } from '@constants';
 
+import { IEditProfileFormFieldsData } from '../../profile.types';
 import {
   defaultFormFieldsValues,
   translationStrings,
 } from './desktop-investor-edit-profile-form.defaults';
 import S from './desktop-investor-edit-profile-form.styles';
-import {
-  IDesktopInvestorEditProfileFormProps,
-  IFormFieldsData,
-} from './desktop-investor-edit-profile-form.types';
+import { IDesktopInvestorEditProfileFormProps } from './desktop-investor-edit-profile-form.types';
 
 export const DesktopInvestorEditProfileForm = ({
   focusMarkets,
@@ -46,13 +45,17 @@ export const DesktopInvestorEditProfileForm = ({
   investmentStageTypes,
   investorDemandTypes,
   investorProfileTypes,
+  onSubmit,
   profileDetails,
   startupSectors,
   teamSizes,
 }: IDesktopInvestorEditProfileFormProps): JSX.Element => {
-  const { control, setValue } = useForm<IFormFieldsData>({
-    defaultValues: defaultFormFieldsValues,
-  });
+  const [defaultValues, setDefaultValues] = useState(defaultFormFieldsValues);
+  const { control, formState, handleSubmit, reset, setValue } = useForm<IEditProfileFormFieldsData>(
+    {
+      defaultValues,
+    },
+  );
 
   useEffect(() => {
     if (profileDetails) {
@@ -79,8 +82,29 @@ export const DesktopInvestorEditProfileForm = ({
       setValue('whyStartupShouldMatchWithYou', profileDetails.whyStartupShouldMatchWithYou, {
         shouldValidate: true,
       });
+
+      setDefaultValues((prev) => ({
+        ...prev,
+        images: profileDetails.avatars,
+        location: profileDetails.location,
+        lastName: profileDetails.lastName,
+        firstName: profileDetails.firstName,
+        teamSizeIds: profileDetails.teamSizes,
+        companyName: profileDetails.companyName,
+        contactEmail: profileDetails.contactEmail,
+        focusMarketIds: profileDetails.focusMarkets,
+        startupSectorIds: profileDetails.startupSectors,
+        investmentSizeIds: profileDetails.investmentSizes,
+        industrialSectorIds: profileDetails.industrialSectors,
+        investorDemandTypeIds: profileDetails.investorDemandTypes,
+        investmentStageTypeIds: profileDetails.investmentStageTypes,
+        investorProfileTypeId: profileDetails.investorProfileTypeId || '',
+        whyStartupShouldMatchWithYou: profileDetails.whyStartupShouldMatchWithYou,
+      }));
     }
   }, [profileDetails]);
+
+  const handleResetButtonClick = () => reset(defaultValues);
 
   const translations = useTranslation(translationStrings);
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
@@ -112,7 +136,7 @@ export const DesktopInvestorEditProfileForm = ({
 
   return (
     <CenterBlockLayout>
-      <S.StyledWrapper>
+      <S.StyledWrapper onSubmit={handleSubmit(onSubmit)}>
         <Grid container rowGap={3}>
           <Grid container>
             <Grid container columnSpacing={4} rowSpacing={3} xs={8}>
@@ -506,6 +530,30 @@ export const DesktopInvestorEditProfileForm = ({
                     translations.componentDashboardEditProfileFormWhyStartupShouldMatchWithYouFieldLabel,
                 }}
               />
+            </Grid>
+          </Grid>
+          <Grid item display="flex" gap={4} justifyContent={'flex-end'} xs={12}>
+            <Grid item xs={2}>
+              <Button
+                fullWidth
+                disabled={!formState.isDirty}
+                size="large"
+                variant="outlined"
+                onClick={handleResetButtonClick}
+              >
+                {translations.commonButtonsReset}
+              </Button>
+            </Grid>
+            <Grid item xs={2}>
+              <LoadingButton
+                fullWidth
+                disabled={!formState.isDirty}
+                size="large"
+                type="submit"
+                variant="contained"
+              >
+                {translations.commonButtonsSave}
+              </LoadingButton>
             </Grid>
           </Grid>
         </Grid>
