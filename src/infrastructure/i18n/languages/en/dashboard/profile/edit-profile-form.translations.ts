@@ -60,4 +60,8 @@ export default {
     'Why should a startup match with you?',
   'component.dashboard.edit.profile.form.why.startup.should.match.with.you.field.max.length.error':
     'Maximum length is 160',
+
+  // Messages
+  'component.dashboard.edit.profile.form.messages.success':
+    'Changes to the profile have been saved',
 };

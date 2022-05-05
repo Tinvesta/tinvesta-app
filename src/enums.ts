@@ -25,6 +25,7 @@ export enum EApiEndpoint {
   SET_SUPABASE_COOKIE = '/api/set-supabase-cookie',
   STRIPE_PORTAL = '/api/stripe-portal',
   SUBSCRIPTION = '/api/subscription',
+  UPDATE_PROFILE = '/api/update-profile',
 }
 
 export enum ERoutes {

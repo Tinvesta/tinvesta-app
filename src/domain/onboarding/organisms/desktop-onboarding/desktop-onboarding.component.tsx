@@ -11,7 +11,7 @@ import { useConfirmationModal, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { createAccountAction } from '../../api';
+import { createProfileAction } from '../../api';
 import {
   DesktopHouseRulesAgreements,
   DesktopOnboardingStepFiveInvestor,
@@ -60,7 +60,7 @@ export const DesktopOnboarding = ({
   const { isLoading: isProfileLoading, user } = useUser();
 
   const { isLoading: isCreateAccountActionLoading, mutateAsync: mutateAsyncCreateAccountAction } =
-    useMutation(createAccountAction);
+    useMutation(createProfileAction);
 
   const [current, send] = useMachine(onboardingStateMachine);
 

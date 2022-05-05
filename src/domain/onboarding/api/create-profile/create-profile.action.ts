@@ -10,7 +10,7 @@ import { STARTUP_CLIENT_TYPE_ID } from '@constants';
 
 import { IDesktopOnboardingMachineContext } from '../../organisms/desktop-onboarding/machines';
 
-export const createAccountAction = async (data: IDesktopOnboardingMachineContext) => {
+export const createProfileAction = async (data: IDesktopOnboardingMachineContext) => {
   const isStartupPath = data.stepTwoData.clientTypeId === STARTUP_CLIENT_TYPE_ID;
   const keyToFilterOut = isStartupPath ? 'Investor' : 'Startup';
 

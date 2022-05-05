@@ -4,9 +4,9 @@ import { useUser } from '@utils';
 
 import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '../../api';
 import { DesktopInvestorEditProfileForm, SectionWrapperLayout } from '../../atoms';
-import { IDesktopEditProfileFormProps } from './desktop-edit-profile-form.types';
+import { IEditProfileFormProps } from './edit-profile-form.types';
 
-export const DesktopEditProfileForm = ({
+export const EditProfileForm = ({
   focusMarkets,
   industrialSectors,
   investmentSizes,
@@ -15,7 +15,7 @@ export const DesktopEditProfileForm = ({
   investorProfileTypes,
   startupSectors,
   teamSizes,
-}: IDesktopEditProfileFormProps): JSX.Element => {
+}: IEditProfileFormProps): JSX.Element => {
   const { user } = useUser();
   const { data: profileDetailsActionData } = useQuery(
     [PROFILE_DETAILS_ACTION_QUERY_KEY, user?.id],
@@ -34,7 +34,6 @@ export const DesktopEditProfileForm = ({
         profileDetails={profileDetailsActionData?.data}
         startupSectors={startupSectors}
         teamSizes={teamSizes}
-        onSubmit={console.log}
       />
     </SectionWrapperLayout>
   );
