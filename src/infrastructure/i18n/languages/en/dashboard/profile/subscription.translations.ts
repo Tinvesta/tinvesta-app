@@ -7,8 +7,6 @@ export default {
   'component.dashboard.subscription.benefit.one': 'You see who liked you',
   'component.dashboard.subscription.benefit.two': 'Unlimited likes per day (default is 5)',
   'component.dashboard.subscription.benefit.three': 'Matches with any account from likes view',
-  'component.dashboard.subscription.benefit.four':
-    'Unlimited contact with all pairs (default is 2 contacts per day)',
   'component.dashboard.subscription.manage.button': 'Manage subscription',
 
   // Monthly
