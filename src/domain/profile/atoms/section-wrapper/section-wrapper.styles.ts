@@ -15,14 +15,14 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledContentWrapper = styled.div`
-  padding: ${({ theme }) => theme.spacing(4)};
+  padding-top: ${({ theme }) => theme.spacing(4)};
 
   ${({ theme }) => respondToMax.mobile`
-    padding: ${theme.spacing(3)};
+    padding-top: ${theme.spacing(3)};
   `}
 
   ${({ theme }) => respondToMax.xmobile`
-    padding: ${theme.spacing(2)};
+    padding-top: ${theme.spacing(2)};
   `}
 `;
 
