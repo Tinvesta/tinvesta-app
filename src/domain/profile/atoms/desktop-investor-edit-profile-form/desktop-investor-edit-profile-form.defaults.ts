@@ -1,7 +1,9 @@
-import { IFormFieldsData } from './desktop-investor-edit-profile-form.types';
+import { IEditProfileFormFieldsData } from '../../profile.types';
 
 export const translationStrings = [
   'common.form.field.error.required',
+  'common.buttons.reset',
+  'common.buttons.save',
   'common.form.field.error.contain.single.word',
   'common.form.field.error.contain.enters.or.spaces',
   'common.form.field.error.starts.or.ends.with.whitespace',
@@ -62,7 +64,6 @@ export const translationStrings = [
   'common.investor.demand.types.network.and.support',
   'common.investor.demand.types.debt.capital.without.shares',
 
-  'component.dashboard.edit.profile.form.heading',
   'component.dashboard.edit.profile.form.first.name.field.label',
   'component.dashboard.edit.profile.form.first.name.field.max.length.error',
   'component.dashboard.edit.profile.form.last.name.field.label',
@@ -86,7 +87,7 @@ export const translationStrings = [
   'component.dashboard.edit.profile.form.why.startup.should.match.with.you.field.max.length.error',
 ] as const;
 
-export const defaultFormFieldsValues: IFormFieldsData = {
+export const defaultFormFieldsValues: IEditProfileFormFieldsData = {
   companyName: '',
   contactEmail: '',
   firstName: '',

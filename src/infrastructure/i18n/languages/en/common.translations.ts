@@ -5,6 +5,7 @@ export default {
   'common.buttons.back': 'Back',
   'common.buttons.save': 'Save',
   'common.buttons.quit': 'Quit',
+  'common.buttons.reset': 'Reset',
   'common.buttons.agree': 'I Agree',
   'common.buttons.cancel': 'Cancel',
   'common.buttons.logout': 'Logout',

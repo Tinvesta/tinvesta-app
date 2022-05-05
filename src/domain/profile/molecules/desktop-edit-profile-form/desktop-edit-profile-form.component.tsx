@@ -34,6 +34,7 @@ export const DesktopEditProfileForm = ({
         profileDetails={profileDetailsActionData?.data}
         startupSectors={startupSectors}
         teamSizes={teamSizes}
+        onSubmit={console.log}
       />
     </SectionWrapperLayout>
   );
