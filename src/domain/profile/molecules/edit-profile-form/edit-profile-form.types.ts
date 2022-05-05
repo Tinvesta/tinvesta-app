@@ -11,7 +11,7 @@ import {
   ITeamSize,
 } from '@interfaces';
 
-export interface IDesktopEditProfileFormProps {
+export interface IEditProfileFormProps {
   clientTypes: IClientType[];
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];

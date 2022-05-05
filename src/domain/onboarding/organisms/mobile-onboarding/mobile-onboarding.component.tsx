@@ -11,7 +11,7 @@ import { useConfirmationModal, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { createAccountAction } from '../../api';
+import { createProfileAction } from '../../api';
 import {
   MobileHouseRulesAgreements,
   MobileOnboardingStepEightInvestor,
@@ -72,7 +72,7 @@ export const MobileOnboarding = ({
   const translations = useTranslation(translationStrings);
 
   const { isLoading: isCreateAccountActionLoading, mutateAsync: mutateAsyncCreateAccountAction } =
-    useMutation(createAccountAction);
+    useMutation(createProfileAction);
 
   const [current, send] = useMachine(onboardingStateMachine);
 

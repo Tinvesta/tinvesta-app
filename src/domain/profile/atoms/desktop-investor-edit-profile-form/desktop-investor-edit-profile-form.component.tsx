@@ -2,6 +2,8 @@ import { LoadingButton } from '@mui/lab';
 import { Button, Grid } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
+import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
 
 import {
   AutocompleteWithController,
@@ -30,6 +32,7 @@ import {
 
 import { EMAIL_UNIVERSAL_REGEX } from '@constants';
 
+import { updateProfileAction } from '../../api';
 import { IEditProfileFormFieldsData } from '../../profile.types';
 import {
   defaultFormFieldsValues,
@@ -45,7 +48,6 @@ export const DesktopInvestorEditProfileForm = ({
   investmentStageTypes,
   investorDemandTypes,
   investorProfileTypes,
-  onSubmit,
   profileDetails,
   startupSectors,
   teamSizes,
@@ -56,6 +58,9 @@ export const DesktopInvestorEditProfileForm = ({
       defaultValues,
     },
   );
+
+  const { isLoading: isUpdateProfileActionLoading, mutateAsync: mutateAsyncUpdateProfileAction } =
+    useMutation(updateProfileAction);
 
   useEffect(() => {
     if (profileDetails) {
@@ -104,8 +109,6 @@ export const DesktopInvestorEditProfileForm = ({
     }
   }, [profileDetails]);
 
-  const handleResetButtonClick = () => reset(defaultValues);
-
   const translations = useTranslation(translationStrings);
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
     startupSectors,
@@ -133,6 +136,17 @@ export const DesktopInvestorEditProfileForm = ({
   );
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
   const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
+
+  const onSubmit = (data: IEditProfileFormFieldsData) => {
+    mutateAsyncUpdateProfileAction(data)
+      .then(() => {
+        reset(data);
+        toast.success(translations.componentDashboardEditProfileFormMessagesSuccess);
+      })
+      .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
+  };
+
+  const handleResetButtonClick = () => reset(defaultValues);
 
   return (
     <CenterBlockLayout>
@@ -548,6 +562,7 @@ export const DesktopInvestorEditProfileForm = ({
               <LoadingButton
                 fullWidth
                 disabled={!formState.isDirty}
+                loading={isUpdateProfileActionLoading}
                 size="large"
                 type="submit"
                 variant="contained"

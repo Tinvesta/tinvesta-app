@@ -1,12 +1,10 @@
-import { useDeviceDetect } from '@utils';
-
-import { DesktopProfile, MobileProfile } from './organisms';
+import { EditProfileForm, SubscriptionPlans } from './molecules';
+import S from './profile.styles';
 import { IProfileProps } from './profile.types';
 
-export const Profile = (props: IProfileProps): JSX.Element => {
-  const { deviceData } = useDeviceDetect();
-
-  const ProfileComponent = deviceData.isSmallerThanLG ? MobileProfile : DesktopProfile;
-
-  return <ProfileComponent {...props} />;
-};
+export const Profile = ({ plans, ...restProps }: IProfileProps): JSX.Element => (
+  <S.StyledWrapper>
+    <SubscriptionPlans plans={plans} />
+    <EditProfileForm {...restProps} />
+  </S.StyledWrapper>
+);

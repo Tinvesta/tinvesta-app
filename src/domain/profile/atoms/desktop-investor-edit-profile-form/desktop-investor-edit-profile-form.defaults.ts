@@ -7,6 +7,7 @@ export const translationStrings = [
   'common.form.field.error.contain.single.word',
   'common.form.field.error.contain.enters.or.spaces',
   'common.form.field.error.starts.or.ends.with.whitespace',
+  'common.errors.something.went.wrong',
   'common.focus.markets.b2b',
   'common.focus.markets.b2c',
   'common.industrial.sectors.web3',
@@ -85,6 +86,7 @@ export const translationStrings = [
   'component.dashboard.edit.profile.form.demand.field.label',
   'component.dashboard.edit.profile.form.why.startup.should.match.with.you.field.label',
   'component.dashboard.edit.profile.form.why.startup.should.match.with.you.field.max.length.error',
+  'component.dashboard.edit.profile.form.messages.success',
 ] as const;
 
 export const defaultFormFieldsValues: IEditProfileFormFieldsData = {
