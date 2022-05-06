@@ -47,8 +47,6 @@ export const EditProfileForm = ({
   useEffect(() => {
     const profileDetails = profileDetailsActionData?.data;
 
-    console.log(profileDetails);
-
     if (profileDetails) {
       setValue('images', profileDetails.avatars, { shouldValidate: true });
       setValue('location', profileDetails.location, { shouldValidate: true });

@@ -1,7 +1,7 @@
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { countWords } from '@utils';
+import { countWords, isArray } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
@@ -29,6 +29,23 @@ const createAvatarRecord = async (profileId: string, imageKey: string, position:
     profile_id: profileId,
     avatar_public_url: parsedPublicUrl,
   });
+};
+
+const assignWithBulkInsert = async (
+  userId: string,
+  table: string,
+  idColumnName: string,
+  arrayOfIds: number[],
+) => {
+  if (!isArray(arrayOfIds)) {
+    return { error: '' };
+  }
+
+  const recordsToInsert = arrayOfIds.map((_id) => ({ [idColumnName]: _id, profile_id: userId }));
+
+  await supabaseInstance.from(table).delete().eq('profile_id', userId);
+
+  return supabaseInstance.from(table).insert(recordsToInsert);
 };
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
@@ -89,6 +106,18 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         .from('avatars')
         .remove([_avatar.avatar_key.replace('avatars/', '')]);
     }
+  }
+
+  // assign focus markets
+  const { error: assignProfilesFocusMarketsError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_focus_markets',
+    'focus_market_id',
+    userData.focusMarketIds,
+  );
+
+  if (assignProfilesFocusMarketsError) {
+    return response.status(500).send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_FOCUS_MARKETS);
   }
 
   response.send({ status: 'success' });
