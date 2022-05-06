@@ -145,7 +145,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (assignProfilesStartupSectorsError) {
     return response
       .status(500)
-      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_STARTUP_SECTORS);
+      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_STARTUP_SECTORS);
   }
 
   response.send({ status: 'success' });
