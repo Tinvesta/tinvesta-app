@@ -2,7 +2,12 @@ import { nextAxiosInstance } from '@infrastructure';
 
 import { EApiEndpoint } from '@enums';
 
-import { IEditProfileFormFieldsData } from '../../profile.types';
+import { IInputVariables } from './update-profile.types';
+import { transformUpdateProfileFormData } from './utils';
 
-export const updateProfileAction = async (data: IEditProfileFormFieldsData) =>
-  nextAxiosInstance.post(EApiEndpoint.UPDATE_PROFILE, data);
+export const updateProfileAction = async ({ newData, oldData }: IInputVariables) => {
+  console.log(newData);
+  const transformedData = transformUpdateProfileFormData(newData, oldData);
+
+  return nextAxiosInstance.post(EApiEndpoint.UPDATE_PROFILE, transformedData);
+};
