@@ -210,6 +210,18 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       .eq('profile_id', user.id);
   }
 
+  // update profiles
+  await supabaseInstance
+    .from('profiles')
+    .update({
+      location: userData.location,
+      last_name: userData.lastName,
+      first_name: userData.firstName,
+      company_name: userData.companyName,
+      contact_email: userData.contactEmail,
+    })
+    .eq('id', user.id);
+
   response.send({ status: 'success' });
 };
 
