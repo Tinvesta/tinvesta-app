@@ -91,9 +91,10 @@ export const EditProfileForm = ({
   }, [profileDetailsActionData?.data]);
 
   const onSubmit = (data: IEditProfileFormFieldsData) => {
-    mutateAsyncUpdateProfileAction(data)
+    mutateAsyncUpdateProfileAction({ newData: data, oldData: defaultValues })
       .then(() => {
         reset(data);
+        setDefaultValues(data);
         toast.success(translations.componentDashboardEditProfileFormMessagesSuccess);
       })
       .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
