@@ -6,7 +6,6 @@ import { IInputVariables } from './update-profile.types';
 import { transformUpdateProfileFormData } from './utils';
 
 export const updateProfileAction = async ({ newData, oldData }: IInputVariables) => {
-  console.log(newData);
   const transformedData = transformUpdateProfileFormData(newData, oldData);
 
   return nextAxiosInstance.post(EApiEndpoint.UPDATE_PROFILE, transformedData);

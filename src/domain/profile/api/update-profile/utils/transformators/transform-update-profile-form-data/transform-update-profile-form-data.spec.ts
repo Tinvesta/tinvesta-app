@@ -4,6 +4,4 @@ import { transformUpdateProfileFormData } from './transform-update-profile-form-
 
 describe('transformUpdateProfileFormData function', () => {
   functionImportTest(transformUpdateProfileFormData);
-
-  it('', () => {});
 });
