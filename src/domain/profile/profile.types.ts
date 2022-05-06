@@ -49,6 +49,7 @@ export interface IEditProfileFormFieldsData {
   contactEmail: string;
   firstName: string;
   focusMarketIds: number[];
+  imageKeys?: string[];
   images: string[];
   industrialSectorIds: number[];
   investmentSizeIds: number[];
@@ -58,6 +59,7 @@ export interface IEditProfileFormFieldsData {
   lastName: string;
   location: string;
   startupSectorIds: number[];
+  teamSizeId: number | string;
   teamSizeIds: number[];
   whyStartupShouldMatchWithYou: string;
 }

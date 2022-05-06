@@ -1,17 +1,21 @@
 import { nanoid } from 'nanoid';
 
-import { base64ToFile, getFileExtensionFromBase64, hasOwnProperty, isArray } from '@utils';
+import {
+  base64ToFile,
+  getFileExtensionFromBase64,
+  hasOwnProperty,
+  isArray,
+  isStartupProfile,
+} from '@utils';
 
 import { nextAxiosInstance, supabaseInstance } from '@infrastructure';
 
 import { EApiEndpoint } from '@enums';
 
-import { STARTUP_CLIENT_TYPE_ID } from '@constants';
-
 import { IDesktopOnboardingMachineContext } from '../../organisms/desktop-onboarding/machines';
 
 export const createProfileAction = async (data: IDesktopOnboardingMachineContext) => {
-  const isStartupPath = data.stepTwoData.clientTypeId === STARTUP_CLIENT_TYPE_ID;
+  const isStartupPath = isStartupProfile(data.stepTwoData.clientTypeId);
   const keyToFilterOut = isStartupPath ? 'Investor' : 'Startup';
 
   const requestData = await Object.keys(data).reduce(async (_accumulatorPromise, _value) => {

@@ -5,6 +5,8 @@ import { toast } from 'react-toastify';
 
 import { useTranslation, useUser } from '@utils';
 
+import { STARTUP_CLIENT_TYPE_ID } from '@constants';
+
 import {
   PROFILE_DETAILS_ACTION_QUERY_KEY,
   profileDetailsAction,
@@ -26,10 +28,11 @@ export const EditProfileForm = ({
   teamSizes,
 }: IEditProfileFormProps): JSX.Element => {
   const { user } = useUser();
-  const { data: profileDetailsActionData } = useQuery(
-    [PROFILE_DETAILS_ACTION_QUERY_KEY, user?.id],
-    profileDetailsAction(user?.id),
-  );
+  const {
+    data: profileDetailsActionData,
+    isLoading: isProfileDetailsActionLoading,
+    refetch: refetchProfileDetailsAction,
+  } = useQuery([PROFILE_DETAILS_ACTION_QUERY_KEY, user?.id], profileDetailsAction(user?.id));
   const translations = useTranslation(translationStrings);
   const [defaultValues, setDefaultValues] = useState(defaultFormFieldsValues);
   const { control, formState, handleSubmit, reset, setValue } = useForm<IEditProfileFormFieldsData>(
@@ -43,6 +46,8 @@ export const EditProfileForm = ({
 
   useEffect(() => {
     const profileDetails = profileDetailsActionData?.data;
+
+    console.log(profileDetails);
 
     if (profileDetails) {
       setValue('images', profileDetails.avatars, { shouldValidate: true });
@@ -88,14 +93,20 @@ export const EditProfileForm = ({
         whyStartupShouldMatchWithYou: profileDetails.whyStartupShouldMatchWithYou,
       }));
     }
-  }, [profileDetailsActionData?.data]);
+  }, [JSON.stringify(profileDetailsActionData?.data), isProfileDetailsActionLoading]);
 
   const onSubmit = (data: IEditProfileFormFieldsData) => {
-    mutateAsyncUpdateProfileAction({ newData: data, oldData: defaultValues })
+    mutateAsyncUpdateProfileAction({
+      newData: data,
+      oldData: defaultValues,
+      clientTypeId: profileDetailsActionData?.data.clientTypeId || STARTUP_CLIENT_TYPE_ID,
+    })
       .then(() => {
         reset(data);
         setDefaultValues(data);
         toast.success(translations.componentDashboardEditProfileFormMessagesSuccess);
+
+        refetchProfileDetailsAction();
       })
       .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
   };
