@@ -1,25 +1,27 @@
+import { FormHTMLAttributes } from 'react';
+import { Control } from 'react-hook-form';
+
 import {
-  IClientType,
   IFocusMarket,
   IIndustrialSector,
   IInvestmentSize,
   IInvestmentStageType,
-  IInvestorDemandType,
-  IInvestorProfileType,
   IStartupProfileCreatorType,
   IStartupSector,
   ITeamSize,
 } from '@interfaces';
 
-export interface IEditProfileFormProps {
-  clientTypeId: number;
-  clientTypes: IClientType[];
+import { IEditProfileFormFieldsData } from '../../profile.types';
+
+export interface IStartupEditProfileFormProps extends FormHTMLAttributes<HTMLFormElement> {
+  control: Control<IEditProfileFormFieldsData>;
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
   investmentSizes: IInvestmentSize[];
   investmentStageTypes: IInvestmentStageType[];
-  investorDemandTypes: IInvestorDemandType[];
-  investorProfileTypes: IInvestorProfileType[];
+  isDirty: boolean;
+  isLoading: boolean;
+  onResetButtonClick: () => void;
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];
   teamSizes: ITeamSize[];

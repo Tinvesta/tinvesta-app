@@ -13,6 +13,7 @@ import {
 } from '@interfaces';
 
 export interface IProfileProps {
+  clientTypeId: number;
   clientTypes: IClientType[];
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
@@ -58,8 +59,12 @@ export interface IEditProfileFormFieldsData {
   investorProfileTypeId: string | number;
   lastName: string;
   location: string;
+  missionStatement: string;
+  startupClaim: string;
+  startupProfileCreatorTypeId: string | number;
   startupSectorIds: number[];
   teamSizeId: number | string;
   teamSizeIds: number[];
+  visionStatement: string;
   whyStartupShouldMatchWithYou: string;
 }

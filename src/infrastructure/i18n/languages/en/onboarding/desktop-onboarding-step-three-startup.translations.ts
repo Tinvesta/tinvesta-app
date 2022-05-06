@@ -12,7 +12,7 @@ export default {
   // Focus Market
   'component.desktop.onboarding.step.three.startup.focus.market.field.label': 'Focus Markets',
 
-  // Sector
+  // Sectors
   'component.desktop.onboarding.step.three.startup.sector.field.label': 'Sectors',
 
   // Industrial Sectors
