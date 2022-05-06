@@ -1,7 +1,7 @@
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { countWords, isArray } from '@utils';
+import { countWords, isArray, isStartupProfile } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
@@ -68,6 +68,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   });
 
   const userData = request.body;
+  const isStartup = isStartupProfile(userData.clientTypeId);
 
   // process image keys
   if (userData.imageKeys) {
@@ -120,6 +121,20 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_FOCUS_MARKETS);
   }
 
+  // assign industrial sectors
+  const { error: assignProfilesIndustrialSectorsError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_industrial_sectors',
+    'industrial_sector_id',
+    userData.industrialSectorIds,
+  );
+
+  if (assignProfilesIndustrialSectorsError) {
+    return response
+      .status(500)
+      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INDUSTRIAL_SECTORS);
+  }
+
   // assign investment sizes
   const { error: assignProfilesInvestmentSizesError } = await assignWithBulkInsert(
     user.id,
@@ -132,6 +147,20 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response
       .status(500)
       .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_SIZES);
+  }
+
+  // assign investment stage types
+  const { error: assignProfilesInvestmentStageTypesError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_investment_stage_types',
+    'investment_stage_type_id',
+    userData.investmentStageTypeIds,
+  );
+
+  if (assignProfilesInvestmentStageTypesError) {
+    return response
+      .status(500)
+      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_STAGE_TYPES);
   }
 
   // assign startup sectors
@@ -160,18 +189,25 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_TEAM_SIZES);
   }
 
-  // assign investment stage types
-  const { error: assignProfilesInvestmentStageTypesError } = await assignWithBulkInsert(
-    user.id,
-    'profiles_investment_stage_types',
-    'investment_stage_type_id',
-    userData.investmentStageTypeIds,
-  );
+  if (!isStartup) {
+    // assign investor demand types
+    const { error: assignInvestorDemandTypesError } = await assignWithBulkInsert(
+      user.id,
+      'profiles_investor_demand_types',
+      'investor_demand_type_id',
+      userData.investorDemandTypeIds,
+    );
 
-  if (assignProfilesInvestmentStageTypesError) {
-    return response
-      .status(500)
-      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_STAGE_TYPES);
+    if (assignInvestorDemandTypesError) {
+      return response
+        .status(500)
+        .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTOR_DEMAND_TYPES);
+    }
+  } else {
+    await supabaseInstance
+      .from('profiles_investor_demand_types')
+      .delete()
+      .eq('profile_id', user.id);
   }
 
   response.send({ status: 'success' });
