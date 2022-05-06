@@ -69,8 +69,6 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   const userData = request.body;
 
-  console.log(userData);
-
   // process image keys
   if (userData.imageKeys) {
     const { data: avatars } = await supabaseInstance
