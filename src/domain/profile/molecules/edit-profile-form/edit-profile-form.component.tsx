@@ -3,7 +3,7 @@ import { useForm } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 
-import { useTranslation, useUser } from '@utils';
+import { isStartupProfile, useTranslation, useUser } from '@utils';
 
 import { STARTUP_CLIENT_TYPE_ID } from '@constants';
 
@@ -12,18 +12,20 @@ import {
   profileDetailsAction,
   updateProfileAction,
 } from '../../api';
-import { InvestorEditProfileForm, SectionWrapperLayout } from '../../atoms';
+import { InvestorEditProfileForm, SectionWrapperLayout, StartupEditProfileForm } from '../../atoms';
 import { IEditProfileFormFieldsData } from '../../profile.types';
 import { defaultFormFieldsValues, translationStrings } from './edit-profile-form.defaults';
 import { IEditProfileFormProps } from './edit-profile-form.types';
 
 export const EditProfileForm = ({
+  clientTypeId,
   focusMarkets,
   industrialSectors,
   investmentSizes,
   investmentStageTypes,
   investorDemandTypes,
   investorProfileTypes,
+  startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
 }: IEditProfileFormProps): JSX.Element => {
@@ -111,23 +113,48 @@ export const EditProfileForm = ({
 
   const handleResetButtonClick = () => reset(defaultValues);
 
+  const isStartup = isStartupProfile(clientTypeId);
+
   return (
-    <SectionWrapperLayout title={translations.componentDashboardEditProfileFormInvestorHeading}>
-      <InvestorEditProfileForm
-        control={control}
-        focusMarkets={focusMarkets}
-        industrialSectors={industrialSectors}
-        investmentSizes={investmentSizes}
-        investmentStageTypes={investmentStageTypes}
-        investorDemandTypes={investorDemandTypes}
-        investorProfileTypes={investorProfileTypes}
-        isDirty={formState.isDirty}
-        isLoading={isUpdateProfileActionLoading}
-        startupSectors={startupSectors}
-        teamSizes={teamSizes}
-        onResetButtonClick={handleResetButtonClick}
-        onSubmit={handleSubmit(onSubmit)}
-      />
+    <SectionWrapperLayout
+      title={
+        isStartup
+          ? translations.componentDashboardEditProfileFormStartupHeading
+          : translations.componentDashboardEditProfileFormInvestorHeading
+      }
+    >
+      {isStartup ? (
+        <StartupEditProfileForm
+          control={control}
+          focusMarkets={focusMarkets}
+          industrialSectors={industrialSectors}
+          investmentSizes={investmentSizes}
+          investmentStageTypes={investmentStageTypes}
+          isDirty={formState.isDirty}
+          isLoading={isUpdateProfileActionLoading}
+          startupProfileCreatorTypes={startupProfileCreatorTypes}
+          startupSectors={startupSectors}
+          teamSizes={teamSizes}
+          onResetButtonClick={handleResetButtonClick}
+          onSubmit={handleSubmit(onSubmit)}
+        />
+      ) : (
+        <InvestorEditProfileForm
+          control={control}
+          focusMarkets={focusMarkets}
+          industrialSectors={industrialSectors}
+          investmentSizes={investmentSizes}
+          investmentStageTypes={investmentStageTypes}
+          investorDemandTypes={investorDemandTypes}
+          investorProfileTypes={investorProfileTypes}
+          isDirty={formState.isDirty}
+          isLoading={isUpdateProfileActionLoading}
+          startupSectors={startupSectors}
+          teamSizes={teamSizes}
+          onResetButtonClick={handleResetButtonClick}
+          onSubmit={handleSubmit(onSubmit)}
+        />
+      )}
     </SectionWrapperLayout>
   );
 };

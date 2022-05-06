@@ -5,6 +5,7 @@ export const translationStrings = [
 
   'component.dashboard.edit.profile.form.messages.success',
   'component.dashboard.edit.profile.form.investor.heading',
+  'component.dashboard.edit.profile.form.startup.heading',
 ] as const;
 
 export const defaultFormFieldsValues: IEditProfileFormFieldsData = {
@@ -25,4 +26,8 @@ export const defaultFormFieldsValues: IEditProfileFormFieldsData = {
   whyStartupShouldMatchWithYou: '',
   teamSizeId: '',
   imageKeys: [],
+  missionStatement: '',
+  startupClaim: '',
+  startupProfileCreatorTypeId: '',
+  visionStatement: '',
 };

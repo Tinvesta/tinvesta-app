@@ -1,5 +1,6 @@
 export default {
   // General
+  'component.dashboard.edit.profile.form.startup.heading': 'Edit Startup Profile',
   'component.dashboard.edit.profile.form.investor.heading': 'Edit Investor Profile',
 
   // First Name
@@ -42,7 +43,7 @@ export default {
   'component.dashboard.edit.profile.form.industrial.sectors.field.label': 'Industrial Sectors',
 
   // Team Sizes
-  'component.dashboard.edit.profile.form.team.size.field.label': 'Preferred Team Sizes',
+  'component.dashboard.edit.profile.form.team.sizes.field.label': 'Preferred Team Sizes',
 
   // Investment Stages
   'component.dashboard.edit.profile.form.investment.stage.field.label':
@@ -64,4 +65,27 @@ export default {
   // Messages
   'component.dashboard.edit.profile.form.messages.success':
     'Changes to the profile have been saved',
+
+  // Team Size
+  'component.dashboard.edit.profile.form.team.size.field.label': 'Team Size',
+
+  // Mission Statement
+  'component.dashboard.edit.profile.mission.statement.field.label': 'Mission Statement',
+  'component.dashboard.edit.profile.mission.statement.field.placeholder':
+    '"Tinvesta builds an efficient and scalable matchmaking service."',
+  'component.dashboard.edit.profile.mission.statement.field.max.length.error':
+    'Maximum length is 160',
+
+  // Vision Statement
+  'component.dashboard.edit.profile.vision.statement.field.label': 'Vision Statement',
+  'component.dashboard.edit.profile.vision.statement.field.placeholder':
+    '"We will be the leading provider of simple matchmaking services to startups and investors worldwide."',
+  'component.dashboard.edit.profile.vision.statement.field.max.length.error':
+    'Maximum length is 160',
+
+  // Startup Claim
+  'component.dashboard.edit.profile.startup.claim.field.label': 'Startup Claim',
+  'component.dashboard.edit.profile.startup.claim.field.placeholder':
+    '"Tinvesta enables startups and investors to find each other in the easiest way!"',
+  'component.dashboard.edit.profile.startup.claim.field.max.length.error': 'Maximum length is 160',
 };

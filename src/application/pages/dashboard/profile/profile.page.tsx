@@ -95,6 +95,8 @@ export const getServerSideProps = async (serverSideProps: GetServerSideProps) =>
       .select('id,name'),
   ]);
 
+  console.log(result.profileData);
+
   return {
     props: {
       teamSizes,
@@ -103,11 +105,12 @@ export const getServerSideProps = async (serverSideProps: GetServerSideProps) =>
       startupSectors,
       investmentSizes,
       industrialSectors,
+      plans: sortedPlans,
       investorDemandTypes,
       investmentStageTypes,
       investorProfileTypes,
       startupProfileCreatorTypes,
-      plans: sortedPlans,
+      clientTypeId: result.profileData.client_type_id,
     },
   };
 };

@@ -13,6 +13,7 @@ import {
 } from '@interfaces';
 
 export interface IProfileProps {
+  clientTypeId: number;
   clientTypes: IClientType[];
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
