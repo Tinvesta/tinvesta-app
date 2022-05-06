@@ -23,4 +23,6 @@ export const defaultFormFieldsValues: IEditProfileFormFieldsData = {
   startupSectorIds: [],
   teamSizeIds: [],
   whyStartupShouldMatchWithYou: '',
+  teamSizeId: '',
+  imageKeys: [],
 };

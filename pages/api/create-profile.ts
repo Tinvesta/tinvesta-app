@@ -9,7 +9,7 @@ import { EApiError } from '@enums';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
-const createAvatarRecord = async (profileId: string, imageKey: string) => {
+const createAvatarRecord = async (profileId: string, imageKey: string, position: number) => {
   const { data: storagePublicUrlData, error: storagePublicUrlError } =
     await supabaseInstance.storage.from('avatars').getPublicUrl(imageKey);
 
@@ -24,6 +24,7 @@ const createAvatarRecord = async (profileId: string, imageKey: string) => {
       : storagePublicUrlData.publicURL;
 
   await supabaseInstance.from('avatars').insert({
+    position,
     avatar_key: imageKey,
     profile_id: profileId,
     avatar_public_url: parsedPublicUrl,
@@ -69,9 +70,12 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_AVATAR_UPLOAD);
   }
 
+  let i = 0;
+
   for (const _imageKey of userData.imageKeys) {
     // eslint-disable-next-line no-await-in-loop
-    await createAvatarRecord(user.id, _imageKey);
+    await createAvatarRecord(user.id, _imageKey, i);
+    i += 1;
   }
 
   // assign focus markets
