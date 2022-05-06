@@ -69,6 +69,8 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   const userData = request.body;
 
+  console.log(userData);
+
   // process image keys
   if (userData.imageKeys) {
     const { data: avatars } = await supabaseInstance
@@ -118,6 +120,34 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   if (assignProfilesFocusMarketsError) {
     return response.status(500).send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_FOCUS_MARKETS);
+  }
+
+  // assign investment sizes
+  const { error: assignProfilesInvestmentSizesError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_investment_sizes',
+    'investment_size_id',
+    userData.investmentSizeIds,
+  );
+
+  if (assignProfilesInvestmentSizesError) {
+    return response
+      .status(500)
+      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_SIZES);
+  }
+
+  // assign startup sectors
+  const { error: assignProfilesStartupSectorsError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_startup_sectors',
+    'startup_sector_id',
+    userData.startupSectorIds,
+  );
+
+  if (assignProfilesStartupSectorsError) {
+    return response
+      .status(500)
+      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_STARTUP_SECTORS);
   }
 
   response.send({ status: 'success' });
