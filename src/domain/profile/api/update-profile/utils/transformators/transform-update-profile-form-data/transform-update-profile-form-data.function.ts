@@ -1,4 +1,4 @@
-import { isArray, isString, objectKeys } from '@utils';
+import { isArray, isNumber, isString, objectKeys } from '@utils';
 
 import { IEditProfileFormFieldsData } from '../../../../../profile.types';
 
@@ -12,7 +12,10 @@ export const transformUpdateProfileFormData = (
     const currentNewDataValue = newData[_key];
     const currentOldDataValue = oldData[_key];
 
-    if (isString(currentNewDataValue) && currentNewDataValue !== currentOldDataValue) {
+    if (
+      (isString(currentNewDataValue) || isNumber(currentNewDataValue)) &&
+      currentNewDataValue !== currentOldDataValue
+    ) {
       // @ts-expect-error
       resultObject[_key] = currentNewDataValue;
     }

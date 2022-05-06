@@ -18,7 +18,6 @@ import { IInputVariables } from './update-profile.types';
 import { transformUpdateProfileFormData } from './utils';
 
 export const updateProfileAction = async ({ clientTypeId, newData, oldData }: IInputVariables) => {
-  console.log(newData);
   const transformedData = transformUpdateProfileFormData(newData, oldData);
 
   for (const _key of objectKeys(transformedData)) {

@@ -222,6 +222,24 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     })
     .eq('id', user.id);
 
+  await (!isStartup
+    ? supabaseInstance
+        .from('investors')
+        .update({
+          investor_profile_type_id: userData.investorProfileTypeId,
+          why_startup_should_match_with_you: userData.whyStartupShouldMatchWithYou,
+        })
+        .eq('profile_id', user.id)
+    : supabaseInstance.from('startups').update({
+        profile_id: user.id,
+        startup_claim: userData.startupClaim,
+        vision_statement: userData.visionStatement,
+        mission_statement: userData.missionStatement,
+        investor_profile_type_id: userData.investorProfileTypeId,
+        startup_profile_creator_type_id: userData.startupProfileCreatorTypeId,
+      })
+  ).eq('profile_id', user.id);
+
   response.send({ status: 'success' });
 };
 
