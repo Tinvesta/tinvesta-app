@@ -148,6 +148,32 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_STARTUP_SECTORS);
   }
 
+  // assign team sizes
+  const { error: assignProfilesTeamSizesError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_team_sizes',
+    'team_size_id',
+    userData.teamSizeIds,
+  );
+
+  if (assignProfilesTeamSizesError) {
+    return response.status(500).send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_TEAM_SIZES);
+  }
+
+  // assign investment stage types
+  const { error: assignProfilesInvestmentStageTypesError } = await assignWithBulkInsert(
+    user.id,
+    'profiles_investment_stage_types',
+    'investment_stage_type_id',
+    userData.investmentStageTypeIds,
+  );
+
+  if (assignProfilesInvestmentStageTypesError) {
+    return response
+      .status(500)
+      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_STAGE_TYPES);
+  }
+
   response.send({ status: 'success' });
 };
 
