@@ -233,11 +233,9 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     : supabaseInstance
         .from('startups')
         .update({
-          profile_id: user.id,
           startup_claim: userData.startupClaim,
           vision_statement: userData.visionStatement,
           mission_statement: userData.missionStatement,
-          investor_profile_type_id: userData.investorProfileTypeId,
           startup_profile_creator_type_id: userData.startupProfileCreatorTypeId,
         })
         .eq('profile_id', user.id));
