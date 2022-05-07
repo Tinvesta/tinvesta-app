@@ -29,8 +29,8 @@ import S from './onboarding.styles';
 import { IOnboardingPageProps } from './onboarding.types';
 
 export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => {
-  const { isLoading, user } = useUser();
   const router = useRouter();
+  const { isLoading, user } = useUser();
 
   useEffect(() => {
     if (user === null && isLoading) {

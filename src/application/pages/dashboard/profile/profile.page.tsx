@@ -1,11 +1,16 @@
-import { GetServerSideProps } from 'next';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { Stripe } from 'stripe';
 
 import { Profile } from '@domain';
 
-import { hasOwnProperty, useDeviceDetect } from '@utils';
+import { Loader } from '@ui';
+
+import { useDeviceDetect, useUser } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
+
+import { ERoutes } from '@enums';
 
 import {
   IClientType,
@@ -21,32 +26,47 @@ import {
 } from '@interfaces';
 
 import { DesktopDashboardLayout, MobileDashboardLayout } from '../layouts';
-import { verifyUserAccess } from '../utils';
 import { IProfileProps } from './profile.types';
 
 const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 export const ProfilePage = (props: IProfileProps): JSX.Element => {
+  const router = useRouter();
+  const { isLoading, user } = useUser();
   const { deviceData } = useDeviceDetect();
+
+  useEffect(() => {
+    if (user === null && isLoading) {
+      router.push(ERoutes.HOME);
+
+      return;
+    }
+
+    if (!isLoading && !user?.client_type_id) {
+      router.push(ERoutes.ONBOARDING);
+    }
+  }, [user, isLoading]);
+
+  const shouldRenderLoader = !user || isLoading || !user?.client_type_id;
 
   const DashboardLayout = deviceData.isSmallerThanLG
     ? MobileDashboardLayout
     : DesktopDashboardLayout;
 
   return (
-    <DashboardLayout>
-      <Profile {...props} />
-    </DashboardLayout>
+    <>
+      {shouldRenderLoader ? (
+        <Loader />
+      ) : (
+        <DashboardLayout>
+          <Profile {...props} clientTypeId={user.client_type_id as number} />
+        </DashboardLayout>
+      )}
+    </>
   );
 };
 
-export const getServerSideProps = async (serverSideProps: GetServerSideProps) => {
-  const result = await verifyUserAccess(serverSideProps);
-
-  if (!hasOwnProperty(result, 'profileData') || !hasOwnProperty(result, 'user')) {
-    return result;
-  }
-
+export const getStaticProps = async () => {
   // Fetch data required for subscriptions section
   const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
 
@@ -95,8 +115,6 @@ export const getServerSideProps = async (serverSideProps: GetServerSideProps) =>
       .select('id,name'),
   ]);
 
-  console.log(result.profileData);
-
   return {
     props: {
       teamSizes,
@@ -110,7 +128,6 @@ export const getServerSideProps = async (serverSideProps: GetServerSideProps) =>
       investmentStageTypes,
       investorProfileTypes,
       startupProfileCreatorTypes,
-      clientTypeId: result.profileData.client_type_id,
     },
   };
 };

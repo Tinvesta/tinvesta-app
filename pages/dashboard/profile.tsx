@@ -1,6 +1,6 @@
 import { dashboardProfilePage } from '@application';
 
-const { getServerSideProps, ProfilePage } = dashboardProfilePage;
+const { getStaticProps, ProfilePage } = dashboardProfilePage;
 
 // eslint-disable-next-line no-restricted-exports
-export { ProfilePage as default, getServerSideProps };
+export { ProfilePage as default, getStaticProps };
