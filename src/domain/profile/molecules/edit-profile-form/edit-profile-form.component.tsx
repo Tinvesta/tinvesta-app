@@ -56,44 +56,81 @@ export const EditProfileForm = ({
       setValue('location', profileDetails.location, { shouldValidate: true });
       setValue('lastName', profileDetails.lastName, { shouldValidate: true });
       setValue('firstName', profileDetails.firstName, { shouldValidate: true });
-      setValue('teamSizeIds', profileDetails.teamSizes, { shouldValidate: true });
       setValue('companyName', profileDetails.companyName, { shouldValidate: true });
       setValue('contactEmail', profileDetails.contactEmail, { shouldValidate: true });
       setValue('focusMarketIds', profileDetails.focusMarkets, { shouldValidate: true });
       setValue('startupSectorIds', profileDetails.startupSectors, { shouldValidate: true });
       setValue('investmentSizeIds', profileDetails.investmentSizes, { shouldValidate: true });
       setValue('industrialSectorIds', profileDetails.industrialSectors, { shouldValidate: true });
-      setValue('investorDemandTypeIds', profileDetails.investorDemandTypes, {
-        shouldValidate: true,
-      });
       setValue('investmentStageTypeIds', profileDetails.investmentStageTypes, {
         shouldValidate: true,
       });
-      setValue('investorProfileTypeId', profileDetails.investorProfileTypeId || '', {
-        shouldValidate: true,
-      });
-      setValue('whyStartupShouldMatchWithYou', profileDetails.whyStartupShouldMatchWithYou, {
-        shouldValidate: true,
-      });
 
-      setDefaultValues((prev) => ({
-        ...prev,
-        images: profileDetails.avatars,
-        location: profileDetails.location,
-        lastName: profileDetails.lastName,
-        firstName: profileDetails.firstName,
-        teamSizeIds: profileDetails.teamSizes,
-        companyName: profileDetails.companyName,
-        contactEmail: profileDetails.contactEmail,
-        focusMarketIds: profileDetails.focusMarkets,
-        startupSectorIds: profileDetails.startupSectors,
-        investmentSizeIds: profileDetails.investmentSizes,
-        industrialSectorIds: profileDetails.industrialSectors,
-        investorDemandTypeIds: profileDetails.investorDemandTypes,
-        investmentStageTypeIds: profileDetails.investmentStageTypes,
-        investorProfileTypeId: profileDetails.investorProfileTypeId || '',
-        whyStartupShouldMatchWithYou: profileDetails.whyStartupShouldMatchWithYou,
-      }));
+      if (!isStartup) {
+        setValue('investorDemandTypeIds', profileDetails.investorDemandTypes, {
+          shouldValidate: true,
+        });
+        setValue('teamSizeIds', profileDetails.teamSizes, { shouldValidate: true });
+        setValue('investorProfileTypeId', profileDetails.investorProfileTypeId || '', {
+          shouldValidate: true,
+        });
+        setValue('whyStartupShouldMatchWithYou', profileDetails.whyStartupShouldMatchWithYou, {
+          shouldValidate: true,
+        });
+
+        setDefaultValues((prev) => ({
+          ...prev,
+          images: profileDetails.avatars,
+          location: profileDetails.location,
+          lastName: profileDetails.lastName,
+          firstName: profileDetails.firstName,
+          teamSizeIds: profileDetails.teamSizes,
+          companyName: profileDetails.companyName,
+          contactEmail: profileDetails.contactEmail,
+          focusMarketIds: profileDetails.focusMarkets,
+          startupSectorIds: profileDetails.startupSectors,
+          investmentSizeIds: profileDetails.investmentSizes,
+          industrialSectorIds: profileDetails.industrialSectors,
+          investorDemandTypeIds: profileDetails.investorDemandTypes,
+          investmentStageTypeIds: profileDetails.investmentStageTypes,
+          investorProfileTypeId: profileDetails.investorProfileTypeId || '',
+          whyStartupShouldMatchWithYou: profileDetails.whyStartupShouldMatchWithYou,
+        }));
+      } else {
+        setValue('startupClaim', profileDetails.startupClaim || '', {
+          shouldValidate: true,
+        });
+        setValue('visionStatement', profileDetails.visionStatement || '', {
+          shouldValidate: true,
+        });
+        setValue('missionStatement', profileDetails.missionStatement || '', {
+          shouldValidate: true,
+        });
+        setValue('teamSizeId', profileDetails.teamSizes[0] || '', { shouldValidate: true });
+        setValue('startupProfileCreatorTypeId', profileDetails.startupProfileCreatorTypeId || '', {
+          shouldValidate: true,
+        });
+
+        setDefaultValues((prev) => ({
+          ...prev,
+          images: profileDetails.avatars,
+          location: profileDetails.location,
+          lastName: profileDetails.lastName,
+          firstName: profileDetails.firstName,
+          companyName: profileDetails.companyName,
+          contactEmail: profileDetails.contactEmail,
+          focusMarketIds: profileDetails.focusMarkets,
+          teamSizeId: profileDetails.teamSizes[0] || '',
+          startupClaim: profileDetails.startupClaim || '',
+          startupSectorIds: profileDetails.startupSectors,
+          investmentSizeIds: profileDetails.investmentSizes,
+          industrialSectorIds: profileDetails.industrialSectors,
+          visionStatement: profileDetails.visionStatement || '',
+          missionStatement: profileDetails.missionStatement || '',
+          investmentStageTypeIds: profileDetails.investmentStageTypes,
+          startupProfileCreatorTypeId: profileDetails.startupProfileCreatorTypeId || '',
+        }));
+      }
     }
   }, [JSON.stringify(profileDetailsActionData?.data), isProfileDetailsActionLoading]);
 
