@@ -9,7 +9,7 @@ export default {
   // Focus Markets
   'component.desktop.onboarding.step.three.investor.focus.market.field.label': 'Focus Markets',
 
-  // Preferred Startup Sector
+  // Preferred Startup Sectors
   'component.desktop.onboarding.step.three.investor.startup.sector.field.label':
     'Preferred Startup Sectors',
 

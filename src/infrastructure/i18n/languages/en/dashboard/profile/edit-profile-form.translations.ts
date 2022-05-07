@@ -3,44 +3,62 @@ export default {
   'component.dashboard.edit.profile.form.startup.heading': 'Edit Startup Profile',
   'component.dashboard.edit.profile.form.investor.heading': 'Edit Investor Profile',
 
-  // First Name
-  'component.dashboard.edit.profile.form.first.name.field.label': 'First Name',
-  'component.dashboard.edit.profile.form.first.name.field.max.length.error': 'Maximum length is 50',
+  // First Name - general
+  'component.dashboard.general.edit.profile.form.first.name.field.label': 'First Name',
+  'component.dashboard.general.edit.profile.form.first.name.field.max.length.error':
+    'Maximum length is 50',
 
-  // Last Name
-  'component.dashboard.edit.profile.form.last.name.field.label': 'Last Name',
-  'component.dashboard.edit.profile.form.last.name.field.max.length.error': 'Maximum length is 50',
+  // Last Name - general
+  'component.dashboard.general.edit.profile.form.last.name.field.label': 'Last Name',
+  'component.dashboard.general.edit.profile.form.last.name.field.max.length.error':
+    'Maximum length is 50',
 
-  // Contact Email
-  'component.dashboard.edit.profile.form.contact.email.field.label': 'Contact Email',
-  'component.dashboard.edit.profile.form.contact.email.field.max.length.error':
+  // Contact Email - general
+  'component.dashboard.general.edit.profile.form.contact.email.field.label': 'Contact Email',
+  'component.dashboard.general.edit.profile.form.contact.email.field.max.length.error':
     'Maximum length is 100',
-  'component.dashboard.edit.profile.form.contact.email.field.pattern.match.error':
+  'component.dashboard.general.edit.profile.form.contact.email.field.pattern.match.error':
     'Incorrect email format',
 
-  // Company Name
-  'component.dashboard.edit.profile.form.company.name.field.label': 'Company Name',
-  'component.dashboard.edit.profile.form.company.name.field.max.length.error':
+  // Company Name - general
+  'component.dashboard.general.edit.profile.form.company.name.field.label': 'Company Name',
+  'component.dashboard.general.edit.profile.form.company.name.field.max.length.error':
     'Maximum length is 100',
 
-  // Location
-  'component.dashboard.edit.profile.form.location.field.label': 'Location',
+  // Location - general
+  'component.dashboard.general.edit.profile.form.location.field.label': 'Location',
 
-  // Images
-  'component.dashboard.edit.profile.form.images.field.min.length.error':
+  // Images - general
+  'component.dashboard.general.edit.profile.form.images.field.min.length.error':
     'Please upload at least one image',
 
-  // Your Position
-  'component.dashboard.edit.profile.form.your.position.field.label': 'Your Position',
+  // Your Position - startup
+  'component.dashboard.startup.edit.profile.form.your.position.field.label': 'Your Position',
 
-  // Focus Markets
-  'component.dashboard.edit.profile.form.focus.market.field.label': 'Focus Markets',
+  // Your Position - investor
+  'component.dashboard.investor.edit.profile.form.your.position.field.label': 'Your Position',
 
-  // Preferred Startup Sector
-  'component.dashboard.edit.profile.form.startup.sector.field.label': 'Preferred Startup Sectors',
+  // Focus Markets - startup
+  'component.dashboard.startup.edit.profile.form.focus.market.field.label': 'Focus Markets',
 
-  // Industrial Sectors
-  'component.dashboard.edit.profile.form.industrial.sectors.field.label': 'Industrial Sectors',
+  // Focus Markets - investor
+  'component.dashboard.investor.edit.profile.form.focus.market.field.label': 'Focus Markets',
+
+  // Sectors - startup
+  'component.dashboard.startupedit.profile.form.startup.sector.field.label':
+    'Preferred Startup Sectors',
+
+  // Preferred Startup Sectors - investor
+  'component.dashboard.investor.edit.profile.form.startup.sector.field.label':
+    'Preferred Startup Sectors',
+
+  // Industrial Sectors - startup
+  'component.dashboard.startup.edit.profile.form.industrial.sectors.field.label':
+    'Industrial Sectors',
+
+  // Industrial Sectors - investor
+  'component.dashboard.investor.edit.profile.form.industrial.sectors.field.label':
+    'Industrial Sectors',
 
   // Team Sizes
   'component.dashboard.edit.profile.form.team.sizes.field.label': 'Preferred Team Sizes',

@@ -5,6 +5,7 @@
 *.txt
 *.scss
 
+out
 .next
 build
 scripts
