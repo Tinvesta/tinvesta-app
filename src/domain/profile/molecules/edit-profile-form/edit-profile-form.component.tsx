@@ -46,6 +46,8 @@ export const EditProfileForm = ({
   const { isLoading: isUpdateProfileActionLoading, mutateAsync: mutateAsyncUpdateProfileAction } =
     useMutation(updateProfileAction);
 
+  const isStartup = isStartupProfile(clientTypeId);
+
   useEffect(() => {
     const profileDetails = profileDetailsActionData?.data;
 
@@ -104,7 +106,11 @@ export const EditProfileForm = ({
       .then(() => {
         reset(data);
         setDefaultValues(data);
-        toast.success(translations.componentDashboardEditProfileFormMessagesSuccess);
+        toast.success(
+          isStartup
+            ? translations.componentDashboardStartupEditProfileFormMessagesSuccess
+            : translations.componentDashboardInvestorEditProfileFormMessagesSuccess,
+        );
 
         refetchProfileDetailsAction();
       })
@@ -113,14 +119,12 @@ export const EditProfileForm = ({
 
   const handleResetButtonClick = () => reset(defaultValues);
 
-  const isStartup = isStartupProfile(clientTypeId);
-
   return (
     <SectionWrapperLayout
       title={
         isStartup
-          ? translations.componentDashboardEditProfileFormStartupHeading
-          : translations.componentDashboardEditProfileFormInvestorHeading
+          ? translations.componentDashboardStartupEditProfileFormHeading
+          : translations.componentDashboardInvestorEditProfileFormHeading
       }
     >
       {isStartup ? (

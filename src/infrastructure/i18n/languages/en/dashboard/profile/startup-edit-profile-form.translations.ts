@@ -1,6 +1,6 @@
 export default {
   // General
-  'component.dashboard.startup.edit.profile.form.startup.heading': 'Edit Startup Profile',
+  'component.dashboard.startup.edit.profile.form.heading': 'Edit Profile',
   'component.dashboard.startup.edit.profile.form.messages.success':
     'Changes to the profile have been saved',
 

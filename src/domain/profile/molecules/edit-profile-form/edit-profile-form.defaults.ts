@@ -3,9 +3,10 @@ import { IEditProfileFormFieldsData } from '../../profile.types';
 export const translationStrings = [
   'common.errors.something.went.wrong',
 
-  'component.dashboard.edit.profile.form.messages.success',
-  'component.dashboard.edit.profile.form.investor.heading',
-  'component.dashboard.edit.profile.form.startup.heading',
+  'component.dashboard.investor.edit.profile.form.messages.success',
+  'component.dashboard.startup.edit.profile.form.messages.success',
+  'component.dashboard.investor.edit.profile.form.heading',
+  'component.dashboard.startup.edit.profile.form.heading',
 ] as const;
 
 export const defaultFormFieldsValues: IEditProfileFormFieldsData = {
