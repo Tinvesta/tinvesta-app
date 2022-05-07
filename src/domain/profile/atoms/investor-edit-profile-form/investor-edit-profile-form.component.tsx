@@ -94,7 +94,8 @@ const InvestorEditProfileFormComponent = ({
                   validate: {
                     formArrayMinLength: formArrayMinLength(
                       1,
-                      translations.componentDashboardEditProfileFormImagesFieldMinLengthError,
+                      // eslint-disable-next-line max-len
+                      translations.componentDashboardInvestorEditProfileFormImagesFieldMinLengthError,
                     ),
                   },
                 },
@@ -115,7 +116,7 @@ const InvestorEditProfileFormComponent = ({
                     value: 50,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormFirstNameFieldMaxLengthError,
+                      translations.componentDashboardInvestorEditProfileFormFirstNameFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -130,7 +131,7 @@ const InvestorEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormFirstNameFieldLabel,
+                label: translations.componentDashboardInvestorEditProfileFormFirstNameFieldLabel,
               }}
             />
           </Grid>
@@ -147,7 +148,8 @@ const InvestorEditProfileFormComponent = ({
                   maxLength: {
                     value: 50,
                     message:
-                      translations.componentDashboardEditProfileFormLastNameFieldMaxLengthError,
+                      // eslint-disable-next-line max-len
+                      translations.componentDashboardInvestorEditProfileFormLastNameFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -162,7 +164,7 @@ const InvestorEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormLastNameFieldLabel,
+                label: translations.componentDashboardInvestorEditProfileFormLastNameFieldLabel,
               }}
             />
           </Grid>
@@ -180,20 +182,20 @@ const InvestorEditProfileFormComponent = ({
                     value: EMAIL_UNIVERSAL_REGEX,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormContactEmailFieldPatternMatchError,
+                      translations.componentDashboardInvestorEditProfileFormContactEmailFieldPatternMatchError,
                   },
                   maxLength: {
                     value: 100,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormContactEmailFieldMaxLengthError,
+                      translations.componentDashboardInvestorEditProfileFormContactEmailFieldMaxLengthError,
                   },
                 },
               }}
               inputProps={{
                 fullWidth: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormContactEmailFieldLabel,
+                label: translations.componentDashboardInvestorEditProfileFormContactEmailFieldLabel,
               }}
             />
           </Grid>
@@ -207,7 +209,7 @@ const InvestorEditProfileFormComponent = ({
                     value: 100,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormCompanyNameFieldMaxLengthError,
+                      translations.componentDashboardInvestorEditProfileFormCompanyNameFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -222,7 +224,7 @@ const InvestorEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormCompanyNameFieldLabel,
+                label: translations.componentDashboardInvestorEditProfileFormCompanyNameFieldLabel,
               }}
             />
           </Grid>
@@ -239,7 +241,7 @@ const InvestorEditProfileFormComponent = ({
                 },
               }}
               inputProps={{
-                label: translations.componentDashboardEditProfileFormLocationFieldLabel,
+                label: translations.componentDashboardInvestorEditProfileFormLocationFieldLabel,
               }}
             />
           </Grid>
@@ -262,7 +264,7 @@ const InvestorEditProfileFormComponent = ({
                 fullWidth: true,
                 options: investorProfileTypesDropdownOptions,
                 labelId: 'desktop-onboarding-step-three-investor-investor-profile-type-id-select',
-                label: translations.componentDashboardEditProfileFormYourPositionFieldLabel,
+                label: translations.componentDashboardInvestorEditProfileFormYourPositionFieldLabel,
               }}
             />
           </Grid>
@@ -286,7 +288,7 @@ const InvestorEditProfileFormComponent = ({
                 fullWidth: true,
                 options: focusMarketsDropdownOptions,
                 labelId: 'desktop-onboarding-step-three-investor-focus-market-ids-select',
-                label: translations.componentDashboardEditProfileFormFocusMarketFieldLabel,
+                label: translations.componentDashboardInvestorEditProfileFormFocusMarketFieldLabel,
               }}
             />
           </Grid>
@@ -310,7 +312,7 @@ const InvestorEditProfileFormComponent = ({
                 fullWidth: true,
                 options: teamSizesDropdownOptions,
                 labelId: 'desktop-onboarding-step-four-investor-team-size-ids-select',
-                label: translations.componentDashboardEditProfileFormTeamSizeFieldLabel,
+                label: translations.componentDashboardInvestorEditProfileFormTeamSizesFieldLabel,
               }}
             />
           </Grid>
@@ -334,7 +336,8 @@ const InvestorEditProfileFormComponent = ({
                 fullWidth: true,
                 options: investmentStageTypesDropdownOptions,
                 labelId: 'desktop-onboarding-step-four-investor-investment-stage-type-ids-select',
-                label: translations.componentDashboardEditProfileFormInvestmentStageFieldLabel,
+                label:
+                  translations.componentDashboardInvestorEditProfileFormInvestmentStageFieldLabel,
               }}
             />
           </Grid>
@@ -358,7 +361,8 @@ const InvestorEditProfileFormComponent = ({
                 fullWidth: true,
                 options: startupSectorsDropdownOptions,
                 labelId: 'desktop-onboarding-step-three-investor-startup-sector-ids-select',
-                label: translations.componentDashboardEditProfileFormStartupSectorFieldLabel,
+                label:
+                  translations.componentDashboardInvestorEditProfileFormStartupSectorFieldLabel,
               }}
             />
           </Grid>
@@ -382,7 +386,8 @@ const InvestorEditProfileFormComponent = ({
                 },
               }}
               inputProps={{
-                label: translations.componentDashboardEditProfileFormIndustrialSectorsFieldLabel,
+                label:
+                  translations.componentDashboardInvestorEditProfileFormIndustrialSectorsFieldLabel,
               }}
             />
           </Grid>
@@ -406,7 +411,8 @@ const InvestorEditProfileFormComponent = ({
                 fullWidth: true,
                 options: investmentSizesDropdownOptions,
                 labelId: 'desktop-onboarding-step-four-investor-investment-size-ids-select',
-                label: translations.componentDashboardEditProfileFormInvestmentSizeFieldLabel,
+                label:
+                  translations.componentDashboardInvestorEditProfileFormInvestmentSizeFieldLabel,
               }}
             />
           </Grid>
@@ -429,7 +435,7 @@ const InvestorEditProfileFormComponent = ({
                 multiple: true,
                 fullWidth: true,
                 options: investorDemandTypesDropdownOptions,
-                label: translations.componentDashboardEditProfileFormDemandFieldLabel,
+                label: translations.componentDashboardInvestorEditProfileFormDemandFieldLabel,
                 labelId: 'desktop-onboarding-step-five-investor-investor-demand-type-ids-select',
               }}
             />
@@ -448,7 +454,7 @@ const InvestorEditProfileFormComponent = ({
                     value: 160,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormWhyStartupShouldMatchWithYouFieldMaxLengthError,
+                      translations.componentDashboardInvestorEditProfileFormWhyStartupShouldMatchWithYouFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -467,7 +473,7 @@ const InvestorEditProfileFormComponent = ({
                 autoComplete: 'disabled',
                 label:
                   // eslint-disable-next-line max-len
-                  translations.componentDashboardEditProfileFormWhyStartupShouldMatchWithYouFieldLabel,
+                  translations.componentDashboardInvestorEditProfileFormWhyStartupShouldMatchWithYouFieldLabel,
               }}
             />
           </Grid>

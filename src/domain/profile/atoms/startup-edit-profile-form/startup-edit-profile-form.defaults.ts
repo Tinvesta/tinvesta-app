@@ -58,7 +58,6 @@ export const translationStrings = [
   'common.startup.profile.creator.types.employee',
   'common.startup.profile.creator.types.co.founder',
 
-  'component.dashboard.startup.edit.profile.form.startup.heading',
   'component.dashboard.startup.edit.profile.form.first.name.field.label',
   'component.dashboard.startup.edit.profile.form.first.name.field.max.length.error',
   'component.dashboard.startup.edit.profile.form.last.name.field.label',
