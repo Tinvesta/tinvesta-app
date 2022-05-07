@@ -20,13 +20,13 @@ export const getSideMenuOptions = (translations: Record<string, string>) => [
     label: translations.componentDashboardSidemenuOptionDiscover,
   },
   {
-    icon: <JoinInnerIcon />,
-    route: ERoutes.DASHBOARD_MATCHES,
-    label: translations.componentDashboardSidemenuOptionMatches,
-  },
-  {
     icon: <StarBorderIcon />,
     route: ERoutes.DASHBOARD_LIKES,
     label: translations.componentDashboardSidemenuOptionLikes,
+  },
+  {
+    icon: <JoinInnerIcon />,
+    route: ERoutes.DASHBOARD_MATCHES,
+    label: translations.componentDashboardSidemenuOptionMatches,
   },
 ];
