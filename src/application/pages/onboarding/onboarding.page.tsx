@@ -1,7 +1,12 @@
-import { GetServerSideProps } from 'next';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 
 import { Onboarding } from '@domain';
+
+import { Loader } from '@ui';
+
+import { useUser } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
@@ -23,45 +28,35 @@ import {
 import S from './onboarding.styles';
 import { IOnboardingPageProps } from './onboarding.types';
 
-export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => (
-  <S.StyledWrapper>
-    <Head>
-      <title>Tinvesta</title>
-    </Head>
-    <Onboarding {...props} />
-  </S.StyledWrapper>
-);
+export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => {
+  const { isLoading, user } = useUser();
+  const router = useRouter();
 
-// @ts-expect-error
-export const getServerSideProps = async ({ req }: GetServerSideProps) => {
-  const { user } = await supabaseInstance.auth.api.getUserByCookie(req);
+  useEffect(() => {
+    if (user === null && isLoading) {
+      router.push(ERoutes.HOME);
 
-  if (!user) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: ERoutes.HOME,
-      },
-      props: {},
-    };
-  }
+      return;
+    }
 
-  const { data: profileData } = await supabaseInstance
-    .from('profiles')
-    .select('client_type_id')
-    .eq('id', user.id)
-    .single();
+    if (!isLoading && user?.client_type_id) {
+      router.push(ERoutes.DASHBOARD);
+    }
+  }, [user, isLoading]);
 
-  if (profileData.client_type_id) {
-    return {
-      redirect: {
-        permanent: false,
-        destination: ERoutes.DASHBOARD,
-      },
-      props: {},
-    };
-  }
+  const shouldRenderLoader = !user || isLoading || user?.client_type_id;
 
+  return (
+    <S.StyledWrapper>
+      <Head>
+        <title>Tinvesta</title>
+      </Head>
+      {shouldRenderLoader ? <Loader /> : <Onboarding {...props} />}
+    </S.StyledWrapper>
+  );
+};
+
+export const getStaticProps = async () => {
   const [
     { data: teamSizes },
     { data: clientTypes },
