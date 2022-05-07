@@ -263,7 +263,7 @@ const InvestorEditProfileFormComponent = ({
               selectProps={{
                 fullWidth: true,
                 options: investorProfileTypesDropdownOptions,
-                labelId: 'desktop-onboarding-step-three-investor-investor-profile-type-id-select',
+                labelId: 'investor-edit-profile-form-investor-profile-type-id-select',
                 label: translations.componentDashboardInvestorEditProfileFormYourPositionFieldLabel,
               }}
             />
@@ -287,7 +287,7 @@ const InvestorEditProfileFormComponent = ({
                 multiple: true,
                 fullWidth: true,
                 options: focusMarketsDropdownOptions,
-                labelId: 'desktop-onboarding-step-three-investor-focus-market-ids-select',
+                labelId: 'investor-edit-profile-form-focus-market-ids-select',
                 label: translations.componentDashboardInvestorEditProfileFormFocusMarketFieldLabel,
               }}
             />
@@ -311,7 +311,7 @@ const InvestorEditProfileFormComponent = ({
                 multiple: true,
                 fullWidth: true,
                 options: teamSizesDropdownOptions,
-                labelId: 'desktop-onboarding-step-four-investor-team-size-ids-select',
+                labelId: 'investor-edit-profile-form-team-size-ids-select',
                 label: translations.componentDashboardInvestorEditProfileFormTeamSizesFieldLabel,
               }}
             />
@@ -335,7 +335,7 @@ const InvestorEditProfileFormComponent = ({
                 multiple: true,
                 fullWidth: true,
                 options: investmentStageTypesDropdownOptions,
-                labelId: 'desktop-onboarding-step-four-investor-investment-stage-type-ids-select',
+                labelId: 'investor-edit-profile-form-investment-stage-type-ids-select',
                 label:
                   translations.componentDashboardInvestorEditProfileFormInvestmentStageFieldLabel,
               }}
@@ -360,7 +360,7 @@ const InvestorEditProfileFormComponent = ({
                 multiple: true,
                 fullWidth: true,
                 options: startupSectorsDropdownOptions,
-                labelId: 'desktop-onboarding-step-three-investor-startup-sector-ids-select',
+                labelId: 'investor-edit-profile-form-startup-sector-ids-select',
                 label:
                   translations.componentDashboardInvestorEditProfileFormStartupSectorFieldLabel,
               }}
@@ -410,7 +410,7 @@ const InvestorEditProfileFormComponent = ({
                 multiple: true,
                 fullWidth: true,
                 options: investmentSizesDropdownOptions,
-                labelId: 'desktop-onboarding-step-four-investor-investment-size-ids-select',
+                labelId: 'investor-edit-profile-form-investment-size-ids-select',
                 label:
                   translations.componentDashboardInvestorEditProfileFormInvestmentSizeFieldLabel,
               }}
@@ -436,7 +436,7 @@ const InvestorEditProfileFormComponent = ({
                 fullWidth: true,
                 options: investorDemandTypesDropdownOptions,
                 label: translations.componentDashboardInvestorEditProfileFormDemandFieldLabel,
-                labelId: 'desktop-onboarding-step-five-investor-investor-demand-type-ids-select',
+                labelId: 'investor-edit-profile-form-investor-demand-type-ids-select',
               }}
             />
           </Grid>
