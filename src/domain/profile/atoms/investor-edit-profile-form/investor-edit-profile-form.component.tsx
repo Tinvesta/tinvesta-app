@@ -467,10 +467,10 @@ const InvestorEditProfileFormComponent = ({
                 },
               }}
               inputProps={{
-                rows: 3,
                 fullWidth: true,
                 multiline: true,
                 autoComplete: 'disabled',
+                rows: deviceData.isSmallerThanSM ? 4 : 3,
                 label:
                   // eslint-disable-next-line max-len
                   translations.componentDashboardInvestorEditProfileFormWhyStartupShouldMatchWithYouFieldLabel,
