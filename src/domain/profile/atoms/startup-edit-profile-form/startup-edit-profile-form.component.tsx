@@ -88,7 +88,8 @@ const StartupEditProfileFormComponent = ({
                   validate: {
                     formArrayMinLength: formArrayMinLength(
                       1,
-                      translations.componentDashboardEditProfileFormImagesFieldMinLengthError,
+                      // eslint-disable-next-line max-len
+                      translations.componentDashboardStartupEditProfileFormImagesFieldMinLengthError,
                     ),
                   },
                 },
@@ -109,7 +110,7 @@ const StartupEditProfileFormComponent = ({
                     value: 50,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormFirstNameFieldMaxLengthError,
+                      translations.componentDashboardStartupEditProfileFormFirstNameFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -124,7 +125,7 @@ const StartupEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormFirstNameFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormFirstNameFieldLabel,
               }}
             />
           </Grid>
@@ -141,7 +142,8 @@ const StartupEditProfileFormComponent = ({
                   maxLength: {
                     value: 50,
                     message:
-                      translations.componentDashboardEditProfileFormLastNameFieldMaxLengthError,
+                      // eslint-disable-next-line max-len
+                      translations.componentDashboardStartupEditProfileFormLastNameFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -156,7 +158,7 @@ const StartupEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormLastNameFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormLastNameFieldLabel,
               }}
             />
           </Grid>
@@ -174,20 +176,20 @@ const StartupEditProfileFormComponent = ({
                     value: EMAIL_UNIVERSAL_REGEX,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormContactEmailFieldPatternMatchError,
+                      translations.componentDashboardStartupEditProfileFormContactEmailFieldPatternMatchError,
                   },
                   maxLength: {
                     value: 100,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormContactEmailFieldMaxLengthError,
+                      translations.componentDashboardStartupEditProfileFormContactEmailFieldMaxLengthError,
                   },
                 },
               }}
               inputProps={{
                 fullWidth: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormContactEmailFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormContactEmailFieldLabel,
               }}
             />
           </Grid>
@@ -201,7 +203,7 @@ const StartupEditProfileFormComponent = ({
                     value: 100,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormCompanyNameFieldMaxLengthError,
+                      translations.componentDashboardStartupEditProfileFormCompanyNameFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -216,7 +218,7 @@ const StartupEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormCompanyNameFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormCompanyNameFieldLabel,
               }}
             />
           </Grid>
@@ -233,7 +235,7 @@ const StartupEditProfileFormComponent = ({
                 },
               }}
               inputProps={{
-                label: translations.componentDashboardEditProfileFormLocationFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormLocationFieldLabel,
               }}
             />
           </Grid>
@@ -255,7 +257,7 @@ const StartupEditProfileFormComponent = ({
               selectProps={{
                 fullWidth: true,
                 options: startupProfileCreatorTypesDropdownOptions,
-                label: translations.componentDashboardEditProfileFormYourPositionFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormYourPositionFieldLabel,
                 labelId:
                   'desktop-onboarding-step-three-startup-startup-profile-creator-type-id-select',
               }}
@@ -281,7 +283,7 @@ const StartupEditProfileFormComponent = ({
                 fullWidth: true,
                 options: focusMarketsDropdownOptions,
                 labelId: 'desktop-onboarding-step-three-investor-focus-market-ids-select',
-                label: translations.componentDashboardEditProfileFormFocusMarketFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormFocusMarketFieldLabel,
               }}
             />
           </Grid>
@@ -304,7 +306,7 @@ const StartupEditProfileFormComponent = ({
                 fullWidth: true,
                 options: teamSizesDropdownOptions,
                 labelId: 'desktop-onboarding-step-three-startup-team-size-id-select',
-                label: translations.componentDashboardEditProfileFormTeamSizeFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormTeamSizeFieldLabel,
               }}
             />
           </Grid>
@@ -328,11 +330,12 @@ const StartupEditProfileFormComponent = ({
                 fullWidth: true,
                 options: investmentStageTypesDropdownOptions,
                 labelId: 'desktop-onboarding-step-four-investor-investment-stage-type-ids-select',
-                label: translations.componentDashboardEditProfileFormInvestmentStageFieldLabel,
+                label:
+                  translations.componentDashboardStartupEditProfileFormInvestmentStageFieldLabel,
               }}
             />
           </Grid>
-          <Grid item xs={12}>
+          <Grid item xs={desktopHalfInputsWidthXS}>
             <SelectWithController
               controllerProps={{
                 control,
@@ -352,31 +355,7 @@ const StartupEditProfileFormComponent = ({
                 fullWidth: true,
                 options: startupSectorsDropdownOptions,
                 labelId: 'desktop-onboarding-step-three-investor-startup-sector-ids-select',
-                label: translations.componentDashboardEditProfileFormStartupSectorFieldLabel,
-              }}
-            />
-          </Grid>
-          <Grid item xs={12}>
-            <AutocompleteWithController
-              autocompleteProps={{
-                limit: 5,
-                multiple: true,
-                fullWidth: true,
-                disableCloseOnSelect: true,
-                options: industrialSectorsDropdownOptions,
-              }}
-              controllerProps={{
-                control,
-                name: 'industrialSectorIds',
-                rules: {
-                  required: {
-                    value: true,
-                    message: translations.commonFormFieldErrorRequired,
-                  },
-                },
-              }}
-              inputProps={{
-                label: translations.componentDashboardEditProfileFormIndustrialSectorsFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormStartupSectorFieldLabel,
               }}
             />
           </Grid>
@@ -400,7 +379,33 @@ const StartupEditProfileFormComponent = ({
                 fullWidth: true,
                 options: investmentSizesDropdownOptions,
                 labelId: 'desktop-onboarding-step-four-investor-investment-size-ids-select',
-                label: translations.componentDashboardEditProfileFormInvestmentSizeFieldLabel,
+                label:
+                  translations.componentDashboardStartupEditProfileFormInvestmentSizeFieldLabel,
+              }}
+            />
+          </Grid>
+          <Grid item xs={12}>
+            <AutocompleteWithController
+              autocompleteProps={{
+                limit: 5,
+                multiple: true,
+                fullWidth: true,
+                disableCloseOnSelect: true,
+                options: industrialSectorsDropdownOptions,
+              }}
+              controllerProps={{
+                control,
+                name: 'industrialSectorIds',
+                rules: {
+                  required: {
+                    value: true,
+                    message: translations.commonFormFieldErrorRequired,
+                  },
+                },
+              }}
+              inputProps={{
+                label:
+                  translations.componentDashboardStartupEditProfileFormIndustrialSectorsFieldLabel,
               }}
             />
           </Grid>
@@ -418,7 +423,7 @@ const StartupEditProfileFormComponent = ({
                     value: 160,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormStartupClaimFieldMaxLengthError,
+                      translations.componentDashboardStartupEditProfileFormStartupClaimFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -435,9 +440,9 @@ const StartupEditProfileFormComponent = ({
                 fullWidth: true,
                 multiline: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormStartupClaimFieldLabel,
+                label: translations.componentDashboardStartupEditProfileFormStartupClaimFieldLabel,
                 placeholder:
-                  translations.componentDashboardEditProfileFormStartupClaimFieldPlaceholder,
+                  translations.componentDashboardStartupEditProfileFormStartupClaimFieldPlaceholder,
               }}
             />
           </Grid>
@@ -455,7 +460,7 @@ const StartupEditProfileFormComponent = ({
                     value: 160,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormMissionStatementFieldMaxLengthError,
+                      translations.componentDashboardStartupEditProfileFormMissionStatementFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -472,10 +477,11 @@ const StartupEditProfileFormComponent = ({
                 fullWidth: true,
                 multiline: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormMissionStatementFieldLabel,
+                label:
+                  translations.componentDashboardStartupEditProfileFormMissionStatementFieldLabel,
                 placeholder:
                   // eslint-disable-next-line max-len
-                  translations.componentDashboardEditProfileFormMissionStatementFieldPlaceholder,
+                  translations.componentDashboardStartupEditProfileFormMissionStatementFieldPlaceholder,
               }}
             />
           </Grid>
@@ -493,7 +499,7 @@ const StartupEditProfileFormComponent = ({
                     value: 160,
                     message:
                       // eslint-disable-next-line max-len
-                      translations.componentDashboardEditProfileFormVisionStatementFieldMaxLengthError,
+                      translations.componentDashboardStartupEditProfileFormVisionStatementFieldMaxLengthError,
                   },
                   validate: {
                     startsOrEndsWithWhitespace: startsOrEndsWithWhitespace(
@@ -510,9 +516,11 @@ const StartupEditProfileFormComponent = ({
                 fullWidth: true,
                 multiline: true,
                 autoComplete: 'disabled',
-                label: translations.componentDashboardEditProfileFormVisionStatementFieldLabel,
+                label:
+                  translations.componentDashboardStartupEditProfileFormVisionStatementFieldLabel,
                 placeholder:
-                  translations.componentDashboardEditProfileFormVisionStatementFieldPlaceholder,
+                  // eslint-disable-next-line max-len
+                  translations.componentDashboardStartupEditProfileFormVisionStatementFieldPlaceholder,
               }}
             />
           </Grid>

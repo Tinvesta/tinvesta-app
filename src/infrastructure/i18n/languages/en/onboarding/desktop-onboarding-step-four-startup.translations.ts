@@ -3,7 +3,7 @@ export default {
   'component.desktop.onboarding.step.four.startup.subheading': 'Step 4/5',
   'component.desktop.onboarding.step.four.startup.heading': 'Setup Startup',
 
-  // Investment Stage
+  // Investment Stages
   'component.desktop.onboarding.step.four.startup.investment.stage.field.label':
     'Investment Stages',
 
