@@ -3,12 +3,12 @@ import { useMutation } from 'react-query';
 
 import { CenterBlockLayout, Loader } from '@ui';
 
-import { getRecordsAction, likeProfileAction } from './api';
+import { discoverRecordsAction, likeProfileAction } from './api';
 import { MotionCardsStack } from './atoms';
 import { Card } from './molecules';
 
 export const Discover = (): JSX.Element => {
-  const { data, isLoading, mutate } = useMutation(getRecordsAction);
+  const { data, isLoading, mutate } = useMutation(discoverRecordsAction);
   const { mutateAsync } = useMutation(likeProfileAction);
 
   useEffect(() => {
