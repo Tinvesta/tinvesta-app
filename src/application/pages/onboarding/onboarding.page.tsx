@@ -6,7 +6,7 @@ import { Onboarding } from '@domain';
 
 import { Loader } from '@ui';
 
-import { useUser } from '@utils/hooks';
+import { useUser } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
