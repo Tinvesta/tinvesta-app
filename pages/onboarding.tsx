@@ -1,6 +1,6 @@
 import { onboardingPage } from '@application';
 
-const { getServerSideProps, OnboardingPage } = onboardingPage;
+const { getStaticProps, OnboardingPage } = onboardingPage;
 
 // eslint-disable-next-line no-restricted-exports
-export { OnboardingPage as default, getServerSideProps };
+export { OnboardingPage as default, getStaticProps };

@@ -1,3 +1,3 @@
 export interface ILoaderProps {
-  size: 'small' | 'medium' | 'large';
+  size?: 'small' | 'medium' | 'large';
 }
