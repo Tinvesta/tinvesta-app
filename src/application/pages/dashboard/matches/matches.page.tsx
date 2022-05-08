@@ -34,15 +34,13 @@ export const MatchesPage = (): JSX.Element => {
     ? MobileDashboardLayout
     : DesktopDashboardLayout;
 
+  if (shouldRenderLoader) {
+    return <Loader />;
+  }
+
   return (
-    <>
-      {shouldRenderLoader ? (
-        <Loader />
-      ) : (
-        <DashboardLayout>
-          <Matches />
-        </DashboardLayout>
-      )}
-    </>
+    <DashboardLayout>
+      <Matches />
+    </DashboardLayout>
   );
 };
