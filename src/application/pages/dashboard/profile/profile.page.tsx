@@ -4,7 +4,7 @@ import { Stripe } from 'stripe';
 
 import { Profile } from '@domain';
 
-import { Loader } from '@ui';
+import { Loading } from '@ui';
 
 import { useDeviceDetect, useUser } from '@utils';
 
@@ -50,7 +50,7 @@ export const ProfilePage = (props: IProfileProps): JSX.Element => {
   const shouldRenderLoader = !user || isLoading || !user?.client_type_id;
 
   if (shouldRenderLoader) {
-    return <Loader />;
+    return <Loading />;
   }
 
   const DashboardLayout = deviceData.isSmallerThanLG

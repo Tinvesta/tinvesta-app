@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
-import { CenterBlockLayout, Loader } from '@ui';
+import { Loading } from '@ui';
 
 import { useConfirmationModal, useTranslation, useUser } from '@utils';
 
@@ -125,7 +125,7 @@ export const MobileOnboarding = ({
 
   if (isProfileLoading || !user?.contact_email || current.context.stepTwoData.contactEmail === '') {
     return (
-      <CenterBlockLayout>
+      <Loading>
         <Image
           priority
           alt="Tinvesta"
@@ -133,8 +133,7 @@ export const MobileOnboarding = ({
           objectFit="cover"
           src="/images/mobile-onboarding-background.svg"
         />
-        <Loader size="large" />
-      </CenterBlockLayout>
+      </Loading>
     );
   }
 

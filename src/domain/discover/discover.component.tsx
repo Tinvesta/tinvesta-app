@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout, Loader } from '@ui';
+import { CenterBlockLayout, Loading } from '@ui';
 
 import { discoverRecordsAction, likeProfileAction } from './api';
 import { MotionCardsStack } from './atoms';
@@ -16,11 +16,7 @@ export const Discover = (): JSX.Element => {
   }, []);
 
   if (isLoading) {
-    return (
-      <CenterBlockLayout>
-        <Loader size="large" />
-      </CenterBlockLayout>
-    );
+    return <Loading />;
   }
 
   const onVote = (profileId: string, vote: boolean) => mutateAsync({ profileId, vote });

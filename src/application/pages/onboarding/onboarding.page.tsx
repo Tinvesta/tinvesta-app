@@ -4,7 +4,7 @@ import { useEffect } from 'react';
 
 import { Onboarding } from '@domain';
 
-import { Loader } from '@ui';
+import { Loading } from '@ui';
 
 import { useUser } from '@utils';
 
@@ -51,7 +51,7 @@ export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => {
       <Head>
         <title>Tinvesta</title>
       </Head>
-      {shouldRenderLoader ? <Loader /> : <Onboarding {...props} />}
+      {shouldRenderLoader ? <Loading /> : <Onboarding {...props} />}
     </S.StyledWrapper>
   );
 };

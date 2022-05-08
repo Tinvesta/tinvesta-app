@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout, Loader } from '@ui';
+import { CenterBlockLayout, Loading } from '@ui';
 
 import { getLikesAction } from './api';
 import S from './likes.styles';
@@ -17,7 +17,7 @@ export const Likes = (): JSX.Element => {
   if (isLoading) {
     return (
       <CenterBlockLayout>
-        <Loader size="large" />
+        <Loading />
       </CenterBlockLayout>
     );
   }

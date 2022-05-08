@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout, Loader } from '@ui';
+import { Loading } from '@ui';
 
 import { getMatchesAction } from './api';
 import S from './matches.styles';
@@ -15,11 +15,7 @@ export const Matches = (): JSX.Element => {
   }, []);
 
   if (isLoading) {
-    return (
-      <CenterBlockLayout>
-        <Loader size="large" />
-      </CenterBlockLayout>
-    );
+    return <Loading />;
   }
 
   return (

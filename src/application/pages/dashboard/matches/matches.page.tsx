@@ -3,7 +3,7 @@ import { useEffect } from 'react';
 
 import { Matches } from '@domain';
 
-import { Loader } from '@ui';
+import { Loading } from '@ui';
 
 import { useDeviceDetect, useUser } from '@utils';
 
@@ -31,7 +31,7 @@ export const MatchesPage = (): JSX.Element => {
   const shouldRenderLoader = !user || isLoading || !user?.client_type_id;
 
   if (shouldRenderLoader) {
-    return <Loader />;
+    return <Loading />;
   }
 
   const DashboardLayout = deviceData.isSmallerThanLG
