@@ -24,7 +24,7 @@ export const Likes = (): JSX.Element => {
     return (
       <Empty
         actionButtonProps={{
-          label: 'Discover New Startups / Investors',
+          label: 'Discover New Startups',
           linkTo: ERoutes.DASHBOARD_DISCOVER,
         }}
         label="You have no likes yet"
