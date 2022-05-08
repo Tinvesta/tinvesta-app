@@ -37,14 +37,17 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
             sx={{ width: imageSize, height: imageSize, cursor: 'pointer' }}
           />
         </Link>
-        <Image
-          priority
-          alt="Tinvesta"
-          height={imageSize}
-          objectFit="fill"
-          src="/images/brandmark-transparent-white.png"
-          width={imageSize}
-        />
+        <Link passHref href={ERoutes.DASHBOARD_DISCOVER}>
+          <Image
+            priority
+            alt="Tinvesta"
+            height={imageSize}
+            objectFit="fill"
+            src="/images/brandmark-transparent-white.png"
+            style={{ cursor: 'pointer' }}
+            width={imageSize}
+          />
+        </Link>
         <IconButton color="primary" size="small" onClick={logout}>
           <LogoutIcon />
         </IconButton>

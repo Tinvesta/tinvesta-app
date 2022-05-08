@@ -30,14 +30,17 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
       <S.StyledAsideWrapper>
         <span>
           <S.StyledLogoWrapper>
-            <Image
-              priority
-              alt="Tinvesta"
-              height={50}
-              objectFit="fill"
-              src="/images/brandmark-transparent-white.png"
-              width={50}
-            />
+            <Link passHref href={ERoutes.DASHBOARD_DISCOVER}>
+              <Image
+                priority
+                alt="Tinvesta"
+                height={50}
+                objectFit="fill"
+                src="/images/brandmark-transparent-white.png"
+                style={{ cursor: 'pointer' }}
+                width={50}
+              />
+            </Link>
           </S.StyledLogoWrapper>
           <S.StyledUserInfoWrapper>
             <Link passHref href={ERoutes.DASHBOARD_PROFILE}>
