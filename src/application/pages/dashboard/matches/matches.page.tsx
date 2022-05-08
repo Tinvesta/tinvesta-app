@@ -40,7 +40,7 @@ export const MatchesPage = (): JSX.Element => {
 
   return (
     <DashboardLayout>
-      <Matches />
+      <Matches clientTypeId={user.client_type_id as number} />
     </DashboardLayout>
   );
 };
