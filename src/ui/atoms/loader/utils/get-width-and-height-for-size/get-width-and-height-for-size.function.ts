@@ -1,7 +1,7 @@
 const sizeMapping = {
   small: {
-    width: 80,
-    height: 80,
+    width: 90,
+    height: 90,
   },
   medium: {
     width: 140,
