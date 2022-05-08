@@ -113,7 +113,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                   <S.StyledSubscriptionPaperButton
                     endIcon={<ArrowForwardIcon />}
                     loading={isLoading || isSubscriptionActionLoading}
-                    variant="outlined"
+                    variant="contained"
                     onClick={processSubscription(_plan.id)}
                   >
                     {
@@ -127,7 +127,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                   <S.StyledSubscriptionPaperButton
                     endIcon={<ArrowForwardIcon />}
                     loading={isLoading || isStripePortalActionLoading}
-                    variant="outlined"
+                    variant="contained"
                     onClick={loadStripePortal}
                   >
                     {translations.componentDashboardSubscriptionManageButton}

@@ -117,7 +117,7 @@ const UploadImagesComponent = (
           title={translations.componentUploadImagesModalTitle}
         />
       </Modal>
-      <Grid container rowSpacing={4} xs={12}>
+      <Grid container rowSpacing={4}>
         {repeatComponent((_index) => {
           const currentElement = scaledImages[_index] || '';
 
