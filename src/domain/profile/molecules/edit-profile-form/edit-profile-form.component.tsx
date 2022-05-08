@@ -1,9 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import { useMutation, useQuery } from 'react-query';
 import { toast } from 'react-toastify';
 
-import { isStartupProfile, useTranslation, useUser } from '@utils';
+import { isStartupProfile, useSetState, useTranslation, useUser } from '@utils';
 
 import { STARTUP_CLIENT_TYPE_ID } from '@constants';
 
@@ -30,21 +30,23 @@ export const EditProfileForm = ({
   teamSizes,
 }: IEditProfileFormProps): JSX.Element => {
   const { user } = useUser();
+  const translations = useTranslation(translationStrings);
+  const [defaultValues, setDefaultValues] = useSetState(defaultFormFieldsValues);
+
   const {
     data: profileDetailsActionData,
     isLoading: isProfileDetailsActionLoading,
     refetch: refetchProfileDetailsAction,
   } = useQuery([PROFILE_DETAILS_ACTION_QUERY_KEY, user?.id], profileDetailsAction(user?.id));
-  const translations = useTranslation(translationStrings);
-  const [defaultValues, setDefaultValues] = useState(defaultFormFieldsValues);
+
+  const { isLoading: isUpdateProfileActionLoading, mutateAsync: mutateAsyncUpdateProfileAction } =
+    useMutation(updateProfileAction);
+
   const { control, formState, handleSubmit, reset, setValue } = useForm<IEditProfileFormFieldsData>(
     {
       defaultValues,
     },
   );
-
-  const { isLoading: isUpdateProfileActionLoading, mutateAsync: mutateAsyncUpdateProfileAction } =
-    useMutation(updateProfileAction);
 
   const isStartup = isStartupProfile(clientTypeId);
 
@@ -78,8 +80,7 @@ export const EditProfileForm = ({
           shouldValidate: true,
         });
 
-        setDefaultValues((prev) => ({
-          ...prev,
+        setDefaultValues({
           images: profileDetails.avatars,
           location: profileDetails.location,
           lastName: profileDetails.lastName,
@@ -95,7 +96,7 @@ export const EditProfileForm = ({
           investmentStageTypeIds: profileDetails.investmentStageTypes,
           investorProfileTypeId: profileDetails.investorProfileTypeId || '',
           whyStartupShouldMatchWithYou: profileDetails.whyStartupShouldMatchWithYou,
-        }));
+        });
       } else {
         setValue('startupClaim', profileDetails.startupClaim || '', {
           shouldValidate: true,
@@ -111,8 +112,7 @@ export const EditProfileForm = ({
           shouldValidate: true,
         });
 
-        setDefaultValues((prev) => ({
-          ...prev,
+        setDefaultValues({
           images: profileDetails.avatars,
           location: profileDetails.location,
           lastName: profileDetails.lastName,
@@ -129,7 +129,7 @@ export const EditProfileForm = ({
           missionStatement: profileDetails.missionStatement || '',
           investmentStageTypeIds: profileDetails.investmentStageTypes,
           startupProfileCreatorTypeId: profileDetails.startupProfileCreatorTypeId || '',
-        }));
+        });
       }
     }
   }, [JSON.stringify(profileDetailsActionData?.data), isProfileDetailsActionLoading]);
