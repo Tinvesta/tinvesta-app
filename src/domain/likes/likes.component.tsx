@@ -4,13 +4,20 @@ import { useMutation } from 'react-query';
 
 import { Empty, Loading } from '@ui';
 
+import { isStartupProfile, useTranslation } from '@utils';
+
 import { ERoutes } from '@enums';
 
 import { getLikesAction } from './api';
+import { translationStrings } from './likes.defaults';
 import S from './likes.styles';
+import { ILikesProps } from './likes.types';
 
-export const Likes = (): JSX.Element => {
+export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
+  const translations = useTranslation(translationStrings);
   const { data, isLoading, mutate } = useMutation(getLikesAction);
+
+  const isStartup = isStartupProfile(clientTypeId);
 
   useEffect(() => {
     mutate();
@@ -24,10 +31,12 @@ export const Likes = (): JSX.Element => {
     return (
       <Empty
         actionButtonProps={{
-          label: 'Discover New Startups',
+          label: isStartup
+            ? translations.componentDashboardLikesEmptyActionButtonInvestor
+            : translations.componentDashboardLikesEmptyActionButtonStartup,
           linkTo: ERoutes.DASHBOARD_DISCOVER,
         }}
-        label="You have no likes yet"
+        label={translations.componentDashboardLikesEmptyLabel}
       />
     );
   }

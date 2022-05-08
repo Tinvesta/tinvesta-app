@@ -40,7 +40,7 @@ export const LikesPage = (): JSX.Element => {
 
   return (
     <DashboardLayout>
-      <Likes />
+      <Likes clientTypeId={user.client_type_id as number} />
     </DashboardLayout>
   );
 };

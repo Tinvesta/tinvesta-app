@@ -1,1 +1,3 @@
-export interface ILikesProps {}
+export interface ILikesProps {
+  clientTypeId: number;
+}
