@@ -1,1 +1,3 @@
-export interface IMatchesProps {}
+export interface IMatchesProps {
+  clientTypeId: number;
+}
