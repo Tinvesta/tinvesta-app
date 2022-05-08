@@ -55,7 +55,7 @@ export const Home = (): JSX.Element => {
               matchmaking app for start-ups and investors all over the world
             </Typography>
             <Button size="large" variant="outlined" onClick={onSignInButtonClick}>
-              {!isSignedIn ? 'Create an account' : 'Sign In'}
+              Create an account
             </Button>
           </S.StyledSubHeaderWrapper>
         </>
