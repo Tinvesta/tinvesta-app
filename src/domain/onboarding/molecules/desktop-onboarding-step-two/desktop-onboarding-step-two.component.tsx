@@ -60,7 +60,7 @@ export const DesktopOnboardingStepTwo = ({
         />
       </Grid>
       <Grid item xs={7}>
-        <Grid container flexDirection="column" justifyContent="center" rowSpacing={3} xs={12}>
+        <Grid container flexDirection="column" justifyContent="center" rowSpacing={3}>
           <Grid item xs={12}>
             <SelectWithController
               controllerProps={{
