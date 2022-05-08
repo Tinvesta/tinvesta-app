@@ -1,6 +1,6 @@
 import { dashboardDiscoverPage } from '@application';
 
-const { DiscoverPage, getServerSideProps } = dashboardDiscoverPage;
+const { DiscoverPage } = dashboardDiscoverPage;
 
 // eslint-disable-next-line no-restricted-exports
-export { DiscoverPage as default, getServerSideProps };
+export { DiscoverPage as default };
