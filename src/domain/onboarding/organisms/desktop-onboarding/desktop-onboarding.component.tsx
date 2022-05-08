@@ -5,7 +5,7 @@ import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
-import { CenterBlockLayout, Loader } from '@ui';
+import { Loading } from '@ui';
 
 import { useConfirmationModal, useTranslation, useUser } from '@utils';
 
@@ -106,7 +106,7 @@ export const DesktopOnboarding = ({
 
   if (isProfileLoading || !user?.contact_email || current.context.stepOneData.contactEmail === '') {
     return (
-      <CenterBlockLayout>
+      <Loading>
         <Image
           priority
           alt="Tinvesta"
@@ -114,8 +114,7 @@ export const DesktopOnboarding = ({
           objectFit="cover"
           src="/images/desktop-onboarding-background.svg"
         />
-        <Loader size="large" />
-      </CenterBlockLayout>
+      </Loading>
     );
   }
 
