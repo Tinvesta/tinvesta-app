@@ -1,3 +1,4 @@
+export * from './empty/empty.component';
 export * from './select/select.component';
 export * from './loader/loader.component';
 export * from './autocomplete/autocomplete.component';

@@ -2,7 +2,9 @@ import Image from 'next/image';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout, Loading } from '@ui';
+import { Empty, Loading } from '@ui';
+
+import { ERoutes } from '@enums';
 
 import { getLikesAction } from './api';
 import S from './likes.styles';
@@ -15,10 +17,18 @@ export const Likes = (): JSX.Element => {
   }, []);
 
   if (isLoading) {
+    return <Loading />;
+  }
+
+  if (!data?.data || data.data.length === 0) {
     return (
-      <CenterBlockLayout>
-        <Loading />
-      </CenterBlockLayout>
+      <Empty
+        actionButtonProps={{
+          label: 'Discover New Startups',
+          linkTo: ERoutes.DASHBOARD_DISCOVER,
+        }}
+        label="You have no likes yet"
+      />
     );
   }
 
