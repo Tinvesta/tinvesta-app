@@ -30,13 +30,13 @@ export const MatchesPage = (): JSX.Element => {
 
   const shouldRenderLoader = !user || isLoading || !user?.client_type_id;
 
-  const DashboardLayout = deviceData.isSmallerThanLG
-    ? MobileDashboardLayout
-    : DesktopDashboardLayout;
-
   if (shouldRenderLoader) {
     return <Loader />;
   }
+
+  const DashboardLayout = deviceData.isSmallerThanLG
+    ? MobileDashboardLayout
+    : DesktopDashboardLayout;
 
   return (
     <DashboardLayout>
