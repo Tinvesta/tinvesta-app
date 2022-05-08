@@ -4,7 +4,7 @@ import Image from 'next/image';
 import { ILoaderProps } from './loader.types';
 import { getWidthAndHeightForSize } from './utils';
 
-const SCALE = 10;
+const SCALE = 5;
 
 export const Loader = ({ size = 'medium' }: ILoaderProps): JSX.Element => {
   const theme = useTheme();
