@@ -53,16 +53,14 @@ export const ProfilePage = (props: IProfileProps): JSX.Element => {
     ? MobileDashboardLayout
     : DesktopDashboardLayout;
 
+  if (shouldRenderLoader) {
+    return <Loader />;
+  }
+
   return (
-    <>
-      {shouldRenderLoader ? (
-        <Loader />
-      ) : (
-        <DashboardLayout>
-          <Profile {...props} clientTypeId={user.client_type_id as number} />
-        </DashboardLayout>
-      )}
-    </>
+    <DashboardLayout>
+      <Profile {...props} clientTypeId={user.client_type_id as number} />
+    </DashboardLayout>
   );
 };
 
