@@ -54,7 +54,7 @@ export const Discover = (): JSX.Element => {
 
   return (
     <>
-      <Modal disableAutoFocus disableEnforceFocus onClose={onModalClose}>
+      <Modal onClose={onModalClose}>
         <MatchModalContent onClose={onModalClose} />
       </Modal>
       <CenterBlockLayout>
