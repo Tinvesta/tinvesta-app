@@ -1,11 +1,14 @@
+import * as R from 'ramda';
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
 
-import { hasOwnProperty } from '@utils';
+import { convertObjectKeysToCamelCase, hasOwnProperty } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
 import { EApiError } from '@enums';
+
+import { IProfileDetails } from '@interfaces';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
@@ -54,6 +57,12 @@ const updateLikeRecord = async (
   }
 
   return data[0];
+};
+
+const parseProfileDetails = (profileData: IProfileDetails) => {
+  const parsedProfileData = convertObjectKeysToCamelCase(profileData);
+
+  return R.pick(['contactEmail', 'avatars'], parsedProfileData);
 };
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
@@ -112,8 +121,8 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
       return response.send({
         isMatch: updatedLike.liked,
-        loggedProfileDetails,
-        likedProfileDetails,
+        likedProfileDetails: parseProfileDetails(likedProfileDetails),
+        loggedProfileDetails: parseProfileDetails(loggedProfileDetails),
       });
     }
 
