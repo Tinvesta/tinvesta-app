@@ -25,7 +25,7 @@ const StyledImageWrapper = styled.div`
 `;
 
 const StyledButton = styled(Button)`
-  min-width: 200px;
+  min-width: 400px;
 `;
 
 const S = {
