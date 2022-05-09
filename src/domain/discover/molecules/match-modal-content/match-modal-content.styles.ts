@@ -24,14 +24,22 @@ const StyledImageWrapper = styled.div`
   border: 1px solid ${({ theme }) => theme.palette.divider};
 `;
 
+const StyledButtonsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(3)};
+  margin-top: ${({ theme }) => theme.spacing(2)};
+`;
+
 const StyledButton = styled(Button)`
-  min-width: 400px;
+  min-width: 350px;
 `;
 
 const S = {
   StyledButton,
   StyledWrapper,
   StyledImageWrapper,
+  StyledButtonsWrapper,
   StyledImageContainer,
 };
 
