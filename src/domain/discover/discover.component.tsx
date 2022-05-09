@@ -33,8 +33,6 @@ export const Discover = (): JSX.Element => {
   }
 
   const onVote = (profileId: string, vote: boolean) => {
-    console.log(data?.data.find((_profile) => _profile.id === profileId));
-
     mutateAsync({ profileId, vote }).then(({ data }) => {
       if (!loggedProfileDetails && data.loggedProfileDetails) {
         setLoggedProfileDetails(data.loggedProfileDetails);
