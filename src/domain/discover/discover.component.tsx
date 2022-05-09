@@ -55,7 +55,11 @@ export const Discover = (): JSX.Element => {
   return (
     <>
       <Modal onClose={onModalClose}>
-        <MatchModalContent onClose={onModalClose} />
+        <MatchModalContent
+          likedProfileDetails={likedProfileDetails}
+          loggedProfileDetails={loggedProfileDetails}
+          onClose={onModalClose}
+        />
       </Modal>
       <CenterBlockLayout>
         <MotionCardsStack onVote={onVote}>
