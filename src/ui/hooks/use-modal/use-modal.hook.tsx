@@ -29,7 +29,13 @@ export const useModal = ({
     const finalOpenState = restProps.open === undefined ? isOpen : restProps.open;
 
     return (
-      <MuiModal onClose={handleClose} {...restProps} open={finalOpenState}>
+      <MuiModal
+        disableAutoFocus
+        disableEnforceFocus
+        onClose={handleClose}
+        {...restProps}
+        open={finalOpenState}
+      >
         <S.StyledContentWrapper>
           <>
             {withCloseIcon && <S.StyledCloseIcon onClick={onCloseIconClick} />}
