@@ -8,8 +8,8 @@ import { MotionCardsStack } from './atoms';
 import { Card } from './molecules';
 
 export const Discover = (): JSX.Element => {
-  const { data, isLoading, mutate } = useMutation(discoverRecordsAction);
   const { mutateAsync } = useMutation(likeProfileAction);
+  const { data, isLoading, mutate } = useMutation(discoverRecordsAction);
 
   useEffect(() => {
     mutate();
@@ -19,7 +19,11 @@ export const Discover = (): JSX.Element => {
     return <Loading />;
   }
 
-  const onVote = (profileId: string, vote: boolean) => mutateAsync({ profileId, vote });
+  const onVote = (profileId: string, vote: boolean) => {
+    console.log(data?.data.find((_profile) => _profile.id === profileId));
+
+    mutateAsync({ profileId, vote }).then(() => mutate());
+  };
 
   return (
     <CenterBlockLayout>

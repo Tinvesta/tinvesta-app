@@ -96,7 +96,28 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       vote,
     );
 
-    response.send({ isMatch: updatedLike.liked });
+    let likedProfileDetails;
+    let loggedProfileDetails;
+
+    if (updatedLike.liked) {
+      const [{ data: likedUserDetails }, { data: loggedUserDetails }] = await Promise.all([
+        supabaseInstance
+          .rpc('profile_details', {
+            profile_id_input: loggedUserId,
+          })
+          .single(),
+        supabaseInstance
+          .rpc('profile_details', {
+            profile_id_input: profileIdToLike,
+          })
+          .single(),
+      ]);
+
+      likedProfileDetails = likedUserDetails;
+      loggedProfileDetails = loggedUserDetails;
+    }
+
+    response.send({ isMatch: updatedLike.liked, loggedProfileDetails, likedProfileDetails });
 
     return;
   }
