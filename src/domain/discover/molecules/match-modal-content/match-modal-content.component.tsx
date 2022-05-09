@@ -5,7 +5,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { Loading } from '@ui';
 
-import { useTranslation } from '@utils';
+import { useDeviceDetect, useTranslation } from '@utils';
 
 import { translationStrings } from './match-modal-content.defaults';
 import S from './match-modal-content.styles';
@@ -16,6 +16,7 @@ export const MatchModalContent = ({
   loggedProfileDetails,
   onClose,
 }: IMatchModalContentProps): JSX.Element => {
+  const { deviceData } = useDeviceDetect();
   const [copied, setCopied] = useState(false);
   const translations = useTranslation(translationStrings);
 
@@ -36,9 +37,23 @@ export const MatchModalContent = ({
 
   const onCopy = () => setCopied(true);
 
+  const getHeadingVariant = () => {
+    if (deviceData.isSmallerThanXS) {
+      return 'h4';
+    }
+
+    if (deviceData.isSmallerThanSM) {
+      return 'h3';
+    }
+
+    return 'h2';
+  };
+
+  const buttonSize = deviceData.isSmallerThanXS ? 'medium' : 'large';
+
   return (
     <S.StyledWrapper>
-      <Typography variant="h2">
+      <Typography variant={getHeadingVariant()}>
         {translations.componentDashboardDiscoverMatchModalContentHeader}
       </Typography>
       <S.StyledImageContainer>
@@ -62,15 +77,15 @@ export const MatchModalContent = ({
         </S.StyledImageWrapper>
       </S.StyledImageContainer>
       <S.StyledButtonsWrapper>
-        <S.StyledButton size="large" variant="contained" onClick={sendEmail}>
+        <S.StyledButton size={buttonSize} variant="contained" onClick={sendEmail}>
           {translations.componentDashboardDiscoverMatchModalContentButtonsSendEmail}
         </S.StyledButton>
         <CopyToClipboard text={likedProfileDetails.contactEmail} onCopy={onCopy}>
-          <S.StyledButton disabled={copied} size="large" variant="contained">
+          <S.StyledButton disabled={copied} size={buttonSize} variant="contained">
             {translations.componentDashboardDiscoverMatchModalContentButtonsClipboard}
           </S.StyledButton>
         </CopyToClipboard>
-        <S.StyledButton size="large" variant="outlined" onClick={onClose}>
+        <S.StyledButton size={buttonSize} variant="outlined" onClick={onClose}>
           {translations.componentDashboardDiscoverMatchModalContentButtonsKeepSwiping}
         </S.StyledButton>
       </S.StyledButtonsWrapper>
