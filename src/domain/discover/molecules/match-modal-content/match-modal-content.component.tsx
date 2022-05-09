@@ -15,6 +15,9 @@ export const MatchModalContent = ({
     return <Loading />;
   }
 
+  const sendEmail = () =>
+    window.open(`mailto:${likedProfileDetails.contactEmail}?subject=Tinvesta -`);
+
   return (
     <S.StyledWrapper>
       <Typography variant="h2">It&apos;s a match!</Typography>
@@ -38,7 +41,7 @@ export const MatchModalContent = ({
           />
         </S.StyledImageWrapper>
       </S.StyledImageContainer>
-      <S.StyledButton size="large" variant="contained" onClick={onClose}>
+      <S.StyledButton size="large" variant="contained" onClick={sendEmail}>
         Write an email
       </S.StyledButton>
       <S.StyledButton size="large" variant="outlined" onClick={onClose}>
