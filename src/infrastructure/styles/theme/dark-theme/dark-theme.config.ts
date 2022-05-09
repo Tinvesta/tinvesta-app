@@ -58,7 +58,7 @@ export const darkTheme = createTheme({
     tooltip: 40,
   },
   shape: {
-    borderRadius: 10,
+    borderRadius: 0,
   },
   spacing: [0, 4, 8, 16, 32, 64, 128, 256, 512],
   breakpoints: {
