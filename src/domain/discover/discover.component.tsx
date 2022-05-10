@@ -7,9 +7,10 @@ import { IProfileDetails } from '@interfaces';
 
 import { discoverRecordsAction, likeProfileAction } from './api';
 import { MotionCardsStack } from './atoms';
+import { IDiscoverProps } from './discover.types';
 import { Card, MatchModalContent } from './molecules';
 
-export const Discover = (): JSX.Element => {
+export const Discover = (props: IDiscoverProps): JSX.Element => {
   const { mutateAsync } = useMutation(likeProfileAction);
   const { data, isLoading, mutate } = useMutation(discoverRecordsAction);
 
@@ -61,7 +62,7 @@ export const Discover = (): JSX.Element => {
       </Modal>
       <CenterBlockLayout>
         <MotionCardsStack onVote={onVote}>
-          {data?.data.map((_record) => <Card key={_record.id} record={_record} />) || []}
+          {data?.data.map((_record) => <Card key={_record.id} record={_record} {...props} />) || []}
         </MotionCardsStack>
       </CenterBlockLayout>
     </>
