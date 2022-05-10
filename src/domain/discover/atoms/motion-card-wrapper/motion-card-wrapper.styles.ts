@@ -36,7 +36,7 @@ const StyledFavouriteIconButtonWrapper = styled(IconButton)`
   z-index: 1;
   border: 1px solid;
   position: absolute;
-  right: ${({ theme }) => theme.spacing(25)};
+  right: ${({ theme }) => theme.spacing(27)};
   bottom: ${({ theme }) => theme.spacing(4)};
 
   &.MuiIconButton-root {

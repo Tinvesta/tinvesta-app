@@ -5,7 +5,7 @@ import {
   MonetizationOn as MonetizationOnIcon,
   PieChart as PieChartIcon,
 } from '@mui/icons-material';
-import { Chip, Typography } from '@mui/material';
+import { Typography } from '@mui/material';
 import Image from 'next/image';
 
 import {
@@ -18,6 +18,7 @@ import {
   useUser,
 } from '@utils';
 
+import { transformNumberArrayToChips } from '../../utils';
 import { translationStrings } from './card.defaults';
 import S from './card.styles';
 import { ICardProps } from './card.types';
@@ -49,67 +50,22 @@ export const Card = ({
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
 
   const renderStartupUserInfo = () => {
-    const investmentSizeChips = record.investmentSizes.reduce<JSX.Element[]>(
-      (_accumulator, _investmentSize) => {
-        if (user?.investment_sizes?.includes(_investmentSize)) {
-          const chipLabel = investmentSizesDropdownOptions.find(
-            (_option) => _option.value === _investmentSize,
-          )?.label;
-
-          if (!chipLabel) {
-            return _accumulator;
-          }
-
-          return [
-            ..._accumulator,
-            <Chip key={chipLabel as string} label={chipLabel} variant="filled" />,
-          ];
-        }
-
-        return _accumulator;
-      },
-      [],
+    const teamSizeChips = transformNumberArrayToChips(
+      user?.team_sizes,
+      record.teamSizes,
+      teamSizesDropdownOptions,
     );
 
-    const teamSizeChips = record.teamSizes.reduce<JSX.Element[]>((_accumulator, _teamSize) => {
-      if (user?.team_sizes?.includes(_teamSize)) {
-        const chipLabel = teamSizesDropdownOptions.find(
-          (_option) => _option.value === _teamSize,
-        )?.label;
+    const investmentSizeChips = transformNumberArrayToChips(
+      user?.investment_sizes,
+      record.investmentSizes,
+      investmentSizesDropdownOptions,
+    );
 
-        if (!chipLabel) {
-          return _accumulator;
-        }
-
-        return [
-          ..._accumulator,
-          <Chip key={chipLabel as string} label={chipLabel} variant="filled" />,
-        ];
-      }
-
-      return _accumulator;
-    }, []);
-
-    const investmentStageTypeChips = record.investmentStageTypes.reduce<JSX.Element[]>(
-      (_accumulator, _investmentStageType) => {
-        if (user?.investment_stage_types?.includes(_investmentStageType)) {
-          const chipLabel = investmentStageTypesDropdownOptions.find(
-            (_option) => _option.value === _investmentStageType,
-          )?.label;
-
-          if (!chipLabel) {
-            return _accumulator;
-          }
-
-          return [
-            ..._accumulator,
-            <Chip key={chipLabel as string} label={chipLabel} variant="filled" />,
-          ];
-        }
-
-        return _accumulator;
-      },
-      [],
+    const investmentStageTypeChips = transformNumberArrayToChips(
+      user?.investment_stage_types,
+      record.investmentStageTypes,
+      investmentStageTypesDropdownOptions,
     );
 
     return (
@@ -147,70 +103,22 @@ export const Card = ({
   };
 
   const renderInvestorUserInfo = () => {
-    const investmentSizeChips = record.investmentSizes.reduce<JSX.Element[]>(
-      (_accumulator, _investmentSize) => {
-        if (user?.investment_sizes?.includes(_investmentSize)) {
-          const chipLabel = investmentSizesDropdownOptions.find(
-            (_option) => _option.value === _investmentSize,
-          )?.label;
-
-          if (!chipLabel) {
-            return _accumulator;
-          }
-
-          return [
-            ..._accumulator,
-            <Chip key={chipLabel as string} label={chipLabel} variant="filled" />,
-          ];
-        }
-
-        return _accumulator;
-      },
-      [],
+    const investmentSizeChips = transformNumberArrayToChips(
+      user?.investment_sizes,
+      record.investmentSizes,
+      investmentSizesDropdownOptions,
     );
 
-    const investmentStageTypeChips = record.investmentStageTypes.reduce<JSX.Element[]>(
-      (_accumulator, _investmentStageType) => {
-        if (user?.investment_stage_types?.includes(_investmentStageType)) {
-          const chipLabel = investmentStageTypesDropdownOptions.find(
-            (_option) => _option.value === _investmentStageType,
-          )?.label;
-
-          if (!chipLabel) {
-            return _accumulator;
-          }
-
-          return [
-            ..._accumulator,
-            <Chip key={chipLabel as string} label={chipLabel} variant="filled" />,
-          ];
-        }
-
-        return _accumulator;
-      },
-      [],
+    const investorDemandTypeChips = transformNumberArrayToChips(
+      user?.investment_stage_types,
+      record.investmentStageTypes,
+      investorDemandTypesDropdownOptions,
     );
 
-    const investorDemandTypeChips = record.investmentStageTypes.reduce<JSX.Element[]>(
-      (_accumulator, _investorDemandType) => {
-        if (user?.investment_stage_types?.includes(_investorDemandType)) {
-          const chipLabel = investorDemandTypesDropdownOptions.find(
-            (_option) => _option.value === _investorDemandType,
-          )?.label;
-
-          if (!chipLabel) {
-            return _accumulator;
-          }
-
-          return [
-            ..._accumulator,
-            <Chip key={chipLabel as string} label={chipLabel} variant="filled" />,
-          ];
-        }
-
-        return _accumulator;
-      },
-      [],
+    const investmentStageTypeChips = transformNumberArrayToChips(
+      user?.investment_stage_types,
+      record.investmentStageTypes,
+      investmentStageTypesDropdownOptions,
     );
 
     return (
