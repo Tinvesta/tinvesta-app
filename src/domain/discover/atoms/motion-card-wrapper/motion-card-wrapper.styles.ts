@@ -36,8 +36,8 @@ const StyledFavouriteIconButtonWrapper = styled(IconButton)`
   z-index: 1;
   border: 1px solid;
   position: absolute;
-  right: ${({ theme }) => theme.spacing(20)};
-  bottom: ${({ theme }) => theme.spacing(5)};
+  right: ${({ theme }) => theme.spacing(25)};
+  bottom: ${({ theme }) => theme.spacing(4)};
 
   &.MuiIconButton-root {
     padding: ${({ theme }) => theme.spacing(4)};
@@ -53,8 +53,8 @@ const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
   z-index: 1;
   border: 1px solid;
   position: absolute;
-  bottom: ${({ theme }) => theme.spacing(5)};
-  left: calc(${({ theme }) => theme.spacing(20)} + 10px);
+  bottom: ${({ theme }) => theme.spacing(4)};
+  left: calc(${({ theme }) => theme.spacing(25)} + 10px);
 
   &.MuiIconButton-root {
     padding: ${({ theme }) => theme.spacing(4)};

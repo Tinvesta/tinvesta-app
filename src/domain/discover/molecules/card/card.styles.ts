@@ -17,7 +17,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledImageWrapper = styled.div`
-  width: 500px;
+  width: 450px;
   height: 600px;
   position: absolute;
 `;
@@ -44,7 +44,7 @@ const StyledUserInfoWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   gap: ${({ theme }) => theme.spacing(3)};
-  padding: ${({ theme }) => theme.spacing(0, 3, 30, 3)};
+  padding: ${({ theme }) => theme.spacing(0, 3, 25, 3)};
 `;
 
 const StyledUserInfoGroupWrapper = styled.div`
