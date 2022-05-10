@@ -53,8 +53,8 @@ const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
   z-index: 1;
   border: 1px solid;
   position: absolute;
+  left: ${({ theme }) => theme.spacing(25)};
   bottom: ${({ theme }) => theme.spacing(4)};
-  left: calc(${({ theme }) => theme.spacing(25)} + 10px);
 
   &.MuiIconButton-root {
     padding: ${({ theme }) => theme.spacing(4)};
