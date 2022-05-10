@@ -43,8 +43,8 @@ const StyledUserInfoWrapper = styled.div`
   position: absolute;
   flex-direction: column;
   justify-content: flex-end;
-  gap: ${({ theme }) => theme.spacing(2)};
-  padding: ${({ theme }) => theme.spacing(0, 5, 25, 5)};
+  gap: ${({ theme }) => theme.spacing(3)};
+  padding: ${({ theme }) => theme.spacing(0, 3, 30, 3)};
 `;
 
 const StyledUserInfoGroupWrapper = styled.div`
