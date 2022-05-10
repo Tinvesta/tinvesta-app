@@ -36,11 +36,11 @@ const StyledFavouriteIconButtonWrapper = styled(IconButton)`
   z-index: 1;
   border: 1px solid;
   position: absolute;
-  right: ${({ theme }) => theme.spacing(5)};
-  bottom: ${({ theme }) => theme.spacing(3)};
+  right: ${({ theme }) => theme.spacing(20)};
+  bottom: ${({ theme }) => theme.spacing(5)};
 
   &.MuiIconButton-root {
-    padding: ${({ theme }) => theme.spacing(3)};
+    padding: ${({ theme }) => theme.spacing(5)};
 
     > .MuiSvgIcon-root {
       width: 1.5em;
@@ -53,11 +53,11 @@ const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
   z-index: 1;
   border: 1px solid;
   position: absolute;
-  bottom: ${({ theme }) => theme.spacing(3)};
-  left: calc(${({ theme }) => theme.spacing(5)} + 10px);
+  bottom: ${({ theme }) => theme.spacing(5)};
+  left: calc(${({ theme }) => theme.spacing(20)} + 10px);
 
   &.MuiIconButton-root {
-    padding: ${({ theme }) => theme.spacing(3)};
+    padding: ${({ theme }) => theme.spacing(5)};
 
     > .MuiSvgIcon-root {
       width: 1.5em;

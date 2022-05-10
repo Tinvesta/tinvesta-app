@@ -61,20 +61,10 @@ export const MotionCardWrapper = ({
         <HighlightOffOutlinedIcon color="error" />
       </S.StyledHighlightOffOutlinedIconWrapper>
       {children}
-      <S.StyledFavouriteIconButtonWrapper
-        color="success"
-        edge="start"
-        size="large"
-        onClick={markAsVoted}
-      >
+      <S.StyledFavouriteIconButtonWrapper color="success" onClick={markAsVoted}>
         <FavoriteOutlinedIcon />
       </S.StyledFavouriteIconButtonWrapper>
-      <S.StyledCloseOutlinedIconButtonWrapper
-        color="error"
-        edge="start"
-        size="large"
-        onClick={markAsNotVoted}
-      >
+      <S.StyledCloseOutlinedIconButtonWrapper color="error" onClick={markAsNotVoted}>
         <CloseOutlinedIcon />
       </S.StyledCloseOutlinedIconButtonWrapper>
     </S.StyledWrapper>

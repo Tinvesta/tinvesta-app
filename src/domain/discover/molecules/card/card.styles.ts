@@ -2,7 +2,7 @@ import styled from '@emotion/styled';
 import { linearGradient } from 'polished';
 
 const StyledWrapper = styled.div`
-  width: 400px;
+  width: 450px;
   height: 700px;
   display: flex;
   overflow: hidden;
@@ -16,7 +16,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledImageWrapper = styled.div`
-  width: 400px;
+  width: 500px;
   height: 600px;
   position: absolute;
 `;
@@ -38,9 +38,11 @@ const StyledUserInfoWrapper = styled.div`
   bottom: 0;
   z-index: 1;
   width: 100%;
-  height: 250px;
+  display: flex;
   position: absolute;
-  padding: ${({ theme }) => theme.spacing(3)};
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: ${({ theme }) => theme.spacing(0, 5, 25, 5)};
 `;
 
 const S = {
