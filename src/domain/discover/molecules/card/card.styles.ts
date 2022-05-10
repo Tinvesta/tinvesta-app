@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Typography } from '@mui/material';
 import { linearGradient } from 'polished';
 
 const StyledWrapper = styled.div`
@@ -42,7 +43,21 @@ const StyledUserInfoWrapper = styled.div`
   position: absolute;
   flex-direction: column;
   justify-content: flex-end;
+  gap: ${({ theme }) => theme.spacing(2)};
   padding: ${({ theme }) => theme.spacing(0, 5, 25, 5)};
+`;
+
+const StyledUserInfoGroupWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  gap: ${({ theme }) => theme.spacing(2)};
+`;
+
+const StyledUserInfoTypography = styled(Typography)`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
 `;
 
 const S = {
@@ -50,6 +65,8 @@ const S = {
   StyledImageWrapper,
   StyledImageGradient,
   StyledUserInfoWrapper,
+  StyledUserInfoTypography,
+  StyledUserInfoGroupWrapper,
 };
 
 export default S;

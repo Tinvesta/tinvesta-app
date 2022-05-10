@@ -53,11 +53,9 @@ export const DiscoverPage = (props: IDiscoverProps): JSX.Element => {
     ? MobileDashboardLayout
     : DesktopDashboardLayout;
 
-  console.log(props);
-
   return (
     <DashboardLayout>
-      <Discover />
+      <Discover {...props} />
     </DashboardLayout>
   );
 };

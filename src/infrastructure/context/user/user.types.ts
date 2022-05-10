@@ -5,7 +5,12 @@ export interface IUser extends User {
   company_name?: string;
   contact_email?: string;
   first_name?: string;
+  focus_markets?: number[];
+  industrial_sectors?: number[];
   interval?: string;
+  investment_sizes?: number[];
+  investment_stage_types?: number[];
+  investor_demand_types?: number[];
   investor_profile_type_id?: number;
   is_subscribed?: boolean;
   last_name?: string;
@@ -15,6 +20,7 @@ export interface IUser extends User {
   startup_claim?: string;
   startup_profile_creator_type_id?: number;
   stripe_customer?: string;
+  team_sizes?: number[];
   vision_statement?: string;
   why_startup_should_match_with_you?: string;
 }

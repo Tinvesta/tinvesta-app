@@ -40,7 +40,7 @@ const StyledFavouriteIconButtonWrapper = styled(IconButton)`
   bottom: ${({ theme }) => theme.spacing(5)};
 
   &.MuiIconButton-root {
-    padding: ${({ theme }) => theme.spacing(5)};
+    padding: ${({ theme }) => theme.spacing(4)};
 
     > .MuiSvgIcon-root {
       width: 1.5em;
@@ -57,7 +57,7 @@ const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
   left: calc(${({ theme }) => theme.spacing(20)} + 10px);
 
   &.MuiIconButton-root {
-    padding: ${({ theme }) => theme.spacing(5)};
+    padding: ${({ theme }) => theme.spacing(4)};
 
     > .MuiSvgIcon-root {
       width: 1.5em;
