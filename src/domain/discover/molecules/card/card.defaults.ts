@@ -13,4 +13,11 @@ export const translationStrings = [
   'common.investment.sizes.medium',
   'common.investment.sizes.large',
   'common.investment.sizes.very.large',
+  'common.investor.demand.types.talent',
+  'common.investor.demand.types.location',
+  'common.investor.demand.types.technology',
+  'common.investor.demand.types.co.founder',
+  'common.investor.demand.types.money.for.shares',
+  'common.investor.demand.types.network.and.support',
+  'common.investor.demand.types.debt.capital.without.shares',
 ] as const;
