@@ -1,6 +1,7 @@
 import { useQuery } from 'react-query';
 
-import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from './api';
+import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '@infrastructure';
+
 import S from './startup-details-preview.styles';
 import { IStartupDetailsPreviewProps } from './startup-details-preview.types';
 

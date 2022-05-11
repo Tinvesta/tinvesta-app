@@ -5,13 +5,11 @@ import { toast } from 'react-toastify';
 
 import { isStartupProfile, useSetState, useTranslation, useUser } from '@utils';
 
+import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '@infrastructure';
+
 import { STARTUP_CLIENT_TYPE_ID } from '@constants';
 
-import {
-  PROFILE_DETAILS_ACTION_QUERY_KEY,
-  profileDetailsAction,
-  updateProfileAction,
-} from '../../api';
+import { updateProfileAction } from '../../api';
 import { InvestorEditProfileForm, SectionWrapperLayout, StartupEditProfileForm } from '../../atoms';
 import { IEditProfileFormFieldsData } from '../../profile.types';
 import { defaultFormFieldsValues, translationStrings } from './edit-profile-form.defaults';
