@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Typography } from '@mui/material';
+import { IconButton, Typography } from '@mui/material';
 import { linearGradient } from 'polished';
 
 const StyledWrapper = styled.div`
@@ -35,6 +35,20 @@ const StyledImageGradient = styled.div`
     })}
 `;
 
+const StyledActionButtonsWrapper = styled.div`
+  display: flex;
+`;
+
+const StyledChipsAndActionsWrapper = styled.div`
+  display: flex;
+  align-items: flex-end;
+`;
+
+const StyledInfoIconButton = styled(IconButton)`
+  pointer-events: all;
+  height: fit-content;
+`;
+
 const StyledUserInfoWrapper = styled.div`
   bottom: 0;
   z-index: 1;
@@ -52,6 +66,7 @@ const StyledUserInfoGroupWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   gap: ${({ theme }) => theme.spacing(2)};
+  padding-bottom: ${({ theme }) => theme.spacing(1)};
 `;
 
 const StyledUserInfoTypography = styled(Typography)`
@@ -64,9 +79,12 @@ const S = {
   StyledWrapper,
   StyledImageWrapper,
   StyledImageGradient,
+  StyledInfoIconButton,
   StyledUserInfoWrapper,
   StyledUserInfoTypography,
   StyledUserInfoGroupWrapper,
+  StyledActionButtonsWrapper,
+  StyledChipsAndActionsWrapper,
 };
 
 export default S;

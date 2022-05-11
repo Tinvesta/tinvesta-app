@@ -1,6 +1,7 @@
 import {
   Autorenew as AutorenewIcon,
   Group as GroupIcon,
+  Info as InfoIcon,
   LocationCity as LocationCityIcon,
   MonetizationOn as MonetizationOnIcon,
   PieChart as PieChartIcon,
@@ -78,26 +79,33 @@ export const Card = ({
           <LocationCityIcon />
           {record.location}
         </S.StyledUserInfoTypography>
-        <S.StyledUserInfoGroupWrapper>
-          {teamSizeChips.length > 0 && (
-            <S.StyledUserInfoTypography variant="body1">
-              <GroupIcon />
-              {teamSizeChips}
-            </S.StyledUserInfoTypography>
-          )}
-          {investmentSizeChips.length > 0 && (
-            <S.StyledUserInfoTypography variant="body1">
-              <MonetizationOnIcon />
-              {investmentSizeChips}
-            </S.StyledUserInfoTypography>
-          )}
-          {investmentStageTypeChips.length > 0 && (
-            <S.StyledUserInfoTypography variant="body1">
-              <PieChartIcon />
-              {investmentStageTypeChips}
-            </S.StyledUserInfoTypography>
-          )}
-        </S.StyledUserInfoGroupWrapper>
+        <S.StyledChipsAndActionsWrapper>
+          <S.StyledUserInfoGroupWrapper>
+            {teamSizeChips.length > 0 && (
+              <S.StyledUserInfoTypography variant="body1">
+                <GroupIcon />
+                {teamSizeChips}
+              </S.StyledUserInfoTypography>
+            )}
+            {investmentSizeChips.length > 0 && (
+              <S.StyledUserInfoTypography variant="body1">
+                <MonetizationOnIcon />
+                {investmentSizeChips}
+              </S.StyledUserInfoTypography>
+            )}
+            {investmentStageTypeChips.length > 0 && (
+              <S.StyledUserInfoTypography variant="body1">
+                <PieChartIcon />
+                {investmentStageTypeChips}
+              </S.StyledUserInfoTypography>
+            )}
+          </S.StyledUserInfoGroupWrapper>
+          <S.StyledActionButtonsWrapper>
+            <S.StyledInfoIconButton color="primary" size="small">
+              <InfoIcon fontSize="large" />
+            </S.StyledInfoIconButton>
+          </S.StyledActionButtonsWrapper>
+        </S.StyledChipsAndActionsWrapper>
       </S.StyledUserInfoWrapper>
     );
   };
@@ -131,26 +139,33 @@ export const Card = ({
           <LocationCityIcon />
           {record.location}
         </S.StyledUserInfoTypography>
-        <S.StyledUserInfoGroupWrapper>
-          {investorDemandTypeChips.length > 0 && (
-            <S.StyledUserInfoTypography variant="body1">
-              <AutorenewIcon />
-              {investorDemandTypeChips}
-            </S.StyledUserInfoTypography>
-          )}
-          {investmentSizeChips.length > 0 && (
-            <S.StyledUserInfoTypography variant="body1">
-              <MonetizationOnIcon />
-              {investmentSizeChips}
-            </S.StyledUserInfoTypography>
-          )}
-          {investmentStageTypeChips.length > 0 && (
-            <S.StyledUserInfoTypography variant="body1">
-              <PieChartIcon />
-              {investmentStageTypeChips}
-            </S.StyledUserInfoTypography>
-          )}
-        </S.StyledUserInfoGroupWrapper>
+        <S.StyledChipsAndActionsWrapper>
+          <S.StyledUserInfoGroupWrapper>
+            {investorDemandTypeChips.length > 0 && (
+              <S.StyledUserInfoTypography variant="body1">
+                <AutorenewIcon />
+                {investorDemandTypeChips}
+              </S.StyledUserInfoTypography>
+            )}
+            {investmentSizeChips.length > 0 && (
+              <S.StyledUserInfoTypography variant="body1">
+                <MonetizationOnIcon />
+                {investmentSizeChips}
+              </S.StyledUserInfoTypography>
+            )}
+            {investmentStageTypeChips.length > 0 && (
+              <S.StyledUserInfoTypography variant="body1">
+                <PieChartIcon />
+                {investmentStageTypeChips}
+              </S.StyledUserInfoTypography>
+            )}
+          </S.StyledUserInfoGroupWrapper>
+          <S.StyledActionButtonsWrapper>
+            <S.StyledInfoIconButton color="primary" size="small">
+              <InfoIcon fontSize="large" />
+            </S.StyledInfoIconButton>
+          </S.StyledActionButtonsWrapper>
+        </S.StyledChipsAndActionsWrapper>
       </S.StyledUserInfoWrapper>
     );
   };
