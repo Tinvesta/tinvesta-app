@@ -6,6 +6,7 @@ export * from './upload-images/upload-images.component';
 export * from './particles-background/particles-background.component';
 export * from './location-autocomplete/location-autocomplete.component';
 export * from './horizontal-button-group/horizontal-button-group.component';
+export * from './startup-details-preview/startup-details-preview.component';
 export * from './linear-progress-with-label/linear-progress-with-label.component';
 
 export * from './select/select.types';

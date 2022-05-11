@@ -8,6 +8,9 @@ import {
 } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
+import { useState } from 'react';
+
+import { StartupDetailsPreview } from '@ui';
 
 import {
   isStartupProfile,
@@ -25,13 +28,19 @@ import S from './card.styles';
 import { ICardProps } from './card.types';
 
 export const Card = ({
+  focusMarkets,
+  industrialSectors,
   investmentSizes,
   investmentStageTypes,
   investorDemandTypes,
+  investorProfileTypes,
   record,
+  startupProfileCreatorTypes,
+  startupSectors,
   teamSizes,
 }: ICardProps) => {
   const { user } = useUser();
+  const [displayProfileDetails, setDisplayProfileDetails] = useState(false);
 
   const isStartup = isStartupProfile(record.clientTypeId);
 
@@ -49,6 +58,8 @@ export const Card = ({
     translations,
   );
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
+
+  const showProfileDetails = () => setDisplayProfileDetails(true);
 
   const renderStartupUserInfo = () => {
     const teamSizeChips = transformNumberArrayToChips(
@@ -101,7 +112,7 @@ export const Card = ({
             )}
           </S.StyledUserInfoGroupWrapper>
           <S.StyledActionButtonsWrapper>
-            <S.StyledInfoIconButton color="primary" size="small">
+            <S.StyledInfoIconButton color="primary" size="small" onClick={showProfileDetails}>
               <InfoIcon fontSize="large" />
             </S.StyledInfoIconButton>
           </S.StyledActionButtonsWrapper>
@@ -161,7 +172,7 @@ export const Card = ({
             )}
           </S.StyledUserInfoGroupWrapper>
           <S.StyledActionButtonsWrapper>
-            <S.StyledInfoIconButton color="primary" size="small">
+            <S.StyledInfoIconButton color="primary" size="small" onClick={showProfileDetails}>
               <InfoIcon fontSize="large" />
             </S.StyledInfoIconButton>
           </S.StyledActionButtonsWrapper>
@@ -170,19 +181,40 @@ export const Card = ({
     );
   };
 
+  const ProfileDetailsComponent = displayProfileDetails
+    ? StartupDetailsPreview
+    : StartupDetailsPreview;
+
   return (
     <S.StyledWrapper>
       <S.StyledImageWrapper>
         <S.StyledImageGradient />
-        <Image
-          alt="Profile image"
-          height={600}
-          objectFit="cover"
-          src={record.avatars[0]}
-          width={450}
-        />
+        {!displayProfileDetails && (
+          <Image
+            alt="Profile image"
+            height={600}
+            objectFit="cover"
+            src={record.avatars[0]}
+            width={450}
+          />
+        )}
       </S.StyledImageWrapper>
-      {isStartup ? renderStartupUserInfo() : renderInvestorUserInfo()}
+      {!displayProfileDetails ? (
+        <>{isStartup ? renderStartupUserInfo() : renderInvestorUserInfo()}</>
+      ) : (
+        <ProfileDetailsComponent
+          focusMarkets={focusMarkets}
+          industrialSectors={industrialSectors}
+          investmentSizes={investmentSizes}
+          investmentStageTypes={investmentStageTypes}
+          investorDemandTypes={investorDemandTypes}
+          investorProfileTypes={investorProfileTypes}
+          profileDetails={record}
+          startupProfileCreatorTypes={startupProfileCreatorTypes}
+          startupSectors={startupSectors}
+          teamSizes={teamSizes}
+        />
+      )}
     </S.StyledWrapper>
   );
 };
