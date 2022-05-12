@@ -41,7 +41,7 @@ export const darkTheme = createTheme({
     divider: color.gray[400],
   },
   typography: {
-    fontSize: 12,
+    fontSize: 16,
     fontFamily: 'Montserrat, sans-serif',
     button: {
       textTransform: 'none',
@@ -58,7 +58,7 @@ export const darkTheme = createTheme({
     tooltip: 40,
   },
   shape: {
-    borderRadius: 0,
+    borderRadius: 10,
   },
   spacing: [
     0, 4, 8, 12, 16, 20, 24, 28, 32, 36, 40, 44, 48, 52, 56, 60, 64, 68, 72, 76, 80, 84, 88, 92, 96,

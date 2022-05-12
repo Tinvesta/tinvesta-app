@@ -188,15 +188,8 @@ export const Card = ({
   return (
     <S.StyledWrapper>
       <S.StyledImageWrapper>
-        <S.StyledImageGradient />
         {!displayProfileDetails && (
-          <Image
-            alt="Profile image"
-            height={600}
-            objectFit="cover"
-            src={record.avatars[0]}
-            width={450}
-          />
+          <Image alt="Profile image" layout="fill" objectFit="cover" src={record.avatars[0]} />
         )}
       </S.StyledImageWrapper>
       {!displayProfileDetails ? (

@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import { IconButton, Typography } from '@mui/material';
-import { linearGradient } from 'polished';
+
+import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
-  width: 450px;
-  height: 700px;
+  width: 100%;
+  height: 100%;
   display: flex;
   overflow: hidden;
   position: relative;
@@ -14,34 +15,35 @@ const StyledWrapper = styled.div`
   justify-content: flex-start;
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   background-color: ${({ theme }) => theme.palette.grey[800]};
+
+  ${respondToMax.xmobile`
+    width: 100%;
+  `}
 `;
 
 const StyledImageWrapper = styled.div`
-  width: 450px;
-  height: 600px;
-  position: absolute;
-`;
-
-const StyledImageGradient = styled.div`
-  bottom: 0;
-  z-index: 1;
   width: 100%;
-  height: 300px;
   position: absolute;
-  ${({ theme }) =>
-    linearGradient({
-      colorStops: ['rgba(255,0,0,0) 0%', theme.palette.grey[800]],
-      toDirection: 'to bottom',
-    })}
+  height: calc(100% - 100px);
+
+  ${respondToMax.mobile`
+    height: calc(100% - 90px);
+  `}
+
+  ${respondToMax.xmobile`
+    height: calc(100% - 80px);
+  `}
 `;
 
 const StyledActionButtonsWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 const StyledChipsAndActionsWrapper = styled.div`
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
 `;
 
 const StyledInfoIconButton = styled(IconButton)`
@@ -58,7 +60,15 @@ const StyledUserInfoWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   gap: ${({ theme }) => theme.spacing(3)};
-  padding: ${({ theme }) => theme.spacing(0, 3, 25, 3)};
+  padding: ${({ theme }) => theme.spacing(0, 5, 25, 5)};
+
+  ${({ theme }) => respondToMax.mobile`
+    padding: ${theme.spacing(0, 4, 22, 4)};
+  `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    padding: ${theme.spacing(0, 4, 20, 4)};
+  `}
 `;
 
 const StyledUserInfoGroupWrapper = styled.div`
@@ -66,7 +76,7 @@ const StyledUserInfoGroupWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   gap: ${({ theme }) => theme.spacing(2)};
-  padding-bottom: ${({ theme }) => theme.spacing(1)};
+  padding-bottom: ${({ theme }) => theme.spacing(2)};
 `;
 
 const StyledUserInfoTypography = styled(Typography)`
@@ -78,7 +88,6 @@ const StyledUserInfoTypography = styled(Typography)`
 const S = {
   StyledWrapper,
   StyledImageWrapper,
-  StyledImageGradient,
   StyledInfoIconButton,
   StyledUserInfoWrapper,
   StyledUserInfoTypography,
