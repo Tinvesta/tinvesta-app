@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { IconButton, Typography } from '@mui/material';
-import { linearGradient } from 'polished';
 
 import { respondToMax } from '@infrastructure';
 
@@ -26,19 +25,6 @@ const StyledImageWrapper = styled.div`
   width: 100%;
   position: absolute;
   height: calc(100% - 100px);
-`;
-
-const StyledImageGradient = styled.div`
-  bottom: 0;
-  z-index: 1;
-  width: 100%;
-  height: 300px;
-  position: absolute;
-  ${({ theme }) =>
-    linearGradient({
-      colorStops: ['rgba(255,0,0,0) 0%', theme.palette.grey[800]],
-      toDirection: 'to bottom',
-    })}
 `;
 
 const StyledActionButtonsWrapper = styled.div`
@@ -86,7 +72,6 @@ const StyledUserInfoTypography = styled(Typography)`
 const S = {
   StyledWrapper,
   StyledImageWrapper,
-  StyledImageGradient,
   StyledInfoIconButton,
   StyledUserInfoWrapper,
   StyledUserInfoTypography,
