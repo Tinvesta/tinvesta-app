@@ -62,13 +62,14 @@ export const MotionCardWrapper = ({
       </S.StyledHighlightOffOutlinedIconWrapper>
       <S.StyledGradient />
       {children}
-      <S.StyledActionButtonsBackground />
-      <S.StyledFavouriteIconButtonWrapper color="success" onClick={markAsVoted}>
-        <FavoriteOutlinedIcon />
-      </S.StyledFavouriteIconButtonWrapper>
-      <S.StyledCloseOutlinedIconButtonWrapper color="error" onClick={markAsNotVoted}>
-        <CloseOutlinedIcon />
-      </S.StyledCloseOutlinedIconButtonWrapper>
+      <S.StyledActionButtonsWrapper>
+        <S.StyledCloseOutlinedIconButtonWrapper color="error" onClick={markAsNotVoted}>
+          <CloseOutlinedIcon />
+        </S.StyledCloseOutlinedIconButtonWrapper>
+        <S.StyledFavouriteIconButtonWrapper color="success" onClick={markAsVoted}>
+          <FavoriteOutlinedIcon />
+        </S.StyledFavouriteIconButtonWrapper>
+      </S.StyledActionButtonsWrapper>
     </S.StyledWrapper>
   );
 };

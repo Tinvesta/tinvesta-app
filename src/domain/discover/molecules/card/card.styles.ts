@@ -25,6 +25,14 @@ const StyledImageWrapper = styled.div`
   width: 100%;
   position: absolute;
   height: calc(100% - 100px);
+
+  ${respondToMax.mobile`
+    height: calc(100% - 90px);
+  `}
+
+  ${respondToMax.xmobile`
+    height: calc(100% - 80px);
+  `}
 `;
 
 const StyledActionButtonsWrapper = styled.div`
@@ -53,6 +61,14 @@ const StyledUserInfoWrapper = styled.div`
   justify-content: flex-end;
   gap: ${({ theme }) => theme.spacing(3)};
   padding: ${({ theme }) => theme.spacing(0, 5, 25, 5)};
+
+  ${({ theme }) => respondToMax.mobile`
+    padding: ${theme.spacing(0, 4, 22, 4)};
+  `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    padding: ${theme.spacing(0, 4, 20, 4)};
+  `}
 `;
 
 const StyledUserInfoGroupWrapper = styled.div`

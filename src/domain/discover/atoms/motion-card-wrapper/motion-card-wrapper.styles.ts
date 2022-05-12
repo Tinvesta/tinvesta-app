@@ -64,12 +64,29 @@ const StyledHighlightOffOutlinedIconWrapper = styled(motion.div)`
   }
 `;
 
-const StyledFavouriteIconButtonWrapper = styled(IconButton)`
+const StyledActionButtonsWrapper = styled.div`
+  bottom: 0;
   z-index: 1;
-  border: 1px solid;
+  width: 100%;
+  height: 100px;
+  display: flex;
   position: absolute;
-  right: ${({ theme }) => theme.spacing(25)};
-  bottom: ${({ theme }) => theme.spacing(4)};
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: ${({ theme }) => theme.palette.grey[800]};
+
+  ${respondToMax.mobile`
+    height: 90px;
+  `}
+
+  ${respondToMax.xmobile`
+    height: 80px;
+    justify-content: space-between;
+  `}
+`;
+
+const StyledFavouriteIconButtonWrapper = styled(IconButton)`
+  border: 1px solid;
 
   &.MuiIconButton-root {
     padding: ${({ theme }) => theme.spacing(4)};
@@ -96,11 +113,7 @@ const StyledFavouriteIconButtonWrapper = styled(IconButton)`
 `;
 
 const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
-  z-index: 1;
   border: 1px solid;
-  position: absolute;
-  left: ${({ theme }) => theme.spacing(25)};
-  bottom: ${({ theme }) => theme.spacing(4)};
 
   &.MuiIconButton-root {
     padding: ${({ theme }) => theme.spacing(4)};
@@ -138,21 +151,22 @@ const StyledGradient = styled.div`
       colorStops: ['rgba(255,0,0,0) 0%', theme.palette.grey[800]],
       toDirection: 'to bottom',
     })}
-`;
 
-const StyledActionButtonsBackground = styled.div`
-  bottom: 0;
-  z-index: 1;
-  width: 100%;
-  height: 100px;
-  position: absolute;
-  background-color: ${({ theme }) => theme.palette.grey[800]};
+  ${respondToMax.mobile`
+    bottom: 90px;
+    height: 275px;
+  `}
+
+  ${respondToMax.xmobile`
+    bottom: 80px;
+    height: 250px;
+  `}
 `;
 
 const S = {
   StyledWrapper,
   StyledGradient,
-  StyledActionButtonsBackground,
+  StyledActionButtonsWrapper,
   StyledFavouriteIconButtonWrapper,
   StyledCheckCircleOutlinedIconWrapper,
   StyledCloseOutlinedIconButtonWrapper,
