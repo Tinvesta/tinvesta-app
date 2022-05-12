@@ -19,6 +19,7 @@ export interface IUser extends User {
   profile_avatar_url?: string;
   startup_claim?: string;
   startup_profile_creator_type_id?: number;
+  startup_sectors?: number[];
   stripe_customer?: string;
   team_sizes?: number[];
   vision_statement?: string;

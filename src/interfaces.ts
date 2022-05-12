@@ -84,7 +84,7 @@ export interface IProfileDetails {
   missionStatement: string | null;
   profileAvatarUrl: string;
   startupClaim: string | null;
-  startupProfileCreatorTypeId: string | null;
+  startupProfileCreatorTypeId: number | null;
   startupSectors: number[];
   teamSizes: number[];
   visionStatement: string | null;
