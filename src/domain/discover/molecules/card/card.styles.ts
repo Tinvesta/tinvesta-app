@@ -67,7 +67,7 @@ const StyledUserInfoWrapper = styled.div`
   `}
 
   ${({ theme }) => respondToMax.xmobile`
-    padding: ${theme.spacing(0, 4, 20, 4)};
+    padding: ${theme.spacing(0, 3, 20, 3)};
   `}
 `;
 

@@ -46,9 +46,23 @@ const StyledImageWrapper = styled.div`
   height: 650px;
 `;
 
+const StyledContentWrapper = styled.div`
+  overflow: hidden;
+  padding: ${({ theme }) => theme.spacing(5)};
+
+  ${({ theme }) => respondToMax.mobile`
+    padding: ${theme.spacing(4)};
+  `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    padding: ${theme.spacing(3)};
+  `}
+`;
+
 const S = {
   StyledWrapper,
   StyledImageWrapper,
+  StyledContentWrapper,
 };
 
 export default S;
