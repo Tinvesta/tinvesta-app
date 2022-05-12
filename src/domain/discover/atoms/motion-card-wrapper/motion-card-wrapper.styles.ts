@@ -21,6 +21,11 @@ const StyledWrapper = styled(motion.div)`
     width: calc(100% - ${theme.spacing(10)});
     height: calc(100% - ${theme.spacing(10)});
   `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    width: calc(100% - ${theme.spacing(5)});
+    height: calc(100% - ${theme.spacing(5)});
+  `}
 `;
 
 const StyledCheckCircleOutlinedIconWrapper = styled(motion.div)`
