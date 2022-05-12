@@ -1,30 +1,121 @@
 import {
   Apartment as ApartmentIcon,
+  Business as BusinessIcon,
+  Factory as FactoryIcon,
   Flag as FlagIcon,
+  Group as GroupIcon,
   LocationCity as LocationCityIcon,
+  MonetizationOn as MonetizationOnIcon,
   Person as PersonIcon,
+  PieChart as PieChartIcon,
   RemoveRedEye as RemoveRedEyeIcon,
   Rocket as RocketIcon,
+  ScreenRotation as ScreenRotationIcon,
 } from '@mui/icons-material';
 import Image from 'next/image';
 import { useQuery } from 'react-query';
 
 import { ProfileDetailsPreviewLabel, Swiper, SwiperSlide } from '@ui';
 
+import {
+  mapFocusMarketsToDropdownOptions,
+  mapIndustrialSectorsToDropdownOptions,
+  mapInvestmentSizesToDropdownOptions,
+  mapInvestmentStageTypesToDropdownOptions,
+  mapStartupProfileCreatorTypesToDropdownOptions,
+  mapStartupSectorsToDropdownOptions,
+  mapTeamSizesToDropdownOptions,
+  useTranslation,
+  useUser,
+} from '@utils';
+
 import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '@infrastructure';
 
+import { translationStrings } from './startup-details-preview.defaults';
 import S from './startup-details-preview.styles';
 import { IStartupDetailsPreviewProps } from './startup-details-preview.types';
+import { transformNumberArrayToChips } from './utils';
 
 export const StartupDetailsPreview = ({
+  focusMarkets,
+  industrialSectors,
+  investmentSizes,
+  investmentStageTypes,
   profileDetails,
+  startupProfileCreatorTypes,
+  startupSectors,
+  teamSizes,
 }: IStartupDetailsPreviewProps): JSX.Element => {
+  const { user: loggedUserDetails } = useUser();
   const { data: fetchedProfileDetails } = useQuery(
     [PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetails.id],
     profileDetailsAction(profileDetails.id),
   );
 
+  const translations = useTranslation(translationStrings);
+  const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
+    startupSectors,
+    translations,
+  );
+  const investmentSizesDropdownOptions = mapInvestmentSizesToDropdownOptions(
+    investmentSizes,
+    translations,
+  );
+  const industrialSectorsDropdownOptions = mapIndustrialSectorsToDropdownOptions(
+    industrialSectors,
+    translations,
+  );
+  const investmentStageTypesDropdownOptions = mapInvestmentStageTypesToDropdownOptions(
+    investmentStageTypes,
+    translations,
+  );
+  const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
+  const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
+  const startupProfileCreatorTypesDropdownOptions = mapStartupProfileCreatorTypesToDropdownOptions(
+    startupProfileCreatorTypes,
+    translations,
+  );
+
   const mergedProfileDetails = { ...profileDetails, ...fetchedProfileDetails?.data };
+
+  const teamSizeChips = transformNumberArrayToChips(
+    loggedUserDetails?.team_sizes,
+    mergedProfileDetails.teamSizes,
+    teamSizesDropdownOptions,
+  );
+  const focusMarketChips = transformNumberArrayToChips(
+    loggedUserDetails?.focus_markets,
+    mergedProfileDetails.focusMarkets,
+    focusMarketsDropdownOptions,
+  );
+  const startupSectorChips = transformNumberArrayToChips(
+    loggedUserDetails?.startup_sectors,
+    mergedProfileDetails.startupSectors,
+    startupSectorsDropdownOptions,
+  );
+  const investmentSizeChips = transformNumberArrayToChips(
+    loggedUserDetails?.investment_sizes,
+    mergedProfileDetails.investmentSizes,
+    investmentSizesDropdownOptions,
+  );
+  const industrialSectorChips = transformNumberArrayToChips(
+    loggedUserDetails?.industrial_sectors,
+    mergedProfileDetails.industrialSectors,
+    industrialSectorsDropdownOptions,
+  );
+  const investmentStageTypeChips = transformNumberArrayToChips(
+    loggedUserDetails?.investment_stage_types,
+    mergedProfileDetails.investmentStageTypes,
+    investmentStageTypesDropdownOptions,
+  );
+
+  const startupProfileCreatorTypeChips = transformNumberArrayToChips(
+    [loggedUserDetails?.startup_profile_creator_type_id].filter(Boolean) as number[],
+    [mergedProfileDetails.startupProfileCreatorTypeId].filter(Boolean) as number[],
+    startupProfileCreatorTypesDropdownOptions,
+  );
+
+  console.log(JSON.stringify(loggedUserDetails?.industrial_sectors));
 
   // TODO - translations
   return (
@@ -60,10 +151,28 @@ export const StartupDetailsPreview = ({
         <ProfileDetailsPreviewLabel icon={<ApartmentIcon />} label="Company Name">
           {mergedProfileDetails.companyName}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<PersonIcon />} label="Profile Creator Full Name">
-          {mergedProfileDetails.firstName} {mergedProfileDetails.lastName}
+        <ProfileDetailsPreviewLabel icon={<PersonIcon />} label="Profile Creator">
+          {startupProfileCreatorTypeChips} {mergedProfileDetails.firstName}{' '}
+          {mergedProfileDetails.lastName}
         </ProfileDetailsPreviewLabel>
-        {JSON.stringify(mergedProfileDetails, null, 2)}
+        <ProfileDetailsPreviewLabel icon={<MonetizationOnIcon />} label="Investment Sizes">
+          {investmentSizeChips}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<PieChartIcon />} label="Investment Stages">
+          {investmentStageTypeChips}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<BusinessIcon />} label="Sectors">
+          {startupSectorChips}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<FactoryIcon />} label="Industrial Sectors">
+          {industrialSectorChips}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<ScreenRotationIcon />} label="Focus Markets">
+          {focusMarketChips}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<GroupIcon />} label="Team Sizes">
+          {teamSizeChips}
+        </ProfileDetailsPreviewLabel>
       </S.StyledContentWrapper>
     </S.StyledWrapper>
   );

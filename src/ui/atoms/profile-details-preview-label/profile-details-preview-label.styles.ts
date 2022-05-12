@@ -15,6 +15,9 @@ const StyledHeader = styled.div`
 `;
 
 const StyledContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.spacing(2)};
   padding-top: ${({ theme }) => theme.spacing(2)};
 `;
 
