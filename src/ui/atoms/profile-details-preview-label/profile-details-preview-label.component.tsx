@@ -1,4 +1,5 @@
 import { Icon, Typography } from '@mui/material';
+import { Children } from 'react';
 
 import S from './profile-details-preview-label.styles';
 import { IProfileDetailsPreviewLabelProps } from './profile-details-preview-label.types';
@@ -8,7 +9,9 @@ export const ProfileDetailsPreviewLabel = ({
   icon,
   label,
 }: IProfileDetailsPreviewLabelProps): JSX.Element | null => {
-  if (!children) {
+  const parsedChildren = Children.toArray(children);
+
+  if (parsedChildren.length === 0) {
     return null;
   }
 
