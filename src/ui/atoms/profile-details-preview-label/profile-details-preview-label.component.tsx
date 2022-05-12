@@ -1,4 +1,4 @@
-import { Icon } from '@mui/material';
+import { Icon, Typography } from '@mui/material';
 
 import S from './profile-details-preview-label.styles';
 import { IProfileDetailsPreviewLabelProps } from './profile-details-preview-label.types';
@@ -16,9 +16,11 @@ export const ProfileDetailsPreviewLabel = ({
     <S.StyledWrapper>
       <S.StyledHeader>
         <Icon color="primary">{icon}</Icon>
-        {label}
+        <Typography variant="body2">{label}</Typography>
       </S.StyledHeader>
-      <S.StyledContentWrapper>{children}</S.StyledContentWrapper>
+      <Typography variant="body2">
+        <S.StyledContentWrapper>{children}</S.StyledContentWrapper>
+      </Typography>
     </S.StyledWrapper>
   );
 };

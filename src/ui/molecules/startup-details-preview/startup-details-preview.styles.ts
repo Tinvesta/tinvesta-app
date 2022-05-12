@@ -44,6 +44,10 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
 const StyledImageWrapper = styled.div`
   width: 100%;
   height: 650px;
+
+  ${respondToMax.xmobile`
+    height: 450px;
+  `}
 `;
 
 const StyledContentWrapper = styled.div`
