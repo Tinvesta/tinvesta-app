@@ -60,7 +60,9 @@ export const MotionCardWrapper = ({
       <S.StyledHighlightOffOutlinedIconWrapper style={{ opacity: leftIconOpacity }}>
         <HighlightOffOutlinedIcon color="error" />
       </S.StyledHighlightOffOutlinedIconWrapper>
+      <S.StyledGradient />
       {children}
+      <S.StyledActionButtonsBackground />
       <S.StyledFavouriteIconButtonWrapper color="success" onClick={markAsVoted}>
         <FavoriteOutlinedIcon />
       </S.StyledFavouriteIconButtonWrapper>

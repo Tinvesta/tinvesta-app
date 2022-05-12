@@ -2,9 +2,11 @@ import styled from '@emotion/styled';
 import { IconButton, Typography } from '@mui/material';
 import { linearGradient } from 'polished';
 
+import { respondToMax } from '@infrastructure';
+
 const StyledWrapper = styled.div`
-  width: 450px;
-  height: 700px;
+  width: 100%;
+  height: 100%;
   display: flex;
   overflow: hidden;
   position: relative;
@@ -14,12 +16,16 @@ const StyledWrapper = styled.div`
   justify-content: flex-start;
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   background-color: ${({ theme }) => theme.palette.grey[800]};
+
+  ${respondToMax.xmobile`
+    width: 100%;
+  `}
 `;
 
 const StyledImageWrapper = styled.div`
-  width: 450px;
-  height: 600px;
+  width: 100%;
   position: absolute;
+  height: calc(100% - 100px);
 `;
 
 const StyledImageGradient = styled.div`
@@ -37,11 +43,13 @@ const StyledImageGradient = styled.div`
 
 const StyledActionButtonsWrapper = styled.div`
   display: flex;
+  justify-content: space-between;
 `;
 
 const StyledChipsAndActionsWrapper = styled.div`
   display: flex;
   align-items: flex-end;
+  justify-content: space-between;
 `;
 
 const StyledInfoIconButton = styled(IconButton)`
@@ -58,7 +66,7 @@ const StyledUserInfoWrapper = styled.div`
   flex-direction: column;
   justify-content: flex-end;
   gap: ${({ theme }) => theme.spacing(3)};
-  padding: ${({ theme }) => theme.spacing(0, 3, 25, 3)};
+  padding: ${({ theme }) => theme.spacing(0, 5, 25, 5)};
 `;
 
 const StyledUserInfoGroupWrapper = styled.div`
@@ -66,7 +74,7 @@ const StyledUserInfoGroupWrapper = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   gap: ${({ theme }) => theme.spacing(2)};
-  padding-bottom: ${({ theme }) => theme.spacing(1)};
+  padding-bottom: ${({ theme }) => theme.spacing(2)};
 `;
 
 const StyledUserInfoTypography = styled(Typography)`
