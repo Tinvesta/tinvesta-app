@@ -16,10 +16,11 @@ export const StartupDetailsPreview = ({
     profileDetailsAction(profileDetails.id),
   );
 
-  console.log(fetchedProfileDetails);
+  console.log(JSON.stringify(fetchedProfileDetails || {}));
 
+  // TODO - translations
   return (
-    <S.StyledWrapper>
+    <S.StyledWrapper swiperPaginationBullets={profileDetails.avatars.length}>
       <Swiper
         grabCursor
         loop
@@ -29,11 +30,13 @@ export const StartupDetailsPreview = ({
       >
         {profileDetails.avatars.map((_avatar) => (
           <SwiperSlide key={_avatar}>
-            <Image alt="Startup avatar" height={700} src={_avatar} width={450} />
+            <S.StyledImageWrapper>
+              <Image alt="Profile image" layout="fill" objectFit="cover" src={_avatar} />
+            </S.StyledImageWrapper>
           </SwiperSlide>
         ))}
       </Swiper>
-      {JSON.stringify(profileDetails, null, 2)}
+      <div style={{ overflow: 'hidden' }}>{JSON.stringify(profileDetails, null, 2)}</div>
     </S.StyledWrapper>
   );
 };
