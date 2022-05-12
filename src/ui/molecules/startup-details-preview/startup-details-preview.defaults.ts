@@ -1,4 +1,5 @@
 export const translationStrings = [
+  'common.default.image.alt',
   'common.team.sizes.very.small',
   'common.team.sizes.small',
   'common.team.sizes.medium',
@@ -48,4 +49,17 @@ export const translationStrings = [
   'common.startup.profile.creator.types.co.founder',
   'common.focus.markets.b2b',
   'common.focus.markets.b2c',
+
+  'component.startup.details.preview.mission.label',
+  'component.startup.details.preview.vision.label',
+  'component.startup.details.preview.claim.label',
+  'component.startup.details.preview.location.label',
+  'component.startup.details.preview.company.name.label',
+  'component.startup.details.preview.profile.creator.label',
+  'component.startup.details.preview.investment.sizes.label',
+  'component.startup.details.preview.investment.stages.label',
+  'component.startup.details.preview.sectors.label',
+  'component.startup.details.preview.industrial.sectors.label',
+  'component.startup.details.preview.focus.markets.label',
+  'component.startup.details.preview.team.sizes.label',
 ] as const;

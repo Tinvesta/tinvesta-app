@@ -85,6 +85,11 @@ const StyledUserInfoTypography = styled(Typography)`
   gap: ${({ theme }) => theme.spacing(2)};
 `;
 
+const StyledProfilePreviewWrapper = styled.div`
+  display: contents;
+  padding-bottom: ${({ theme }) => theme.spacing(5)};
+`;
+
 const S = {
   StyledWrapper,
   StyledImageWrapper,
@@ -93,6 +98,7 @@ const S = {
   StyledUserInfoTypography,
   StyledUserInfoGroupWrapper,
   StyledActionButtonsWrapper,
+  StyledProfilePreviewWrapper,
   StyledChipsAndActionsWrapper,
 };
 

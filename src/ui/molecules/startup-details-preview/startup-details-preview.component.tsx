@@ -108,7 +108,6 @@ export const StartupDetailsPreview = ({
     mergedProfileDetails.investmentStageTypes,
     investmentStageTypesDropdownOptions,
   );
-
   const startupProfileCreatorTypeChips = transformNumberArrayToChips(
     [loggedUserDetails?.startup_profile_creator_type_id].filter(Boolean) as number[],
     [mergedProfileDetails.startupProfileCreatorTypeId].filter(Boolean) as number[],
@@ -127,47 +126,88 @@ export const StartupDetailsPreview = ({
         {mergedProfileDetails.avatars.map((_avatar) => (
           <SwiperSlide key={_avatar}>
             <S.StyledImageWrapper>
-              <Image alt="Profile image" layout="fill" objectFit="cover" src={_avatar} />
+              <Image
+                alt={translations.commonDefaultImageAlt}
+                layout="fill"
+                objectFit="cover"
+                src={_avatar}
+              />
             </S.StyledImageWrapper>
           </SwiperSlide>
         ))}
       </Swiper>
       <S.StyledContentWrapper>
-        <ProfileDetailsPreviewLabel icon={<FlagIcon />} label="Mission">
+        <ProfileDetailsPreviewLabel
+          icon={<FlagIcon />}
+          label={translations.componentStartupDetailsPreviewMissionLabel}
+        >
           {mergedProfileDetails.missionStatement}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<RemoveRedEyeIcon />} label="Vision">
+        <ProfileDetailsPreviewLabel
+          icon={<RemoveRedEyeIcon />}
+          label={translations.componentStartupDetailsPreviewVisionLabel}
+        >
           {mergedProfileDetails.visionStatement}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<RocketIcon />} label="Claim">
+        <ProfileDetailsPreviewLabel
+          icon={<RocketIcon />}
+          label={translations.componentStartupDetailsPreviewClaimLabel}
+        >
           {mergedProfileDetails.startupClaim}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<LocationCityIcon />} label="Location">
+        <ProfileDetailsPreviewLabel
+          icon={<LocationCityIcon />}
+          label={translations.componentStartupDetailsPreviewLocationLabel}
+        >
           {mergedProfileDetails.location}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<ApartmentIcon />} label="Company Name">
+        <ProfileDetailsPreviewLabel
+          icon={<ApartmentIcon />}
+          label={translations.componentStartupDetailsPreviewCompanyNameLabel}
+        >
           {mergedProfileDetails.companyName}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<PersonIcon />} label="Profile Creator">
+        <ProfileDetailsPreviewLabel
+          icon={<PersonIcon />}
+          label={translations.componentStartupDetailsPreviewProfileCreatorLabel}
+        >
           {startupProfileCreatorTypeChips} {mergedProfileDetails.firstName}{' '}
           {mergedProfileDetails.lastName}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<MonetizationOnIcon />} label="Investment Sizes">
+        <ProfileDetailsPreviewLabel
+          icon={<MonetizationOnIcon />}
+          label={translations.componentStartupDetailsPreviewInvestmentSizesLabel}
+        >
           {investmentSizeChips}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<PieChartIcon />} label="Investment Stages">
+        <ProfileDetailsPreviewLabel
+          icon={<PieChartIcon />}
+          label={translations.componentStartupDetailsPreviewInvestmentStagesLabel}
+        >
           {investmentStageTypeChips}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<BusinessIcon />} label="Sectors">
+        <ProfileDetailsPreviewLabel
+          icon={<BusinessIcon />}
+          label={translations.componentStartupDetailsPreviewSectorsLabel}
+        >
           {startupSectorChips}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<FactoryIcon />} label="Industrial Sectors">
+        <ProfileDetailsPreviewLabel
+          icon={<FactoryIcon />}
+          label={translations.componentStartupDetailsPreviewIndustrialSectorsLabel}
+        >
           {industrialSectorChips}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<ScreenRotationIcon />} label="Focus Markets">
+        <ProfileDetailsPreviewLabel
+          icon={<ScreenRotationIcon />}
+          label={translations.componentStartupDetailsPreviewFocusMarketsLabel}
+        >
           {focusMarketChips}
         </ProfileDetailsPreviewLabel>
-        <ProfileDetailsPreviewLabel icon={<GroupIcon />} label="Team Sizes">
+        <ProfileDetailsPreviewLabel
+          icon={<GroupIcon />}
+          label={translations.componentStartupDetailsPreviewTeamSizesLabel}
+        >
           {teamSizeChips}
         </ProfileDetailsPreviewLabel>
       </S.StyledContentWrapper>

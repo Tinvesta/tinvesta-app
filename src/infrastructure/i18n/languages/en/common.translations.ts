@@ -12,6 +12,9 @@ export default {
   'common.buttons.continue': 'Continue',
   'common.buttons.disagree': 'I Disagree',
 
+  // Default Alt
+  'common.default.image.alt': 'Profile Image',
+
   // Forms
   'common.form.field.error.starts.or.ends.with.whitespace':
     'The field cannot begin or end with a space',

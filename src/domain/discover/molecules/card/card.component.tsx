@@ -196,18 +196,20 @@ export const Card = ({
       {!displayProfileDetails ? (
         <>{isStartup ? renderStartupUserInfo() : renderInvestorUserInfo()}</>
       ) : (
-        <ProfileDetailsComponent
-          focusMarkets={focusMarkets}
-          industrialSectors={industrialSectors}
-          investmentSizes={investmentSizes}
-          investmentStageTypes={investmentStageTypes}
-          investorDemandTypes={investorDemandTypes}
-          investorProfileTypes={investorProfileTypes}
-          profileDetails={record}
-          startupProfileCreatorTypes={startupProfileCreatorTypes}
-          startupSectors={startupSectors}
-          teamSizes={teamSizes}
-        />
+        <S.StyledProfilePreviewWrapper>
+          <ProfileDetailsComponent
+            focusMarkets={focusMarkets}
+            industrialSectors={industrialSectors}
+            investmentSizes={investmentSizes}
+            investmentStageTypes={investmentStageTypes}
+            investorDemandTypes={investorDemandTypes}
+            investorProfileTypes={investorProfileTypes}
+            profileDetails={record}
+            startupProfileCreatorTypes={startupProfileCreatorTypes}
+            startupSectors={startupSectors}
+            teamSizes={teamSizes}
+          />
+        </S.StyledProfilePreviewWrapper>
       )}
     </S.StyledWrapper>
   );
