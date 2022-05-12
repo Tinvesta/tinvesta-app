@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Typography } from '@mui/material';
 
 const StyledWrapper = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing(5)};
@@ -14,7 +15,7 @@ const StyledHeader = styled.div`
   }
 `;
 
-const StyledContentWrapper = styled.div`
+const StyledContentWrapper = styled(Typography)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;

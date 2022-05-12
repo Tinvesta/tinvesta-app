@@ -87,7 +87,10 @@ const StyledUserInfoTypography = styled(Typography)`
 
 const StyledProfilePreviewWrapper = styled.div`
   display: contents;
-  padding-bottom: ${({ theme }) => theme.spacing(5)};
+
+  > div {
+    padding-bottom: ${({ theme }) => theme.spacing(5)};
+  }
 `;
 
 const S = {

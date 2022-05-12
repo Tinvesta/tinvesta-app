@@ -185,12 +185,16 @@ export const Card = ({
     ? StartupDetailsPreview
     : StartupDetailsPreview;
 
-  // TODO - translation
   return (
     <S.StyledWrapper>
       <S.StyledImageWrapper>
         {!displayProfileDetails && (
-          <Image alt="Profile image" layout="fill" objectFit="cover" src={record.avatars[0]} />
+          <Image
+            alt={translations.commonDefaultImageAlt}
+            layout="fill"
+            objectFit="cover"
+            src={record.avatars[0]}
+          />
         )}
       </S.StyledImageWrapper>
       {!displayProfileDetails ? (
