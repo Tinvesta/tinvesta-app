@@ -185,6 +185,7 @@ export const Card = ({
     ? StartupDetailsPreview
     : StartupDetailsPreview;
 
+  // TODO - translation
   return (
     <S.StyledWrapper>
       <S.StyledImageWrapper>
