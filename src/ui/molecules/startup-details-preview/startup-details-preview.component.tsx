@@ -115,9 +115,6 @@ export const StartupDetailsPreview = ({
     startupProfileCreatorTypesDropdownOptions,
   );
 
-  console.log(JSON.stringify(loggedUserDetails?.industrial_sectors));
-
-  // TODO - translations
   return (
     <S.StyledWrapper swiperPaginationBullets={mergedProfileDetails.avatars.length}>
       <Swiper
