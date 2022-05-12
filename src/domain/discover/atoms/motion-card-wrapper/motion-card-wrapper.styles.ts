@@ -33,6 +33,11 @@ const StyledCheckCircleOutlinedIconWrapper = styled(motion.div)`
   > svg {
     width: 4em;
     height: 4em;
+
+    ${respondToMax.xmobile`
+      width: 3.5em;
+      height: 3.5em;
+    `}
   }
 `;
 
@@ -46,6 +51,11 @@ const StyledHighlightOffOutlinedIconWrapper = styled(motion.div)`
   > svg {
     width: 4em;
     height: 4em;
+
+    ${respondToMax.xmobile`
+      width: 3.5em;
+      height: 3.5em;
+    `}
   }
 `;
 
@@ -62,8 +72,22 @@ const StyledFavouriteIconButtonWrapper = styled(IconButton)`
     > .MuiSvgIcon-root {
       width: 1.5em;
       height: 1.5em;
+
+      ${respondToMax.mobile`
+        width: 1.2em;
+        height: 1.2em;
+      `}
+
+      ${respondToMax.xmobile`
+        width: 1em;
+        height: 1em;
+      `}
     }
   }
+
+  ${({ theme }) => respondToMax.xmobile`
+    right: ${theme.spacing(10)};
+  `}
 `;
 
 const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
@@ -79,8 +103,22 @@ const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
     > .MuiSvgIcon-root {
       width: 1.5em;
       height: 1.5em;
+
+      ${respondToMax.mobile`
+        width: 1.2em;
+        height: 1.2em;
+      `}
+
+      ${respondToMax.xmobile`
+        width: 1em;
+        height: 1em;
+      `}
     }
   }
+
+  ${({ theme }) => respondToMax.xmobile`
+    left: ${theme.spacing(10)};
+  `}
 `;
 
 const StyledGradient = styled.div`
