@@ -6,12 +6,16 @@ import { linearGradient } from 'polished';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled(motion.div)`
-  width: 600px;
+  width: 550px;
   height: 750px;
   overflow: hidden;
   position: absolute;
   border-radius: 20px;
   background-color: ${({ theme }) => theme.palette.grey[800]};
+
+  ${respondToMax.medium`
+    width: 600px;
+  `}
 
   ${({ theme }) => respondToMax.mobile`
     width: calc(100% - ${theme.spacing(10)});
