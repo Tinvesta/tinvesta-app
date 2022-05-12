@@ -1,7 +1,15 @@
+import {
+  Apartment as ApartmentIcon,
+  Flag as FlagIcon,
+  LocationCity as LocationCityIcon,
+  Person as PersonIcon,
+  RemoveRedEye as RemoveRedEyeIcon,
+  Rocket as RocketIcon,
+} from '@mui/icons-material';
 import Image from 'next/image';
 import { useQuery } from 'react-query';
 
-import { Swiper, SwiperSlide } from '@ui';
+import { ProfileDetailsPreviewLabel, Swiper, SwiperSlide } from '@ui';
 
 import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '@infrastructure';
 
@@ -16,11 +24,11 @@ export const StartupDetailsPreview = ({
     profileDetailsAction(profileDetails.id),
   );
 
-  console.log(JSON.stringify(fetchedProfileDetails || {}));
+  const mergedProfileDetails = { ...profileDetails, ...fetchedProfileDetails?.data };
 
   // TODO - translations
   return (
-    <S.StyledWrapper swiperPaginationBullets={profileDetails.avatars.length}>
+    <S.StyledWrapper swiperPaginationBullets={mergedProfileDetails.avatars.length}>
       <Swiper
         grabCursor
         loop
@@ -28,7 +36,7 @@ export const StartupDetailsPreview = ({
         modules={['keyboard', 'scrollbar', 'pagination']}
         pagination={{ clickable: true }}
       >
-        {profileDetails.avatars.map((_avatar) => (
+        {mergedProfileDetails.avatars.map((_avatar) => (
           <SwiperSlide key={_avatar}>
             <S.StyledImageWrapper>
               <Image alt="Profile image" layout="fill" objectFit="cover" src={_avatar} />
@@ -36,7 +44,27 @@ export const StartupDetailsPreview = ({
           </SwiperSlide>
         ))}
       </Swiper>
-      <div style={{ overflow: 'hidden' }}>{JSON.stringify(profileDetails, null, 2)}</div>
+      <S.StyledContentWrapper>
+        <ProfileDetailsPreviewLabel icon={<FlagIcon />} label="Mission">
+          {mergedProfileDetails.missionStatement}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<RemoveRedEyeIcon />} label="Vision">
+          {mergedProfileDetails.visionStatement}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<RocketIcon />} label="Claim">
+          {mergedProfileDetails.startupClaim}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<LocationCityIcon />} label="Location">
+          {mergedProfileDetails.location}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<ApartmentIcon />} label="Company Name">
+          {mergedProfileDetails.companyName}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel icon={<PersonIcon />} label="Profile Creator Full Name">
+          {mergedProfileDetails.firstName} {mergedProfileDetails.lastName}
+        </ProfileDetailsPreviewLabel>
+        {JSON.stringify(mergedProfileDetails, null, 2)}
+      </S.StyledContentWrapper>
     </S.StyledWrapper>
   );
 };
