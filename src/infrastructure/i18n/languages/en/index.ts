@@ -1,5 +1,6 @@
 import commonTranslations from './common.translations';
 import dashboardTranslations from './dashboard';
+import investorDetailsPreviewTranslations from './investor-details-preview.translations';
 import locationAutocompleteTranslations from './location-autocomplete.translations';
 import onboardingTranslations from './onboarding';
 import startupDetailsPreviewTranslations from './startup-details-preview.translations';
@@ -12,4 +13,5 @@ export default {
   ...uploadImagesTranslations,
   ...locationAutocompleteTranslations,
   ...startupDetailsPreviewTranslations,
+  ...investorDetailsPreviewTranslations,
 };

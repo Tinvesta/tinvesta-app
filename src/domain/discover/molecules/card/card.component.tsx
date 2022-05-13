@@ -11,7 +11,7 @@ import { Typography } from '@mui/material';
 import Image from 'next/image';
 import { useState } from 'react';
 
-import { StartupDetailsPreview } from '@ui';
+import { InvestorDetailsPreview, StartupDetailsPreview } from '@ui';
 
 import {
   isStartupProfile,
@@ -219,9 +219,7 @@ export const Card = ({
     );
   };
 
-  const ProfileDetailsComponent = displayProfileDetails
-    ? StartupDetailsPreview
-    : StartupDetailsPreview;
+  const ProfileDetailsComponent = isStartup ? StartupDetailsPreview : InvestorDetailsPreview;
 
   return (
     <S.StyledWrapper>
