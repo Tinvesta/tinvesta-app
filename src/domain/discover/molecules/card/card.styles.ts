@@ -80,10 +80,12 @@ const StyledUserInfoGroupWrapper = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing(2)};
 `;
 
-const StyledUserInfoTypography = styled(Typography)`
+const StyledUserInfoTypography = styled(Typography)<{ withFlexWrap?: boolean }>`
   display: flex;
   align-items: center;
   gap: ${({ theme }) => theme.spacing(2)};
+
+  ${({ withFlexWrap }) => withFlexWrap && 'flex-wrap: wrap;'};
 `;
 
 const StyledProfilePreviewWrapper = styled.div`
