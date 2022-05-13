@@ -77,7 +77,7 @@ export interface IProfileDetails {
   investmentSizes: number[];
   investmentStageTypes: number[];
   investorDemandTypes: number[];
-  investorProfileTypeId: string | null;
+  investorProfileTypeId: number | null;
   isSubscribed: boolean;
   lastName: string;
   location: string;
