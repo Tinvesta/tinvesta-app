@@ -11,30 +11,32 @@ import {
 
 export const darkTheme = createTheme({
   palette: {
-    grey: color.black,
+    grey: color.gray,
     error: color.red,
     primary: {
       ...color.black,
       main: color.black[500],
+      contrastText: color.black[100],
     },
     success: color.green,
     secondary: {
       ...color.gray,
       main: color.gray[500],
+      contrastText: color.gray[100],
     },
     warning: color.yellow,
     background: {
-      paper: color.black[900],
-      default: color.black[900],
+      paper: color.black[700],
+      default: color.black[700],
     },
     text: {
-      primary: color.gray[200],
-      disabled: color.gray[400],
-      secondary: color.gray[500],
+      primary: color.black[200],
+      secondary: color.black[300],
+      disabled: color.black[400],
     },
     common: {
       black: color.black[900],
-      white: color.black[200],
+      white: color.black[100],
     },
     info: color.blue,
     mode: 'dark',
