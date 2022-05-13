@@ -16,13 +16,11 @@ export const darkTheme = createTheme({
     primary: {
       ...color.black,
       main: color.black[500],
-      contrastText: color.black[100],
     },
     success: color.green,
     secondary: {
       ...color.gray,
       main: color.gray[500],
-      contrastText: color.gray[100],
     },
     warning: color.yellow,
     background: {
