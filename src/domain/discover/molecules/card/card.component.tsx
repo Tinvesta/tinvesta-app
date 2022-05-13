@@ -211,7 +211,7 @@ export const Card = ({
           </S.StyledUserInfoGroupWrapper>
           <S.StyledActionButtonsWrapper>
             <S.StyledInfoIconButton color="primary" size="small" onClick={showProfileDetails}>
-              <InfoIcon fontSize="small" />
+              <InfoIcon fontSize="large" />
             </S.StyledInfoIconButton>
           </S.StyledActionButtonsWrapper>
         </S.StyledChipsAndActionsWrapper>
