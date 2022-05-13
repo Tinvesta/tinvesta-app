@@ -11,7 +11,7 @@ import { Typography } from '@mui/material';
 import Image from 'next/image';
 import { useState } from 'react';
 
-import { InvestorDetailsPreview, StartupDetailsPreview } from '@ui';
+import { ProfileDetailsPreview } from '@ui';
 
 import {
   isStartupProfile,
@@ -219,8 +219,6 @@ export const Card = ({
     );
   };
 
-  const ProfileDetailsComponent = isStartup ? StartupDetailsPreview : InvestorDetailsPreview;
-
   return (
     <S.StyledWrapper>
       <S.StyledImageWrapper>
@@ -237,7 +235,7 @@ export const Card = ({
         <>{isStartup ? renderStartupUserInfo() : renderInvestorUserInfo()}</>
       ) : (
         <S.StyledProfilePreviewWrapper>
-          <ProfileDetailsComponent
+          <ProfileDetailsPreview
             focusMarkets={focusMarkets}
             industrialSectors={industrialSectors}
             investmentSizes={investmentSizes}

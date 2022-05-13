@@ -22,6 +22,8 @@ import {
   mapIndustrialSectorsToDropdownOptions,
   mapInvestmentSizesToDropdownOptions,
   mapInvestmentStageTypesToDropdownOptions,
+  mapInvestorDemandTypesToDropdownOptions,
+  mapInvestorProfileTypesToDropdownOptions,
   mapStartupProfileCreatorTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
@@ -31,21 +33,23 @@ import {
 
 import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '@infrastructure';
 
-import { translationStrings } from './startup-details-preview.defaults';
-import S from './startup-details-preview.styles';
-import { IStartupDetailsPreviewProps } from './startup-details-preview.types';
+import { translationStrings } from './profile-details-preview.defaults';
+import S from './profile-details-preview.styles';
+import { IProfileDetailsPreviewProps } from './profile-details-preview.types';
 import { transformNumberArrayToChips } from './utils';
 
-export const StartupDetailsPreview = ({
+export const ProfileDetailsPreview = ({
   focusMarkets,
   industrialSectors,
   investmentSizes,
   investmentStageTypes,
+  investorDemandTypes,
+  investorProfileTypes,
   profileDetails,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
-}: IStartupDetailsPreviewProps): JSX.Element => {
+}: IProfileDetailsPreviewProps): JSX.Element => {
   const { user: loggedUserDetails } = useUser();
   const { data: fetchedProfileDetails } = useQuery(
     [PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetails.id],
@@ -65,8 +69,16 @@ export const StartupDetailsPreview = ({
     industrialSectors,
     translations,
   );
+  const investorDemandTypesDropdownOptions = mapInvestorDemandTypesToDropdownOptions(
+    investorDemandTypes,
+    translations,
+  );
   const investmentStageTypesDropdownOptions = mapInvestmentStageTypesToDropdownOptions(
     investmentStageTypes,
+    translations,
+  );
+  const investorProfileTypesDropdownOptions = mapInvestorProfileTypesToDropdownOptions(
+    investorProfileTypes,
     translations,
   );
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
@@ -103,10 +115,20 @@ export const StartupDetailsPreview = ({
     loggedUserDetails?.industrial_sectors,
     industrialSectorsDropdownOptions,
   );
+  const investorDemandTypeChips = transformNumberArrayToChips(
+    mergedProfileDetails.investorDemandTypes,
+    mergedProfileDetails.investorDemandTypes,
+    investorDemandTypesDropdownOptions,
+  );
   const investmentStageTypeChips = transformNumberArrayToChips(
     mergedProfileDetails.investmentStageTypes,
     loggedUserDetails?.investment_stage_types,
     investmentStageTypesDropdownOptions,
+  );
+  const investorProfileTypeChips = transformNumberArrayToChips(
+    [loggedUserDetails?.investor_profile_type_id].filter(Boolean) as number[],
+    [mergedProfileDetails.investorProfileTypeId].filter(Boolean) as number[],
+    investorProfileTypesDropdownOptions,
   );
   const startupProfileCreatorTypeChips = transformNumberArrayToChips(
     [loggedUserDetails?.startup_profile_creator_type_id].filter(Boolean) as number[],
@@ -139,74 +161,97 @@ export const StartupDetailsPreview = ({
       <S.StyledContentWrapper>
         <ProfileDetailsPreviewLabel
           icon={<FlagIcon />}
-          label={translations.componentStartupDetailsPreviewMissionLabel}
+          label={translations.componentProfileDetailsPreviewMissionLabel}
         >
           {mergedProfileDetails.missionStatement}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
           icon={<RemoveRedEyeIcon />}
-          label={translations.componentStartupDetailsPreviewVisionLabel}
+          label={translations.componentProfileDetailsPreviewVisionLabel}
         >
           {mergedProfileDetails.visionStatement}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
           icon={<RocketIcon />}
-          label={translations.componentStartupDetailsPreviewClaimLabel}
+          label={translations.componentProfileDetailsPreviewClaimLabel}
         >
           {mergedProfileDetails.startupClaim}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
+          icon={<RocketIcon />}
+          label={translations.componentProfileDetailsPreviewWhyStartupShouldMatchWithYouLabel}
+        >
+          {mergedProfileDetails.whyStartupShouldMatchWithYou}
+        </ProfileDetailsPreviewLabel>
+        <ProfileDetailsPreviewLabel
           icon={<LocationCityIcon />}
-          label={translations.componentStartupDetailsPreviewLocationLabel}
+          label={translations.componentProfileDetailsPreviewLocationLabel}
         >
           {mergedProfileDetails.location}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
           icon={<ApartmentIcon />}
-          label={translations.componentStartupDetailsPreviewCompanyNameLabel}
+          label={translations.componentProfileDetailsPreviewCompanyNameLabel}
         >
           {mergedProfileDetails.companyName}
         </ProfileDetailsPreviewLabel>
+        {investorProfileTypeChips.length > 0 && (
+          <ProfileDetailsPreviewLabel
+            icon={<PersonIcon />}
+            label={translations.componentProfileDetailsPreviewProfileCreatorLabel}
+          >
+            {investorProfileTypeChips} {mergedProfileDetails.firstName}{' '}
+            {mergedProfileDetails.lastName}
+          </ProfileDetailsPreviewLabel>
+        )}
+        {startupProfileCreatorTypeChips.length > 0 && (
+          <ProfileDetailsPreviewLabel
+            icon={<PersonIcon />}
+            label={translations.componentProfileDetailsPreviewProfileCreatorLabel}
+          >
+            {startupProfileCreatorTypeChips} {mergedProfileDetails.firstName}{' '}
+            {mergedProfileDetails.lastName}
+          </ProfileDetailsPreviewLabel>
+        )}
         <ProfileDetailsPreviewLabel
-          icon={<PersonIcon />}
-          label={translations.componentStartupDetailsPreviewProfileCreatorLabel}
+          icon={<MonetizationOnIcon />}
+          label={translations.componentProfileDetailsPreviewDemandLabel}
         >
-          {startupProfileCreatorTypeChips} {mergedProfileDetails.firstName}{' '}
-          {mergedProfileDetails.lastName}
+          {investorDemandTypeChips}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
           icon={<MonetizationOnIcon />}
-          label={translations.componentStartupDetailsPreviewInvestmentSizesLabel}
+          label={translations.componentProfileDetailsPreviewInvestmentSizesLabel}
         >
           {investmentSizeChips}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
           icon={<PieChartIcon />}
-          label={translations.componentStartupDetailsPreviewInvestmentStagesLabel}
+          label={translations.componentProfileDetailsPreviewInvestmentStagesLabel}
         >
           {investmentStageTypeChips}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
           icon={<BusinessIcon />}
-          label={translations.componentStartupDetailsPreviewSectorsLabel}
+          label={translations.componentProfileDetailsPreviewSectorsLabel}
         >
           {startupSectorChips}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
           icon={<FactoryIcon />}
-          label={translations.componentStartupDetailsPreviewIndustrialSectorsLabel}
+          label={translations.componentProfileDetailsPreviewIndustrialSectorsLabel}
         >
           {industrialSectorChips}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
           icon={<ScreenRotationIcon />}
-          label={translations.componentStartupDetailsPreviewFocusMarketsLabel}
+          label={translations.componentProfileDetailsPreviewFocusMarketsLabel}
         >
           {focusMarketChips}
         </ProfileDetailsPreviewLabel>
         <ProfileDetailsPreviewLabel
           icon={<GroupIcon />}
-          label={translations.componentStartupDetailsPreviewTeamSizesLabel}
+          label={translations.componentProfileDetailsPreviewTeamSizesLabel}
         >
           {teamSizeChips}
         </ProfileDetailsPreviewLabel>

@@ -1,9 +1,8 @@
 import commonTranslations from './common.translations';
 import dashboardTranslations from './dashboard';
-import investorDetailsPreviewTranslations from './investor-details-preview.translations';
 import locationAutocompleteTranslations from './location-autocomplete.translations';
 import onboardingTranslations from './onboarding';
-import startupDetailsPreviewTranslations from './startup-details-preview.translations';
+import profileDetailsPreviewTranslations from './profile-details-preview.translations';
 import uploadImagesTranslations from './upload-images.translations';
 
 export default {
@@ -12,6 +11,5 @@ export default {
   ...onboardingTranslations,
   ...uploadImagesTranslations,
   ...locationAutocompleteTranslations,
-  ...startupDetailsPreviewTranslations,
-  ...investorDetailsPreviewTranslations,
+  ...profileDetailsPreviewTranslations,
 };
