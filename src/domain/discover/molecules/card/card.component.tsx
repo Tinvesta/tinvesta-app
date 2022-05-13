@@ -109,25 +109,25 @@ export const Card = ({
         <S.StyledChipsAndActionsWrapper>
           <S.StyledUserInfoGroupWrapper>
             {deviceData.isBiggerThanXS && teamSizeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <GroupIcon />
                 {teamSizeChips}
               </S.StyledUserInfoTypography>
             )}
             {investmentSizeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <MonetizationOnIcon />
                 {investmentSizeChips}
               </S.StyledUserInfoTypography>
             )}
             {investmentStageTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <PieChartIcon />
                 {investmentStageTypeChips}
               </S.StyledUserInfoTypography>
             )}
             {deviceData.isBiggerThanXS && focusMarketTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <ScreenRotationIcon />
                 {focusMarketTypeChips}
               </S.StyledUserInfoTypography>
@@ -197,13 +197,13 @@ export const Card = ({
               </S.StyledUserInfoTypography>
             )}
             {deviceData.isBiggerThanXS && investmentStageTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <PieChartIcon />
                 {investmentStageTypeChips}
               </S.StyledUserInfoTypography>
             )}
             {deviceData.isBiggerThanXS && focusMarketTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <ScreenRotationIcon />
                 {focusMarketTypeChips}
               </S.StyledUserInfoTypography>
