@@ -11,21 +11,21 @@ import {
 
 export const darkTheme = createTheme({
   palette: {
-    grey: color.gray,
+    grey: color.black,
     error: color.red,
     primary: {
-      ...color.gray,
-      main: color.gray[200],
+      ...color.black,
+      main: color.black[500],
     },
     success: color.green,
     secondary: {
       ...color.gray,
-      main: color.gray[900],
+      main: color.gray[500],
     },
     warning: color.yellow,
     background: {
-      paper: color.gray[900],
-      default: color.gray[900],
+      paper: color.black[900],
+      default: color.black[900],
     },
     text: {
       primary: color.gray[200],
@@ -33,12 +33,12 @@ export const darkTheme = createTheme({
       secondary: color.gray[500],
     },
     common: {
-      black: color.gray[900],
-      white: color.gray[200],
+      black: color.black[900],
+      white: color.black[200],
     },
     info: color.blue,
     mode: 'dark',
-    divider: color.gray[400],
+    divider: color.black[400],
   },
   typography: {
     fontSize: 16,
