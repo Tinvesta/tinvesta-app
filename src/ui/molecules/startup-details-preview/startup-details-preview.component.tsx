@@ -109,8 +109,8 @@ export const StartupDetailsPreview = ({
     investmentStageTypesDropdownOptions,
   );
   const startupProfileCreatorTypeChips = transformNumberArrayToChips(
-    [mergedProfileDetails.startupProfileCreatorTypeId].filter(Boolean) as number[],
     [loggedUserDetails?.startup_profile_creator_type_id].filter(Boolean) as number[],
+    [mergedProfileDetails.startupProfileCreatorTypeId].filter(Boolean) as number[],
     startupProfileCreatorTypesDropdownOptions,
   );
 
