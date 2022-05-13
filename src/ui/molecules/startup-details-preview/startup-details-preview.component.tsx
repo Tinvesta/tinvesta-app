@@ -79,8 +79,8 @@ export const StartupDetailsPreview = ({
   const mergedProfileDetails = { ...profileDetails, ...fetchedProfileDetails?.data };
 
   const teamSizeChips = transformNumberArrayToChips(
-    loggedUserDetails?.team_sizes,
     mergedProfileDetails.teamSizes,
+    loggedUserDetails?.team_sizes,
     teamSizesDropdownOptions,
   );
   const focusMarketChips = transformNumberArrayToChips(
@@ -89,28 +89,28 @@ export const StartupDetailsPreview = ({
     focusMarketsDropdownOptions,
   );
   const startupSectorChips = transformNumberArrayToChips(
-    loggedUserDetails?.startup_sectors,
     mergedProfileDetails.startupSectors,
+    loggedUserDetails?.startup_sectors,
     startupSectorsDropdownOptions,
   );
   const investmentSizeChips = transformNumberArrayToChips(
-    loggedUserDetails?.investment_sizes,
     mergedProfileDetails.investmentSizes,
+    loggedUserDetails?.investment_sizes,
     investmentSizesDropdownOptions,
   );
   const industrialSectorChips = transformNumberArrayToChips(
-    loggedUserDetails?.industrial_sectors,
     mergedProfileDetails.industrialSectors,
+    loggedUserDetails?.industrial_sectors,
     industrialSectorsDropdownOptions,
   );
   const investmentStageTypeChips = transformNumberArrayToChips(
-    loggedUserDetails?.investment_stage_types,
     mergedProfileDetails.investmentStageTypes,
+    loggedUserDetails?.investment_stage_types,
     investmentStageTypesDropdownOptions,
   );
   const startupProfileCreatorTypeChips = transformNumberArrayToChips(
-    [loggedUserDetails?.startup_profile_creator_type_id].filter(Boolean) as number[],
     [mergedProfileDetails.startupProfileCreatorTypeId].filter(Boolean) as number[],
+    [loggedUserDetails?.startup_profile_creator_type_id].filter(Boolean) as number[],
     startupProfileCreatorTypesDropdownOptions,
   );
 

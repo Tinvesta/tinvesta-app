@@ -23,8 +23,8 @@ const StyledWrapper = styled(motion.div)`
   `}
 
   ${({ theme }) => respondToMax.xmobile`
-    width: calc(100% - ${theme.spacing(5)});
-    height: calc(100% - ${theme.spacing(5)});
+    width: calc(100% - ${theme.spacing(2)});
+    height: calc(100% - ${theme.spacing(2)});
   `}
 `;
 
