@@ -5,6 +5,7 @@ import {
   LocationCity as LocationCityIcon,
   MonetizationOn as MonetizationOnIcon,
   PieChart as PieChartIcon,
+  ScreenRotation as ScreenRotationIcon,
 } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
@@ -14,10 +15,13 @@ import { StartupDetailsPreview } from '@ui';
 
 import {
   isStartupProfile,
+  mapFocusMarketsToDropdownOptions,
   mapInvestmentSizesToDropdownOptions,
   mapInvestmentStageTypesToDropdownOptions,
   mapInvestorDemandTypesToDropdownOptions,
   mapTeamSizesToDropdownOptions,
+  truncate,
+  useDeviceDetect,
   useTranslation,
   useUser,
 } from '@utils';
@@ -40,6 +44,7 @@ export const Card = ({
   teamSizes,
 }: ICardProps) => {
   const { user } = useUser();
+  const { deviceData } = useDeviceDetect();
   const [displayProfileDetails, setDisplayProfileDetails] = useState(false);
 
   const isStartup = isStartupProfile(record.clientTypeId);
@@ -58,56 +63,73 @@ export const Card = ({
     translations,
   );
   const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
+  const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
 
   const showProfileDetails = () => setDisplayProfileDetails(true);
 
   const renderStartupUserInfo = () => {
     const teamSizeChips = transformNumberArrayToChips(
-      user?.team_sizes,
       record.teamSizes,
+      user?.team_sizes,
       teamSizesDropdownOptions,
     );
 
     const investmentSizeChips = transformNumberArrayToChips(
-      user?.investment_sizes,
       record.investmentSizes,
+      user?.investment_sizes,
       investmentSizesDropdownOptions,
     );
 
     const investmentStageTypeChips = transformNumberArrayToChips(
-      user?.investment_stage_types,
       record.investmentStageTypes,
+      user?.investment_stage_types,
       investmentStageTypesDropdownOptions,
     );
 
+    const focusMarketTypeChips = transformNumberArrayToChips(
+      record.focusMarkets,
+      user?.focus_markets,
+      focusMarketsDropdownOptions,
+    );
+
+    const missionStatement = deviceData.isSmallerThanXS
+      ? truncate(record.missionStatement || '', 100)
+      : record.missionStatement;
+
     return (
       <S.StyledUserInfoWrapper>
-        <Typography fontWeight={900} variant="h6">{`"${record.missionStatement}"`}</Typography>
-        <S.StyledUserInfoTypography variant="body1">
+        <Typography fontWeight={900} variant="body1">{`"${missionStatement}"`}</Typography>
+        <S.StyledUserInfoTypography variant="body2">
           {`"${record.startupClaim}"`}
         </S.StyledUserInfoTypography>
-        <S.StyledUserInfoTypography variant="body1">
+        <S.StyledUserInfoTypography variant="body2">
           <LocationCityIcon />
           {record.location}
         </S.StyledUserInfoTypography>
         <S.StyledChipsAndActionsWrapper>
           <S.StyledUserInfoGroupWrapper>
-            {teamSizeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body1">
+            {deviceData.isBiggerThanXS && teamSizeChips.length > 0 && (
+              <S.StyledUserInfoTypography variant="body2">
                 <GroupIcon />
                 {teamSizeChips}
               </S.StyledUserInfoTypography>
             )}
             {investmentSizeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body1">
+              <S.StyledUserInfoTypography variant="body2">
                 <MonetizationOnIcon />
                 {investmentSizeChips}
               </S.StyledUserInfoTypography>
             )}
             {investmentStageTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body1">
+              <S.StyledUserInfoTypography variant="body2">
                 <PieChartIcon />
                 {investmentStageTypeChips}
+              </S.StyledUserInfoTypography>
+            )}
+            {deviceData.isBiggerThanXS && focusMarketTypeChips.length > 0 && (
+              <S.StyledUserInfoTypography variant="body2">
+                <ScreenRotationIcon />
+                {focusMarketTypeChips}
               </S.StyledUserInfoTypography>
             )}
           </S.StyledUserInfoGroupWrapper>
@@ -123,57 +145,73 @@ export const Card = ({
 
   const renderInvestorUserInfo = () => {
     const investmentSizeChips = transformNumberArrayToChips(
-      user?.investment_sizes,
       record.investmentSizes,
+      user?.investment_sizes,
       investmentSizesDropdownOptions,
     );
 
     const investorDemandTypeChips = transformNumberArrayToChips(
-      user?.investment_stage_types,
       record.investmentStageTypes,
+      user?.investment_stage_types,
       investorDemandTypesDropdownOptions,
     );
 
     const investmentStageTypeChips = transformNumberArrayToChips(
-      user?.investment_stage_types,
       record.investmentStageTypes,
+      user?.investment_stage_types,
       investmentStageTypesDropdownOptions,
     );
+
+    const focusMarketTypeChips = transformNumberArrayToChips(
+      record.focusMarkets,
+      user?.focus_markets,
+      focusMarketsDropdownOptions,
+    );
+
+    const whyStartupShouldMatchWithYou = deviceData.isSmallerThanXS
+      ? truncate(record.whyStartupShouldMatchWithYou, 100)
+      : record.whyStartupShouldMatchWithYou;
 
     return (
       <S.StyledUserInfoWrapper>
         <Typography
           fontWeight={900}
-          variant="h6"
-        >{`"${record.whyStartupShouldMatchWithYou}"`}</Typography>
-        <S.StyledUserInfoTypography variant="body1">
+          variant="body1"
+        >{`"${whyStartupShouldMatchWithYou}"`}</Typography>
+        <S.StyledUserInfoTypography noWrap variant="body2">
           <LocationCityIcon />
           {record.location}
         </S.StyledUserInfoTypography>
         <S.StyledChipsAndActionsWrapper>
           <S.StyledUserInfoGroupWrapper>
             {investorDemandTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body1">
+              <S.StyledUserInfoTypography variant="body2">
                 <AutorenewIcon />
                 {investorDemandTypeChips}
               </S.StyledUserInfoTypography>
             )}
             {investmentSizeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body1">
+              <S.StyledUserInfoTypography variant="body2">
                 <MonetizationOnIcon />
                 {investmentSizeChips}
               </S.StyledUserInfoTypography>
             )}
             {investmentStageTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body1">
+              <S.StyledUserInfoTypography variant="body2">
                 <PieChartIcon />
                 {investmentStageTypeChips}
+              </S.StyledUserInfoTypography>
+            )}
+            {deviceData.isBiggerThanXS && focusMarketTypeChips.length > 0 && (
+              <S.StyledUserInfoTypography variant="body2">
+                <ScreenRotationIcon />
+                {focusMarketTypeChips}
               </S.StyledUserInfoTypography>
             )}
           </S.StyledUserInfoGroupWrapper>
           <S.StyledActionButtonsWrapper>
             <S.StyledInfoIconButton color="primary" size="small" onClick={showProfileDetails}>
-              <InfoIcon fontSize="large" />
+              <InfoIcon fontSize="small" />
             </S.StyledInfoIconButton>
           </S.StyledActionButtonsWrapper>
         </S.StyledChipsAndActionsWrapper>
