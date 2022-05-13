@@ -54,7 +54,7 @@ export const Home = (): JSX.Element => {
             <Typography fontWeight={700} sx={{ zIndex: 1 }} variant="body1">
               matchmaking app for start-ups and investors all over the world
             </Typography>
-            <Button size="large" variant="outlined" onClick={onSignInButtonClick}>
+            <Button color="secondary" size="large" variant="outlined" onClick={onSignInButtonClick}>
               Create an account
             </Button>
           </S.StyledSubHeaderWrapper>

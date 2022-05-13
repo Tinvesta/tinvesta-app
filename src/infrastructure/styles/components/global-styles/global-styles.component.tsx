@@ -10,8 +10,8 @@ export const GlobalStyles = (): JSX.Element => {
         styles={css`
           html,
           body {
-            color: ${theme.palette.primary.main};
-            background-color: ${theme.palette.secondary.main};
+            color: ${theme.palette.secondary.main};
+            background-color: ${theme.palette.primary.main};
           }
 
           * {
