@@ -109,25 +109,25 @@ export const Card = ({
         <S.StyledChipsAndActionsWrapper>
           <S.StyledUserInfoGroupWrapper>
             {deviceData.isBiggerThanXS && teamSizeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <GroupIcon />
                 {teamSizeChips}
               </S.StyledUserInfoTypography>
             )}
             {investmentSizeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <MonetizationOnIcon />
                 {investmentSizeChips}
               </S.StyledUserInfoTypography>
             )}
             {investmentStageTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <PieChartIcon />
                 {investmentStageTypeChips}
               </S.StyledUserInfoTypography>
             )}
             {deviceData.isBiggerThanXS && focusMarketTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <ScreenRotationIcon />
                 {focusMarketTypeChips}
               </S.StyledUserInfoTypography>
@@ -169,7 +169,7 @@ export const Card = ({
     );
 
     const whyStartupShouldMatchWithYou = deviceData.isSmallerThanXS
-      ? truncate(record.whyStartupShouldMatchWithYou, 100)
+      ? truncate(record.whyStartupShouldMatchWithYou, 85)
       : record.whyStartupShouldMatchWithYou;
 
     return (
@@ -178,32 +178,32 @@ export const Card = ({
           fontWeight={900}
           variant="body1"
         >{`"${whyStartupShouldMatchWithYou}"`}</Typography>
-        <S.StyledUserInfoTypography noWrap variant="body2">
+        <S.StyledUserInfoTypography variant="body2">
           <LocationCityIcon />
           {record.location}
         </S.StyledUserInfoTypography>
         <S.StyledChipsAndActionsWrapper>
           <S.StyledUserInfoGroupWrapper>
             {investorDemandTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <AutorenewIcon />
                 {investorDemandTypeChips}
               </S.StyledUserInfoTypography>
             )}
             {investmentSizeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <MonetizationOnIcon />
                 {investmentSizeChips}
               </S.StyledUserInfoTypography>
             )}
-            {investmentStageTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+            {deviceData.isBiggerThanXS && investmentStageTypeChips.length > 0 && (
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <PieChartIcon />
                 {investmentStageTypeChips}
               </S.StyledUserInfoTypography>
             )}
             {deviceData.isBiggerThanXS && focusMarketTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography variant="body2">
+              <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <ScreenRotationIcon />
                 {focusMarketTypeChips}
               </S.StyledUserInfoTypography>
