@@ -8,7 +8,7 @@ import { isStartupProfile, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { getLikesAction } from './api';
+import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
 import S from './likes.styles';
 import { ILikesProps } from './likes.types';
@@ -16,17 +16,19 @@ import { ILikesProps } from './likes.types';
 export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
   const { user } = useUser();
   const translations = useTranslation(translationStrings);
-  const { data, isLoading, mutate } = useMutation(getLikesAction);
+  const { data, isLoading, mutate } = useMutation(likesAction);
 
   const isStartup = isStartupProfile(clientTypeId);
 
   useEffect(() => {
-    if (user?.is_subscribed) {
+    // TODO - fix after likes done
+    if (!user?.is_subscribed) {
       mutate();
     }
   }, [user?.is_subscribed]);
 
-  if (!user?.is_subscribed) {
+  // TODO - fix after likes done
+  if (user?.is_subscribed) {
     return (
       <Empty
         actionButtonProps={{
@@ -60,12 +62,12 @@ export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
   return (
     <S.StyledWrapper>
       {data?.data.map((_record) => (
-        <div key={_record.avatarPublicUrl} style={{ width: '100%' }}>
+        <div key={_record.avatars[0]} style={{ width: '100%' }}>
           <Image
             alt="Like profile"
             height={600}
             layout="responsive"
-            src={_record.avatarPublicUrl}
+            src={_record.avatars[0]}
             width={400}
           />
         </div>

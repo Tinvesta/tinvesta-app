@@ -98,3 +98,9 @@ export interface ISubscriptionPlan {
   name: ESubscriptionName;
   price: number;
 }
+
+export interface ILike {
+  avatars: string[];
+  companyName: string;
+  id: string;
+}
