@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 
 import { Empty, Loading } from '@ui';
 
-import { isStartupProfile, useTranslation } from '@utils';
+import { isStartupProfile, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -14,6 +14,7 @@ import S from './likes.styles';
 import { ILikesProps } from './likes.types';
 
 export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
+  const { user } = useUser();
   const translations = useTranslation(translationStrings);
   const { data, isLoading, mutate } = useMutation(getLikesAction);
 
@@ -22,6 +23,8 @@ export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
   useEffect(() => {
     mutate();
   }, []);
+
+  console.log(user);
 
   if (isLoading) {
     return <Loading />;
