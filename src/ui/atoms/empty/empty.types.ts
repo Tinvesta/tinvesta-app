@@ -5,5 +5,6 @@ interface IActionButtonProps {
 
 export interface IEmptyProps {
   actionButtonProps?: IActionButtonProps;
+  imageSrc?: string;
   label?: string;
 }
