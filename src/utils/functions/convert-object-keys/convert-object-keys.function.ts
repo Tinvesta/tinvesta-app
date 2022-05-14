@@ -1,17 +1,17 @@
-import { hasOwnProperty, isObject } from '@utils';
+import { hasOwnProperty, isObject, objectKeys } from '@utils';
 
 import { toCamelCase } from '../to-camel-case/to-camel-case.function';
 import { toSnakeCase } from '../to-snake-case/to-snake-case.function';
 
 const convertObjectKeys =
   (keyTransformFunction: (string: string) => string) => (object: unknown) => {
-    if (!isObject(object) || Object.keys(object).length === 0) {
+    if (!isObject(object) || objectKeys(object).length === 0) {
       return object;
     }
 
     const newObject: Record<string, unknown> = {};
 
-    for (const _objectKey of Object.keys(object)) {
+    for (const _objectKey of objectKeys(object)) {
       if (hasOwnProperty(object, _objectKey)) {
         const objectValue = object[_objectKey];
 

@@ -6,6 +6,7 @@ import {
   hasOwnProperty,
   isArray,
   isStartupProfile,
+  objectKeys,
 } from '@utils';
 
 import { nextAxiosInstance, supabaseInstance } from '@infrastructure';
@@ -18,14 +19,14 @@ export const createProfileAction = async (data: IDesktopOnboardingMachineContext
   const isStartupPath = isStartupProfile(data.stepTwoData.clientTypeId);
   const keyToFilterOut = isStartupPath ? 'Investor' : 'Startup';
 
-  const requestData = await Object.keys(data).reduce(async (_accumulatorPromise, _value) => {
+  const requestData = await objectKeys(data).reduce(async (_accumulatorPromise, _value) => {
     const _accumulator = await _accumulatorPromise;
 
     if (_value.includes(keyToFilterOut)) {
       return _accumulator;
     }
 
-    const currentObject = data[_value as keyof IDesktopOnboardingMachineContext];
+    const currentObject = data[_value];
 
     if (hasOwnProperty(currentObject, 'teamSizeId')) {
       currentObject.teamSizeIds = [currentObject.teamSizeId];
