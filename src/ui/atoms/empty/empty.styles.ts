@@ -8,6 +8,8 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledTypography = styled(Typography)`
+  max-width: 500px;
+  text-align: center;
   margin-top: ${({ theme }) => theme.spacing(3)};
 `;
 

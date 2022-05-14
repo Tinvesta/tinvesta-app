@@ -21,10 +21,23 @@ export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
   const isStartup = isStartupProfile(clientTypeId);
 
   useEffect(() => {
-    mutate();
-  }, []);
+    if (user?.is_subscribed) {
+      mutate();
+    }
+  }, [user?.is_subscribed]);
 
-  console.log(user);
+  if (!user?.is_subscribed) {
+    return (
+      <Empty
+        actionButtonProps={{
+          linkTo: ERoutes.DASHBOARD_PROFILE,
+          label: translations.componentDashboardLikesNoSubscriptionActionButton,
+        }}
+        imageSrc="/images/undraw-stripe-payments.svg"
+        label={translations.componentDashboardLikesNoSubscriptionLabel}
+      />
+    );
+  }
 
   if (isLoading) {
     return <Loading />;

@@ -9,7 +9,11 @@ import { useDeviceDetect } from '@utils';
 import S from './empty.styles';
 import { IEmptyProps } from './empty.types';
 
-const EmptyComponent = ({ actionButtonProps, label }: IEmptyProps): JSX.Element => {
+const EmptyComponent = ({
+  actionButtonProps,
+  imageSrc = '/images/undraw-empty.svg',
+  label,
+}: IEmptyProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
 
   const imageSize = deviceData.isSmallerThanXS ? 200 : 250;
@@ -18,17 +22,11 @@ const EmptyComponent = ({ actionButtonProps, label }: IEmptyProps): JSX.Element 
   return (
     <CenterBlockLayout>
       <S.StyledWrapper>
-        <Image
-          priority
-          alt="Tinvesta"
-          height={imageSize}
-          src="/images/undraw-empty.svg"
-          width={imageSize}
-        />
+        <Image priority alt="Tinvesta" height={imageSize} src={imageSrc} width={imageSize} />
         {label && <S.StyledTypography variant={typographyVariant}>{label}</S.StyledTypography>}
         {actionButtonProps && (
           <Link passHref href={actionButtonProps.linkTo}>
-            <S.StyledActionButton variant="contained">
+            <S.StyledActionButton color="secondary" variant="contained">
               {actionButtonProps.label}
             </S.StyledActionButton>
           </Link>
