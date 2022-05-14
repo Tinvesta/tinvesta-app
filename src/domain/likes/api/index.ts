@@ -1,1 +1,1 @@
-export * from './get-likes/get-likes.action';
+export * from './likes/likes.action';
