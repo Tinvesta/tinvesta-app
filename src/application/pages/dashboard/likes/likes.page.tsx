@@ -53,8 +53,6 @@ export const LikesPage = (props: ILikesProps): JSX.Element => {
     ? MobileDashboardLayout
     : DesktopDashboardLayout;
 
-  console.log(props);
-
   return (
     <DashboardLayout>
       <Likes clientTypeId={user.client_type_id as number} {...props} />
