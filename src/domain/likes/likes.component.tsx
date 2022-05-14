@@ -4,7 +4,7 @@ import { useMutation } from 'react-query';
 
 import { Empty, Loading } from '@ui';
 
-import { isStartupProfile, useTranslation, useUser } from '@utils';
+import { isStartupProfile, useDeviceDetect, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -15,6 +15,7 @@ import { ILikesProps } from './likes.types';
 
 export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
   const { user } = useUser();
+  const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
   const { data, isLoading, mutate } = useMutation(likesAction);
 
@@ -62,15 +63,18 @@ export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
   return (
     <S.StyledWrapper>
       {data?.data.map((_record) => (
-        <div key={_record.avatars[0]} style={{ width: '100%' }}>
+        <S.StyledImageWrapper key={_record.avatars[0]}>
           <Image
-            alt="Like profile"
+            alt={translations.commonDefaultImageAlt}
             height={600}
             layout="responsive"
             src={_record.avatars[0]}
             width={400}
           />
-        </div>
+          <S.StyledTypography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}>
+            {_record.companyName}
+          </S.StyledTypography>
+        </S.StyledImageWrapper>
       ))}
     </S.StyledWrapper>
   );
