@@ -1,9 +1,11 @@
 import { css } from '@emotion/react';
 
+import { objectKeys } from '@utils/functions';
+
 import { deviceBreakpoint } from './respond-to.defaults';
 import { TCSSParams, TMediaFor } from './respond-to.types';
 
-const keys = Object.keys(deviceBreakpoint) as Array<keyof typeof deviceBreakpoint>;
+const keys = objectKeys(deviceBreakpoint);
 
 const respondToDecorator = (mediaFor: TMediaFor) =>
   keys.reduce((accumulator, label) => {
