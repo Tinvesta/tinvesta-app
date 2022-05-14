@@ -41,9 +41,15 @@ const StyledTypography = styled(Typography)`
   position: absolute;
   white-space: nowrap;
   text-overflow: ellipsis;
-  left: ${({ theme }) => theme.spacing(2)};
-  bottom: ${({ theme }) => theme.spacing(2)};
-  width: calc(100% - ${({ theme }) => theme.spacing(2)} - ${({ theme }) => theme.spacing(2)});
+  left: ${({ theme }) => theme.spacing(3)};
+  bottom: ${({ theme }) => theme.spacing(3)};
+  width: calc(100% - ${({ theme }) => theme.spacing(3)} - ${({ theme }) => theme.spacing(3)});
+
+  ${({ theme }) => respondToMax.mobile`
+    left: ${theme.spacing(2)};
+    bottom: ${theme.spacing(2)};
+    width: calc(100% - ${theme.spacing(2)} - ${theme.spacing(2)});
+  `}
 
   ${({ theme }) => respondToMax.xmobile`
     left: ${theme.spacing(1)};
