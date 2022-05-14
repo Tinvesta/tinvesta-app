@@ -34,7 +34,32 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   const parsedLikes = likes?.map(convertObjectKeysToCamelCase) || [];
 
-  response.send(parsedLikes);
+  response.send([
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+    ...parsedLikes,
+  ]);
 };
 
 export default handler;
