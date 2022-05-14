@@ -1,15 +1,38 @@
 import styled from '@emotion/styled';
 import { CancelOutlined } from '@mui/icons-material';
 
-const StyledContentWrapper = styled.div`
-  position: absolute;
+const StyledContentWrapper = styled.div<{
+  align?: 'right' | 'center' | 'left';
+  withBorderRadius?: boolean;
+  withPadding?: boolean;
+}>`
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  background-color: ${({ theme }) => theme.palette.background.paper};
-  padding: ${({ theme }) => theme.spacing(3)};
-  border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+  position: absolute;
+  border-radius: ${({ theme, withBorderRadius }) =>
+    withBorderRadius ? theme.shape.borderRadius : 0}px;
   border: 1px solid ${({ theme }) => theme.palette.divider};
+  background-color: ${({ theme }) => theme.palette.background.paper};
+  padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing(3) : 0)};
+
+  ${({ align }) =>
+    align === 'center' &&
+    `
+    left: 50%;
+    transform: translate(-50%, -50%);
+  `}
+
+  ${({ align }) =>
+    align === 'left' &&
+    `
+    left: 0;
+  `}
+
+  ${({ align }) =>
+    align === 'right' &&
+    `
+    left: 100%;
+    transform: translate(-100%, -50%);
+  `}
 `;
 
 const StyledCloseIcon = styled(CancelOutlined)`
