@@ -5,8 +5,11 @@ import S from './use-modal.styles';
 import { IModalProps, IUseModalAttributes } from './use-modal.types';
 
 export const useModal = ({
+  align = 'center',
   defaultIsOpenState = false,
+  withBorderRadius = true,
   withCloseIcon = true,
+  withPadding = true,
 }: IUseModalAttributes = {}) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpenState);
   const show = () => setIsOpen(true);
@@ -36,7 +39,11 @@ export const useModal = ({
         {...restProps}
         open={finalOpenState}
       >
-        <S.StyledContentWrapper>
+        <S.StyledContentWrapper
+          align={align}
+          withBorderRadius={withBorderRadius}
+          withPadding={withPadding}
+        >
           <>
             {withCloseIcon && <S.StyledCloseIcon onClick={onCloseIconClick} />}
             {children}

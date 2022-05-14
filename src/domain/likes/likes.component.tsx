@@ -1,23 +1,33 @@
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { Empty, Loading } from '@ui';
+import { Empty, Loading, ProfileDetailsPreview, useModal } from '@ui';
 
 import { isStartupProfile, useDeviceDetect, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
+
+import { ILike } from '@interfaces';
 
 import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
 import S from './likes.styles';
 import { ILikesProps } from './likes.types';
 
-export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
+export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const { user } = useUser();
+  const { Modal, show } = useModal({
+    withCloseIcon: false,
+    withPadding: false,
+    align: 'right',
+    withBorderRadius: false,
+  });
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
   const { data, isLoading, mutate } = useMutation(likesAction);
+
+  const [selectedProfile, setSelectedProfile] = useState<ILike>();
 
   const isStartup = isStartupProfile(clientTypeId);
 
@@ -27,6 +37,14 @@ export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
       mutate();
     }
   }, [user?.is_subscribed]);
+
+  useEffect(() => {
+    if (selectedProfile) {
+      show();
+    }
+  }, [selectedProfile]);
+
+  const onRecordClick = (record: ILike) => () => setSelectedProfile(record);
 
   // TODO - fix after likes done
   if (user?.is_subscribed) {
@@ -62,8 +80,17 @@ export const Likes = ({ clientTypeId }: ILikesProps): JSX.Element => {
 
   return (
     <S.StyledWrapper>
+      <Modal>
+        <S.StyledProfileDetailsPreviewWrapper>
+          <ProfileDetailsPreview
+            {...restProps}
+            // @ts-expect-error
+            profileDetails={selectedProfile}
+          />
+        </S.StyledProfileDetailsPreviewWrapper>
+      </Modal>
       {data?.data.map((_record) => (
-        <S.StyledImageWrapper key={_record.avatars[0]}>
+        <S.StyledImageWrapper key={_record.avatars[0]} onClick={onRecordClick(_record)}>
           <Image
             alt={translations.commonDefaultImageAlt}
             height={600}

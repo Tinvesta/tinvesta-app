@@ -1,6 +1,6 @@
 import { dashboardLikesPage } from '@application';
 
-const { LikesPage } = dashboardLikesPage;
+const { getStaticProps, LikesPage } = dashboardLikesPage;
 
 // eslint-disable-next-line no-restricted-exports
-export { LikesPage as default };
+export { LikesPage as default, getStaticProps };

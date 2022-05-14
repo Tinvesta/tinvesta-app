@@ -58,10 +58,21 @@ const StyledTypography = styled(Typography)`
   `}
 `;
 
+const StyledProfileDetailsPreviewWrapper = styled.div`
+  width: 500px;
+  height: 100vh;
+
+  & > div {
+    height: 100%;
+    border-radius: 0;
+  }
+`;
+
 const S = {
   StyledWrapper,
   StyledTypography,
   StyledImageWrapper,
+  StyledProfileDetailsPreviewWrapper,
 };
 
 export default S;
