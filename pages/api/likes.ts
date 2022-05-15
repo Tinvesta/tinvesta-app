@@ -29,6 +29,8 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   });
 
   const { data: likes } = await supabaseInstance.rpc('likes', {
+    offset_input: 0,
+    limit_input: 10,
     profile_id_input: user.id,
   });
 
