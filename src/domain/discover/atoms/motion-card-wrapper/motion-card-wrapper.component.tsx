@@ -1,10 +1,10 @@
 import {
   CheckCircleOutlined as CheckCircleOutlinedIcon,
-  CloseOutlined as CloseOutlinedIcon,
-  FavoriteOutlined as FavoriteOutlinedIcon,
   HighlightOffOutlined as HighlightOffOutlinedIcon,
 } from '@mui/icons-material';
 import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
+
+import { ProfileCardActionButtons } from '@ui';
 
 import S from './motion-card-wrapper.styles';
 import { IMotionCardWrapperProps } from './motion-card-wrapper.types';
@@ -62,14 +62,7 @@ export const MotionCardWrapper = ({
       </S.StyledHighlightOffOutlinedIconWrapper>
       <S.StyledGradient />
       {children}
-      <S.StyledActionButtonsWrapper>
-        <S.StyledCloseOutlinedIconButtonWrapper color="error" onClick={markAsNotVoted}>
-          <CloseOutlinedIcon />
-        </S.StyledCloseOutlinedIconButtonWrapper>
-        <S.StyledFavouriteIconButtonWrapper color="success" onClick={markAsVoted}>
-          <FavoriteOutlinedIcon />
-        </S.StyledFavouriteIconButtonWrapper>
-      </S.StyledActionButtonsWrapper>
+      <ProfileCardActionButtons markAsNotVoted={markAsNotVoted} markAsVoted={markAsVoted} />
     </S.StyledWrapper>
   );
 };

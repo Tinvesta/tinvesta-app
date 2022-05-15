@@ -1,5 +1,4 @@
 import styled from '@emotion/styled';
-import { IconButton } from '@mui/material';
 import { motion } from 'framer-motion';
 import { linearGradient } from 'polished';
 
@@ -11,7 +10,7 @@ const StyledWrapper = styled(motion.div)`
   overflow: hidden;
   position: absolute;
   border-radius: 20px;
-  background-color: ${({ theme }) => theme.palette.grey[800]};
+  background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${respondToMax.medium`
     width: 600px;
@@ -73,7 +72,7 @@ const StyledActionButtonsWrapper = styled.div`
   position: absolute;
   align-items: center;
   justify-content: space-evenly;
-  background-color: ${({ theme }) => theme.palette.grey[800]};
+  background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${respondToMax.mobile`
     height: 90px;
@@ -82,60 +81,6 @@ const StyledActionButtonsWrapper = styled.div`
   ${respondToMax.xmobile`
     height: 80px;
     justify-content: space-between;
-  `}
-`;
-
-const StyledFavouriteIconButtonWrapper = styled(IconButton)`
-  border: 1px solid;
-
-  &.MuiIconButton-root {
-    padding: ${({ theme }) => theme.spacing(4)};
-
-    > .MuiSvgIcon-root {
-      width: 1.5em;
-      height: 1.5em;
-
-      ${respondToMax.mobile`
-        width: 1.2em;
-        height: 1.2em;
-      `}
-
-      ${respondToMax.xmobile`
-        width: 1em;
-        height: 1em;
-      `}
-    }
-  }
-
-  ${({ theme }) => respondToMax.xmobile`
-    right: ${theme.spacing(10)};
-  `}
-`;
-
-const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
-  border: 1px solid;
-
-  &.MuiIconButton-root {
-    padding: ${({ theme }) => theme.spacing(4)};
-
-    > .MuiSvgIcon-root {
-      width: 1.5em;
-      height: 1.5em;
-
-      ${respondToMax.mobile`
-        width: 1.2em;
-        height: 1.2em;
-      `}
-
-      ${respondToMax.xmobile`
-        width: 1em;
-        height: 1em;
-      `}
-    }
-  }
-
-  ${({ theme }) => respondToMax.xmobile`
-    left: ${theme.spacing(10)};
   `}
 `;
 
@@ -148,7 +93,7 @@ const StyledGradient = styled.div`
   pointer-events: none;
   ${({ theme }) =>
     linearGradient({
-      colorStops: ['rgba(255,0,0,0) 0%', theme.palette.grey[800]],
+      colorStops: ['rgba(255,0,0,0) 0%', theme.palette.primary.main],
       toDirection: 'to bottom',
     })}
 
@@ -167,9 +112,7 @@ const S = {
   StyledWrapper,
   StyledGradient,
   StyledActionButtonsWrapper,
-  StyledFavouriteIconButtonWrapper,
   StyledCheckCircleOutlinedIconWrapper,
-  StyledCloseOutlinedIconButtonWrapper,
   StyledHighlightOffOutlinedIconWrapper,
 };
 

@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { Empty, Loading, ProfileDetailsPreview, useModal } from '@ui';
+import { Empty, Loading, useModal } from '@ui';
 
 import { isStartupProfile, useDeviceDetect, useTranslation, useUser } from '@utils';
 
@@ -14,6 +14,7 @@ import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
 import S from './likes.styles';
 import { ILikesProps } from './likes.types';
+import { ProfileDetailsPreviewModalContent } from './molecules';
 
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const { user } = useUser();
@@ -81,13 +82,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   return (
     <S.StyledWrapper>
       <Modal>
-        <S.StyledProfileDetailsPreviewWrapper>
-          <ProfileDetailsPreview
-            {...restProps}
-            // @ts-expect-error
-            profileDetails={selectedProfile}
-          />
-        </S.StyledProfileDetailsPreviewWrapper>
+        <ProfileDetailsPreviewModalContent {...restProps} selectedProfile={selectedProfile} />
       </Modal>
       {data?.data.map((_record) => (
         <S.StyledImageWrapper key={_record.avatars[0]} onClick={onRecordClick(_record)}>

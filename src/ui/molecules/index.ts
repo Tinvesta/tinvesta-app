@@ -3,6 +3,7 @@ export * from './confirmation-modal/confirmation-modal.component';
 export * from './select-with-controller/select-with-controller.component';
 export * from './profile-details-preview/profile-details-preview.component';
 export * from './text-field-with-controller/text-field-with-controller.component';
+export * from './profile-card-action-buttons/profile-card-action-buttons.component';
 export * from './autocomplete-with-controller/autocomplete-with-controller.component';
 export * from './upload-images-with-controller/upload-images-with-controller.component';
 export * from './location-autocomplete-with-controller/location-autocomplete-with-controller.component';
