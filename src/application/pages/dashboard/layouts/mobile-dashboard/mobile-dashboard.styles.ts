@@ -16,7 +16,7 @@ const StyledContentWrapper = styled.div`
 `;
 
 const StyledBottomNavigation = styled(BottomNavigation)`
-  background-color: ${({ theme }) => theme.palette.grey[800]};
+  background-color: ${({ theme }) => theme.palette.primary.main};
 `;
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)<{ active: boolean }>`
@@ -31,7 +31,7 @@ const StyledTopNavigation = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(0, 3)};
-  background-color: ${({ theme }) => theme.palette.grey[800]};
+  background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${({ theme }) => respondToMax.xmobile`
     height: 65px;

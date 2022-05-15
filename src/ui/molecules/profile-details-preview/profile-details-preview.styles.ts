@@ -51,7 +51,10 @@ const StyledImageWrapper = styled.div`
 `;
 
 const StyledContentWrapper = styled.div`
+  display: flex;
   overflow: hidden;
+  flex-direction: column;
+  justify-content: center;
   padding: ${({ theme }) => theme.spacing(5)};
 
   ${({ theme }) => respondToMax.mobile`

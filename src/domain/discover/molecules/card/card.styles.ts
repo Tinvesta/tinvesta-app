@@ -14,7 +14,7 @@ const StyledWrapper = styled.div`
   align-items: flex-start;
   justify-content: flex-start;
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-  background-color: ${({ theme }) => theme.palette.grey[800]};
+  background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${respondToMax.xmobile`
     width: 100%;
