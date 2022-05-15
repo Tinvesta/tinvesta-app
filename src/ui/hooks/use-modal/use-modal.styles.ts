@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { CancelOutlined } from '@mui/icons-material';
+import { CancelOutlined as CancelOutlinedIcon } from '@mui/icons-material';
 
 const StyledContentWrapper = styled.div<{
   align?: 'right' | 'center' | 'left';
@@ -35,7 +35,7 @@ const StyledContentWrapper = styled.div<{
   `}
 `;
 
-const StyledCloseIcon = styled(CancelOutlined)`
+const StyledCloseIcon = styled(CancelOutlinedIcon)`
   display: flex;
   cursor: pointer;
   margin-left: auto;

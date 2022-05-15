@@ -18,7 +18,7 @@ import { ProfileDetailsPreviewModalContent } from './molecules';
 
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const { user } = useUser();
-  const { Modal, show } = useModal({
+  const { hide, Modal, show } = useModal({
     withCloseIcon: false,
     withPadding: false,
     align: 'right',
@@ -46,6 +46,11 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   }, [selectedProfile]);
 
   const onRecordClick = (record: ILike) => () => setSelectedProfile(record);
+
+  const onModalCloseIconClick = () => {
+    hide();
+    setSelectedProfile(undefined);
+  };
 
   // TODO - fix after likes done
   if (user?.is_subscribed) {
@@ -82,7 +87,11 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   return (
     <S.StyledWrapper>
       <Modal>
-        <ProfileDetailsPreviewModalContent {...restProps} selectedProfile={selectedProfile} />
+        <ProfileDetailsPreviewModalContent
+          {...restProps}
+          selectedProfile={selectedProfile}
+          onCloseIconClick={onModalCloseIconClick}
+        />
       </Modal>
       {data?.data.map((_record) => (
         <S.StyledImageWrapper key={_record.avatars[0]} onClick={onRecordClick(_record)}>
