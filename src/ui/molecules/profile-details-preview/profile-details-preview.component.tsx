@@ -15,7 +15,7 @@ import {
 import Image from 'next/image';
 import { useQuery } from 'react-query';
 
-import { Loader, ProfileDetailsPreviewLabel, Swiper, SwiperSlide } from '@ui';
+import { CenterBlockLayout, Loader, ProfileDetailsPreviewLabel, Swiper, SwiperSlide } from '@ui';
 
 import {
   mapFocusMarketsToDropdownOptions,
@@ -162,7 +162,9 @@ export const ProfileDetailsPreview = ({
       </Swiper>
       <S.StyledContentWrapper>
         {isProfileDetailsActionLoading ? (
-          <Loader size="small" />
+          <CenterBlockLayout>
+            <Loader size="small" />
+          </CenterBlockLayout>
         ) : (
           <>
             <ProfileDetailsPreviewLabel

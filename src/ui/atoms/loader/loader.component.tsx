@@ -16,9 +16,12 @@ export const Loader = ({ size = 'medium' }: ILoaderProps): JSX.Element => {
       ? '/images/brandmark-transparent-white.png'
       : '/images/brandmark-transparent-black.png';
 
+  const finalWidth = width + width / SCALE;
+  const finalHeight = height + height / SCALE;
+
   return (
-    <S.StyledWrapper>
-      <CircularProgress style={{ width: width + width / SCALE, height: height + height / SCALE }} />
+    <S.StyledWrapper style={{ width: finalWidth, height: finalHeight }}>
+      <CircularProgress style={{ width: finalWidth, height: finalHeight }} />
       <S.StyledImageWrapper>
         <Image alt="Tinvesta" height={height} objectFit="fill" src={imageSrc} width={width} />
       </S.StyledImageWrapper>
