@@ -77,15 +77,15 @@ export const MatchModalContent = ({
         </S.StyledImageWrapper>
       </S.StyledImageContainer>
       <S.StyledButtonsWrapper>
-        <S.StyledButton size={buttonSize} variant="contained" onClick={sendEmail}>
+        <S.StyledButton color="secondary" size={buttonSize} variant="contained" onClick={sendEmail}>
           {translations.componentDashboardDiscoverMatchModalContentButtonsSendEmail}
         </S.StyledButton>
         <CopyToClipboard text={likedProfileDetails.contactEmail} onCopy={onCopy}>
-          <S.StyledButton disabled={copied} size={buttonSize} variant="contained">
+          <S.StyledButton color="secondary" disabled={copied} size={buttonSize} variant="contained">
             {translations.componentDashboardDiscoverMatchModalContentButtonsClipboard}
           </S.StyledButton>
         </CopyToClipboard>
-        <S.StyledButton size={buttonSize} variant="outlined" onClick={onClose}>
+        <S.StyledButton color="secondary" size={buttonSize} variant="outlined" onClick={onClose}>
           {translations.componentDashboardDiscoverMatchModalContentButtonsKeepSwiping}
         </S.StyledButton>
       </S.StyledButtonsWrapper>
