@@ -3,9 +3,11 @@ import { useMutation } from 'react-query';
 
 import { CenterBlockLayout, Loading, useModal } from '@ui';
 
+import { likeProfileAction } from '@infrastructure';
+
 import { IProfileDetails } from '@interfaces';
 
-import { discoverRecordsAction, likeProfileAction } from './api';
+import { discoverRecordsAction } from './api';
 import { MotionCardsStack } from './atoms';
 import { IDiscoverProps } from './discover.types';
 import { Card, MatchModalContent } from './molecules';

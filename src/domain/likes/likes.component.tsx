@@ -2,13 +2,18 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
+// TODO - refactor later
+import { MatchModalContent } from '@domain/discover/molecules';
+
 import { Empty, Loading, useModal } from '@ui';
 
 import { isStartupProfile, useDeviceDetect, useTranslation, useUser } from '@utils';
 
+import { likeProfileAction } from '@infrastructure';
+
 import { ERoutes } from '@enums';
 
-import { ILike } from '@interfaces';
+import { ILike, IProfileDetails } from '@interfaces';
 
 import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
@@ -18,17 +23,31 @@ import { ProfileDetailsPreviewModalContent } from './molecules';
 
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const { user } = useUser();
-  const { hide, Modal, show } = useModal({
+  const {
+    hide: hideProfileDetailsPreviewModalContent,
+    Modal: ModalProfileDetailsPreviewModalContent,
+    show: showProfileDetailsPreviewModalContent,
+  } = useModal({
     withCloseIcon: false,
     withPadding: false,
     align: 'right',
     withBorderRadius: false,
   });
+  const {
+    hide: hideMatchModalContent,
+    Modal: ModalMatchModalContent,
+    show: showMatchModalContent,
+  } = useModal({ withCloseIcon: false });
+
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
   const { data, isLoading, mutate } = useMutation(likesAction);
 
   const [selectedProfile, setSelectedProfile] = useState<ILike>();
+  const [likedProfileDetails, setLikedProfileDetails] = useState<IProfileDetails>();
+  const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
+
+  const { mutateAsync: mutateAsyncLikeProfileAction } = useMutation(likeProfileAction);
 
   const isStartup = isStartupProfile(clientTypeId);
 
@@ -41,15 +60,39 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
 
   useEffect(() => {
     if (selectedProfile) {
-      show();
+      showProfileDetailsPreviewModalContent();
     }
   }, [selectedProfile]);
 
+  useEffect(() => {
+    if (likedProfileDetails) {
+      hideProfileDetailsPreviewModalContent();
+      showMatchModalContent();
+    }
+  }, [JSON.stringify(likedProfileDetails)]);
+
   const onRecordClick = (record: ILike) => () => setSelectedProfile(record);
 
-  const onModalCloseIconClick = () => {
-    hide();
+  const onProfileDetailsPreviewModalContentCloseIconClick = () => {
+    hideProfileDetailsPreviewModalContent();
     setSelectedProfile(undefined);
+  };
+
+  const onModalMatchModalContentClose = () => {
+    mutate();
+
+    hideMatchModalContent();
+    setLikedProfileDetails(undefined);
+  };
+
+  const onVote = (profileId: string, vote: boolean) => {
+    mutateAsyncLikeProfileAction({ profileId, vote }).then(({ data }) => {
+      if (!loggedProfileDetails && data.loggedProfileDetails) {
+        setLoggedProfileDetails(data.loggedProfileDetails);
+      }
+
+      setLikedProfileDetails(data.likedProfileDetails);
+    });
   };
 
   // TODO - fix after likes done
@@ -86,13 +129,21 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
 
   return (
     <S.StyledWrapper>
-      <Modal>
+      <ModalProfileDetailsPreviewModalContent>
         <ProfileDetailsPreviewModalContent
           {...restProps}
           selectedProfile={selectedProfile}
-          onCloseIconClick={onModalCloseIconClick}
+          onCloseIconClick={onProfileDetailsPreviewModalContentCloseIconClick}
+          onVote={onVote}
         />
-      </Modal>
+      </ModalProfileDetailsPreviewModalContent>
+      <ModalMatchModalContent onClose={onModalMatchModalContentClose}>
+        <MatchModalContent
+          likedProfileDetails={likedProfileDetails}
+          loggedProfileDetails={loggedProfileDetails}
+          onClose={onModalMatchModalContentClose}
+        />
+      </ModalMatchModalContent>
       {data?.data.map((_record) => (
         <S.StyledImageWrapper key={_record.avatars[0]} onClick={onRecordClick(_record)}>
           <Image
