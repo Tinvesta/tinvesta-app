@@ -30,11 +30,11 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
         margin: 0;
         opacity: 1;
         border-radius: 0;
-        background-color: ${({ theme }) => theme.palette.primary.dark};
+        background-color: ${({ theme }) => theme.palette.primary.main};
         width: calc(100% / ${({ swiperPaginationBullets }) => swiperPaginationBullets});
 
         &-active {
-          background-color: ${({ theme }) => theme.palette.primary.main};
+          background-color: ${({ theme }) => theme.palette.primary.light};
         }
       }
     }

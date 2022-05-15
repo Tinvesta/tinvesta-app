@@ -18,6 +18,7 @@ export interface IProfileDetailsPreviewModalContentProps {
   investmentStageTypes: IInvestmentStageType[];
   investorDemandTypes: IInvestorDemandType[];
   investorProfileTypes: IInvestorProfileType[];
+  onCloseIconClick: () => void;
   selectedProfile?: ILike;
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];
