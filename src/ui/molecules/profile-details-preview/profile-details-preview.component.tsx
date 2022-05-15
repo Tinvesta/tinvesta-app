@@ -36,7 +36,7 @@ import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '@infrast
 import { translationStrings } from './profile-details-preview.defaults';
 import S from './profile-details-preview.styles';
 import { IProfileDetailsPreviewProps } from './profile-details-preview.types';
-import { transformNumberArrayToChips } from './utils';
+import { profileFirstNameAndLastNameToFullName, transformNumberArrayToChips } from './utils';
 
 export const ProfileDetailsPreview = ({
   focusMarkets,
@@ -136,6 +136,8 @@ export const ProfileDetailsPreview = ({
     startupProfileCreatorTypesDropdownOptions,
   );
 
+  const fullName = profileFirstNameAndLastNameToFullName(mergedProfileDetails);
+
   return (
     <S.StyledWrapper swiperPaginationBullets={mergedProfileDetails.avatars.length}>
       <Swiper
@@ -204,8 +206,8 @@ export const ProfileDetailsPreview = ({
                 icon={<PersonIcon />}
                 label={translations.componentProfileDetailsPreviewProfileCreatorLabel}
               >
-                {investorProfileTypeChips} {mergedProfileDetails.firstName}{' '}
-                {mergedProfileDetails.lastName}
+                {investorProfileTypeChips}
+                {fullName}
               </ProfileDetailsPreviewLabel>
             )}
             {startupProfileCreatorTypeChips.length > 0 && (
@@ -213,8 +215,8 @@ export const ProfileDetailsPreview = ({
                 icon={<PersonIcon />}
                 label={translations.componentProfileDetailsPreviewProfileCreatorLabel}
               >
-                {startupProfileCreatorTypeChips} {mergedProfileDetails.firstName}{' '}
-                {mergedProfileDetails.lastName}
+                {startupProfileCreatorTypeChips}
+                {fullName}
               </ProfileDetailsPreviewLabel>
             )}
             <ProfileDetailsPreviewLabel
