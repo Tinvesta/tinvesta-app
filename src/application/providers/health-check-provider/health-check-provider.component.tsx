@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 
-import { Loader } from '@ui';
+import { Loading } from '@ui';
 
 import { useHealthCheckActionQuery } from '@utils';
 
@@ -14,7 +14,7 @@ export const HealthCheckProvider = ({ children }: IHealthCheckProviderProps): JS
   }, []);
 
   if (isLoading || !data?.data) {
-    return <Loader />;
+    return <Loading />;
   }
 
   // TODO - add proper error
