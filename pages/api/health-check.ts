@@ -2,7 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { EApiError } from '@enums';
 
-const apiRouteSecret = process.env.API_ROUTE_SECRET;
+const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
