@@ -1,6 +1,7 @@
 import {
   CacheProvider,
   ConfirmationModalProvider,
+  HealthCheckProvider,
   LocaleProvider,
   QueryClientProvider,
   QueryParamProvider,
@@ -17,9 +18,11 @@ export const AppProvider = ({ children, emotionCache }: IAppProviderProps): JSX.
         <ToastProvider>
           <LocaleProvider>
             <ConfirmationModalProvider>
-              <UserProvider>
-                <QueryClientProvider>{children}</QueryClientProvider>
-              </UserProvider>
+              <QueryClientProvider>
+                <HealthCheckProvider>
+                  <UserProvider>{children}</UserProvider>
+                </HealthCheckProvider>
+              </QueryClientProvider>
             </ConfirmationModalProvider>
           </LocaleProvider>
         </ToastProvider>

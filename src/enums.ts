@@ -27,6 +27,7 @@ export enum EApiEndpoint {
   CREATE_PROFILE = '/api/create-profile',
   DISCOVER_RECORDS = '/api/discover-records',
   GET_MATCHES = '/api/get-matches',
+  HEALTH_CHECK = '/api/health-check',
   LIKES = '/api/likes',
   LIKE_PROFILE = '/api/like-profile',
   PROFILE_DETAILS = '/api/profile-details',
