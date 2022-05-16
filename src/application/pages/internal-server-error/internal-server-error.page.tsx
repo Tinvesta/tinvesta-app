@@ -14,7 +14,7 @@ export const InternalServerErrorPage = (): JSX.Element => {
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
 
-  const backToHome = () => router.push(ERoutes.HOME);
+  const backToHome = () => router.push(ERoutes.DASHBOARD);
 
   return (
     <Error code="500" message={translations.errorPageInternalServerErrorMessage}>

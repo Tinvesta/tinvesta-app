@@ -15,7 +15,7 @@ export const Error = ({ children, code, message }: IErrorProps): JSX.Element => 
       <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h2' : 'h1'}>
         {code}
       </Typography>
-      <Typography align="center" variant={deviceData.isSmallerThanXS ? 'body1' : 'h6'}>
+      <Typography align="center" variant={deviceData.isSmallerThanXS ? 'body2' : 'h6'}>
         {message}
       </Typography>
       <S.StyledActionsWrapper>{children}</S.StyledActionsWrapper>
