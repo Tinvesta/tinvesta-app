@@ -4,7 +4,10 @@ import { Loading } from '@ui';
 
 import { useHealthCheckActionQuery } from '@utils';
 
+import { internalServerErrorPage } from '../../pages';
 import { IHealthCheckProviderProps } from './health-check-provider.types';
+
+const { InternalServerErrorPage } = internalServerErrorPage;
 
 export const HealthCheckProvider = ({ children }: IHealthCheckProviderProps): JSX.Element => {
   const { data, isError, isLoading, mutate } = useHealthCheckActionQuery();
@@ -17,9 +20,8 @@ export const HealthCheckProvider = ({ children }: IHealthCheckProviderProps): JS
     return <Loading />;
   }
 
-  // TODO - add proper error
   if (isError) {
-    return <div>ERROR</div>;
+    return <InternalServerErrorPage />;
   }
 
   return <>{children}</>;

@@ -44,6 +44,8 @@ export enum ERoutes {
   DASHBOARD_MATCHES = '/dashboard/matches',
   DASHBOARD_PROFILE = '/dashboard/profile',
   HOME = '/home',
+  INTERNAL_SERVER_ERROR = '/500',
+  NOT_FOUND = '/404',
   ONBOARDING = '/onboarding',
   PRIVACY_POLICY = '/privacy-policy',
   RELEASE_DATE = '/',
