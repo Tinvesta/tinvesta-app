@@ -21,7 +21,7 @@ export const Loader = ({ size = 'medium' }: ILoaderProps): JSX.Element => {
 
   return (
     <S.StyledWrapper style={{ width: finalWidth, height: finalHeight }}>
-      <CircularProgress style={{ width: finalWidth, height: finalHeight }} />
+      <CircularProgress color="secondary" style={{ width: finalWidth, height: finalHeight }} />
       <S.StyledImageWrapper>
         <Image alt="Tinvesta" height={height} objectFit="fill" src={imageSrc} width={width} />
       </S.StyledImageWrapper>
