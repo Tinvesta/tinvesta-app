@@ -21,7 +21,6 @@ export const darkTheme = createTheme({
     secondary: {
       ...color.gray,
       main: color.gray[500],
-      light: color.gray[300],
     },
     warning: color.yellow,
     background: {
