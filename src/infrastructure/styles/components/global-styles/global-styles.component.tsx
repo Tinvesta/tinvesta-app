@@ -9,9 +9,14 @@ export const GlobalStyles = (): JSX.Element => {
       <Global
         styles={css`
           html,
-          body {
+          body,
+          #__next {
+            width: 100vw;
+            height: 100vh;
+            display: block;
+            position: relative;
             color: ${theme.palette.secondary.main};
-            background-color: ${theme.palette.primary.main};
+            background-color: ${theme.palette.background.default};
           }
 
           * {
