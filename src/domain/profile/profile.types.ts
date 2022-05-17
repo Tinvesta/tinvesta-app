@@ -68,3 +68,8 @@ export interface IEditProfileFormFieldsData {
   visionStatement: string;
   whyStartupShouldMatchWithYou: string;
 }
+
+export interface IFeedbackFormFieldsData {
+  message: string;
+  rating: number;
+}
