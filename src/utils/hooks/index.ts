@@ -6,4 +6,3 @@ export * from './use-device-detect/use-device-detect.hook';
 export * from './use-local-storage/use-local-storage.hook';
 export * from './use-did-mount-effect/use-did-mount-effect.hook';
 export * from './use-confirmation-modal/use-confirmation-modal.hook';
-export * from './use-health-check-action-query/use-health-check-action-query.hook';
