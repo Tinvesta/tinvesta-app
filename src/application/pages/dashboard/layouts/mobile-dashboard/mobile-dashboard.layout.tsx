@@ -9,6 +9,7 @@ import { parseProfileAvatarUrl, useDeviceDetect, useTranslation, useUser } from 
 
 import { ERoutes } from '@enums';
 
+import { QueryClientProvider } from '../../../../providers';
 import { getBottomNavigationOptions, translationStrings } from './mobile-dashboard.defaults';
 import S from './mobile-dashboard.styles';
 import { IMobileDashboardLayoutProps } from './mobile-dashboard.types';
@@ -52,7 +53,9 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
           <LogoutIcon />
         </IconButton>
       </S.StyledTopNavigation>
-      <S.StyledContentWrapper>{children}</S.StyledContentWrapper>
+      <S.StyledContentWrapper>
+        <QueryClientProvider>{children}</QueryClientProvider>
+      </S.StyledContentWrapper>
       <S.StyledBottomNavigation>
         {bottomNavigationOptions.map((_bottomNavigationOption) => {
           const isActive = isActiveOption(_bottomNavigationOption.route);

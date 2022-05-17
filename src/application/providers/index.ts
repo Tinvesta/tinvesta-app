@@ -1,4 +1,3 @@
-export * from './app-provider/app-provider.component';
 export * from './user-provider/user-provider.component';
 export * from './cache-provider/cache-provider.component';
 export * from './toast-provider/toast-provider.component';

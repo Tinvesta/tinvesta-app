@@ -2,6 +2,8 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { Stripe } from 'stripe';
 
+import { QueryParamProvider } from '@application';
+
 import { Profile } from '@domain';
 
 import { Loading } from '@ui';
@@ -58,9 +60,11 @@ export const ProfilePage = (props: IProfileProps): JSX.Element => {
     : DesktopDashboardLayout;
 
   return (
-    <DashboardLayout>
-      <Profile {...props} clientTypeId={user.client_type_id as number} />
-    </DashboardLayout>
+    <QueryParamProvider>
+      <DashboardLayout>
+        <Profile {...props} clientTypeId={user.client_type_id as number} />
+      </DashboardLayout>
+    </QueryParamProvider>
   );
 };
 

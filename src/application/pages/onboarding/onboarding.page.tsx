@@ -2,6 +2,8 @@ import Head from 'next/head';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
+import { ConfirmationModalProvider } from '@application';
+
 import { Onboarding } from '@domain';
 
 import { Loading } from '@ui';
@@ -51,7 +53,9 @@ export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => {
       <Head>
         <title>Tinvesta</title>
       </Head>
-      {shouldRenderLoader ? <Loading /> : <Onboarding {...props} />}
+      <ConfirmationModalProvider>
+        {shouldRenderLoader ? <Loading /> : <Onboarding {...props} />}
+      </ConfirmationModalProvider>
     </S.StyledWrapper>
   );
 };
