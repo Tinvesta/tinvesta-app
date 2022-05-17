@@ -26,6 +26,7 @@ export enum EApiError {
 export enum EApiEndpoint {
   CREATE_PROFILE = '/api/create-profile',
   DISCOVER_RECORDS = '/api/discover-records',
+  FEEDBACK = '/feedback',
   GET_MATCHES = '/api/get-matches',
   HEALTH_CHECK = '/api/health-check',
   LIKES = '/api/likes',
