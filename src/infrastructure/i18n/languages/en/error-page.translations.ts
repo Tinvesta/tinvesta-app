@@ -6,4 +6,6 @@ export default {
   // Internal server error
   'error.page.internal.server.error.back.to.homepage.button': 'Back to homepage',
   'error.page.internal.server.error.message': 'Server is down - please try again in a moment',
+
+  'error.page.background.image.alt': 'Error page background image',
 };
