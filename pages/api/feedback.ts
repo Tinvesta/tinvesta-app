@@ -39,10 +39,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
-  const { error } = await supabaseInstance.from('feedback').insert(userData);
+  const { error } = await supabaseInstance.from('feedback').insert({
+    ...userData,
+    profile_id: user.id,
+  });
 
   if (error) {
-    return response.status(500).send(error.message);
+    return response.status(500).send(error);
   }
 
   response.send(true);

@@ -1,6 +1,7 @@
 export default {
   // Buttons
   'common.buttons.ok': 'Ok',
+  'common.buttons.send': 'Send',
   'common.buttons.edit': 'Edit',
   'common.buttons.back': 'Back',
   'common.buttons.save': 'Save',

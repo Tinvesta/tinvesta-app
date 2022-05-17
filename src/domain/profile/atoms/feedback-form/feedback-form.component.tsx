@@ -14,6 +14,7 @@ import {
 import { translationStrings } from './feedback-form.defaults';
 import S from './feedback-form.styles';
 import { IFeedbackFormProps } from './feedback-form.types';
+import { RatingWithController } from './molecules';
 
 const FeedbackFormComponent = ({
   control,
@@ -29,23 +30,16 @@ const FeedbackFormComponent = ({
   return (
     <CenterBlockLayout>
       <S.StyledWrapper {...formProps}>
-        <Grid container columnSpacing={4} rowSpacing={deviceData.isSmallerThanMD ? 1 : 3}>
-          <Grid item xs={12}>
-            <TextFieldWithController
+        <Grid container columnSpacing={4} rowSpacing={4}>
+          <Grid item alignItems="center" display="flex" justifyContent="center" xs={12}>
+            <RatingWithController
               controllerProps={{
                 control,
                 name: 'rating',
-                rules: {
-                  required: {
-                    value: true,
-                    message: translations.commonFormFieldErrorRequired,
-                  },
-                },
               }}
-              inputProps={{
-                fullWidth: true,
-                autoComplete: 'disabled',
-                label: translations.componentDashboardFeedbackFormRatingFieldLabel,
+              ratingProps={{
+                max: 10,
+                size: deviceData.isSmallerThanXS ? 'medium' : 'large',
               }}
             />
           </Grid>
@@ -74,18 +68,19 @@ const FeedbackFormComponent = ({
                 },
               }}
               inputProps={{
+                rows: 4,
                 fullWidth: true,
                 multiline: true,
                 autoComplete: 'disabled',
-                rows: deviceData.isSmallerThanSM ? 4 : 3,
                 label: translations.componentDashboardFeedbackFormMessageFieldLabel,
               }}
             />
           </Grid>
           <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
-            <Grid item xs={deviceData.isSmallerThanSM ? 6 : 3}>
+            <Grid item xs={6}>
               <Button
                 fullWidth
+                color="secondary"
                 disabled={!isDirty}
                 size="large"
                 variant="outlined"
@@ -94,16 +89,17 @@ const FeedbackFormComponent = ({
                 {translations.commonButtonsReset}
               </Button>
             </Grid>
-            <Grid item xs={deviceData.isSmallerThanSM ? 6 : 3}>
+            <Grid item xs={6}>
               <LoadingButton
                 fullWidth
+                color="secondary"
                 disabled={!isDirty}
                 loading={isLoading}
                 size="large"
                 type="submit"
                 variant="contained"
               >
-                {translations.commonButtonsSave}
+                {translations.commonButtonsSend}
               </LoadingButton>
             </Grid>
           </Grid>
