@@ -1,7 +1,7 @@
 export const translationStrings = [
   'common.form.field.error.required',
   'common.buttons.reset',
-  'common.buttons.save',
+  'common.buttons.send',
   'common.form.field.error.contain.enters.or.spaces',
   'common.form.field.error.starts.or.ends.with.whitespace',
 
