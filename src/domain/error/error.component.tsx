@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import Image from 'next/image';
 
 import { CenterBlockLayout } from '@ui';
 
@@ -10,14 +10,19 @@ import { IErrorProps } from './error.types';
 export const Error = ({ children, code, message }: IErrorProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
 
+  const backgroundImageSrc = deviceData.isSmallerThanMD
+    ? '/images/background/mobile-error.svg'
+    : '/images/background/desktop-error.svg';
+
   return (
     <CenterBlockLayout>
-      <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h2' : 'h1'}>
+      <Image priority alt="Tinvesta" layout="fill" objectFit="cover" src={backgroundImageSrc} />
+      <S.StyledTypography fontWeight={900} variant="h1">
         {code}
-      </Typography>
-      <Typography align="center" variant={deviceData.isSmallerThanXS ? 'body2' : 'h6'}>
+      </S.StyledTypography>
+      <S.StyledTypography align="center" variant={deviceData.isSmallerThanXS ? 'body2' : 'h6'}>
         {message}
-      </Typography>
+      </S.StyledTypography>
       <S.StyledActionsWrapper>{children}</S.StyledActionsWrapper>
     </CenterBlockLayout>
   );
