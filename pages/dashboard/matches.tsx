@@ -1,6 +1,6 @@
 import { dashboardMatchesPage } from '@application';
 
-const { MatchesPage } = dashboardMatchesPage;
+const { getStaticProps, MatchesPage } = dashboardMatchesPage;
 
 // eslint-disable-next-line no-restricted-exports
-export { MatchesPage as default };
+export { MatchesPage as default, getStaticProps };
