@@ -83,7 +83,7 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
     supabaseInstance.auth.signOut().then(() => {
       setUser(null);
 
-      router.push(ERoutes.RELEASE_DATE);
+      router.push(ERoutes.HOME);
     });
 
   const isStartupProfile = () => user?.client_type_id === STARTUP_CLIENT_TYPE_ID;

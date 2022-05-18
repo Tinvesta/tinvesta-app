@@ -44,6 +44,10 @@ export const ProfilePage = (props: IProfileProps): JSX.Element => {
       return;
     }
 
+    if (user === null) {
+      return;
+    }
+
     if (!isLoading && !user?.client_type_id) {
       router.push(ERoutes.ONBOARDING);
     }
