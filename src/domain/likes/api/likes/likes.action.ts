@@ -4,7 +4,7 @@ import { nextAxiosInstance } from '@infrastructure';
 
 import { EApiEndpoint } from '@enums';
 
-import { ILike } from '@interfaces';
+import { IPair } from '@interfaces';
 
-export const likesAction = async (): Promise<AxiosResponse<ILike[]>> =>
+export const likesAction = async (): Promise<AxiosResponse<IPair[]>> =>
   nextAxiosInstance.get(EApiEndpoint.LIKES);
