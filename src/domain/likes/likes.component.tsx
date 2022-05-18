@@ -52,8 +52,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   const isStartup = isStartupProfile(clientTypeId);
 
   useEffect(() => {
-    // TODO - fix after likes done
-    if (!user?.is_subscribed) {
+    if (user?.is_subscribed) {
       mutate();
     }
   }, [user?.is_subscribed]);
@@ -95,8 +94,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     });
   };
 
-  // TODO - fix after likes done
-  if (user?.is_subscribed) {
+  if (!user?.is_subscribed) {
     return (
       <Empty
         actionButtonProps={{
