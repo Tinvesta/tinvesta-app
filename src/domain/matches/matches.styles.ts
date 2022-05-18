@@ -3,7 +3,9 @@ import { Typography } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
-const StyledWrapper = styled.div`
+const StyledWrapper = styled.div``;
+
+const StyledGridWrapper = styled.div`
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(4, 1fr);
@@ -61,6 +63,7 @@ const StyledTypography = styled(Typography)`
 const S = {
   StyledWrapper,
   StyledTypography,
+  StyledGridWrapper,
   StyledImageWrapper,
 };
 
