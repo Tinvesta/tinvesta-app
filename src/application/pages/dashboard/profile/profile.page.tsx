@@ -34,8 +34,8 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 export const ProfilePage = (props: IProfileProps): JSX.Element => {
   const router = useRouter();
-  const { deviceData } = useDeviceDetect();
   const { isLoading, user } = useUser();
+  const { deviceData } = useDeviceDetect();
 
   useEffect(() => {
     if (user === null && isLoading) {
