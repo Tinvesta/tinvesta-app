@@ -9,6 +9,49 @@ import { EApiError } from '@enums';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
+const test = [
+  {
+    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
+    companyName: 'Super1',
+    avatars: [
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
+    ],
+  },
+  {
+    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
+    companyName: 'Super1',
+    avatars: [
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
+    ],
+  },
+  {
+    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
+    companyName: 'Super1',
+    avatars: [
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
+    ],
+  },
+  {
+    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
+    companyName: 'Super1',
+    avatars: [
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
+    ],
+  },
+  {
+    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
+    companyName: 'Super1',
+    avatars: [
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
+      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
+    ],
+  },
+];
+
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
     return response.status(401).send(EApiError.UNAUTHORIZED);
@@ -20,6 +63,10 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
+  if (!request.query.limit || !request.query.offset) {
+    return response.status(400).send(EApiError.BAD_REQUEST);
+  }
+
   const token = cookie.parse(request.headers.cookie || '')['sb:token'];
 
   supabaseInstance.auth.session = () => ({
@@ -29,14 +76,14 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   });
 
   const { data: matches } = await supabaseInstance.rpc('matches', {
-    offset_input: 0,
-    limit_input: 10,
     profile_id_input: user.id,
+    limit_input: request.query.limit,
+    offset_input: request.query.offset,
   });
 
   const parsedMatches = matches?.map(convertObjectKeysToCamelCase) || [];
 
-  response.send(parsedMatches);
+  response.send([...parsedMatches, ...test, ...test, ...test, ...test, ...test, ...test]);
 };
 
 export default handler;
