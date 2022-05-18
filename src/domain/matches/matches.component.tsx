@@ -8,14 +8,14 @@ import { isStartupProfile, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { getMatchesAction } from './api';
+import { matchesAction } from './api';
 import { translationStrings } from './matches.defaults';
 import S from './matches.styles';
 import { IMatchesProps } from './matches.types';
 
 export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
   const translations = useTranslation(translationStrings);
-  const { data, isLoading, mutate } = useMutation(getMatchesAction);
+  const { data, isLoading, mutate } = useMutation(matchesAction);
 
   const isStartup = isStartupProfile(clientTypeId);
 
@@ -44,12 +44,12 @@ export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
   return (
     <S.StyledWrapper>
       {data?.data.map((_record) => (
-        <div key={_record.avatarPublicUrl} style={{ width: '100%' }}>
+        <div key={_record.avatars[0]} style={{ width: '100%' }}>
           <Image
             alt="Match profile"
             height={600}
             layout="responsive"
-            src={_record.avatarPublicUrl}
+            src={_record.avatars[0]}
             width={400}
           />
         </div>

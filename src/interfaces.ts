@@ -104,3 +104,9 @@ export interface ILike {
   companyName: string;
   id: string;
 }
+
+export interface IMatch {
+  avatars: string[];
+  companyName: string;
+  id: string;
+}

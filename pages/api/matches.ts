@@ -28,7 +28,9 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const { data: matches } = await supabaseInstance.rpc('get_matches', {
+  const { data: matches } = await supabaseInstance.rpc('matches', {
+    offset_input: 0,
+    limit_input: 10,
     profile_id_input: user.id,
   });
 
