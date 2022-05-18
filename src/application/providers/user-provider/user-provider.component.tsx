@@ -13,7 +13,6 @@ import { IUserProviderProps } from './user-provider.types';
 export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [loggedOut, setLoggedOut] = useState(true);
   const [user, setUser] = useState<IUser | null>(supabaseInstance.auth.user());
 
   const getUserProfile = async () => {
@@ -32,7 +31,6 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
       });
 
       setIsLoading(false);
-      setLoggedOut(false);
     }
   };
 
@@ -83,7 +81,6 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
 
   const logout = () =>
     supabaseInstance.auth.signOut().then(() => {
-      setLoggedOut(true);
       setUser(null);
 
       router.push(ERoutes.HOME);
@@ -95,7 +92,6 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
     user,
     logout,
     isLoading,
-    loggedOut,
     isStartupProfile,
     loginViaGithubProvider,
     loginViaGoogleProvider,
