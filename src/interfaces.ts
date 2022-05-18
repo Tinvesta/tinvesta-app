@@ -99,13 +99,7 @@ export interface ISubscriptionPlan {
   price: number;
 }
 
-export interface ILike {
-  avatars: string[];
-  companyName: string;
-  id: string;
-}
-
-export interface IMatch {
+export interface IPair {
   avatars: string[];
   companyName: string;
   id: string;

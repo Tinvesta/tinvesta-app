@@ -4,7 +4,7 @@ import { nextAxiosInstance } from '@infrastructure';
 
 import { EApiEndpoint } from '@enums';
 
-import { IMatch } from '@interfaces';
+import { IPair } from '@interfaces';
 
-export const matchesAction = async (): Promise<AxiosResponse<IMatch[]>> =>
+export const matchesAction = async (): Promise<AxiosResponse<IPair[]>> =>
   nextAxiosInstance.get(EApiEndpoint.MATCHES);

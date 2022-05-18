@@ -5,7 +5,7 @@ import {
   IInvestmentStageType,
   IInvestorDemandType,
   IInvestorProfileType,
-  ILike,
+  IPair,
   IStartupProfileCreatorType,
   IStartupSector,
   ITeamSize,
@@ -20,7 +20,7 @@ export interface IProfileDetailsPreviewModalContentProps {
   investorProfileTypes: IInvestorProfileType[];
   onCloseIconClick: () => void;
   onVote: (profileId: string, vote: boolean) => void;
-  selectedProfile?: ILike;
+  selectedProfile?: IPair;
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];
   teamSizes: ITeamSize[];

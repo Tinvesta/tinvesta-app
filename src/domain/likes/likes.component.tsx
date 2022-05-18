@@ -13,7 +13,7 @@ import { likeProfileAction } from '@infrastructure';
 
 import { ERoutes } from '@enums';
 
-import { ILike, IProfileDetails } from '@interfaces';
+import { IPair, IProfileDetails } from '@interfaces';
 
 import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
@@ -43,7 +43,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   const translations = useTranslation(translationStrings);
   const { data, isLoading, mutate } = useMutation(likesAction);
 
-  const [selectedProfile, setSelectedProfile] = useState<ILike>();
+  const [selectedProfile, setSelectedProfile] = useState<IPair>();
   const [likedProfileDetails, setLikedProfileDetails] = useState<IProfileDetails>();
   const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
 
@@ -71,7 +71,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     }
   }, [JSON.stringify(likedProfileDetails)]);
 
-  const onRecordClick = (record: ILike) => () => setSelectedProfile(record);
+  const onRecordClick = (record: IPair) => () => setSelectedProfile(record);
 
   const onProfileDetailsPreviewModalContentCloseIconClick = () => {
     hideProfileDetailsPreviewModalContent();
