@@ -34,13 +34,17 @@ const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 export const ProfilePage = (props: IProfileProps): JSX.Element => {
   const router = useRouter();
-  const { isLoading, user } = useUser();
   const { deviceData } = useDeviceDetect();
+  const { isLoading, user } = useUser();
 
   useEffect(() => {
     if (user === null && isLoading) {
       router.push(ERoutes.HOME);
 
+      return;
+    }
+
+    if (user === null) {
       return;
     }
 

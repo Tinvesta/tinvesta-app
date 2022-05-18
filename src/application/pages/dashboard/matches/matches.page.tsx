@@ -23,6 +23,10 @@ export const MatchesPage = (): JSX.Element => {
       return;
     }
 
+    if (user === null) {
+      return;
+    }
+
     if (!isLoading && !user?.client_type_id) {
       router.push(ERoutes.ONBOARDING);
     }

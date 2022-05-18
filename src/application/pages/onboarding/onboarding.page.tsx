@@ -41,6 +41,10 @@ export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => {
       return;
     }
 
+    if (user === null) {
+      return;
+    }
+
     if (!isLoading && user?.client_type_id) {
       router.push(ERoutes.DASHBOARD);
     }
