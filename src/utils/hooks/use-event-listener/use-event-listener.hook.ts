@@ -12,7 +12,7 @@ export function useEventListener<K extends keyof WindowEventMap>(
   }, [handler]);
 
   useEffect(() => {
-    const isSupported = element && element.addEventListener;
+    const isSupported = element?.addEventListener;
 
     if (!isSupported) return;
 
