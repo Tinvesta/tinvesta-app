@@ -14,11 +14,12 @@ export const InfinityScrollImageGallery = ({
   isLoading,
   loadMore,
   offset = 1000,
+  shouldLoadMore = true,
 }: IInfinityScrollImageGalleryProps): JSX.Element => {
   const [page, setPage] = useState(initialPage);
 
   const handleScroll = debounce((event: Event) => {
-    if (!event.target || isLoading) {
+    if (!event.target || isLoading || !shouldLoadMore) {
       return;
     }
 
