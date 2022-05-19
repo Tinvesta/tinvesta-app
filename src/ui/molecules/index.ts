@@ -1,5 +1,6 @@
 export * from './loading/loading.component';
 export * from './confirmation-modal/confirmation-modal.component';
+export * from './match-modal-content/match-modal-content.component';
 export * from './pairs-image-gallery/pairs-image-gallery.component';
 export * from './select-with-controller/select-with-controller.component';
 export * from './profile-details-preview/profile-details-preview.component';
