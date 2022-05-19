@@ -61,7 +61,9 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
 
   return (
     <>
-      <ModalProfileDetailsPreviewModalContent>
+      <ModalProfileDetailsPreviewModalContent
+        onClose={onProfileDetailsPreviewModalContentCloseIconClick}
+      >
         <ProfileDetailsPreviewModalContent
           {...restProps}
           selectedProfile={selectedProfile}
