@@ -2,7 +2,7 @@ import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { Empty, Loading } from '@ui';
+import { InfinityScrollImageGallery, Empty, Loading } from '@ui';
 
 import { isStartupProfile, useDeviceDetect, useTranslation } from '@utils';
 
@@ -18,11 +18,9 @@ import { IMatchesProps } from './matches.types';
 const LIMIT = 30;
 
 export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
-  const [page, setPage] = useState(1);
   const { deviceData } = useDeviceDetect();
   const [items, setItems] = useState<IPair[]>([]);
   const translations = useTranslation(translationStrings);
-  const [shouldLoadMore, setShouldLoadMore] = useState(false);
 
   const { isLoading: isMatchesActionLoading, mutateAsync: mutateAsyncMatchesAction } =
     useMutation(matchesAction);
@@ -35,37 +33,13 @@ export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
     );
   }, []);
 
-  const handleScroll = (event: Event) => {
-    if (!event.target || shouldLoadMore || isMatchesActionLoading) {
-      return;
-    }
+  const loadMore = (page: number) => {
+    console.log(page);
 
-    // @ts-expect-error
-    const { scrollHeight, scrollTop } = event.target;
-    const currentHeight = Math.ceil(scrollTop + window.innerHeight);
-
-    if (currentHeight + 500 >= scrollHeight) {
-      setShouldLoadMore(true);
-    }
+    mutateAsyncMatchesAction({ limit: LIMIT, offset: LIMIT * page }).then((result) =>
+      setItems((prev) => [...prev, ...result.data]),
+    );
   };
-
-  useEffect(() => {
-    window.addEventListener('scroll', handleScroll, true);
-
-    return () => {
-      window.addEventListener('scroll', handleScroll, true);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (shouldLoadMore) {
-      mutateAsyncMatchesAction({ limit: LIMIT, offset: LIMIT * page }).then((result) => {
-        setItems((prev) => [...prev, ...result.data]);
-        setPage((prev) => prev + 1);
-        setShouldLoadMore(false);
-      });
-    }
-  }, [shouldLoadMore]);
 
   if (isMatchesActionLoading && items.length === 0) {
     return <Loading />;
@@ -86,7 +60,11 @@ export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
   }
 
   return (
-    <S.StyledWrapper>
+    <InfinityScrollImageGallery
+      initialPage={1}
+      isLoading={isMatchesActionLoading}
+      loadMore={loadMore}
+    >
       <S.StyledGridWrapper>
         {items.map((_record) => (
           <S.StyledImageWrapper key={_record.avatars[0]}>
@@ -103,7 +81,6 @@ export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
           </S.StyledImageWrapper>
         ))}
       </S.StyledGridWrapper>
-      {isMatchesActionLoading && <Loading />}
-    </S.StyledWrapper>
+    </InfinityScrollImageGallery>
   );
 };
