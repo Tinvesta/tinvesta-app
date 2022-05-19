@@ -22,7 +22,7 @@ export const App = ({ Component, emotionCache, pageProps }: IAppProps) => (
           <QueryClientProvider>
             <HealthCheckProvider>
               <UserProvider>
-                <NextNProgress color="#4361EE" options={{ showSpinner: false }} stopDelayMs={200} />
+                <NextNProgress color="#F5F5F5" options={{ showSpinner: false }} stopDelayMs={200} />
                 <Component {...pageProps} />
               </UserProvider>
             </HealthCheckProvider>
