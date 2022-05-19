@@ -1,1 +1,1 @@
-export * from './pair-details-preview-modal-content/pair-details-preview-modal-content.component';
+export * from './pairs-image-gallery/pairs-image-gallery.component';

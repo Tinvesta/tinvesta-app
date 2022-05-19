@@ -10,7 +10,6 @@ const StyledContentWrapper = styled.div<{
   position: absolute;
   border-radius: ${({ theme, withBorderRadius }) =>
     withBorderRadius ? theme.shape.borderRadius : 0}px;
-  border: 1px solid ${({ theme }) => theme.palette.divider};
   background-color: ${({ theme }) => theme.palette.background.paper};
   padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing(3) : 0)};
 
