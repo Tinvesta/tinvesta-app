@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-import { Empty, Loading } from '@ui';
+import { InfinityScrollImageGallery, Empty, Loading } from '@ui';
 
 import { useDeviceDetect, useDidMountEffect, useTranslation } from '@utils';
 
@@ -8,7 +8,6 @@ import { ERoutes } from '@enums';
 
 import { IPair } from '@interfaces';
 
-import { InfinityScrollImageGallery } from '..';
 import { translationStrings } from './pairs-image-gallery.defaults';
 import S from './pairs-image-gallery.styles';
 import { IPairsImageGalleryProps } from './pairs-image-gallery.types';

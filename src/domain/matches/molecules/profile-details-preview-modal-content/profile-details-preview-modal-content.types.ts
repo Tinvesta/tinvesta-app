@@ -11,7 +11,7 @@ import {
   ITeamSize,
 } from '@interfaces';
 
-export interface IPairDetailsPreviewModalContentProps {
+export interface IProfileDetailsPreviewModalContentProps {
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
   investmentSizes: IInvestmentSize[];
@@ -19,7 +19,6 @@ export interface IPairDetailsPreviewModalContentProps {
   investorDemandTypes: IInvestorDemandType[];
   investorProfileTypes: IInvestorProfileType[];
   onCloseIconClick: () => void;
-  onVote: (profileId: string, vote: boolean) => void;
   selectedProfile?: IPair;
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];

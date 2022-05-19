@@ -12,9 +12,10 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledHeader = styled.header`
+  right: 0;
   z-index: 1;
-  width: 100%;
   position: absolute;
+  border-radius: 0 0 0 20px;
   padding: ${({ theme }) => theme.spacing(2)};
   background-color: ${({ theme }) => theme.palette.primary.main};
 `;

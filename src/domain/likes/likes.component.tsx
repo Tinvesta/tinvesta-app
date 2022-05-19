@@ -1,13 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import {
-  Empty,
-  MatchModalContent,
-  PairDetailsPreviewModalContent,
-  PairsImageGallery,
-  useModal,
-} from '@ui';
+import { Empty, MatchModalContent, PairsImageGallery, useModal } from '@ui';
 
 import { isStartupProfile, useTranslation, useUser } from '@utils';
 
@@ -20,6 +14,7 @@ import { IPair, IProfileDetails } from '@interfaces';
 import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
 import { ILikesProps } from './likes.types';
+import { ProfileDetailsPreviewModalContent } from './molecules';
 
 const LIMIT = 30;
 
@@ -120,7 +115,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   return (
     <>
       <ModalProfileDetailsPreviewModalContent>
-        <PairDetailsPreviewModalContent
+        <ProfileDetailsPreviewModalContent
           {...restProps}
           selectedProfile={selectedProfile}
           onCloseIconClick={onProfileDetailsPreviewModalContentCloseIconClick}
