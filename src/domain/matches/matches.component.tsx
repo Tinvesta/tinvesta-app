@@ -1,24 +1,19 @@
-import Image from 'next/image';
 import { useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { InfinityScrollImageGallery, Empty, Loading } from '@ui';
+import { PairsImageGallery } from '@ui';
 
-import { isStartupProfile, useDeviceDetect, useDidMountEffect, useTranslation } from '@utils';
-
-import { ERoutes } from '@enums';
+import { isStartupProfile, useTranslation } from '@utils';
 
 import { IPair } from '@interfaces';
 
 import { matchesAction } from './api';
 import { translationStrings } from './matches.defaults';
-import S from './matches.styles';
 import { IMatchesProps } from './matches.types';
 
 const LIMIT = 30;
 
 export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
-  const { deviceData } = useDeviceDetect();
   const [items, setItems] = useState<IPair[]>([]);
   const translations = useTranslation(translationStrings);
   const [shouldLoadMore, setShouldLoadMore] = useState(false);
@@ -36,51 +31,18 @@ export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
       },
     );
 
-  useDidMountEffect(() => {
-    loadMore(0);
-  }, []);
-
-  if (isMatchesActionLoading && items.length === 0) {
-    return <Loading />;
-  }
-
-  if (items.length === 0) {
-    return (
-      <Empty
-        actionButtonProps={{
-          label: isStartup
-            ? translations.componentDashboardMatchesEmptyActionButtonInvestor
-            : translations.componentDashboardMatchesEmptyActionButtonStartup,
-          linkTo: ERoutes.DASHBOARD_DISCOVER,
-        }}
-        label={translations.componentDashboardMatchesEmptyLabel}
-      />
-    );
-  }
+  const emptyActionButtonLabel = isStartup
+    ? translations.componentDashboardMatchesEmptyActionButtonInvestor
+    : translations.componentDashboardMatchesEmptyActionButtonStartup;
 
   return (
-    <InfinityScrollImageGallery
-      initialPage={1}
+    <PairsImageGallery
+      emptyActionButtonLabel={emptyActionButtonLabel}
+      emptyLabel={translations.componentDashboardMatchesEmptyLabel}
       isLoading={isMatchesActionLoading}
+      items={items}
       loadMore={loadMore}
       shouldLoadMore={shouldLoadMore}
-    >
-      <S.StyledGridWrapper>
-        {items.map((_record) => (
-          <S.StyledImageWrapper key={_record.avatars[0]}>
-            <Image
-              alt={translations.commonDefaultImageAlt}
-              height={600}
-              layout="responsive"
-              src={_record.avatars[0]}
-              width={400}
-            />
-            <S.StyledTypography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}>
-              {_record.companyName}
-            </S.StyledTypography>
-          </S.StyledImageWrapper>
-        ))}
-      </S.StyledGridWrapper>
-    </InfinityScrollImageGallery>
+    />
   );
 };

@@ -3,8 +3,6 @@ import { Typography } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
-const StyledWrapper = styled.div``;
-
 const StyledGridWrapper = styled.div`
   display: grid;
   flex-wrap: wrap;
@@ -61,7 +59,6 @@ const StyledTypography = styled(Typography)`
 `;
 
 const S = {
-  StyledWrapper,
   StyledTypography,
   StyledGridWrapper,
   StyledImageWrapper,
