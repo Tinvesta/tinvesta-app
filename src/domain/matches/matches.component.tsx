@@ -43,6 +43,8 @@ export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
       items={items}
       loadMore={loadMore}
       shouldLoadMore={shouldLoadMore}
+      // TODO - handle later
+      onRecordClick={console.log}
     />
   );
 };

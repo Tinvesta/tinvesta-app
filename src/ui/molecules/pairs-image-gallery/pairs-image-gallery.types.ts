@@ -6,5 +6,6 @@ export interface IPairsImageGalleryProps {
   isLoading: boolean;
   items: IPair[];
   loadMore: (page: number) => void;
+  onRecordClick: (record: IPair) => void;
   shouldLoadMore: boolean;
 }

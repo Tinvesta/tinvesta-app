@@ -6,6 +6,8 @@ import { useDeviceDetect, useDidMountEffect, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
+import { IPair } from '@interfaces';
+
 import { InfinityScrollImageGallery } from '..';
 import { translationStrings } from './pairs-image-gallery.defaults';
 import S from './pairs-image-gallery.styles';
@@ -17,6 +19,7 @@ export const PairsImageGallery = ({
   isLoading,
   items,
   loadMore,
+  onRecordClick,
   shouldLoadMore,
 }: IPairsImageGalleryProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
@@ -42,6 +45,8 @@ export const PairsImageGallery = ({
     );
   }
 
+  const handleRecordClick = (record: IPair) => () => onRecordClick(record);
+
   return (
     <InfinityScrollImageGallery
       initialPage={1}
@@ -51,7 +56,7 @@ export const PairsImageGallery = ({
     >
       <S.StyledGridWrapper>
         {items.map((_record) => (
-          <S.StyledImageWrapper key={_record.avatars[0]}>
+          <S.StyledImageWrapper key={_record.avatars[0]} onClick={handleRecordClick(_record)}>
             <Image
               alt={translations.commonDefaultImageAlt}
               height={600}
