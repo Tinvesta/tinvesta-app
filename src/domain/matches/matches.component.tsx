@@ -33,13 +33,10 @@ export const Matches = ({ clientTypeId }: IMatchesProps): JSX.Element => {
     );
   }, []);
 
-  const loadMore = (page: number) => {
-    console.log(page);
-
+  const loadMore = (page: number) =>
     mutateAsyncMatchesAction({ limit: LIMIT, offset: LIMIT * page }).then((result) =>
       setItems((prev) => [...prev, ...result.data]),
     );
-  };
 
   if (isMatchesActionLoading && items.length === 0) {
     return <Loading />;
