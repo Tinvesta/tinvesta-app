@@ -1,10 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-// TODO - refactor later
-import { MatchModalContent } from '@domain/discover/molecules';
-
-import { Empty, PairsImageGallery, useModal } from '@ui';
+import { Empty, MatchModalContent, PairsImageGallery, useModal } from '@ui';
 
 import { isStartupProfile, useTranslation, useUser } from '@utils';
 

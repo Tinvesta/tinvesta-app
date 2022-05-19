@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout, Loading, useModal } from '@ui';
+import { CenterBlockLayout, Loading, MatchModalContent, useModal } from '@ui';
 
 import { likeProfileAction } from '@infrastructure';
 
@@ -10,7 +10,7 @@ import { IProfileDetails } from '@interfaces';
 import { discoverRecordsAction } from './api';
 import { MotionCardsStack } from './atoms';
 import { IDiscoverProps } from './discover.types';
-import { Card, MatchModalContent } from './molecules';
+import { Card } from './molecules';
 
 export const Discover = (props: IDiscoverProps): JSX.Element => {
   const { mutateAsync } = useMutation(likeProfileAction);
