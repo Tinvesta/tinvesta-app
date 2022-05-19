@@ -11,7 +11,7 @@ import {
   ITeamSize,
 } from '@interfaces';
 
-export interface IProfileDetailsPreviewModalContentProps {
+export interface IPairDetailsPreviewModalContentProps {
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
   investmentSizes: IInvestmentSize[];

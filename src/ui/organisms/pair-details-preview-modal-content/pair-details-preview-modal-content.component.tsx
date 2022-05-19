@@ -1,14 +1,14 @@
 import { ProfileCardActionButtons, ProfileDetailsPreview } from '@ui';
 
-import S from './profile-details-preview-modal-content.styles';
-import { IProfileDetailsPreviewModalContentProps } from './profile-details-preview-modal-content.types';
+import S from './pair-details-preview-modal-content.styles';
+import { IPairDetailsPreviewModalContentProps } from './pair-details-preview-modal-content.types';
 
-export const ProfileDetailsPreviewModalContent = ({
+export const PairDetailsPreviewModalContent = ({
   onCloseIconClick,
   onVote,
   selectedProfile,
   ...restProps
-}: IProfileDetailsPreviewModalContentProps): JSX.Element => {
+}: IPairDetailsPreviewModalContentProps): JSX.Element => {
   const handleVote = (vote: boolean) => () => onVote(selectedProfile?.id!, vote);
 
   return (
