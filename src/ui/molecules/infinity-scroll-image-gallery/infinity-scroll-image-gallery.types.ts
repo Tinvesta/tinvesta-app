@@ -6,4 +6,5 @@ export interface IInfinityScrollImageGalleryProps {
   isLoading: boolean;
   loadMore: (page: number) => void;
   offset?: number;
+  shouldLoadMore?: boolean;
 }

@@ -9,49 +9,6 @@ import { EApiError } from '@enums';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
-const test = [
-  {
-    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
-    companyName: 'Super1',
-    avatars: [
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
-    ],
-  },
-  {
-    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
-    companyName: 'Super1',
-    avatars: [
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
-    ],
-  },
-  {
-    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
-    companyName: 'Super1',
-    avatars: [
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
-    ],
-  },
-  {
-    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
-    companyName: 'Super1',
-    avatars: [
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
-    ],
-  },
-  {
-    id: 'e50de068-b348-4695-9ff5-933dcdd96dae',
-    companyName: 'Super1',
-    avatars: [
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/8YKKeLCCLuwUSEsO6GVXL.png',
-      'https://fkntlethkbyborzenxpp.supabase.co/storage/v1/object/public/avatars/fyzulCSHbaHZf-1M7X5ZJ.png',
-    ],
-  },
-];
-
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
     return response.status(401).send(EApiError.UNAUTHORIZED);
@@ -83,7 +40,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   const parsedMatches = matches?.map(convertObjectKeysToCamelCase) || [];
 
-  response.send([...parsedMatches, ...test, ...test, ...test, ...test, ...test, ...test]);
+  response.send(parsedMatches);
 };
 
 export default handler;
