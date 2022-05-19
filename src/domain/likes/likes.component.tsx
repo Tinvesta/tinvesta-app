@@ -1,13 +1,12 @@
-import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
 // TODO - refactor later
 import { MatchModalContent } from '@domain/discover/molecules';
 
-import { Empty, Loading, useModal } from '@ui';
+import { Empty, PairsImageGallery, useModal } from '@ui';
 
-import { isStartupProfile, useDeviceDetect, useTranslation, useUser } from '@utils';
+import { isStartupProfile, useTranslation, useUser } from '@utils';
 
 import { likeProfileAction } from '@infrastructure';
 
@@ -17,12 +16,17 @@ import { IPair, IProfileDetails } from '@interfaces';
 
 import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
-import S from './likes.styles';
 import { ILikesProps } from './likes.types';
 import { ProfileDetailsPreviewModalContent } from './molecules';
 
+const LIMIT = 30;
+
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const { user } = useUser();
+  const [items, setItems] = useState<IPair[]>([]);
+  const translations = useTranslation(translationStrings);
+  const [shouldLoadMore, setShouldLoadMore] = useState(false);
+
   const {
     hide: hideProfileDetailsPreviewModalContent,
     Modal: ModalProfileDetailsPreviewModalContent,
@@ -39,9 +43,8 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     show: showMatchModalContent,
   } = useModal({ withCloseIcon: false });
 
-  const { deviceData } = useDeviceDetect();
-  const translations = useTranslation(translationStrings);
-  const { data, isLoading, mutate } = useMutation(likesAction);
+  const { isLoading: isLikesActionLoading, mutateAsync: mutateAsyncLikesAction } =
+    useMutation(likesAction);
 
   const [selectedProfile, setSelectedProfile] = useState<IPair>();
   const [likedProfileDetails, setLikedProfileDetails] = useState<IProfileDetails>();
@@ -51,11 +54,13 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
 
   const isStartup = isStartupProfile(clientTypeId);
 
-  useEffect(() => {
-    if (user?.is_subscribed) {
-      mutate();
-    }
-  }, [user?.is_subscribed]);
+  const loadMore = (page: number) =>
+    mutateAsyncLikesAction({ limit: LIMIT, offset: LIMIT * page }).then(
+      ({ data: chunkOfLikes }) => {
+        setItems((prev) => [...prev, ...chunkOfLikes]);
+        setShouldLoadMore(chunkOfLikes.length === LIMIT);
+      },
+    );
 
   useEffect(() => {
     if (selectedProfile) {
@@ -70,15 +75,14 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     }
   }, [JSON.stringify(likedProfileDetails)]);
 
-  const onRecordClick = (record: IPair) => () => setSelectedProfile(record);
-
   const onProfileDetailsPreviewModalContentCloseIconClick = () => {
     hideProfileDetailsPreviewModalContent();
     setSelectedProfile(undefined);
   };
 
   const onModalMatchModalContentClose = () => {
-    mutate();
+    // TODO - add reset function
+    // mutate();
 
     hideMatchModalContent();
     setLikedProfileDetails(undefined);
@@ -107,26 +111,12 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     );
   }
 
-  if (isLoading) {
-    return <Loading />;
-  }
-
-  if (!data?.data || data.data.length === 0) {
-    return (
-      <Empty
-        actionButtonProps={{
-          label: isStartup
-            ? translations.componentDashboardLikesEmptyActionButtonInvestor
-            : translations.componentDashboardLikesEmptyActionButtonStartup,
-          linkTo: ERoutes.DASHBOARD_DISCOVER,
-        }}
-        label={translations.componentDashboardLikesEmptyLabel}
-      />
-    );
-  }
+  const emptyActionButtonLabel = isStartup
+    ? translations.componentDashboardLikesEmptyActionButtonInvestor
+    : translations.componentDashboardLikesEmptyActionButtonStartup;
 
   return (
-    <S.StyledWrapper>
+    <>
       <ModalProfileDetailsPreviewModalContent>
         <ProfileDetailsPreviewModalContent
           {...restProps}
@@ -142,20 +132,15 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
           onClose={onModalMatchModalContentClose}
         />
       </ModalMatchModalContent>
-      {data?.data.map((_record) => (
-        <S.StyledImageWrapper key={_record.avatars[0]} onClick={onRecordClick(_record)}>
-          <Image
-            alt={translations.commonDefaultImageAlt}
-            height={600}
-            layout="responsive"
-            src={_record.avatars[0]}
-            width={400}
-          />
-          <S.StyledTypography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}>
-            {_record.companyName}
-          </S.StyledTypography>
-        </S.StyledImageWrapper>
-      ))}
-    </S.StyledWrapper>
+      <PairsImageGallery
+        emptyActionButtonLabel={emptyActionButtonLabel}
+        emptyLabel={translations.componentDashboardLikesEmptyLabel}
+        isLoading={isLikesActionLoading}
+        items={items}
+        loadMore={loadMore}
+        shouldLoadMore={shouldLoadMore}
+        onRecordClick={setSelectedProfile}
+      />
+    </>
   );
 };

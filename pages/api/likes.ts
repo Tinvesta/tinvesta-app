@@ -20,6 +20,10 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
+  if (!request.query.limit || !request.query.offset) {
+    return response.status(400).send(EApiError.BAD_REQUEST);
+  }
+
   const token = cookie.parse(request.headers.cookie || '')['sb:token'];
 
   supabaseInstance.auth.session = () => ({
@@ -29,39 +33,14 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   });
 
   const { data: likes } = await supabaseInstance.rpc('likes', {
-    offset_input: 0,
-    limit_input: 10,
     profile_id_input: user.id,
+    limit_input: request.query.limit,
+    offset_input: request.query.offset,
   });
 
   const parsedLikes = likes?.map(convertObjectKeysToCamelCase) || [];
 
-  response.send([
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-    ...parsedLikes,
-  ]);
+  response.send(parsedLikes);
 };
 
 export default handler;
