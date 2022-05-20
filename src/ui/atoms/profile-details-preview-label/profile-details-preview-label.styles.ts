@@ -8,7 +8,7 @@ const StyledWrapper = styled.div`
 const StyledHeader = styled.div`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(2)};
+  gap: ${({ theme }) => theme.spacing(3)};
 
   & > .material-icons {
     display: flex;
@@ -19,8 +19,8 @@ const StyledContentWrapper = styled(Typography)`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(2)};
-  padding-top: ${({ theme }) => theme.spacing(2)};
+  gap: ${({ theme }) => theme.spacing(3)};
+  padding-top: ${({ theme }) => theme.spacing(3)};
 `;
 
 const S = {
