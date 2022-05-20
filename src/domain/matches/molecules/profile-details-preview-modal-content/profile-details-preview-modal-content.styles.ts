@@ -4,7 +4,7 @@ import { CancelOutlined as CancelOutlinedIcon } from '@mui/icons-material';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
-  width: 500px;
+  width: 600px;
   height: 100vh;
   position: relative;
 
@@ -40,10 +40,35 @@ const StyledCloseIcon = styled(CancelOutlinedIcon)`
   }
 `;
 
+const StyledActionsWrapper = styled.div`
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  background-color: ${({ theme }) => theme.palette.primary.main};
+
+  > button {
+    height: fit-content;
+  }
+
+  ${respondToMax.mobile`
+    height: 90px;
+  `}
+
+  ${respondToMax.xmobile`
+    height: 80px;
+    justify-content: space-between;
+  `}
+`;
+
 const S = {
   StyledHeader,
   StyledWrapper,
   StyledCloseIcon,
+  StyledActionsWrapper,
 };
 
 export default S;
