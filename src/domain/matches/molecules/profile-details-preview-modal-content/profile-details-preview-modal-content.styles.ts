@@ -60,6 +60,7 @@ const StyledActionsWrapper = styled.div`
 
   ${respondToMax.xmobile`
     height: 80px;
+    flex-direction: column-reverse;
   `}
 `;
 
