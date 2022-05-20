@@ -1,11 +1,11 @@
 import { IPair } from '@interfaces';
 
-export interface IPairsImageGalleryProps {
+export interface IPairsImageGalleryProps<TItem extends IPair> {
   emptyActionButtonLabel: string;
   emptyLabel: string;
   isLoading: boolean;
-  items: IPair[];
+  items: TItem[];
   loadMore: (page: number) => void;
-  onRecordClick: (record: IPair) => void;
+  onRecordClick: (record: TItem) => void;
   shouldLoadMore: boolean;
 }

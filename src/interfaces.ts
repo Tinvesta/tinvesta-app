@@ -104,3 +104,9 @@ export interface IPair {
   companyName: string;
   id: string;
 }
+
+export interface ILike extends IPair {}
+
+export interface IMatch extends IPair {
+  contactEmail: string;
+}
