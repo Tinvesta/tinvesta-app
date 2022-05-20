@@ -19,10 +19,9 @@ const StyledBottomNavigation = styled(BottomNavigation)`
   background-color: ${({ theme }) => theme.palette.primary.main};
 `;
 
-const StyledBottomNavigationAction = styled(BottomNavigationAction)<{ active: boolean }>`
+const StyledBottomNavigationAction = styled(BottomNavigationAction)`
   min-width: 50px;
-
-  ${({ active, theme }) => active && `color: ${theme.palette.text.primary};`};
+  color: ${({ theme }) => theme.palette.secondary.main};
 `;
 
 const StyledTopNavigation = styled.nav`
@@ -30,7 +29,7 @@ const StyledTopNavigation = styled.nav`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: ${({ theme }) => theme.spacing(0, 3)};
+  padding: ${({ theme }) => theme.spacing(0, 4)};
   background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${({ theme }) => respondToMax.xmobile`
