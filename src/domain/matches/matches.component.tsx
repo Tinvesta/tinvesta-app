@@ -5,7 +5,7 @@ import { PairsImageGallery, useModal } from '@ui';
 
 import { isStartupProfile, useTranslation } from '@utils';
 
-import { IPair } from '@interfaces';
+import { IMatch } from '@interfaces';
 
 import { matchesAction } from './api';
 import { translationStrings } from './matches.defaults';
@@ -15,10 +15,10 @@ import { ProfileDetailsPreviewModalContent } from './molecules';
 const LIMIT = 30;
 
 export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Element => {
-  const [items, setItems] = useState<IPair[]>([]);
+  const [items, setItems] = useState<IMatch[]>([]);
   const translations = useTranslation(translationStrings);
   const [shouldLoadMore, setShouldLoadMore] = useState(false);
-  const [selectedProfile, setSelectedProfile] = useState<IPair>();
+  const [selectedProfile, setSelectedProfile] = useState<IMatch>();
 
   const {
     hide: hideProfileDetailsPreviewModalContent,

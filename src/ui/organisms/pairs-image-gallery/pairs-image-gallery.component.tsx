@@ -12,7 +12,7 @@ import { translationStrings } from './pairs-image-gallery.defaults';
 import S from './pairs-image-gallery.styles';
 import { IPairsImageGalleryProps } from './pairs-image-gallery.types';
 
-export const PairsImageGallery = ({
+export const PairsImageGallery = <TItem extends IPair>({
   emptyActionButtonLabel,
   emptyLabel,
   isLoading,
@@ -20,7 +20,7 @@ export const PairsImageGallery = ({
   loadMore,
   onRecordClick,
   shouldLoadMore,
-}: IPairsImageGalleryProps): JSX.Element => {
+}: IPairsImageGalleryProps<TItem>): JSX.Element => {
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
 
@@ -44,7 +44,7 @@ export const PairsImageGallery = ({
     );
   }
 
-  const handleRecordClick = (record: IPair) => () => onRecordClick(record);
+  const handleRecordClick = (record: TItem) => () => onRecordClick(record);
 
   return (
     <InfinityScrollImageGallery

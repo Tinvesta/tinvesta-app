@@ -9,7 +9,7 @@ import { likeProfileAction } from '@infrastructure';
 
 import { ERoutes } from '@enums';
 
-import { IPair, IProfileDetails } from '@interfaces';
+import { ILike, IProfileDetails } from '@interfaces';
 
 import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
@@ -20,7 +20,7 @@ const LIMIT = 30;
 
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const { user } = useUser();
-  const [items, setItems] = useState<IPair[]>([]);
+  const [items, setItems] = useState<ILike[]>([]);
   const translations = useTranslation(translationStrings);
   const [shouldLoadMore, setShouldLoadMore] = useState(false);
 
@@ -43,7 +43,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   const { isLoading: isLikesActionLoading, mutateAsync: mutateAsyncLikesAction } =
     useMutation(likesAction);
 
-  const [selectedProfile, setSelectedProfile] = useState<IPair>();
+  const [selectedProfile, setSelectedProfile] = useState<ILike>();
   const [likedProfileDetails, setLikedProfileDetails] = useState<IProfileDetails>();
   const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
 

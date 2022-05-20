@@ -14,9 +14,7 @@ export const ProfileDetailsPreviewModalContent = ({
 }: IProfileDetailsPreviewModalContentProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
 
-  const sendEmail = () =>
-    // @ts-expect-error
-    window.open(`mailto:${selectedProfile.contactEmail}?subject=Tinvesta -`);
+  const sendEmail = () => window.open(`mailto:${selectedProfile!.contactEmail}?subject=Tinvesta -`);
 
   return (
     <S.StyledWrapper>

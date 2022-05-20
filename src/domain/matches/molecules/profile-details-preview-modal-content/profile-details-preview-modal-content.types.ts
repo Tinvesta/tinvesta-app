@@ -5,7 +5,7 @@ import {
   IInvestmentStageType,
   IInvestorDemandType,
   IInvestorProfileType,
-  IPair,
+  IMatch,
   IStartupProfileCreatorType,
   IStartupSector,
   ITeamSize,
@@ -19,7 +19,7 @@ export interface IProfileDetailsPreviewModalContentProps {
   investorDemandTypes: IInvestorDemandType[];
   investorProfileTypes: IInvestorProfileType[];
   onCloseIconClick: () => void;
-  selectedProfile?: IPair;
+  selectedProfile?: IMatch;
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];
   teamSizes: ITeamSize[];
