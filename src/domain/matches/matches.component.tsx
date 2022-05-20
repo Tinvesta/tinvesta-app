@@ -58,9 +58,6 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
   const onProfileDetailsPreviewModalContentCloseIconClick = () => {
     hideProfileDetailsPreviewModalContent();
     setSelectedProfile(undefined);
-
-    setItems([]);
-    loadMore(0);
   };
 
   const handleRemoveMatchClick = () => {
@@ -74,7 +71,9 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
     }).then(() => {
       mutateAsyncRemoveMatchAction({ matchId: selectedProfile.matchId }).then(() => {
         onProfileDetailsPreviewModalContentCloseIconClick();
-        // TODO - account removed
+
+        setItems([]);
+        loadMore(0);
       });
     });
   };
