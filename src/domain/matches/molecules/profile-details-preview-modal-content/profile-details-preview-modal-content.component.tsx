@@ -1,3 +1,4 @@
+import { LoadingButton } from '@mui/lab';
 import { Button } from '@mui/material';
 
 import { ProfileDetailsPreview } from '@ui';
@@ -8,7 +9,9 @@ import S from './profile-details-preview-modal-content.styles';
 import { IProfileDetailsPreviewModalContentProps } from './profile-details-preview-modal-content.types';
 
 export const ProfileDetailsPreviewModalContent = ({
+  isLoading,
   onCloseIconClick,
+  onRemoveMatchClick,
   selectedProfile,
   ...restProps
 }: IProfileDetailsPreviewModalContentProps): JSX.Element => {
@@ -44,9 +47,15 @@ export const ProfileDetailsPreviewModalContent = ({
         profileDetails={selectedProfile}
       />
       <S.StyledActionsWrapper>
-        <Button color="error" size={buttonSize} variant="outlined">
+        <LoadingButton
+          color="error"
+          loading={isLoading}
+          size={buttonSize}
+          variant="outlined"
+          onClick={onRemoveMatchClick}
+        >
           Remove match
-        </Button>
+        </LoadingButton>
         <Button color="secondary" size={buttonSize} variant="contained" onClick={sendEmail}>
           Send an email
         </Button>

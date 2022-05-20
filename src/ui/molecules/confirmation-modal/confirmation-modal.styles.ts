@@ -13,12 +13,16 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledDialogActions = styled(DialogActions)`
-  flex-direction: column-reverse;
+  flex-direction: row;
   gap: ${({ theme }) => theme.spacing(2)};
 
   & > button {
     margin: 0 !important;
   }
+
+  ${respondToMax.xmobile`
+    flex-direction: column-reverse;
+  `}
 `;
 
 const S = {

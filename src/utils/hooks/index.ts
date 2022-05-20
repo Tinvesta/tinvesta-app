@@ -1,5 +1,6 @@
 export * from './use-user/use-user.hook';
 export * from './use-locale/use-locale.hook';
+export * from './use-previous/use-previous.hook';
 export * from './use-set-state/use-set-state.hook';
 export * from './use-translation/use-translation.hook';
 export * from './use-device-detect/use-device-detect.hook';
