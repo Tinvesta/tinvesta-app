@@ -32,6 +32,7 @@ export enum EApiEndpoint {
   LIKE_PROFILE = '/api/like-profile',
   MATCHES = '/api/matches',
   PROFILE_DETAILS = '/api/profile-details',
+  REMOVE_MATCH = '/api/remove-match',
   SET_SUPABASE_COOKIE = '/api/set-supabase-cookie',
   STRIPE_PORTAL = '/api/stripe-portal',
   SUBSCRIPTION = '/api/subscription',
