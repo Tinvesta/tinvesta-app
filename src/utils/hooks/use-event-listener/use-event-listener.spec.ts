@@ -31,8 +31,8 @@ describe('useEventListener hook', () => {
     const addEventListenerSpy = jest.spyOn(mockElement, 'addEventListener');
 
     const { waitForNextUpdate } = renderHook(() =>
-      // @ts-ignore
-      useEventListener('mousemove', handler, mockElement),
+      // @ts-expect-error
+      useEventListener('mousemove', handler, { element: mockElement }),
     );
 
     await waitForNextUpdate;
@@ -60,7 +60,7 @@ describe('useEventListener hook', () => {
     const addEventListenerSpy = jest.spyOn(global, 'addEventListener');
 
     // @ts-ignore
-    renderHook(() => useEventListener('mousemove', handler, null));
+    renderHook(() => useEventListener('mousemove', handler, { element: null }));
 
     expect(addEventListenerSpy).not.toBeCalledWith('foo', handler);
   });

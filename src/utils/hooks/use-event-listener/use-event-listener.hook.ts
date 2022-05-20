@@ -1,9 +1,13 @@
 import { MutableRefObject, useEffect, useRef } from 'react';
 
+import { isBoolean } from '@utils';
+
+import { IOptions } from './use-event-listener.types';
+
 export function useEventListener<K extends keyof WindowEventMap>(
   eventName: K,
   handler: (this: Window, ev: WindowEventMap[K]) => void,
-  element: Window | undefined = typeof window !== 'undefined' ? window : undefined,
+  options?: IOptions | boolean,
 ): void {
   const savedHandler: MutableRefObject<Function | undefined> = useRef();
 
@@ -12,6 +16,12 @@ export function useEventListener<K extends keyof WindowEventMap>(
   }, [handler]);
 
   useEffect(() => {
+    const isBooleanOptions = isBoolean(options);
+    const windowElement = typeof window !== 'undefined' ? window : undefined;
+
+    const addEventListenerOptions = isBooleanOptions ? options : options?.options;
+    const element = isBooleanOptions ? windowElement : options?.element || windowElement;
+
     const isSupported = element?.addEventListener;
 
     if (!isSupported) return;
@@ -22,10 +32,10 @@ export function useEventListener<K extends keyof WindowEventMap>(
       }
     };
 
-    element.addEventListener(eventName, eventListener, true);
+    element.addEventListener(eventName, eventListener, addEventListenerOptions);
 
     return () => {
-      element.removeEventListener(eventName, eventListener, true);
+      element.removeEventListener(eventName, eventListener, addEventListenerOptions);
     };
-  }, [eventName, element]);
+  }, [eventName, options]);
 }

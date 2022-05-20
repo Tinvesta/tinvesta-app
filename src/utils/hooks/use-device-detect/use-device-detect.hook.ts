@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 
-import { getWindowSize } from '@utils';
+import { getWindowSize, useEventListener } from '@utils';
 
 import {
   LARGE_SCREEN_BREAKPOINT,
@@ -62,15 +62,9 @@ export const useDeviceDetect = () => {
     setDeviceData(getDeviceData());
   }, [windowSize.width]);
 
-  useEffect(() => {
-    const handleResize = () => setWindowSize(getWindowSize());
+  const handleResize = () => setWindowSize(getWindowSize());
 
-    window.addEventListener('resize', handleResize);
-
-    return () => {
-      window.removeEventListener('resize', handleResize);
-    };
-  }, []);
+  useEventListener('resize', handleResize);
 
   return { deviceData, windowSize };
 };

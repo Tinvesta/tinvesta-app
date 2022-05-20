@@ -2,7 +2,6 @@ export * from './truncate/truncate.function';
 export * from './count-words/count-words.function';
 export * from './object-keys/object-keys.function';
 export * from './to-camel-case/to-camel-case.function';
-export * from './to-snake-case/to-snake-case.function';
 export * from './base64-to-file/base64-to-file.function';
 export * from './try-parse-json/try-parse-json.function';
 export * from './string-to-words/string-to-words.function';
@@ -24,7 +23,6 @@ export * from './get-file-extension-from-base64/get-file-extension-from-base64.f
 export * from './replace-variables-in-translation/replace-variables-in-translation.function';
 export * from './map-team-sizes-to-dropdown-options/map-team-sizes-to-dropdown-options.function';
 export * from './map-client-types-to-dropdown-options/map-client-types-to-dropdown-options.function';
-export * from './array-of-objects-to-array-of-numbers/array-of-objects-to-array-of-numbers.function';
 export * from './map-focus-markets-to-dropdown-options/map-focus-markets-to-dropdown-options.function';
 export * from './map-startup-sectors-to-dropdown-options/map-startup-sectors-to-dropdown-options.function';
 export * from './map-investment-sizes-to-dropdown-options/map-investment-sizes-to-dropdown-options.function';
