@@ -19,7 +19,7 @@ export const ProfileDetailsPreviewLabel = ({
     <S.StyledWrapper>
       <S.StyledHeader>
         <Icon color="secondary">{icon}</Icon>
-        <Typography fontWeight={900} variant="body2">
+        <Typography color="secondary" fontWeight={900} variant="body2">
           {label}
         </Typography>
       </S.StyledHeader>

@@ -5,10 +5,10 @@ import { respondToMax } from '@infrastructure';
 const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
   width: 100%;
   overflow: auto;
-  overflow-y: scroll;
   max-width: 100%;
-  pointer-events: all;
+  overflow-y: scroll;
   position: relative;
+  pointer-events: all;
   height: calc(100% - 100px);
 
   ${respondToMax.mobile`
@@ -61,6 +61,10 @@ const StyledContentWrapper = styled.div`
   ${({ theme }) => respondToMax.xmobile`
     padding: ${theme.spacing(3)};
   `}
+
+  > div:last-child {
+    padding-bottom: 0;
+  }
 `;
 
 const S = {
