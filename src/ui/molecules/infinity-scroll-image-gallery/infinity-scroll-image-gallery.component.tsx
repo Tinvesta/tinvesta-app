@@ -35,7 +35,7 @@ export const InfinityScrollImageGallery = ({
     }
   }, 500);
 
-  useEventListener('scroll', handleScroll);
+  useEventListener('scroll', handleScroll, true);
 
   return (
     <S.StyledWrapper>

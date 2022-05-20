@@ -1,13 +1,9 @@
 import { functionImportTest } from '@utils';
 
-import {
-  convertObjectKeysToCamelCase,
-  convertObjectKeysToSnakeCase,
-} from './convert-object-keys.function';
+import { convertObjectKeysToCamelCase } from './convert-object-keys.function';
 
 describe('convertObjectKeys function', () => {
   functionImportTest(convertObjectKeysToCamelCase);
-  functionImportTest(convertObjectKeysToSnakeCase);
 
   it('should return passed value when that one is not an object or is an empty object', () => {
     expect(convertObjectKeysToCamelCase(null)).toBeNull();
@@ -36,6 +32,5 @@ describe('convertObjectKeys function', () => {
     };
 
     expect(convertObjectKeysToCamelCase(snakeCaseMock)).toStrictEqual(camelCaseMock);
-    expect(convertObjectKeysToSnakeCase(camelCaseMock)).toStrictEqual(snakeCaseMock);
   });
 });

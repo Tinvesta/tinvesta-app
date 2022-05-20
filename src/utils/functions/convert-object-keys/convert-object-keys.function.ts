@@ -1,7 +1,6 @@
 import { hasOwnProperty, isObject, objectKeys } from '@utils';
 
 import { toCamelCase } from '../to-camel-case/to-camel-case.function';
-import { toSnakeCase } from '../to-snake-case/to-snake-case.function';
 
 const convertObjectKeys =
   (keyTransformFunction: (string: string) => string) => (object: unknown) => {
@@ -31,4 +30,3 @@ const convertObjectKeys =
   };
 
 export const convertObjectKeysToCamelCase = convertObjectKeys(toCamelCase);
-export const convertObjectKeysToSnakeCase = convertObjectKeys(toSnakeCase);
