@@ -1,4 +1,5 @@
 export * from './truncate/truncate.function';
+export * from './send-email/send-email.function';
 export * from './count-words/count-words.function';
 export * from './object-keys/object-keys.function';
 export * from './to-camel-case/to-camel-case.function';
