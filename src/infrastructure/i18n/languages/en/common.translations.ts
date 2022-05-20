@@ -7,6 +7,7 @@ export default {
   'common.buttons.save': 'Save',
   'common.buttons.quit': 'Quit',
   'common.buttons.reset': 'Reset',
+  'common.buttons.delete': 'Delete',
   'common.buttons.agree': 'I Agree',
   'common.buttons.cancel': 'Cancel',
   'common.buttons.logout': 'Logout',
