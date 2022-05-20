@@ -1,23 +1,29 @@
 import styled from '@emotion/styled';
 import { CancelOutlined as CancelOutlinedIcon } from '@mui/icons-material';
 
+import { respondToMax } from '@infrastructure';
+
 const StyledWrapper = styled.div`
   width: 500px;
   height: 100vh;
   position: relative;
 
-  & > div {
-    border-radius: 0;
-  }
+  ${respondToMax.mobile`
+    width: 100vw;
+  `}
 `;
 
 const StyledHeader = styled.header`
   right: 0;
   z-index: 1;
   position: absolute;
-  border-radius: 0 0 0 20px;
+  border-radius: 0 0 0 30px;
   padding: ${({ theme }) => theme.spacing(2)};
   background-color: ${({ theme }) => theme.palette.primary.main};
+
+  ${respondToMax.xmobile`
+    border-radius: 0 0 0 20px;
+  `}
 `;
 
 const StyledCloseIcon = styled(CancelOutlinedIcon)`
@@ -30,7 +36,7 @@ const StyledCloseIcon = styled(CancelOutlinedIcon)`
 
   &:hover {
     transform: rotate(90deg);
-    fill: ${({ theme }) => theme.palette.divider};
+    fill: ${({ theme }) => theme.palette.secondary.dark};
   }
 `;
 

@@ -28,7 +28,7 @@ export const PairsImageGallery = ({
     loadMore(0);
   }, []);
 
-  if (isLoading && items.length === 0) {
+  if (isLoading || (!isLoading && items.length === 0)) {
     return <Loading />;
   }
 
