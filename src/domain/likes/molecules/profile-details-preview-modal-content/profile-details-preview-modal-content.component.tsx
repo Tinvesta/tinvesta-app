@@ -1,5 +1,7 @@
 import { ProfileCardActionButtons, ProfileDetailsPreview } from '@ui';
 
+import { useDeviceDetect } from '@utils';
+
 import S from './profile-details-preview-modal-content.styles';
 import { IProfileDetailsPreviewModalContentProps } from './profile-details-preview-modal-content.types';
 
@@ -9,12 +11,17 @@ export const ProfileDetailsPreviewModalContent = ({
   selectedProfile,
   ...restProps
 }: IProfileDetailsPreviewModalContentProps): JSX.Element => {
+  const { deviceData } = useDeviceDetect();
+
   const handleVote = (vote: boolean) => () => onVote(selectedProfile?.id!, vote);
 
   return (
     <S.StyledWrapper>
       <S.StyledHeader>
-        <S.StyledCloseIcon fontSize="large" onClick={onCloseIconClick} />
+        <S.StyledCloseIcon
+          fontSize={deviceData.isSmallerThanXS ? 'medium' : 'large'}
+          onClick={onCloseIconClick}
+        />
       </S.StyledHeader>
       <ProfileDetailsPreview
         {...restProps}
