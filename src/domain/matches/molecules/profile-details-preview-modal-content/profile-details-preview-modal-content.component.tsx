@@ -3,7 +3,7 @@ import { Button } from '@mui/material';
 
 import { ProfileDetailsPreview } from '@ui';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { sendEmail, useDeviceDetect, useTranslation } from '@utils';
 
 import { translationStrings } from './profile-details-preview-modal-content.defaults';
 import S from './profile-details-preview-modal-content.styles';
@@ -19,7 +19,7 @@ export const ProfileDetailsPreviewModalContent = ({
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
 
-  const sendEmail = () => window.open(`mailto:${selectedProfile!.contactEmail}?subject=Tinvesta -`);
+  const handleSendEmail = () => sendEmail(selectedProfile!.contactEmail);
 
   const getButtonSize = () => {
     if (deviceData.isSmallerThanXS) {
@@ -64,7 +64,7 @@ export const ProfileDetailsPreviewModalContent = ({
           fullWidth={deviceData.isSmallerThanXS}
           size={buttonSize}
           variant="contained"
-          onClick={sendEmail}
+          onClick={handleSendEmail}
         >
           {translations.componentDashboardMatchesProfileDetailsPreviewModalContentSendEmailButton}
         </Button>

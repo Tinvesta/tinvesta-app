@@ -5,7 +5,7 @@ import { CopyToClipboard } from 'react-copy-to-clipboard';
 
 import { Loading } from '@ui';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { sendEmail, useDeviceDetect, useTranslation } from '@utils';
 
 import { translationStrings } from './match-modal-content.defaults';
 import S from './match-modal-content.styles';
@@ -32,8 +32,7 @@ export const MatchModalContent = ({
     return <Loading />;
   }
 
-  const sendEmail = () =>
-    window.open(`mailto:${likedProfileDetails.contactEmail}?subject=Tinvesta -`);
+  const handleSendEmail = () => sendEmail(likedProfileDetails.contactEmail);
 
   const onCopy = () => setCopied(true);
 
@@ -77,7 +76,12 @@ export const MatchModalContent = ({
         </S.StyledImageWrapper>
       </S.StyledImageContainer>
       <S.StyledButtonsWrapper>
-        <S.StyledButton color="secondary" size={buttonSize} variant="contained" onClick={sendEmail}>
+        <S.StyledButton
+          color="secondary"
+          size={buttonSize}
+          variant="contained"
+          onClick={handleSendEmail}
+        >
           {translations.componentDashboardDiscoverMatchModalContentButtonsSendEmail}
         </S.StyledButton>
         <CopyToClipboard text={likedProfileDetails.contactEmail} onCopy={onCopy}>
