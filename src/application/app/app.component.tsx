@@ -2,6 +2,7 @@ import NextNProgress from 'nextjs-progressbar';
 
 import {
   CacheProvider,
+  ConfirmationModalProvider,
   HealthCheckProvider,
   LocaleProvider,
   QueryClientProvider,
@@ -21,10 +22,16 @@ export const App = ({ Component, emotionCache, pageProps }: IAppProps) => (
         <LocaleProvider>
           <QueryClientProvider>
             <HealthCheckProvider>
-              <UserProvider>
-                <NextNProgress color="#F5F5F5" options={{ showSpinner: false }} stopDelayMs={200} />
-                <Component {...pageProps} />
-              </UserProvider>
+              <ConfirmationModalProvider>
+                <UserProvider>
+                  <NextNProgress
+                    color="#F5F5F5"
+                    options={{ showSpinner: false }}
+                    stopDelayMs={200}
+                  />
+                  <Component {...pageProps} />
+                </UserProvider>
+              </ConfirmationModalProvider>
             </HealthCheckProvider>
           </QueryClientProvider>
         </LocaleProvider>
