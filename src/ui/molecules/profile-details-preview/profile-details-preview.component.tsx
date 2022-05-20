@@ -15,7 +15,7 @@ import {
 import Image from 'next/image';
 import { useQuery } from 'react-query';
 
-import { CenterBlockLayout, Loader, ProfileDetailsPreviewLabel, Swiper, SwiperSlide } from '@ui';
+import { CenterBlockLayout, Loader, Swiper, SwiperSlide } from '@ui';
 
 import {
   mapFocusMarketsToDropdownOptions,
@@ -33,6 +33,7 @@ import {
 
 import { PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetailsAction } from '@infrastructure';
 
+import { ProfileDetailsPreviewLabel } from './parts';
 import { translationStrings } from './profile-details-preview.defaults';
 import S from './profile-details-preview.styles';
 import { IProfileDetailsPreviewProps } from './profile-details-preview.types';
