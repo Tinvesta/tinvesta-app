@@ -49,7 +49,7 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
             width={imageSize}
           />
         </Link>
-        <IconButton color="primary" size="small" onClick={logout}>
+        <IconButton color="secondary" size="medium" onClick={logout}>
           <LogoutIcon />
         </IconButton>
       </S.StyledTopNavigation>
@@ -63,7 +63,6 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
           return (
             <Link key={_bottomNavigationOption.label} passHref href={_bottomNavigationOption.route}>
               <S.StyledBottomNavigationAction
-                active={isActive}
                 icon={_bottomNavigationOption.icon}
                 label={_bottomNavigationOption.label}
                 showLabel={isActive}

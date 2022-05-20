@@ -1,6 +1,5 @@
 import styled from '@emotion/styled';
 import { Icon, Typography } from '@mui/material';
-import { rgba } from 'polished';
 
 const StyledWrapper = styled.div`
   height: 100%;
@@ -33,7 +32,7 @@ const StyledWelcomeTypography = styled(Typography)`
 const StyledLogoWrapper = styled.div`
   display: flex;
   justify-content: center;
-  padding: ${({ theme }) => theme.spacing(4, 0, 4, 0)};
+  padding: ${({ theme }) => theme.spacing(6, 0)};
 `;
 
 const StyledUserInfoWrapper = styled.div`
@@ -43,12 +42,12 @@ const StyledUserInfoWrapper = styled.div`
 `;
 
 const StyledUserInfoDetails = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(2)};
+  margin-top: ${({ theme }) => theme.spacing(3)};
 `;
 
 const StyledMenu = styled.div`
   overflow: hidden;
-  padding: ${({ theme }) => theme.spacing(4, 0)};
+  padding: ${({ theme }) => theme.spacing(6, 0)};
 `;
 
 const StyledContentWrapper = styled.div`
@@ -66,10 +65,10 @@ const StyledMenuItem = styled.a<{ active: boolean }>`
   justify-content: center;
   transition: all 250ms ease-in-out;
   gap: ${({ theme }) => theme.spacing(1)};
-  color: ${({ theme }) => theme.palette.text.primary};
+  color: ${({ theme }) => theme.palette.secondary.main};
 
   &:hover {
-    color: ${({ theme }) => rgba(theme.palette.text.primary, 0.5)};
+    color: ${({ theme }) => theme.palette.secondary.dark};
   }
 
   & > div {
