@@ -60,7 +60,6 @@ const StyledActionsWrapper = styled.div`
 
   ${respondToMax.xmobile`
     height: 80px;
-    justify-content: space-between;
   `}
 `;
 

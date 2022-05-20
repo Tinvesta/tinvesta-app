@@ -16,6 +16,20 @@ export const ProfileDetailsPreviewModalContent = ({
 
   const sendEmail = () => window.open(`mailto:${selectedProfile!.contactEmail}?subject=Tinvesta -`);
 
+  const getButtonSize = () => {
+    if (deviceData.isSmallerThanXS) {
+      return 'small';
+    }
+
+    if (deviceData.isSmallerThanSM) {
+      return 'medium';
+    }
+
+    return 'large';
+  };
+
+  const buttonSize = getButtonSize();
+
   return (
     <S.StyledWrapper>
       <S.StyledHeader>
@@ -30,10 +44,10 @@ export const ProfileDetailsPreviewModalContent = ({
         profileDetails={selectedProfile}
       />
       <S.StyledActionsWrapper>
-        <Button color="error" size="large" variant="outlined">
+        <Button color="error" size={buttonSize} variant="outlined">
           Remove match
         </Button>
-        <Button color="secondary" size="large" variant="contained" onClick={sendEmail}>
+        <Button color="secondary" size={buttonSize} variant="contained" onClick={sendEmail}>
           Send an email
         </Button>
       </S.StyledActionsWrapper>
