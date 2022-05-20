@@ -3,8 +3,9 @@ import { Button } from '@mui/material';
 
 import { ProfileDetailsPreview } from '@ui';
 
-import { useDeviceDetect } from '@utils';
+import { useDeviceDetect, useTranslation } from '@utils';
 
+import { translationStrings } from './profile-details-preview-modal-content.defaults';
 import S from './profile-details-preview-modal-content.styles';
 import { IProfileDetailsPreviewModalContentProps } from './profile-details-preview-modal-content.types';
 
@@ -16,6 +17,7 @@ export const ProfileDetailsPreviewModalContent = ({
   ...restProps
 }: IProfileDetailsPreviewModalContentProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
+  const translations = useTranslation(translationStrings);
 
   const sendEmail = () => window.open(`mailto:${selectedProfile!.contactEmail}?subject=Tinvesta -`);
 
@@ -49,15 +51,22 @@ export const ProfileDetailsPreviewModalContent = ({
       <S.StyledActionsWrapper>
         <LoadingButton
           color="error"
+          fullWidth={deviceData.isSmallerThanXS}
           loading={isLoading}
           size={buttonSize}
           variant="outlined"
           onClick={onRemoveMatchClick}
         >
-          Remove match
+          {translations.componentDashboardMatchesProfileDetailsPreviewModalContentRemoveMatchButton}
         </LoadingButton>
-        <Button color="secondary" size={buttonSize} variant="contained" onClick={sendEmail}>
-          Send an email
+        <Button
+          color="secondary"
+          fullWidth={deviceData.isSmallerThanXS}
+          size={buttonSize}
+          variant="contained"
+          onClick={sendEmail}
+        >
+          {translations.componentDashboardMatchesProfileDetailsPreviewModalContentSendEmailButton}
         </Button>
       </S.StyledActionsWrapper>
     </S.StyledWrapper>

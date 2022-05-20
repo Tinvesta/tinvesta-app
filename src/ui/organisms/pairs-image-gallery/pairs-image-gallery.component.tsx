@@ -54,17 +54,17 @@ export const PairsImageGallery = <TItem extends IPair>({
       shouldLoadMore={shouldLoadMore}
     >
       <S.StyledGridWrapper>
-        {items.map((_record) => (
-          <S.StyledImageWrapper key={_record.avatars[0]} onClick={handleRecordClick(_record)}>
+        {items.map((_item) => (
+          <S.StyledImageWrapper key={_item.avatars[0]} onClick={handleRecordClick(_item)}>
             <Image
               alt={translations.commonDefaultImageAlt}
               height={600}
               layout="responsive"
-              src={_record.avatars[0]}
+              src={_item.avatars[0]}
               width={400}
             />
             <S.StyledTypography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}>
-              {_record.companyName}
+              {_item.companyName}
             </S.StyledTypography>
           </S.StyledImageWrapper>
         ))}
