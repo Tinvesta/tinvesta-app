@@ -66,8 +66,13 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
     }
 
     confirm({
-      title: 'Are you sure?',
-      description: 'Do you really want to remove this match?',
+      title: translations.commonPromptUnsavedTitle,
+      cancellationText: translations.commonButtonsCancel,
+      confirmationText: translations.commonButtonsDelete,
+      confirmationButtonProps: {
+        color: 'error',
+      },
+      description: translations.componentDashboardMatchesConfirmationModalDescription,
     }).then(() => {
       mutateAsyncRemoveMatchAction({ matchId: selectedProfile.matchId }).then(() => {
         onProfileDetailsPreviewModalContentCloseIconClick();
