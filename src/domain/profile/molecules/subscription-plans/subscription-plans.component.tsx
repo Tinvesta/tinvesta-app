@@ -93,27 +93,28 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
             return (
               <S.StyledPaper key={_plan.id}>
                 <span>
-                  <Typography align="center" variant="body1">
+                  <Typography align="center" color="secondary" variant="body1">
                     {
                       translations[
                         `componentDashboardSubscription${isMonth ? 'Month' : 'Year'}lyHeader`
                       ]
                     }
                   </Typography>
-                  <Typography align="center" variant="h4">
+                  <Typography align="center" color="secondary" variant="h4">
                     {_plan.price / 100} {translations.componentDashboardSubscriptionCurrency}
                   </Typography>
                   {!isMonth && (
-                    <Typography align="center" display="block" variant="caption">
+                    <Typography align="center" color="secondary" display="block" variant="caption">
                       ({translations.componentDashboardSubscriptionYearlySubheader})
                     </Typography>
                   )}
                 </span>
                 {showSubscribeButton && (
                   <S.StyledSubscriptionPaperButton
+                    color="secondary"
                     endIcon={<ArrowForwardIcon />}
                     loading={isLoading || isSubscriptionActionLoading}
-                    variant="contained"
+                    variant="outlined"
                     onClick={processSubscription(_plan.id)}
                   >
                     {
@@ -125,9 +126,10 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                 )}
                 {showManageSubscriptionButton && (
                   <S.StyledSubscriptionPaperButton
+                    color="secondary"
                     endIcon={<ArrowForwardIcon />}
                     loading={isLoading || isStripePortalActionLoading}
-                    variant="contained"
+                    variant="outlined"
                     onClick={loadStripePortal}
                   >
                     {translations.componentDashboardSubscriptionManageButton}
