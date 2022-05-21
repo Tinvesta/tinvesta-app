@@ -1,9 +1,9 @@
 import { debounce } from 'debounce';
-import { Children, useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { Loading } from '@ui';
 
-import { useEventListener, usePrevious } from '@utils';
+import { useEventListener } from '@utils';
 
 import S from './infinity-scroll-image-gallery.styles';
 import { IInfinityScrollImageGalleryProps } from './infinity-scroll-image-gallery.types';
@@ -17,20 +17,6 @@ export const InfinityScrollImageGallery = ({
   shouldLoadMore = true,
 }: IInfinityScrollImageGalleryProps): JSX.Element => {
   const [page, setPage] = useState(initialPage);
-
-  const childrenLength = Children.toArray(children).length;
-  const previousItemsLength = usePrevious(childrenLength);
-
-  useEffect(() => {
-    if (
-      previousItemsLength !== undefined &&
-      childrenLength === 0 &&
-      previousItemsLength !== childrenLength
-    ) {
-      loadMore(0);
-      setPage(initialPage);
-    }
-  }, [previousItemsLength, childrenLength]);
 
   const handleScroll = debounce((event: Event) => {
     if (!event.target || isLoading || !shouldLoadMore) {
