@@ -1,4 +1,5 @@
 export default {
+  // empty component
   'component.dashboard.likes.empty.label': 'You have no likes yet',
   'component.dashboard.likes.empty.action.button.startup': 'Discover new startups',
   'component.dashboard.likes.empty.action.button.investor': 'Discover new investors',
@@ -11,4 +12,8 @@ export default {
   // confirmation modal
   'component.dashboard.likes.confirmation.modal.description':
     'Do you really want to remove this like?',
+
+  // success notification
+  'component.dashboard.likes.remove.like.success.notification':
+    'Like has been successfully deleted',
 };

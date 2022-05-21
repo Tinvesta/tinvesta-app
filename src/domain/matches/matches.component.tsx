@@ -82,6 +82,8 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
           setItems((prevItems) =>
             prevItems.filter((_prevItem) => _prevItem.matchId !== selectedProfile.matchId),
           );
+
+          toast.success(translations.componentDashboardMatchesRemoveMatchSuccessNotification);
         })
         .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
     });
