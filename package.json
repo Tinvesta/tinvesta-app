@@ -62,7 +62,6 @@
     "nanoid": "^3.3.4",
     "next": "12.1.6",
     "next-pwa": "^5.5.2",
-    "nextjs-progressbar": "^0.0.14",
     "polished": "^4.2.2",
     "query-string": "^7.1.1",
     "ramda": "^0.28.0",
