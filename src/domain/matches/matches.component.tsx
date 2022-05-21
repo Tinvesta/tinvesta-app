@@ -77,12 +77,10 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
     }).then(() => {
       mutateAsyncRemoveMatchAction({ matchId: selectedProfile.matchId })
         .then(() => {
-          onProfileDetailsPreviewModalContentCloseIconClick();
-
           setItems((prevItems) =>
             prevItems.filter((_prevItem) => _prevItem.matchId !== selectedProfile.matchId),
           );
-
+          onProfileDetailsPreviewModalContentCloseIconClick();
           toast.success(translations.componentDashboardMatchesRemoveMatchSuccessNotification);
         })
         .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
