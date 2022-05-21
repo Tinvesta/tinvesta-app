@@ -48,28 +48,26 @@ export const MatchModalContent = ({
     return 'h2';
   };
 
-  const buttonSize = deviceData.isSmallerThanXS ? 'medium' : 'large';
+  const buttonSize = deviceData.isSmallerThanXS ? 'small' : 'medium';
 
   return (
     <S.StyledWrapper>
-      <Typography variant={getHeadingVariant()}>
+      <Typography color="secondary" variant={getHeadingVariant()}>
         {translations.componentDashboardDiscoverMatchModalContentHeader}
       </Typography>
       <S.StyledImageContainer>
-        <S.StyledImageWrapper>
+        <S.StyledImageWrapper rotationDirection="left">
           <Image
             alt={translations.componentDashboardDiscoverMatchModalContentLoggedUserImageAlt}
             height={450}
-            objectFit="cover"
             src={loggedProfileDetails?.avatars[0]}
             width={300}
           />
         </S.StyledImageWrapper>
-        <S.StyledImageWrapper>
+        <S.StyledImageWrapper rotationDirection="right">
           <Image
             alt={translations.componentDashboardDiscoverMatchModalContentLikedUserImageAlt}
             height={450}
-            objectFit="cover"
             src={likedProfileDetails.avatars[0]}
             width={300}
           />
