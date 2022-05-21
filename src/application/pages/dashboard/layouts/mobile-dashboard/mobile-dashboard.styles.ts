@@ -34,7 +34,7 @@ const StyledTopNavigation = styled.nav`
 
   ${({ theme }) => respondToMax.xmobile`
     height: 65px;
-    padding: ${theme.spacing(0, 2)};
+    padding: ${theme.spacing(0, 3)};
   `}
 `;
 
