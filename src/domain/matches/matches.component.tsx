@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
 
 import { PairsImageGallery, useModal } from '@ui';
 
@@ -48,12 +49,12 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
   const isStartup = isStartupProfile(clientTypeId);
 
   const loadMore = (page: number) =>
-    mutateAsyncMatchesAction({ limit: LIMIT, offset: LIMIT * page }).then(
-      ({ data: chunkOfMatches }) => {
+    mutateAsyncMatchesAction({ limit: LIMIT, offset: LIMIT * page })
+      .then(({ data: chunkOfMatches }) => {
         setItems((prev) => [...prev, ...chunkOfMatches]);
         setShouldLoadMore(chunkOfMatches.length === LIMIT);
-      },
-    );
+      })
+      .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
 
   const onProfileDetailsPreviewModalContentCloseIconClick = () => {
     hideProfileDetailsPreviewModalContent();
@@ -74,12 +75,14 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
       },
       description: translations.componentDashboardMatchesConfirmationModalDescription,
     }).then(() => {
-      mutateAsyncRemoveMatchAction({ matchId: selectedProfile.matchId }).then(() => {
-        onProfileDetailsPreviewModalContentCloseIconClick();
+      mutateAsyncRemoveMatchAction({ matchId: selectedProfile.matchId })
+        .then(() => {
+          onProfileDetailsPreviewModalContentCloseIconClick();
 
-        setItems([]);
-        loadMore(0);
-      });
+          setItems([]);
+          loadMore(0);
+        })
+        .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
     });
   };
 

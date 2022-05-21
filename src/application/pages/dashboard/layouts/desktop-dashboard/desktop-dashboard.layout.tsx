@@ -73,7 +73,7 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
           </S.StyledMenu>
         </span>
         <S.StyledAsideBottomContentWrapper>
-          <IconButton color="primary" size="large" onClick={logout}>
+          <IconButton color="secondary" size="large" onClick={logout}>
             <LogoutIcon />
           </IconButton>
         </S.StyledAsideBottomContentWrapper>
