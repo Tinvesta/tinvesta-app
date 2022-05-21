@@ -19,22 +19,30 @@ const StyledHeader = styled(Typography)`
 
 const StyledPapersWrapper = styled.div`
   display: flex;
-  gap: ${({ theme }) => theme.spacing(4)};
-  margin-top: ${({ theme }) => theme.spacing(3)};
+  gap: ${({ theme }) => theme.spacing(5)};
+  margin-top: ${({ theme }) => theme.spacing(4)};
 
   ${({ theme }) => respondToMax.mobile`
     flex-direction: column;
+    gap: ${theme.spacing(4)};
+    margin-top: ${theme.spacing(3)};
+  `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    width: 100%;
     gap: ${theme.spacing(3)};
+    margin-top: ${theme.spacing(2)};
   `}
 `;
 
 const StyledPaper = styled(Paper)`
   width: 400px;
   display: flex;
+  align-items: center;
   flex-direction: column;
   background-image: none;
   justify-content: space-between;
-  padding: ${({ theme }) => theme.spacing(4)};
+  padding: ${({ theme }) => theme.spacing(5)};
 
   ${respondToMax.small`
     width: 350px;
@@ -42,7 +50,11 @@ const StyledPaper = styled(Paper)`
 
   ${({ theme }) => respondToMax.xmobile`
     width: 100%;
-    padding: ${theme.spacing(3)};
+    padding: ${theme.spacing(4)};
+
+    > button {
+      width: fit-content;
+    }
   `}
 `;
 

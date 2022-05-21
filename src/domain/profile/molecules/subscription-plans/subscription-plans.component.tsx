@@ -68,6 +68,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
 
   const showSubscribeButton = !!user && !user.is_subscribed;
   const showManageSubscriptionButton = !!user && user.is_subscribed;
+  const buttonSize = deviceData.isSmallerThanXS ? 'small' : 'medium';
   const subscriptionBenefits = getSubscriptionBenefits(translations);
 
   return (
@@ -114,6 +115,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                     color="secondary"
                     endIcon={<ArrowForwardIcon />}
                     loading={isLoading || isSubscriptionActionLoading}
+                    size={buttonSize}
                     variant="outlined"
                     onClick={processSubscription(_plan.id)}
                   >
@@ -129,6 +131,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                     color="secondary"
                     endIcon={<ArrowForwardIcon />}
                     loading={isLoading || isStripePortalActionLoading}
+                    size={buttonSize}
                     variant="outlined"
                     onClick={loadStripePortal}
                   >
