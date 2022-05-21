@@ -114,6 +114,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
               prevItems.filter((_prevItem) => _prevItem.likeId !== selectedProfile?.likeId),
             );
             onProfileDetailsPreviewModalContentCloseIconClick();
+            toast.success(translations.componentDashboardLikesRemoveLikeSuccessNotification);
           }
 
           setLikedProfileDetails(data.likedProfileDetails);
