@@ -36,37 +36,52 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const {
-    data: { stripe_customer },
-  } = await supabaseInstance
-    .from('subscriptions')
-    .select('stripe_customer')
-    .eq('profile_id', user.id)
-    .single();
+  const { data: selectedSubscriptionsData, error: selectedSubscriptionsError } =
+    await supabaseInstance
+      .from('subscriptions')
+      .select('stripe_customer')
+      .eq('profile_id', user.id)
+      .single();
 
-  const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
-  const { planId } = request.query as { planId: string };
+  if (selectedSubscriptionsError) {
+    return response.status(500).send(selectedSubscriptionsError);
+  }
 
-  const lineItems = [
-    {
-      quantity: 1,
-      price: planId,
-    },
-  ];
+  try {
+    const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
+    const { planId } = request.query as { planId: string };
 
-  const session = await stripe.checkout.sessions.create({
-    mode: 'subscription',
-    line_items: lineItems,
-    customer: stripe_customer,
-    payment_method_types: ['card'],
-    cancel_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}`,
-    success_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}${objectToQueryString({
-      paymentStatus: EPaymentStatus.SUCCESS,
-    })}`,
-  });
+    const lineItems = [
+      {
+        quantity: 1,
+        price: planId,
+      },
+    ];
 
-  response.send({
-    id: session.id,
+    const session = await stripe.checkout.sessions.create({
+      mode: 'subscription',
+      line_items: lineItems,
+      payment_method_types: ['card'],
+      cancel_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}`,
+      customer: selectedSubscriptionsData.stripe_customer,
+      success_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}${objectToQueryString({
+        paymentStatus: EPaymentStatus.SUCCESS,
+      })}`,
+    });
+
+    response.status(200).send({
+      id: session.id,
+    });
+  } catch (error) {
+    if (error instanceof Error) {
+      response.status(500).send(error.message);
+    }
+
+    response.status(500).send(error);
+  }
+
+  response.status(200).send({
+    id: null,
   });
 };
 
