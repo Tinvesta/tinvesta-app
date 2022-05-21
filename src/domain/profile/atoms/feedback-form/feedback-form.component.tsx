@@ -71,6 +71,7 @@ const FeedbackFormComponent = ({
                 rows: 4,
                 fullWidth: true,
                 multiline: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDashboardFeedbackFormMessageFieldLabel,
               }}
