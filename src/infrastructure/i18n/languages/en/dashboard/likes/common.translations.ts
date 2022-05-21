@@ -10,5 +10,5 @@ export default {
 
   // confirmation modal
   'component.dashboard.likes.confirmation.modal.description':
-    'Do you really want to remove this match?',
+    'Do you really want to remove this like?',
 };
