@@ -13,7 +13,7 @@ export const ProfileDetailsPreviewModalContent = ({
 }: IProfileDetailsPreviewModalContentProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
 
-  const handleVote = (vote: boolean) => () => onVote(selectedProfile?.id!, vote);
+  const handleVote = (vote: boolean) => () => onVote(selectedProfile!, vote);
 
   return (
     <S.StyledWrapper>

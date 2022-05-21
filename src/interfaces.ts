@@ -105,7 +105,9 @@ export interface IPair {
   id: string;
 }
 
-export interface ILike extends IPair {}
+export interface ILike extends IPair {
+  likeId: string;
+}
 
 export interface IMatch extends IPair {
   contactEmail: string;
