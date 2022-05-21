@@ -7,18 +7,18 @@ const StyledGridWrapper = styled.div`
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(4, 1fr);
-  gap: ${({ theme }) => theme.spacing(4)};
-  padding: ${({ theme }) => theme.spacing(4)};
+  gap: ${({ theme }) => theme.spacing(5)};
+  padding: ${({ theme }) => theme.spacing(5)};
 
   ${({ theme }) => respondToMax.small`
-    gap: ${theme.spacing(3)};
-    padding: ${theme.spacing(3)};
+    gap: ${theme.spacing(4)};
+    padding: ${theme.spacing(4)};
     grid-template-columns: repeat(3, 1fr);
   `}
 
   ${({ theme }) => respondToMax.mobile`
-    gap: ${theme.spacing(2)};
-    padding: ${theme.spacing(2)};
+    gap: ${theme.spacing(3)};
+    padding: ${theme.spacing(3)};
     grid-template-columns: repeat(2, 1fr);
   `}
 `;
@@ -41,20 +41,20 @@ const StyledTypography = styled(Typography)`
   position: absolute;
   white-space: nowrap;
   text-overflow: ellipsis;
-  left: ${({ theme }) => theme.spacing(3)};
-  bottom: ${({ theme }) => theme.spacing(3)};
-  width: calc(100% - ${({ theme }) => theme.spacing(3)} - ${({ theme }) => theme.spacing(3)});
+  left: ${({ theme }) => theme.spacing(4)};
+  bottom: ${({ theme }) => theme.spacing(4)};
+  width: calc(100% - ${({ theme }) => theme.spacing(4)} - ${({ theme }) => theme.spacing(4)});
 
   ${({ theme }) => respondToMax.mobile`
-    left: ${theme.spacing(2)};
-    bottom: ${theme.spacing(2)};
-    width: calc(100% - ${theme.spacing(2)} - ${theme.spacing(2)});
+    left: ${theme.spacing(3)};
+    bottom: ${theme.spacing(3)};
+    width: calc(100% - ${theme.spacing(3)} - ${theme.spacing(3)});
   `}
 
   ${({ theme }) => respondToMax.xmobile`
-    left: ${theme.spacing(1)};
-    bottom: ${theme.spacing(1)};
-    width: calc(100% - ${theme.spacing(1)} - ${theme.spacing(1)});
+    left: ${theme.spacing(2)};
+    bottom: ${theme.spacing(2)};
+    width: calc(100% - ${theme.spacing(2)} - ${theme.spacing(2)});
   `}
 `;
 

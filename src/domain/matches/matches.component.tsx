@@ -13,7 +13,7 @@ import { translationStrings } from './matches.defaults';
 import { IMatchesProps } from './matches.types';
 import { ProfileDetailsPreviewModalContent } from './molecules';
 
-const LIMIT = 30;
+const LIMIT = 20;
 
 export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Element => {
   const { confirm } = useConfirmationModal();

@@ -17,7 +17,7 @@ import { translationStrings } from './likes.defaults';
 import { ILikesProps } from './likes.types';
 import { ProfileDetailsPreviewModalContent } from './molecules';
 
-const LIMIT = 30;
+const LIMIT = 20;
 
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const { user } = useUser();
