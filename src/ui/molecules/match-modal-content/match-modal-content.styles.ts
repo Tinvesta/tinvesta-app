@@ -46,16 +46,10 @@ const StyledImageWrapper = styled.div<{ rotationDirection: 'left' | 'right' }>`
   }
 
   ${({ rotationDirection }) =>
-    rotationDirection === 'left' &&
-    `
-    transform: scale(.9) rotate(-2deg);
-  `}
+    rotationDirection === 'left' && 'transform: scale(.9) rotate(-2deg);'}
 
   ${({ rotationDirection }) =>
-    rotationDirection === 'right' &&
-    `
-    transform: scale(1.05) rotate(2deg);
-  `}
+    rotationDirection === 'right' && 'transform: scale(1.05) rotate(2deg);'}
 `;
 
 const StyledButtonsWrapper = styled.div`
