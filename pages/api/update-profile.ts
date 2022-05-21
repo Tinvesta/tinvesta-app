@@ -111,10 +111,10 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     for (const _imageKey of userData.imageKeys) {
       if (_imageKey.startsWith('avatars/')) {
         // eslint-disable-next-line no-await-in-loop
-        const { error: avatarRecordError } = await createAvatarRecord(user.id, _imageKey, i);
+        const { error: createdAvatarRecordError } = await createAvatarRecord(user.id, _imageKey, i);
 
-        if (avatarRecordError) {
-          return response.status(500).send(avatarRecordError);
+        if (createdAvatarRecordError) {
+          return response.status(500).send(createdAvatarRecordError);
         }
       }
 
@@ -240,7 +240,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   }
 
   // update profiles
-  const { error: updateProfileError } = await supabaseInstance
+  const { error: updatedProfileError } = await supabaseInstance
     .from('profiles')
     .update({
       location: userData.location,
@@ -251,8 +251,8 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     })
     .eq('id', user.id);
 
-  if (updateProfileError) {
-    return response.status(500).send(updateProfileError);
+  if (updatedProfileError) {
+    return response.status(500).send(updatedProfileError);
   }
 
   const { error: updateStartupOrInvestorError } = await (!isStartup

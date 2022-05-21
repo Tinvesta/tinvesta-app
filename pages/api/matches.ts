@@ -32,13 +32,17 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const { data: matches } = await supabaseInstance.rpc('matches', {
+  const { data: matchesData, error: matchesError } = await supabaseInstance.rpc('matches', {
     profile_id_input: user.id,
     limit_input: request.query.limit,
     offset_input: request.query.offset,
   });
 
-  const parsedMatches = matches?.map(convertObjectKeysToCamelCase) || [];
+  if (matchesError) {
+    return response.status(500).send(matchesError);
+  }
+
+  const parsedMatches = matchesData?.map(convertObjectKeysToCamelCase) || [];
 
   response.send(parsedMatches);
 };

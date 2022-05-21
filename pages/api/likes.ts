@@ -32,13 +32,17 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const { data: likes } = await supabaseInstance.rpc('likes', {
+  const { data: likesData, error: likesError } = await supabaseInstance.rpc('likes', {
     profile_id_input: user.id,
     limit_input: request.query.limit,
     offset_input: request.query.offset,
   });
 
-  const parsedLikes = likes?.map(convertObjectKeysToCamelCase) || [];
+  if (likesError) {
+    return response.status(500).send(likesError);
+  }
+
+  const parsedLikes = likesData?.map(convertObjectKeysToCamelCase) || [];
 
   response.send(parsedLikes);
 };

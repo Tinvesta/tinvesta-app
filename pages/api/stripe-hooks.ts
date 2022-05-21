@@ -25,26 +25,40 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
     switch (event.type) {
       case 'customer.subscription.updated':
-        await supabaseInstance
-          .from('subscriptions')
-          .update({
-            is_subscribed: true,
+        // eslint-disable-next-line no-lone-blocks
+        {
+          const { error: updatedSubscriptionError } = await supabaseInstance
+            .from('subscriptions')
+            .update({
+              is_subscribed: true,
+              // @ts-expect-error
+              interval: event.data.object.items.data[0].plan.interval,
+            })
             // @ts-expect-error
-            interval: event.data.object.items.data[0].plan.interval,
-          })
-          // @ts-expect-error
-          .eq('stripe_customer', event.data.object.customer);
+            .eq('stripe_customer', event.data.object.customer);
+
+          if (updatedSubscriptionError) {
+            throw new Error(updatedSubscriptionError.message);
+          }
+        }
         break;
 
       case 'customer.subscription.deleted':
-        await supabaseInstance
-          .from('subscriptions')
-          .update({
-            interval: null,
-            is_subscribed: false,
-          })
-          // @ts-expect-error
-          .eq('stripe_customer', event.data.object.customer);
+        // eslint-disable-next-line no-lone-blocks
+        {
+          const { error: updatedSubscriptionError } = await supabaseInstance
+            .from('subscriptions')
+            .update({
+              interval: null,
+              is_subscribed: false,
+            })
+            // @ts-expect-error
+            .eq('stripe_customer', event.data.object.customer);
+
+          if (updatedSubscriptionError) {
+            throw new Error(updatedSubscriptionError.message);
+          }
+        }
         break;
 
       default:

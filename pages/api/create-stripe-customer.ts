@@ -17,24 +17,32 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
-  const { data: profileData } = await supabaseInstance
+  const { data: selectedProfileData, error: selectedProfileError } = await supabaseInstance
     .from('profiles')
     .select('*')
     .eq('id', request.body.record.profile_id)
     .single();
 
+  if (selectedProfileError) {
+    return response.status(500).send(selectedProfileError);
+  }
+
   const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
 
   const customer = await stripe.customers.create({
-    email: profileData.email,
+    email: selectedProfileData.email,
   });
 
-  await supabaseInstance
+  const { error: updatedSubscriptionsError } = await supabaseInstance
     .from('subscriptions')
     .update({
       stripe_customer: customer.id,
     })
-    .eq('profile_id', profileData.id);
+    .eq('profile_id', selectedProfileData.id);
+
+  if (updatedSubscriptionsError) {
+    return response.status(500).send(updatedSubscriptionsError);
+  }
 
   response.send({ message: `stripe customer created with id: '${customer.id}'` });
 };
