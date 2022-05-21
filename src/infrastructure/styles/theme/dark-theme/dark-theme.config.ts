@@ -24,7 +24,7 @@ export const darkTheme = createTheme({
     },
     warning: color.yellow,
     background: {
-      paper: color.black[700],
+      paper: color.black[500],
       default: color.black[700],
     },
     text: {
