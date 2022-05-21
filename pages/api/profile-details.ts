@@ -9,6 +9,7 @@ import { supabaseInstance } from '@infrastructure';
 import { EApiError, ERoutes } from '@enums';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
+const contactEmailFor = [ERoutes.DASHBOARD_MATCHES, ERoutes.DASHBOARD_PROFILE];
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
@@ -33,7 +34,9 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const isMatchPage = request.headers.referer?.endsWith(ERoutes.DASHBOARD_MATCHES);
+  const shouldIncludeContactEmail = contactEmailFor.some((_contactEmailFor) =>
+    request.headers.referer?.includes(_contactEmailFor),
+  );
 
   const { data: profileDetailsData, error: profileDetailsError } = await supabaseInstance
     .rpc('profile_details', {
@@ -48,7 +51,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const parsedProfileDetailsData = convertObjectKeysToCamelCase(profileDetailsData);
   const omittedProfileDetailsData = R.omit(['contactEmail'], parsedProfileDetailsData);
 
-  response.send(isMatchPage ? parsedProfileDetailsData : omittedProfileDetailsData);
+  response.send(shouldIncludeContactEmail ? parsedProfileDetailsData : omittedProfileDetailsData);
 };
 
 export default handler;
