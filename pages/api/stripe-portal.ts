@@ -29,18 +29,20 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const {
-    data: { stripe_customer },
-  } = await supabaseInstance
+  const { data: subscriptionsData, error: subscriptionsError } = await supabaseInstance
     .from('subscriptions')
     .select('stripe_customer')
     .eq('profile_id', user.id)
     .single();
 
+  if (subscriptionsError) {
+    return response.status(500).send(subscriptionsError);
+  }
+
   const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
 
   const session = await stripe.billingPortal.sessions.create({
-    customer: stripe_customer,
+    customer: subscriptionsData.stripe_customer,
     return_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}`,
   });
 

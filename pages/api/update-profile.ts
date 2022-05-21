@@ -240,7 +240,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   }
 
   // update profiles
-  const { error: updateProfileError } = await supabaseInstance
+  const { error: updatedProfileError } = await supabaseInstance
     .from('profiles')
     .update({
       location: userData.location,
@@ -251,8 +251,8 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     })
     .eq('id', user.id);
 
-  if (updateProfileError) {
-    return response.status(500).send(updateProfileError);
+  if (updatedProfileError) {
+    return response.status(500).send(updatedProfileError);
   }
 
   const { error: updateStartupOrInvestorError } = await (!isStartup

@@ -12,18 +12,15 @@ import { IProfileDetails } from '@interfaces';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
-const findLikesRecordByUserIds = async (fromProfileId: string, toProfileId: string) => {
-  const { data } = await supabaseInstance
+const findLikesRecordByUserIds = (fromProfileId: string, toProfileId: string) =>
+  supabaseInstance
     .from('likes')
     .select('*')
     .match({ from_profile_id: fromProfileId, to_profile_id: toProfileId })
     .single();
 
-  return data;
-};
-
 const createLikeRecord = async (loggedUserId: string, profileIdToLike: string, vote: boolean) => {
-  const { data } = await supabaseInstance.from('likes').insert({
+  const { data, error } = await supabaseInstance.from('likes').insert({
     liked: vote,
     from_profile_id: loggedUserId,
     to_profile_id: profileIdToLike,
@@ -33,7 +30,7 @@ const createLikeRecord = async (loggedUserId: string, profileIdToLike: string, v
     return null;
   }
 
-  return data[0].id;
+  return { data: data[0].id, error };
 };
 
 const updateLikeRecord = async (
@@ -42,7 +39,7 @@ const updateLikeRecord = async (
   toProfileId: string,
   vote: boolean,
 ) => {
-  const { data } = await supabaseInstance
+  const { data, error } = await supabaseInstance
     .from('likes')
     .update({
       seen: true,
@@ -56,7 +53,7 @@ const updateLikeRecord = async (
     return null;
   }
 
-  return data[0];
+  return { data: data[0], error };
 };
 
 const parseProfileDetails = (profileData: IProfileDetails) => {
@@ -97,16 +94,31 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   const foundLikeFromOtherProfile = await findLikesRecordByUserIds(profileIdToLike, loggedUserId);
 
-  if (foundLikeFromOtherProfile && foundLikeFromOtherProfile.liked === true) {
+  if (!foundLikeFromOtherProfile) {
+    return response.status(500).send(EApiError.INTERNAL_SERVER_ERROR);
+  }
+
+  if (foundLikeFromOtherProfile && foundLikeFromOtherProfile.data.liked === true) {
     const updatedLike = await updateLikeRecord(
-      foundLikeFromOtherProfile.id,
+      foundLikeFromOtherProfile.data.id,
       profileIdToLike,
       loggedUserId,
       vote,
     );
 
-    if (updatedLike.liked) {
-      const [{ data: likedProfileDetails }, { data: loggedProfileDetails }] = await Promise.all([
+    if (!updatedLike) {
+      return response.status(500).send(EApiError.INTERNAL_SERVER_ERROR);
+    }
+
+    if (updatedLike.error) {
+      return response.status(500).send(updatedLike.error);
+    }
+
+    if (updatedLike.data.liked) {
+      const [
+        { data: likedProfileDetailsData, error: likedProfileDetailsError },
+        { data: loggedProfileDetailsData, error: loggedProfileDetailsError },
+      ] = await Promise.all([
         supabaseInstance
           .rpc('profile_details', {
             profile_id_input: profileIdToLike,
@@ -119,30 +131,52 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
           .single(),
       ]);
 
+      if (likedProfileDetailsError) {
+        return response.status(500).send(likedProfileDetailsError);
+      }
+
+      if (loggedProfileDetailsError) {
+        return response.status(500).send(loggedProfileDetailsError);
+      }
+
       return response.send({
-        isMatch: updatedLike.liked,
-        likedProfileDetails: parseProfileDetails(likedProfileDetails),
-        loggedProfileDetails: parseProfileDetails(loggedProfileDetails),
+        isMatch: updatedLike.data.liked,
+        likedProfileDetails: parseProfileDetails(likedProfileDetailsData),
+        loggedProfileDetails: parseProfileDetails(loggedProfileDetailsData),
       });
     }
 
-    return response.send({ isMatch: updatedLike.liked });
+    return response.send({ isMatch: updatedLike.data.liked });
   }
 
-  if (foundLikeFromOtherProfile && foundLikeFromOtherProfile.liked === false) {
+  if (foundLikeFromOtherProfile && foundLikeFromOtherProfile.data.liked === false) {
     const updatedLike = await updateLikeRecord(
-      foundLikeFromOtherProfile.id,
+      foundLikeFromOtherProfile.data.id,
       profileIdToLike,
       loggedUserId,
       false,
     );
 
-    response.send({ isMatch: updatedLike.liked });
+    if (!updatedLike) {
+      return response.status(500).send(EApiError.INTERNAL_SERVER_ERROR);
+    }
 
-    return;
+    if (updatedLike.error) {
+      return response.status(500).send(updatedLike.error);
+    }
+
+    return response.status(200).send({ isMatch: updatedLike.data.liked });
   }
 
-  await createLikeRecord(loggedUserId, profileIdToLike, vote);
+  const createdLikeRecord = await createLikeRecord(loggedUserId, profileIdToLike, vote);
+
+  if (!createdLikeRecord) {
+    return response.status(500).send(EApiError.INTERNAL_SERVER_ERROR);
+  }
+
+  if (createdLikeRecord.error) {
+    return response.status(500).send(createdLikeRecord.error);
+  }
 
   response.send({ isMatch: false });
 };

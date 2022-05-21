@@ -10,18 +10,23 @@ import { EApiError } from '@enums';
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const createAvatarRecord = async (profileId: string, imageKey: string, position: number) => {
-  const { data: storagePublicUrlData, error: storagePublicUrlError } =
-    await supabaseInstance.storage.from('avatars').getPublicUrl(imageKey);
+  const { data: avatarPublicUrlData, error: avatarPublicUrlError } = await supabaseInstance.storage
+    .from('avatars')
+    .getPublicUrl(imageKey);
 
-  if (storagePublicUrlError || !storagePublicUrlData) {
-    return null;
+  if (!avatarPublicUrlData) {
+    return { error: new Error('Error getting public url for avatar') };
   }
 
-  const bucketNamesCount = countWords(storagePublicUrlData.publicURL, 'avatars');
+  if (avatarPublicUrlError) {
+    return { error: avatarPublicUrlError };
+  }
+
+  const bucketNamesCount = countWords(avatarPublicUrlData.publicURL, 'avatars');
   const parsedPublicUrl =
     bucketNamesCount >= 2
-      ? storagePublicUrlData.publicURL.replace('/avatars', '')
-      : storagePublicUrlData.publicURL;
+      ? avatarPublicUrlData.publicURL.replace('/avatars', '')
+      : avatarPublicUrlData.publicURL;
 
   await supabaseInstance.from('avatars').insert({
     position,
@@ -39,7 +44,14 @@ const assignWithBulkInsert = async (
 ) => {
   const recordsToInsert = arrayOfIds.map((_id) => ({ [idColumnName]: _id, profile_id: userId }));
 
-  await supabaseInstance.from(table).delete().eq('profile_id', userId);
+  const { error: deleteError } = await supabaseInstance
+    .from(table)
+    .delete()
+    .eq('profile_id', userId);
+
+  if (deleteError) {
+    return { error: deleteError };
+  }
 
   return supabaseInstance.from(table).insert(recordsToInsert);
 };
@@ -55,6 +67,10 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
+  if (!request.body) {
+    return response.status(400).send(EApiError.BAD_REQUEST);
+  }
+
   const token = cookie.parse(request.headers.cookie || '')['sb:token'];
 
   supabaseInstance.auth.session = () => ({
@@ -67,7 +83,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const isStartup = isStartupProfile(userData.clientTypeId);
 
   if (!userData.imageKeys || userData.imageKeys.length === 0) {
-    return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_AVATAR_UPLOAD);
+    return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
   let i = 0;
@@ -87,7 +103,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesFocusMarketsError) {
-    return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_FOCUS_MARKETS);
+    return response.status(500).send(assignProfilesFocusMarketsError);
   }
 
   // assign industrial sectors
@@ -99,9 +115,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesIndustrialSectorsError) {
-    return response
-      .status(500)
-      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_INDUSTRIAL_SECTORS);
+    return response.status(500).send(assignProfilesIndustrialSectorsError);
   }
 
   // assign investment sizes
@@ -113,9 +127,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesInvestmentSizesError) {
-    return response
-      .status(500)
-      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_SIZES);
+    return response.status(500).send(assignProfilesInvestmentSizesError);
   }
 
   // assign investment stage types
@@ -127,9 +139,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesInvestmentStageTypesError) {
-    return response
-      .status(500)
-      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_STAGE_TYPES);
+    return response.status(500).send(assignProfilesInvestmentStageTypesError);
   }
 
   // assign startup sectors
@@ -141,9 +151,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesStartupSectorsError) {
-    return response
-      .status(500)
-      .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_STARTUP_SECTORS);
+    return response.status(500).send(assignProfilesStartupSectorsError);
   }
 
   // assign team sizes
@@ -155,7 +163,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesTeamSizesError) {
-    return response.status(500).send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_TEAM_SIZES);
+    return response.status(500).send(assignProfilesTeamSizesError);
   }
 
   if (!isStartup) {
@@ -168,18 +176,21 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     );
 
     if (assignInvestorDemandTypesError) {
-      return response
-        .status(500)
-        .send(EApiError.CREATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTOR_DEMAND_TYPES);
+      return response.status(500).send(assignInvestorDemandTypesError);
     }
   } else {
-    await supabaseInstance
+    const { error: profilesInvestorDemandTypesError } = await supabaseInstance
       .from('profiles_investor_demand_types')
       .delete()
       .eq('profile_id', user.id);
+
+    if (profilesInvestorDemandTypesError) {
+      return response.status(500).send(profilesInvestorDemandTypesError);
+    }
   }
 
-  await supabaseInstance
+  // update profiles
+  const { error: updatedProfileError } = await supabaseInstance
     .from('profiles')
     .update({
       location: userData.location,
@@ -192,7 +203,11 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     })
     .eq('id', user.id);
 
-  await (!isStartup
+  if (updatedProfileError) {
+    return response.status(500).send(updatedProfileError);
+  }
+
+  const { error: updateStartupOrInvestorError } = await (!isStartup
     ? supabaseInstance.from('investors').insert({
         profile_id: user.id,
         investor_profile_type_id: userData.investorProfileTypeId,
@@ -207,7 +222,11 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         startup_profile_creator_type_id: userData.startupProfileCreatorTypeId,
       }));
 
-  response.send({ status: 'success' });
+  if (updateStartupOrInvestorError) {
+    return response.status(500).send(updateStartupOrInvestorError);
+  }
+
+  response.status(200).send({ status: 'success' });
 };
 
 export default handler;
