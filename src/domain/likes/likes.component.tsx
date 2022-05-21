@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
+import { toast } from 'react-toastify';
 
 import { Empty, MatchModalContent, PairsImageGallery, useModal } from '@ui';
 
-import { isStartupProfile, useTranslation, useUser } from '@utils';
+import { isStartupProfile, useConfirmationModal, useTranslation, useUser } from '@utils';
 
 import { likeProfileAction } from '@infrastructure';
 
@@ -20,8 +21,10 @@ const LIMIT = 30;
 
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const { user } = useUser();
-  const [items, setItems] = useState<ILike[]>([]);
+  const { confirm } = useConfirmationModal();
   const translations = useTranslation(translationStrings);
+
+  const [items, setItems] = useState<ILike[]>([]);
   const [shouldLoadMore, setShouldLoadMore] = useState(false);
 
   const {
@@ -78,21 +81,47 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   };
 
   const onModalMatchModalContentClose = () => {
-    // TODO - add reset function
-    // mutate();
+    console.log(likedProfileDetails);
+
+    setItems((prevItems) =>
+      prevItems.filter((_prevItem) => _prevItem.likeId !== selectedProfile?.likeId),
+    );
 
     hideMatchModalContent();
     setLikedProfileDetails(undefined);
   };
 
-  const onVote = (profileId: string, vote: boolean) => {
-    mutateAsyncLikeProfileAction({ profileId, vote }).then(({ data }) => {
-      if (!loggedProfileDetails && data.loggedProfileDetails) {
-        setLoggedProfileDetails(data.loggedProfileDetails);
-      }
+  const onVote = async (profile: ILike, vote: boolean) => {
+    const conditionalPromise = !vote
+      ? confirm({
+          title: translations.commonPromptUnsavedTitle,
+          cancellationText: translations.commonButtonsCancel,
+          confirmationText: translations.commonButtonsDelete,
+          confirmationButtonProps: {
+            color: 'error',
+          },
+          description: translations.componentDashboardLikesConfirmationModalDescription,
+        })
+      : Promise.resolve();
 
-      setLikedProfileDetails(data.likedProfileDetails);
-    });
+    conditionalPromise.then(() =>
+      mutateAsyncLikeProfileAction({ profileId: profile.id, vote })
+        .then(({ data }) => {
+          if (!loggedProfileDetails && data.loggedProfileDetails) {
+            setLoggedProfileDetails(data.loggedProfileDetails);
+          }
+
+          if (!data.likedProfileDetails) {
+            setItems((prevItems) =>
+              prevItems.filter((_prevItem) => _prevItem.likeId !== selectedProfile?.likeId),
+            );
+            onProfileDetailsPreviewModalContentCloseIconClick();
+          }
+
+          setLikedProfileDetails(data.likedProfileDetails);
+        })
+        .catch(() => toast.error(translations.commonErrorsSomethingWentWrong)),
+    );
   };
 
   if (!user?.is_subscribed) {
@@ -114,7 +143,9 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
 
   return (
     <>
-      <ModalProfileDetailsPreviewModalContent>
+      <ModalProfileDetailsPreviewModalContent
+        onClose={onProfileDetailsPreviewModalContentCloseIconClick}
+      >
         <ProfileDetailsPreviewModalContent
           {...restProps}
           selectedProfile={selectedProfile}

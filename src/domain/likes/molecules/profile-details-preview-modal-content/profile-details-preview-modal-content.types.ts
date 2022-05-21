@@ -19,7 +19,7 @@ export interface IProfileDetailsPreviewModalContentProps {
   investorDemandTypes: IInvestorDemandType[];
   investorProfileTypes: IInvestorProfileType[];
   onCloseIconClick: () => void;
-  onVote: (profileId: string, vote: boolean) => void;
+  onVote: (profile: ILike, vote: boolean) => void;
   selectedProfile?: ILike;
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];
