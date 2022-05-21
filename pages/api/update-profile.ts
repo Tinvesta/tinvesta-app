@@ -10,18 +10,23 @@ import { EApiError } from '@enums';
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const createAvatarRecord = async (profileId: string, imageKey: string, position: number) => {
-  const { data: storagePublicUrlData, error: storagePublicUrlError } =
-    await supabaseInstance.storage.from('avatars').getPublicUrl(imageKey);
+  const { data: avatarPublicUrlData, error: avatarPublicUrlError } = await supabaseInstance.storage
+    .from('avatars')
+    .getPublicUrl(imageKey);
 
-  if (storagePublicUrlError || !storagePublicUrlData) {
-    return null;
+  if (!avatarPublicUrlData) {
+    return { error: new Error('Error getting public url for avatar') };
   }
 
-  const bucketNamesCount = countWords(storagePublicUrlData.publicURL, 'avatars');
+  if (avatarPublicUrlError) {
+    return { error: avatarPublicUrlError };
+  }
+
+  const bucketNamesCount = countWords(avatarPublicUrlData.publicURL, 'avatars');
   const parsedPublicUrl =
     bucketNamesCount >= 2
-      ? storagePublicUrlData.publicURL.replace('/avatars', '')
-      : storagePublicUrlData.publicURL;
+      ? avatarPublicUrlData.publicURL.replace('/avatars', '')
+      : avatarPublicUrlData.publicURL;
 
   return supabaseInstance.from('avatars').insert({
     position,
@@ -38,12 +43,19 @@ const assignWithBulkInsert = async (
   arrayOfIds: number[],
 ) => {
   if (!isArray(arrayOfIds)) {
-    return { error: '' };
+    return { error: null };
   }
 
   const recordsToInsert = arrayOfIds.map((_id) => ({ [idColumnName]: _id, profile_id: userId }));
 
-  await supabaseInstance.from(table).delete().eq('profile_id', userId);
+  const { error: deleteError } = await supabaseInstance
+    .from(table)
+    .delete()
+    .eq('profile_id', userId);
+
+  if (deleteError) {
+    return { error: deleteError };
+  }
 
   return supabaseInstance.from(table).insert(recordsToInsert);
 };
@@ -59,6 +71,10 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
+  if (!request.body) {
+    return response.status(400).send(EApiError.BAD_REQUEST);
+  }
+
   const token = cookie.parse(request.headers.cookie || '')['sb:token'];
 
   supabaseInstance.auth.session = () => ({
@@ -72,12 +88,16 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   // process image keys
   if (userData.imageKeys) {
-    const { data: avatars } = await supabaseInstance
+    const { data: profileAvatarsData, error: profileAvatarsError } = await supabaseInstance
       .from('avatars')
       .select('*')
       .eq('profile_id', user.id);
 
-    const avatarsToRemove = avatars?.reduce((_accumulator, _avatar) => {
+    if (profileAvatarsError) {
+      return response.status(500).send(profileAvatarsError);
+    }
+
+    const avatarsToRemove = profileAvatarsData?.reduce((_accumulator, _avatar) => {
       if (!userData.imageKeys.includes(_avatar.avatar_public_url)) {
         return [..._accumulator, _avatar];
       }
@@ -91,7 +111,11 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     for (const _imageKey of userData.imageKeys) {
       if (_imageKey.startsWith('avatars/')) {
         // eslint-disable-next-line no-await-in-loop
-        await createAvatarRecord(user.id, _imageKey, i);
+        const { error: avatarRecordError } = await createAvatarRecord(user.id, _imageKey, i);
+
+        if (avatarRecordError) {
+          return response.status(500).send(avatarRecordError);
+        }
       }
 
       i += 1;
@@ -100,12 +124,23 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     // remove old avatars
     for (const _avatar of avatarsToRemove) {
       // eslint-disable-next-line no-await-in-loop
-      await supabaseInstance.from('avatars').delete().eq('id', _avatar.id);
+      const { error: deletedAvatarError } = await supabaseInstance
+        .from('avatars')
+        .delete()
+        .eq('id', _avatar.id);
+
+      if (deletedAvatarError) {
+        return response.status(500).send(deletedAvatarError);
+      }
 
       // eslint-disable-next-line no-await-in-loop
-      await supabaseInstance.storage
+      const { error: storageRemoveError } = await supabaseInstance.storage
         .from('avatars')
         .remove([_avatar.avatar_key.replace('avatars/', '')]);
+
+      if (storageRemoveError) {
+        return response.status(500).send(storageRemoveError);
+      }
     }
   }
 
@@ -118,7 +153,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesFocusMarketsError) {
-    return response.status(500).send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_FOCUS_MARKETS);
+    return response.status(500).send(assignProfilesFocusMarketsError);
   }
 
   // assign industrial sectors
@@ -130,9 +165,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesIndustrialSectorsError) {
-    return response
-      .status(500)
-      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INDUSTRIAL_SECTORS);
+    return response.status(500).send(assignProfilesIndustrialSectorsError);
   }
 
   // assign investment sizes
@@ -144,9 +177,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesInvestmentSizesError) {
-    return response
-      .status(500)
-      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_SIZES);
+    return response.status(500).send(assignProfilesInvestmentSizesError);
   }
 
   // assign investment stage types
@@ -158,9 +189,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesInvestmentStageTypesError) {
-    return response
-      .status(500)
-      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTMENT_STAGE_TYPES);
+    return response.status(500).send(assignProfilesInvestmentStageTypesError);
   }
 
   // assign startup sectors
@@ -172,9 +201,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesStartupSectorsError) {
-    return response
-      .status(500)
-      .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_STARTUP_SECTORS);
+    return response.status(500).send(assignProfilesStartupSectorsError);
   }
 
   // assign team sizes
@@ -186,7 +213,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesTeamSizesError) {
-    return response.status(500).send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_TEAM_SIZES);
+    return response.status(500).send(assignProfilesTeamSizesError);
   }
 
   if (!isStartup) {
@@ -199,19 +226,21 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     );
 
     if (assignInvestorDemandTypesError) {
-      return response
-        .status(500)
-        .send(EApiError.UPDATE_PROFILE_PROBLEM_WITH_PROFILES_INVESTOR_DEMAND_TYPES);
+      return response.status(500).send(assignInvestorDemandTypesError);
     }
   } else {
-    await supabaseInstance
+    const { error: profilesInvestorDemandTypesError } = await supabaseInstance
       .from('profiles_investor_demand_types')
       .delete()
       .eq('profile_id', user.id);
+
+    if (profilesInvestorDemandTypesError) {
+      return response.status(500).send(profilesInvestorDemandTypesError);
+    }
   }
 
   // update profiles
-  await supabaseInstance
+  const { error: updateProfileError } = await supabaseInstance
     .from('profiles')
     .update({
       location: userData.location,
@@ -222,7 +251,11 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     })
     .eq('id', user.id);
 
-  await (!isStartup
+  if (updateProfileError) {
+    return response.status(500).send(updateProfileError);
+  }
+
+  const { error: updateStartupOrInvestorError } = await (!isStartup
     ? supabaseInstance
         .from('investors')
         .update({
@@ -240,7 +273,11 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         })
         .eq('profile_id', user.id));
 
-  response.send({ status: 'success' });
+  if (updateStartupOrInvestorError) {
+    return response.status(500).send(updateStartupOrInvestorError);
+  }
+
+  response.status(200).send({ status: 'success' });
 };
 
 export default handler;
