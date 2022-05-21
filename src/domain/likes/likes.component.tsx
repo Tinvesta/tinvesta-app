@@ -81,8 +81,6 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   };
 
   const onModalMatchModalContentClose = () => {
-    console.log(likedProfileDetails);
-
     setItems((prevItems) =>
       prevItems.filter((_prevItem) => _prevItem.likeId !== selectedProfile?.likeId),
     );
