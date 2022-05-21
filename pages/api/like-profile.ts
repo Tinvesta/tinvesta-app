@@ -109,12 +109,12 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       const [{ data: likedProfileDetails }, { data: loggedProfileDetails }] = await Promise.all([
         supabaseInstance
           .rpc('profile_details', {
-            profile_id_input: loggedUserId,
+            profile_id_input: profileIdToLike,
           })
           .single(),
         supabaseInstance
           .rpc('profile_details', {
-            profile_id_input: profileIdToLike,
+            profile_id_input: loggedUserId,
           })
           .single(),
       ]);

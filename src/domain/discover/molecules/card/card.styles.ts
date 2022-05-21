@@ -59,16 +59,16 @@ const StyledUserInfoWrapper = styled.div`
   position: absolute;
   flex-direction: column;
   justify-content: flex-end;
-  gap: ${({ theme }) => theme.spacing(3)};
-  padding: ${({ theme }) => theme.spacing(0, 5, 25, 5)};
+  gap: ${({ theme }) => theme.spacing(4)};
+  padding: ${({ theme }) => theme.spacing(0, 5, 14, 5)};
 
   ${({ theme }) => respondToMax.mobile`
-    padding: ${theme.spacing(0, 4, 22, 4)};
+    padding: ${theme.spacing(0, 4, 13, 4)};
   `}
 
   ${({ theme }) => respondToMax.xmobile`
-    gap: ${theme.spacing(2)};
-    padding: ${theme.spacing(0, 2, 20, 2)};
+    gap: ${theme.spacing(3)};
+    padding: ${theme.spacing(0, 3, 12, 3)};
   `}
 `;
 

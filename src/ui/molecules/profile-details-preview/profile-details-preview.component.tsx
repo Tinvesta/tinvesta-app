@@ -143,7 +143,6 @@ export const ProfileDetailsPreview = ({
     <S.StyledWrapper swiperPaginationBullets={mergedProfileDetails.avatars.length}>
       <Swiper
         grabCursor
-        loop
         touchMoveStopPropagation
         modules={['keyboard', 'scrollbar', 'pagination']}
         pagination={{ clickable: true }}
