@@ -32,6 +32,7 @@ const StyledPaper = styled(Paper)`
   width: 400px;
   display: flex;
   flex-direction: column;
+  background-image: none;
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(4)};
 
