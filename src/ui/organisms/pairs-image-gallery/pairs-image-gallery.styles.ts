@@ -7,18 +7,18 @@ const StyledGridWrapper = styled.div`
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(4, 1fr);
-  gap: ${({ theme }) => theme.spacing(4)};
-  padding: ${({ theme }) => theme.spacing(4)};
+  gap: ${({ theme }) => theme.spacing(5)};
+  padding: ${({ theme }) => theme.spacing(5)};
 
   ${({ theme }) => respondToMax.small`
-    gap: ${theme.spacing(3)};
-    padding: ${theme.spacing(3)};
+    gap: ${theme.spacing(4)};
+    padding: ${theme.spacing(4)};
     grid-template-columns: repeat(3, 1fr);
   `}
 
   ${({ theme }) => respondToMax.mobile`
-    gap: ${theme.spacing(2)};
-    padding: ${theme.spacing(2)};
+    gap: ${theme.spacing(3)};
+    padding: ${theme.spacing(3)};
     grid-template-columns: repeat(2, 1fr);
   `}
 `;
