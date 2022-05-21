@@ -111,10 +111,10 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     for (const _imageKey of userData.imageKeys) {
       if (_imageKey.startsWith('avatars/')) {
         // eslint-disable-next-line no-await-in-loop
-        const { error: avatarRecordError } = await createAvatarRecord(user.id, _imageKey, i);
+        const { error: createdAvatarRecordError } = await createAvatarRecord(user.id, _imageKey, i);
 
-        if (avatarRecordError) {
-          return response.status(500).send(avatarRecordError);
+        if (createdAvatarRecordError) {
+          return response.status(500).send(createdAvatarRecordError);
         }
       }
 

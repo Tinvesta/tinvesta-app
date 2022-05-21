@@ -28,7 +28,7 @@ const createAvatarRecord = async (profileId: string, imageKey: string, position:
       ? avatarPublicUrlData.publicURL.replace('/avatars', '')
       : avatarPublicUrlData.publicURL;
 
-  await supabaseInstance.from('avatars').insert({
+  return supabaseInstance.from('avatars').insert({
     position,
     avatar_key: imageKey,
     profile_id: profileId,
@@ -90,7 +90,12 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
 
   for (const _imageKey of userData.imageKeys) {
     // eslint-disable-next-line no-await-in-loop
-    await createAvatarRecord(user.id, _imageKey, i);
+    const { error: createdAvatarRecordError } = await createAvatarRecord(user.id, _imageKey, i);
+
+    if (createdAvatarRecordError) {
+      return response.status(500).send(createdAvatarRecordError);
+    }
+
     i += 1;
   }
 
@@ -179,13 +184,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       return response.status(500).send(assignInvestorDemandTypesError);
     }
   } else {
-    const { error: profilesInvestorDemandTypesError } = await supabaseInstance
+    const { error: deletedProfilesInvestorDemandTypesError } = await supabaseInstance
       .from('profiles_investor_demand_types')
       .delete()
       .eq('profile_id', user.id);
 
-    if (profilesInvestorDemandTypesError) {
-      return response.status(500).send(profilesInvestorDemandTypesError);
+    if (deletedProfilesInvestorDemandTypesError) {
+      return response.status(500).send(deletedProfilesInvestorDemandTypesError);
     }
   }
 
