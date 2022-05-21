@@ -79,8 +79,9 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
         .then(() => {
           onProfileDetailsPreviewModalContentCloseIconClick();
 
-          setItems([]);
-          loadMore(0);
+          setItems((prevItems) =>
+            prevItems.filter((_prevItem) => _prevItem.matchId !== selectedProfile.matchId),
+          );
         })
         .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
     });
