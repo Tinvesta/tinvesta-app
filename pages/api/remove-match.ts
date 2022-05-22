@@ -23,6 +23,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
 
   if (!user) {
+    logApiError(
+      EApiEndpoint.REMOVE_MATCH,
+      EApiError.UNAUTHORIZED,
+      'No user data - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
