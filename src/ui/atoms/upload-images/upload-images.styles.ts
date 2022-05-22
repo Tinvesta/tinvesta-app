@@ -7,7 +7,7 @@ import { respondToMax } from '@infrastructure';
 
 const StyledUploadImagesWrapper = styled.div`
   margin: 0 auto;
-  max-width: 350px;
+  max-width: 300px;
 
   ${respondToMax.xmobile`
     max-width: 275px;
