@@ -72,8 +72,8 @@
     "react-intl": "^5.25.1",
     "react-query": "^3.39.0",
     "react-toastify": "^9.0.1",
-    "stripe": "^9.1.0",
-    "swiper": "^8.1.4",
+    "stripe": "^9.2.0",
+    "swiper": "^8.1.5",
     "use-file-picker": "^1.4.2",
     "use-subscription": "^1.7.0",
     "xstate": "^4.32.1"
@@ -87,7 +87,7 @@
     "@types/jest": "^27.5.1",
     "@types/micro": "^7.3.7",
     "@types/node": "17.0.21",
-    "@types/ramda": "^0.28.12",
+    "@types/ramda": "^0.28.13",
     "@types/react": "18.0.9",
     "@types/react-avatar-editor": "^12.0.0",
     "@types/react-copy-to-clipboard": "^5.0.2",
@@ -115,7 +115,7 @@
     "plop": "^3.1.0",
     "prettier": "^2.6.2",
     "prettier-package-json": "^2.6.3",
-    "react-hook-form": "^7.31.1",
+    "react-hook-form": "^7.31.2",
     "ts-jest": "^28.0.2",
     "typescript": "4.6.4",
     "use-query-params": "^1.2.3"
