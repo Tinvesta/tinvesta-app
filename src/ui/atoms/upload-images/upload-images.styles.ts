@@ -104,7 +104,7 @@ const StyledImagePlaceholder = styled(LoadingButton)<{ error?: boolean }>`
 
 const StyledFormHelperText = styled(FormHelperText)`
   text-align: center;
-  margin-top: ${({ theme }) => theme.spacing(3)};
+  margin-top: ${({ theme }) => theme.spacing(4)};
   color: ${({ theme }) => theme.palette.error.main};
 `;
 
