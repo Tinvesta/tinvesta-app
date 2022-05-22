@@ -69,7 +69,7 @@
     "react-avatar-editor": "^13.0.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.1.0",
-    "react-intl": "^5.25.1",
+    "react-intl": "^6.0.1",
     "react-query": "^3.39.0",
     "react-toastify": "^9.0.1",
     "stripe": "^9.2.0",
