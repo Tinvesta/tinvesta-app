@@ -46,8 +46,8 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   }
 
   try {
-    let stripeCustomer = selectedSubscriptionsData.stripe_customer;
     const stripe = createStripeInstance();
+    let stripeCustomer = selectedSubscriptionsData.stripe_customer;
 
     if (!stripeCustomer) {
       const customer = await stripe.customers.create({
