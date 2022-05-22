@@ -18,7 +18,7 @@ const StyledAsideWrapper = styled.aside`
 const StyledAsideBottomContentWrapper = styled.div`
   display: flex;
   justify-content: center;
-  margin-bottom: ${({ theme }) => theme.spacing(3)};
+  margin-bottom: ${({ theme }) => theme.spacing(5)};
 `;
 
 const StyledWelcomeTypography = styled(Typography)`
