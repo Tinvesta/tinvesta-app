@@ -10,11 +10,11 @@ const StyledWrapper = styled.div`
 const StyledTypography = styled(Typography)`
   max-width: 500px;
   text-align: center;
-  margin-top: ${({ theme }) => theme.spacing(3)};
+  margin-top: ${({ theme }) => theme.spacing(4)};
 `;
 
 const StyledActionButton = styled(Button)`
-  margin-top: ${({ theme }) => theme.spacing(4)};
+  margin-top: ${({ theme }) => theme.spacing(5)};
 `;
 
 const S = {
