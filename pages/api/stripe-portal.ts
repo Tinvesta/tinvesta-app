@@ -1,13 +1,13 @@
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Stripe } from 'stripe';
+
+import { createStripeInstance } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
 import { EApiError, ERoutes } from '@enums';
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL;
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
@@ -29,26 +29,51 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const { data: subscriptionsData, error: subscriptionsError } = await supabaseInstance
-    .from('subscriptions')
-    .select('stripe_customer')
-    .eq('profile_id', user.id)
-    .single();
+  const { data: selectedSubscriptionsData, error: selectedSubscriptionsError } =
+    await supabaseInstance
+      .from('subscriptions')
+      .select('stripe_customer')
+      .eq('profile_id', user.id)
+      .single();
 
-  if (subscriptionsError) {
-    return response.status(500).send(subscriptionsError);
+  if (selectedSubscriptionsError) {
+    return response.status(500).send(selectedSubscriptionsError);
   }
 
-  const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
+  try {
+    const stripe = createStripeInstance();
+    let stripeCustomer = selectedSubscriptionsData.stripe_customer;
 
-  const session = await stripe.billingPortal.sessions.create({
-    customer: subscriptionsData.stripe_customer,
-    return_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}`,
-  });
+    if (!stripeCustomer) {
+      const customer = await stripe.customers.create({
+        email: user.email,
+      });
 
-  response.send({
-    url: session.url,
-  });
+      const { error: updatedSubscriptionsError } = await supabaseInstance
+        .from('subscriptions')
+        .update({
+          stripe_customer: customer.id,
+        })
+        .eq('profile_id', user.id);
+
+      if (updatedSubscriptionsError) {
+        return response.status(500).send(updatedSubscriptionsError);
+      }
+
+      stripeCustomer = customer.id;
+    }
+
+    const session = await stripe.billingPortal.sessions.create({
+      customer: stripeCustomer,
+      return_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}`,
+    });
+
+    return response.status(200).send({
+      url: session.url,
+    });
+  } catch (error) {
+    return response.status(500).send(error);
+  }
 };
 
 export default handler;
