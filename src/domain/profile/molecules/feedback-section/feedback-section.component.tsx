@@ -19,14 +19,13 @@ export const FeedbackSection = (): JSX.Element => {
     defaultValues: defaultFormFieldsValues,
   });
 
-  const onSubmit = (data: IFeedbackFormFieldsData) => {
+  const onSubmit = (data: IFeedbackFormFieldsData) =>
     mutateAsyncFeedbackAction(data)
       .then(() => {
         reset(defaultFormFieldsValues);
         toast.success(translations.componentDashboardFeedbackFormMessagesSuccess);
       })
       .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
-  };
 
   const handleResetButtonClick = () => reset(defaultFormFieldsValues);
 
