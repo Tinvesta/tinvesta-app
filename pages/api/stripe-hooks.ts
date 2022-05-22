@@ -1,23 +1,21 @@
 import { buffer } from 'micro';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Stripe } from 'stripe';
+
+import { createStripeInstance } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const stripeSigningSecret = process.env.STRIPE_SIGNING_SECRET;
 
 export const config = { api: { bodyParser: false } };
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
-  const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
+  const stripe = createStripeInstance();
   const signature = request.headers['stripe-signature'];
   const requestBuffer = await buffer(request);
 
   if (!signature) {
-    response.send({ received: true });
-
-    return;
+    return response.send({ received: true });
   }
 
   try {
@@ -66,10 +64,10 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     }
   } catch (error) {
     if (error instanceof Error) {
-      response.status(400).send(`Webhook error: ${error?.message}`);
+      return response.status(400).send(`Webhook error: ${error?.message}`);
     }
 
-    response.status(400).send('Webhook error');
+    return response.status(400).send('Webhook error');
   }
 
   response.send({ received: true });

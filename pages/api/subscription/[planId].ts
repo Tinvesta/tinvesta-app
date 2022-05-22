@@ -1,16 +1,14 @@
 /* eslint-disable unicorn/filename-case */
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Stripe } from 'stripe';
 
-import { objectToQueryString } from '@utils';
+import { createStripeInstance, objectToQueryString } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
 import { EApiError, EPaymentStatus, ERoutes } from '@enums';
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL;
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
@@ -48,7 +46,28 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   }
 
   try {
-    const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
+    const stripe = createStripeInstance();
+    let stripeCustomer = selectedSubscriptionsData.stripe_customer;
+
+    if (!stripeCustomer) {
+      const customer = await stripe.customers.create({
+        email: user.email,
+      });
+
+      const { error: updatedSubscriptionsError } = await supabaseInstance
+        .from('subscriptions')
+        .update({
+          stripe_customer: customer.id,
+        })
+        .eq('profile_id', user.id);
+
+      if (updatedSubscriptionsError) {
+        return response.status(500).send(updatedSubscriptionsError);
+      }
+
+      stripeCustomer = customer.id;
+    }
+
     const { planId } = request.query as { planId: string };
 
     const lineItems = [
@@ -61,28 +80,24 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       line_items: lineItems,
+      customer: stripeCustomer,
       payment_method_types: ['card'],
       cancel_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}`,
-      customer: selectedSubscriptionsData.stripe_customer,
       success_url: `${appUrl}${ERoutes.DASHBOARD_PROFILE}${objectToQueryString({
         paymentStatus: EPaymentStatus.SUCCESS,
       })}`,
     });
 
-    response.status(200).send({
+    return response.status(200).send({
       id: session.id,
     });
   } catch (error) {
     if (error instanceof Error) {
-      response.status(500).send(error.message);
+      return response.status(500).send(error.message);
     }
 
-    response.status(500).send(error);
+    return response.status(500).send(error);
   }
-
-  response.status(200).send({
-    id: null,
-  });
 };
 
 export default handler;

@@ -1,11 +1,11 @@
 import { NextApiRequest, NextApiResponse } from 'next';
-import { Stripe } from 'stripe';
+
+import { createStripeInstance } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
 import { EApiError } from '@enums';
 
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
@@ -27,7 +27,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(selectedProfileError);
   }
 
-  const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
+  const stripe = createStripeInstance();
 
   const customer = await stripe.customers.create({
     email: selectedProfileData.email,

@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
-import { Stripe } from 'stripe';
 
 import { QueryParamProvider } from '@application';
 
@@ -8,15 +7,13 @@ import { Profile } from '@domain';
 
 import { Loading } from '@ui';
 
-import { useDeviceDetect, useUser } from '@utils';
+import { createStripeInstance, useDeviceDetect, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
 import { fetchDropdownsStaticData } from '../../utils';
 import { DesktopDashboardLayout, MobileDashboardLayout } from '../layouts';
 import { IProfileProps } from './profile.types';
-
-const stripeSecretKey = process.env.STRIPE_SECRET_KEY;
 
 export const ProfilePage = (props: IProfileProps): JSX.Element => {
   const router = useRouter();
@@ -60,7 +57,7 @@ export const ProfilePage = (props: IProfileProps): JSX.Element => {
 
 export const getStaticProps = async () => {
   // Fetch data required for subscriptions section
-  const stripe = new Stripe(stripeSecretKey, { apiVersion: '2020-08-27' });
+  const stripe = createStripeInstance();
 
   const { data: prices } = await stripe.prices.list();
 
