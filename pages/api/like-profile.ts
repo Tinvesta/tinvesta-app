@@ -6,18 +6,13 @@ import { convertObjectKeysToCamelCase, hasOwnProperty } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
-import { EApiError } from '@enums';
+import { EApiEndpoint, EApiError } from '@enums';
 
 import { IProfileDetails } from '@interfaces';
 
-const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
+import { logApiError } from './services/logger';
 
-const findLikesRecordByUserIds = (fromProfileId: string, toProfileId: string) =>
-  supabaseInstance
-    .from('likes')
-    .select('*')
-    .match({ from_profile_id: fromProfileId, to_profile_id: toProfileId })
-    .single();
+const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const createLikeRecord = async (loggedUserId: string, profileIdToLike: string, vote: boolean) => {
   const { data, error } = await supabaseInstance.from('likes').insert({
@@ -64,16 +59,37 @@ const parseProfileDetails = (profileData: IProfileDetails) => {
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
+    logApiError(
+      EApiEndpoint.LIKE_PROFILE,
+      EApiError.UNAUTHORIZED,
+      'Invalid api route secret - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
 
   if (!user) {
+    logApiError(
+      EApiEndpoint.LIKE_PROFILE,
+      EApiError.UNAUTHORIZED,
+      'No user data - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
   if (!hasOwnProperty(request.body, 'profileIdToLike') && !hasOwnProperty(request.body, 'vote')) {
+    logApiError(
+      EApiEndpoint.LIKE_PROFILE,
+      EApiError.BAD_REQUEST,
+      'No profileIdToLike and vote - request body',
+      request.body,
+    );
+
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
@@ -81,6 +97,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const { profileIdToLike, vote } = request.body;
 
   if (profileIdToLike === loggedUserId) {
+    logApiError(
+      EApiEndpoint.LIKE_PROFILE,
+      EApiError.BAD_REQUEST,
+      'profileIdToLike is equal to loggedUserId - request body',
+      request.body,
+    );
+
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
@@ -92,9 +115,20 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const foundLikeFromOtherProfile = await findLikesRecordByUserIds(profileIdToLike, loggedUserId);
+  const foundLikeFromOtherProfile = await supabaseInstance
+    .from('likes')
+    .select('*')
+    .match({ from_profile_id: profileIdToLike, to_profile_id: loggedUserId })
+    .single();
 
   if (!foundLikeFromOtherProfile) {
+    logApiError(
+      EApiEndpoint.LIKES,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'foundLikeFromOtherProfile does not exist - request body',
+      request.body,
+    );
+
     return response.status(500).send(EApiError.INTERNAL_SERVER_ERROR);
   }
 
@@ -107,10 +141,24 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     );
 
     if (!updatedLike) {
+      logApiError(
+        EApiEndpoint.LIKE_PROFILE,
+        EApiError.INTERNAL_SERVER_ERROR,
+        'updatedLike does not exist - request body',
+        request.body,
+      );
+
       return response.status(500).send(EApiError.INTERNAL_SERVER_ERROR);
     }
 
     if (updatedLike.error) {
+      logApiError(
+        EApiEndpoint.LIKE_PROFILE,
+        EApiError.INTERNAL_SERVER_ERROR,
+        'Error',
+        updatedLike.error,
+      );
+
       return response.status(500).send(updatedLike.error);
     }
 
@@ -132,10 +180,24 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       ]);
 
       if (likedProfileDetailsError) {
+        logApiError(
+          EApiEndpoint.LIKE_PROFILE,
+          EApiError.INTERNAL_SERVER_ERROR,
+          'Error',
+          likedProfileDetailsError,
+        );
+
         return response.status(500).send(likedProfileDetailsError);
       }
 
       if (loggedProfileDetailsError) {
+        logApiError(
+          EApiEndpoint.LIKE_PROFILE,
+          EApiError.INTERNAL_SERVER_ERROR,
+          'Error',
+          loggedProfileDetailsError,
+        );
+
         return response.status(500).send(loggedProfileDetailsError);
       }
 
@@ -171,14 +233,28 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const createdLikeRecord = await createLikeRecord(loggedUserId, profileIdToLike, vote);
 
   if (!createdLikeRecord) {
+    logApiError(
+      EApiEndpoint.LIKE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'createdLikeRecord does not exist - request body',
+      request.body,
+    );
+
     return response.status(500).send(EApiError.INTERNAL_SERVER_ERROR);
   }
 
   if (createdLikeRecord.error) {
+    logApiError(
+      EApiEndpoint.LIKE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      createdLikeRecord.error,
+    );
+
     return response.status(500).send(createdLikeRecord.error);
   }
 
-  response.send({ isMatch: false });
+  response.status(200).send({ isMatch: false });
 };
 
 export default handler;
