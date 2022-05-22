@@ -10,6 +10,7 @@ export enum EApiError {
 
 export enum EApiEndpoint {
   CREATE_PROFILE = '/api/create-profile',
+  CREATE_STRIPE_CUSTOMER = '/api/create-stripe-customer',
   DISCOVER_RECORDS = '/api/discover-records',
   FEEDBACK = '/api/feedback',
   HEALTH_CHECK = '/api/health-check',

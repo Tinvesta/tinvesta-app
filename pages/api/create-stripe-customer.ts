@@ -4,7 +4,9 @@ import { createStripeInstance } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
-import { EApiError } from '@enums';
+import { EApiEndpoint, EApiError } from '@enums';
+
+import { logApiError } from './services/logger';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
@@ -24,6 +26,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     .single();
 
   if (selectedProfileError) {
+    logApiError(
+      EApiEndpoint.CREATE_STRIPE_CUSTOMER,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      selectedProfileError,
+    );
+
     return response.status(500).send(selectedProfileError);
   }
 
@@ -41,6 +50,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     .eq('profile_id', selectedProfileData.id);
 
   if (updatedSubscriptionsError) {
+    logApiError(
+      EApiEndpoint.CREATE_STRIPE_CUSTOMER,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      updatedSubscriptionsError,
+    );
+
     return response.status(500).send(updatedSubscriptionsError);
   }
 

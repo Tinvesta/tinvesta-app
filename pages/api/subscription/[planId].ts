@@ -6,23 +6,46 @@ import { createStripeInstance, objectToQueryString } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
-import { EApiError, EPaymentStatus, ERoutes } from '@enums';
+import { EApiEndpoint, EApiError, EPaymentStatus, ERoutes } from '@enums';
+
+import { logApiError } from '../services/logger';
 
 const appUrl = process.env.NEXT_PUBLIC_APP_URL;
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
+    logApiError(
+      `${EApiEndpoint.SUBSCRIPTION}/[planId]`,
+      EApiError.UNAUTHORIZED,
+      'Invalid api route secret - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
 
   if (!user) {
+    logApiError(
+      `${EApiEndpoint.SUBSCRIPTION}/[planId]`,
+      EApiError.UNAUTHORIZED,
+      'No user data - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
   if (!request.query.planId) {
+    logApiError(
+      `${EApiEndpoint.SUBSCRIPTION}/[planId]`,
+      EApiError.BAD_REQUEST,
+      'Request query',
+      request.query,
+    );
+
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
@@ -42,6 +65,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       .single();
 
   if (selectedSubscriptionsError) {
+    logApiError(
+      `${EApiEndpoint.SUBSCRIPTION}/[planId]`,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      selectedSubscriptionsError,
+    );
+
     return response.status(500).send(selectedSubscriptionsError);
   }
 
@@ -62,6 +92,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         .eq('profile_id', user.id);
 
       if (updatedSubscriptionsError) {
+        logApiError(
+          `${EApiEndpoint.SUBSCRIPTION}/[planId]`,
+          EApiError.INTERNAL_SERVER_ERROR,
+          'Error',
+          updatedSubscriptionsError,
+        );
+
         return response.status(500).send(updatedSubscriptionsError);
       }
 
@@ -92,6 +129,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       id: session.id,
     });
   } catch (error) {
+    logApiError(
+      `${EApiEndpoint.SUBSCRIPTION}/[planId]`,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      error,
+    );
+
     if (error instanceof Error) {
       return response.status(500).send(error.message);
     }
