@@ -1,5 +1,6 @@
+import { Send as SendIcon } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
-import { Button, Grid } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import { memo } from 'react';
 
 import { CenterBlockLayout, TextFieldWithController } from '@ui';
@@ -27,10 +28,17 @@ const FeedbackFormComponent = ({
 
   const translations = useTranslation(translationStrings);
 
+  const buttonSize = deviceData.isSmallerThanXS ? 'medium' : 'large';
+
   return (
     <CenterBlockLayout>
       <S.StyledWrapper {...formProps}>
         <Grid container columnSpacing={4} rowSpacing={4}>
+          <Grid item xs={12}>
+            <Typography align="center" variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
+              {translations.componentDashboardFeedbackFormDescription}
+            </Typography>
+          </Grid>
           <Grid item alignItems="center" display="flex" justifyContent="center" xs={12}>
             <RatingWithController
               controllerProps={{
@@ -77,13 +85,13 @@ const FeedbackFormComponent = ({
               }}
             />
           </Grid>
-          <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
+          <Grid item display="flex" gap={deviceData.isSmallerThanXS ? 4 : 5} xs={12}>
             <Grid item xs={6}>
               <Button
                 fullWidth
                 color="secondary"
                 disabled={!isDirty}
-                size="large"
+                size={buttonSize}
                 variant="outlined"
                 onClick={onResetButtonClick}
               >
@@ -95,8 +103,9 @@ const FeedbackFormComponent = ({
                 fullWidth
                 color="secondary"
                 disabled={!isDirty}
+                endIcon={<SendIcon fontSize="small" />}
                 loading={isLoading}
-                size="large"
+                size={buttonSize}
                 type="submit"
                 variant="contained"
               >
