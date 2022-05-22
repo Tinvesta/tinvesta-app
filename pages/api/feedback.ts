@@ -63,7 +63,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     logApiError(
       EApiEndpoint.FEEDBACK,
       EApiError.BAD_REQUEST,
-      'No rating and message - request body',
+      'No rating or message - request body',
       request.body,
     );
 
