@@ -7,6 +7,5 @@ export default {
     'An unexpected error occurred while compressing the uploaded file',
 
   // Modal
-  'component.upload.images.modal.button.text': 'Crop',
-  'component.upload.images.modal.title': 'Crop image',
+  'component.upload.images.modal.button.text': 'Crop an image',
 };

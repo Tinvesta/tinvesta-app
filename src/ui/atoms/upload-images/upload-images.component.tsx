@@ -34,8 +34,8 @@ const UploadImagesComponent = (
     accept: 'image/jpg, image/jpeg, image/png',
   });
 
+  const { hide, Modal, show } = useModal();
   const translations = useTranslation(translationStrings);
-  const { hide, Modal, show } = useModal({ withCloseIcon: false });
 
   const compressAndSetImageSource = (file: File) => async () => {
     const reader = new FileReader();
@@ -114,10 +114,9 @@ const UploadImagesComponent = (
           buttonText={translations.componentUploadImagesModalButtonText}
           image={imageSource}
           setScaledImage={onClickSave}
-          title={translations.componentUploadImagesModalTitle}
         />
       </Modal>
-      <Grid container rowSpacing={4}>
+      <Grid container rowSpacing={5}>
         {repeatComponent((_index) => {
           const currentElement = scaledImages[_index] || '';
 

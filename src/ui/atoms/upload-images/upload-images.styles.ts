@@ -18,14 +18,14 @@ const StyledWrapper = styled.span`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(3)};
+  gap: ${({ theme }) => theme.spacing(4)};
 `;
 
 const StyledImage = styled.img`
   width: 115px;
   height: 175px;
-  background-color: ${({ theme }) => theme.palette.grey[400]};
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+  background-color: ${({ theme }) => theme.palette.secondary.main};
 
   ${respondToMax.xmobile`
     width: 100px;
@@ -41,8 +41,8 @@ const StyledModalContentWrapper = styled.div`
   > canvas {
     overflow: hidden;
     border: 1px dashed;
-    margin-top: ${({ theme }) => theme.spacing(2)};
-    margin-bottom: ${({ theme }) => theme.spacing(3)};
+    margin-top: ${({ theme }) => theme.spacing(3)};
+    margin-bottom: ${({ theme }) => theme.spacing(4)};
     border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   }
 `;
@@ -52,8 +52,8 @@ const StyledCancelIcon = styled(CancelIcon)`
   position: absolute;
   transform: rotate(0deg);
   transition: all 150ms ease-in-out;
-  bottom: -${({ theme }) => theme.spacing(3)};
-  right: -${({ theme }) => theme.spacing(3)};
+  right: -${({ theme }) => theme.spacing(4)};
+  bottom: -${({ theme }) => theme.spacing(4)};
   fill: ${({ theme }) => theme.palette.error.main};
 
   &:hover {
@@ -67,9 +67,9 @@ const StyledAddIcon = styled(AddIcon)`
   position: absolute;
   transform: rotate(0deg);
   transition: all 150ms ease-in-out;
-  bottom: -${({ theme }) => theme.spacing(3)};
-  right: -${({ theme }) => theme.spacing(3)};
-  fill: ${({ theme }) => theme.palette.error.main};
+  right: -${({ theme }) => theme.spacing(4)};
+  bottom: -${({ theme }) => theme.spacing(4)};
+  fill: ${({ theme }) => theme.palette.error.dark};
 
   &:hover {
     transform: scale(1.2);
@@ -90,9 +90,9 @@ const StyledImagePlaceholder = styled(LoadingButton)<{ error?: boolean }>`
   width: 115px;
   height: 175px;
   cursor: pointer;
-  border: 1px dashed;
   transition: all 150ms ease-in-out;
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
+  border: 1px dashed ${({ theme }) => theme.palette.secondary.main};
 
   ${({ error, theme }) => error && `border-color: ${theme.palette.error.main};`}
 

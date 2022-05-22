@@ -12,13 +12,18 @@ const StyledModalContentWrapper = styled.div`
     overflow: hidden;
     border: 1px dashed;
     touch-action: none;
-    margin-top: ${({ theme }) => theme.spacing(2)};
-    margin-bottom: ${({ theme }) => theme.spacing(3)};
+    margin: ${({ theme }) => theme.spacing(3, 0, 4, 0)};
     border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 
-    ${respondToMax.xmobile`
+    ${respondToMax.mobile`
+      width: 300px !important;
+      height: 420px !important;
+    `}
+
+    ${({ theme }) => respondToMax.xmobile`
       width: 250px !important;
       height: 350px !important;
+      margin: ${theme.spacing(3, 0)};
     `}
   }
 `;
