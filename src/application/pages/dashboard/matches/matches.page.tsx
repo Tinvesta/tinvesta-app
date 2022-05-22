@@ -7,22 +7,9 @@ import { Loading } from '@ui';
 
 import { useDeviceDetect, useUser } from '@utils';
 
-import { supabaseInstance } from '@infrastructure';
-
 import { ERoutes } from '@enums';
 
-import {
-  IFocusMarket,
-  IIndustrialSector,
-  IInvestmentSize,
-  IInvestmentStageType,
-  IInvestorDemandType,
-  IInvestorProfileType,
-  IStartupProfileCreatorType,
-  IStartupSector,
-  ITeamSize,
-} from '@interfaces';
-
+import { fetchDropdownsStaticData } from '../../utils';
 import { DesktopDashboardLayout, MobileDashboardLayout } from '../layouts';
 import { IMatchesProps } from './matches.types';
 
@@ -65,41 +52,9 @@ export const MatchesPage = (props: IMatchesProps): JSX.Element => {
 };
 
 export const getStaticProps = async () => {
-  const [
-    { data: teamSizes },
-    { data: focusMarkets },
-    { data: startupSectors },
-    { data: investmentSizes },
-    { data: industrialSectors },
-    { data: investorDemandTypes },
-    { data: investmentStageTypes },
-    { data: investorProfileTypes },
-    { data: startupProfileCreatorTypes },
-  ] = await Promise.all([
-    supabaseInstance.from<ITeamSize>('team_sizes').select('id,name'),
-    supabaseInstance.from<IFocusMarket>('focus_markets').select('id,name'),
-    supabaseInstance.from<IStartupSector>('startup_sectors').select('id,name'),
-    supabaseInstance.from<IInvestmentSize>('investment_sizes').select('id,name'),
-    supabaseInstance.from<IIndustrialSector>('industrial_sectors').select('id,name'),
-    supabaseInstance.from<IInvestorDemandType>('investor_demand_types').select('id,name'),
-    supabaseInstance.from<IInvestmentStageType>('investment_stage_types').select('id,name'),
-    supabaseInstance.from<IInvestorProfileType>('investor_profile_types').select('id,name'),
-    supabaseInstance
-      .from<IStartupProfileCreatorType>('startup_profile_creator_types')
-      .select('id,name'),
-  ]);
+  const staticProps = await fetchDropdownsStaticData();
 
   return {
-    props: {
-      teamSizes,
-      focusMarkets,
-      startupSectors,
-      investmentSizes,
-      industrialSectors,
-      investorDemandTypes,
-      investmentStageTypes,
-      investorProfileTypes,
-      startupProfileCreatorTypes,
-    },
+    props: staticProps,
   };
 };
