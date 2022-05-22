@@ -5,7 +5,9 @@ import { countWords, isStartupProfile } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
-import { EApiError } from '@enums';
+import { EApiEndpoint, EApiError } from '@enums';
+
+import { logApiError } from './services/logger';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
@@ -58,16 +60,37 @@ const assignWithBulkInsert = async (
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.UNAUTHORIZED,
+      'Invalid api route secret - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
 
   if (!user) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.UNAUTHORIZED,
+      'No user data - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
   if (!request.body) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.BAD_REQUEST,
+      'No body - request headers',
+      request.headers,
+    );
+
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
@@ -83,6 +106,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const isStartup = isStartupProfile(userData.clientTypeId);
 
   if (!userData.imageKeys || userData.imageKeys.length === 0) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.BAD_REQUEST,
+      'No image keys - request headers',
+      request.headers,
+    );
+
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
@@ -108,6 +138,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesFocusMarketsError) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      assignProfilesFocusMarketsError,
+    );
+
     return response.status(500).send(assignProfilesFocusMarketsError);
   }
 
@@ -120,6 +157,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesIndustrialSectorsError) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      assignProfilesIndustrialSectorsError,
+    );
+
     return response.status(500).send(assignProfilesIndustrialSectorsError);
   }
 
@@ -132,6 +176,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesInvestmentSizesError) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      assignProfilesInvestmentSizesError,
+    );
+
     return response.status(500).send(assignProfilesInvestmentSizesError);
   }
 
@@ -144,6 +195,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesInvestmentStageTypesError) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      assignProfilesInvestmentStageTypesError,
+    );
+
     return response.status(500).send(assignProfilesInvestmentStageTypesError);
   }
 
@@ -156,6 +214,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesStartupSectorsError) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      assignProfilesStartupSectorsError,
+    );
+
     return response.status(500).send(assignProfilesStartupSectorsError);
   }
 
@@ -168,6 +233,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   );
 
   if (assignProfilesTeamSizesError) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      assignProfilesTeamSizesError,
+    );
+
     return response.status(500).send(assignProfilesTeamSizesError);
   }
 
@@ -181,6 +253,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     );
 
     if (assignInvestorDemandTypesError) {
+      logApiError(
+        EApiEndpoint.CREATE_PROFILE,
+        EApiError.INTERNAL_SERVER_ERROR,
+        'Error',
+        assignInvestorDemandTypesError,
+      );
+
       return response.status(500).send(assignInvestorDemandTypesError);
     }
   } else {
@@ -190,6 +269,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       .eq('profile_id', user.id);
 
     if (deletedProfilesInvestorDemandTypesError) {
+      logApiError(
+        EApiEndpoint.CREATE_PROFILE,
+        EApiError.INTERNAL_SERVER_ERROR,
+        'Error',
+        deletedProfilesInvestorDemandTypesError,
+      );
+
       return response.status(500).send(deletedProfilesInvestorDemandTypesError);
     }
   }
@@ -209,6 +295,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     .eq('id', user.id);
 
   if (updatedProfileError) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      updatedProfileError,
+    );
+
     return response.status(500).send(updatedProfileError);
   }
 
@@ -228,6 +321,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       }));
 
   if (updateStartupOrInvestorError) {
+    logApiError(
+      EApiEndpoint.CREATE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      updateStartupOrInvestorError,
+    );
+
     return response.status(500).send(updateStartupOrInvestorError);
   }
 

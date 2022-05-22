@@ -5,18 +5,34 @@ import { convertObjectKeysToCamelCase } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
-import { EApiError } from '@enums';
+import { EApiEndpoint, EApiError } from '@enums';
+
+import { logApiError } from './services/logger';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
+    logApiError(
+      EApiEndpoint.DISCOVER_RECORDS,
+      EApiError.UNAUTHORIZED,
+      'Invalid api route secret - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
   const { user } = await supabaseInstance.auth.api.getUserByCookie(request);
 
   if (!user) {
+    logApiError(
+      EApiEndpoint.DISCOVER_RECORDS,
+      EApiError.UNAUTHORIZED,
+      'No user data - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
@@ -28,13 +44,27 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
-  const { data: discoverRecords } = await supabaseInstance.rpc('discover_records', {
-    profile_id_input: user.id,
-  });
+  const { data: discoverRecordsData, error: discoverRecordsError } = await supabaseInstance.rpc(
+    'discover_records',
+    {
+      profile_id_input: user.id,
+    },
+  );
 
-  const parsedDiscoverRecords = discoverRecords?.map(convertObjectKeysToCamelCase) || [];
+  if (discoverRecordsError) {
+    logApiError(
+      EApiEndpoint.DISCOVER_RECORDS,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      discoverRecordsError,
+    );
 
-  response.send(parsedDiscoverRecords);
+    return response.status(500).send(discoverRecordsError);
+  }
+
+  const parsedDiscoverRecords = discoverRecordsData?.map(convertObjectKeysToCamelCase) || [];
+
+  response.status(200).send(parsedDiscoverRecords);
 };
 
 export default handler;
