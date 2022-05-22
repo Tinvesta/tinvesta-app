@@ -36,6 +36,9 @@ export const darkTheme = createTheme({
       black: color.black[900],
       white: color.black[100],
     },
+    action: {
+      selectedOpacity: 0.5,
+    },
     info: color.blue,
     mode: 'dark',
     divider: color.black[400],

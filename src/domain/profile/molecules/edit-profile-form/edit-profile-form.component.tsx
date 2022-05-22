@@ -132,7 +132,7 @@ export const EditProfileForm = ({
     }
   }, [JSON.stringify(profileDetailsActionData?.data), isProfileDetailsActionLoading]);
 
-  const onSubmit = (data: IEditProfileFormFieldsData) => {
+  const onSubmit = (data: IEditProfileFormFieldsData) =>
     mutateAsyncUpdateProfileAction({
       newData: data,
       oldData: defaultValues,
@@ -150,7 +150,6 @@ export const EditProfileForm = ({
         refetchProfileDetailsAction();
       })
       .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
-  };
 
   const handleResetButtonClick = () => reset(defaultValues);
 
