@@ -17,7 +17,8 @@ const EmptyComponent = ({
   const { deviceData } = useDeviceDetect();
 
   const imageSize = deviceData.isSmallerThanXS ? 200 : 250;
-  const typographyVariant = deviceData.isSmallerThanXS ? 'h6' : 'h5';
+  const typographyVariant = deviceData.isSmallerThanXS ? 'body1' : 'h5';
+  const buttonSize = deviceData.isSmallerThanXS ? 'small' : 'medium';
 
   return (
     <CenterBlockLayout>
@@ -26,7 +27,7 @@ const EmptyComponent = ({
         {label && <S.StyledTypography variant={typographyVariant}>{label}</S.StyledTypography>}
         {actionButtonProps && (
           <Link passHref href={actionButtonProps.linkTo}>
-            <S.StyledActionButton color="secondary" variant="contained">
+            <S.StyledActionButton color="secondary" size={buttonSize} variant="contained">
               {actionButtonProps.label}
             </S.StyledActionButton>
           </Link>
