@@ -5,6 +5,10 @@ import { createStripeInstance } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 
+import { EApiError } from '@enums';
+
+import { logApiError } from './services/logger';
+
 const stripeSigningSecret = process.env.STRIPE_SIGNING_SECRET;
 
 export const config = { api: { bodyParser: false } };
@@ -15,6 +19,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const requestBuffer = await buffer(request);
 
   if (!signature) {
+    logApiError(
+      'STRIPE_HOOKS',
+      EApiError.INTERNAL_SERVER_ERROR,
+      'No signature - request headers',
+      request.headers,
+    );
+
     return response.send({ received: true });
   }
 
@@ -63,6 +74,8 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         break;
     }
   } catch (error) {
+    logApiError('STRIPE_HOOKS', EApiError.INTERNAL_SERVER_ERROR, 'Error', error);
+
     if (error instanceof Error) {
       return response.status(400).send(`Webhook error: ${error?.message}`);
     }
