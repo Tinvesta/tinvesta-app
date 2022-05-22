@@ -15,7 +15,9 @@ export const SelectWithController = <TFieldValues,>({
     render={({ field, fieldState: { error, invalid } }) => (
       <FormControl variant="outlined" {...formControlProps} error={invalid}>
         {selectProps.label && selectProps.labelId && (
-          <InputLabel id={selectProps.labelId}>{selectProps.label}</InputLabel>
+          <InputLabel color={selectProps.color} id={selectProps.labelId}>
+            {selectProps.label}
+          </InputLabel>
         )}
         <Select {...selectProps} {...field} id={field.name} value={field.value} />
         <FormHelperText>{error?.message || ' '}</FormHelperText>

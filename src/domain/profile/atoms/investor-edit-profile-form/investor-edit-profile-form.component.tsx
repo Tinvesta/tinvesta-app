@@ -84,7 +84,11 @@ const InvestorEditProfileFormComponent = ({
   return (
     <CenterBlockLayout>
       <S.StyledWrapper {...formProps}>
-        <Grid container columnSpacing={4} rowSpacing={deviceData.isSmallerThanMD ? 1 : 3}>
+        <Grid
+          container
+          columnSpacing={deviceData.isSmallerThanXS ? 4 : 5}
+          rowSpacing={deviceData.isSmallerThanMD ? 1 : 3}
+        >
           <Grid item xs={12}>
             <UploadImagesWithController
               controllerProps={{
@@ -130,6 +134,7 @@ const InvestorEditProfileFormComponent = ({
               }}
               inputProps={{
                 fullWidth: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDashboardInvestorEditProfileFormFirstNameFieldLabel,
               }}
@@ -163,6 +168,7 @@ const InvestorEditProfileFormComponent = ({
               }}
               inputProps={{
                 fullWidth: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDashboardInvestorEditProfileFormLastNameFieldLabel,
               }}
@@ -194,6 +200,7 @@ const InvestorEditProfileFormComponent = ({
               }}
               inputProps={{
                 fullWidth: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDashboardInvestorEditProfileFormContactEmailFieldLabel,
               }}
@@ -223,6 +230,7 @@ const InvestorEditProfileFormComponent = ({
               }}
               inputProps={{
                 fullWidth: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDashboardInvestorEditProfileFormCompanyNameFieldLabel,
               }}
@@ -241,6 +249,7 @@ const InvestorEditProfileFormComponent = ({
                 },
               }}
               inputProps={{
+                color: 'secondary',
                 label: translations.componentDashboardInvestorEditProfileFormLocationFieldLabel,
               }}
             />
@@ -262,6 +271,7 @@ const InvestorEditProfileFormComponent = ({
               }}
               selectProps={{
                 fullWidth: true,
+                color: 'secondary',
                 options: investorProfileTypesDropdownOptions,
                 labelId: 'investor-edit-profile-form-investor-profile-type-id-select',
                 label: translations.componentDashboardInvestorEditProfileFormYourPositionFieldLabel,
@@ -286,6 +296,7 @@ const InvestorEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: focusMarketsDropdownOptions,
                 labelId: 'investor-edit-profile-form-focus-market-ids-select',
                 label: translations.componentDashboardInvestorEditProfileFormFocusMarketFieldLabel,
@@ -310,6 +321,7 @@ const InvestorEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: teamSizesDropdownOptions,
                 labelId: 'investor-edit-profile-form-team-size-ids-select',
                 label: translations.componentDashboardInvestorEditProfileFormTeamSizesFieldLabel,
@@ -334,6 +346,7 @@ const InvestorEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: investmentStageTypesDropdownOptions,
                 labelId: 'investor-edit-profile-form-investment-stage-type-ids-select',
                 label:
@@ -359,6 +372,7 @@ const InvestorEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: startupSectorsDropdownOptions,
                 labelId: 'investor-edit-profile-form-startup-sector-ids-select',
                 label:
@@ -372,6 +386,7 @@ const InvestorEditProfileFormComponent = ({
                 limit: 5,
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 disableCloseOnSelect: true,
                 options: industrialSectorsDropdownOptions,
               }}
@@ -386,6 +401,7 @@ const InvestorEditProfileFormComponent = ({
                 },
               }}
               inputProps={{
+                color: 'secondary',
                 label:
                   translations.componentDashboardInvestorEditProfileFormIndustrialSectorsFieldLabel,
               }}
@@ -409,6 +425,7 @@ const InvestorEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: investmentSizesDropdownOptions,
                 labelId: 'investor-edit-profile-form-investment-size-ids-select',
                 label:
@@ -434,6 +451,7 @@ const InvestorEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: investorDemandTypesDropdownOptions,
                 label: translations.componentDashboardInvestorEditProfileFormDemandFieldLabel,
                 labelId: 'investor-edit-profile-form-investor-demand-type-ids-select',
@@ -469,6 +487,7 @@ const InvestorEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 multiline: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 rows: deviceData.isSmallerThanSM ? 4 : 3,
                 label:
@@ -477,10 +496,17 @@ const InvestorEditProfileFormComponent = ({
               }}
             />
           </Grid>
-          <Grid item display="flex" gap={4} justifyContent="flex-end" xs={12}>
+          <Grid
+            item
+            display="flex"
+            gap={deviceData.isSmallerThanXS ? 4 : 5}
+            justifyContent="flex-end"
+            xs={12}
+          >
             <Grid item xs={deviceData.isSmallerThanSM ? 6 : 3}>
               <Button
                 fullWidth
+                color="secondary"
                 disabled={!isDirty}
                 size="large"
                 variant="outlined"
@@ -492,6 +518,7 @@ const InvestorEditProfileFormComponent = ({
             <Grid item xs={deviceData.isSmallerThanSM ? 6 : 3}>
               <LoadingButton
                 fullWidth
+                color="secondary"
                 disabled={!isDirty}
                 loading={isLoading}
                 size="large"
