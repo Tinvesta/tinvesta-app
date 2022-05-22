@@ -107,9 +107,11 @@ const UploadImagesComponent = (
     setScaledImages(scaledImages.filter((_, _scaledImageIndex) => _scaledImageIndex !== index));
   };
 
+  const onCropImageModalClose = () => setImageSource('');
+
   return (
     <S.StyledUploadImagesWrapper ref={ref}>
-      <Modal>
+      <Modal onClose={onCropImageModalClose}>
         <CropImageModalContent
           buttonText={translations.componentUploadImagesModalButtonText}
           image={imageSource}
