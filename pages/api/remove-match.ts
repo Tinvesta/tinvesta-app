@@ -2,12 +2,21 @@ import { NextApiRequest, NextApiResponse } from 'next';
 
 import { supabaseInstance } from '@infrastructure';
 
-import { EApiError } from '@enums';
+import { EApiEndpoint, EApiError } from '@enums';
+
+import { logApiError } from './services/logger';
 
 const apiRouteSecret = process.env.NEXT_PUBLIC_API_ROUTE_SECRET;
 
 const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   if (request.headers.authorization !== apiRouteSecret) {
+    logApiError(
+      EApiEndpoint.REMOVE_MATCH,
+      EApiError.UNAUTHORIZED,
+      'Invalid api route secret - request headers',
+      request.headers,
+    );
+
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
@@ -20,6 +29,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const { matchId } = request.query;
 
   if (!matchId) {
+    logApiError(
+      EApiEndpoint.REMOVE_MATCH,
+      EApiError.BAD_REQUEST,
+      'No matchId - request query',
+      request.query,
+    );
+
     return response.status(400).send(EApiError.BAD_REQUEST);
   }
 
@@ -30,6 +46,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     .single();
 
   if (foundLikeError) {
+    logApiError(
+      EApiEndpoint.REMOVE_MATCH,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      foundLikeError,
+    );
+
     return response.status(500).send(foundLikeError);
   }
 
@@ -41,6 +64,13 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     .eq('id', matchId);
 
   if (updatedLikeError) {
+    logApiError(
+      EApiEndpoint.REMOVE_MATCH,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      updatedLikeError,
+    );
+
     return response.status(500).send(updatedLikeError);
   }
 
