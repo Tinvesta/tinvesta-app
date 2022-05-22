@@ -34,8 +34,8 @@ const UploadImagesComponent = (
     accept: 'image/jpg, image/jpeg, image/png',
   });
 
+  const { hide, Modal, show } = useModal();
   const translations = useTranslation(translationStrings);
-  const { hide, Modal, show } = useModal({ withCloseIcon: false });
 
   const compressAndSetImageSource = (file: File) => async () => {
     const reader = new FileReader();
@@ -107,17 +107,18 @@ const UploadImagesComponent = (
     setScaledImages(scaledImages.filter((_, _scaledImageIndex) => _scaledImageIndex !== index));
   };
 
+  const onCropImageModalClose = () => setImageSource('');
+
   return (
     <S.StyledUploadImagesWrapper ref={ref}>
-      <Modal>
+      <Modal onClose={onCropImageModalClose}>
         <CropImageModalContent
           buttonText={translations.componentUploadImagesModalButtonText}
           image={imageSource}
           setScaledImage={onClickSave}
-          title={translations.componentUploadImagesModalTitle}
         />
       </Modal>
-      <Grid container rowSpacing={4}>
+      <Grid container rowSpacing={5}>
         {repeatComponent((_index) => {
           const currentElement = scaledImages[_index] || '';
 

@@ -1,4 +1,3 @@
-import { Send as SendIcon } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Button, Grid, Typography } from '@mui/material';
 import { memo } from 'react';
@@ -103,7 +102,6 @@ const FeedbackFormComponent = ({
                 fullWidth
                 color="secondary"
                 disabled={!isDirty}
-                endIcon={<SendIcon fontSize="small" />}
                 loading={isLoading}
                 size={buttonSize}
                 type="submit"
