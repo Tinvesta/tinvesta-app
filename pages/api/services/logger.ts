@@ -1,17 +1,8 @@
 import { createLogger, format, transports } from 'winston';
-import 'winston-daily-rotate-file';
 
 import { EApiError } from '@enums';
 
-const getLogger = (fileName = 'application') => {
-  const fileLogTransport = new transports.DailyRotateFile({
-    filename: `logs/${fileName}-%DATE%.log`,
-    datePattern: 'YYYY-MM-DD',
-    zippedArchive: true,
-    maxSize: '20m',
-    maxFiles: '30d',
-  });
-
+const getLogger = () => {
   const consoleTransport = new transports.Console({
     level: process.env.LOG_LEVEL,
     handleExceptions: false,
@@ -34,10 +25,6 @@ const getLogger = (fileName = 'application') => {
     defaultMeta: { service: 'Tinvesta' },
     transports: [consoleTransport],
   });
-
-  if (process.env.NEXT_PUBLIC_APP_ENV === 'local') {
-    logger.add(fileLogTransport);
-  }
 
   return logger;
 };

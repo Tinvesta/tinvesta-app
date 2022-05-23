@@ -16,7 +16,7 @@ export const HealthCheckProvider = ({ children }: IHealthCheckProviderProps): JS
     mutate();
   }, []);
 
-  if (isLoading || !data?.data) {
+  if (isLoading || (!isLoading && !data?.data)) {
     return <Loading />;
   }
 
