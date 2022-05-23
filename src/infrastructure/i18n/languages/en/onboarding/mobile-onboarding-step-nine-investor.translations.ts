@@ -1,6 +1,6 @@
 export default {
   // General
-  'component.mobile.onboarding.step.nine.investor.heading': 'Setup Investor',
+  'component.mobile.onboarding.step.nine.investor.heading': 'Setup investor',
 
   // Why should a startup match with you?
   'component.mobile.onboarding.step.nine.investor.why.startup.should.match.with.you.field.label':
