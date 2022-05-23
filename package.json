@@ -77,7 +77,6 @@
     "use-file-picker": "^1.4.2",
     "use-subscription": "^1.7.0",
     "winston": "^3.7.2",
-    "winston-daily-rotate-file": "^4.6.1",
     "xstate": "^4.32.1"
   },
   "devDependencies": {
