@@ -21,7 +21,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const currentDate = new Date();
   const isoDate = currentDate.toISOString();
 
-  response.send(isoDate);
+  response.status(200).send(isoDate);
 };
 
 export default handler;
