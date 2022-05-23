@@ -19,7 +19,7 @@ const StyledHeader = styled.header`
   position: absolute;
   border-radius: 0 0 0 30px;
   padding: ${({ theme }) => theme.spacing(2)};
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.primary.dark};
 
   ${respondToMax.xmobile`
     border-radius: 0 0 0 20px;
@@ -48,7 +48,7 @@ const StyledActionsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.primary.dark};
 
   > button {
     height: fit-content;

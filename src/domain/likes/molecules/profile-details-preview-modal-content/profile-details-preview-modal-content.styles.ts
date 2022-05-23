@@ -11,6 +11,10 @@ const StyledWrapper = styled.div`
   ${respondToMax.mobile`
     width: 100vw;
   `}
+
+  > :last-child {
+    background-color: ${({ theme }) => theme.palette.primary.dark};
+  }
 `;
 
 const StyledHeader = styled.header`
@@ -19,7 +23,7 @@ const StyledHeader = styled.header`
   position: absolute;
   border-radius: 0 0 0 30px;
   padding: ${({ theme }) => theme.spacing(2)};
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.primary.dark};
 
   ${respondToMax.xmobile`
     border-radius: 0 0 0 20px;
