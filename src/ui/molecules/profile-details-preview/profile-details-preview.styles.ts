@@ -67,9 +67,17 @@ const StyledContentWrapper = styled.div`
   }
 `;
 
+const StyledButtonEllipsis = styled.span`
+  text-align: left;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+`;
+
 const S = {
   StyledWrapper,
   StyledImageWrapper,
+  StyledButtonEllipsis,
   StyledContentWrapper,
 };
 

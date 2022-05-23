@@ -6,6 +6,7 @@ export default {
   'component.profile.details.preview.location.label': 'Location',
   'component.profile.details.preview.company.name.label': 'Company Name',
   'component.profile.details.preview.profile.creator.label': 'Profile Creator',
+  'component.profile.details.preview.contact.email.label': 'Contact Email',
   'component.profile.details.preview.investment.sizes.label': 'Investment Sizes',
   'component.profile.details.preview.investment.stages.label': 'Investment Stages',
   'component.profile.details.preview.sectors.label': 'Sectors',
