@@ -16,11 +16,10 @@ import {
 } from '@mui/icons-material';
 import { Button } from '@mui/material';
 import Image from 'next/image';
-import { memo, useEffect, useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
+import { memo } from 'react';
 import { useQuery } from 'react-query';
 
-import { CenterBlockLayout, Loader, Swiper, SwiperSlide } from '@ui';
+import { CenterBlockLayout, Loader, Swiper, SwiperSlide, useCopyToClipboard } from '@ui';
 
 import {
   mapFocusMarketsToDropdownOptions,
@@ -57,24 +56,13 @@ const ProfileDetailsPreviewComponent = ({
   startupSectors,
   teamSizes,
 }: IProfileDetailsPreviewProps): JSX.Element => {
-  const [copied, setCopied] = useState(false);
-
   const { deviceData } = useDeviceDetect();
   const { user: loggedUserDetails } = useUser();
+  const { copied, CopyToClipboard } = useCopyToClipboard();
   const { data: profileDetailsActionData, isLoading: isProfileDetailsActionLoading } = useQuery(
     [PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetails.id],
     profileDetailsAction(profileDetails.id),
   );
-
-  useEffect(() => {
-    if (copied) {
-      setTimeout(() => {
-        setCopied(false);
-      }, 5000);
-    }
-  }, [copied]);
-
-  const onCopy = () => !copied && setCopied(true);
 
   const translations = useTranslation(translationStrings);
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
@@ -245,7 +233,7 @@ const ProfileDetailsPreviewComponent = ({
                 icon={<AlternateEmailIcon />}
                 label={translations.componentProfileDetailsPreviewContactEmailLabel}
               >
-                <CopyToClipboard text={mergedProfileDetails.contactEmail} onCopy={onCopy}>
+                <CopyToClipboard text={mergedProfileDetails.contactEmail}>
                   <Button
                     color="secondary"
                     disabled={copied}

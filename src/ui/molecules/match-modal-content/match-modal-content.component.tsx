@@ -1,9 +1,7 @@
 import { Typography } from '@mui/material';
 import Image from 'next/image';
-import { useEffect, useState } from 'react';
-import { CopyToClipboard } from 'react-copy-to-clipboard';
 
-import { Loading } from '@ui';
+import { Loading, useCopyToClipboard } from '@ui';
 
 import { sendEmail, useDeviceDetect, useTranslation } from '@utils';
 
@@ -17,24 +15,14 @@ export const MatchModalContent = ({
   onClose,
 }: IMatchModalContentProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
-  const [copied, setCopied] = useState(false);
   const translations = useTranslation(translationStrings);
-
-  useEffect(() => {
-    if (copied) {
-      setTimeout(() => {
-        setCopied(false);
-      }, 5000);
-    }
-  }, [copied]);
+  const { copied, CopyToClipboard } = useCopyToClipboard();
 
   if (!likedProfileDetails || !loggedProfileDetails) {
     return <Loading />;
   }
 
   const handleSendEmail = () => sendEmail(likedProfileDetails.contactEmail);
-
-  const onCopy = () => setCopied(true);
 
   const getHeadingVariant = () => {
     if (deviceData.isSmallerThanXS) {
@@ -82,7 +70,7 @@ export const MatchModalContent = ({
         >
           {translations.componentDashboardDiscoverMatchModalContentButtonsSendEmail}
         </S.StyledButton>
-        <CopyToClipboard text={likedProfileDetails.contactEmail} onCopy={onCopy}>
+        <CopyToClipboard text={likedProfileDetails.contactEmail}>
           <S.StyledButton color="secondary" disabled={copied} size={buttonSize} variant="contained">
             {translations.componentDashboardDiscoverMatchModalContentButtonsClipboard}
           </S.StyledButton>
