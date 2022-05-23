@@ -1,6 +1,8 @@
 import {
+  AlternateEmail as AlternateEmailIcon,
   Apartment as ApartmentIcon,
   Business as BusinessIcon,
+  ContentCopy as ContentCopyIcon,
   Factory as FactoryIcon,
   Flag as FlagIcon,
   Group as GroupIcon,
@@ -12,7 +14,10 @@ import {
   Rocket as RocketIcon,
   ScreenRotation as ScreenRotationIcon,
 } from '@mui/icons-material';
+import { Button } from '@mui/material';
 import Image from 'next/image';
+import { memo, useEffect, useState } from 'react';
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 import { useQuery } from 'react-query';
 
 import { CenterBlockLayout, Loader, Swiper, SwiperSlide } from '@ui';
@@ -27,6 +32,7 @@ import {
   mapStartupProfileCreatorTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
+  useDeviceDetect,
   useTranslation,
   useUser,
 } from '@utils';
@@ -39,7 +45,7 @@ import S from './profile-details-preview.styles';
 import { IProfileDetailsPreviewProps } from './profile-details-preview.types';
 import { profileFirstNameAndLastNameToFullName, transformNumberArrayToChips } from './utils';
 
-export const ProfileDetailsPreview = ({
+const ProfileDetailsPreviewComponent = ({
   focusMarkets,
   industrialSectors,
   investmentSizes,
@@ -51,11 +57,24 @@ export const ProfileDetailsPreview = ({
   startupSectors,
   teamSizes,
 }: IProfileDetailsPreviewProps): JSX.Element => {
+  const [copied, setCopied] = useState(false);
+
+  const { deviceData } = useDeviceDetect();
   const { user: loggedUserDetails } = useUser();
   const { data: profileDetailsActionData, isLoading: isProfileDetailsActionLoading } = useQuery(
     [PROFILE_DETAILS_ACTION_QUERY_KEY, profileDetails.id],
     profileDetailsAction(profileDetails.id),
   );
+
+  useEffect(() => {
+    if (copied) {
+      setTimeout(() => {
+        setCopied(false);
+      }, 5000);
+    }
+  }, [copied]);
+
+  const onCopy = () => !copied && setCopied(true);
 
   const translations = useTranslation(translationStrings);
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
@@ -221,6 +240,26 @@ export const ProfileDetailsPreview = ({
                 {fullName}
               </ProfileDetailsPreviewLabel>
             )}
+            {mergedProfileDetails.contactEmail && (
+              <ProfileDetailsPreviewLabel
+                icon={<AlternateEmailIcon />}
+                label={translations.componentProfileDetailsPreviewContactEmailLabel}
+              >
+                <CopyToClipboard text={mergedProfileDetails.contactEmail} onCopy={onCopy}>
+                  <Button
+                    color="secondary"
+                    disabled={copied}
+                    endIcon={<ContentCopyIcon />}
+                    size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
+                    variant="outlined"
+                  >
+                    <S.StyledButtonEllipsis>
+                      {mergedProfileDetails.contactEmail}
+                    </S.StyledButtonEllipsis>
+                  </Button>
+                </CopyToClipboard>
+              </ProfileDetailsPreviewLabel>
+            )}
             <ProfileDetailsPreviewLabel
               icon={<MonetizationOnIcon />}
               label={translations.componentProfileDetailsPreviewDemandLabel}
@@ -269,3 +308,5 @@ export const ProfileDetailsPreview = ({
     </S.StyledWrapper>
   );
 };
+
+export const ProfileDetailsPreview = memo(ProfileDetailsPreviewComponent);

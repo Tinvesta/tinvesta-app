@@ -66,6 +66,7 @@ export const translationStrings = [
   'component.profile.details.preview.location.label',
   'component.profile.details.preview.company.name.label',
   'component.profile.details.preview.profile.creator.label',
+  'component.profile.details.preview.contact.email.label',
   'component.profile.details.preview.investment.sizes.label',
   'component.profile.details.preview.investment.stages.label',
   'component.profile.details.preview.sectors.label',
