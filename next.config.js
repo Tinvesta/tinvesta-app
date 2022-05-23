@@ -45,9 +45,6 @@ const securityHeaders = [
 
 module.exports = withPWA({
   reactStrictMode: true,
-  experimental: {
-    esmExternals: false,
-  },
   pwa: {
     dest: 'public',
     register: true,
