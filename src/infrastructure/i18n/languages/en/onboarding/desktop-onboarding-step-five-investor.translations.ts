@@ -1,7 +1,7 @@
 export default {
   // General
   'component.desktop.onboarding.step.five.investor.subheading': 'Step 5/5',
-  'component.desktop.onboarding.step.five.investor.heading': 'Setup Investor',
+  'component.desktop.onboarding.step.five.investor.heading': 'Setup investor',
 
   // Demands
   'component.desktop.onboarding.step.five.investor.demand.field.label': 'Demands',

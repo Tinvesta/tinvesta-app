@@ -8,14 +8,14 @@ export default {
   'common.buttons.quit': 'Quit',
   'common.buttons.reset': 'Reset',
   'common.buttons.delete': 'Delete',
-  'common.buttons.agree': 'I Agree',
+  'common.buttons.agree': 'I agree',
   'common.buttons.cancel': 'Cancel',
   'common.buttons.logout': 'Logout',
   'common.buttons.continue': 'Continue',
-  'common.buttons.disagree': 'I Disagree',
+  'common.buttons.disagree': 'I disagree',
 
   // Default Alt
-  'common.default.image.alt': 'Profile Image',
+  'common.default.image.alt': 'Profile image',
 
   // Forms
   'common.form.field.error.starts.or.ends.with.whitespace':
@@ -44,23 +44,23 @@ export default {
   'common.industrial.sectors.materials': 'Materials',
   'common.industrial.sectors.ecommerce': 'E-commerce',
   'common.industrial.sectors.environment': 'Environment',
-  'common.industrial.sectors.real.estate': 'Real Estate',
-  'common.industrial.sectors.climate.tech': 'Climate Tech',
+  'common.industrial.sectors.real.estate': 'Real estate',
+  'common.industrial.sectors.climate.tech': 'Climate tech',
   'common.industrial.sectors.biotechnology': 'Biotechnology',
   'common.industrial.sectors.infrastructure': 'Infrastructure',
-  'common.industrial.sectors.data.analytics': 'Data Analytics',
-  'common.industrial.sectors.cloud.computing': 'Cloud Computing',
-  'common.industrial.sectors.shared.mobility': 'Shared Mobility',
-  'common.industrial.sectors.healthcare.tech': 'Healthcare Tech',
-  'common.industrial.sectors.living.and.family': 'Living and Family',
-  'common.industrial.sectors.delivery.services': 'Delivery Services',
-  'common.industrial.sectors.sports.and.fashion': 'Sports and Fashion',
-  'common.industrial.sectors.jobs.recruitment': 'Jobs and Recruitment',
-  'common.industrial.sectors.wellness.and.beauty': 'Wellness and Beauty',
-  'common.industrial.sectors.travel.and.hospitality': 'Travel and Hospitality',
-  'common.industrial.sectors.artificial.intelligence': 'Artificial Intelligence',
-  'common.industrial.sectors.media.and.entertainment': 'Media and Entertainment',
-  'common.industrial.sectors.electronics.and.automation': 'Electronics and Automation',
+  'common.industrial.sectors.data.analytics': 'Data analytics',
+  'common.industrial.sectors.cloud.computing': 'Cloud computing',
+  'common.industrial.sectors.shared.mobility': 'Shared mobility',
+  'common.industrial.sectors.healthcare.tech': 'Healthcare tech',
+  'common.industrial.sectors.living.and.family': 'Living and family',
+  'common.industrial.sectors.delivery.services': 'Delivery services',
+  'common.industrial.sectors.sports.and.fashion': 'Sports and fashion',
+  'common.industrial.sectors.jobs.recruitment': 'Jobs and recruitment',
+  'common.industrial.sectors.wellness.and.beauty': 'Wellness and beauty',
+  'common.industrial.sectors.travel.and.hospitality': 'Travel and hospitality',
+  'common.industrial.sectors.artificial.intelligence': 'Artificial intelligence',
+  'common.industrial.sectors.media.and.entertainment': 'Media and entertainment',
+  'common.industrial.sectors.electronics.and.automation': 'Electronics and automation',
 
   // Investment Sizes
   'common.investment.sizes.very.small': '10k-100k',
@@ -80,10 +80,10 @@ export default {
   'common.investor.demand.types.talent': 'Talent',
   'common.investor.demand.types.location': 'Location',
   'common.investor.demand.types.technology': 'Technology',
-  'common.investor.demand.types.co.founder': 'Co-Founder',
-  'common.investor.demand.types.money.for.shares': 'Money for Shares',
-  'common.investor.demand.types.network.and.support': 'Network and Support',
-  'common.investor.demand.types.debt.capital.without.shares': 'Debt Capital without Shares',
+  'common.investor.demand.types.co.founder': 'Co-founder',
+  'common.investor.demand.types.money.for.shares': 'Money for shares',
+  'common.investor.demand.types.network.and.support': 'Network and support',
+  'common.investor.demand.types.debt.capital.without.shares': 'Debt capital without shares',
 
   // Investor Profile Types
   'common.investor.profile.types.private': 'Private',
@@ -93,12 +93,12 @@ export default {
   // Startup Profile Creator Types
   'common.startup.profile.creator.types.founder': 'Founder',
   'common.startup.profile.creator.types.employee': 'Employee',
-  'common.startup.profile.creator.types.co.founder': 'Co-Founder',
+  'common.startup.profile.creator.types.co.founder': 'Co-founder',
 
   // Startup Sectors
   'common.startup.sectors.software': 'Software',
-  'common.startup.sectors.service.industry': 'Service Industry',
-  'common.startup.sectors.physical.product': 'Physical Product',
+  'common.startup.sectors.service.industry': 'Service industry',
+  'common.startup.sectors.physical.product': 'Physical product',
 
   // Team Sizes
   'common.team.sizes.very.small': '1-5',
