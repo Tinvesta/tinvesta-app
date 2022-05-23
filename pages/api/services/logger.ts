@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 import { EApiError } from '@enums';
 
 export const logApiError = (
@@ -6,8 +7,10 @@ export const logApiError = (
   messagePrefix: string,
   message: unknown,
 ) => {
-  console.error('-------------------------------------');
-  console.error(`${endpoint} - ${typeOfError}`);
-  console.error(`${messagePrefix}: ${JSON.stringify(message)}`);
-  console.error('-------------------------------------');
+  const currentDate = new Date().toISOString();
+
+  console.error(`${currentDate} | -------------------------------------`);
+  console.error(`${currentDate} | ${endpoint} - ${typeOfError}`);
+  console.error(`${currentDate} | ${messagePrefix}: ${JSON.stringify(message)}`);
+  console.error(`${currentDate} | -------------------------------------`);
 };
