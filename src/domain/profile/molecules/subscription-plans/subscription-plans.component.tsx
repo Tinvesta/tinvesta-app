@@ -8,9 +8,18 @@ import { StringParam, useQueryParam } from 'use-query-params';
 
 import { CenterBlockLayout } from '@ui';
 
-import { isSomeEnum, useDeviceDetect, useDidMountEffect, useTranslation, useUser } from '@utils';
+import {
+  isSomeEnum,
+  replaceVariablesInTranslation,
+  useDeviceDetect,
+  useDidMountEffect,
+  useTranslation,
+  useUser,
+} from '@utils';
 
 import { EPaymentStatus, ESubscriptionInterval } from '@enums';
+
+import { LIMIT_LIKES } from '@constants';
 
 import { stripePortalAction, subscriptionAction } from '../../api';
 import { SectionWrapperLayout } from '../../atoms';
@@ -83,7 +92,9 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
               <ListItemAvatar>
                 <StarIcon />
               </ListItemAvatar>
-              <ListItemText>{_subscriptionBenefit}</ListItemText>
+              <ListItemText>
+                {replaceVariablesInTranslation(_subscriptionBenefit, LIMIT_LIKES)}
+              </ListItemText>
             </ListItem>
           ))}
         </S.StyledList>
