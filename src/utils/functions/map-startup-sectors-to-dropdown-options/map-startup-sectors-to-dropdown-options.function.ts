@@ -1,5 +1,7 @@
 import { ISelectOption } from '@ui';
 
+import { compareObjectsByValue } from '@utils';
+
 import { EStartupSector } from '@enums';
 
 import { IStartupSector } from '@interfaces';
@@ -18,7 +20,9 @@ export const mapStartupSectorsToDropdownOptions = (
   startupSectors: IStartupSector[],
   translations: Record<string, string>,
 ): ISelectOption[] =>
-  startupSectors.map((_startupSector) => ({
-    value: _startupSector.id,
-    label: getStartupSectorLabel(_startupSector.name, translations),
-  }));
+  startupSectors
+    .map((_startupSector) => ({
+      value: _startupSector.id,
+      label: getStartupSectorLabel(_startupSector.name, translations),
+    }))
+    .sort(compareObjectsByValue('label'));

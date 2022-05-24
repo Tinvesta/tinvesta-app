@@ -7,7 +7,6 @@ describe('compareObjectsByValue function', () => {
 
   describe('return 0 case', () => {
     it('should return when both values are falsy', () => {
-      // @ts-expect-error
       expect(compareObjectsByValue('test')(null, undefined)).toBe(0);
     });
 

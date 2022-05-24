@@ -22,6 +22,7 @@ import { useQuery } from 'react-query';
 import { CenterBlockLayout, Loader, Swiper, SwiperSlide, useCopyToClipboard } from '@ui';
 
 import {
+  compareObjectsByValue,
   mapFocusMarketsToDropdownOptions,
   mapIndustrialSectorsToDropdownOptions,
   mapInvestmentSizesToDropdownOptions,
@@ -107,12 +108,16 @@ const ProfileDetailsPreviewComponent = ({
     loggedUserDetails?.focus_markets,
     mergedProfileDetails.focusMarkets,
     focusMarketsDropdownOptions,
-  );
+  )
+    // @ts-expect-error
+    .sort(compareObjectsByValue('props.label'));
   const startupSectorChips = transformNumberArrayToChips(
     mergedProfileDetails.startupSectors,
     loggedUserDetails?.startup_sectors,
     startupSectorsDropdownOptions,
-  );
+  )
+    // @ts-expect-error
+    .sort(compareObjectsByValue('props.label'));
   const investmentSizeChips = transformNumberArrayToChips(
     mergedProfileDetails.investmentSizes,
     loggedUserDetails?.investment_sizes,
@@ -122,12 +127,16 @@ const ProfileDetailsPreviewComponent = ({
     mergedProfileDetails.industrialSectors,
     loggedUserDetails?.industrial_sectors,
     industrialSectorsDropdownOptions,
-  );
+  )
+    // @ts-expect-error
+    .sort(compareObjectsByValue('props.label'));
   const investorDemandTypeChips = transformNumberArrayToChips(
     mergedProfileDetails.investorDemandTypes,
     mergedProfileDetails.investorDemandTypes,
     investorDemandTypesDropdownOptions,
-  );
+  )
+    // @ts-expect-error
+    .sort(compareObjectsByValue('props.label'));
   const investmentStageTypeChips = transformNumberArrayToChips(
     mergedProfileDetails.investmentStageTypes,
     loggedUserDetails?.investment_stage_types,

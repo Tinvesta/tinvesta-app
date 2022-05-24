@@ -1,5 +1,7 @@
 import { ISelectOption } from '@ui';
 
+import { compareObjectsByValue } from '@utils';
+
 import { EFocusMarket } from '@enums';
 
 import { IFocusMarket } from '@interfaces';
@@ -17,7 +19,9 @@ export const mapFocusMarketsToDropdownOptions = (
   focusMarkets: IFocusMarket[],
   translations: Record<string, string>,
 ): ISelectOption[] =>
-  focusMarkets.map((_focusMarket) => ({
-    value: _focusMarket.id,
-    label: getFocusMarketLabel(_focusMarket.name, translations),
-  }));
+  focusMarkets
+    .map((_focusMarket) => ({
+      value: _focusMarket.id,
+      label: getFocusMarketLabel(_focusMarket.name, translations),
+    }))
+    .sort(compareObjectsByValue('label'));

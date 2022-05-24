@@ -1,5 +1,7 @@
 import { IAutocompleteOption } from '@ui';
 
+import { compareObjectsByValue } from '@utils';
+
 import { EIndustrialSector } from '@enums';
 
 import { IIndustrialSector } from '@interfaces';
@@ -52,7 +54,9 @@ export const mapIndustrialSectorsToDropdownOptions = (
   industrialSectors: IIndustrialSector[],
   translations: Record<string, string>,
 ): IAutocompleteOption[] =>
-  industrialSectors.map((_industrialSector) => ({
-    value: _industrialSector.id,
-    label: getIndustrialSectorLabel(_industrialSector.name, translations),
-  }));
+  industrialSectors
+    .map((_industrialSector) => ({
+      value: _industrialSector.id,
+      label: getIndustrialSectorLabel(_industrialSector.name, translations),
+    }))
+    .sort(compareObjectsByValue('label'));
