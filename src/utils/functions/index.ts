@@ -19,6 +19,7 @@ export * from './create-stripe-instance/create-stripe-instance.function';
 export * from './object-to-query-string/object-to-query-string.function';
 export * from './async-try-catch-wrapper/async-try-catch-wrapper.function';
 export * from './get-available-languages/get-available-languages.function';
+export * from './compare-objects-by-value/compare-objects-by-value.function';
 export * from './parse-profile-avatar-url/parse-profile-avatar-url.function';
 export * from './string-array-to-lower-case/string-array-to-lower-case.function';
 export * from './get-file-extension-from-base64/get-file-extension-from-base64.function';
