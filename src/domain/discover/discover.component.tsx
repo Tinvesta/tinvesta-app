@@ -1,9 +1,12 @@
+import { isToday } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
 import { CenterBlockLayout, Loading, MatchModalContent, useModal } from '@ui';
 
-import { likeProfileAction } from '@infrastructure';
+import { useUser } from '@utils';
+
+import { likeProfileAction, supabaseInstance } from '@infrastructure';
 
 import { IProfileDetails } from '@interfaces';
 
@@ -16,9 +19,11 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   const { mutateAsync } = useMutation(likeProfileAction);
   const { data, isLoading, mutate } = useMutation(discoverRecordsAction);
 
+  const [reachedLimit, setReachedLimit] = useState(false);
   const [likedProfileDetails, setLikedProfileDetails] = useState<IProfileDetails>();
   const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
 
+  const { user } = useUser();
   const { hide, Modal, show } = useModal({ withCloseIcon: false });
 
   useEffect(() => {
@@ -31,8 +36,49 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
     }
   }, [JSON.stringify(likedProfileDetails)]);
 
+  useEffect(() => {
+    if (!user) {
+      return;
+    }
+
+    if (user.is_subscribed) {
+      setReachedLimit(false);
+    }
+
+    if (user.initial_likes_counter?.count) {
+      setReachedLimit(user.initial_likes_counter.count >= 5);
+    }
+
+    if (!user.is_subscribed) {
+      const subscription = supabaseInstance
+        .from(`likes_counter:profile_id=eq.${user.id}`)
+        .on('UPDATE', (payload) => {
+          const likesCounterDate = new Date(payload.new.created_at);
+
+          if (isToday(likesCounterDate)) {
+            setReachedLimit(payload.new.count >= 5);
+          }
+        })
+        .subscribe();
+
+      return () => {
+        supabaseInstance.removeSubscription(subscription);
+      };
+    }
+  }, [user]);
+
   if (isLoading) {
     return <Loading />;
+  }
+
+  if (reachedLimit) {
+    return (
+      <div>
+        <CenterBlockLayout>
+          <h1>You have reached the limit of likes</h1>
+        </CenterBlockLayout>
+      </div>
+    );
   }
 
   const onVote = (profileId: string, vote: boolean) => {

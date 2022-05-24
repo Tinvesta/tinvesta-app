@@ -25,9 +25,18 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
         })
         .single();
 
+      const { data } = await supabaseInstance
+        .from('likes_counter')
+        .select('*')
+        .eq('profile_id', sessionUser.id)
+        .single();
+
       setUser({
         ...sessionUser,
         ...profileData,
+        initial_likes_counter: {
+          ...data,
+        },
       });
 
       setIsLoading(false);
