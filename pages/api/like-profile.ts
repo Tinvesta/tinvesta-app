@@ -1,5 +1,6 @@
 import * as R from 'ramda';
 import cookie from 'cookie';
+import { isToday } from 'date-fns';
 import { NextApiRequest, NextApiResponse } from 'next';
 
 import { convertObjectKeysToCamelCase, hasOwnProperty } from '@utils';
@@ -115,6 +116,121 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     access_token: token,
   });
 
+  const { data: loggedProfileSubscriptionsData, error: loggedProfileSubscriptionsError } =
+    await supabaseInstance.from('subscriptions').select('*').eq('profile_id', user.id).single();
+
+  if (loggedProfileSubscriptionsError) {
+    logApiError(
+      EApiEndpoint.LIKE_PROFILE,
+      EApiError.INTERNAL_SERVER_ERROR,
+      'Error',
+      loggedProfileSubscriptionsError,
+    );
+
+    return response.status(500).send(loggedProfileSubscriptionsError);
+  }
+
+  // Verify if the user can like the profile
+  if (!loggedProfileSubscriptionsData.is_subscribed) {
+    const { data: loggedUserCounterData, error: loggedUserCounterError } = await supabaseInstance
+      .from('likes_counter')
+      .select('*')
+      .eq('profile_id', user.id);
+
+    if (loggedUserCounterError) {
+      logApiError(
+        EApiEndpoint.LIKE_PROFILE,
+        EApiError.INTERNAL_SERVER_ERROR,
+        'Error',
+        loggedUserCounterError,
+      );
+
+      return response.status(500).send(loggedUserCounterError);
+    }
+
+    // Insert likes_counter when does not exists
+    if (loggedUserCounterData.length === 0) {
+      const { error: insertedLikesCounterError } = await supabaseInstance
+        .from('likes_counter')
+        .insert({
+          count: 1,
+          profile_id: user.id,
+        });
+
+      if (insertedLikesCounterError) {
+        logApiError(
+          EApiEndpoint.LIKE_PROFILE,
+          EApiError.INTERNAL_SERVER_ERROR,
+          'Error',
+          insertedLikesCounterError,
+        );
+
+        return response.status(500).send(insertedLikesCounterError);
+      }
+      // Increase counter when exists
+    } else {
+      const likesCounterDate = new Date(loggedUserCounterData[0].created_at);
+
+      // If today
+      if (isToday(likesCounterDate)) {
+        const { error: updatedLikesCounterError } = await supabaseInstance
+          .from('likes_counter')
+          .update({
+            count: loggedUserCounterData[0].count + 1,
+          })
+          .eq('profile_id', user.id);
+
+        if (updatedLikesCounterError) {
+          logApiError(
+            EApiEndpoint.LIKE_PROFILE,
+            EApiError.INTERNAL_SERVER_ERROR,
+            'Error',
+            updatedLikesCounterError,
+          );
+
+          return response.status(500).send(updatedLikesCounterError);
+        }
+      } else {
+        // Remove old counter
+        const { error: deletedLikesCounterError } = await supabaseInstance
+          .from('likes_counter')
+          .delete()
+          .eq('profile_id', user.id);
+
+        if (deletedLikesCounterError) {
+          logApiError(
+            EApiEndpoint.LIKE_PROFILE,
+            EApiError.INTERNAL_SERVER_ERROR,
+            'Error',
+            deletedLikesCounterError,
+          );
+
+          return response.status(500).send(deletedLikesCounterError);
+        }
+
+        // And insert new one
+        const { error: insertedLikesCounterError } = await supabaseInstance
+          .from('likes_counter')
+          .insert({
+            count: 1,
+            profile_id: user.id,
+          });
+
+        if (insertedLikesCounterError) {
+          logApiError(
+            EApiEndpoint.LIKE_PROFILE,
+            EApiError.INTERNAL_SERVER_ERROR,
+            'Error',
+            insertedLikesCounterError,
+          );
+
+          return response.status(500).send(insertedLikesCounterError);
+        }
+      }
+    }
+  }
+
+  // Logic of making like
   const foundLikeFromOtherProfile = await supabaseInstance
     .from('likes')
     .select('*')
@@ -201,7 +317,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         return response.status(500).send(loggedProfileDetailsError);
       }
 
-      return response.send({
+      return response.status(200).send({
         isMatch: updatedLike.data.liked,
         likedProfileDetails: parseProfileDetails(likedProfileDetailsData),
         loggedProfileDetails: parseProfileDetails(loggedProfileDetailsData),
@@ -227,7 +343,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       return response.status(500).send(updatedLike.error);
     }
 
-    return response.status(200).send({ isMatch: updatedLike.data.liked });
+    response.status(200).send({ isMatch: updatedLike.data.liked });
   }
 
   const createdLikeRecord = await createLikeRecord(loggedUserId, profileIdToLike, vote);

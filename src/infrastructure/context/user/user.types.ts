@@ -7,6 +7,10 @@ export interface IUser extends User {
   first_name?: string;
   focus_markets?: number[];
   industrial_sectors?: number[];
+  initial_likes_counter?: {
+    count?: number;
+    created_at?: string;
+  };
   interval?: string;
   investment_sizes?: number[];
   investment_stage_types?: number[];
