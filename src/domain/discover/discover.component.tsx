@@ -10,6 +10,8 @@ import { likeProfileAction, supabaseInstance } from '@infrastructure';
 
 import { IProfileDetails } from '@interfaces';
 
+import { DISCOVER_LIKES_LIMIT } from '@constants';
+
 import { discoverRecordsAction } from './api';
 import { MotionCardsStack } from './atoms';
 import { IDiscoverProps } from './discover.types';
@@ -46,7 +48,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
     }
 
     if (user.initial_likes_counter?.count) {
-      setReachedLimit(user.initial_likes_counter.count >= 5);
+      setReachedLimit(user.initial_likes_counter.count >= DISCOVER_LIKES_LIMIT);
     }
 
     if (!user.is_subscribed) {
@@ -56,7 +58,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
           const likesCounterDate = new Date(payload.new.created_at);
 
           if (isToday(likesCounterDate)) {
-            setReachedLimit(payload.new.count >= 5);
+            setReachedLimit(payload.new.count >= DISCOVER_LIKES_LIMIT);
           }
         })
         .subscribe();
