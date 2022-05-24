@@ -19,7 +19,7 @@ import {
 
 import { EPaymentStatus, ESubscriptionInterval } from '@enums';
 
-import { LIMIT_LIKES } from '@constants';
+import { DISCOVER_LIKES_LIMIT } from '@constants';
 
 import { stripePortalAction, subscriptionAction } from '../../api';
 import { SectionWrapperLayout } from '../../atoms';
@@ -93,7 +93,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                 <StarIcon />
               </ListItemAvatar>
               <ListItemText>
-                {replaceVariablesInTranslation(_subscriptionBenefit, LIMIT_LIKES)}
+                {replaceVariablesInTranslation(_subscriptionBenefit, DISCOVER_LIKES_LIMIT)}
               </ListItemText>
             </ListItem>
           ))}
