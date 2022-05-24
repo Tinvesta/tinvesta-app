@@ -1,5 +1,7 @@
 import { ISelectOption } from '@ui';
 
+import { compareObjectsByValue } from '@utils';
+
 import { EInvestorDemandType } from '@enums';
 
 import { IInvestorDemandType } from '@interfaces';
@@ -27,7 +29,9 @@ export const mapInvestorDemandTypesToDropdownOptions = (
   investorDemandTypes: IInvestorDemandType[],
   translations: Record<string, string>,
 ): ISelectOption[] =>
-  investorDemandTypes.map((_investorDemandType) => ({
-    value: _investorDemandType.id,
-    label: getInvestorDemandTypeLabel(_investorDemandType.name, translations),
-  }));
+  investorDemandTypes
+    .map((_investorDemandType) => ({
+      value: _investorDemandType.id,
+      label: getInvestorDemandTypeLabel(_investorDemandType.name, translations),
+    }))
+    .sort(compareObjectsByValue('label'));

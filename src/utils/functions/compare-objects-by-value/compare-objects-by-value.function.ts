@@ -1,8 +1,13 @@
+import { getObjectProperty } from '..';
+
 export const compareObjectsByValue =
-  <TObject>(key: keyof TObject) =>
-  (a: TObject, b: TObject) => {
-    const valueA = !a ? '' : a[key] || '';
-    const valueB = !b ? '' : b[key] || '';
+  (key: string) =>
+  (
+    a: Record<string, unknown> | null | undefined,
+    b: Record<string, unknown> | null | undefined,
+  ) => {
+    const valueA = !a ? '' : getObjectProperty(a, key) || '';
+    const valueB = !b ? '' : getObjectProperty(b, key) || '';
 
     const valueAString = String(valueA).toString();
     const valueBString = String(valueB).toString();
