@@ -8,6 +8,7 @@ export const transformNumberArrayToChips = (
   userNumberArray: number[] | undefined,
   recordNumberArray: number[] | undefined,
   dropdownOptions: ISelectOption[],
+  chipSize: 'small' | 'medium',
 ) => {
   if (!isArray(userNumberArray) || !isArray(recordNumberArray)) {
     return [];
@@ -26,6 +27,7 @@ export const transformNumberArrayToChips = (
       <Chip
         key={chipLabel as string}
         label={chipLabel}
+        size={chipSize}
         variant={isInRecordArray ? 'filled' : 'outlined'}
       />
     );

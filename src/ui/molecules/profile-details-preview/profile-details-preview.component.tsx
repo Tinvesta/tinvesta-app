@@ -65,6 +65,8 @@ const ProfileDetailsPreviewComponent = ({
     profileDetailsAction(profileDetails.id),
   );
 
+  const chipSize = deviceData.isSmallerThanXS ? 'small' : 'medium';
+
   const translations = useTranslation(translationStrings);
   const startupSectorsDropdownOptions = mapStartupSectorsToDropdownOptions(
     startupSectors,
@@ -103,11 +105,13 @@ const ProfileDetailsPreviewComponent = ({
     mergedProfileDetails.teamSizes,
     loggedUserDetails?.team_sizes,
     teamSizesDropdownOptions,
+    chipSize,
   );
   const focusMarketChips = transformNumberArrayToChips(
     loggedUserDetails?.focus_markets,
     mergedProfileDetails.focusMarkets,
     focusMarketsDropdownOptions,
+    chipSize,
   )
     // @ts-expect-error
     .sort(compareObjectsByValue('props.label'));
@@ -115,6 +119,7 @@ const ProfileDetailsPreviewComponent = ({
     mergedProfileDetails.startupSectors,
     loggedUserDetails?.startup_sectors,
     startupSectorsDropdownOptions,
+    chipSize,
   )
     // @ts-expect-error
     .sort(compareObjectsByValue('props.label'));
@@ -122,11 +127,13 @@ const ProfileDetailsPreviewComponent = ({
     mergedProfileDetails.investmentSizes,
     loggedUserDetails?.investment_sizes,
     investmentSizesDropdownOptions,
+    chipSize,
   );
   const industrialSectorChips = transformNumberArrayToChips(
     mergedProfileDetails.industrialSectors,
     loggedUserDetails?.industrial_sectors,
     industrialSectorsDropdownOptions,
+    chipSize,
   )
     // @ts-expect-error
     .sort(compareObjectsByValue('props.label'));
@@ -134,6 +141,7 @@ const ProfileDetailsPreviewComponent = ({
     mergedProfileDetails.investorDemandTypes,
     mergedProfileDetails.investorDemandTypes,
     investorDemandTypesDropdownOptions,
+    chipSize,
   )
     // @ts-expect-error
     .sort(compareObjectsByValue('props.label'));
@@ -141,16 +149,19 @@ const ProfileDetailsPreviewComponent = ({
     mergedProfileDetails.investmentStageTypes,
     loggedUserDetails?.investment_stage_types,
     investmentStageTypesDropdownOptions,
+    chipSize,
   );
   const investorProfileTypeChips = transformNumberArrayToChips(
     [loggedUserDetails?.investor_profile_type_id].filter(Boolean) as number[],
     [mergedProfileDetails.investorProfileTypeId].filter(Boolean) as number[],
     investorProfileTypesDropdownOptions,
+    chipSize,
   );
   const startupProfileCreatorTypeChips = transformNumberArrayToChips(
     [loggedUserDetails?.startup_profile_creator_type_id].filter(Boolean) as number[],
     [mergedProfileDetails.startupProfileCreatorTypeId].filter(Boolean) as number[],
     startupProfileCreatorTypesDropdownOptions,
+    chipSize,
   );
 
   const fullName = profileFirstNameAndLastNameToFullName(mergedProfileDetails);

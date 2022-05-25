@@ -46,6 +46,7 @@ export const Card = ({
   const [displayProfileDetails, setDisplayProfileDetails] = useState(false);
 
   const isStartup = isStartupProfile(record.clientTypeId);
+  const chipSize = deviceData.isSmallerThanXS ? 'small' : 'medium';
 
   const translations = useTranslation(translationStrings);
   const investmentSizesDropdownOptions = mapInvestmentSizesToDropdownOptions(
@@ -69,12 +70,14 @@ export const Card = ({
       record.investmentSizes,
       user?.investment_sizes,
       investmentSizesDropdownOptions,
+      chipSize,
     );
 
     const investmentStageTypeChips = transformNumberArrayToChips(
       record.investmentStageTypes,
       user?.investment_stage_types,
       investmentStageTypesDropdownOptions,
+      chipSize,
     );
 
     const missionStatement = deviceData.isSmallerThanXS
@@ -99,7 +102,7 @@ export const Card = ({
                 {investmentSizeChips}
               </S.StyledUserInfoTypography>
             )}
-            {deviceData.isBiggerThanXS && investmentStageTypeChips.length > 0 && (
+            {investmentStageTypeChips.length > 0 && (
               <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <PieChartIcon />
                 {investmentStageTypeChips}
@@ -108,7 +111,7 @@ export const Card = ({
           </S.StyledUserInfoGroupWrapper>
           <S.StyledActionButtonsWrapper>
             <S.StyledInfoIconButton color="secondary" size="small" onClick={showProfileDetails}>
-              <InfoIcon fontSize="large" />
+              <InfoIcon fontSize={deviceData.isSmallerThanXS ? 'medium' : 'large'} />
             </S.StyledInfoIconButton>
           </S.StyledActionButtonsWrapper>
         </S.StyledChipsAndActionsWrapper>
@@ -121,24 +124,28 @@ export const Card = ({
       record.investmentSizes,
       user?.investment_sizes,
       investmentSizesDropdownOptions,
+      chipSize,
     );
 
     const investorDemandTypeChips = transformNumberArrayToChips(
       record.investmentStageTypes,
       user?.investment_stage_types,
       investorDemandTypesDropdownOptions,
+      chipSize,
     );
 
     const investmentStageTypeChips = transformNumberArrayToChips(
       record.investmentStageTypes,
       user?.investment_stage_types,
       investmentStageTypesDropdownOptions,
+      chipSize,
     );
 
     const focusMarketTypeChips = transformNumberArrayToChips(
       record.focusMarkets,
       user?.focus_markets,
       focusMarketsDropdownOptions,
+      chipSize,
     );
 
     const whyStartupShouldMatchWithYou = deviceData.isSmallerThanXS
