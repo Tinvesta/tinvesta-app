@@ -28,7 +28,7 @@ import {
   useTranslation,
 } from '@utils';
 
-import { EMAIL_UNIVERSAL_REGEX } from '@constants';
+import { EMAIL_UNIVERSAL_REGEX, INDUSTRIAL_SECTORS_LIMIT } from '@constants';
 
 import { translationStrings } from './investor-edit-profile-form.defaults';
 import S from './investor-edit-profile-form.styles';
@@ -383,11 +383,11 @@ const InvestorEditProfileFormComponent = ({
           <Grid item xs={12}>
             <AutocompleteWithController
               autocompleteProps={{
-                limit: 5,
                 multiple: true,
                 fullWidth: true,
                 color: 'secondary',
                 disableCloseOnSelect: true,
+                limit: INDUSTRIAL_SECTORS_LIMIT,
                 options: industrialSectorsDropdownOptions,
               }}
               controllerProps={{

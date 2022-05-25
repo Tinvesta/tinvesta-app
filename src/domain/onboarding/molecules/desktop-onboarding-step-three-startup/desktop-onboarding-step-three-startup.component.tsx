@@ -12,6 +12,8 @@ import {
   useTranslation,
 } from '@utils';
 
+import { INDUSTRIAL_SECTORS_LIMIT } from '@constants';
+
 import { DesktopOnboardingFormLayout } from '../../atoms';
 import { IDesktopOnboardingStepThreeStartupData } from '../../onboarding.types';
 import {
@@ -158,10 +160,10 @@ export const DesktopOnboardingStepThreeStartup = ({
       <Grid item xs={12}>
         <AutocompleteWithController
           autocompleteProps={{
-            limit: 5,
             multiple: true,
             fullWidth: true,
             disableCloseOnSelect: true,
+            limit: INDUSTRIAL_SECTORS_LIMIT,
             options: industrialSectorsDropdownOptions,
           }}
           controllerProps={{
