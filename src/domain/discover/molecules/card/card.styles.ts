@@ -77,6 +77,10 @@ const StyledUserInfoGroupWrapper = styled.div`
   flex-direction: row;
   gap: ${({ theme }) => theme.spacing(3)};
   padding-bottom: ${({ theme }) => theme.spacing(3)};
+
+  ${({ theme }) => respondToMax.xmobile`
+    padding-bottom: ${theme.spacing(2)};
+  `}
 `;
 
 const StyledUserInfoTypography = styled(Typography)<{ withFlexWrap?: boolean }>`

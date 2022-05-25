@@ -1,11 +1,5 @@
 export const translationStrings = [
   'common.default.image.alt',
-  'common.team.sizes.very.small',
-  'common.team.sizes.small',
-  'common.team.sizes.medium',
-  'common.team.sizes.large',
-  'common.focus.markets.b2b',
-  'common.focus.markets.b2c',
   'common.investment.stage.types.idea',
   'common.investment.stage.types.seed',
   'common.investment.stage.types.growth',
