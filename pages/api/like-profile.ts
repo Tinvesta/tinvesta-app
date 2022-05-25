@@ -131,7 +131,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   }
 
   // Verify if the user can like the profile
-  if (!loggedProfileSubscriptionsData.is_subscribed) {
+  if (!loggedProfileSubscriptionsData.is_subscribed && vote) {
     const { data: loggedUserCounterData, error: loggedUserCounterError } = await supabaseInstance
       .from('likes_counter')
       .select('*')
@@ -343,7 +343,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       return response.status(500).send(updatedLike.error);
     }
 
-    response.status(200).send({ isMatch: updatedLike.data.liked });
+    return response.status(200).send({ isMatch: updatedLike.data.liked });
   }
 
   const createdLikeRecord = await createLikeRecord(loggedUserId, profileIdToLike, vote);
@@ -370,7 +370,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(createdLikeRecord.error);
   }
 
-  response.status(200).send({ isMatch: false });
+  return response.status(200).send({ isMatch: false });
 };
 
 export default handler;
