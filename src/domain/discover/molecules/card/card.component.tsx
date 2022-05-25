@@ -4,7 +4,6 @@ import {
   LocationCity as LocationCityIcon,
   MonetizationOn as MonetizationOnIcon,
   PieChart as PieChartIcon,
-  ScreenRotation as ScreenRotationIcon,
 } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
@@ -14,7 +13,6 @@ import { ProfileDetailsPreview } from '@ui';
 
 import {
   isStartupProfile,
-  mapFocusMarketsToDropdownOptions,
   mapInvestmentSizesToDropdownOptions,
   mapInvestmentStageTypesToDropdownOptions,
   mapInvestorDemandTypesToDropdownOptions,
@@ -61,7 +59,6 @@ export const Card = ({
     investmentStageTypes,
     translations,
   );
-  const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
 
   const showProfileDetails = () => setDisplayProfileDetails(true);
 
@@ -141,13 +138,6 @@ export const Card = ({
       chipSize,
     );
 
-    const focusMarketTypeChips = transformNumberArrayToChips(
-      record.focusMarkets,
-      user?.focus_markets,
-      focusMarketsDropdownOptions,
-      chipSize,
-    );
-
     const whyStartupShouldMatchWithYou = deviceData.isSmallerThanXS
       ? truncate(record.whyStartupShouldMatchWithYou, 85)
       : record.whyStartupShouldMatchWithYou;
@@ -182,16 +172,10 @@ export const Card = ({
                 {investmentStageTypeChips}
               </S.StyledUserInfoTypography>
             )}
-            {deviceData.isBiggerThanXS && focusMarketTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography withFlexWrap variant="body2">
-                <ScreenRotationIcon />
-                {focusMarketTypeChips}
-              </S.StyledUserInfoTypography>
-            )}
           </S.StyledUserInfoGroupWrapper>
           <S.StyledActionButtonsWrapper>
             <S.StyledInfoIconButton color="secondary" size="small" onClick={showProfileDetails}>
-              <InfoIcon fontSize="large" />
+              <InfoIcon fontSize={deviceData.isSmallerThanXS ? 'medium' : 'large'} />
             </S.StyledInfoIconButton>
           </S.StyledActionButtonsWrapper>
         </S.StyledChipsAndActionsWrapper>
