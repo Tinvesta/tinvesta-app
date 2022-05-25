@@ -59,15 +59,14 @@ const StyledUserInfoWrapper = styled.div`
   position: absolute;
   flex-direction: column;
   justify-content: flex-end;
-  gap: ${({ theme }) => theme.spacing(4)};
-  padding: ${({ theme }) => theme.spacing(0, 5, 14, 5)};
+  gap: ${({ theme }) => theme.spacing(3)};
+  padding: ${({ theme }) => theme.spacing(0, 5, 15, 5)};
 
   ${({ theme }) => respondToMax.mobile`
     padding: ${theme.spacing(0, 4, 13, 4)};
   `}
 
   ${({ theme }) => respondToMax.xmobile`
-    gap: ${theme.spacing(3)};
     padding: ${theme.spacing(0, 3, 12, 3)};
   `}
 `;
@@ -76,14 +75,14 @@ const StyledUserInfoGroupWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   flex-direction: row;
-  gap: ${({ theme }) => theme.spacing(2)};
-  padding-bottom: ${({ theme }) => theme.spacing(2)};
+  gap: ${({ theme }) => theme.spacing(3)};
+  padding-bottom: ${({ theme }) => theme.spacing(3)};
 `;
 
 const StyledUserInfoTypography = styled(Typography)<{ withFlexWrap?: boolean }>`
   display: flex;
   align-items: center;
-  gap: ${({ theme }) => theme.spacing(2)};
+  gap: ${({ theme }) => theme.spacing(3)};
 
   ${({ withFlexWrap }) => withFlexWrap && 'flex-wrap: wrap;'};
 `;

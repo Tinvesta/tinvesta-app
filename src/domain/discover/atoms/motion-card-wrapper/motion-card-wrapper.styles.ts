@@ -5,16 +5,12 @@ import { linearGradient } from 'polished';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled(motion.div)`
-  width: 550px;
+  width: 600px;
   height: 750px;
   overflow: hidden;
   position: absolute;
   border-radius: 20px;
   background-color: ${({ theme }) => theme.palette.primary.main};
-
-  ${respondToMax.medium`
-    width: 600px;
-  `}
 
   ${({ theme }) => respondToMax.mobile`
     width: calc(100% - ${theme.spacing(10)});

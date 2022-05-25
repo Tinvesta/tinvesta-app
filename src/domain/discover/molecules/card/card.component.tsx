@@ -1,6 +1,5 @@
 import {
   Autorenew as AutorenewIcon,
-  Group as GroupIcon,
   Info as InfoIcon,
   LocationCity as LocationCityIcon,
   MonetizationOn as MonetizationOnIcon,
@@ -19,7 +18,6 @@ import {
   mapInvestmentSizesToDropdownOptions,
   mapInvestmentStageTypesToDropdownOptions,
   mapInvestorDemandTypesToDropdownOptions,
-  mapTeamSizesToDropdownOptions,
   truncate,
   useDeviceDetect,
   useTranslation,
@@ -62,18 +60,11 @@ export const Card = ({
     investmentStageTypes,
     translations,
   );
-  const teamSizesDropdownOptions = mapTeamSizesToDropdownOptions(teamSizes, translations);
   const focusMarketsDropdownOptions = mapFocusMarketsToDropdownOptions(focusMarkets, translations);
 
   const showProfileDetails = () => setDisplayProfileDetails(true);
 
   const renderStartupUserInfo = () => {
-    const teamSizeChips = transformNumberArrayToChips(
-      record.teamSizes,
-      user?.team_sizes,
-      teamSizesDropdownOptions,
-    );
-
     const investmentSizeChips = transformNumberArrayToChips(
       record.investmentSizes,
       user?.investment_sizes,
@@ -84,12 +75,6 @@ export const Card = ({
       record.investmentStageTypes,
       user?.investment_stage_types,
       investmentStageTypesDropdownOptions,
-    );
-
-    const focusMarketTypeChips = transformNumberArrayToChips(
-      record.focusMarkets,
-      user?.focus_markets,
-      focusMarketsDropdownOptions,
     );
 
     const missionStatement = deviceData.isSmallerThanXS
@@ -108,28 +93,16 @@ export const Card = ({
         </S.StyledUserInfoTypography>
         <S.StyledChipsAndActionsWrapper>
           <S.StyledUserInfoGroupWrapper>
-            {deviceData.isBiggerThanXS && teamSizeChips.length > 0 && (
-              <S.StyledUserInfoTypography withFlexWrap variant="body2">
-                <GroupIcon />
-                {teamSizeChips}
-              </S.StyledUserInfoTypography>
-            )}
             {investmentSizeChips.length > 0 && (
               <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <MonetizationOnIcon />
                 {investmentSizeChips}
               </S.StyledUserInfoTypography>
             )}
-            {investmentStageTypeChips.length > 0 && (
+            {deviceData.isBiggerThanXS && investmentStageTypeChips.length > 0 && (
               <S.StyledUserInfoTypography withFlexWrap variant="body2">
                 <PieChartIcon />
                 {investmentStageTypeChips}
-              </S.StyledUserInfoTypography>
-            )}
-            {deviceData.isBiggerThanXS && focusMarketTypeChips.length > 0 && (
-              <S.StyledUserInfoTypography withFlexWrap variant="body2">
-                <ScreenRotationIcon />
-                {focusMarketTypeChips}
               </S.StyledUserInfoTypography>
             )}
           </S.StyledUserInfoGroupWrapper>
