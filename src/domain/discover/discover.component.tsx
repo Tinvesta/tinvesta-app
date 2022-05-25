@@ -47,8 +47,8 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
       setReachedLimit(false);
     }
 
-    if (user.initial_likes_counter?.count) {
-      setReachedLimit(user.initial_likes_counter.count >= DISCOVER_LIKES_LIMIT);
+    if (user.likes_counter?.count) {
+      setReachedLimit(user.likes_counter.count >= DISCOVER_LIKES_LIMIT);
     }
 
     if (!user.is_subscribed) {
