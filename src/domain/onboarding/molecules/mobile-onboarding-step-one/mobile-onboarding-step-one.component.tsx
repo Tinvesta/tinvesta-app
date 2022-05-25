@@ -71,10 +71,6 @@ export const MobileOnboardingStepOne = ({
             control,
             name: 'lastName',
             rules: {
-              required: {
-                value: true,
-                message: translations.commonFormFieldErrorRequired,
-              },
               maxLength: {
                 value: 50,
                 message: translations.componentMobileOnboardingStepOneLastNameFieldMaxLengthError,
