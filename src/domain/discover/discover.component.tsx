@@ -2,11 +2,13 @@ import { isToday } from 'date-fns';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout, Loading, MatchModalContent, useModal } from '@ui';
+import { CenterBlockLayout, Empty, Loading, MatchModalContent, useModal } from '@ui';
 
-import { useUser } from '@utils';
+import { replaceVariablesInTranslation, useTranslation, useUser } from '@utils';
 
 import { likeProfileAction, supabaseInstance } from '@infrastructure';
+
+import { ERoutes } from '@enums';
 
 import { IProfileDetails } from '@interfaces';
 
@@ -14,6 +16,7 @@ import { DISCOVER_LIKES_LIMIT } from '@constants';
 
 import { discoverRecordsAction } from './api';
 import { MotionCardsStack } from './atoms';
+import { translationStrings } from './discover.defaults';
 import { IDiscoverProps } from './discover.types';
 import { Card } from './molecules';
 
@@ -26,6 +29,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
 
   const { user } = useUser();
+  const translations = useTranslation(translationStrings);
   const { hide, Modal, show } = useModal({ withCloseIcon: false });
 
   useEffect(() => {
@@ -75,11 +79,17 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
 
   if (reachedLimit) {
     return (
-      <div>
-        <CenterBlockLayout>
-          <h1>You have reached the limit of likes</h1>
-        </CenterBlockLayout>
-      </div>
+      <Empty
+        actionButtonProps={{
+          linkTo: ERoutes.DASHBOARD_PROFILE,
+          label: translations.componentDashboardDiscoverLikesLimitActionButton,
+        }}
+        imageSrc="/images/undraw-stripe-payments.svg"
+        label={replaceVariablesInTranslation(
+          translations.componentDashboardDiscoverLikesLimitLabel,
+          DISCOVER_LIKES_LIMIT,
+        )}
+      />
     );
   }
 
