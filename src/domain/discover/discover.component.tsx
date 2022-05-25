@@ -26,7 +26,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
 
   const { user } = useUser();
-  const { hide, Modal, show } = useModal({ withCloseIcon: false });
+  const { hide, isOpen, Modal, show } = useModal({ withCloseIcon: false });
 
   useEffect(() => {
     mutate();
@@ -39,7 +39,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   }, [JSON.stringify(likedProfileDetails)]);
 
   useEffect(() => {
-    if (!user) {
+    if (!user || isOpen) {
       return;
     }
 
@@ -58,7 +58,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
           const likesCounterDate = new Date(payload.new.created_at);
 
           if (isToday(likesCounterDate)) {
-            setReachedLimit(payload.new.count >= DISCOVER_LIKES_LIMIT);
+            setTimeout(() => setReachedLimit(payload.new.count >= DISCOVER_LIKES_LIMIT), 200);
           }
         })
         .subscribe();
@@ -73,7 +73,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
     return <Loading />;
   }
 
-  if (reachedLimit) {
+  if (reachedLimit && !isOpen) {
     return (
       <div>
         <CenterBlockLayout>
