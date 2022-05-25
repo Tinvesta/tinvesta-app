@@ -58,7 +58,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
           const likesCounterDate = new Date(payload.new.created_at);
 
           if (isToday(likesCounterDate)) {
-            setTimeout(() => setReachedLimit(payload.new.count >= DISCOVER_LIKES_LIMIT), 200);
+            setReachedLimit(payload.new.count >= DISCOVER_LIKES_LIMIT);
           }
         })
         .subscribe();
