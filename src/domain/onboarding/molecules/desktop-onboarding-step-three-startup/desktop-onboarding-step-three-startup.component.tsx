@@ -158,7 +158,7 @@ export const DesktopOnboardingStepThreeStartup = ({
       <Grid item xs={12}>
         <AutocompleteWithController
           autocompleteProps={{
-            limit: 5,
+            limit: 10,
             multiple: true,
             fullWidth: true,
             disableCloseOnSelect: true,
