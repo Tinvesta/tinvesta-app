@@ -30,7 +30,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
 
   const { user } = useUser();
   const translations = useTranslation(translationStrings);
-  const { hide, Modal, show } = useModal({ withCloseIcon: false });
+  const { hide, isOpen, Modal, show } = useModal({ withCloseIcon: false });
 
   useEffect(() => {
     mutate();
@@ -43,7 +43,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   }, [JSON.stringify(likedProfileDetails)]);
 
   useEffect(() => {
-    if (!user) {
+    if (!user || isOpen) {
       return;
     }
 
@@ -77,7 +77,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
     return <Loading />;
   }
 
-  if (reachedLimit) {
+  if (reachedLimit && !isOpen) {
     return (
       <Empty
         actionButtonProps={{
