@@ -9,6 +9,8 @@ import {
   useTranslation,
 } from '@utils';
 
+import { INDUSTRIAL_SECTORS_LIMIT } from '@constants';
+
 import { MobileOnboardingFormLayout } from '../../atoms';
 import { IMobileOnboardingStepSixStartupData } from '../../onboarding.types';
 import {
@@ -75,10 +77,10 @@ export const MobileOnboardingStepSixStartup = ({
       <Grid item xs={12}>
         <AutocompleteWithController
           autocompleteProps={{
-            limit: 10,
             multiple: true,
             fullWidth: true,
             disableCloseOnSelect: true,
+            limit: INDUSTRIAL_SECTORS_LIMIT,
             options: industrialSectorsDropdownOptions,
           }}
           controllerProps={{

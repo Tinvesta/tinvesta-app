@@ -27,7 +27,7 @@ import {
   useTranslation,
 } from '@utils';
 
-import { EMAIL_UNIVERSAL_REGEX } from '@constants';
+import { EMAIL_UNIVERSAL_REGEX, INDUSTRIAL_SECTORS_LIMIT } from '@constants';
 
 import { translationStrings } from './startup-edit-profile-form.defaults';
 import S from './startup-edit-profile-form.styles';
@@ -386,10 +386,10 @@ const StartupEditProfileFormComponent = ({
           <Grid item xs={12}>
             <AutocompleteWithController
               autocompleteProps={{
-                limit: 10,
                 multiple: true,
                 fullWidth: true,
                 disableCloseOnSelect: true,
+                limit: INDUSTRIAL_SECTORS_LIMIT,
                 options: industrialSectorsDropdownOptions,
               }}
               controllerProps={{

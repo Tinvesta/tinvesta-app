@@ -10,6 +10,7 @@ export const STARTUP_CLIENT_TYPE_ID = 1;
 export const INVESTOR_CLIENT_TYPE_ID = 2;
 
 export const DISCOVER_LIKES_LIMIT = 10;
+export const INDUSTRIAL_SECTORS_LIMIT = 10;
 
 export const DEFAULT_LOCALE: ELocale =
   (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as ELocale) ?? ELocale.EN;
