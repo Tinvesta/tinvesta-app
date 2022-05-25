@@ -12,8 +12,10 @@ export const replaceVariablesInTranslation = (
     return translation;
   }
 
-  return values.reduce(
-    (_accumulator, _value, _index) => translation.replace(`{{${_index}}}`, _value.toString()),
-    translation,
-  );
+  return values
+    .reduce(
+      (_accumulator, _value, _index) => translation.replace(`{{${_index}}}`, _value.toString()),
+      translation,
+    )
+    .toString();
 };
