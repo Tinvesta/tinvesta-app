@@ -64,6 +64,7 @@ export const MobileOnboardingStepNineStartup = ({
             rows: 3,
             fullWidth: true,
             multiline: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentMobileOnboardingStepNineStartupMissionStatementFieldLabel,
             placeholder:
@@ -102,6 +103,7 @@ export const MobileOnboardingStepNineStartup = ({
             rows: 3,
             fullWidth: true,
             multiline: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentMobileOnboardingStepNineStartupVisionStatementFieldLabel,
             placeholder:

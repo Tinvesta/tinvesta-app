@@ -63,6 +63,7 @@ export const MobileOnboardingStepEightInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: teamSizesDropdownOptions,
             labelId: 'mobile-onboarding-step-eight-investor-team-size-ids-select',
             label: translations.componentMobileOnboardingStepEightInvestorTeamSizeFieldLabel,
@@ -87,6 +88,7 @@ export const MobileOnboardingStepEightInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: investorDemandTypesDropdownOptions,
             label: translations.componentMobileOnboardingStepEightInvestorDemandFieldLabel,
             labelId: 'mobile-onboarding-step-eight-investor-investor-demand-type-ids-select',

@@ -47,6 +47,7 @@ export const MobileOnboardingStepThree = ({
             },
           }}
           inputProps={{
+            color: 'secondary',
             label: translations.componentMobileOnboardingStepThreeLocationFieldLabel,
           }}
         />
@@ -77,6 +78,7 @@ export const MobileOnboardingStepThree = ({
             rows: 3,
             fullWidth: true,
             multiline: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentMobileOnboardingStepThreeWhatAreYouLookingForFieldLabel,
             placeholder:

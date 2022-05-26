@@ -60,6 +60,7 @@ export const MobileOnboardingStepTwo = ({
           }}
           selectProps={{
             fullWidth: true,
+            color: 'secondary',
             options: clientTypesDropdownOptions,
             labelId: 'mobile-onboarding-step-two-client-type-id-select',
             label: translations.componentMobileOnboardingStepTwoProfileTypeFieldLabel,
@@ -90,6 +91,7 @@ export const MobileOnboardingStepTwo = ({
           }}
           inputProps={{
             fullWidth: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentMobileOnboardingStepTwoContactEmailFieldLabel,
           }}
@@ -118,6 +120,7 @@ export const MobileOnboardingStepTwo = ({
           }}
           inputProps={{
             fullWidth: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentMobileOnboardingStepTwoCompanyNameFieldLabel,
           }}

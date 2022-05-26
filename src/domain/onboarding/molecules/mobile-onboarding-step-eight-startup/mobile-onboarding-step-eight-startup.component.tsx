@@ -62,6 +62,7 @@ export const MobileOnboardingStepEightStartup = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: investmentStageTypesDropdownOptions,
             labelId: 'mobile-onboarding-step-eight-startup-investment-stage-type-ids-select',
             label: translations.componentMobileOnboardingStepEightStartupInvestmentStageFieldLabel,
@@ -98,6 +99,7 @@ export const MobileOnboardingStepEightStartup = ({
             rows: 3,
             fullWidth: true,
             multiline: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentMobileOnboardingStepEightStartupStartupClaimFieldLabel,
             placeholder:
