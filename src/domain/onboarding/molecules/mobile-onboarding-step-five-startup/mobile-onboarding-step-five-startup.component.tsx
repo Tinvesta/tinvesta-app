@@ -62,6 +62,7 @@ export const MobileOnboardingStepFiveStartup = ({
           }}
           selectProps={{
             fullWidth: true,
+            color: 'secondary',
             options: startupProfileCreatorTypesDropdownOptions,
             label: translations.componentMobileOnboardingStepFiveStartupYourPositionFieldLabel,
             labelId: 'mobile-onboarding-step-five-startup-startup-profile-creator-type-id-select',
@@ -85,6 +86,7 @@ export const MobileOnboardingStepFiveStartup = ({
           }}
           selectProps={{
             fullWidth: true,
+            color: 'secondary',
             options: teamSizesDropdownOptions,
             labelId: 'mobile-onboarding-step-five-startup-team-size-id-select',
             label: translations.componentMobileOnboardingStepFiveStartupTeamSizeFieldLabel,

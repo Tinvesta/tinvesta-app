@@ -64,6 +64,7 @@ export const MobileOnboardingStepNineInvestor = ({
             rows: 5,
             fullWidth: true,
             multiline: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label:
               // eslint-disable-next-line max-len

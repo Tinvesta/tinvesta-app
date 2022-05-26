@@ -68,6 +68,7 @@ export const MobileOnboardingStepSixStartup = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: startupSectorsDropdownOptions,
             labelId: 'mobile-onboarding-step-six-startup-startup-sector-ids-select',
             label: translations.componentMobileOnboardingStepSixStartupSectorsFieldLabel,
@@ -94,6 +95,7 @@ export const MobileOnboardingStepSixStartup = ({
             },
           }}
           inputProps={{
+            color: 'secondary',
             label: translations.componentMobileOnboardingStepSixStartupIndustrialSectorsFieldLabel,
           }}
         />

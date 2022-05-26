@@ -62,6 +62,7 @@ export const MobileOnboardingStepFiveInvestor = ({
           }}
           selectProps={{
             fullWidth: true,
+            color: 'secondary',
             options: investorProfileTypesDropdownOptions,
             labelId: 'mobile-onboarding-step-five-investor-investor-profile-type-id-select',
             label: translations.componentMobileOnboardingStepFiveInvestorYourPositionFieldLabel,
@@ -86,6 +87,7 @@ export const MobileOnboardingStepFiveInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: focusMarketsDropdownOptions,
             labelId: 'mobile-onboarding-step-five-investor-focus-market-ids-select',
             label: translations.componentMobileOnboardingStepFiveInvestorFocusMarketFieldLabel,

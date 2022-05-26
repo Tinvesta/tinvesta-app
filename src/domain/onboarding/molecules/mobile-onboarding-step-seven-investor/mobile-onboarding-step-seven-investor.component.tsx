@@ -66,6 +66,7 @@ export const MobileOnboardingStepSevenInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: investmentSizesDropdownOptions,
             labelId: 'mobile-onboarding-step-seven-startup-investment-size-ids-select',
             label: translations.componentMobileOnboardingStepSevenInvestorInvestmentSizeFieldLabel,
@@ -90,6 +91,7 @@ export const MobileOnboardingStepSevenInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: investmentStageTypesDropdownOptions,
             labelId: 'mobile-onboarding-step-seven-investor-investment-stage-type-ids-select',
             label: translations.componentMobileOnboardingStepSevenInvestorInvestmentStageFieldLabel,
