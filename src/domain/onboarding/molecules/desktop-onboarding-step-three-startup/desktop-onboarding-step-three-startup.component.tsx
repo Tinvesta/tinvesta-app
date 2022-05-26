@@ -80,6 +80,7 @@ export const DesktopOnboardingStepThreeStartup = ({
           }}
           selectProps={{
             fullWidth: true,
+            color: 'secondary',
             options: startupProfileCreatorTypesDropdownOptions,
             label: translations.componentDesktopOnboardingStepThreeStartupYourPositionFieldLabel,
             labelId: 'desktop-onboarding-step-three-startup-startup-profile-creator-type-id-select',
@@ -103,6 +104,7 @@ export const DesktopOnboardingStepThreeStartup = ({
           }}
           selectProps={{
             fullWidth: true,
+            color: 'secondary',
             options: teamSizesDropdownOptions,
             labelId: 'desktop-onboarding-step-three-startup-team-size-id-select',
             label: translations.componentDesktopOnboardingStepThreeStartupTeamSizeFieldLabel,
@@ -127,6 +129,7 @@ export const DesktopOnboardingStepThreeStartup = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: focusMarketsDropdownOptions,
             labelId: 'desktop-onboarding-step-three-startup-focus-market-ids-select',
             label: translations.componentDesktopOnboardingStepThreeStartupFocusMarketFieldLabel,
@@ -151,6 +154,7 @@ export const DesktopOnboardingStepThreeStartup = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: startupSectorsDropdownOptions,
             labelId: 'desktop-onboarding-step-three-startup-startup-sector-ids-select',
             label: translations.componentDesktopOnboardingStepThreeStartupSectorFieldLabel,
@@ -177,6 +181,7 @@ export const DesktopOnboardingStepThreeStartup = ({
             },
           }}
           inputProps={{
+            color: 'secondary',
             label:
               translations.componentDesktopOnboardingStepThreeStartupIndustrialSectorsFieldLabel,
           }}

@@ -70,6 +70,7 @@ export const DesktopOnboardingStepFourInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: teamSizesDropdownOptions,
             labelId: 'desktop-onboarding-step-four-investor-team-size-ids-select',
             label: translations.componentDesktopOnboardingStepFourInvestorTeamSizeFieldLabel,
@@ -94,6 +95,7 @@ export const DesktopOnboardingStepFourInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: investmentStageTypesDropdownOptions,
             labelId: 'desktop-onboarding-step-four-investor-investment-stage-type-ids-select',
             label: translations.componentDesktopOnboardingStepFourInvestorInvestmentStageFieldLabel,
@@ -118,6 +120,7 @@ export const DesktopOnboardingStepFourInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: investmentSizesDropdownOptions,
             labelId: 'desktop-onboarding-step-four-investor-investment-size-ids-select',
             label: translations.componentDesktopOnboardingStepFourInvestorInvestmentSizeFieldLabel,
