@@ -5,6 +5,7 @@ import { respondToMax } from '@infrastructure';
 
 const StyledContentWrapper = styled.div<{
   align?: 'right' | 'center' | 'left';
+  backgroundColor?: string;
   withBorderRadius?: boolean;
   withPadding?: boolean;
 }>`
@@ -12,7 +13,8 @@ const StyledContentWrapper = styled.div<{
   position: absolute;
   border-radius: ${({ theme, withBorderRadius }) =>
     withBorderRadius ? theme.shape.borderRadius : 0}px;
-  background-color: ${({ theme }) => theme.palette.background.paper};
+  background-color: ${({ backgroundColor, theme }) =>
+    backgroundColor || theme.palette.background.paper};
   padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing(4) : 0)};
 
   ${({ align }) =>

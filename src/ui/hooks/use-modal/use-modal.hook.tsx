@@ -2,16 +2,18 @@ import { Modal as MuiModal } from '@mui/material';
 import { useCallback, useState } from 'react';
 
 import S from './use-modal.styles';
-import { IModalProps, IUseModalAttributes } from './use-modal.types';
+import { IModalProps, IUseModalProps } from './use-modal.types';
 
 export const useModal = ({
   align = 'center',
+  backgroundStyles,
   defaultIsOpenState = false,
   withBorderRadius = true,
   withCloseIcon = true,
   withPadding = true,
-}: IUseModalAttributes = {}) => {
+}: IUseModalProps = {}) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpenState);
+
   const show = () => setIsOpen(true);
   const hide = () => setIsOpen(false);
 
@@ -44,6 +46,7 @@ export const useModal = ({
       >
         <S.StyledContentWrapper
           align={align}
+          style={backgroundStyles}
           withBorderRadius={withBorderRadius}
           withPadding={withPadding}
         >

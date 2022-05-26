@@ -1,4 +1,6 @@
+import { useTheme } from '@mui/material';
 import { isToday } from 'date-fns';
+import { rgba } from 'polished';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
@@ -28,9 +30,17 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   const [likedProfileDetails, setLikedProfileDetails] = useState<IProfileDetails>();
   const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
 
+  const theme = useTheme();
   const { user } = useUser();
+  const { hide, isOpen, Modal, show } = useModal({
+    withCloseIcon: false,
+    withBorderRadius: false,
+    backgroundStyles: {
+      backdropFilter: 'blur(10px)',
+      backgroundColor: rgba(theme.palette.primary.main, 0.5),
+    },
+  });
   const translations = useTranslation(translationStrings);
-  const { hide, isOpen, Modal, show } = useModal({ withCloseIcon: false, withBorderRadius: false });
 
   useEffect(() => {
     mutate();
