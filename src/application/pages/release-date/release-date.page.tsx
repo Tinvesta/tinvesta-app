@@ -8,7 +8,6 @@ export const ReleaseDatePage = (): JSX.Element => (
   <S.StyledWrapper>
     <Head>
       <title>Tinvesta</title>
-      <meta content="Tinvesta app" name="description" />
     </Head>
     <Image priority alt="Tinvesta" height={200} src="/images/animated-full-logo.svg" width={200} />
     <Typography variant="h3">28.05.2022</Typography>

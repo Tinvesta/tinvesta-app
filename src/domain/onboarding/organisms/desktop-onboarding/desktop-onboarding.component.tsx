@@ -112,7 +112,7 @@ export const DesktopOnboarding = ({
           alt="Tinvesta"
           layout="fill"
           objectFit="cover"
-          src="/images/desktop-onboarding-background.svg"
+          src="/images/background/desktop-onboarding.svg"
         />
       </Loading>
     );
