@@ -35,7 +35,7 @@ const MobileOnboardingFormLayoutComponent = ({
         alt="Tinvesta"
         layout="fill"
         objectFit="cover"
-        src="/images/mobile-onboarding-background.svg"
+        src="/images/background/mobile-onboarding.svg"
       />
       {currentStep !== undefined && (
         <S.StyledLinearProgress color="inherit" value={progress} variant="determinate" />

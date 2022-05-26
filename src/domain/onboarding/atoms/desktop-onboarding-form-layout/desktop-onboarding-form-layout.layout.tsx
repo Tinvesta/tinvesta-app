@@ -27,7 +27,7 @@ const DesktopOnboardingFormLayoutComponent = ({
       alt="Tinvesta"
       layout="fill"
       objectFit="cover"
-      src="/images/desktop-onboarding-background.svg"
+      src="/images/background/desktop-onboarding.svg"
     />
     <S.StyledWrapper>
       <S.StyledContentWrapper>

@@ -131,7 +131,7 @@ export const MobileOnboarding = ({
           alt="Tinvesta"
           layout="fill"
           objectFit="cover"
-          src="/images/mobile-onboarding-background.svg"
+          src="/images/background/mobile-onboarding.svg"
         />
       </Loading>
     );
