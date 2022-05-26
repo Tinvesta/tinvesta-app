@@ -69,6 +69,7 @@ export const DesktopOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepOneFirstNameFieldLabel,
           }}
@@ -96,6 +97,7 @@ export const DesktopOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepOneLastNameFieldLabel,
           }}
@@ -125,6 +127,7 @@ export const DesktopOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepOneContactEmailFieldLabel,
           }}
@@ -153,6 +156,7 @@ export const DesktopOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepOneCompanyNameFieldLabel,
           }}
@@ -171,6 +175,7 @@ export const DesktopOnboardingStepOne = ({
             },
           }}
           inputProps={{
+            color: 'secondary',
             label: translations.componentDesktopOnboardingStepOneLocationFieldLabel,
           }}
         />
