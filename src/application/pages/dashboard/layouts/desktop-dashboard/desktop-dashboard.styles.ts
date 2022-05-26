@@ -145,7 +145,8 @@ const StyledAvatarWrapper = styled.div`
 
   &:hover > button {
     opacity: 1;
-    background-color: ${({ theme }) => theme.palette.secondary.main};
+    transform: rotate(90deg);
+    background-color: ${({ theme }) => theme.palette.secondary.dark};
   }
 `;
 
@@ -167,8 +168,8 @@ const StyledAvatarIconButtonHover = styled(IconButton)`
   height: 65px;
   cursor: pointer;
   position: absolute;
-  transition: opacity 250ms ease-in-out;
-  background-color: ${({ theme }) => theme.palette.secondary.main};
+  transition: all 250ms ease-in-out;
+  background-color: ${({ theme }) => theme.palette.secondary.dark};
 `;
 
 const S = {
