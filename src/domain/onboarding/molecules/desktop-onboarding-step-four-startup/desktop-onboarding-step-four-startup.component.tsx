@@ -69,6 +69,7 @@ export const DesktopOnboardingStepFourStartup = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: investmentStageTypesDropdownOptions,
             labelId: 'desktop-onboarding-step-four-startup-investment-stage-type-ids-select',
             label: translations.componentDesktopOnboardingStepFourStartupInvestmentStageFieldLabel,
@@ -93,6 +94,7 @@ export const DesktopOnboardingStepFourStartup = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: investmentSizesDropdownOptions,
             labelId: 'desktop-onboarding-step-four-startup-investment-size-ids-select',
             label: translations.componentDesktopOnboardingStepFourStartupInvestmentSizeFieldLabel,
@@ -129,6 +131,7 @@ export const DesktopOnboardingStepFourStartup = ({
             rows: 3,
             fullWidth: true,
             multiline: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepFourStartupStartupClaimFieldLabel,
             placeholder:

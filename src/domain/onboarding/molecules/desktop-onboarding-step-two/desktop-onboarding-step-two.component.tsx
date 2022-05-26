@@ -78,6 +78,7 @@ export const DesktopOnboardingStepTwo = ({
               }}
               selectProps={{
                 fullWidth: true,
+                color: 'secondary',
                 options: clientTypesDropdownOptions,
                 labelId: 'desktop-onboarding-step-two-client-type-id-select',
                 label: translations.componentDesktopOnboardingStepTwoProfileTypeFieldLabel,
@@ -110,6 +111,7 @@ export const DesktopOnboardingStepTwo = ({
                 rows: 10,
                 fullWidth: true,
                 multiline: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDesktopOnboardingStepTwoWhatAreYouLookingForFieldLabel,
                 placeholder:

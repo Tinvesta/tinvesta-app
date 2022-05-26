@@ -65,6 +65,7 @@ export const DesktopOnboardingStepFiveStartup = ({
             rows: 4,
             fullWidth: true,
             multiline: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepFiveStartupMissionStatementFieldLabel,
             placeholder:
@@ -103,6 +104,7 @@ export const DesktopOnboardingStepFiveStartup = ({
             rows: 4,
             fullWidth: true,
             multiline: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentDesktopOnboardingStepFiveStartupVisionStatementFieldLabel,
             placeholder:

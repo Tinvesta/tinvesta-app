@@ -77,6 +77,7 @@ export const DesktopOnboardingStepThreeInvestor = ({
           }}
           selectProps={{
             fullWidth: true,
+            color: 'secondary',
             options: investorProfileTypesDropdownOptions,
             labelId: 'desktop-onboarding-step-three-investor-investor-profile-type-id-select',
             label: translations.componentDesktopOnboardingStepThreeInvestorYourPositionFieldLabel,
@@ -101,6 +102,7 @@ export const DesktopOnboardingStepThreeInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: focusMarketsDropdownOptions,
             labelId: 'desktop-onboarding-step-three-investor-focus-market-ids-select',
             label: translations.componentDesktopOnboardingStepThreeInvestorFocusMarketFieldLabel,
@@ -125,6 +127,7 @@ export const DesktopOnboardingStepThreeInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: startupSectorsDropdownOptions,
             labelId: 'desktop-onboarding-step-three-investor-startup-sector-ids-select',
             label: translations.componentDesktopOnboardingStepThreeInvestorStartupSectorFieldLabel,
@@ -151,6 +154,7 @@ export const DesktopOnboardingStepThreeInvestor = ({
             },
           }}
           inputProps={{
+            color: 'secondary',
             label:
               translations.componentDesktopOnboardingStepThreeInvestorIndustrialSectorsFieldLabel,
           }}

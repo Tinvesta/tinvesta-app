@@ -63,6 +63,7 @@ export const DesktopOnboardingStepFiveInvestor = ({
           selectProps={{
             multiple: true,
             fullWidth: true,
+            color: 'secondary',
             options: investorDemandTypesDropdownOptions,
             label: translations.componentDesktopOnboardingStepFiveInvestorDemandFieldLabel,
             labelId: 'desktop-onboarding-step-five-investor-investor-demand-type-ids-select',
@@ -99,6 +100,7 @@ export const DesktopOnboardingStepFiveInvestor = ({
             rows: 5,
             fullWidth: true,
             multiline: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label:
               // eslint-disable-next-line max-len
