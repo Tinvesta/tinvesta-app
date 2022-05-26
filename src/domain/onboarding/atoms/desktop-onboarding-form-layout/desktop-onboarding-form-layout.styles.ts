@@ -16,13 +16,13 @@ const StyledContentWrapper = styled.div`
 
 const StyledFormWrapper = styled.form`
   width: 100%;
-  margin-top: ${({ theme }) => theme.spacing(3)};
+  margin-top: ${({ theme }) => theme.spacing(4)};
 `;
 
 const StyledHeading = styled(Typography)`
   width: 100%;
   text-align: left;
-  margin-bottom: ${({ theme }) => theme.spacing(3)};
+  margin-bottom: ${({ theme }) => theme.spacing(4)};
 `;
 
 const S = {

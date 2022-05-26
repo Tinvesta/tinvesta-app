@@ -38,12 +38,12 @@ const DesktopOnboardingFormLayoutComponent = ({
           </S.StyledHeading>
         )}
         <S.StyledFormWrapper {...formProps}>
-          <Grid container columnSpacing={4} justifyContent="center" rowSpacing={3}>
+          <Grid container columnSpacing={5} justifyContent="center" rowSpacing={3}>
             {children}
             <Grid
               item
               display="flex"
-              gap={4}
+              gap={5}
               justifyContent={centerActionButtons ? 'center' : 'flex-end'}
               xs={12}
             >
@@ -51,10 +51,11 @@ const DesktopOnboardingFormLayoutComponent = ({
                 <Grid item xs={3}>
                   <LoadingButton
                     fullWidth
+                    color="secondary"
                     disabled={isLoading}
                     size="large"
                     startIcon={addArrowToBackButton && <ArrowBackIcon />}
-                    variant="text"
+                    variant="outlined"
                     onClick={onBackButtonClick}
                   >
                     {backButtonText}
@@ -65,6 +66,7 @@ const DesktopOnboardingFormLayoutComponent = ({
                 <Grid item xs={3}>
                   <LoadingButton
                     fullWidth
+                    color="secondary"
                     loading={isLoading}
                     size="large"
                     type="submit"
