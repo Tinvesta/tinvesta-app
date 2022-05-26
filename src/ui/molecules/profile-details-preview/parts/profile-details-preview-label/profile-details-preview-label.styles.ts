@@ -27,6 +27,7 @@ const StyledContentWrapper = styled(Typography)`
   align-items: center;
   gap: ${({ theme }) => theme.spacing(3)};
   padding-top: ${({ theme }) => theme.spacing(3)};
+  color: ${({ theme }) => theme.palette.secondary.dark};
 `;
 
 const S = {
