@@ -41,7 +41,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     hide: hideMatchModalContent,
     Modal: ModalMatchModalContent,
     show: showMatchModalContent,
-  } = useModal({ withCloseIcon: false });
+  } = useModal({ withCloseIcon: false, withBorderRadius: false });
 
   const { isLoading: isLikesActionLoading, mutateAsync: mutateAsyncLikesAction } =
     useMutation(likesAction);

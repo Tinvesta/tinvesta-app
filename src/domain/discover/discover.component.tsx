@@ -30,7 +30,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
 
   const { user } = useUser();
   const translations = useTranslation(translationStrings);
-  const { hide, isOpen, Modal, show } = useModal({ withCloseIcon: false });
+  const { hide, isOpen, Modal, show } = useModal({ withCloseIcon: false, withBorderRadius: false });
 
   useEffect(() => {
     mutate();
