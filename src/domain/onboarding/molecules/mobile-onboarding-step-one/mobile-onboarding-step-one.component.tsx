@@ -60,6 +60,7 @@ export const MobileOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentMobileOnboardingStepOneFirstNameFieldLabel,
           }}
@@ -87,6 +88,7 @@ export const MobileOnboardingStepOne = ({
           }}
           inputProps={{
             fullWidth: true,
+            color: 'secondary',
             autoComplete: 'disabled',
             label: translations.componentMobileOnboardingStepOneLastNameFieldLabel,
           }}

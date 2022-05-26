@@ -1,4 +1,4 @@
-import { ArrowBackIos as ArrowBackIosIcon, Close as CloseIcon } from '@mui/icons-material';
+import { ArrowBack as ArrowBackIcon, Close as CloseIcon } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
 import Image from 'next/image';
@@ -26,7 +26,7 @@ const MobileOnboardingFormLayoutComponent = ({
 
   const isFirstStep = currentStep === 1;
   const progress = ((currentStep || 1) / ALL_STEPS) * 100;
-  const BackIconComponent = isFirstStep ? CloseIcon : ArrowBackIosIcon;
+  const BackIconComponent = isFirstStep ? CloseIcon : ArrowBackIcon;
 
   return (
     <S.StyledWrapper>
@@ -44,7 +44,7 @@ const MobileOnboardingFormLayoutComponent = ({
         <S.StyledBackButtonWrapper>
           <BackIconComponent
             cursor="pointer"
-            fontSize={deviceData.isSmallerThanXS ? 'medium' : 'large'}
+            fontSize={deviceData.isSmallerThanSM ? 'medium' : 'large'}
             onClick={onBackButtonClick}
           />
         </S.StyledBackButtonWrapper>
@@ -62,11 +62,12 @@ const MobileOnboardingFormLayoutComponent = ({
           >
             {children}
             {continueButtonText && (
-              <Grid item marginTop={deviceData.isSmallerThanXS ? 3 : 4} xs={12}>
+              <Grid item marginTop={deviceData.isSmallerThanXS ? 4 : 5} xs={12}>
                 <LoadingButton
                   fullWidth
+                  color="secondary"
                   loading={isLoading}
-                  size="large"
+                  size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                   type="submit"
                   variant="contained"
                 >
