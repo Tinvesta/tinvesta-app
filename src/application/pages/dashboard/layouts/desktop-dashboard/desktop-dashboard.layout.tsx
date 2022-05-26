@@ -1,5 +1,5 @@
-import { Logout as LogoutIcon } from '@mui/icons-material';
-import { Avatar, IconButton, Typography } from '@mui/material';
+import { Logout as LogoutIcon, Settings as SettingsIcon } from '@mui/icons-material';
+import { IconButton, Typography } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
@@ -44,10 +44,12 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
           </S.StyledLogoWrapper>
           <S.StyledUserInfoWrapper>
             <Link passHref href={ERoutes.DASHBOARD_PROFILE}>
-              <Avatar
-                src={parseProfileAvatarUrl(user?.profile_avatar_url)}
-                sx={{ width: 65, height: 65, cursor: 'pointer' }}
-              />
+              <S.StyledAvatarWrapper>
+                <S.StyledAvatar src={parseProfileAvatarUrl(user?.profile_avatar_url)} />
+                <S.StyledAvatarIconButtonHover color="primary">
+                  <SettingsIcon fontSize="large" />
+                </S.StyledAvatarIconButtonHover>
+              </S.StyledAvatarWrapper>
             </Link>
             <S.StyledUserInfoDetails>
               <S.StyledWelcomeTypography variant="caption">

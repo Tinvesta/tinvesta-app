@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Icon, Typography } from '@mui/material';
+import { Avatar, Icon, IconButton, Typography } from '@mui/material';
 
 const StyledWrapper = styled.div`
   height: 100%;
@@ -37,6 +37,7 @@ const StyledLogoWrapper = styled.div`
 
 const StyledUserInfoWrapper = styled.div`
   display: flex;
+  position: relative;
   align-items: center;
   flex-direction: column;
 `;
@@ -137,19 +138,56 @@ const StyledMenuItemIcon = styled(Icon)`
   display: flex;
 `;
 
+const StyledAvatarWrapper = styled.div`
+  width: 65px;
+  height: 65px;
+  position: relative;
+
+  &:hover > button {
+    opacity: 1;
+    transform: rotate(90deg);
+    background-color: ${({ theme }) => theme.palette.secondary.dark};
+  }
+`;
+
+const StyledAvatar = styled(Avatar)`
+  top: 0;
+  left: 0;
+  width: 65px;
+  height: 65px;
+  cursor: pointer;
+  position: absolute;
+`;
+
+const StyledAvatarIconButtonHover = styled(IconButton)`
+  top: 0;
+  left: 0;
+  z-index: 1;
+  opacity: 0;
+  width: 65px;
+  height: 65px;
+  cursor: pointer;
+  position: absolute;
+  transition: all 250ms ease-in-out;
+  background-color: ${({ theme }) => theme.palette.secondary.dark};
+`;
+
 const S = {
   StyledMenu,
+  StyledAvatar,
   StyledWrapper,
   StyledMenuItem,
   StyledLogoWrapper,
   StyledMenuItemIcon,
   StyledAsideWrapper,
+  StyledAvatarWrapper,
   StyledContentWrapper,
   StyledMenuItemTopBox,
   StyledUserInfoDetails,
   StyledUserInfoWrapper,
   StyledMenuItemBottomBox,
   StyledWelcomeTypography,
+  StyledAvatarIconButtonHover,
   StyledAsideBottomContentWrapper,
 };
 
