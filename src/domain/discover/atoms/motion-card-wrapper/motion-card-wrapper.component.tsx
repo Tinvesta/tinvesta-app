@@ -39,7 +39,19 @@ export const MotionCardWrapper = ({
       onVote(false);
     });
 
-  const sensitive = deviceData.isSmallerThanXS ? 175 : 200;
+  const getSensitive = () => {
+    if (deviceData.isSmallerThanXS) {
+      return 175;
+    }
+
+    if (deviceData.isSmallerThanSM) {
+      return 250;
+    }
+
+    return 300;
+  };
+
+  const sensitive = getSensitive();
 
   return (
     <S.StyledWrapper
