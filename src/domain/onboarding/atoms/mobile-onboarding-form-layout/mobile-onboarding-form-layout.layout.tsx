@@ -67,7 +67,7 @@ const MobileOnboardingFormLayoutComponent = ({
                   fullWidth
                   color="secondary"
                   loading={isLoading}
-                  size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
+                  size="large"
                   type="submit"
                   variant="contained"
                 >
