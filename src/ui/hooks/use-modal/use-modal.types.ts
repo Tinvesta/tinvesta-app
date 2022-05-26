@@ -1,7 +1,9 @@
 import { ModalProps } from '@mui/material';
+import { CSSProperties } from 'react';
 
-export interface IUseModalAttributes {
+export interface IUseModalProps {
   align?: 'right' | 'center' | 'left';
+  backgroundStyles?: CSSProperties;
   defaultIsOpenState?: boolean;
   withBorderRadius?: boolean;
   withCloseIcon?: boolean;

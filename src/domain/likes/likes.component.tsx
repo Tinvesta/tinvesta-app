@@ -1,3 +1,5 @@
+import { useTheme } from '@mui/material';
+import { rgba } from 'polished';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
@@ -20,6 +22,7 @@ import { ProfileDetailsPreviewModalContent } from './molecules';
 const LIMIT = 20;
 
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
+  const theme = useTheme();
   const { user } = useUser();
   const { confirm } = useConfirmationModal();
   const translations = useTranslation(translationStrings);
@@ -41,7 +44,14 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     hide: hideMatchModalContent,
     Modal: ModalMatchModalContent,
     show: showMatchModalContent,
-  } = useModal({ withCloseIcon: false, withBorderRadius: false });
+  } = useModal({
+    withCloseIcon: false,
+    withBorderRadius: false,
+    backgroundStyles: {
+      backdropFilter: 'blur(10px)',
+      backgroundColor: rgba(theme.palette.primary.main, 0.5),
+    },
+  });
 
   const { isLoading: isLikesActionLoading, mutateAsync: mutateAsyncLikesAction } =
     useMutation(likesAction);
