@@ -6,8 +6,13 @@ import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
 
 import { ProfileCardActionButtons } from '@ui';
 
+import { useDeviceDetect } from '@utils';
+
 import S from './motion-card-wrapper.styles';
 import { IMotionCardWrapperProps } from './motion-card-wrapper.types';
+
+const MOVE_TO_X_POSITIVE = 1500;
+const MOVE_TO_X_NEGATIVE = -1500;
 
 export const MotionCardWrapper = ({
   children,
@@ -16,6 +21,8 @@ export const MotionCardWrapper = ({
   zIndex,
   ...restProps
 }: IMotionCardWrapperProps): JSX.Element => {
+  const { deviceData } = useDeviceDetect();
+
   const x = useMotionValue(0);
   const animControls = useAnimation();
   const rotate = useTransform(x, [-750, 750], [-35, 35]);
@@ -23,14 +30,16 @@ export const MotionCardWrapper = ({
   const leftIconOpacity = useTransform(x, [-200, -50], [200, 0]);
 
   const markAsVoted = () =>
-    animControls.start({ x: 1500 }).then(() => {
+    animControls.start({ x: MOVE_TO_X_POSITIVE }).then(() => {
       onVote(true);
     });
 
   const markAsNotVoted = () =>
-    animControls.start({ x: -1500 }).then(() => {
+    animControls.start({ x: MOVE_TO_X_NEGATIVE }).then(() => {
       onVote(false);
     });
+
+  const sensitive = deviceData.isSmallerThanXS ? 175 : 200;
 
   return (
     <S.StyledWrapper
@@ -44,12 +53,14 @@ export const MotionCardWrapper = ({
         zIndex,
       }}
       onDragEnd={(_, info) => {
-        if (Math.abs(info.offset.x) < 200) {
+        if (Math.abs(info.offset.x) < sensitive) {
           animControls.start({ x: 0, y: 0 });
         } else {
-          animControls.start({ x: info.offset.x < 0 ? -1500 : 1500 }).then(() => {
-            onVote(info.offset.x > 0);
-          });
+          animControls
+            .start({ x: info.offset.x < 0 ? MOVE_TO_X_NEGATIVE : MOVE_TO_X_POSITIVE })
+            .then(() => {
+              onVote(info.offset.x > 0);
+            });
         }
       }}
       {...restProps}
