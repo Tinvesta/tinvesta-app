@@ -35,7 +35,9 @@ const StyledContentWrapper = styled.div<{
     transform: translate(-100%, -50%);
   `}
 
-  ${({ theme, withPadding }) => withPadding && respondToMax.xmobile`padding: ${theme.spacing(3)};`};
+  ${({ theme, withPadding }) => respondToMax.xmobile`
+    padding: ${withPadding ? theme.spacing(3) : 0};
+  `};
 `;
 
 const StyledCloseIcon = styled(CancelOutlinedIcon)`

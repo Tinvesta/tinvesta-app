@@ -9,16 +9,11 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(6)};
-  width: calc(100vw - ${({ theme }) => `${theme.spacing(3)} - ${theme.spacing(3)}`} - 2px);
-  height: calc(100vh - ${({ theme }) => `${theme.spacing(3)} - ${theme.spacing(3)}`} - 2px);
+  width: calc(100vw - ${({ theme }) => `${theme.spacing(3)} - ${theme.spacing(3)}`});
+  height: calc(100vh - ${({ theme }) => `${theme.spacing(3)} - ${theme.spacing(3)}`});
 
-  ${({ theme }) => respondToMax.mobile`
-    gap: ${theme.spacing(5)};
+  ${respondToMax.mobile`
     justify-content: flex-start;
-  `}
-
-  ${({ theme }) => respondToMax.xmobile`
-    gap: ${theme.spacing(4)};
   `}
 `;
 
@@ -54,6 +49,7 @@ const StyledImageWrapper = styled.div<{ rotationDirection: 'left' | 'right' }>`
 
 const StyledButtonsWrapper = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(4)};
   margin-top: ${({ theme }) => theme.spacing(2)};
@@ -69,6 +65,7 @@ const StyledButton = styled(Button)`
 
   ${respondToMax.xmobile`
     width: 100%;
+    max-width: 250px;
     min-width: initial;
   `}
 `;
