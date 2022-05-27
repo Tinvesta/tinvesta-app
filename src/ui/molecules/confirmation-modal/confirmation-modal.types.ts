@@ -1,4 +1,4 @@
-import { ButtonProps, DialogContentProps, TypographyProps } from '@mui/material';
+import { ButtonProps, DialogContentProps } from '@mui/material';
 import { MouseEvent, ReactNode } from 'react';
 
 import { IModalProps } from '@ui';
@@ -13,7 +13,6 @@ export interface IConfirmationModalOptions {
   description?: string;
   modalProps?: Omit<IModalProps, 'open' | 'onClose' | 'children'>;
   title?: string;
-  titleProps?: TypographyProps;
 }
 
 export interface IConfirmationModalProps {

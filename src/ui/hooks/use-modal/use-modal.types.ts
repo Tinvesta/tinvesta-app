@@ -13,4 +13,5 @@ export interface IUseModalProps {
 export interface IModalProps extends Omit<ModalProps, 'open' | 'onClose'> {
   onClose?: (event: {}, reason: 'backdropClick' | 'escapeKeyDown' | 'closeIconClick') => void;
   open?: boolean;
+  title?: string;
 }
