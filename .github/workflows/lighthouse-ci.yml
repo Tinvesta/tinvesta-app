@@ -16,5 +16,5 @@ jobs:
           locale: 'ja'
           device: 'mobile'
           prCommentSaveOld: true
-          urls: "https://www.tinvesta.io"
           gitHubAccessToken: ${{ secrets.RENOVATE_TOKEN }}
+          urls: "https://tinvesta-oyrbpgm7x-playerony.vercel.app"
