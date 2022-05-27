@@ -155,8 +155,8 @@ git push --follow-tags origin $releaseBranchName
 clear
 
 # create pull request
-curl -XPOST -g -H "$GITHUB_API_AUTHORIZATION_TOKEN_HEADER" -d '{ "title": "Release '$currentVersion'", "head": "'$releaseBranchName'", "base": "'$MAIN_BRANCH_NAME'" }' "$BASE_GITHUB_API_URL/pulls"
-curl -XPOST -g -H "$GITHUB_API_AUTHORIZATION_TOKEN_HEADER" -d '{ "title": "Release '$currentVersion'", "head": "'$releaseBranchName'", "base": "'$DEVELOP_BRANCH_NAME'" }' "$BASE_GITHUB_API_URL/pulls"
+curl -XPOST -g -H "$GITHUB_API_AUTHORIZATION_TOKEN_HEADER" -d '{ "title": "Release('$MAIN_BRANCH_NAME') '$currentVersion'", "head": "'$releaseBranchName'", "base": "'$MAIN_BRANCH_NAME'" }' "$BASE_GITHUB_API_URL/pulls"
+curl -XPOST -g -H "$GITHUB_API_AUTHORIZATION_TOKEN_HEADER" -d '{ "title": "Release('$DEVELOP_BRANCH_NAME') '$currentVersion'", "head": "'$releaseBranchName'", "base": "'$DEVELOP_BRANCH_NAME'" }' "$BASE_GITHUB_API_URL/pulls"
 clear
 
 # open github page with pull requests
