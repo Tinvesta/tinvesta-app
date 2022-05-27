@@ -1,1 +1,1 @@
-export * from './dark-theme/dark-theme.config';
+export * from './theme/theme.config';
