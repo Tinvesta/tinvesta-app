@@ -20,11 +20,6 @@ export const mergeOptions = (
     ...options.cancellationButtonProps,
   };
 
-  const titleProps = {
-    ...(defaultOptions.titleProps || baseOptions.titleProps),
-    ...options.titleProps,
-  };
-
   const contentProps = {
     ...(defaultOptions.contentProps || baseOptions.contentProps),
     ...options.contentProps,
@@ -35,7 +30,6 @@ export const mergeOptions = (
     ...defaultOptions,
     ...options,
     modalProps,
-    titleProps,
     contentProps,
     confirmationButtonProps,
     cancellationButtonProps,
