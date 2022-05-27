@@ -27,39 +27,34 @@ export const Home = (): JSX.Element => {
   };
 
   return (
-    <>
+    <S.StyledWrapper>
       <Modal>
         <SignInModalContent />
       </Modal>
       <Image
         priority
         alt="Tinvesta"
-        height={250}
-        src="/images/animated-full-logo.svg"
-        width={250}
-      />
-      <Image
-        priority
-        alt="Tinvesta"
         layout="fill"
-        src="/images/desktop-polygon-scatter-haikei.svg"
+        objectFit="cover"
+        src="/images/background/desktop-homepage.svg"
       />
-      <Image priority alt="Tinvesta" layout="fill" src="/images/desktop-blob-scatter-haikei.svg" />
-      {process.env.NEXT_PUBLIC_ENABLE_HOME_PAGE === 'true' && (
-        <>
-          <Typography fontWeight={700} sx={{ zIndex: 1 }} variant="h1">
-            SWIPE &amp; MATCH
-          </Typography>
-          <S.StyledSubHeaderWrapper>
-            <Typography fontWeight={700} sx={{ zIndex: 1 }} variant="body1">
-              matchmaking app for start-ups and investors all over the world
-            </Typography>
-            <Button color="secondary" size="large" variant="outlined" onClick={onSignInButtonClick}>
-              Create an account
-            </Button>
-          </S.StyledSubHeaderWrapper>
-        </>
-      )}
-    </>
+      <Typography fontWeight={700} sx={{ zIndex: 1 }} variant="h1">
+        SWIPE &amp; MATCH
+      </Typography>
+      <S.StyledSubHeaderWrapper>
+        <Typography fontWeight={700} sx={{ zIndex: 1 }} variant="h6">
+          matchmaking app for start-ups and investors all over the world
+        </Typography>
+        <Button
+          color="secondary"
+          disabled={process.env.NEXT_PUBLIC_ENABLE_HOME_PAGE !== 'true'}
+          size="large"
+          variant="outlined"
+          onClick={onSignInButtonClick}
+        >
+          Create an account
+        </Button>
+      </S.StyledSubHeaderWrapper>
+    </S.StyledWrapper>
   );
 };
