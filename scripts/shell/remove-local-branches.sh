@@ -1,2 +1,2 @@
 yarn grlc
-git branch | grep -v "main" | xargs git branch -D
+git branch | grep -v "develop" | xargs git branch -D
