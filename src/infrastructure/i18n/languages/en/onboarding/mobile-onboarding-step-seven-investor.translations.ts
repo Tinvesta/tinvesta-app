@@ -4,9 +4,9 @@ export default {
 
   // Investment Stage
   'component.mobile.onboarding.step.seven.investor.investment.stage.field.label':
-    'Preferred investment stages',
+    'Preferred investment stages*',
 
   // Investment Size
   'component.mobile.onboarding.step.seven.investor.investment.size.field.label':
-    "How much money you'd like to give?",
+    "How much money you'd like to give?*",
 };

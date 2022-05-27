@@ -3,8 +3,8 @@ export default {
   'component.mobile.onboarding.step.five.investor.heading': 'Setup investor',
 
   // Your Position
-  'component.mobile.onboarding.step.five.investor.your.position.field.label': 'Your position',
+  'component.mobile.onboarding.step.five.investor.your.position.field.label': 'Your position*',
 
   // Focus Markets
-  'component.mobile.onboarding.step.five.investor.focus.market.field.label': 'Focus markets',
+  'component.mobile.onboarding.step.five.investor.focus.market.field.label': 'Focus markets*',
 };
