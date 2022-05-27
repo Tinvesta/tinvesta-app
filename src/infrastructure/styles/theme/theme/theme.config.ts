@@ -1,4 +1,4 @@
-import { createTheme } from '@mui/material';
+import { ThemeOptions, createTheme } from '@mui/material';
 
 import { color } from '@infrastructure/styles/variables';
 
@@ -8,6 +8,39 @@ import {
   SMALL_SCREEN_BREAKPOINT,
   XMOBILE_SCREEN_BREAKPOINT,
 } from '@constants';
+
+const defaultThemeConfig: ThemeOptions = {
+  typography: {
+    fontSize: 16,
+    fontFamily: 'Montserrat, sans-serif',
+    button: {
+      textTransform: 'none',
+    },
+  },
+  zIndex: {
+    appBar: 20,
+    drawer: 25,
+    fab: 15,
+    mobileStepper: 10,
+    modal: 30,
+    snackbar: 35,
+    speedDial: 15,
+    tooltip: 40,
+  },
+  shape: {
+    borderRadius: 10,
+  },
+  spacing: [0, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128],
+  breakpoints: {
+    values: {
+      xs: 0,
+      lg: SMALL_SCREEN_BREAKPOINT,
+      md: MOBILE_SCREEN_BREAKPOINT,
+      sm: XMOBILE_SCREEN_BREAKPOINT,
+      xl: MEDIUM_SCREEN_BREAKPOINT,
+    },
+  },
+};
 
 export const darkTheme = createTheme({
   palette: {
@@ -43,34 +76,5 @@ export const darkTheme = createTheme({
     mode: 'dark',
     divider: color.black[400],
   },
-  typography: {
-    fontSize: 16,
-    fontFamily: 'Montserrat, sans-serif',
-    button: {
-      textTransform: 'none',
-    },
-  },
-  zIndex: {
-    appBar: 20,
-    drawer: 25,
-    fab: 15,
-    mobileStepper: 10,
-    modal: 30,
-    snackbar: 35,
-    speedDial: 15,
-    tooltip: 40,
-  },
-  shape: {
-    borderRadius: 10,
-  },
-  spacing: [0, 2, 4, 8, 16, 24, 32, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112, 120, 128],
-  breakpoints: {
-    values: {
-      xs: 0,
-      lg: SMALL_SCREEN_BREAKPOINT,
-      md: MOBILE_SCREEN_BREAKPOINT,
-      sm: XMOBILE_SCREEN_BREAKPOINT,
-      xl: MEDIUM_SCREEN_BREAKPOINT,
-    },
-  },
+  ...defaultThemeConfig,
 });

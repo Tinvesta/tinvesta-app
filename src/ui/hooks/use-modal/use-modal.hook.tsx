@@ -1,6 +1,8 @@
 import { Modal as MuiModal } from '@mui/material';
 import { useCallback, useState } from 'react';
 
+import { useDeviceDetect } from '@utils';
+
 import S from './use-modal.styles';
 import { IModalProps, IUseModalProps } from './use-modal.types';
 
@@ -14,10 +16,12 @@ export const useModal = ({
 }: IUseModalProps = {}) => {
   const [isOpen, setIsOpen] = useState(defaultIsOpenState);
 
+  const { deviceData } = useDeviceDetect();
+
   const show = () => setIsOpen(true);
   const hide = () => setIsOpen(false);
 
-  const Modal = ({ children, onClose, ...restProps }: IModalProps): JSX.Element => {
+  const Modal = ({ children, onClose, title, ...restProps }: IModalProps): JSX.Element => {
     const handleClose = (
       event: {},
       reason: 'backdropClick' | 'escapeKeyDown' | 'closeIconClick',
@@ -50,10 +54,23 @@ export const useModal = ({
           withBorderRadius={withBorderRadius}
           withPadding={withPadding}
         >
-          <>
-            {withCloseIcon && <S.StyledCloseIcon onClick={onCloseIconClick} />}
-            {children}
-          </>
+          {title && (
+            <S.StyledTitle
+              align="center"
+              color="secondary"
+              fontWeight={700}
+              variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
+            >
+              {title}
+            </S.StyledTitle>
+          )}
+          {withCloseIcon && (
+            <S.StyledCloseIcon
+              fontSize={deviceData.isSmallerThanXS ? 'medium' : 'large'}
+              onClick={onCloseIconClick}
+            />
+          )}
+          {children}
         </S.StyledContentWrapper>
       </MuiModal>
     );

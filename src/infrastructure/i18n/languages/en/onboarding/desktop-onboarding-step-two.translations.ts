@@ -4,7 +4,7 @@ export default {
   'component.desktop.onboarding.step.two.subheading': 'Step 2/5',
 
   // Profile Type
-  'component.desktop.onboarding.step.two.profile.type.field.label': 'Profile type',
+  'component.desktop.onboarding.step.two.profile.type.field.label': 'Profile type*',
 
   // What are you looking for?
   'component.desktop.onboarding.step.two.what.are.you.looking.for.field.label':

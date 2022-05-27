@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { CancelOutlined as CancelOutlinedIcon } from '@mui/icons-material';
+import { Typography } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
@@ -11,11 +12,10 @@ const StyledContentWrapper = styled.div<{
 }>`
   top: 50%;
   position: absolute;
-  border-radius: ${({ theme, withBorderRadius }) =>
-    withBorderRadius ? theme.shape.borderRadius : 0}px;
+  border-radius: ${({ withBorderRadius }) => (withBorderRadius ? 20 : 0)}px;
   background-color: ${({ backgroundColor, theme }) =>
     backgroundColor || theme.palette.background.paper};
-  padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing(4) : 0)};
+  padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing(5) : 0)};
 
   ${({ align }) =>
     align === 'center' &&
@@ -37,26 +37,44 @@ const StyledContentWrapper = styled.div<{
     transform: translate(-100%, -50%);
   `}
 
-  ${({ theme, withPadding }) => respondToMax.xmobile`
-    padding: ${withPadding ? theme.spacing(3) : 0};
+  ${({ theme, withPadding }) => respondToMax.mobile`
+    padding: ${withPadding ? theme.spacing(4) : 0};
   `};
 `;
 
-const StyledCloseIcon = styled(CancelOutlinedIcon)`
+const StyledTitle = styled(Typography)`
+  height: 40px;
   display: flex;
+  align-items: center;
+  justify-content: center;
+
+  ${respondToMax.xmobile`
+    height: 25px;
+  `}
+`;
+
+const StyledCloseIcon = styled(CancelOutlinedIcon)`
   cursor: pointer;
-  margin-left: auto;
+  position: absolute;
   transform: rotate(0deg);
   transition: all 150ms ease-in-out;
-  fill: ${({ theme }) => theme.palette.secondary.dark};
+  top: ${({ theme }) => theme.spacing(5)};
+  right: ${({ theme }) => theme.spacing(5)};
+  fill: ${({ theme }) => theme.palette.secondary.main};
 
   &:hover {
     transform: rotate(90deg);
-    fill: ${({ theme }) => theme.palette.secondary.main};
+    fill: ${({ theme }) => theme.palette.secondary.dark};
   }
+
+  ${({ theme }) => respondToMax.mobile`
+    top: ${theme.spacing(4)};
+    right: ${theme.spacing(4)};
+  `};
 `;
 
 const S = {
+  StyledTitle,
   StyledCloseIcon,
   StyledContentWrapper,
 };

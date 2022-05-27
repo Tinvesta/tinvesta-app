@@ -1,4 +1,4 @@
-import { Button, DialogContent, Typography } from '@mui/material';
+import { Button, Typography } from '@mui/material';
 
 import { useModal } from '@ui';
 
@@ -22,35 +22,28 @@ export const ConfirmationModal = ({
     description,
     modalProps,
     title,
-    titleProps,
   } = {},
 }: IConfirmationModalProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
-  const { Modal } = useModal({ withCloseIcon: false });
+
+  const { Modal } = useModal({ withBorderRadius: deviceData.isBiggerThanXS });
 
   return (
-    <Modal {...modalProps} open={open} onClose={onClose}>
+    <Modal {...modalProps} open={open} title={title} onClose={onClose}>
       <S.StyledWrapper>
-        {title && (
-          <Typography
-            align="center"
-            fontWeight={700}
-            marginTop={3}
-            variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
-            {...titleProps}
-          >
-            {title}
-          </Typography>
-        )}
         {content ? (
-          <DialogContent {...contentProps}>{content}</DialogContent>
+          <S.StyledDialogContent {...contentProps}>{content}</S.StyledDialogContent>
         ) : (
           description && (
-            <DialogContent {...contentProps}>
-              <Typography align="center" variant="body2">
+            <S.StyledDialogContent {...contentProps}>
+              <Typography
+                align="center"
+                color="secondary"
+                variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}
+              >
                 {description}
               </Typography>
-            </DialogContent>
+            </S.StyledDialogContent>
           )
         )}
         {(cancellationText || confirmationText) && (
@@ -60,7 +53,7 @@ export const ConfirmationModal = ({
                 fullWidth
                 {...cancellationButtonProps}
                 color="secondary"
-                size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
+                size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 variant="outlined"
                 onClick={onCancel}
               >
@@ -71,7 +64,7 @@ export const ConfirmationModal = ({
               <Button
                 fullWidth
                 color="secondary"
-                size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
+                size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 variant="contained"
                 {...confirmationButtonProps}
                 onClick={onConfirm}

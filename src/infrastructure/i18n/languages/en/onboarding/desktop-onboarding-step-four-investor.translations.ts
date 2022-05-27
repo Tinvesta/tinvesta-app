@@ -4,13 +4,13 @@ export default {
   'component.desktop.onboarding.step.four.investor.heading': 'Setup investor',
 
   // Team Sizes
-  'component.desktop.onboarding.step.four.investor.team.size.field.label': 'Preferred team sizes',
+  'component.desktop.onboarding.step.four.investor.team.size.field.label': 'Preferred team sizes*',
 
   // Investment Stages
   'component.desktop.onboarding.step.four.investor.investment.stage.field.label':
-    'Preferred investment stages',
+    'Preferred investment stages*',
 
   // Investment Sizes
   'component.desktop.onboarding.step.four.investor.investment.size.field.label':
-    "How much money you'd like to give?",
+    "How much money you'd like to give?*",
 };
