@@ -53,7 +53,7 @@ export const ConfirmationModal = ({
                 fullWidth
                 {...cancellationButtonProps}
                 color="secondary"
-                size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
+                size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 variant="outlined"
                 onClick={onCancel}
               >
@@ -64,7 +64,7 @@ export const ConfirmationModal = ({
               <Button
                 fullWidth
                 color="secondary"
-                size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
+                size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 variant="contained"
                 {...confirmationButtonProps}
                 onClick={onConfirm}
