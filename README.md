@@ -12,9 +12,9 @@
   <p align="center">
     Matchmaking app for start-ups and investors all over the world
     <br />
-    <a href="https://github.com/tinvesta/Tinvesta-app">View Demo</a>
+    <a href="https://www.tinvesta.io">View Production</a>
     ·
-    <a href="https://github.com/tinvesta/Tinvesta-app/issues">Report Bug</a>
+    <a href="https://tinvesta-ihoywnrfb-playerony.vercel.app">View Staging</a>
     ·
     <a href="https://github.com/tinvesta/Tinvesta-app/issues">Request Feature</a>
   </p>
