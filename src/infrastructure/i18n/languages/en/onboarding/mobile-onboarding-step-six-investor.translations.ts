@@ -4,8 +4,8 @@ export default {
 
   // Industrial Sectors
   'component.mobile.onboarding.step.six.investor.industrial.sectors.field.label':
-    'Industrial sectors',
+    'Industrial sectors*',
 
   // Sectors
-  'component.mobile.onboarding.step.six.investor.sectors.field.label': 'Preferred startup sectors',
+  'component.mobile.onboarding.step.six.investor.sectors.field.label': 'Preferred startup sectors*',
 };
