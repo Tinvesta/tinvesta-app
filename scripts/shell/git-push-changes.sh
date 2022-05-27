@@ -1,10 +1,10 @@
 commitMessage="$1"
 
 currentBranch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
-mainBranchName=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+developBranchName=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
 
-if [ $currentBranch == $mainBranchName ]; then
-  echo 'Error: cannot push changes to '$mainBranchName'.'
+if [ $currentBranch == $developBranchName ]; then
+  echo 'Error: cannot push changes to '$developBranchName'.'
 
   exit 1
 fi
