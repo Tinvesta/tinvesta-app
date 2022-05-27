@@ -1,8 +1,8 @@
-mainBranchName=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
-echo "Info: Detach main branch name as: '$mainBranchName'."
+developBranchName=$(git remote show origin | sed -n '/HEAD branch/s/.*: //p')
+echo "Info: Detach develop branch name as: '$developBranchName'."
 
-git checkout $mainBranchName
-echo "Info: Checkout to '$mainBranchName' branch."
+git checkout $developBranchName
+echo "Info: Checkout to '$developBranchName' branch."
 
-git pull origin $mainBranchName
-echo "Info: Pull changes from '$mainBranchName' branch."
+git pull origin $developBranchName
+echo "Info: Pull changes from '$developBranchName' branch."
