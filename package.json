@@ -22,6 +22,7 @@
     "lint:fix": "yarn lint --fix",
     "open:android": "npx cap open android",
     "open:coverage": "yarn test:coverage && open ./coverage/lcov-report/index.html",
+    "open:ios": "npx cap open ios",
     "prepare": "husky install",
     "reinstall-node-modules": "bash ./scripts/shell/reinstall-node-modules.sh",
     "release": "bash ./scripts/shell/release-develop-to-main.sh",
