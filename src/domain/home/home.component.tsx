@@ -57,7 +57,12 @@ export const Home = (): JSX.Element => {
         objectFit="cover"
         src="/images/background/desktop-homepage.svg"
       />
-      <Typography fontWeight={700} sx={{ zIndex: 1 }} variant={getHeadingVariant()}>
+      <Typography
+        fontWeight={700}
+        sx={{ zIndex: 1 }}
+        textAlign="center"
+        variant={getHeadingVariant()}
+      >
         SWIPE &amp; MATCH
       </Typography>
       <S.StyledSubHeaderWrapper>
