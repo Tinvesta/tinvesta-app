@@ -4,7 +4,7 @@ import { useRouter } from 'next/router';
 
 import { useModal } from '@ui';
 
-import { useUser } from '@utils';
+import { useDeviceDetect, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -15,6 +15,7 @@ export const Home = (): JSX.Element => {
   const router = useRouter();
   const { Modal, show } = useModal();
   const { isLoading, user } = useUser();
+  const { deviceData } = useDeviceDetect();
 
   const isSignedIn = !!user && !isLoading;
 
@@ -24,6 +25,22 @@ export const Home = (): JSX.Element => {
     }
 
     router.push(user.client_type_id ? ERoutes.DASHBOARD : ERoutes.ONBOARDING);
+  };
+
+  const getHeadingVariant = () => {
+    if (deviceData.isSmallerThanXS) {
+      return 'h4';
+    }
+
+    if (deviceData.isSmallerThanSM) {
+      return 'h3';
+    }
+
+    if (deviceData.isSmallerThanMD) {
+      return 'h2';
+    }
+
+    return 'h1';
   };
 
   return (
@@ -38,11 +55,16 @@ export const Home = (): JSX.Element => {
         objectFit="cover"
         src="/images/background/desktop-homepage.svg"
       />
-      <Typography fontWeight={700} sx={{ zIndex: 1 }} variant="h1">
+      <Typography fontWeight={700} sx={{ zIndex: 1 }} variant={getHeadingVariant()}>
         SWIPE &amp; MATCH
       </Typography>
       <S.StyledSubHeaderWrapper>
-        <Typography fontWeight={700} sx={{ zIndex: 1 }} variant="h6">
+        <Typography
+          fontWeight={700}
+          sx={{ zIndex: 1 }}
+          textAlign="center"
+          variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}
+        >
           matchmaking app for start-ups and investors all over the world
         </Typography>
         <Button
@@ -54,6 +76,12 @@ export const Home = (): JSX.Element => {
         >
           Create an account
         </Button>
+        <Typography fontWeight={700} marginTop={3} sx={{ zIndex: 1 }} variant="body2">
+          {'(Early access only for selected users)'}
+        </Typography>
+        <Typography fontWeight={700} marginTop={3} sx={{ zIndex: 1 }} variant="body2">
+          {'(Full release planned on 13 June 2022)'}
+        </Typography>
       </S.StyledSubHeaderWrapper>
     </S.StyledWrapper>
   );
