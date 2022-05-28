@@ -1,6 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { StringParam, useQueryParam } from 'use-query-params';
 
 import { useModal } from '@ui';
 
@@ -16,6 +17,7 @@ export const Home = (): JSX.Element => {
   const { Modal, show } = useModal();
   const { isLoading, user } = useUser();
   const { deviceData } = useDeviceDetect();
+  const [codeQueryParam] = useQueryParam('code', StringParam);
 
   const isSignedIn = !!user && !isLoading;
 
@@ -69,7 +71,7 @@ export const Home = (): JSX.Element => {
         </Typography>
         <Button
           color="secondary"
-          disabled={process.env.NEXT_PUBLIC_ENABLE_HOME_PAGE !== 'true'}
+          disabled={codeQueryParam !== 'YETI'}
           size="large"
           variant="outlined"
           onClick={onSignInButtonClick}
