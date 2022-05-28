@@ -31,12 +31,11 @@ export enum ERoutes {
   DASHBOARD_LIKES = '/dashboard/likes',
   DASHBOARD_MATCHES = '/dashboard/matches',
   DASHBOARD_PROFILE = '/dashboard/profile',
-  HOME = '/home',
+  HOME = '/',
   INTERNAL_SERVER_ERROR = '/500',
   NOT_FOUND = '/404',
   ONBOARDING = '/onboarding',
   PRIVACY_POLICY = '/privacy-policy',
-  RELEASE_DATE = '/',
   TERMS = '/terms',
 }
 
