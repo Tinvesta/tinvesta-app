@@ -11,7 +11,7 @@ import {
   UserProvider,
 } from '@application';
 
-import { Loader } from '@ui/atoms';
+import { Loading } from '@ui';
 
 import { IAppProps } from './app.types';
 
@@ -33,7 +33,7 @@ export const App = ({ Component, emotionCache, pageProps }: IAppProps) => {
               <QueryClientProvider>
                 <ConfirmationModalProvider>
                   <UserProvider>
-                    {isLoading ? <Loader /> : <Component {...pageProps} />}
+                    {isLoading ? <Loading /> : <Component {...pageProps} />}
                   </UserProvider>
                 </ConfirmationModalProvider>
               </QueryClientProvider>
