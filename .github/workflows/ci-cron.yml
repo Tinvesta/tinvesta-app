@@ -1,0 +1,45 @@
+name: CI - cron
+
+on:
+  schedule:
+    # runs tests every day at 4am
+    - cron: "0 4 * * *"
+
+jobs:
+  ci-cron:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
+    steps:
+      - uses: actions/checkout@v3.0.2
+        with:
+          fetch-depth: 0
+
+      - name: Check commits messages
+        uses: wagoid/commitlint-github-action@v4
+
+      - uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - uses: actions/cache@v3.0.2
+        with:
+          path: "**/node_modules"
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install yarn
+        if: steps.yarn-cache.outputs.cache-hit != 'true'
+        run: yarn install
+
+      - name: Run lint
+        run: yarn lint
+
+      - name: Run typecheck
+        run: yarn typecheck
+
+      - name: Run prettier
+        run: yarn format:check
+
+      - name: Run test
+        run: yarn test:ci

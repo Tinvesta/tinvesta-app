@@ -1,9 +1,9 @@
-name: CI
+name: CI - pull request
 
 on: [pull_request]
 
 jobs:
-  ci:
+  ci-pull-request:
     runs-on: ubuntu-latest
     strategy:
       matrix:
@@ -29,14 +29,8 @@ jobs:
         if: steps.yarn-cache.outputs.cache-hit != 'true'
         run: yarn install
 
-      - name: Run lint
-        run: yarn lint
-
       - name: Run typecheck
         run: yarn typecheck
 
       - name: Run prettier
         run: yarn format:check
-
-      - name: Run test
-        run: yarn test:ci
