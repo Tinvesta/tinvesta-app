@@ -5,7 +5,6 @@ declare namespace NodeJS {
     NEXT_PUBLIC_APP_ENV: 'test' | 'local' | 'staging' | 'production';
     NEXT_PUBLIC_APP_URL: string;
     NEXT_PUBLIC_DEFAULT_LOCALE: string;
-    NEXT_PUBLIC_ENABLE_HOME_PAGE: 'true' | 'false' | undefined;
     NEXT_PUBLIC_MAPBOX_KEY: string;
     NEXT_PUBLIC_MAPBOX_URL: string;
     NEXT_PUBLIC_STRIPE_KEY: string;
