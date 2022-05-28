@@ -1,6 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { StringParam, useQueryParam } from 'use-query-params';
 
 import { useModal } from '@ui';
 
@@ -16,6 +17,7 @@ export const Home = (): JSX.Element => {
   const { Modal, show } = useModal();
   const { isLoading, user } = useUser();
   const { deviceData } = useDeviceDetect();
+  const [codeQueryParam] = useQueryParam('code', StringParam);
 
   const isSignedIn = !!user && !isLoading;
 
@@ -69,7 +71,7 @@ export const Home = (): JSX.Element => {
         </Typography>
         <Button
           color="secondary"
-          disabled={process.env.NEXT_PUBLIC_ENABLE_HOME_PAGE !== 'true'}
+          disabled={codeQueryParam !== 'yeti'}
           size="large"
           variant="outlined"
           onClick={onSignInButtonClick}
@@ -79,7 +81,7 @@ export const Home = (): JSX.Element => {
         <Typography fontWeight={700} marginTop={3} sx={{ zIndex: 1 }} variant="body2">
           {'(Early access only for selected users)'}
         </Typography>
-        <Typography fontWeight={700} marginTop={3} sx={{ zIndex: 1 }} variant="body2">
+        <Typography fontWeight={700} sx={{ zIndex: 1 }} variant="body2">
           {'(Full release planned on 13 June 2022)'}
         </Typography>
       </S.StyledSubHeaderWrapper>
