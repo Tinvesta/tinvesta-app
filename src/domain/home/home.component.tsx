@@ -71,7 +71,7 @@ export const Home = (): JSX.Element => {
         </Typography>
         <Button
           color="secondary"
-          disabled={codeQueryParam !== 'YETI'}
+          disabled={codeQueryParam !== 'yeti'}
           size="large"
           variant="outlined"
           onClick={onSignInButtonClick}
@@ -81,7 +81,7 @@ export const Home = (): JSX.Element => {
         <Typography fontWeight={700} marginTop={3} sx={{ zIndex: 1 }} variant="body2">
           {'(Early access only for selected users)'}
         </Typography>
-        <Typography fontWeight={700} marginTop={3} sx={{ zIndex: 1 }} variant="body2">
+        <Typography fontWeight={700} marginTop={2} sx={{ zIndex: 1 }} variant="body2">
           {'(Full release planned on 13 June 2022)'}
         </Typography>
       </S.StyledSubHeaderWrapper>
