@@ -1,6 +1,6 @@
-import { releaseDatePage } from '@application';
+import { homePage } from '@application';
 
-const { ReleaseDatePage } = releaseDatePage;
+const { HomePage } = homePage;
 
 // eslint-disable-next-line no-restricted-exports
-export { ReleaseDatePage as default };
+export { HomePage as default };
