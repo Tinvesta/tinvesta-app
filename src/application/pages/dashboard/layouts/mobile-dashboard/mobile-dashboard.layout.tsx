@@ -9,7 +9,7 @@ import { parseProfileAvatarUrl, useDeviceDetect, useTranslation, useUser } from 
 
 import { ERoutes } from '@enums';
 
-import { QueryClientProvider } from '../../../../providers';
+import { HealthCheckProvider, QueryClientProvider } from '../../../../providers';
 import { getBottomNavigationOptions, translationStrings } from './mobile-dashboard.defaults';
 import S from './mobile-dashboard.styles';
 import { IMobileDashboardLayoutProps } from './mobile-dashboard.types';
@@ -54,7 +54,9 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
         </IconButton>
       </S.StyledTopNavigation>
       <S.StyledContentWrapper>
-        <QueryClientProvider>{children}</QueryClientProvider>
+        <HealthCheckProvider>
+          <QueryClientProvider>{children}</QueryClientProvider>
+        </HealthCheckProvider>
       </S.StyledContentWrapper>
       <S.StyledBottomNavigation>
         {bottomNavigationOptions.map((_bottomNavigationOption) => {

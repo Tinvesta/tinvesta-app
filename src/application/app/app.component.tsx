@@ -1,7 +1,6 @@
 import {
   CacheProvider,
   ConfirmationModalProvider,
-  HealthCheckProvider,
   LocaleProvider,
   QueryClientProvider,
   ThemeProvider,
@@ -19,13 +18,11 @@ export const App = ({ Component, emotionCache, pageProps }: IAppProps) => (
       <ToastProvider>
         <LocaleProvider>
           <QueryClientProvider>
-            <HealthCheckProvider>
-              <ConfirmationModalProvider>
-                <UserProvider>
-                  <Component {...pageProps} />
-                </UserProvider>
-              </ConfirmationModalProvider>
-            </HealthCheckProvider>
+            <ConfirmationModalProvider>
+              <UserProvider>
+                <Component {...pageProps} />
+              </UserProvider>
+            </ConfirmationModalProvider>
           </QueryClientProvider>
         </LocaleProvider>
       </ToastProvider>
