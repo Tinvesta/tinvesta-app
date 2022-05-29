@@ -9,7 +9,6 @@ import { parseProfileAvatarUrl, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { HealthCheckProvider } from '../../../../providers';
 import { getSideMenuOptions, translationStrings } from './desktop-dashboard.defaults';
 import S from './desktop-dashboard.styles';
 import { IDesktopDashboardLayoutProps } from './desktop-dashboard.types';
@@ -81,9 +80,7 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
           </IconButton>
         </S.StyledAsideBottomContentWrapper>
       </S.StyledAsideWrapper>
-      <S.StyledContentWrapper>
-        <HealthCheckProvider>{children}</HealthCheckProvider>
-      </S.StyledContentWrapper>
+      <S.StyledContentWrapper>{children}</S.StyledContentWrapper>
     </S.StyledWrapper>
   );
 };
