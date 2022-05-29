@@ -1,6 +1,6 @@
 {
-  "appId": "com.tinvesta.app",
-  "appName": "Tinvesta",
-  "webDir": "out",
-  "bundledWebRuntime": false
+	"appId": "com.tinvesta.app",
+	"appName": "Tinvesta",
+	"webDir": "out",
+	"bundledWebRuntime": false
 }

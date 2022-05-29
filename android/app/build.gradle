@@ -1,7 +1,7 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion rootProject.ext.compileSdkVersion
+    compileSdk compileSdkVersion
     defaultConfig {
         applicationId "com.tinvesta.app"
         minSdkVersion rootProject.ext.minSdkVersion
