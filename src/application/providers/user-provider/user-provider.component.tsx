@@ -28,11 +28,10 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
       const { data: likes_counter } = await supabaseInstance
         .from('likes_counter')
         .select('count,created_at')
-        .eq('profile_id', sessionUser.id)
-        .single();
+        .eq('profile_id', sessionUser.id);
 
       setUser({
-        likes_counter,
+        likes_counter: likes_counter ? likes_counter[0] : null,
         ...sessionUser,
         ...profileData,
       });
