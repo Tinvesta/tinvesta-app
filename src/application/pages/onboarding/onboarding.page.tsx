@@ -10,7 +10,6 @@ import { useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { HealthCheckProvider } from '../../providers';
 import { fetchDropdownsStaticData } from '../utils';
 import S from './onboarding.styles';
 import { IOnboardingPageProps } from './onboarding.types';
@@ -42,9 +41,7 @@ export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => {
       <Head>
         <title>Tinvesta</title>
       </Head>
-      <HealthCheckProvider>
-        {shouldRenderLoader ? <Loading /> : <Onboarding {...props} />}
-      </HealthCheckProvider>
+      {shouldRenderLoader ? <Loading /> : <Onboarding {...props} />}
     </S.StyledWrapper>
   );
 };
