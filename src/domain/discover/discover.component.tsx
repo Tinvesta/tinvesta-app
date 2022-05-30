@@ -26,6 +26,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   const { mutateAsync } = useMutation(likeProfileAction);
   const { data, isLoading, mutate } = useMutation(discoverRecordsAction);
 
+  const [drag, setDrag] = useState(true);
   const [reachedLimit, setReachedLimit] = useState(false);
   const [likedProfileDetails, setLikedProfileDetails] = useState<IProfileDetails>();
   const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
@@ -121,6 +122,8 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
     setLikedProfileDetails(undefined);
   };
 
+  const disableDrag = () => setDrag(false);
+
   return (
     <>
       <Modal onClose={onModalClose}>
@@ -131,8 +134,10 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
         />
       </Modal>
       <CenterBlockLayout>
-        <MotionCardsStack onVote={onVote}>
-          {data?.data.map((_record) => <Card key={_record.id} record={_record} {...props} />) || []}
+        <MotionCardsStack drag={drag} onVote={onVote}>
+          {data?.data.map((_record) => (
+            <Card key={_record.id} disableDrag={disableDrag} record={_record} {...props} />
+          )) || []}
         </MotionCardsStack>
       </CenterBlockLayout>
     </>

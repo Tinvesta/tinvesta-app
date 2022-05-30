@@ -16,6 +16,7 @@ const MOVE_TO_X_NEGATIVE = -1500;
 
 export const MotionCardWrapper = ({
   children,
+  drag,
   id,
   onVote,
   zIndex,
@@ -55,8 +56,8 @@ export const MotionCardWrapper = ({
 
   return (
     <S.StyledWrapper
-      drag
       animate={animControls}
+      drag={drag}
       dragConstraints={{ left: -750, right: 750 }}
       exit={{ opacity: 0 }}
       style={{

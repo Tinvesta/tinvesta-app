@@ -8,5 +8,6 @@ export interface ICardProps {
 
 export interface IMotionCardsStackProps extends Omit<HTMLAttributes<HTMLDivElement>, 'children'> {
   children: ReactElement<ICardProps> | ReactElement<ICardProps>[];
+  drag: boolean;
   onVote: (profileId: string, vote: boolean) => void;
 }

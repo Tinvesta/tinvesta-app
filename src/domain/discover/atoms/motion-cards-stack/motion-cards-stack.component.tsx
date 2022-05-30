@@ -11,6 +11,7 @@ const pop = (array: ReactElement<ICardProps>[]) =>
 
 export const MotionCardsStack = ({
   children,
+  drag,
   onVote,
   ...restProps
 }: IMotionCardsStackProps): JSX.Element => {
@@ -28,7 +29,7 @@ export const MotionCardsStack = ({
         const key = hasOwnProperty(item, 'key') ? (item.key as string) || index : index;
 
         return (
-          <MotionCardWrapper key={key} zIndex={index + 2} onVote={handleVote(item)}>
+          <MotionCardWrapper key={key} drag={drag} zIndex={index + 2} onVote={handleVote(item)}>
             {item}
           </MotionCardWrapper>
         );
