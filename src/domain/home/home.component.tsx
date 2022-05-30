@@ -76,7 +76,7 @@ export const Home = (): JSX.Element => {
         </Typography>
         <Button
           color="secondary"
-          disabled={codeQueryParam !== 'yeti'}
+          disabled={codeQueryParam !== 'yeti' && process.env.NEXT_PUBLIC_APP_ENV !== 'local'}
           size="large"
           variant="outlined"
           onClick={onSignInButtonClick}
