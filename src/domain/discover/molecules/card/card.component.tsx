@@ -28,6 +28,7 @@ import S from './card.styles';
 import { ICardProps } from './card.types';
 
 export const Card = ({
+  disableDrag,
   focusMarkets,
   industrialSectors,
   investmentSizes,
@@ -60,7 +61,10 @@ export const Card = ({
     translations,
   );
 
-  const showProfileDetails = () => setDisplayProfileDetails(true);
+  const showProfileDetails = () => {
+    disableDrag();
+    setDisplayProfileDetails(true);
+  };
 
   const renderStartupUserInfo = () => {
     const investmentSizeChips = transformNumberArrayToChips(

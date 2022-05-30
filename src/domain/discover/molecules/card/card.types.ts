@@ -12,6 +12,7 @@ import {
 } from '@interfaces';
 
 export interface ICardProps {
+  disableDrag: () => void;
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
   investmentSizes: IInvestmentSize[];
