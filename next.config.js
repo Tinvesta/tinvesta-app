@@ -58,7 +58,7 @@ module.exports = withPWA({
     // TODO - fix later
     // loader: 'imgix',
     // path: 'https://noop/',
-    domains: ['fkntlethkbyborzenxpp.supabase.co', 'lh3.googleusercontent.com'],
+    domains: [process.env.NEXT_PUBLIC_SUPABASE_URL, 'lh3.googleusercontent.com'],
   },
   async headers() {
     return [
