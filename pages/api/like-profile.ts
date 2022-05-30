@@ -248,7 +248,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(EApiError.INTERNAL_SERVER_ERROR);
   }
 
-  if (foundLikeFromOtherProfile && foundLikeFromOtherProfile.data.liked === true) {
+  if (foundLikeFromOtherProfile.data?.liked === true) {
     const updatedLike = await updateLikeRecord(
       foundLikeFromOtherProfile.data.id,
       profileIdToLike,
@@ -278,7 +278,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       return response.status(500).send(updatedLike.error);
     }
 
-    if (updatedLike.data.liked) {
+    if (updatedLike.data?.liked) {
       const [
         { data: likedProfileDetailsData, error: likedProfileDetailsError },
         { data: loggedProfileDetailsData, error: loggedProfileDetailsError },
@@ -327,7 +327,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.send({ isMatch: updatedLike.data.liked });
   }
 
-  if (foundLikeFromOtherProfile && foundLikeFromOtherProfile.data.liked === false) {
+  if (foundLikeFromOtherProfile.data?.liked === false) {
     const updatedLike = await updateLikeRecord(
       foundLikeFromOtherProfile.data.id,
       profileIdToLike,
