@@ -59,9 +59,9 @@ module.exports = withPWA({
     // loader: 'imgix',
     // path: 'https://noop/',
     domains: [
-      process.env.NEXT_PUBLIC_SUPABASE_URL,
       'lh3.googleusercontent.com',
-      'https://tinvesta.io',
+      'ybaxrlqelmtgmowtrzpy.supabase.co',
+      'fkntlethkbyborzenxpp.supabase.co',
     ],
   },
   async headers() {
