@@ -54,19 +54,21 @@ export const useModal = ({
           style={backgroundStyles}
           withPadding={withPadding}
         >
-          <S.StyledHeader>
-            {title && (
-              <S.StyledTitle
-                align="center"
-                color="secondary"
-                fontWeight={700}
-                variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
-              >
-                {title}
-              </S.StyledTitle>
-            )}
-            {withCloseIcon && <S.StyledCloseIcon fontSize="large" onClick={onCloseIconClick} />}
-          </S.StyledHeader>
+          {(title || withCloseIcon) && (
+            <S.StyledHeader>
+              {title && (
+                <S.StyledTitle
+                  align="center"
+                  color="secondary"
+                  fontWeight={700}
+                  variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
+                >
+                  {title}
+                </S.StyledTitle>
+              )}
+              {withCloseIcon && <S.StyledCloseIcon fontSize="large" onClick={onCloseIconClick} />}
+            </S.StyledHeader>
+          )}
           {children}
         </S.StyledContentWrapper>
       </MuiModal>
