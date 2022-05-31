@@ -9,7 +9,6 @@ import { useTranslation } from '@utils';
 import { translationStrings } from './house-rules-agreements-content.defaults';
 import S from './house-rules-agreements-content.styles';
 
-// TODO - select image based on theme
 export const HouseRulesAgreementsContent = (): JSX.Element => {
   const translations = useTranslation(translationStrings);
 
