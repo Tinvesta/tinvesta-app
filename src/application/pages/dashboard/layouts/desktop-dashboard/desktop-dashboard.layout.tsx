@@ -1,9 +1,10 @@
 import { Logout as LogoutIcon, Settings as SettingsIcon } from '@mui/icons-material';
-import { IconButton, Typography } from '@mui/material';
+import { CircularProgress, IconButton, Typography } from '@mui/material';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useIsFetching, useIsMutating } from 'react-query';
 
 import { parseProfileAvatarUrl, useTranslation, useUser } from '@utils';
 
@@ -15,6 +16,8 @@ import { IDesktopDashboardLayoutProps } from './desktop-dashboard.types';
 
 export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProps): JSX.Element => {
   const router = useRouter();
+  const isFetching = useIsFetching();
+  const isMutating = useIsMutating();
   const { logout, user } = useUser();
   const translations = useTranslation(translationStrings);
 
@@ -75,6 +78,7 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
           </S.StyledMenu>
         </span>
         <S.StyledAsideBottomContentWrapper>
+          {isFetching || isMutating ? <CircularProgress color="secondary" size={40} /> : null}
           <IconButton color="secondary" size="large" onClick={logout}>
             <LogoutIcon />
           </IconButton>
