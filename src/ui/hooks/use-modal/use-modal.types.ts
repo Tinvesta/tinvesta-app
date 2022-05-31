@@ -3,6 +3,7 @@ import { CSSProperties } from 'react';
 
 export interface IUseModalProps {
   align?: 'right' | 'center' | 'left';
+  alwaysFullWidth?: boolean;
   backgroundStyles?: CSSProperties;
   defaultIsOpenState?: boolean;
   withBorderRadius?: boolean;

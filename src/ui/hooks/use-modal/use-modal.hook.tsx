@@ -8,9 +8,9 @@ import { IModalProps, IUseModalProps } from './use-modal.types';
 
 export const useModal = ({
   align = 'center',
+  alwaysFullWidth = false,
   backgroundStyles,
   defaultIsOpenState = false,
-  withBorderRadius = true,
   withCloseIcon = true,
   withPadding = true,
 }: IUseModalProps = {}) => {
@@ -50,26 +50,23 @@ export const useModal = ({
       >
         <S.StyledContentWrapper
           align={align}
+          alwaysFullWidth={alwaysFullWidth}
           style={backgroundStyles}
-          withBorderRadius={withBorderRadius}
           withPadding={withPadding}
         >
-          {title && (
-            <S.StyledTitle
-              align="center"
-              color="secondary"
-              fontWeight={700}
-              variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
-            >
-              {title}
-            </S.StyledTitle>
-          )}
-          {withCloseIcon && (
-            <S.StyledCloseIcon
-              fontSize={deviceData.isSmallerThanXS ? 'medium' : 'large'}
-              onClick={onCloseIconClick}
-            />
-          )}
+          <S.StyledHeader>
+            {title && (
+              <S.StyledTitle
+                align="center"
+                color="secondary"
+                fontWeight={700}
+                variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
+              >
+                {title}
+              </S.StyledTitle>
+            )}
+            {withCloseIcon && <S.StyledCloseIcon fontSize="large" onClick={onCloseIconClick} />}
+          </S.StyledHeader>
           {children}
         </S.StyledContentWrapper>
       </MuiModal>

@@ -6,15 +6,16 @@ import { respondToMax } from '@infrastructure';
 
 const StyledContentWrapper = styled.div<{
   align?: 'right' | 'center' | 'left';
+  alwaysFullWidth?: boolean;
   backgroundColor?: string;
-  withBorderRadius?: boolean;
   withPadding?: boolean;
 }>`
   top: 50%;
   position: absolute;
-  border-radius: ${({ withBorderRadius }) => (withBorderRadius ? 20 : 0)}px;
+  border-radius: 20px;
   background-color: ${({ backgroundColor, theme }) =>
     backgroundColor || theme.palette.background.paper};
+  width: ${({ alwaysFullWidth }) => (alwaysFullWidth ? '100%' : '500px')};
   padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing(5) : 0)};
 
   ${({ align }) =>
@@ -38,8 +39,22 @@ const StyledContentWrapper = styled.div<{
   `}
 
   ${({ theme, withPadding }) => respondToMax.mobile`
+    width: 100%;
+    height: 100%;
+    border-radius: 0;
     padding: ${withPadding ? theme.spacing(4) : 0};
   `};
+
+  ${({ theme, withPadding }) => respondToMax.xmobile`
+    padding: ${withPadding ? theme.spacing(3) : 0};
+  `};
+`;
+
+const StyledHeader = styled.header`
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;
 
 const StyledTitle = styled(Typography)`
@@ -71,10 +86,16 @@ const StyledCloseIcon = styled(CancelOutlinedIcon)`
     top: ${theme.spacing(4)};
     right: ${theme.spacing(4)};
   `};
+
+  ${({ theme }) => respondToMax.xmobile`
+    top: ${theme.spacing(3)};
+    right: ${theme.spacing(3)};
+  `};
 `;
 
 const S = {
   StyledTitle,
+  StyledHeader,
   StyledCloseIcon,
   StyledContentWrapper,
 };
