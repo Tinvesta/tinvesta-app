@@ -38,12 +38,24 @@ const StyledTopNavigation = styled.nav`
   `}
 `;
 
+const StyledRightTopNavigationWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing(3)};
+
+  ${({ theme }) => respondToMax.xmobile`
+    gap: ${theme.spacing(2)};
+  `}
+`;
+
 const S = {
   StyledWrapper,
   StyledTopNavigation,
   StyledContentWrapper,
   StyledBottomNavigation,
   StyledBottomNavigationAction,
+  StyledRightTopNavigationWrapper,
 };
 
 export default S;
