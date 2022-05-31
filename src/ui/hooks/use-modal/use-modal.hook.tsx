@@ -11,6 +11,7 @@ export const useModal = ({
   alwaysFullWidth = false,
   backgroundStyles,
   defaultIsOpenState = false,
+  withBorderRadius = true,
   withCloseIcon = true,
   withPadding = true,
 }: IUseModalProps = {}) => {
@@ -52,6 +53,7 @@ export const useModal = ({
           align={align}
           alwaysFullWidth={alwaysFullWidth}
           style={backgroundStyles}
+          withBorderRadius={withBorderRadius}
           withPadding={withPadding}
         >
           {(title || withCloseIcon) && (

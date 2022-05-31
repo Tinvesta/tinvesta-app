@@ -8,14 +8,15 @@ const StyledContentWrapper = styled.div<{
   align?: 'right' | 'center' | 'left';
   alwaysFullWidth?: boolean;
   backgroundColor?: string;
+  withBorderRadius?: boolean;
   withPadding?: boolean;
 }>`
   top: 50%;
   position: absolute;
-  border-radius: 20px;
   background-color: ${({ backgroundColor, theme }) =>
     backgroundColor || theme.palette.background.paper};
   width: ${({ alwaysFullWidth }) => (alwaysFullWidth ? '100%' : '500px')};
+  border-radius: ${({ withBorderRadius }) => (withBorderRadius ? 20 : 0)}px;
   padding: ${({ theme, withPadding }) => (withPadding ? theme.spacing(5) : 0)};
 
   ${({ align }) =>
