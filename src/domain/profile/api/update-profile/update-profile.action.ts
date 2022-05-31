@@ -38,10 +38,13 @@ export const updateProfileAction = async ({ clientTypeId, newData, oldData }: II
         const base64AsFile = base64ToFile(_image, fileName);
 
         if (base64AsFile) {
-          // eslint-disable-next-line no-await-in-loop
-          const { data: avatarUploadData } = await supabaseInstance.storage
-            .from('avatars')
-            .upload(fileName, base64AsFile);
+          const { data: avatarUploadData, error: avatarUploadError } =
+            // eslint-disable-next-line no-await-in-loop
+            await supabaseInstance.storage.from('avatars').upload(fileName, base64AsFile);
+
+          if (avatarUploadError) {
+            throw new Error(avatarUploadError.message);
+          }
 
           result.push(avatarUploadData?.Key ? avatarUploadData?.Key : _image);
         } else {
