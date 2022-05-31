@@ -35,6 +35,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   const { user } = useUser();
   const { hide, isOpen, Modal, show } = useModal({
     withCloseIcon: false,
+    alwaysFullWidth: true,
     withBorderRadius: false,
     backgroundStyles: {
       backdropFilter: 'blur(10px)',

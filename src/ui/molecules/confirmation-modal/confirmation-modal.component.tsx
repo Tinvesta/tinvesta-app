@@ -26,7 +26,7 @@ export const ConfirmationModal = ({
 }: IConfirmationModalProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
 
-  const { Modal } = useModal({ withBorderRadius: deviceData.isBiggerThanXS });
+  const { Modal } = useModal();
 
   return (
     <Modal {...modalProps} open={open} title={title} onClose={onClose}>
