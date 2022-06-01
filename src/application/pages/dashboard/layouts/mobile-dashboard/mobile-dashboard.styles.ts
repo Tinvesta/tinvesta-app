@@ -17,6 +17,7 @@ const StyledContentWrapper = styled.div`
 const StyledBottomNavigation = styled(BottomNavigation)`
   max-height: 70px;
   min-height: 70px;
+  overflow: hidden;
   background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${respondToMax.xmobile`
