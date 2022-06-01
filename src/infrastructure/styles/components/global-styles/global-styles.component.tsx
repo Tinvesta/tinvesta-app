@@ -1,6 +1,8 @@
 import { Global, css, useTheme } from '@emotion/react';
 import '@fontsource/montserrat';
 
+import { respondToMax } from '@infrastructure';
+
 export const GlobalStyles = (): JSX.Element => {
   const theme = useTheme();
 
@@ -29,15 +31,15 @@ export const GlobalStyles = (): JSX.Element => {
             height: 6px;
             width: 6px;
 
-            @include breakpoint(sm) {
+            ${respondToMax.mobile`
               height: 5px;
               width: 5px;
-            }
+            `}
 
-            @include breakpoint(sm) {
+            ${respondToMax.xmobile`
               height: 4px;
               width: 4px;
-            }
+            `}
           }
 
           *::-webkit-scrollbar-track {
