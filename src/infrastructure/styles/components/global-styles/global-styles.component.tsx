@@ -20,7 +20,34 @@ export const GlobalStyles = (): JSX.Element => {
           }
 
           * {
+            scrollbar-width: thin;
             box-sizing: border-box;
+            scrollbar-color: ${theme.palette.secondary.main} transparent;
+          }
+
+          *::-webkit-scrollbar {
+            height: 6px;
+            width: 6px;
+
+            @include breakpoint(sm) {
+              height: 5px;
+              width: 5px;
+            }
+
+            @include breakpoint(sm) {
+              height: 4px;
+              width: 4px;
+            }
+          }
+
+          *::-webkit-scrollbar-track {
+            background: transparent;
+          }
+
+          *::-webkit-scrollbar-thumb {
+            border: 3px solid transparent;
+            border-radius: ${theme.shape.borderRadius}px;
+            background-color: ${theme.palette.secondary.main};
           }
         `}
       />

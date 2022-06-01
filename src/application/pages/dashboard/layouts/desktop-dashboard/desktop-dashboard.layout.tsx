@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useIsFetching, useIsMutating } from 'react-query';
 
+import { Scrollbar } from '@ui';
+
 import { parseProfileAvatarUrl, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
@@ -84,7 +86,9 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
           </IconButton>
         </S.StyledAsideBottomContentWrapper>
       </S.StyledAsideWrapper>
-      <S.StyledContentWrapper>{children}</S.StyledContentWrapper>
+      <S.StyledContentWrapper>
+        <Scrollbar height="100%">{children}</Scrollbar>
+      </S.StyledContentWrapper>
     </S.StyledWrapper>
   );
 };
