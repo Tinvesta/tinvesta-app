@@ -12,7 +12,6 @@ const StyledWrapper = styled.div`
 const StyledContentWrapper = styled.div`
   width: 100%;
   height: 100%;
-  overflow: scroll;
 `;
 
 const StyledBottomNavigation = styled(BottomNavigation)`
