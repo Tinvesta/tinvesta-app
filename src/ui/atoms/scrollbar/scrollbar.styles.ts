@@ -1,5 +1,7 @@
 import styled from '@emotion/styled';
 
+import { respondToMax } from '@infrastructure';
+
 const StyledThumbHorizontal = styled.div`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   background-color: ${({ theme }) => theme.palette.secondary.main};
@@ -13,11 +15,27 @@ const StyledThumbVertical = styled.div`
 const StyledTrackHorizontal = styled.div`
   bottom: 1px;
   width: 100%;
+
+  ${respondToMax.mobile`
+    height: 5px !important;
+  `}
+
+  ${respondToMax.xmobile`
+    height: 4px !important;
+  `}
 `;
 
 const StyledTrackVertical = styled.div`
   height: 100%;
   right: 1px;
+
+  ${respondToMax.mobile`
+    width: 5px !important;
+  `}
+
+  ${respondToMax.xmobile`
+    width: 4px !important;
+  `}
 `;
 
 const StyledView = styled.div``;
