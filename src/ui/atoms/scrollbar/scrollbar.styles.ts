@@ -11,13 +11,13 @@ const StyledThumbVertical = styled.div`
 `;
 
 const StyledTrackHorizontal = styled.div`
-  bottom: 0;
+  bottom: 1px;
   width: 100%;
 `;
 
 const StyledTrackVertical = styled.div`
   height: 100%;
-  right: 0;
+  right: 1px;
 `;
 
 const StyledView = styled.div``;
