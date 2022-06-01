@@ -4,12 +4,13 @@ import Image from 'next/image';
 
 import { CenterBlockLayout } from '@ui';
 
-import { useTranslation } from '@utils';
+import { useDeviceDetect, useTranslation } from '@utils';
 
 import { translationStrings } from './house-rules-agreements-content.defaults';
 import S from './house-rules-agreements-content.styles';
 
 export const HouseRulesAgreementsContent = (): JSX.Element => {
+  const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
 
   return (
@@ -19,12 +20,12 @@ export const HouseRulesAgreementsContent = (): JSX.Element => {
           <Image
             priority
             alt="Tinvesta"
-            height={50}
+            height={deviceData.isSmallerThanXS ? 50 : 60}
             objectFit="scale-down"
             src="/images/brandmark-transparent-white.png"
-            width={50}
+            width={deviceData.isSmallerThanXS ? 50 : 60}
           />
-          <Typography fontWeight={900} variant="body1">
+          <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
             {translations.componentHouseRulesAgreementsContentHeader}
           </Typography>
           <Typography variant="caption">
@@ -36,7 +37,7 @@ export const HouseRulesAgreementsContent = (): JSX.Element => {
             <S.StyledHouseRuleIcon fontSize="small">
               <DoneIcon />
             </S.StyledHouseRuleIcon>
-            <Typography variant="body1">
+            <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
               {translations.componentHouseRulesAgreementsContentFirstRuleHeader}
             </Typography>
           </Typography>
@@ -49,7 +50,7 @@ export const HouseRulesAgreementsContent = (): JSX.Element => {
             <S.StyledHouseRuleIcon fontSize="small">
               <DoneIcon />
             </S.StyledHouseRuleIcon>
-            <Typography variant="body1">
+            <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
               {translations.componentHouseRulesAgreementsContentSecondRuleHeader}
             </Typography>
           </Typography>
@@ -62,7 +63,7 @@ export const HouseRulesAgreementsContent = (): JSX.Element => {
             <S.StyledHouseRuleIcon fontSize="small">
               <DoneIcon />
             </S.StyledHouseRuleIcon>
-            <Typography variant="body1">
+            <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
               {translations.componentHouseRulesAgreementsContentThirdRuleHeader}
             </Typography>
           </Typography>
