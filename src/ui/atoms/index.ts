@@ -2,6 +2,7 @@ export * from './empty/empty.component';
 export * from './select/select.component';
 export * from './loader/loader.component';
 export * from './swiper/swiper.component';
+export * from './scrollbar/scrollbar.component';
 export * from './autocomplete/autocomplete.component';
 export * from './upload-images/upload-images.component';
 export * from './location-autocomplete/location-autocomplete.component';

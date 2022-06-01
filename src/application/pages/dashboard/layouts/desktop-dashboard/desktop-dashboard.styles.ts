@@ -56,7 +56,6 @@ const StyledMenu = styled.div`
 
 const StyledContentWrapper = styled.div`
   width: 100%;
-  overflow: scroll;
 `;
 
 const StyledMenuItem = styled.a<{ active: boolean }>`
