@@ -6,6 +6,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useIsFetching, useIsMutating } from 'react-query';
 
+import { Scrollbar } from '@ui';
+
 import { parseProfileAvatarUrl, useDeviceDetect, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
@@ -73,7 +75,9 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
         </S.StyledRightTopNavigationWrapper>
       </S.StyledTopNavigation>
       <S.StyledContentWrapper>
-        <QueryClientProvider>{children}</QueryClientProvider>
+        <QueryClientProvider>
+          <Scrollbar height="100%">{children}</Scrollbar>
+        </QueryClientProvider>
       </S.StyledContentWrapper>
       <S.StyledBottomNavigation>
         {bottomNavigationOptions.map((_bottomNavigationOption) => {
