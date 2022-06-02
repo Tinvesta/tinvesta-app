@@ -5,7 +5,7 @@ import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
   width: 600px;
-  height: 100vh;
+  height: 100%;
   position: relative;
 
   ${respondToMax.mobile`
