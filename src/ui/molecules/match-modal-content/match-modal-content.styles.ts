@@ -9,16 +9,9 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(6)};
-  width: calc(100vw - ${({ theme }) => `${theme.spacing(4)} - ${theme.spacing(4)}`});
-  height: calc(100vh - ${({ theme }) => `${theme.spacing(4)} - ${theme.spacing(4)}`});
 
   ${respondToMax.mobile`
     justify-content: flex-start;
-  `}
-
-  ${({ theme }) => respondToMax.xmobile`
-    width: calc(100vw - ${`${theme.spacing(3)} - ${theme.spacing(3)}`});
-    height: calc(100vh - ${`${theme.spacing(3)} - ${theme.spacing(3)}`});
   `}
 `;
 

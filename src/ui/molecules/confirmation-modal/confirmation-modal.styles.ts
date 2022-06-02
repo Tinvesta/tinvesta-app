@@ -4,16 +4,7 @@ import { DialogActions, DialogContent } from '@mui/material';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
-  width: 400px;
-
-  ${({ theme }) => respondToMax.xmobile`
-    width: calc(100vw - ${`${theme.spacing(4)} - ${theme.spacing(4)}`});
-    height: calc(100vh - 40px - ${`${theme.spacing(4)} - ${theme.spacing(4)}`});
-  `}
-
-  ${({ theme }) => respondToMax.xmobile`
-    height: calc(100vh - 25px - ${`${theme.spacing(4)} - ${theme.spacing(4)}`});
-  `}
+  width: 100%;
 `;
 
 const StyledDialogContent = styled(DialogContent)`

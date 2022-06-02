@@ -13,12 +13,25 @@ export const GlobalStyles = (): JSX.Element => {
           html,
           body,
           #__next {
-            width: 100vw;
-            height: 100vh;
             display: block;
             position: relative;
             color: ${theme.palette.secondary.main};
             background-color: ${theme.palette.background.default};
+          }
+
+          body {
+            height: 100vh;
+            height: fill-available;
+            height: -webkit-fill-available;
+          }
+
+          html {
+            height: fill-available;
+            height: -webkit-fill-available;
+          }
+
+          #__next {
+            height: 100%;
           }
 
           * {
