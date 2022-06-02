@@ -165,3 +165,21 @@ open $GITHUB_PULL_REQUESTS_URL
 # cleanup
 git checkout $DEVELOP_BRANCH_NAME
 git branch -D $releaseBranchName
+
+# git-reset-local-changes
+currentBranch=$(git branch | sed -n -e 's/^\* \(.*\)/\1/p')
+
+# To remove untracked files
+git clean -f
+
+# To remove untracked directories
+git clean -fd
+
+# revert changes to index
+git reset --hard
+
+# remove all local commits
+git fetch origin
+git reset --hard origin/$currentBranch
+
+git fetch --all
