@@ -31,6 +31,9 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
     withCloseIcon: false,
     withPadding: false,
     align: 'right',
+    backgroundStyles: {
+      height: '100%',
+    },
     withBorderRadius: false,
   });
 
