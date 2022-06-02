@@ -4,13 +4,8 @@ import { CancelOutlined as CancelOutlinedIcon } from '@mui/icons-material';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
-  width: 600px;
   height: 100%;
   position: relative;
-
-  ${respondToMax.mobile`
-    width: 100vw;
-  `}
 
   > :last-child {
     background-color: ${({ theme }) => theme.palette.primary.dark};
