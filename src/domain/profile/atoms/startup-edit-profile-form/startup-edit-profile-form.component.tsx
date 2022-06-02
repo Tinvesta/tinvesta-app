@@ -524,7 +524,7 @@ const StartupEditProfileFormComponent = ({
               <Button
                 fullWidth
                 disabled={!isDirty}
-                size="large"
+                size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 variant="outlined"
                 onClick={onResetButtonClick}
               >
@@ -536,7 +536,7 @@ const StartupEditProfileFormComponent = ({
                 fullWidth
                 disabled={!isDirty}
                 loading={isLoading}
-                size="large"
+                size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 type="submit"
                 variant="contained"
               >

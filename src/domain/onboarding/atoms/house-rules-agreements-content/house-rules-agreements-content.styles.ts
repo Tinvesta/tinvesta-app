@@ -5,7 +5,7 @@ import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
   width: 400px;
-  margin-bottom: ${({ theme }) => theme.spacing(4)};
+  margin-bottom: ${({ theme }) => theme.spacing(5)};
 
   ${respondToMax.xmobile`
     width: 100%;
@@ -16,15 +16,22 @@ const StyledHeadingWrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
-  margin-bottom: ${({ theme }) => theme.spacing(2)};
+  margin-bottom: ${({ theme }) => theme.spacing(3)};
 `;
 
 const StyledHouseRuleWrapper = styled.div`
-  margin-top: ${({ theme }) => theme.spacing(4)};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: ${({ theme }) => theme.spacing(5)};
+
+  ${({ theme }) => respondToMax.xmobile`
+    margin-top: ${theme.spacing(4)};
+  `}
 `;
 
 const StyledHouseRuleIcon = styled(Icon)`
-  margin-right: ${({ theme }) => theme.spacing(2)};
+  margin-right: ${({ theme }) => theme.spacing(3)};
 `;
 
 const S = {

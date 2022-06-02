@@ -46,6 +46,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     show: showMatchModalContent,
   } = useModal({
     withCloseIcon: false,
+    alwaysFullWidth: true,
     withBorderRadius: false,
     backgroundStyles: {
       backdropFilter: 'blur(10px)',

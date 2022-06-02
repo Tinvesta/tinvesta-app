@@ -23,7 +23,8 @@ import { IDiscoverProps } from './discover.types';
 import { Card } from './molecules';
 
 export const Discover = (props: IDiscoverProps): JSX.Element => {
-  const { mutateAsync } = useMutation(likeProfileAction);
+  const { isLoading: isLikeProfileActionLoading, mutateAsync: mutateAsyncLikeProfileAction } =
+    useMutation(likeProfileAction);
   const { data, isLoading, mutate } = useMutation(discoverRecordsAction);
 
   const [drag, setDrag] = useState(true);
@@ -35,6 +36,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   const { user } = useUser();
   const { hide, isOpen, Modal, show } = useModal({
     withCloseIcon: false,
+    alwaysFullWidth: true,
     withBorderRadius: false,
     backgroundStyles: {
       backdropFilter: 'blur(10px)',
@@ -105,7 +107,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
   }
 
   const onVote = (profileId: string, vote: boolean) => {
-    mutateAsync({ profileId, vote }).then(({ data }) => {
+    mutateAsyncLikeProfileAction({ profileId, vote }).then(({ data }) => {
       if (!loggedProfileDetails && data.loggedProfileDetails) {
         setLoggedProfileDetails(data.loggedProfileDetails);
       }
@@ -134,7 +136,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
         />
       </Modal>
       <CenterBlockLayout>
-        <MotionCardsStack drag={drag} onVote={onVote}>
+        <MotionCardsStack drag={!isLikeProfileActionLoading && drag} onVote={onVote}>
           {data?.data.map((_record) => (
             <Card key={_record.id} disableDrag={disableDrag} record={_record} {...props} />
           )) || []}

@@ -47,7 +47,7 @@ export const Home = (): JSX.Element => {
 
   return (
     <S.StyledWrapper>
-      <Modal>
+      <Modal title="Create account">
         <SignInModalContent />
       </Modal>
       <Image

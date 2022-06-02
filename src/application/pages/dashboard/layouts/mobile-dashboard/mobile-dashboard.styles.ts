@@ -12,11 +12,18 @@ const StyledWrapper = styled.div`
 const StyledContentWrapper = styled.div`
   width: 100%;
   height: 100%;
-  overflow: scroll;
 `;
 
 const StyledBottomNavigation = styled(BottomNavigation)`
+  max-height: 70px;
+  min-height: 70px;
+  overflow: hidden;
   background-color: ${({ theme }) => theme.palette.primary.main};
+
+  ${respondToMax.xmobile`
+    max-height: 60px;
+    min-height: 60px;
+  `}
 `;
 
 const StyledBottomNavigationAction = styled(BottomNavigationAction)`
@@ -25,16 +32,29 @@ const StyledBottomNavigationAction = styled(BottomNavigationAction)`
 `;
 
 const StyledTopNavigation = styled.nav`
-  height: 85px;
   display: flex;
+  max-height: 70px;
+  min-height: 70px;
   align-items: center;
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(0, 4)};
   background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${({ theme }) => respondToMax.xmobile`
-    height: 65px;
+    max-height: 60px;
+    min-height: 60px;
     padding: ${theme.spacing(0, 3)};
+  `}
+`;
+
+const StyledRightTopNavigationWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: ${({ theme }) => theme.spacing(3)};
+
+  ${({ theme }) => respondToMax.xmobile`
+    gap: ${theme.spacing(2)};
   `}
 `;
 
@@ -44,6 +64,7 @@ const S = {
   StyledContentWrapper,
   StyledBottomNavigation,
   StyledBottomNavigationAction,
+  StyledRightTopNavigationWrapper,
 };
 
 export default S;

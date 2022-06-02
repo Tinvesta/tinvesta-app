@@ -17,7 +17,10 @@ const StyledAsideWrapper = styled.aside`
 
 const StyledAsideBottomContentWrapper = styled.div`
   display: flex;
+  align-items: center;
+  flex-direction: column;
   justify-content: center;
+  gap: ${({ theme }) => theme.spacing(5)};
   margin-bottom: ${({ theme }) => theme.spacing(5)};
 `;
 
@@ -53,7 +56,6 @@ const StyledMenu = styled.div`
 
 const StyledContentWrapper = styled.div`
   width: 100%;
-  overflow: scroll;
 `;
 
 const StyledMenuItem = styled.a<{ active: boolean }>`

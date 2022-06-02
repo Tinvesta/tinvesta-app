@@ -504,7 +504,7 @@ const InvestorEditProfileFormComponent = ({
                 fullWidth
                 color="secondary"
                 disabled={!isDirty}
-                size="large"
+                size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 variant="outlined"
                 onClick={onResetButtonClick}
               >
@@ -517,7 +517,7 @@ const InvestorEditProfileFormComponent = ({
                 color="secondary"
                 disabled={!isDirty}
                 loading={isLoading}
-                size="large"
+                size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 type="submit"
                 variant="contained"
               >
