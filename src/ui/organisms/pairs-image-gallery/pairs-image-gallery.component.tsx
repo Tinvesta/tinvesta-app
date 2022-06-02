@@ -28,11 +28,11 @@ export const PairsImageGallery = <TItem extends IPair>({
     loadMore(0);
   }, []);
 
-  if (isLoading && items.length === 0) {
+  if (isLoading) {
     return <Loading />;
   }
 
-  if (items.length === 0) {
+  if (!isLoading && items.length === 0) {
     return (
       <Empty
         actionButtonProps={{
