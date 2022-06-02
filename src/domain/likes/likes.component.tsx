@@ -38,8 +38,12 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     withCloseIcon: false,
     withPadding: false,
     align: 'right',
+    backgroundStyles: {
+      height: '100%',
+    },
     withBorderRadius: false,
   });
+
   const {
     hide: hideMatchModalContent,
     Modal: ModalMatchModalContent,

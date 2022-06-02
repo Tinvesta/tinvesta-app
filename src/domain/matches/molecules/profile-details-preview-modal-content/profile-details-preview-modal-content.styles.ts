@@ -4,7 +4,7 @@ import { CancelOutlined as CancelOutlinedIcon } from '@mui/icons-material';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
-  height: 100vh;
+  height: 100%;
   position: relative;
 `;
 
