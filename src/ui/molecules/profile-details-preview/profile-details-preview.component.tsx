@@ -19,7 +19,7 @@ import Image from 'next/image';
 import { memo } from 'react';
 import { useQuery } from 'react-query';
 
-import { CenterBlockLayout, Loader, Swiper, SwiperSlide, useCopyToClipboard } from '@ui';
+import { CenterBlockLayout, Loader, Scrollbar, Swiper, SwiperSlide, useCopyToClipboard } from '@ui';
 
 import {
   compareObjectsByValue,
@@ -168,151 +168,153 @@ const ProfileDetailsPreviewComponent = ({
 
   return (
     <S.StyledWrapper swiperPaginationBullets={mergedProfileDetails.avatars.length}>
-      <Swiper
-        grabCursor
-        touchMoveStopPropagation
-        modules={['keyboard', 'scrollbar', 'pagination']}
-        pagination={{ clickable: true }}
-      >
-        {mergedProfileDetails.avatars.map((_avatar) => (
-          <SwiperSlide key={_avatar}>
-            <S.StyledImageWrapper>
-              <Image
-                alt={translations.commonDefaultImageAlt}
-                layout="fill"
-                objectFit="cover"
-                src={_avatar}
-              />
-            </S.StyledImageWrapper>
-          </SwiperSlide>
-        ))}
-      </Swiper>
-      <S.StyledContentWrapper>
-        {isProfileDetailsActionLoading ? (
-          <CenterBlockLayout>
-            <Loader size="small" />
-          </CenterBlockLayout>
-        ) : (
-          <>
-            <ProfileDetailsPreviewLabel
-              icon={<FlagIcon />}
-              label={translations.componentProfileDetailsPreviewMissionLabel}
-            >
-              {mergedProfileDetails.missionStatement}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<RemoveRedEyeIcon />}
-              label={translations.componentProfileDetailsPreviewVisionLabel}
-            >
-              {mergedProfileDetails.visionStatement}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<RocketIcon />}
-              label={translations.componentProfileDetailsPreviewClaimLabel}
-            >
-              {mergedProfileDetails.startupClaim}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<RocketIcon />}
-              label={translations.componentProfileDetailsPreviewWhyStartupShouldMatchWithYouLabel}
-            >
-              {mergedProfileDetails.whyStartupShouldMatchWithYou}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<LocationCityIcon />}
-              label={translations.componentProfileDetailsPreviewLocationLabel}
-            >
-              {mergedProfileDetails.location}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<ApartmentIcon />}
-              label={translations.componentProfileDetailsPreviewCompanyNameLabel}
-            >
-              {mergedProfileDetails.companyName}
-            </ProfileDetailsPreviewLabel>
-            {investorProfileTypeChips.length > 0 && (
+      <Scrollbar height="100%">
+        <Swiper
+          grabCursor
+          touchMoveStopPropagation
+          modules={['keyboard', 'scrollbar', 'pagination']}
+          pagination={{ clickable: true }}
+        >
+          {mergedProfileDetails.avatars.map((_avatar) => (
+            <SwiperSlide key={_avatar}>
+              <S.StyledImageWrapper>
+                <Image
+                  alt={translations.commonDefaultImageAlt}
+                  layout="fill"
+                  objectFit="cover"
+                  src={_avatar}
+                />
+              </S.StyledImageWrapper>
+            </SwiperSlide>
+          ))}
+        </Swiper>
+        <S.StyledContentWrapper>
+          {isProfileDetailsActionLoading ? (
+            <CenterBlockLayout>
+              <Loader size="small" />
+            </CenterBlockLayout>
+          ) : (
+            <>
               <ProfileDetailsPreviewLabel
-                icon={<PersonIcon />}
-                label={translations.componentProfileDetailsPreviewProfileCreatorLabel}
+                icon={<FlagIcon />}
+                label={translations.componentProfileDetailsPreviewMissionLabel}
               >
-                {investorProfileTypeChips}
-                {fullName}
+                {mergedProfileDetails.missionStatement}
               </ProfileDetailsPreviewLabel>
-            )}
-            {startupProfileCreatorTypeChips.length > 0 && (
               <ProfileDetailsPreviewLabel
-                icon={<PersonIcon />}
-                label={translations.componentProfileDetailsPreviewProfileCreatorLabel}
+                icon={<RemoveRedEyeIcon />}
+                label={translations.componentProfileDetailsPreviewVisionLabel}
               >
-                {startupProfileCreatorTypeChips}
-                {fullName}
+                {mergedProfileDetails.visionStatement}
               </ProfileDetailsPreviewLabel>
-            )}
-            {mergedProfileDetails.contactEmail && (
               <ProfileDetailsPreviewLabel
-                icon={<AlternateEmailIcon />}
-                label={translations.componentProfileDetailsPreviewContactEmailLabel}
+                icon={<RocketIcon />}
+                label={translations.componentProfileDetailsPreviewClaimLabel}
               >
-                <CopyToClipboard text={mergedProfileDetails.contactEmail}>
-                  <Button
-                    color="secondary"
-                    disabled={copied}
-                    endIcon={<ContentCopyIcon />}
-                    size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
-                    variant="outlined"
-                  >
-                    <S.StyledButtonEllipsis>
-                      {mergedProfileDetails.contactEmail}
-                    </S.StyledButtonEllipsis>
-                  </Button>
-                </CopyToClipboard>
+                {mergedProfileDetails.startupClaim}
               </ProfileDetailsPreviewLabel>
-            )}
-            <ProfileDetailsPreviewLabel
-              icon={<MonetizationOnIcon />}
-              label={translations.componentProfileDetailsPreviewDemandLabel}
-            >
-              {investorDemandTypeChips}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<MonetizationOnIcon />}
-              label={translations.componentProfileDetailsPreviewInvestmentSizesLabel}
-            >
-              {investmentSizeChips}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<PieChartIcon />}
-              label={translations.componentProfileDetailsPreviewInvestmentStagesLabel}
-            >
-              {investmentStageTypeChips}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<BusinessIcon />}
-              label={translations.componentProfileDetailsPreviewSectorsLabel}
-            >
-              {startupSectorChips}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<FactoryIcon />}
-              label={translations.componentProfileDetailsPreviewIndustrialSectorsLabel}
-            >
-              {industrialSectorChips}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<ScreenRotationIcon />}
-              label={translations.componentProfileDetailsPreviewFocusMarketsLabel}
-            >
-              {focusMarketChips}
-            </ProfileDetailsPreviewLabel>
-            <ProfileDetailsPreviewLabel
-              icon={<GroupIcon />}
-              label={translations.componentProfileDetailsPreviewTeamSizesLabel}
-            >
-              {teamSizeChips}
-            </ProfileDetailsPreviewLabel>
-          </>
-        )}
-      </S.StyledContentWrapper>
+              <ProfileDetailsPreviewLabel
+                icon={<RocketIcon />}
+                label={translations.componentProfileDetailsPreviewWhyStartupShouldMatchWithYouLabel}
+              >
+                {mergedProfileDetails.whyStartupShouldMatchWithYou}
+              </ProfileDetailsPreviewLabel>
+              <ProfileDetailsPreviewLabel
+                icon={<LocationCityIcon />}
+                label={translations.componentProfileDetailsPreviewLocationLabel}
+              >
+                {mergedProfileDetails.location}
+              </ProfileDetailsPreviewLabel>
+              <ProfileDetailsPreviewLabel
+                icon={<ApartmentIcon />}
+                label={translations.componentProfileDetailsPreviewCompanyNameLabel}
+              >
+                {mergedProfileDetails.companyName}
+              </ProfileDetailsPreviewLabel>
+              {investorProfileTypeChips.length > 0 && (
+                <ProfileDetailsPreviewLabel
+                  icon={<PersonIcon />}
+                  label={translations.componentProfileDetailsPreviewProfileCreatorLabel}
+                >
+                  {investorProfileTypeChips}
+                  {fullName}
+                </ProfileDetailsPreviewLabel>
+              )}
+              {startupProfileCreatorTypeChips.length > 0 && (
+                <ProfileDetailsPreviewLabel
+                  icon={<PersonIcon />}
+                  label={translations.componentProfileDetailsPreviewProfileCreatorLabel}
+                >
+                  {startupProfileCreatorTypeChips}
+                  {fullName}
+                </ProfileDetailsPreviewLabel>
+              )}
+              {mergedProfileDetails.contactEmail && (
+                <ProfileDetailsPreviewLabel
+                  icon={<AlternateEmailIcon />}
+                  label={translations.componentProfileDetailsPreviewContactEmailLabel}
+                >
+                  <CopyToClipboard text={mergedProfileDetails.contactEmail}>
+                    <Button
+                      color="secondary"
+                      disabled={copied}
+                      endIcon={<ContentCopyIcon />}
+                      size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
+                      variant="outlined"
+                    >
+                      <S.StyledButtonEllipsis>
+                        {mergedProfileDetails.contactEmail}
+                      </S.StyledButtonEllipsis>
+                    </Button>
+                  </CopyToClipboard>
+                </ProfileDetailsPreviewLabel>
+              )}
+              <ProfileDetailsPreviewLabel
+                icon={<MonetizationOnIcon />}
+                label={translations.componentProfileDetailsPreviewDemandLabel}
+              >
+                {investorDemandTypeChips}
+              </ProfileDetailsPreviewLabel>
+              <ProfileDetailsPreviewLabel
+                icon={<MonetizationOnIcon />}
+                label={translations.componentProfileDetailsPreviewInvestmentSizesLabel}
+              >
+                {investmentSizeChips}
+              </ProfileDetailsPreviewLabel>
+              <ProfileDetailsPreviewLabel
+                icon={<PieChartIcon />}
+                label={translations.componentProfileDetailsPreviewInvestmentStagesLabel}
+              >
+                {investmentStageTypeChips}
+              </ProfileDetailsPreviewLabel>
+              <ProfileDetailsPreviewLabel
+                icon={<BusinessIcon />}
+                label={translations.componentProfileDetailsPreviewSectorsLabel}
+              >
+                {startupSectorChips}
+              </ProfileDetailsPreviewLabel>
+              <ProfileDetailsPreviewLabel
+                icon={<FactoryIcon />}
+                label={translations.componentProfileDetailsPreviewIndustrialSectorsLabel}
+              >
+                {industrialSectorChips}
+              </ProfileDetailsPreviewLabel>
+              <ProfileDetailsPreviewLabel
+                icon={<ScreenRotationIcon />}
+                label={translations.componentProfileDetailsPreviewFocusMarketsLabel}
+              >
+                {focusMarketChips}
+              </ProfileDetailsPreviewLabel>
+              <ProfileDetailsPreviewLabel
+                icon={<GroupIcon />}
+                label={translations.componentProfileDetailsPreviewTeamSizesLabel}
+              >
+                {teamSizeChips}
+              </ProfileDetailsPreviewLabel>
+            </>
+          )}
+        </S.StyledContentWrapper>
+      </Scrollbar>
     </S.StyledWrapper>
   );
 };

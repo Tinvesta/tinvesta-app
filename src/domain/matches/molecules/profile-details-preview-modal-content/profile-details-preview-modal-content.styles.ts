@@ -4,13 +4,8 @@ import { CancelOutlined as CancelOutlinedIcon } from '@mui/icons-material';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
-  width: 600px;
-  height: 100%;
+  height: 100vh;
   position: relative;
-
-  ${respondToMax.mobile`
-    width: 100vw;
-  `}
 `;
 
 const StyledHeader = styled.header`

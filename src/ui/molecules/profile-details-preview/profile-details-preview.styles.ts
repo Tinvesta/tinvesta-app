@@ -4,9 +4,7 @@ import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
   width: 100%;
-  overflow: auto;
   max-width: 100%;
-  overflow-y: scroll;
   position: relative;
   pointer-events: all;
   height: calc(100% - 100px);
