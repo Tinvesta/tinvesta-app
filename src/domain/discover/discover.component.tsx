@@ -6,7 +6,7 @@ import { useMutation } from 'react-query';
 
 import { CenterBlockLayout, Empty, Loading, MatchModalContent, useModal } from '@ui';
 
-import { replaceVariablesInTranslation, useTranslation, useUser } from '@utils';
+import { isStartupProfile, replaceVariablesInTranslation, useTranslation, useUser } from '@utils';
 
 import { likeProfileAction, supabaseInstance } from '@infrastructure';
 
@@ -22,10 +22,15 @@ import { translationStrings } from './discover.defaults';
 import { IDiscoverProps } from './discover.types';
 import { Card } from './molecules';
 
-export const Discover = (props: IDiscoverProps): JSX.Element => {
+export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.Element => {
   const { isLoading: isLikeProfileActionLoading, mutateAsync: mutateAsyncLikeProfileAction } =
     useMutation(likeProfileAction);
-  const { data, isLoading, mutate } = useMutation(discoverRecordsAction);
+
+  const {
+    data: discoverRecordsActionData,
+    isLoading: isDiscoverRecordsActionLoading,
+    mutate: mutateDiscoverRecordsAction,
+  } = useMutation(discoverRecordsAction);
 
   const [drag, setDrag] = useState(true);
   const [reachedLimit, setReachedLimit] = useState(false);
@@ -34,6 +39,8 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
 
   const theme = useTheme();
   const { user } = useUser();
+  const translations = useTranslation(translationStrings);
+
   const { hide, isOpen, Modal, show } = useModal({
     withCloseIcon: false,
     alwaysFullWidth: true,
@@ -43,10 +50,11 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
       backgroundColor: rgba(theme.palette.primary.main, 0.5),
     },
   });
-  const translations = useTranslation(translationStrings);
+
+  const isStartup = isStartupProfile(clientTypeId);
 
   useEffect(() => {
-    mutate();
+    mutateDiscoverRecordsAction();
   }, []);
 
   useEffect(() => {
@@ -86,7 +94,7 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
     }
   }, [user]);
 
-  if (isLoading) {
+  if (isDiscoverRecordsActionLoading) {
     return <Loading />;
   }
 
@@ -106,6 +114,14 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
     );
   }
 
+  if (!discoverRecordsActionData?.data || discoverRecordsActionData?.data.length === 0) {
+    const emptyLabel = isStartup
+      ? translations.componentDashboardDiscoverNoMoreRecordsLabelStartup
+      : translations.componentDashboardDiscoverNoMoreRecordsLabelInvestor;
+
+    return <Empty label={emptyLabel} />;
+  }
+
   const onVote = (profileId: string, vote: boolean) => {
     mutateAsyncLikeProfileAction({ profileId, vote }).then(({ data }) => {
       if (!loggedProfileDetails && data.loggedProfileDetails) {
@@ -114,8 +130,8 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
 
       setLikedProfileDetails(data.likedProfileDetails);
 
-      // TODO - remove later after testing
-      mutate();
+      // TODO - remove later
+      mutateDiscoverRecordsAction();
     });
   };
 
@@ -137,8 +153,8 @@ export const Discover = (props: IDiscoverProps): JSX.Element => {
       </Modal>
       <CenterBlockLayout>
         <MotionCardsStack drag={!isLikeProfileActionLoading && drag} onVote={onVote}>
-          {data?.data.map((_record) => (
-            <Card key={_record.id} disableDrag={disableDrag} record={_record} {...props} />
+          {discoverRecordsActionData?.data.map((_record) => (
+            <Card key={_record.id} disableDrag={disableDrag} record={_record} {...restProps} />
           )) || []}
         </MotionCardsStack>
       </CenterBlockLayout>

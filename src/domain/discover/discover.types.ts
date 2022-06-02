@@ -11,6 +11,7 @@ import {
 } from '@interfaces';
 
 export interface IDiscoverProps {
+  clientTypeId: number;
   focusMarkets: IFocusMarket[];
   industrialSectors: IIndustrialSector[];
   investmentSizes: IInvestmentSize[];
