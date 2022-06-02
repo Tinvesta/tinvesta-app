@@ -2,6 +2,7 @@ import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-m
 import { ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { loadStripe } from '@stripe/stripe-js';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 import { StringParam, useQueryParam } from 'use-query-params';
@@ -12,7 +13,6 @@ import {
   isSomeEnum,
   replaceVariablesInTranslation,
   useDeviceDetect,
-  useDidMountEffect,
   useTranslation,
   useUser,
 } from '@utils';
@@ -51,7 +51,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
       },
     });
 
-  useDidMountEffect(() => {
+  useEffect(() => {
     if (!isSomeEnum(EPaymentStatus)(paymentStatusQueryParam)) {
       return;
     }
