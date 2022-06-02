@@ -46,6 +46,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     alwaysFullWidth: true,
     withBorderRadius: false,
     backgroundStyles: {
+      height: '100%',
       backdropFilter: 'blur(10px)',
       backgroundColor: rgba(theme.palette.primary.main, 0.5),
     },
