@@ -53,6 +53,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
     alwaysFullWidth: true,
     withBorderRadius: false,
     backgroundStyles: {
+      height: '100%',
       backdropFilter: 'blur(10px)',
       backgroundColor: rgba(theme.palette.primary.main, 0.5),
     },

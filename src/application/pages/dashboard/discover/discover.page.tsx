@@ -46,7 +46,7 @@ export const DiscoverPage = (props: IDiscoverProps): JSX.Element => {
 
   return (
     <DashboardLayout>
-      <Discover {...props} />
+      <Discover clientTypeId={user.client_type_id as number} {...props} />
     </DashboardLayout>
   );
 };
