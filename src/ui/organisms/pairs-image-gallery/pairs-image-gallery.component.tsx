@@ -1,8 +1,9 @@
 import Image from 'next/image';
+import { useEffect } from 'react';
 
 import { InfinityScrollImageGallery, Empty, Loading } from '@ui';
 
-import { useDeviceDetect, useDidMountEffect, useTranslation } from '@utils';
+import { useDeviceDetect, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -24,7 +25,7 @@ export const PairsImageGallery = <TItem extends IPair>({
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
 
-  useDidMountEffect(() => {
+  useEffect(() => {
     loadMore(0);
   }, []);
 
