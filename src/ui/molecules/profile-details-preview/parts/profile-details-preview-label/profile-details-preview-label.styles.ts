@@ -4,18 +4,17 @@ import { Typography } from '@mui/material';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
-  padding-bottom: ${({ theme }) => theme.spacing(6)};
+  padding-bottom: ${({ theme }) => theme.spacing(5)};
 
   ${({ theme }) => respondToMax.xmobile`
-    padding-bottom: ${theme.spacing(5)};
+    padding-bottom: ${theme.spacing(4)};
   `}
 `;
 
-const StyledTitle = styled(Typography)`
+const StyledHeader = styled.div`
   display: flex;
   align-items: center;
-  text-transform: uppercase;
-  gap: ${({ theme }) => theme.spacing(4)};
+  gap: ${({ theme }) => theme.spacing(3)};
 
   & > .material-icons {
     display: flex;
@@ -32,7 +31,7 @@ const StyledContentWrapper = styled(Typography)`
 `;
 
 const S = {
-  StyledTitle,
+  StyledHeader,
   StyledWrapper,
   StyledContentWrapper,
 };

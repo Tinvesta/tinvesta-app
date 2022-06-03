@@ -1,3 +1,4 @@
+import { Icon, Typography } from '@mui/material';
 import { Children } from 'react';
 
 import S from './profile-details-preview-label.styles';
@@ -5,6 +6,7 @@ import { IProfileDetailsPreviewLabelProps } from './profile-details-preview-labe
 
 export const ProfileDetailsPreviewLabel = ({
   children,
+  icon,
   label,
 }: IProfileDetailsPreviewLabelProps): JSX.Element | null => {
   const parsedChildren = Children.toArray(children).filter(Boolean);
@@ -15,9 +17,12 @@ export const ProfileDetailsPreviewLabel = ({
 
   return (
     <S.StyledWrapper>
-      <S.StyledTitle color="secondary" fontWeight={900} variant="body2">
-        {label}
-      </S.StyledTitle>
+      <S.StyledHeader>
+        <Icon color="secondary">{icon}</Icon>
+        <Typography color="secondary" fontWeight={900} variant="body2">
+          {label}
+        </Typography>
+      </S.StyledHeader>
       <S.StyledContentWrapper variant="body2">{children}</S.StyledContentWrapper>
     </S.StyledWrapper>
   );
