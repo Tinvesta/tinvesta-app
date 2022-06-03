@@ -115,7 +115,10 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     }
   }, [user]);
 
-  if (isDiscoverRecordsActionLoading && items.length === 0) {
+  if (
+    (isDiscoverRecordsActionLoading && items.length === 0) ||
+    (isLikeProfileActionLoading && items.length === 1)
+  ) {
     return <Loading />;
   }
 
