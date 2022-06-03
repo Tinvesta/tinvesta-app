@@ -14,15 +14,13 @@ import { ERoutes } from '@enums';
 
 import { IProfileDetails } from '@interfaces';
 
-import { DISCOVER_LIKES_LIMIT } from '@constants';
+import { DISCOVER_LIKES_LIMIT, PAGINATION_LIMIT } from '@constants';
 
 import { discoverRecordsAction } from './api';
 import { MotionCardsStack } from './atoms';
 import { translationStrings } from './discover.defaults';
 import { IDiscoverProps } from './discover.types';
 import { Card } from './molecules';
-
-const LIMIT = 2;
 
 export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.Element => {
   const { isLoading: isLikeProfileActionLoading, mutateAsync: mutateAsyncLikeProfileAction } =
@@ -57,7 +55,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
   const isStartup = isStartupProfile(clientTypeId);
 
   const loadMore = () =>
-    mutateAsyncDiscoverRecordsAction({ offset: 0, limit: LIMIT }).then(
+    mutateAsyncDiscoverRecordsAction({ offset: 0, limit: PAGINATION_LIMIT }).then(
       ({ data: chunkOfRecords }) => {
         const reversedChunkOfRecords = chunkOfRecords.reverse();
 
@@ -157,7 +155,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
 
       setItems(newItems);
 
-      if (newItems.length === LIMIT / 2) {
+      if (newItems.length === PAGINATION_LIMIT / 2) {
         loadMore();
       }
     });
