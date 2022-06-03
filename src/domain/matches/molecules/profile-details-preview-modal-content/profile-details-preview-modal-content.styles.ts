@@ -43,7 +43,8 @@ const StyledActionsWrapper = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  background-color: ${({ theme }) => theme.palette.primary.dark};
+  border-top: 1px solid ${({ theme }) => theme.palette.divider};
+  background-color: ${({ theme }) => theme.palette.primary.main};
 
   > button {
     height: fit-content;
@@ -55,14 +56,33 @@ const StyledActionsWrapper = styled.div`
 
   ${respondToMax.xmobile`
     height: 80px;
-    flex-direction: column-reverse;
   `}
+
+  & > *:first-child {
+    border-right: 1px solid ${({ theme }) => theme.palette.divider};
+  }
+`;
+
+const StyledActionButton = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.dark};
+  }
 `;
 
 const S = {
   StyledHeader,
   StyledWrapper,
   StyledCloseIcon,
+  StyledActionButton,
   StyledActionsWrapper,
 };
 

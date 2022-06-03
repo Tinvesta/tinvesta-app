@@ -8,6 +8,7 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
   position: relative;
   pointer-events: all;
   height: calc(100% - 100px);
+  background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${respondToMax.mobile`
     height: calc(100% - 90px);
