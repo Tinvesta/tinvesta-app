@@ -14,12 +14,12 @@ import { ERoutes } from '@enums';
 
 import { ILike, IProfileDetails } from '@interfaces';
 
+import { PAGINATION_LIMIT } from '@constants';
+
 import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
 import { ILikesProps } from './likes.types';
 import { ProfileDetailsPreviewModalContent } from './molecules';
-
-const LIMIT = 20;
 
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const theme = useTheme();
@@ -71,10 +71,10 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   const isStartup = isStartupProfile(clientTypeId);
 
   const loadMore = (page: number) =>
-    mutateAsyncLikesAction({ limit: LIMIT, offset: LIMIT * page }).then(
+    mutateAsyncLikesAction({ limit: PAGINATION_LIMIT, offset: PAGINATION_LIMIT * page }).then(
       ({ data: chunkOfLikes }) => {
         setItems((prev) => [...prev, ...chunkOfLikes]);
-        setShouldLoadMore(chunkOfLikes.length === LIMIT);
+        setShouldLoadMore(chunkOfLikes.length === PAGINATION_LIMIT);
       },
     );
 

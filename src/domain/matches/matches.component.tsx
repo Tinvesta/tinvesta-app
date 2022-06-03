@@ -8,12 +8,12 @@ import { isStartupProfile, useConfirmationModal, useTranslation } from '@utils';
 
 import { IMatch } from '@interfaces';
 
+import { PAGINATION_LIMIT } from '@constants';
+
 import { matchesAction, removeMatchAction } from './api';
 import { translationStrings } from './matches.defaults';
 import { IMatchesProps } from './matches.types';
 import { ProfileDetailsPreviewModalContent } from './molecules';
-
-const LIMIT = 20;
 
 export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Element => {
   const { confirm } = useConfirmationModal();
@@ -52,10 +52,10 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
   const isStartup = isStartupProfile(clientTypeId);
 
   const loadMore = (page: number) =>
-    mutateAsyncMatchesAction({ limit: LIMIT, offset: LIMIT * page })
+    mutateAsyncMatchesAction({ limit: PAGINATION_LIMIT, offset: PAGINATION_LIMIT * page })
       .then(({ data: chunkOfMatches }) => {
         setItems((prev) => [...prev, ...chunkOfMatches]);
-        setShouldLoadMore(chunkOfMatches.length === LIMIT);
+        setShouldLoadMore(chunkOfMatches.length === PAGINATION_LIMIT);
       })
       .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
 
