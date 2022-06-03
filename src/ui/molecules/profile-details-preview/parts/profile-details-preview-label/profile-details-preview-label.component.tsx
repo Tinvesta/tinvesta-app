@@ -9,7 +9,7 @@ export const ProfileDetailsPreviewLabel = ({
   icon,
   label,
 }: IProfileDetailsPreviewLabelProps): JSX.Element | null => {
-  const parsedChildren = Children.toArray(children);
+  const parsedChildren = Children.toArray(children).filter(Boolean);
 
   if (parsedChildren.length === 0) {
     return null;
