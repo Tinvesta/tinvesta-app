@@ -155,7 +155,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
 
       setItems(newItems);
 
-      if (newItems.length === PAGINATION_LIMIT / 2) {
+      if (newItems.length === Math.ceil(PAGINATION_LIMIT / 2)) {
         loadMore();
       }
     });
