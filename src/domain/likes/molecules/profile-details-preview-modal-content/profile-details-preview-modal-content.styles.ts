@@ -6,10 +6,6 @@ import { respondToMax } from '@infrastructure';
 const StyledWrapper = styled.div`
   height: 100%;
   position: relative;
-
-  > :last-child {
-    background-color: ${({ theme }) => theme.palette.primary.dark};
-  }
 `;
 
 const StyledHeader = styled.header`
@@ -39,10 +35,55 @@ const StyledCloseIcon = styled(CancelOutlinedIcon)`
   }
 `;
 
+const StyledActionsWrapper = styled.div`
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-top: 1px solid ${({ theme }) => theme.palette.divider};
+  background-color: ${({ theme }) => theme.palette.primary.main};
+
+  > button {
+    height: fit-content;
+  }
+
+  ${respondToMax.mobile`
+    height: 90px;
+  `}
+
+  ${respondToMax.xmobile`
+    height: 80px;
+  `}
+
+  & > *:first-child {
+    border-right: 1px solid ${({ theme }) => theme.palette.divider};
+  }
+`;
+
+const StyledActionButton = styled.div`
+  width: 50%;
+  height: 100%;
+  display: flex;
+  cursor: pointer;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  transition: all 250ms ease-in-out;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.palette.primary.dark};
+  }
+`;
+
 const S = {
   StyledHeader,
   StyledWrapper,
   StyledCloseIcon,
+  StyledActionButton,
+  StyledActionsWrapper,
 };
 
 export default S;
