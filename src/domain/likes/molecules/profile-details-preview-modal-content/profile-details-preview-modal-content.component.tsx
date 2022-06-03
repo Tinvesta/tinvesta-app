@@ -1,7 +1,8 @@
-import { ProfileCardActionButtons, ProfileDetailsPreview } from '@ui';
+import { ProfileDetailsPreview } from '@ui';
 
-import { useDeviceDetect } from '@utils';
+import { useDeviceDetect, useTranslation } from '@utils';
 
+import { translationStrings } from './profile-details-preview-modal-content.defaults';
 import S from './profile-details-preview-modal-content.styles';
 import { IProfileDetailsPreviewModalContentProps } from './profile-details-preview-modal-content.types';
 
@@ -12,6 +13,7 @@ export const ProfileDetailsPreviewModalContent = ({
   ...restProps
 }: IProfileDetailsPreviewModalContentProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
+  const translations = useTranslation(translationStrings);
 
   const handleVote = (vote: boolean) => () => onVote(selectedProfile!, vote);
 
@@ -28,7 +30,14 @@ export const ProfileDetailsPreviewModalContent = ({
         // @ts-expect-error
         profileDetails={selectedProfile}
       />
-      <ProfileCardActionButtons markAsNotVoted={handleVote(false)} markAsVoted={handleVote(true)} />
+      <S.StyledActionsWrapper>
+        <S.StyledActionButton onClick={handleVote(false)}>
+          {translations.componentDashboardLikesProfileDetailsPreviewModalContentDislikeButton}
+        </S.StyledActionButton>
+        <S.StyledActionButton onClick={handleVote(true)}>
+          {translations.componentDashboardLikesProfileDetailsPreviewModalContentLikeButton}
+        </S.StyledActionButton>
+      </S.StyledActionsWrapper>
     </S.StyledWrapper>
   );
 };
