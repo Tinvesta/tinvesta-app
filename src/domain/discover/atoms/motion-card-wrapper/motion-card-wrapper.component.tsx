@@ -4,10 +4,9 @@ import {
 } from '@mui/icons-material';
 import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
 
-import { ProfileCardActionButtons } from '@ui';
-
 import { useDeviceDetect } from '@utils';
 
+import { ProfileCardActionButtons } from '..';
 import S from './motion-card-wrapper.styles';
 import { IMotionCardWrapperProps } from './motion-card-wrapper.types';
 
