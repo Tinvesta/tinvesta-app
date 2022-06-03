@@ -523,6 +523,7 @@ const StartupEditProfileFormComponent = ({
             <Grid item xs={deviceData.isSmallerThanSM ? 6 : 3}>
               <Button
                 fullWidth
+                color="secondary"
                 disabled={!isDirty}
                 size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 variant="outlined"
@@ -534,6 +535,7 @@ const StartupEditProfileFormComponent = ({
             <Grid item xs={deviceData.isSmallerThanSM ? 6 : 3}>
               <LoadingButton
                 fullWidth
+                color="secondary"
                 disabled={!isDirty}
                 loading={isLoading}
                 size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
