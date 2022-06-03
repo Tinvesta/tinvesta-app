@@ -36,6 +36,17 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(401).send(EApiError.UNAUTHORIZED);
   }
 
+  if (!request.query.limit || !request.query.offset) {
+    logApiError(
+      EApiEndpoint.DISCOVER_RECORDS,
+      EApiError.BAD_REQUEST,
+      'No limit or offset - request query',
+      request.query,
+    );
+
+    return response.status(400).send(EApiError.BAD_REQUEST);
+  }
+
   const token = cookie.parse(request.headers.cookie || '')['sb:token'];
 
   supabaseInstance.auth.session = () => ({
@@ -48,6 +59,8 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     'discover_records',
     {
       profile_id_input: user.id,
+      limit_input: request.query.limit,
+      offset_input: request.query.offset,
     },
   );
 

@@ -1,4 +1,4 @@
-import { Children, ReactElement, useState } from 'react';
+import { Children, ReactElement, useEffect, useState } from 'react';
 
 import { hasOwnProperty } from '@utils';
 
@@ -12,6 +12,7 @@ const pop = (array: ReactElement<ICardProps>[]) =>
 export const MotionCardsStack = ({
   children,
   drag,
+  isLoading,
   onVote,
   ...restProps
 }: IMotionCardsStackProps): JSX.Element => {
@@ -22,6 +23,12 @@ export const MotionCardsStack = ({
 
     setStack(pop(stack));
   };
+
+  useEffect(() => {
+    if (!isLoading) {
+      setStack(Children.toArray(children) as ReactElement<ICardProps>[]);
+    }
+  }, [isLoading]);
 
   return (
     <S.StyledWrapper {...restProps}>

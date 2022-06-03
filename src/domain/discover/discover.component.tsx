@@ -22,18 +22,20 @@ import { translationStrings } from './discover.defaults';
 import { IDiscoverProps } from './discover.types';
 import { Card } from './molecules';
 
+const LIMIT = 2;
+
 export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.Element => {
   const { isLoading: isLikeProfileActionLoading, mutateAsync: mutateAsyncLikeProfileAction } =
     useMutation(likeProfileAction);
 
   const {
-    data: discoverRecordsActionData,
     isLoading: isDiscoverRecordsActionLoading,
-    mutate: mutateDiscoverRecordsAction,
+    mutateAsync: mutateAsyncDiscoverRecordsAction,
   } = useMutation(discoverRecordsAction);
 
   const [drag, setDrag] = useState(true);
   const [reachedLimit, setReachedLimit] = useState(false);
+  const [items, setItems] = useState<IProfileDetails[]>([]);
   const [likedProfileDetails, setLikedProfileDetails] = useState<IProfileDetails>();
   const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
 
@@ -54,8 +56,28 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
 
   const isStartup = isStartupProfile(clientTypeId);
 
+  const loadMore = () =>
+    mutateAsyncDiscoverRecordsAction({ offset: 0, limit: LIMIT }).then(
+      ({ data: chunkOfRecords }) => {
+        const reversedChunkOfRecords = chunkOfRecords.reverse();
+
+        setItems((prevItems) => {
+          const newRecords = reversedChunkOfRecords.reduce<IProfileDetails[]>(
+            (_accumulator, _value) => {
+              const isAlreadyInItemsArray = prevItems.find((_item) => _item.id === _value.id);
+
+              return isAlreadyInItemsArray ? _accumulator : [..._accumulator, _value];
+            },
+            [],
+          );
+
+          return [...newRecords, ...prevItems];
+        });
+      },
+    );
+
   useEffect(() => {
-    mutateDiscoverRecordsAction();
+    loadMore();
   }, []);
 
   useEffect(() => {
@@ -95,7 +117,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     }
   }, [user]);
 
-  if (isDiscoverRecordsActionLoading) {
+  if (isDiscoverRecordsActionLoading && items.length === 0) {
     return <Loading />;
   }
 
@@ -115,7 +137,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     );
   }
 
-  if (!discoverRecordsActionData?.data || discoverRecordsActionData?.data.length === 0) {
+  if (items.length === 0) {
     const emptyLabel = isStartup
       ? translations.componentDashboardDiscoverNoMoreRecordsLabelStartup
       : translations.componentDashboardDiscoverNoMoreRecordsLabelInvestor;
@@ -123,7 +145,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     return <Empty label={emptyLabel} />;
   }
 
-  const onVote = (profileId: string, vote: boolean) => {
+  const onVote = (profileId: string, vote: boolean) =>
     mutateAsyncLikeProfileAction({ profileId, vote }).then(({ data }) => {
       if (!loggedProfileDetails && data.loggedProfileDetails) {
         setLoggedProfileDetails(data.loggedProfileDetails);
@@ -131,10 +153,14 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
 
       setLikedProfileDetails(data.likedProfileDetails);
 
-      // TODO - remove later
-      mutateDiscoverRecordsAction();
+      const newItems = [...items].filter((_item) => _item.id !== profileId);
+
+      setItems(newItems);
+
+      if (newItems.length === LIMIT / 2) {
+        loadMore();
+      }
     });
-  };
 
   const onModalClose = () => {
     hide();
@@ -153,9 +179,13 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
         />
       </Modal>
       <CenterBlockLayout>
-        <MotionCardsStack drag={!isLikeProfileActionLoading && drag} onVote={onVote}>
-          {discoverRecordsActionData?.data.map((_record) => (
-            <Card key={_record.id} disableDrag={disableDrag} record={_record} {...restProps} />
+        <MotionCardsStack
+          drag={!isLikeProfileActionLoading && drag}
+          isLoading={isDiscoverRecordsActionLoading}
+          onVote={onVote}
+        >
+          {items.map((_item) => (
+            <Card key={_item.id} disableDrag={disableDrag} record={_item} {...restProps} />
           )) || []}
         </MotionCardsStack>
       </CenterBlockLayout>
