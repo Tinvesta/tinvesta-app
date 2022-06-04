@@ -67,6 +67,7 @@ export const PairsImageGallery = <TItem extends IPair>({
             <S.StyledTypography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}>
               {_item.companyName}
             </S.StyledTypography>
+            <S.StyledGradient />
           </S.StyledImageWrapper>
         ))}
       </S.StyledGridWrapper>
