@@ -284,6 +284,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
   const { error: updatedProfileError } = await supabaseInstance
     .from('profiles')
     .update({
+      ref: userData.userRef,
       location: userData.location,
       last_name: userData.lastName,
       first_name: userData.firstName,
