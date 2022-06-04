@@ -8,8 +8,13 @@ const StyledGridWrapper = styled.div`
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(4, 1fr);
-  gap: ${({ theme }) => theme.spacing(5)};
-  padding: ${({ theme }) => theme.spacing(5)};
+  gap: ${({ theme }) => theme.spacing(6)};
+  padding: ${({ theme }) => theme.spacing(6)};
+
+  ${({ theme }) => respondToMax.medium`
+    gap: ${theme.spacing(5)};
+    padding: ${theme.spacing(5)};
+  `}
 
   ${({ theme }) => respondToMax.small`
     gap: ${theme.spacing(4)};
