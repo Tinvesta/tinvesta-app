@@ -22,4 +22,5 @@ export interface IMobileOnboardingProps {
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];
   teamSizes: ITeamSize[];
+  userRef?: string;
 }

@@ -4,10 +4,9 @@ import {
 } from '@mui/icons-material';
 import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
 
-import { ProfileCardActionButtons } from '@ui';
-
 import { useDeviceDetect } from '@utils';
 
+import { ProfileCardActionButtons } from '..';
 import S from './motion-card-wrapper.styles';
 import { IMotionCardWrapperProps } from './motion-card-wrapper.types';
 
@@ -18,6 +17,7 @@ export const MotionCardWrapper = ({
   children,
   drag,
   id,
+  isProfilePreviewMode,
   onVote,
   zIndex,
   ...restProps
@@ -67,7 +67,7 @@ export const MotionCardWrapper = ({
   return (
     <S.StyledWrapper
       animate={animControls}
-      drag={drag}
+      drag={drag && !isProfilePreviewMode}
       dragConstraints={{ left: -750, right: 750 }}
       exit={{ opacity: 0 }}
       style={{
@@ -94,7 +94,7 @@ export const MotionCardWrapper = ({
       <S.StyledHighlightOffOutlinedIconWrapper style={{ opacity: leftIconOpacity }}>
         <HighlightOffOutlinedIcon color="error" />
       </S.StyledHighlightOffOutlinedIconWrapper>
-      <S.StyledGradient />
+      {!isProfilePreviewMode && <S.StyledGradient />}
       {children}
       <ProfileCardActionButtons markAsNotVoted={markAsNotVoted} markAsVoted={markAsVoted} />
     </S.StyledWrapper>

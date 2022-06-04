@@ -28,7 +28,7 @@ import S from './card.styles';
 import { ICardProps } from './card.types';
 
 export const Card = ({
-  disableDrag,
+  enableProfilePreviewMode,
   focusMarkets,
   industrialSectors,
   investmentSizes,
@@ -62,7 +62,7 @@ export const Card = ({
   );
 
   const showProfileDetails = () => {
-    disableDrag();
+    enableProfilePreviewMode();
     setDisplayProfileDetails(true);
   };
 

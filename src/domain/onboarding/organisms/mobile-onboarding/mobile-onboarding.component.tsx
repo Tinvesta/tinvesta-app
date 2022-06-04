@@ -65,6 +65,7 @@ export const MobileOnboarding = ({
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
+  userRef,
 }: IMobileOnboardingProps): JSX.Element => {
   const router = useRouter();
   const { confirm } = useConfirmationModal();
@@ -106,7 +107,7 @@ export const MobileOnboarding = ({
 
   const onAcceptHouseRulesAgreements = () =>
     // @ts-expect-error
-    mutateAsyncCreateAccountAction(current.context)
+    mutateAsyncCreateAccountAction({ ...current.context, userRef })
       .then(() => {
         toast.success(translations.componentOnboardingCommonSuccessToastMessage);
         router.push(ERoutes.DASHBOARD);

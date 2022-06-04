@@ -1,6 +1,3 @@
-import { LoadingButton } from '@mui/lab';
-import { Button } from '@mui/material';
-
 import { ProfileDetailsPreview } from '@ui';
 
 import { sendEmail, useDeviceDetect, useTranslation } from '@utils';
@@ -21,20 +18,6 @@ export const ProfileDetailsPreviewModalContent = ({
 
   const handleSendEmail = () => sendEmail(selectedProfile!.contactEmail);
 
-  const getButtonSize = () => {
-    if (deviceData.isSmallerThanXS) {
-      return 'small';
-    }
-
-    if (deviceData.isSmallerThanSM) {
-      return 'medium';
-    }
-
-    return 'large';
-  };
-
-  const buttonSize = getButtonSize();
-
   return (
     <S.StyledWrapper>
       <S.StyledHeader>
@@ -49,25 +32,12 @@ export const ProfileDetailsPreviewModalContent = ({
         profileDetails={selectedProfile}
       />
       <S.StyledActionsWrapper>
-        <LoadingButton
-          color="error"
-          fullWidth={deviceData.isSmallerThanXS}
-          loading={isLoading}
-          size={buttonSize}
-          variant="outlined"
-          onClick={onRemoveMatchClick}
-        >
+        <S.StyledActionButton onClick={onRemoveMatchClick}>
           {translations.componentDashboardMatchesProfileDetailsPreviewModalContentRemoveMatchButton}
-        </LoadingButton>
-        <Button
-          color="secondary"
-          fullWidth={deviceData.isSmallerThanXS}
-          size={buttonSize}
-          variant="contained"
-          onClick={handleSendEmail}
-        >
+        </S.StyledActionButton>
+        <S.StyledActionButton onClick={handleSendEmail}>
           {translations.componentDashboardMatchesProfileDetailsPreviewModalContentSendEmailButton}
-        </Button>
+        </S.StyledActionButton>
       </S.StyledActionsWrapper>
     </S.StyledWrapper>
   );

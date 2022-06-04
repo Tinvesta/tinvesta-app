@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
+import { linearGradient } from 'polished';
 
 import { respondToMax } from '@infrastructure';
 
@@ -7,8 +8,13 @@ const StyledGridWrapper = styled.div`
   display: grid;
   flex-wrap: wrap;
   grid-template-columns: repeat(4, 1fr);
-  gap: ${({ theme }) => theme.spacing(5)};
-  padding: ${({ theme }) => theme.spacing(5)};
+  gap: ${({ theme }) => theme.spacing(6)};
+  padding: ${({ theme }) => theme.spacing(6)};
+
+  ${({ theme }) => respondToMax.medium`
+    gap: ${theme.spacing(5)};
+    padding: ${theme.spacing(5)};
+  `}
 
   ${({ theme }) => respondToMax.small`
     gap: ${theme.spacing(4)};
@@ -37,6 +43,7 @@ const StyledImageWrapper = styled.div`
 `;
 
 const StyledTypography = styled(Typography)`
+  z-index: 2;
   overflow: hidden;
   position: absolute;
   white-space: nowrap;
@@ -58,7 +65,26 @@ const StyledTypography = styled(Typography)`
   `}
 `;
 
+const StyledGradient = styled.div`
+  bottom: 0;
+  z-index: 1;
+  width: 100%;
+  height: 75px;
+  position: absolute;
+  pointer-events: none;
+  ${({ theme }) =>
+    linearGradient({
+      colorStops: ['rgba(255,0,0,0) 0%', theme.palette.primary.main],
+      toDirection: 'to bottom',
+    })}
+
+  ${respondToMax.xmobile`
+    height: 50px;
+  `}
+`;
+
 const S = {
+  StyledGradient,
   StyledTypography,
   StyledGridWrapper,
   StyledImageWrapper,

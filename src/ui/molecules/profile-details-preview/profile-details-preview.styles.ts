@@ -8,6 +8,7 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
   position: relative;
   pointer-events: all;
   height: calc(100% - 100px);
+  background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${respondToMax.mobile`
     height: calc(100% - 90px);
@@ -20,20 +21,24 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
   .swiper {
     z-index: 0;
 
-    .swiper-pagination {
-      bottom: 0;
-      display: flex;
+    .swiper-pagination-bullet-active {
+      background-color: ${({ theme }) => theme.palette.secondary.main};
+    }
 
-      &-bullet {
-        margin: 0;
-        opacity: 1;
-        border-radius: 0;
-        background-color: ${({ theme }) => theme.palette.primary.main};
-        width: calc(100% / ${({ swiperPaginationBullets }) => swiperPaginationBullets});
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: ${({ theme }) => theme.palette.secondary.main};
 
-        &-active {
-          background-color: ${({ theme }) => theme.palette.primary.light};
-        }
+      &::after {
+        font-size: 40px;
+
+        ${respondToMax.mobile`
+          font-size: 36px;
+        `}
+
+        ${respondToMax.xmobile`
+          font-size: 30px;
+        `}
       }
     }
   }

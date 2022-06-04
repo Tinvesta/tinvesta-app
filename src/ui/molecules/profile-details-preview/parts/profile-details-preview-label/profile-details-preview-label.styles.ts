@@ -1,14 +1,8 @@
 import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 
-import { respondToMax } from '@infrastructure';
-
 const StyledWrapper = styled.div`
   padding-bottom: ${({ theme }) => theme.spacing(5)};
-
-  ${({ theme }) => respondToMax.xmobile`
-    padding-bottom: ${theme.spacing(4)};
-  `}
 `;
 
 const StyledHeader = styled.div`

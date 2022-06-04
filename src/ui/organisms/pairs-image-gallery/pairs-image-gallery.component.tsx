@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { useEffect } from 'react';
+import { Children, useEffect } from 'react';
 
 import { InfinityScrollImageGallery, Empty, Loading } from '@ui';
 
@@ -55,20 +55,26 @@ export const PairsImageGallery = <TItem extends IPair>({
       shouldLoadMore={shouldLoadMore}
     >
       <S.StyledGridWrapper>
-        {items.map((_item) => (
-          <S.StyledImageWrapper key={_item.avatars[0]} onClick={handleRecordClick(_item)}>
-            <Image
-              alt={translations.commonDefaultImageAlt}
-              height={600}
-              layout="responsive"
-              src={_item.avatars[0]}
-              width={400}
-            />
-            <S.StyledTypography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}>
-              {_item.companyName}
-            </S.StyledTypography>
-          </S.StyledImageWrapper>
-        ))}
+        {Children.toArray(
+          items.map((_item) => (
+            <S.StyledImageWrapper key={_item.avatars[0]} onClick={handleRecordClick(_item)}>
+              <Image
+                alt={translations.commonDefaultImageAlt}
+                height={600}
+                layout="responsive"
+                src={_item.avatars[0]}
+                width={400}
+              />
+              <S.StyledTypography
+                fontWeight={900}
+                variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
+              >
+                {_item.companyName}
+              </S.StyledTypography>
+              <S.StyledGradient />
+            </S.StyledImageWrapper>
+          )),
+        )}
       </S.StyledGridWrapper>
     </InfinityScrollImageGallery>
   );
