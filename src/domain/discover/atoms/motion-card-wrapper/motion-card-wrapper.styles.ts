@@ -5,7 +5,7 @@ import { linearGradient } from 'polished';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled(motion.div)`
-  width: 600px;
+  width: 550px;
   height: 750px;
   overflow: hidden;
   position: absolute;
