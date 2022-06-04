@@ -15,12 +15,18 @@ import { EApiEndpoint } from '@enums';
 
 import { IDesktopOnboardingMachineContext } from '../../organisms/desktop-onboarding/machines';
 
-export const createProfileAction = async (data: IDesktopOnboardingMachineContext) => {
+export const createProfileAction = async (
+  data: IDesktopOnboardingMachineContext & { userRef?: string },
+) => {
   const isStartupPath = isStartupProfile(data.stepTwoData.clientTypeId);
   const keyToFilterOut = isStartupPath ? 'Investor' : 'Startup';
 
   const requestData = await objectKeys(data).reduce(async (_accumulatorPromise, _value) => {
     const _accumulator = await _accumulatorPromise;
+
+    if (_value === 'userRef') {
+      return { ..._accumulator, userRef: data.userRef };
+    }
 
     if (_value.includes(keyToFilterOut)) {
       return _accumulator;

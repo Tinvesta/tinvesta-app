@@ -22,4 +22,5 @@ export interface IDesktopOnboardingProps {
   startupProfileCreatorTypes: IStartupProfileCreatorType[];
   startupSectors: IStartupSector[];
   teamSizes: ITeamSize[];
+  userRef?: string;
 }

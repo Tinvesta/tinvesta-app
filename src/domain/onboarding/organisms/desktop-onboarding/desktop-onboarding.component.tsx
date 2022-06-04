@@ -53,6 +53,7 @@ export const DesktopOnboarding = ({
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
+  userRef,
 }: IDesktopOnboardingProps): JSX.Element => {
   const router = useRouter();
   const { confirm } = useConfirmationModal();
@@ -87,7 +88,7 @@ export const DesktopOnboarding = ({
   ) => send({ type: EDesktopOnboardingMachineEvents.NEXT, data });
 
   const onAcceptHouseRulesAgreements = () =>
-    mutateAsyncCreateAccountAction(current.context)
+    mutateAsyncCreateAccountAction({ ...current.context, userRef })
       .then(() => {
         toast.success(translations.componentOnboardingCommonSuccessToastMessage);
         router.push(ERoutes.DASHBOARD);
