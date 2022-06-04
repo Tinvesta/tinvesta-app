@@ -69,7 +69,7 @@ const StyledAddIcon = styled(AddIcon)`
   transition: all 150ms ease-in-out;
   right: -${({ theme }) => theme.spacing(4)};
   bottom: -${({ theme }) => theme.spacing(4)};
-  fill: ${({ theme }) => theme.palette.error.dark};
+  fill: ${({ theme }) => theme.palette.error.main};
 
   &:hover {
     transform: scale(1.2);
@@ -84,6 +84,10 @@ const StyledScaledImagePreviewWrapper = styled.span`
 const StyledImagePlaceholderWrapper = styled.span`
   display: flex;
   position: relative;
+
+  &:hover > svg {
+    transform: scale(1.2);
+  }
 `;
 
 const StyledImagePlaceholder = styled(LoadingButton)<{ error?: boolean }>`
