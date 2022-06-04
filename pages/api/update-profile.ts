@@ -146,6 +146,45 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
         if (createdAvatarRecordError) {
           return response.status(500).send(createdAvatarRecordError);
         }
+      } else {
+        // eslint-disable-next-line no-await-in-loop
+        const { data: avatarsData, error: avatarsError } = await supabaseInstance
+          .from('avatars')
+          .select('position')
+          .eq('avatar_public_url', _imageKey)
+          .single();
+
+        if (avatarsError) {
+          logApiError(
+            EApiEndpoint.UPDATE_PROFILE,
+            EApiError.INTERNAL_SERVER_ERROR,
+            'Error',
+            avatarsError,
+          );
+
+          return response.status(500).send(avatarsError);
+        }
+
+        if (avatarsData.position !== i) {
+          // eslint-disable-next-line no-await-in-loop
+          const { error: updatedProfileError } = await supabaseInstance
+            .from('avatars')
+            .update({
+              position: i,
+            })
+            .eq('avatar_public_url', _imageKey);
+
+          if (updatedProfileError) {
+            logApiError(
+              EApiEndpoint.UPDATE_PROFILE,
+              EApiError.INTERNAL_SERVER_ERROR,
+              'Error',
+              updatedProfileError,
+            );
+
+            return response.status(500).send(updatedProfileError);
+          }
+        }
       }
 
       i += 1;
