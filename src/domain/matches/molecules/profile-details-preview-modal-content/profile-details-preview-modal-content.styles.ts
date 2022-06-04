@@ -26,7 +26,7 @@ const StyledCloseIcon = styled(CancelOutlinedIcon)`
   cursor: pointer;
   margin-left: auto;
   transform: rotate(0deg);
-  transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
   fill: ${({ theme }) => theme.palette.secondary.main};
 
   &:hover {
