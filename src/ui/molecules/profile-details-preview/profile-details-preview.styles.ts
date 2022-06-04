@@ -21,21 +21,8 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
   .swiper {
     z-index: 0;
 
-    .swiper-pagination {
-      bottom: 0;
-      display: flex;
-
-      &-bullet {
-        margin: 0;
-        opacity: 1;
-        border-radius: 0;
-        background-color: ${({ theme }) => theme.palette.primary.main};
-        width: calc(100% / ${({ swiperPaginationBullets }) => swiperPaginationBullets});
-
-        &-active {
-          background-color: ${({ theme }) => theme.palette.primary.light};
-        }
-      }
+    .swiper-pagination-bullet-active {
+      background-color: ${({ theme }) => theme.palette.secondary.main};
     }
   }
 `;
