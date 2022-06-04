@@ -73,7 +73,7 @@ const StyledCloseIcon = styled(CancelOutlinedIcon)`
   cursor: pointer;
   position: absolute;
   transform: rotate(0deg);
-  transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
   top: ${({ theme }) => theme.spacing(5)};
   right: ${({ theme }) => theme.spacing(5)};
   fill: ${({ theme }) => theme.palette.secondary.main};
