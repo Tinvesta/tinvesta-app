@@ -51,7 +51,7 @@ const StyledCancelIcon = styled(CancelIcon)`
   cursor: pointer;
   position: absolute;
   transform: rotate(0deg);
-  transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
   right: -${({ theme }) => theme.spacing(4)};
   bottom: -${({ theme }) => theme.spacing(4)};
   fill: ${({ theme }) => theme.palette.error.main};
@@ -66,7 +66,7 @@ const StyledAddIcon = styled(AddIcon)`
   cursor: pointer;
   position: absolute;
   transform: rotate(0deg);
-  transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
   right: -${({ theme }) => theme.spacing(4)};
   bottom: -${({ theme }) => theme.spacing(4)};
   fill: ${({ theme }) => theme.palette.error.main};
@@ -94,7 +94,7 @@ const StyledImagePlaceholder = styled(LoadingButton)<{ error?: boolean }>`
   width: 115px;
   height: 175px;
   cursor: pointer;
-  transition: all 150ms ease-in-out;
+  transition: all 250ms ease-in-out;
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   border: 1px dashed ${({ theme }) => theme.palette.secondary.main};
 
