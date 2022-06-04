@@ -1,13 +1,16 @@
 import { Button, Typography } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useEffect } from 'react';
 import { StringParam, useQueryParam } from 'use-query-params';
 
 import { useModal } from '@ui';
 
-import { useDeviceDetect, useUser } from '@utils';
+import { useDeviceDetect, useLocalStorage, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
+
+import { USER_REF_LOCAL_STORAGE_KEY } from '@constants';
 
 import { SignInModalContent } from './atoms';
 import S from './home.styles';
@@ -17,7 +20,18 @@ export const Home = (): JSX.Element => {
   const { Modal, show } = useModal();
   const { isLoading, user } = useUser();
   const { deviceData } = useDeviceDetect();
+  const [refQueryParam] = useQueryParam('ref', StringParam);
   const [codeQueryParam] = useQueryParam('code', StringParam);
+  const [userRefLocalStorage, setUserRefLocalStorage] = useLocalStorage(
+    USER_REF_LOCAL_STORAGE_KEY,
+    '',
+  );
+
+  useEffect(() => {
+    if (refQueryParam && !userRefLocalStorage) {
+      setUserRefLocalStorage(refQueryParam);
+    }
+  }, [refQueryParam]);
 
   const isSignedIn = !!user && !isLoading;
 

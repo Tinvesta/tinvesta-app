@@ -12,7 +12,6 @@ import { parseProfileAvatarUrl, useDeviceDetect, useTranslation, useUser } from 
 
 import { ERoutes } from '@enums';
 
-import { QueryClientProvider } from '../../../../providers';
 import { getBottomNavigationOptions, translationStrings } from './mobile-dashboard.defaults';
 import S from './mobile-dashboard.styles';
 import { IMobileDashboardLayoutProps } from './mobile-dashboard.types';
@@ -75,9 +74,7 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
         </S.StyledRightTopNavigationWrapper>
       </S.StyledTopNavigation>
       <S.StyledContentWrapper>
-        <QueryClientProvider>
-          <Scrollbar height="100%">{children}</Scrollbar>
-        </QueryClientProvider>
+        <Scrollbar height="100%">{children}</Scrollbar>
       </S.StyledContentWrapper>
       <S.StyledBottomNavigation>
         {bottomNavigationOptions.map((_bottomNavigationOption) => {
