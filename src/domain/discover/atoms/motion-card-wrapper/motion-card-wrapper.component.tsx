@@ -29,25 +29,15 @@ export const MotionCardWrapper = ({
   const rightIconOpacity = useTransform(x, [50, 200], [0, 200]);
   const leftIconOpacity = useTransform(x, [-200, -50], [200, 0]);
 
-  const markAsVoted = () => {
-    if (!drag) {
-      return;
-    }
-
+  const markAsVoted = () =>
     animControls.start({ x: MOVE_TO_X_POSITIVE }).then(() => {
       onVote(true);
     });
-  };
 
-  const markAsNotVoted = () => {
-    if (!drag) {
-      return;
-    }
-
+  const markAsNotVoted = () =>
     animControls.start({ x: MOVE_TO_X_NEGATIVE }).then(() => {
       onVote(false);
     });
-  };
 
   const getSensitive = () => {
     if (deviceData.isSmallerThanXS) {
