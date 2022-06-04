@@ -1,6 +1,6 @@
 import { Grid } from '@mui/material';
 import imageCompression from 'browser-image-compression';
-import { ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
+import { DragEvent, ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useFilePicker } from 'use-file-picker';
 
@@ -17,6 +17,14 @@ import { CropImageModalContent } from './parts';
 import { translationStrings } from './upload-images.defaults';
 import S from './upload-images.styles';
 import { IUploadImagesProps } from './upload-images.types';
+
+const handleDragStart = (src: string) => (event: DragEvent<HTMLSpanElement>) => {
+  if (!event.dataTransfer) {
+    return;
+  }
+
+  event.dataTransfer.setData('imageSrc', src);
+};
 
 const UploadImagesComponent = (
   {
@@ -109,6 +117,30 @@ const UploadImagesComponent = (
 
   const onCropImageModalClose = () => setImageSource('');
 
+  const handleDrop = (src: string) => (event: DragEvent<HTMLSpanElement>) => {
+    if (!event.dataTransfer) {
+      return;
+    }
+
+    const transferedImageSrc = event.dataTransfer.getData('imageSrc');
+
+    if (transferedImageSrc === src) {
+      return;
+    }
+
+    const imageSrcIndex = scaledImages.indexOf(src);
+    const transferedImageSrcIndex = scaledImages.indexOf(transferedImageSrc);
+
+    const copiedScaledImages = [...scaledImages];
+
+    [copiedScaledImages[imageSrcIndex], copiedScaledImages[transferedImageSrcIndex]] = [
+      copiedScaledImages[transferedImageSrcIndex],
+      copiedScaledImages[imageSrcIndex],
+    ];
+
+    setScaledImages(copiedScaledImages);
+  };
+
   return (
     <S.StyledUploadImagesWrapper ref={ref}>
       <Modal onClose={onCropImageModalClose}>
@@ -126,7 +158,12 @@ const UploadImagesComponent = (
             <Grid item xs={6}>
               <S.StyledWrapper>
                 {currentElement ? (
-                  <S.StyledScaledImagePreviewWrapper>
+                  <S.StyledScaledImagePreviewWrapper
+                    draggable
+                    onDragOver={(event) => event.preventDefault()}
+                    onDragStart={handleDragStart(currentElement)}
+                    onDrop={handleDrop(currentElement)}
+                  >
                     <S.StyledCancelIcon onClick={handleRemoveScaledImage(_index)} />
                     <S.StyledImage
                       alt={translations.componentUploadImagesImageScaledImageAlt}
