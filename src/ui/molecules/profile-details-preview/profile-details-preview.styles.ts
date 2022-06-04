@@ -24,6 +24,23 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
     .swiper-pagination-bullet-active {
       background-color: ${({ theme }) => theme.palette.secondary.main};
     }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: ${({ theme }) => theme.palette.secondary.main};
+
+      &::after {
+        font-size: 40px;
+
+        ${respondToMax.mobile`
+          font-size: 36px;
+        `}
+
+        ${respondToMax.xmobile`
+          font-size: 30px;
+        `}
+      }
+    }
   }
 `;
 

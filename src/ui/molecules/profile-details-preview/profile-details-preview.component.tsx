@@ -171,8 +171,9 @@ const ProfileDetailsPreviewComponent = ({
       <Scrollbar height="100%">
         <Swiper
           grabCursor
+          navigation
           touchMoveStopPropagation
-          modules={['keyboard', 'scrollbar', 'pagination']}
+          modules={['keyboard', 'scrollbar', 'pagination', 'navigation']}
           pagination={{ clickable: true }}
         >
           {mergedProfileDetails.avatars.map((_avatar) => (
