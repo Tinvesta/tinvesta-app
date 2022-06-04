@@ -17,6 +17,7 @@ export const MotionCardWrapper = ({
   children,
   drag,
   id,
+  isProfilePreviewMode,
   onVote,
   zIndex,
   ...restProps
@@ -29,15 +30,25 @@ export const MotionCardWrapper = ({
   const rightIconOpacity = useTransform(x, [50, 200], [0, 200]);
   const leftIconOpacity = useTransform(x, [-200, -50], [200, 0]);
 
-  const markAsVoted = () =>
+  const markAsVoted = () => {
+    if (!drag) {
+      return;
+    }
+
     animControls.start({ x: MOVE_TO_X_POSITIVE }).then(() => {
       onVote(true);
     });
+  };
 
-  const markAsNotVoted = () =>
+  const markAsNotVoted = () => {
+    if (!drag) {
+      return;
+    }
+
     animControls.start({ x: MOVE_TO_X_NEGATIVE }).then(() => {
       onVote(false);
     });
+  };
 
   const getSensitive = () => {
     if (deviceData.isSmallerThanXS) {
@@ -56,7 +67,7 @@ export const MotionCardWrapper = ({
   return (
     <S.StyledWrapper
       animate={animControls}
-      drag={drag}
+      drag={drag && !isProfilePreviewMode}
       dragConstraints={{ left: -750, right: 750 }}
       exit={{ opacity: 0 }}
       style={{
@@ -83,7 +94,7 @@ export const MotionCardWrapper = ({
       <S.StyledHighlightOffOutlinedIconWrapper style={{ opacity: leftIconOpacity }}>
         <HighlightOffOutlinedIcon color="error" />
       </S.StyledHighlightOffOutlinedIconWrapper>
-      <S.StyledGradient />
+      {!isProfilePreviewMode && <S.StyledGradient />}
       {children}
       <ProfileCardActionButtons markAsNotVoted={markAsNotVoted} markAsVoted={markAsVoted} />
     </S.StyledWrapper>

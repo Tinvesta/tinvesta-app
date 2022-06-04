@@ -13,6 +13,7 @@ export const MotionCardsStack = ({
   children,
   drag,
   isLoading,
+  isProfilePreviewMode,
   onVote,
   ...restProps
 }: IMotionCardsStackProps): JSX.Element => {
@@ -41,6 +42,7 @@ export const MotionCardsStack = ({
           <MotionCardWrapper
             key={key}
             drag={isTopCard && drag}
+            isProfilePreviewMode={isTopCard && isProfilePreviewMode}
             zIndex={currentIndex}
             onVote={handleVote(item)}
           >

@@ -12,7 +12,7 @@ const StyledWrapper = styled.div`
   position: absolute;
   align-items: center;
   justify-content: space-evenly;
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: transparent;
 
   ${respondToMax.mobile`
     height: 90px;

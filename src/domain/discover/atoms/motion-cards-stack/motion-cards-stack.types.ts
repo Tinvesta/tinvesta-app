@@ -10,5 +10,6 @@ export interface IMotionCardsStackProps extends Omit<HTMLAttributes<HTMLDivEleme
   children: ReactElement<ICardProps> | ReactElement<ICardProps>[];
   drag: boolean;
   isLoading: boolean;
+  isProfilePreviewMode: boolean;
   onVote: (profileId: string, vote: boolean) => void;
 }

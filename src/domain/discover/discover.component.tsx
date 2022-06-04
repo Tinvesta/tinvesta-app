@@ -31,9 +31,9 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     mutateAsync: mutateAsyncDiscoverRecordsAction,
   } = useMutation(discoverRecordsAction);
 
-  const [drag, setDrag] = useState(true);
   const [reachedLimit, setReachedLimit] = useState(false);
   const [items, setItems] = useState<IProfileDetails[]>([]);
+  const [isProfilePreviewMode, setIsProfilePreviewMode] = useState(false);
   const [likedProfileDetails, setLikedProfileDetails] = useState<IProfileDetails>();
   const [loggedProfileDetails, setLoggedProfileDetails] = useState<IProfileDetails>();
 
@@ -146,7 +146,9 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     return <Empty label={emptyLabel} />;
   }
 
-  const onVote = (profileId: string, vote: boolean) =>
+  const onVote = (profileId: string, vote: boolean) => {
+    setIsProfilePreviewMode(false);
+
     mutateAsyncLikeProfileAction({ profileId, vote }).then(({ data }) => {
       if (!loggedProfileDetails && data.loggedProfileDetails) {
         setLoggedProfileDetails(data.loggedProfileDetails);
@@ -162,13 +164,14 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
         loadMore();
       }
     });
+  };
 
   const onModalClose = () => {
     hide();
     setLikedProfileDetails(undefined);
   };
 
-  const disableDrag = () => setDrag(false);
+  const enableProfilePreviewMode = () => setIsProfilePreviewMode(true);
 
   return (
     <>
@@ -181,12 +184,18 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
       </Modal>
       <CenterBlockLayout>
         <MotionCardsStack
-          drag={!isLikeProfileActionLoading && drag}
+          drag={!isLikeProfileActionLoading}
           isLoading={isDiscoverRecordsActionLoading}
+          isProfilePreviewMode={isProfilePreviewMode}
           onVote={onVote}
         >
           {items.map((_item) => (
-            <Card key={_item.id} disableDrag={disableDrag} record={_item} {...restProps} />
+            <Card
+              key={_item.id}
+              enableProfilePreviewMode={enableProfilePreviewMode}
+              record={_item}
+              {...restProps}
+            />
           )) || []}
         </MotionCardsStack>
       </CenterBlockLayout>

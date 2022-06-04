@@ -13,7 +13,6 @@ const StyledWrapper = styled.div`
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
-  border-radius: ${({ theme }) => theme.shape.borderRadius}px;
   background-color: ${({ theme }) => theme.palette.primary.main};
 
   ${respondToMax.xmobile`
@@ -93,10 +92,6 @@ const StyledUserInfoTypography = styled(Typography)<{ withFlexWrap?: boolean }>`
 
 const StyledProfilePreviewWrapper = styled.div`
   display: contents;
-
-  > div {
-    padding-bottom: ${({ theme }) => theme.spacing(5)};
-  }
 `;
 
 const S = {
