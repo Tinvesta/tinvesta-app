@@ -58,7 +58,7 @@ const StyledActionsWrapper = styled.div`
     height: 80px;
   `}
 
-  & > *:first-child {
+  & > *:first-of-type {
     border-right: 1px solid ${({ theme }) => theme.palette.divider};
   }
 `;
