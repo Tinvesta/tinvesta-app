@@ -42,7 +42,7 @@ export const MotionCardsStack = ({
           <MotionCardWrapper
             key={key}
             drag={isTopCard && drag}
-            isProfilePreviewMode={isProfilePreviewMode}
+            isProfilePreviewMode={isTopCard && isProfilePreviewMode}
             zIndex={currentIndex}
             onVote={handleVote(item)}
           >

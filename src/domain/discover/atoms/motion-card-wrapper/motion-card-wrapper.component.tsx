@@ -67,7 +67,7 @@ export const MotionCardWrapper = ({
   return (
     <S.StyledWrapper
       animate={animControls}
-      drag={drag}
+      drag={drag && !isProfilePreviewMode}
       dragConstraints={{ left: -750, right: 750 }}
       exit={{ opacity: 0 }}
       style={{

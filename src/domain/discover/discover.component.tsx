@@ -146,7 +146,9 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     return <Empty label={emptyLabel} />;
   }
 
-  const onVote = (profileId: string, vote: boolean) =>
+  const onVote = (profileId: string, vote: boolean) => {
+    setIsProfilePreviewMode(false);
+
     mutateAsyncLikeProfileAction({ profileId, vote }).then(({ data }) => {
       if (!loggedProfileDetails && data.loggedProfileDetails) {
         setLoggedProfileDetails(data.loggedProfileDetails);
@@ -162,6 +164,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
         loadMore();
       }
     });
+  };
 
   const onModalClose = () => {
     hide();
