@@ -1,6 +1,6 @@
-import * as nsfwjs from 'nsfwjs';
 import { Grid } from '@mui/material';
 import imageCompression from 'browser-image-compression';
+import { NSFWJS, load as loadModel } from 'nsfwjs';
 import { DragEvent, ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useFilePicker } from 'use-file-picker';
@@ -54,13 +54,11 @@ const UploadImagesComponent = (
       maxIteration: 4,
     });
 
-    const model = await new Promise<nsfwjs.NSFWJS>((resolve, reject) => {
-      nsfwjs
-        .load('indexeddb://model')
+    const model = await new Promise<NSFWJS>((resolve, reject) => {
+      loadModel('indexeddb://model')
         .then(resolve)
         .catch(() => {
-          nsfwjs
-            .load()
+          loadModel()
             .then(async (_model) => {
               await _model.model.save('indexeddb://model');
 
