@@ -62,6 +62,8 @@ const UploadImagesComponent = (
           nsfwjs
             .load()
             .then((_model) => {
+              _model.model.save('indexeddb://model');
+
               resolve(_model);
             })
             .catch(reject);
