@@ -17,8 +17,8 @@ const StyledModalContentWrapper = styled.div`
     border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 
     ${({ theme }) => respondToMax.xmobile`
-      width: 270px !important;
-      height: 330px !important;
+      width: 250px !important;
+      height: 375px !important;
       margin: ${theme.spacing(3, 0)};
     `}
   }
