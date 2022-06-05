@@ -16,4 +16,7 @@ export default {
   // Success notification
   'component.dashboard.likes.remove.like.success.notification':
     'Like has been successfully deleted',
+
+  // Match modal
+  'component.dashboard.likes.match.modal.close.button': 'Close',
 };
