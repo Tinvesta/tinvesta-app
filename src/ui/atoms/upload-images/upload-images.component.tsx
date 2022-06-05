@@ -1,5 +1,6 @@
 import { Grid } from '@mui/material';
 import imageCompression from 'browser-image-compression';
+import { NSFWJS, load as loadModel } from 'nsfwjs';
 import { DragEvent, ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useFilePicker } from 'use-file-picker';
@@ -53,15 +54,45 @@ const UploadImagesComponent = (
       maxIteration: 4,
     });
 
-    reader.addEventListener('load', () => {
-      if (reader.result) {
-        setImageSource(reader.result.toString());
-      }
+    const model = await new Promise<NSFWJS>((resolve, reject) => {
+      loadModel('indexeddb://model')
+        .then(resolve)
+        .catch(() => {
+          loadModel()
+            .then(async (_model) => {
+              await _model.model.save('indexeddb://model');
 
-      show();
+              resolve(_model);
+            })
+            .catch(reject);
+        });
     });
 
-    reader.readAsDataURL(compressedFile);
+    const createdImageElement = document.createElement('img');
+
+    createdImageElement.style.display = 'none';
+    createdImageElement.src = URL.createObjectURL(compressedFile);
+    document.body.append(createdImageElement);
+
+    const handleImageLoad = async () => {
+      const predictions = await model.classify(createdImageElement);
+
+      console.log(predictions);
+
+      createdImageElement.remove();
+
+      reader.addEventListener('load', () => {
+        if (reader.result) {
+          setImageSource(reader.result.toString());
+        }
+
+        show();
+      });
+
+      reader.readAsDataURL(compressedFile);
+    };
+
+    createdImageElement.addEventListener('load', handleImageLoad);
   };
 
   const onCompressAndSetImageSourceError = () => {
