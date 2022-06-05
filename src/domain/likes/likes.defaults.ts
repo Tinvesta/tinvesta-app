@@ -12,4 +12,5 @@ export const translationStrings = [
   'component.dashboard.likes.no.subscription.action.button',
   'component.dashboard.likes.confirmation.modal.description',
   'component.dashboard.likes.remove.like.success.notification',
+  'component.dashboard.likes.match.modal.close.button',
 ] as const;

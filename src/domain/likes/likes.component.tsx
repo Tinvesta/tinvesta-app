@@ -170,6 +170,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
       </ModalProfileDetailsPreviewModalContent>
       <ModalMatchModalContent onClose={onModalMatchModalContentClose}>
         <MatchModalContent
+          closeButtonLabel={translations.componentDashboardLikesMatchModalCloseButton}
           likedProfileDetails={likedProfileDetails}
           loggedProfileDetails={loggedProfileDetails}
           onClose={onModalMatchModalContentClose}

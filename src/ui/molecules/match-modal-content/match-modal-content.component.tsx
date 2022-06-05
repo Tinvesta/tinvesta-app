@@ -10,6 +10,7 @@ import S from './match-modal-content.styles';
 import { IMatchModalContentProps } from './match-modal-content.types';
 
 export const MatchModalContent = ({
+  closeButtonLabel,
   likedProfileDetails,
   loggedProfileDetails,
   onClose,
@@ -76,7 +77,8 @@ export const MatchModalContent = ({
           </S.StyledButton>
         </CopyToClipboard>
         <S.StyledButton color="secondary" size={buttonSize} variant="outlined" onClick={onClose}>
-          {translations.componentDashboardDiscoverMatchModalContentButtonsKeepSwiping}
+          {closeButtonLabel ||
+            translations.componentDashboardDiscoverMatchModalContentButtonsKeepSwiping}
         </S.StyledButton>
       </S.StyledButtonsWrapper>
     </S.StyledWrapper>
