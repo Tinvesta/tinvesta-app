@@ -32,11 +32,11 @@ export const CropImageModalContent = ({
         ref={avatarEditorRef}
         border={0}
         borderRadius={isNumber(theme.shape.borderRadius) ? theme.shape.borderRadius : 30}
-        height={550}
+        height={600}
         image={image}
         rotate={0}
         scale={1}
-        width={450}
+        width={400}
       />
       <Button
         color="secondary"
