@@ -32,17 +32,18 @@ export const CropImageModalContent = ({
         ref={avatarEditorRef}
         border={0}
         borderRadius={isNumber(theme.shape.borderRadius) ? theme.shape.borderRadius : 30}
-        height={600}
+        height={550}
         image={image}
         rotate={0}
         scale={1}
-        width={400}
+        width={450}
       />
       <Button
         color="secondary"
-        fullWidth={deviceData.isSmallerThanSM}
+        fullWidth={deviceData.isSmallerThanXS}
         size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
-        variant="outlined"
+        sx={{ minWidth: '150px' }}
+        variant="contained"
         onClick={onSubmit}
       >
         {buttonText}
