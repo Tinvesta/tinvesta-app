@@ -1,7 +1,0 @@
-<?xml version='1.0' encoding='utf-8'?>
-<resources>
-    <string name="app_name">Tinvesta</string>
-    <string name="title_activity_main">Tinvesta</string>
-    <string name="package_name">com.tinvesta.app</string>
-    <string name="custom_url_scheme">com.tinvesta.app</string>
-</resources>
