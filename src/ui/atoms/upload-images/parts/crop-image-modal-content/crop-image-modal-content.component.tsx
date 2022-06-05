@@ -40,9 +40,10 @@ export const CropImageModalContent = ({
       />
       <Button
         color="secondary"
-        fullWidth={deviceData.isSmallerThanSM}
+        fullWidth={deviceData.isSmallerThanXS}
         size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
-        variant="outlined"
+        sx={{ minWidth: '150px' }}
+        variant="contained"
         onClick={onSubmit}
       >
         {buttonText}

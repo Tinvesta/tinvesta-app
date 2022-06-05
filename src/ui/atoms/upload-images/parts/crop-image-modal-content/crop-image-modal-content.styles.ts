@@ -7,25 +7,26 @@ const StyledModalContentWrapper = styled.div`
   text-align: center;
   align-items: center;
   flex-direction: column;
+  gap: ${({ theme }) => theme.spacing(5)};
+  padding-top: ${({ theme }) => theme.spacing(4)};
 
   > canvas {
     overflow: hidden;
     border: 1px dashed;
     touch-action: none;
-    margin: ${({ theme }) => theme.spacing(3, 0, 4, 0)};
     border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-
-    ${respondToMax.mobile`
-      width: 300px !important;
-      height: 420px !important;
-    `}
 
     ${({ theme }) => respondToMax.xmobile`
       width: 250px !important;
-      height: 350px !important;
+      height: 375px !important;
       margin: ${theme.spacing(3, 0)};
     `}
   }
+
+  ${({ theme }) => respondToMax.xmobile`
+    gap: ${theme.spacing(4)};
+    padding-top: ${theme.spacing(3)};
+  `}
 `;
 
 const S = {

@@ -143,7 +143,7 @@ const UploadImagesComponent = (
 
   return (
     <S.StyledUploadImagesWrapper ref={ref}>
-      <Modal onClose={onCropImageModalClose}>
+      <Modal title={translations.componentUploadImagesModalTitle} onClose={onCropImageModalClose}>
         <CropImageModalContent
           buttonText={translations.componentUploadImagesModalButtonText}
           image={imageSource}
