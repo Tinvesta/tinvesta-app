@@ -46,6 +46,12 @@ const UploadImagesComponent = (
   const { hide, Modal, show } = useModal();
   const translations = useTranslation(translationStrings);
 
+  const onCompressAndSetImageSourceError = () => {
+    clear();
+    setImageSource('');
+    toast.error(translations.componentUploadImagesErrorCompression);
+  };
+
   const compressAndSetImageSource = (file: File) => async () => {
     const reader = new FileReader();
     const compressedFile = await imageCompression(file, {
@@ -77,9 +83,22 @@ const UploadImagesComponent = (
     const handleImageLoad = async () => {
       const predictions = await model.classify(createdImageElement);
 
-      console.log(predictions);
-
       createdImageElement.remove();
+
+      const parsedPredictions = Object.fromEntries(
+        predictions.map((_value) => [`is${_value.className}Prediction`, _value.probability > 0.7]),
+      );
+
+      if (
+        parsedPredictions.isDrawingPrediction ||
+        parsedPredictions.isSexyPrediction ||
+        parsedPredictions.isPornPrediction ||
+        parsedPredictions.isHentaiPrediction
+      ) {
+        onCompressAndSetImageSourceError();
+
+        return;
+      }
 
       reader.addEventListener('load', () => {
         if (reader.result) {
@@ -93,12 +112,6 @@ const UploadImagesComponent = (
     };
 
     createdImageElement.addEventListener('load', handleImageLoad);
-  };
-
-  const onCompressAndSetImageSourceError = () => {
-    clear();
-    setImageSource('');
-    toast.error(translations.componentUploadImagesErrorCompression);
   };
 
   const onSelectFiles = async (files: File[]) => {
