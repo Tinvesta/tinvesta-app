@@ -22,6 +22,7 @@ export const Home = (): JSX.Element => {
   const { deviceData } = useDeviceDetect();
   const [refQueryParam] = useQueryParam('ref', StringParam);
   const [codeQueryParam] = useQueryParam('code', StringParam);
+  const [redirectQueryParam] = useQueryParam('redirect', StringParam);
   const [userRefLocalStorage, setUserRefLocalStorage] = useLocalStorage(
     USER_REF_LOCAL_STORAGE_KEY,
     '',
@@ -32,6 +33,12 @@ export const Home = (): JSX.Element => {
       setUserRefLocalStorage(refQueryParam);
     }
   }, [refQueryParam]);
+
+  useEffect(() => {
+    if (user && redirectQueryParam === 'dashboard') {
+      router.push(user.client_type_id ? ERoutes.DASHBOARD : ERoutes.ONBOARDING);
+    }
+  }, [redirectQueryParam, user]);
 
   const isSignedIn = !!user && !isLoading;
 

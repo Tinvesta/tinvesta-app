@@ -76,14 +76,24 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
   }, [user]);
 
   const loginViaGithubProvider = () =>
-    supabaseInstance.auth.signIn({
-      provider: 'github',
-    });
+    supabaseInstance.auth.signIn(
+      {
+        provider: 'github',
+      },
+      {
+        redirectTo: `${window.location.origin}?redirect=dashboard`,
+      },
+    );
 
   const loginViaGoogleProvider = () =>
-    supabaseInstance.auth.signIn({
-      provider: 'google',
-    });
+    supabaseInstance.auth.signIn(
+      {
+        provider: 'google',
+      },
+      {
+        redirectTo: `${window.location.origin}?redirect=dashboard`,
+      },
+    );
 
   const logout = () =>
     supabaseInstance.auth.signOut().then(() => {
