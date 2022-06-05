@@ -20,9 +20,7 @@
     "grlc": "bash ./scripts/shell/git-reset-local-changes.sh",
     "lint": "eslint .",
     "lint:fix": "yarn lint --fix",
-    "open:android": "npx cap open android",
     "open:coverage": "yarn test:coverage && open ./coverage/lcov-report/index.html",
-    "open:ios": "npx cap open ios",
     "prepare": "husky install",
     "reinstall-node-modules": "bash ./scripts/shell/reinstall-node-modules.sh",
     "release": "bash ./scripts/shell/release-develop-to-main.sh",
@@ -40,10 +38,6 @@
     "typecheck": "tsc --noEmit -p . --pretty"
   },
   "dependencies": {
-    "@capacitor/android": "^3.5.1",
-    "@capacitor/cli": "^3.5.1",
-    "@capacitor/core": "^3.5.1",
-    "@capacitor/ios": "^3.5.1",
     "@emotion/cache": "^11.7.1",
     "@emotion/react": "^11.9.0",
     "@emotion/server": "^11.4.0",
