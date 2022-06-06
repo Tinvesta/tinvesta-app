@@ -17,6 +17,10 @@ export default class MyDocument extends Document {
           <link href="/favicon.ico" rel="icon" />
           <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
           <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
+          <meta
+            content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=0"
+            name="viewport"
+          />
 
           <meta content="Tinvesta" name="application-name" />
           <meta content="yes" name="apple-mobile-web-app-capable" />
