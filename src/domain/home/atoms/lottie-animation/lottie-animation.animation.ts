@@ -17,8 +17,8 @@ export default {
     },
     {
       id: 'image_1',
-      w: 808,
-      h: 854,
+      w: 624,
+      h: 724,
       p: '/images/match-card.png',
       e: 0,
     },
@@ -585,7 +585,7 @@ export default {
         },
         a: {
           a: 0,
-          k: [404, 427, 0],
+          k: [330, 400, 0],
           ix: 1,
           l: 2,
         },
@@ -777,7 +777,7 @@ export default {
         },
         a: {
           a: 0,
-          k: [404, 427, 0],
+          k: [330, 400, 0],
           ix: 1,
           l: 2,
         },
