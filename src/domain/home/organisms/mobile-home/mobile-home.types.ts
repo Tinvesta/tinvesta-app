@@ -1,1 +1,3 @@
-export interface IMobileHomeProps {}
+export interface IMobileHomeProps {
+  isSignedIn: boolean;
+}
