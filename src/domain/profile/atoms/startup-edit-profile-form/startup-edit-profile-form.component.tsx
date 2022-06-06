@@ -124,6 +124,7 @@ const StartupEditProfileFormComponent = ({
               }}
               inputProps={{
                 fullWidth: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDashboardStartupEditProfileFormFirstNameFieldLabel,
               }}
@@ -153,6 +154,7 @@ const StartupEditProfileFormComponent = ({
               }}
               inputProps={{
                 fullWidth: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDashboardStartupEditProfileFormLastNameFieldLabel,
               }}
@@ -184,6 +186,7 @@ const StartupEditProfileFormComponent = ({
               }}
               inputProps={{
                 fullWidth: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDashboardStartupEditProfileFormContactEmailFieldLabel,
               }}
@@ -213,6 +216,7 @@ const StartupEditProfileFormComponent = ({
               }}
               inputProps={{
                 fullWidth: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 label: translations.componentDashboardStartupEditProfileFormCompanyNameFieldLabel,
               }}
@@ -231,6 +235,7 @@ const StartupEditProfileFormComponent = ({
                 },
               }}
               inputProps={{
+                color: 'secondary',
                 label: translations.componentDashboardStartupEditProfileFormLocationFieldLabel,
               }}
             />
@@ -252,6 +257,7 @@ const StartupEditProfileFormComponent = ({
               }}
               selectProps={{
                 fullWidth: true,
+                color: 'secondary',
                 options: startupProfileCreatorTypesDropdownOptions,
                 label: translations.componentDashboardStartupEditProfileFormYourPositionFieldLabel,
                 labelId: 'startup-edit-profile-form-startup-profile-creator-type-id-select',
@@ -276,6 +282,7 @@ const StartupEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: focusMarketsDropdownOptions,
                 labelId: 'startup-edit-profile-form-focus-market-ids-select',
                 label: translations.componentDashboardStartupEditProfileFormFocusMarketFieldLabel,
@@ -299,6 +306,7 @@ const StartupEditProfileFormComponent = ({
               }}
               selectProps={{
                 fullWidth: true,
+                color: 'secondary',
                 options: teamSizesDropdownOptions,
                 labelId: 'startup-edit-profile-form-team-size-id-select',
                 label: translations.componentDashboardStartupEditProfileFormTeamSizeFieldLabel,
@@ -323,6 +331,7 @@ const StartupEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: investmentStageTypesDropdownOptions,
                 labelId: 'startup-edit-profile-form-investment-stage-type-ids-select',
                 label:
@@ -348,6 +357,7 @@ const StartupEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: startupSectorsDropdownOptions,
                 labelId: 'startup-edit-profile-form-startup-sector-ids-select',
                 label: translations.componentDashboardStartupEditProfileFormStartupSectorFieldLabel,
@@ -372,6 +382,7 @@ const StartupEditProfileFormComponent = ({
               selectProps={{
                 multiple: true,
                 fullWidth: true,
+                color: 'secondary',
                 options: investmentSizesDropdownOptions,
                 labelId: 'startup-edit-profile-form-investment-size-ids-select',
                 label:
@@ -399,6 +410,7 @@ const StartupEditProfileFormComponent = ({
                 },
               }}
               inputProps={{
+                color: 'secondary',
                 label:
                   translations.componentDashboardStartupEditProfileFormIndustrialSectorsFieldLabel,
               }}
@@ -433,6 +445,7 @@ const StartupEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 multiline: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 rows: deviceData.isSmallerThanSM ? 4 : 3,
                 label: translations.componentDashboardStartupEditProfileFormStartupClaimFieldLabel,
@@ -470,6 +483,7 @@ const StartupEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 multiline: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 rows: deviceData.isSmallerThanSM ? 4 : 3,
                 label:
@@ -509,6 +523,7 @@ const StartupEditProfileFormComponent = ({
               inputProps={{
                 fullWidth: true,
                 multiline: true,
+                color: 'secondary',
                 autoComplete: 'disabled',
                 rows: deviceData.isSmallerThanSM ? 4 : 3,
                 label:
