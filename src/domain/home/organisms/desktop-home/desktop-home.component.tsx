@@ -8,7 +8,7 @@ import { useDeviceDetect } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { SignInModalContent } from '../../atoms';
+import { LottieAnimation, SignInModalContent } from '../../atoms';
 import S from './desktop-home.styles';
 import { IDesktopHomeProps } from './desktop-home.types';
 
@@ -80,6 +80,9 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
           {'(Full release planned on 13 June 2022)'}
         </Typography>
       </S.StyledSubHeaderWrapper>
+      <div style={{ height: '100%', position: 'absolute', top: 0, right: 0 }}>
+        <LottieAnimation />
+      </div>
     </S.StyledWrapper>
   );
 };
