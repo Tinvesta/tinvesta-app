@@ -31,7 +31,6 @@ export const Footer = (): JSX.Element => {
                 height={50}
                 objectFit="fill"
                 src="/images/brandmark-transparent-white.png"
-                style={{ cursor: 'pointer' }}
                 width={50}
               />
             </span>
