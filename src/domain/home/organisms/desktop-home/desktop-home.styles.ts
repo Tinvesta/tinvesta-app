@@ -5,17 +5,30 @@ import { respondToMax } from '@infrastructure';
 const StyledWrapper = styled.div`
   width: 100%;
   height: 100%;
-  display: flex;
+  overflow-x: hidden;
   position: relative;
+`;
+
+const StyledOverflowX = styled.div`
+  overflow-x: hidden;
+`;
+
+const StyledContentWrapper = styled.div`
+  display: flex;
+  margin: 0 auto;
+  max-width: 1300px;
   align-items: center;
-  flex-direction: column;
-  justify-content: center;
+`;
+
+const StyledTextBlockWrapper = styled.div`
+  width: 50%;
+  text-align: left;
 `;
 
 const StyledSubHeaderWrapper = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: flex-start;
   justify-content: center;
   margin-top: ${({ theme }) => theme.spacing(3)};
 
@@ -34,6 +47,9 @@ const StyledSubHeaderWrapper = styled.div`
 
 const S = {
   StyledWrapper,
+  StyledOverflowX,
+  StyledContentWrapper,
+  StyledTextBlockWrapper,
   StyledSubHeaderWrapper,
 };
 
