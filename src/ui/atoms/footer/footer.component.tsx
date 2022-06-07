@@ -1,16 +1,21 @@
 import { Typography } from '@mui/material';
 import Image from 'next/image';
 
+import { useTranslation } from '@utils';
+
+import { translationStrings } from './footer.defaults';
 import S from './footer.styles';
 
 export const Footer = (): JSX.Element => {
+  const translations = useTranslation(translationStrings);
+
   const currentYear = new Date().getUTCFullYear();
 
   return (
     <S.StyledWrapper>
       <S.StyledMinWidthContainer>
         <S.StyledTitle fontWeight={900} variant="h1">
-          It&apos;s free. Start matching!
+          {translations.componentFooterHeader}
         </S.StyledTitle>
         <S.StyledFooterContainer>
           <S.StyledFooterLeft>
@@ -29,24 +34,24 @@ export const Footer = (): JSX.Element => {
           </S.StyledFooterLeft>
           <S.StyledFooterLinksColumn>
             <S.StyledFooterLinksTitle fontWeight={900} variant="h6">
-              Legal
+              {translations.componentFooterLinksFirstTitle}
             </S.StyledFooterLinksTitle>
-            <Typography>Terms & Conditions</Typography>
-            <Typography>Privacy Policy</Typography>
+            <Typography>{translations.componentFooterLinksFirstOptionOne}</Typography>
+            <Typography>{translations.componentFooterLinksFirstOptionTwo}</Typography>
           </S.StyledFooterLinksColumn>
           <S.StyledFooterLinksColumn>
             <S.StyledFooterLinksTitle fontWeight={900} variant="h6">
-              Get in touch
+              {translations.componentFooterLinksSecondTitle}
             </S.StyledFooterLinksTitle>
-            <Typography>pawel.wojtasinski.1995@gmail.com</Typography>
+            <Typography>{translations.componentFooterLinksSecondOptionOne}</Typography>
           </S.StyledFooterLinksColumn>
           <S.StyledFooterLinksColumn>
             <S.StyledFooterLinksTitle fontWeight={900} variant="h6">
-              Follow me
+              {translations.componentFooterLinksThirdTitle}
             </S.StyledFooterLinksTitle>
-            <Typography>LinkedIn</Typography>
-            <Typography>Twitter</Typography>
-            <Typography>GitHub</Typography>
+            <Typography>{translations.componentFooterLinksThirdOptionOne}</Typography>
+            <Typography>{translations.componentFooterLinksThirdOptionTwo}</Typography>
+            <Typography>{translations.componentFooterLinksThirdOptionThree}</Typography>
           </S.StyledFooterLinksColumn>
         </S.StyledFooterContainer>
       </S.StyledMinWidthContainer>
