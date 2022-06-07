@@ -9,10 +9,6 @@ const StyledWrapper = styled.div`
   position: relative;
 `;
 
-const StyledOverflowX = styled.div`
-  overflow-x: hidden;
-`;
-
 const StyledContentWrapper = styled.div`
   display: flex;
   margin: 0 auto;
@@ -47,7 +43,6 @@ const StyledSubHeaderWrapper = styled.div`
 
 const S = {
   StyledWrapper,
-  StyledOverflowX,
   StyledContentWrapper,
   StyledTextBlockWrapper,
   StyledSubHeaderWrapper,
