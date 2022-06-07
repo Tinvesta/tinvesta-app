@@ -1,7 +1,10 @@
 import { Typography } from '@mui/material';
 import Image from 'next/image';
+import Link from 'next/link';
 
-import { useTranslation } from '@utils';
+import { sendEmail, useTranslation } from '@utils';
+
+import { ERoutes } from '@enums';
 
 import { translationStrings } from './footer.defaults';
 import S from './footer.styles';
@@ -10,6 +13,8 @@ export const Footer = (): JSX.Element => {
   const translations = useTranslation(translationStrings);
 
   const currentYear = new Date().getUTCFullYear();
+
+  const onEmailClick = () => sendEmail(translations.componentFooterLinksSecondOptionOne);
 
   return (
     <S.StyledWrapper>
@@ -36,22 +41,44 @@ export const Footer = (): JSX.Element => {
             <S.StyledFooterLinksTitle fontWeight={900} variant="h6">
               {translations.componentFooterLinksFirstTitle}
             </S.StyledFooterLinksTitle>
-            <Typography>{translations.componentFooterLinksFirstOptionOne}</Typography>
-            <Typography>{translations.componentFooterLinksFirstOptionTwo}</Typography>
+            <Link href={ERoutes.PRIVACY_POLICY}>
+              <S.StyledFooterLinksLink>
+                {translations.componentFooterLinksFirstOptionOne}
+              </S.StyledFooterLinksLink>
+            </Link>
+            <Link href={ERoutes.TERMS}>
+              <S.StyledFooterLinksLink>
+                {translations.componentFooterLinksFirstOptionTwo}
+              </S.StyledFooterLinksLink>
+            </Link>
           </S.StyledFooterLinksColumn>
           <S.StyledFooterLinksColumn>
             <S.StyledFooterLinksTitle fontWeight={900} variant="h6">
               {translations.componentFooterLinksSecondTitle}
             </S.StyledFooterLinksTitle>
-            <Typography>{translations.componentFooterLinksSecondOptionOne}</Typography>
+            <S.StyledFooterLinksLink onClick={onEmailClick}>
+              {translations.componentFooterLinksSecondOptionOne}
+            </S.StyledFooterLinksLink>
           </S.StyledFooterLinksColumn>
           <S.StyledFooterLinksColumn>
             <S.StyledFooterLinksTitle fontWeight={900} variant="h6">
               {translations.componentFooterLinksThirdTitle}
             </S.StyledFooterLinksTitle>
-            <Typography>{translations.componentFooterLinksThirdOptionOne}</Typography>
-            <Typography>{translations.componentFooterLinksThirdOptionTwo}</Typography>
-            <Typography>{translations.componentFooterLinksThirdOptionThree}</Typography>
+            <Link href="https://github.com/playerony">
+              <S.StyledFooterLinksLink>
+                {translations.componentFooterLinksThirdOptionOne}
+              </S.StyledFooterLinksLink>
+            </Link>
+            <Link href="https://twitter.com/WojtasinskiPawe">
+              <S.StyledFooterLinksLink>
+                {translations.componentFooterLinksThirdOptionTwo}
+              </S.StyledFooterLinksLink>
+            </Link>
+            <Link href="https://www.linkedin.com/in/pwojtasinski">
+              <S.StyledFooterLinksLink>
+                {translations.componentFooterLinksThirdOptionThree}
+              </S.StyledFooterLinksLink>
+            </Link>
           </S.StyledFooterLinksColumn>
         </S.StyledFooterContainer>
       </S.StyledMinWidthContainer>

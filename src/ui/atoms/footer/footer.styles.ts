@@ -48,10 +48,28 @@ const StyledFooterLinksTitle = styled(Typography)`
   margin-bottom: ${({ theme }) => theme.spacing(4)};
 `;
 
+const StyledFooterLinksLink = styled(Typography)`
+  cursor: pointer;
+  width: fit-content;
+
+  &:after {
+    content: '';
+    display: block;
+    transform: scaleX(0);
+    transition: transform 250ms ease-in-out;
+    border-bottom: solid 1px ${({ theme }) => theme.palette.secondary.main};
+  }
+
+  &:hover:after {
+    transform: scaleX(1);
+  }
+`;
+
 const S = {
   StyledTitle,
   StyledWrapper,
   StyledFooterLeft,
+  StyledFooterLinksLink,
   StyledFooterContainer,
   StyledFooterLinksTitle,
   StyledMinWidthContainer,
