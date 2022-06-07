@@ -16,7 +16,7 @@ const StyledMinWidthContainer = styled.div`
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
-  padding: ${({ theme }) => theme.spacing(10, 0)};
+  padding: ${({ theme }) => theme.spacing(15, 0)};
 `;
 
 const StyledTitle = styled(Typography)`
@@ -29,7 +29,7 @@ const StyledFooterContainer = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-top: ${({ theme }) => theme.spacing(7)};
+  padding-top: ${({ theme }) => theme.spacing(10)};
 `;
 
 const StyledFooterLeft = styled.div`

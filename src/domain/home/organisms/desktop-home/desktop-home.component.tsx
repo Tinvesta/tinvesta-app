@@ -63,7 +63,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
                 textAlign="left"
                 variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}
               >
-                matchmaking app for startups and investors all over the world. The app enables
+                Matchmaking app for startups and investors all over the world. The app enables
                 investors and startups to find each other in the easiest way: create a profile -
                 swipe - match.
               </Typography>
