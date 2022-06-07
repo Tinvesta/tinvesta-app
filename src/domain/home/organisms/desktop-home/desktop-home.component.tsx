@@ -1,13 +1,13 @@
 import { Button, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
-import { Scrollbar, useModal } from '@ui';
+import { Footer, Scrollbar, useModal } from '@ui';
 
 import { useDeviceDetect } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { Footer, LottieAnimation, SignInModalContent } from '../../atoms';
+import { LottieAnimation, SignInModalContent } from '../../atoms';
 import S from './desktop-home.styles';
 import { IDesktopHomeProps } from './desktop-home.types';
 
