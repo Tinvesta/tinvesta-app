@@ -52,12 +52,12 @@ export const GlobalStyles = (): JSX.Element => {
           }
 
           ::-moz-selection {
-            color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.dark};
             background: ${theme.palette.secondary.main};
           }
 
           ::selection {
-            color: ${theme.palette.primary.main};
+            color: ${theme.palette.primary.dark};
             background: ${theme.palette.secondary.main};
           }
         `}
