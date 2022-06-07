@@ -15,5 +15,7 @@ export const LottieAnimation = (): JSX.Element => {
     }
   }, []);
 
-  return <div ref={animationContainerRef} />;
+  return (
+    <div ref={animationContainerRef} style={{ marginBottom: '-10px', marginRight: '-35px' }} />
+  );
 };
