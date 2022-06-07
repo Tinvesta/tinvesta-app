@@ -50,6 +50,16 @@ export const GlobalStyles = (): JSX.Element => {
             border-radius: ${theme.shape.borderRadius}px;
             background-color: ${theme.palette.secondary.main};
           }
+
+          ::-moz-selection {
+            color: ${theme.palette.primary.main};
+            background: ${theme.palette.secondary.main};
+          }
+
+          ::selection {
+            color: ${theme.palette.primary.main};
+            background: ${theme.palette.secondary.main};
+          }
         `}
       />
     </>
