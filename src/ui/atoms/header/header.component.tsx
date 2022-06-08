@@ -15,7 +15,7 @@ export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
   const { logout, user } = useUser();
   const [open, cycleOpen] = useCycle(false, true);
   const animationContainerRef = useRef<HTMLDivElement>(null);
-  const [aniamtionItem, setAnimationItem] = useState<AnimationItem>();
+  const [animationItem, setAnimationItem] = useState<AnimationItem>();
 
   useEffect(() => {
     if (animationContainerRef.current) {
@@ -35,14 +35,14 @@ export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
   }, []);
 
   const onMenuClick = (): void => {
-    if (!aniamtionItem) {
+    if (!animationItem) {
       return;
     }
 
     const animationSegments: AnimationSegment = !open ? [0, 60] : [60, 0];
 
     cycleOpen();
-    aniamtionItem.playSegments(animationSegments, true);
+    animationItem.playSegments(animationSegments, true);
   };
 
   const imageSize = 70;
