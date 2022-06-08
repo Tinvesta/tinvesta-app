@@ -7,6 +7,7 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledContentWrapper = styled.div`
+  height: 100%;
   display: flex;
   margin: 0 auto;
   max-width: 1300px;
@@ -14,8 +15,17 @@ const StyledContentWrapper = styled.div`
   justify-content: space-between;
 `;
 
+const StyledMenuAnimation = styled.div`
+  z-index: 20;
+  width: 75px;
+  height: 75px;
+  cursor: pointer;
+  position: relative;
+`;
+
 const S = {
   StyledWrapper,
+  StyledMenuAnimation,
   StyledContentWrapper,
 };
 

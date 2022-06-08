@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { useCycle } from 'framer-motion';
 import lottie, { AnimationItem, AnimationSegment } from 'lottie-web';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
@@ -7,13 +8,14 @@ import { useUser } from '@utils';
 
 import S from './header.styles';
 import { IHeaderProps } from './header.types';
+import { FullScreenMenu } from './parts';
 import { menuAnimation } from './utils';
 
 export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
   const { logout, user } = useUser();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [open, cycleOpen] = useCycle(false, true);
   const animationContainerRef = useRef<HTMLDivElement>(null);
-  const [aniamtionItem, setAnimationItem] = useState<AnimationItem>();
+  const [animationItem, setAnimationItem] = useState<AnimationItem>();
 
   useEffect(() => {
     if (animationContainerRef.current) {
@@ -32,20 +34,24 @@ export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
     }
   }, []);
 
-  const imageSize = 80;
-
   const onMenuClick = (): void => {
-    const newIsMenuOpen = !isMenuOpen;
-    const animationSegments: AnimationSegment = newIsMenuOpen ? [0, 60] : [60, 0];
+    if (!animationItem) {
+      return;
+    }
 
-    setIsMenuOpen(newIsMenuOpen);
-    aniamtionItem?.playSegments(animationSegments, true);
+    const animationSegments: AnimationSegment = !open ? [0, 60] : [60, 0];
+
+    cycleOpen();
+    animationItem.playSegments(animationSegments, true);
   };
+
+  const imageSize = 70;
 
   return (
     <S.StyledWrapper>
+      <FullScreenMenu open={open} />
       <S.StyledContentWrapper>
-        <div ref={animationContainerRef} onClick={onMenuClick} />
+        <S.StyledMenuAnimation ref={animationContainerRef} onClick={onMenuClick} />
         <span
           style={{
             position: 'absolute',
@@ -60,9 +66,6 @@ export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
             height={imageSize}
             objectFit="fill"
             src="/images/brandmark-transparent-white.png"
-            style={{
-              cursor: 'pointer',
-            }}
             width={imageSize}
           />
         </span>
