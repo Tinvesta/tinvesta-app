@@ -1,7 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
 
-import { Footer, Scrollbar, useModal } from '@ui';
+import { Footer, Header, Scrollbar, useModal } from '@ui';
 
 import { useDeviceDetect } from '@utils';
 
@@ -46,6 +46,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
         <Modal title="Create account">
           <SignInModalContent />
         </Modal>
+        <Header openLoginModal={show} />
         <S.StyledContentWrapper>
           <S.StyledTextBlockWrapper>
             <Typography

@@ -1,4 +1,5 @@
 export * from './empty/empty.component';
+export * from './header/header.component';
 export * from './footer/footer.component';
 export * from './select/select.component';
 export * from './loader/loader.component';

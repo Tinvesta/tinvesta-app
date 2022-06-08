@@ -30,6 +30,7 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
 
   const imageSize = deviceData.isSmallerThanXS ? 35 : 45;
 
+  // TODO - fix span styles
   return (
     <S.StyledWrapper>
       <Head>
