@@ -2,7 +2,7 @@ import { Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { sendEmail, useTranslation } from '@utils';
+import { sendEmail, useDeviceDetect, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -10,6 +10,7 @@ import { translationStrings } from './footer.defaults';
 import S from './footer.styles';
 
 export const Footer = (): JSX.Element => {
+  const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
 
   const currentYear = new Date().getUTCFullYear();
@@ -18,24 +19,26 @@ export const Footer = (): JSX.Element => {
 
   return (
     <S.StyledWrapper>
-      <S.StyledMinWidthContainer>
-        <S.StyledTitle fontWeight={900} variant="h1">
+      <S.StyledWidthContainer>
+        <S.StyledTitle align="center" fontWeight={900} variant="h2">
           {translations.componentFooterHeader}
         </S.StyledTitle>
         <S.StyledFooterContainer>
-          <S.StyledFooterLeft>
-            <span>
-              <Image
-                priority
-                alt="Tinvesta"
-                height={50}
-                objectFit="fill"
-                src="/images/brandmark-transparent-white.png"
-                width={50}
-              />
-            </span>
-            <Typography>&#169; {currentYear} Tinvesta</Typography>
-          </S.StyledFooterLeft>
+          {!deviceData.isSmallerThanMD && (
+            <S.StyledFooterLeft>
+              <span>
+                <Image
+                  priority
+                  alt="Tinvesta"
+                  height={50}
+                  objectFit="fill"
+                  src="/images/brandmark-transparent-white.png"
+                  width={50}
+                />
+              </span>
+              <Typography>&#169; {currentYear} Tinvesta</Typography>
+            </S.StyledFooterLeft>
+          )}
           <S.StyledFooterLinksColumn>
             <S.StyledFooterLinksTitle fontWeight={900} variant="h6">
               {translations.componentFooterLinksFirstTitle}
@@ -79,8 +82,23 @@ export const Footer = (): JSX.Element => {
               </S.StyledFooterLinksLink>
             </Link>
           </S.StyledFooterLinksColumn>
+          {deviceData.isSmallerThanMD && (
+            <S.StyledFooterLeft>
+              <span>
+                <Image
+                  priority
+                  alt="Tinvesta"
+                  height={50}
+                  objectFit="fill"
+                  src="/images/brandmark-transparent-white.png"
+                  width={50}
+                />
+              </span>
+              <Typography>&#169; {currentYear} Tinvesta</Typography>
+            </S.StyledFooterLeft>
+          )}
         </S.StyledFooterContainer>
-      </S.StyledMinWidthContainer>
+      </S.StyledWidthContainer>
     </S.StyledWrapper>
   );
 };
