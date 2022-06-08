@@ -1,5 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
+import { useRef } from 'react';
+import { Scrollbars } from 'react-custom-scrollbars-2';
 
 import { Footer, Header, Scrollbar, useModal } from '@ui';
 
@@ -15,6 +17,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
   const router = useRouter();
   const { Modal, show } = useModal();
   const { deviceData } = useDeviceDetect();
+  const scrollbarRef = useRef<Scrollbars>(null);
 
   const onSignInButtonClick = () => {
     if (!isSignedIn) {
@@ -40,13 +43,15 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
     return 'h2';
   };
 
+  const scrollToTop = () => scrollbarRef.current?.scrollToTop();
+
   return (
     <S.StyledWrapper>
-      <Scrollbar height="100%" style={{ overflowX: 'hidden' }}>
+      <Scrollbar ref={scrollbarRef} height="100%" style={{ overflowX: 'hidden' }}>
         <Modal title="Create account">
           <SignInModalContent />
         </Modal>
-        <Header openLoginModal={show} />
+        <Header openLoginModal={show} scrollToTop={scrollToTop} />
         <S.StyledContentWrapper>
           <S.StyledTextBlockWrapper>
             <Typography
