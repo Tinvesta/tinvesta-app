@@ -12,7 +12,7 @@ import { IHeaderProps } from './header.types';
 import { FullScreenMenu } from './parts';
 import { menuAnimation } from './utils';
 
-export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
+export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Element => {
   const { logout, user } = useUser();
   const translations = useTranslation(translationStrings);
   const animationContainerRef = useRef<HTMLDivElement>(null);
@@ -45,6 +45,7 @@ export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
     const animationSegments: AnimationSegment = !open ? [0, 60] : [60, 0];
 
     cycleOpen();
+    scrollToTop();
     animationItem.playSegments(animationSegments, true);
   };
 
