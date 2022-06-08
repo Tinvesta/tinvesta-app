@@ -5,31 +5,9 @@ import { useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { translationStrings } from './full-screen-menu.defaults';
+import { itemVariants, sideVariants, translationStrings } from './full-screen-menu.defaults';
 import S from './full-screen-menu.styles';
 import { IFullScreenMenuProps } from './full-screen-menu.types';
-
-const itemVariants = {
-  closed: {
-    opacity: 0,
-  },
-  open: { opacity: 1 },
-};
-
-const sideVariants = {
-  closed: {
-    transition: {
-      staggerChildren: 0.2,
-      staggerDirection: -1,
-    },
-  },
-  open: {
-    transition: {
-      staggerChildren: 0.2,
-      staggerDirection: 1,
-    },
-  },
-};
 
 export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.Element => {
   const translations = useTranslation(translationStrings);
