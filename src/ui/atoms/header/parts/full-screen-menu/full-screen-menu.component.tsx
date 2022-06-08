@@ -7,8 +7,9 @@ import S from './full-screen-menu.styles';
 import { IFullScreenMenuProps } from './full-screen-menu.types';
 
 const links = [
-  { name: 'Privacy & policy', to: ERoutes.PRIVACY_POLICY, id: 1 },
-  { name: 'Terms & conditions', to: ERoutes.TERMS, id: 2 },
+  { name: 'Home', to: ERoutes.HOME, id: 1 },
+  { name: 'Privacy & policy', to: ERoutes.PRIVACY_POLICY, id: 2 },
+  { name: 'Terms & conditions', to: ERoutes.TERMS, id: 3 },
 ];
 
 const itemVariants = {
