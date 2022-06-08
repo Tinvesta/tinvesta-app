@@ -46,7 +46,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
         <Modal title="Create account">
           <SignInModalContent />
         </Modal>
-        <Header clientTypeId={clientTypeId} openLoginModal={show} />
+        <Header openLoginModal={show} />
         <S.StyledContentWrapper>
           <S.StyledTextBlockWrapper>
             <Typography
