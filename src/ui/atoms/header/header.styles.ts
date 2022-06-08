@@ -6,6 +6,13 @@ const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.palette.primary.main};
 `;
 
+const StyledLogoWrapper = styled.span<{ height: number }>`
+  right: 50%;
+  position: absolute;
+  transform: translateX(50%);
+  height: ${({ height }) => height}px;
+`;
+
 const StyledContentWrapper = styled.div`
   height: 100%;
   display: flex;
@@ -25,6 +32,7 @@ const StyledMenuAnimation = styled.div`
 
 const S = {
   StyledWrapper,
+  StyledLogoWrapper,
   StyledMenuAnimation,
   StyledContentWrapper,
 };

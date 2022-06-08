@@ -45,21 +45,16 @@ export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
     animationItem.playSegments(animationSegments, true);
   };
 
+  const toggleMenu = () => cycleOpen();
+
   const imageSize = 70;
 
   return (
     <S.StyledWrapper>
-      <FullScreenMenu open={open} />
+      <FullScreenMenu open={open} toggleMenu={toggleMenu} />
       <S.StyledContentWrapper>
         <S.StyledMenuAnimation ref={animationContainerRef} onClick={onMenuClick} />
-        <span
-          style={{
-            position: 'absolute',
-            right: '50%',
-            transform: 'translateX(50%)',
-            height: imageSize,
-          }}
-        >
+        <S.StyledLogoWrapper height={imageSize}>
           <Image
             priority
             alt="Tinvesta"
@@ -68,7 +63,7 @@ export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
             src="/images/brandmark-transparent-white.png"
             width={imageSize}
           />
-        </span>
+        </S.StyledLogoWrapper>
         {!user?.client_type_id ? (
           <Button color="secondary" size="large" variant="contained" onClick={openLoginModal}>
             Login

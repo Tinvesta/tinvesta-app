@@ -10,7 +10,6 @@ export default {
   'common.buttons.delete': 'Delete',
   'common.buttons.agree': 'I agree',
   'common.buttons.cancel': 'Cancel',
-  'common.buttons.logout': 'Logout',
   'common.buttons.continue': 'Continue',
   'common.buttons.disagree': 'I disagree',
 
