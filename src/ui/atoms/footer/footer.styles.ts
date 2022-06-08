@@ -1,6 +1,8 @@
 import styled from '@emotion/styled';
 import { Typography } from '@mui/material';
 
+import { respondToMax } from '@infrastructure';
+
 const StyledWrapper = styled.div`
   width: 100%;
   display: flex;
@@ -10,13 +12,22 @@ const StyledWrapper = styled.div`
   background-color: ${({ theme }) => theme.palette.primary.main};
 `;
 
-const StyledMinWidthContainer = styled.div`
+const StyledWidthContainer = styled.div`
   display: flex;
-  min-width: 1300px;
+  width: 1200px;
   align-items: center;
   flex-direction: column;
   justify-content: space-evenly;
   padding: ${({ theme }) => theme.spacing(15, 0)};
+
+  ${({ theme }) => respondToMax.medium`
+    width: 95%;
+    padding: ${theme.spacing(13, 0)};
+  `}
+
+  ${({ theme }) => respondToMax.small`
+    padding: ${theme.spacing(10, 0)};
+  `}
 `;
 
 const StyledTitle = styled(Typography)`
@@ -30,22 +41,45 @@ const StyledFooterContainer = styled.div`
   display: flex;
   justify-content: space-between;
   padding-top: ${({ theme }) => theme.spacing(10)};
+
+  ${({ theme }) => respondToMax.small`
+    align-items: center;
+    flex-direction: column;
+    gap: ${theme.spacing(6)};
+    padding-top: ${theme.spacing(6)};
+  `}
 `;
 
 const StyledFooterLeft = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(11)};
+
+  ${respondToMax.small`
+    gap: 0;
+    align-items: center;
+    flex-direction: column;
+  `}
 `;
 
 const StyledFooterLinksColumn = styled.div`
   display: flex;
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)};
+
+  ${({ theme }) => respondToMax.small`
+    align-items: center;
+    flex-direction: column;
+    gap: ${theme.spacing(2)};
+  `}
 `;
 
 const StyledFooterLinksTitle = styled(Typography)`
   margin-bottom: ${({ theme }) => theme.spacing(4)};
+
+  ${({ theme }) => respondToMax.small`
+    margin-bottom:  ${theme.spacing(2)};
+  `}
 `;
 
 const StyledFooterLinksLink = styled(Typography)`
@@ -69,10 +103,10 @@ const S = {
   StyledTitle,
   StyledWrapper,
   StyledFooterLeft,
+  StyledWidthContainer,
   StyledFooterLinksLink,
   StyledFooterContainer,
   StyledFooterLinksTitle,
-  StyledMinWidthContainer,
   StyledFooterLinksColumn,
 };
 
