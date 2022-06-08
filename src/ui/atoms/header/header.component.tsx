@@ -4,8 +4,9 @@ import lottie, { AnimationItem, AnimationSegment } from 'lottie-web';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-import { useUser } from '@utils';
+import { useTranslation, useUser } from '@utils';
 
+import { translationStrings } from './header.defaults';
 import S from './header.styles';
 import { IHeaderProps } from './header.types';
 import { FullScreenMenu } from './parts';
@@ -13,8 +14,10 @@ import { menuAnimation } from './utils';
 
 export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
   const { logout, user } = useUser();
-  const [open, cycleOpen] = useCycle(false, true);
+  const translations = useTranslation(translationStrings);
   const animationContainerRef = useRef<HTMLDivElement>(null);
+
+  const [open, cycleOpen] = useCycle(false, true);
   const [animationItem, setAnimationItem] = useState<AnimationItem>();
 
   useEffect(() => {
@@ -66,11 +69,11 @@ export const Header = ({ openLoginModal }: IHeaderProps): JSX.Element => {
         </S.StyledLogoWrapper>
         {!user?.client_type_id ? (
           <Button color="secondary" size="large" variant="contained" onClick={openLoginModal}>
-            Login
+            {translations.componentFooterButtonLogin}
           </Button>
         ) : (
           <Button color="secondary" size="large" variant="contained" onClick={logout}>
-            Logout
+            {translations.componentFooterButtonLogout}
           </Button>
         )}
       </S.StyledContentWrapper>
