@@ -10,10 +10,16 @@ const StyledWrapper = styled.div`
 `;
 
 const StyledContentWrapper = styled.div`
+  width: 95%;
   display: flex;
   margin: 0 auto;
   max-width: 1300px;
   align-items: center;
+
+  ${respondToMax.medium`
+    margin-left: auto;
+    margin-right: 0;
+  `}
 `;
 
 const StyledTextBlockWrapper = styled.div`
@@ -41,11 +47,22 @@ const StyledSubHeaderWrapper = styled.div`
   `}
 `;
 
+const StyledLottieAnimationWrapper = styled.div`
+  width: 800px;
+  overflow: hidden;
+  position: relative;
+
+  ${respondToMax.medium`
+  
+  `}
+`;
+
 const S = {
   StyledWrapper,
   StyledContentWrapper,
   StyledTextBlockWrapper,
   StyledSubHeaderWrapper,
+  StyledLottieAnimationWrapper,
 };
 
 export default S;

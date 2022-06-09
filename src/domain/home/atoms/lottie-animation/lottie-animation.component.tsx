@@ -2,6 +2,7 @@ import lottie from 'lottie-web';
 import { useEffect, useRef } from 'react';
 
 import animation from './lottie-animation.animation';
+import S from './lottie-animation.styles';
 
 export const LottieAnimation = (): JSX.Element => {
   const animationContainerRef = useRef<HTMLDivElement>(null);
@@ -15,7 +16,5 @@ export const LottieAnimation = (): JSX.Element => {
     }
   }, []);
 
-  return (
-    <div ref={animationContainerRef} style={{ marginBottom: '-10px', marginRight: '-35px' }} />
-  );
+  return <S.StyledWrapper ref={animationContainerRef} />;
 };
