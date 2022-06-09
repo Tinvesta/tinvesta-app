@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { Typography } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
@@ -51,14 +52,23 @@ const StyledLottieAnimationWrapper = styled.div`
   width: 800px;
   overflow: hidden;
   position: relative;
+`;
 
-  ${respondToMax.medium`
-  
-  `}
+const StyledHeader = styled(Typography)`
+  z-index: 10;
+  position: relative;
+  white-space: nowrap;
+`;
+
+const StyledSubheader = styled(Typography)`
+  z-index: 1;
+  max-width: 550px;
 `;
 
 const S = {
+  StyledHeader,
   StyledWrapper,
+  StyledSubheader,
   StyledContentWrapper,
   StyledTextBlockWrapper,
   StyledSubHeaderWrapper,
