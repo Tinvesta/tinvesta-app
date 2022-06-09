@@ -3,7 +3,7 @@ import { useRouter } from 'next/router';
 
 import { HeaderAndFooterLayout, useModal } from '@ui';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -15,7 +15,6 @@ import { IDesktopHomeProps } from './desktop-home.types';
 export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JSX.Element => {
   const router = useRouter();
   const { Modal, show } = useModal();
-  const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
 
   const onSignInButtonClick = () => {
@@ -37,11 +36,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
             {translations.componentHomeHeader}
           </S.StyledHeader>
           <S.StyledSubHeaderWrapper>
-            <S.StyledSubheader
-              fontWeight={700}
-              textAlign="left"
-              variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}
-            >
+            <S.StyledSubheader fontWeight={700} textAlign="left" variant="body1">
               {translations.componentHomeSubheader}
             </S.StyledSubheader>
             <Button
