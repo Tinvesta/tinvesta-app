@@ -52,8 +52,24 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
 
   const toggleMenu = () => cycleOpen();
 
-  const imageSize = deviceData.isSmallerThanMD ? 55 : 70;
-  const buttonSize = deviceData.isSmallerThanMD ? 'medium' : 'large';
+  const getImageSize = () => {
+    if (deviceData.isSmallerThanXS) {
+      return 45;
+    }
+
+    return deviceData.isSmallerThanMD ? 55 : 70;
+  };
+
+  const getButtonSize = () => {
+    if (deviceData.isSmallerThanXS) {
+      return 'small';
+    }
+
+    return deviceData.isSmallerThanMD ? 'medium' : 'large';
+  };
+
+  const imageSize = getImageSize();
+  const buttonSize = getButtonSize();
 
   return (
     <S.StyledWrapper>

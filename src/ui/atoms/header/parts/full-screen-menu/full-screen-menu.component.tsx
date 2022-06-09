@@ -21,6 +21,14 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
 
   const handleLinkClick = (isActive: boolean) => () => !isActive && toggleMenu();
 
+  const getLinkVariant = () => {
+    if (deviceData.isSmallerThanXS) {
+      return 'h5';
+    }
+
+    return deviceData.isSmallerThanMD ? 'h4' : 'h3';
+  };
+
   return (
     <S.StyledWrapper>
       <AnimatePresence>
@@ -53,7 +61,7 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
                       <S.StyledLinkTypography
                         active={isActive.toString()}
                         color={isActive ? 'gray' : 'secondary'}
-                        variant={deviceData.isSmallerThanMD ? 'h4' : 'h3'}
+                        variant={getLinkVariant()}
                         onClick={handleLinkClick(isActive)}
                       >
                         {name}
