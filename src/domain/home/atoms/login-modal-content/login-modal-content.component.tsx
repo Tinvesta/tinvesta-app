@@ -3,6 +3,8 @@ import { Button, Typography } from '@mui/material';
 
 import { replaceVariablesInTranslation, useTranslation, useUser } from '@utils';
 
+import { ERoutes } from '@enums';
+
 import { translationStrings } from './login-modal-content.defaults';
 import S from './login-modal-content.styles';
 
@@ -20,15 +22,18 @@ export const LoginModalContent = (): JSX.Element => {
 
   const parsedModalInfo = replaceVariablesInTranslation(
     translations.componentHomeModalInfo,
-    'Privacy and Policy',
-    'Terms and Conditions',
+    `<a href="${ERoutes.PRIVACY_POLICY}" style="text-decoration:none;color:#EAEAEA;font-weight:900;border-bottom:1px solid;">${translations.componentHomeModalPrivacyAndPolicy}</a>`,
+    `<a href="${ERoutes.TERMS}" style="text-decoration:none;color:#EAEAEA;font-weight:900;border-bottom:1px solid;">${translations.componentHomeModalTermsAndConditions}</a>`,
   );
 
   return (
     <S.StyledWrapper>
-      <Typography align="center" color="secondary" variant="body1">
-        {parsedModalInfo}
-      </Typography>
+      <Typography
+        align="center"
+        color="secondary"
+        dangerouslySetInnerHTML={{ __html: parsedModalInfo }}
+        variant="body1"
+      />
       <S.StyledButtonsWrapper>
         <Button
           color="secondary"
