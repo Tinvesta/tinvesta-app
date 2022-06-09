@@ -49,7 +49,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
         <S.StyledTextBlockWrapper>
           <Typography
             fontWeight={700}
-            sx={{ position: 'relative', zIndex: 10, wordBreak: 'keep-all' }}
+            sx={{ position: 'relative', zIndex: 10, whiteSpace: 'nowrap' }}
             textAlign="left"
             variant={getHeadingVariant()}
           >
@@ -76,9 +76,9 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
             </Button>
           </S.StyledSubHeaderWrapper>
         </S.StyledTextBlockWrapper>
-        <div style={{ width: 800 }}>
+        <S.StyledLottieAnimationWrapper>
           <LottieAnimation />
-        </div>
+        </S.StyledLottieAnimationWrapper>
       </S.StyledContentWrapper>
     </HeaderAndFooterLayout>
   );

@@ -8,7 +8,7 @@ import { ERoutes } from '@enums';
 
 import { USER_REF_LOCAL_STORAGE_KEY } from '@constants';
 
-import { DesktopHome, MobileHome } from './organisms';
+import { DesktopHome, MobileHome } from './molecules';
 
 export const Home = (): JSX.Element => {
   const router = useRouter();
