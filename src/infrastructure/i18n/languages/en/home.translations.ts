@@ -11,5 +11,5 @@ export default {
   'component.home.modal.login.via.google.button': 'Log in with google',
   'component.home.modal.login.via.github.button': 'Log in with github',
   'component.home.modal.info':
-    'By clicking Log In, you agree to our {{0}}. Learn how we process your data in our {{1}}.',
+    'By clicking Log in, you agree to our {{0}}. Learn how we process your data in our {{1}}.',
 };

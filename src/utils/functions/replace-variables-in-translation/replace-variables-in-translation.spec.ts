@@ -35,5 +35,9 @@ describe('replaceVariablesInTranslation function', () => {
     expect(replaceVariablesInTranslation('My {{0}} example {{1}}', 'super')).toStrictEqual(
       'My super example {{1}}',
     );
+
+    expect(replaceVariablesInTranslation('My {{0}} example {{1}}', 'super', 'xD')).toStrictEqual(
+      'My super example xD',
+    );
   });
 });

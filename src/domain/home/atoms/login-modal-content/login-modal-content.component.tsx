@@ -1,7 +1,7 @@
 import { GitHub as GitHubIcon, Google as GoogleIcon } from '@mui/icons-material';
 import { Button, Typography } from '@mui/material';
 
-import { useTranslation, useUser } from '@utils';
+import { replaceVariablesInTranslation, useTranslation, useUser } from '@utils';
 
 import { translationStrings } from './login-modal-content.defaults';
 import S from './login-modal-content.styles';
@@ -18,10 +18,16 @@ export const LoginModalContent = (): JSX.Element => {
     loginViaGoogleProvider();
   };
 
+  const parsedModalInfo = replaceVariablesInTranslation(
+    translations.componentHomeModalInfo,
+    'Privacy and Policy',
+    'Terms and Conditions',
+  );
+
   return (
     <S.StyledWrapper>
-      <Typography align="center" variant="body1">
-        {translations.componentHomeModalInfo}
+      <Typography align="center" color="secondary" variant="body1">
+        {parsedModalInfo}
       </Typography>
       <S.StyledButtonsWrapper>
         <Button

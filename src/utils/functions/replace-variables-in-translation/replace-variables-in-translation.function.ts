@@ -14,7 +14,8 @@ export const replaceVariablesInTranslation = (
 
   return values
     .reduce(
-      (_accumulator, _value, _index) => translation.replace(`{{${_index}}}`, _value.toString()),
+      (_accumulator, _value, _index) =>
+        _accumulator.toString().replace(`{{${_index}}}`, _value.toString()),
       translation,
     )
     .toString();
