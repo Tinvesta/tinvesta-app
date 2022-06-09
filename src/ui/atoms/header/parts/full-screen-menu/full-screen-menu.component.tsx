@@ -18,7 +18,7 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
     { name: translations.componentFooterLinksOptionThree, to: ERoutes.TERMS },
   ];
 
-  const handleLinkClick = (isActive: boolean) => () => isActive && toggleMenu();
+  const handleLinkClick = (isActive: boolean) => () => !isActive && toggleMenu();
 
   return (
     <S.StyledWrapper>
