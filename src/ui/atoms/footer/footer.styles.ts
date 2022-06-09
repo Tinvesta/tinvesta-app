@@ -28,6 +28,10 @@ const StyledWidthContainer = styled.div`
   ${({ theme }) => respondToMax.small`
     padding: ${theme.spacing(10, 0)};
   `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    padding: ${theme.spacing(8, 3)};
+  `}
 `;
 
 const StyledTitle = styled(Typography)`
@@ -71,6 +75,10 @@ const StyledFooterLinksColumn = styled.div`
     align-items: center;
     flex-direction: column;
     gap: ${theme.spacing(2)};
+  `}
+
+  ${respondToMax.xmobile`
+    gap: 0;
   `}
 `;
 
