@@ -4,7 +4,7 @@ import lottie, { AnimationItem, AnimationSegment } from 'lottie-web';
 import Image from 'next/image';
 import { useEffect, useRef, useState } from 'react';
 
-import { useTranslation, useUser } from '@utils';
+import { useDeviceDetect, useTranslation, useUser } from '@utils';
 
 import { translationStrings } from './header.defaults';
 import S from './header.styles';
@@ -14,6 +14,7 @@ import { menuAnimation } from './utils';
 
 export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Element => {
   const { logout, user } = useUser();
+  const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
   const animationContainerRef = useRef<HTMLDivElement>(null);
 
@@ -51,7 +52,8 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
 
   const toggleMenu = () => cycleOpen();
 
-  const imageSize = 70;
+  const imageSize = deviceData.isSmallerThanMD ? 55 : 70;
+  const buttonSize = deviceData.isSmallerThanMD ? 'medium' : 'large';
 
   return (
     <S.StyledWrapper>
@@ -69,11 +71,11 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
           />
         </S.StyledLogoWrapper>
         {!user?.client_type_id ? (
-          <Button color="secondary" size="large" variant="contained" onClick={openLoginModal}>
+          <Button color="secondary" size={buttonSize} variant="contained" onClick={openLoginModal}>
             {translations.componentFooterButtonLogin}
           </Button>
         ) : (
-          <Button color="secondary" size="large" variant="contained" onClick={logout}>
+          <Button color="secondary" size={buttonSize} variant="contained" onClick={logout}>
             {translations.componentFooterButtonLogout}
           </Button>
         )}
