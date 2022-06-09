@@ -1,10 +1,13 @@
-import { Button } from '@mui/material';
+import { GitHub as GitHubIcon, Google as GoogleIcon } from '@mui/icons-material';
+import { Button, Typography } from '@mui/material';
 
-import { useUser } from '@utils';
+import { useTranslation, useUser } from '@utils';
 
+import { translationStrings } from './login-modal-content.defaults';
 import S from './login-modal-content.styles';
 
 export const LoginModalContent = (): JSX.Element => {
+  const translations = useTranslation(translationStrings);
   const { loginViaGithubProvider, loginViaGoogleProvider } = useUser();
 
   const loginIn = (provider: 'github' | 'google') => async () => {
@@ -17,12 +20,27 @@ export const LoginModalContent = (): JSX.Element => {
 
   return (
     <S.StyledWrapper>
-      <Button color="secondary" variant="outlined" onClick={loginIn('google')}>
-        Log in with google
-      </Button>
-      <Button color="secondary" variant="outlined" onClick={loginIn('github')}>
-        Log in with github
-      </Button>
+      <Typography align="center" variant="body1">
+        {translations.componentHomeModalInfo}
+      </Typography>
+      <S.StyledButtonsWrapper>
+        <Button
+          color="secondary"
+          startIcon={<GoogleIcon />}
+          variant="outlined"
+          onClick={loginIn('google')}
+        >
+          {translations.componentHomeModalLoginViaGoogleButton}
+        </Button>
+        <Button
+          color="secondary"
+          startIcon={<GitHubIcon />}
+          variant="outlined"
+          onClick={loginIn('github')}
+        >
+          {translations.componentHomeModalLoginViaGithubButton}
+        </Button>
+      </S.StyledButtonsWrapper>
     </S.StyledWrapper>
   );
 };
