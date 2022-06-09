@@ -50,6 +50,7 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
                   <Link key={to} href={to}>
                     <motion.div variants={itemVariants} whileHover={whileHover}>
                       <S.StyledLinkTypography
+                        active={isActive.toString()}
                         color={isActive ? 'gray' : 'secondary'}
                         variant="h3"
                         onClick={handleLinkClick(isActive)}
