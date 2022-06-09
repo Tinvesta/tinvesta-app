@@ -23,8 +23,8 @@ const StyledLinksContainer = styled(motion.div)`
   gap: ${({ theme }) => theme.spacing(5)};
 `;
 
-const StyledLinkTypography = styled(Typography)`
-  cursor: pointer;
+const StyledLinkTypography = styled(Typography)<{ active: string }>`
+  ${({ active }) => active === 'false' && 'cursor: pointer;'}
 `;
 
 const S = {
