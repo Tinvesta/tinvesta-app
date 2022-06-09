@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import Link from 'next/link';
 
-import { useTranslation } from '@utils';
+import { useDeviceDetect, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -11,6 +11,7 @@ import { IFullScreenMenuProps } from './full-screen-menu.types';
 
 export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.Element => {
   const translations = useTranslation(translationStrings);
+  const { deviceData } = useDeviceDetect();
 
   const links = [
     { name: translations.componentFooterLinksOptionOne, to: ERoutes.HOME },
@@ -52,7 +53,7 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
                       <S.StyledLinkTypography
                         active={isActive.toString()}
                         color={isActive ? 'gray' : 'secondary'}
-                        variant="h3"
+                        variant={deviceData.isSmallerThanMD ? 'h4' : 'h3'}
                         onClick={handleLinkClick(isActive)}
                       >
                         {name}
