@@ -18,6 +18,7 @@ const StyledWrapper = styled.div`
 
 const StyledLogoWrapper = styled.span<{ height: number }>`
   right: 50%;
+  cursor: pointer;
   position: absolute;
   transform: translateX(50%);
   height: ${({ height }) => height}px;

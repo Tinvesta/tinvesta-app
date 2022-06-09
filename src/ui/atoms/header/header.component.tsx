@@ -2,9 +2,12 @@ import { Button } from '@mui/material';
 import { useCycle } from 'framer-motion';
 import lottie, { AnimationItem, AnimationSegment } from 'lottie-web';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { useEffect, useRef, useState } from 'react';
 
 import { useDeviceDetect, useTranslation, useUser } from '@utils';
+
+import { ERoutes } from '@enums';
 
 import { translationStrings } from './header.defaults';
 import S from './header.styles';
@@ -13,6 +16,7 @@ import { FullScreenMenu } from './parts';
 import { menuAnimation } from './utils';
 
 export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Element => {
+  const router = useRouter();
   const { logout, user } = useUser();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
@@ -52,6 +56,8 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
 
   const toggleMenu = () => cycleOpen();
 
+  const redirectToHome = () => router.push(ERoutes.HOME);
+
   const getImageSize = () => {
     if (deviceData.isSmallerThanXS) {
       return 45;
@@ -76,7 +82,7 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
       <FullScreenMenu open={open} toggleMenu={toggleMenu} />
       <S.StyledContentWrapper>
         <S.StyledMenuAnimation ref={animationContainerRef} onClick={onMenuClick} />
-        <S.StyledLogoWrapper height={imageSize}>
+        <S.StyledLogoWrapper height={imageSize} onClick={redirectToHome}>
           <Image
             priority
             alt="Tinvesta"
