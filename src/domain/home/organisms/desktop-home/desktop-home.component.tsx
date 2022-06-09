@@ -1,9 +1,7 @@
 import { Button, Typography } from '@mui/material';
 import { useRouter } from 'next/router';
-import { useRef } from 'react';
-import { Scrollbars } from 'react-custom-scrollbars-2';
 
-import { Footer, Header, Scrollbar, useModal } from '@ui';
+import { HeaderAndFooterLayout, useModal } from '@ui';
 
 import { useDeviceDetect } from '@utils';
 
@@ -17,7 +15,6 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
   const router = useRouter();
   const { Modal, show } = useModal();
   const { deviceData } = useDeviceDetect();
-  const scrollbarRef = useRef<Scrollbars>(null);
 
   const onSignInButtonClick = () => {
     if (!isSignedIn) {
@@ -43,52 +40,46 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
     return 'h2';
   };
 
-  const scrollToTop = () => scrollbarRef.current?.scrollToTop();
-
   return (
-    <S.StyledWrapper>
-      <Scrollbar ref={scrollbarRef} height="100%" style={{ overflowX: 'hidden' }}>
-        <Modal title="Create account">
-          <SignInModalContent />
-        </Modal>
-        <Header openLoginModal={show} scrollToTop={scrollToTop} />
-        <S.StyledContentWrapper>
-          <S.StyledTextBlockWrapper>
+    <HeaderAndFooterLayout openLoginModal={show}>
+      <Modal title="Create account">
+        <SignInModalContent />
+      </Modal>
+      <S.StyledContentWrapper>
+        <S.StyledTextBlockWrapper>
+          <Typography
+            fontWeight={700}
+            sx={{ position: 'relative', zIndex: 10, wordBreak: 'keep-all' }}
+            textAlign="left"
+            variant={getHeadingVariant()}
+          >
+            SWIPE &amp; MATCH
+          </Typography>
+          <S.StyledSubHeaderWrapper>
             <Typography
               fontWeight={700}
-              sx={{ position: 'relative', zIndex: 10, wordBreak: 'keep-all' }}
+              sx={{ zIndex: 1, maxWidth: 600 }}
               textAlign="left"
-              variant={getHeadingVariant()}
+              variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}
             >
-              SWIPE &amp; MATCH
+              Matchmaking app for startups and investors all over the world. The app enables
+              investors and startups to find each other in the easiest way: create a profile - swipe
+              - match.
             </Typography>
-            <S.StyledSubHeaderWrapper>
-              <Typography
-                fontWeight={700}
-                sx={{ zIndex: 1, maxWidth: 600 }}
-                textAlign="left"
-                variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}
-              >
-                Matchmaking app for startups and investors all over the world. The app enables
-                investors and startups to find each other in the easiest way: create a profile -
-                swipe - match.
-              </Typography>
-              <Button
-                color="secondary"
-                size="large"
-                variant="contained"
-                onClick={onSignInButtonClick}
-              >
-                Create an account
-              </Button>
-            </S.StyledSubHeaderWrapper>
-          </S.StyledTextBlockWrapper>
-          <div style={{ width: 800 }}>
-            <LottieAnimation />
-          </div>
-        </S.StyledContentWrapper>
-        <Footer />
-      </Scrollbar>
-    </S.StyledWrapper>
+            <Button
+              color="secondary"
+              size="large"
+              variant="contained"
+              onClick={onSignInButtonClick}
+            >
+              Create an account
+            </Button>
+          </S.StyledSubHeaderWrapper>
+        </S.StyledTextBlockWrapper>
+        <div style={{ width: 800 }}>
+          <LottieAnimation />
+        </div>
+      </S.StyledContentWrapper>
+    </HeaderAndFooterLayout>
   );
 };
