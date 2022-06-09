@@ -10,6 +10,10 @@ const StyledWrapper = styled.div`
   ${({ theme }) => respondToMax.small`
     height: ${theme.spacing(12)};
   `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    height: ${theme.spacing(10)};
+  `}
 `;
 
 const StyledLogoWrapper = styled.span<{ height: number }>`
@@ -31,6 +35,10 @@ const StyledContentWrapper = styled.div`
   ${respondToMax.medium`
     max-width: unset;
   `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    padding-right: ${theme.spacing(3)};
+  `}
 `;
 
 const StyledMenuAnimation = styled.div`
@@ -43,6 +51,11 @@ const StyledMenuAnimation = styled.div`
   ${respondToMax.small`
     width: 65px;
     height: 65px;
+  `}
+
+  ${respondToMax.xmobile`
+    width: 55px;
+    height: 55px;
   `}
 `;
 
