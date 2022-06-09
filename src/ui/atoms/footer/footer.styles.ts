@@ -77,7 +77,7 @@ const StyledFooterLinksColumn = styled.div`
     gap: ${theme.spacing(2)};
   `}
 
-  ${respondToMax.small`
+  ${respondToMax.xmobile`
     gap: 0;
   `}
 `;
