@@ -18,6 +18,8 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
     { name: translations.componentFooterLinksOptionThree, to: ERoutes.TERMS },
   ];
 
+  const handleLinkClick = (isActive: boolean) => () => isActive && toggleMenu();
+
   return (
     <S.StyledWrapper>
       <AnimatePresence>
@@ -40,15 +42,24 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
               initial="closed"
               variants={sideVariants}
             >
-              {links.map(({ name, to }) => (
-                <Link key={to} href={to}>
-                  <motion.div variants={itemVariants} whileHover={{ scale: 1.1 }}>
-                    <S.StyledLinkTypography variant="h3" onClick={toggleMenu}>
-                      {name}
-                    </S.StyledLinkTypography>
-                  </motion.div>
-                </Link>
-              ))}
+              {links.map(({ name, to }) => {
+                const isActive = window.location.pathname === to;
+                const whileHover = !isActive ? { scale: 1.1 } : undefined;
+
+                return (
+                  <Link key={to} href={to}>
+                    <motion.div variants={itemVariants} whileHover={whileHover}>
+                      <S.StyledLinkTypography
+                        color={isActive ? 'gray' : 'secondary'}
+                        variant="h3"
+                        onClick={handleLinkClick(isActive)}
+                      >
+                        {name}
+                      </S.StyledLinkTypography>
+                    </motion.div>
+                  </Link>
+                );
+              })}
             </S.StyledLinksContainer>
           </S.StyledAside>
         )}
