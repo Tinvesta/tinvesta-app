@@ -1,13 +1,14 @@
-import { Button, Typography } from '@mui/material';
+import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
 
 import { HeaderAndFooterLayout, useModal } from '@ui';
 
-import { useDeviceDetect } from '@utils';
+import { useDeviceDetect, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
 import { LottieAnimation, SignInModalContent } from '../../atoms';
+import { translationStrings } from './desktop-home.defaults';
 import S from './desktop-home.styles';
 import { IDesktopHomeProps } from './desktop-home.types';
 
@@ -15,6 +16,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
   const router = useRouter();
   const { Modal, show } = useModal();
   const { deviceData } = useDeviceDetect();
+  const translations = useTranslation(translationStrings);
 
   const onSignInButtonClick = () => {
     if (!isSignedIn) {
@@ -24,22 +26,6 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
     router.push(clientTypeId ? ERoutes.DASHBOARD : ERoutes.ONBOARDING);
   };
 
-  const getHeadingVariant = () => {
-    if (deviceData.isSmallerThanXS) {
-      return 'h4';
-    }
-
-    if (deviceData.isSmallerThanSM) {
-      return 'h3';
-    }
-
-    if (deviceData.isSmallerThanMD) {
-      return 'h2';
-    }
-
-    return 'h2';
-  };
-
   return (
     <HeaderAndFooterLayout openLoginModal={show}>
       <Modal title="Create account">
@@ -47,32 +33,24 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
       </Modal>
       <S.StyledContentWrapper>
         <S.StyledTextBlockWrapper>
-          <Typography
-            fontWeight={700}
-            sx={{ position: 'relative', zIndex: 10, whiteSpace: 'nowrap' }}
-            textAlign="left"
-            variant={getHeadingVariant()}
-          >
-            SWIPE &amp; MATCH
-          </Typography>
+          <S.StyledHeader fontWeight={700} textAlign="left" variant="h2">
+            {translations.componentHomeHeader}
+          </S.StyledHeader>
           <S.StyledSubHeaderWrapper>
-            <Typography
+            <S.StyledSubheader
               fontWeight={700}
-              sx={{ zIndex: 1, maxWidth: 600 }}
               textAlign="left"
               variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}
             >
-              Matchmaking app for startups and investors all over the world. The app enables
-              investors and startups to find each other in the easiest way: create a profile - swipe
-              - match.
-            </Typography>
+              {translations.componentHomeSubheader}
+            </S.StyledSubheader>
             <Button
               color="secondary"
               size="large"
               variant="contained"
               onClick={onSignInButtonClick}
             >
-              Create an account
+              {translations.componentHomeButtonLabel}
             </Button>
           </S.StyledSubHeaderWrapper>
         </S.StyledTextBlockWrapper>
