@@ -1,6 +1,7 @@
 import { Button } from '@mui/material';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 import { HeaderAndFooterLayout, useModal } from '@ui';
 
@@ -8,7 +9,7 @@ import { useDeviceDetect, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { SignInModalContent } from '../../atoms';
+import { LoginModalContent } from '../../atoms';
 import { translationStrings } from './mobile-home.defaults';
 import S from './mobile-home.styles';
 import { IMobileHomeProps } from './mobile-home.types';
@@ -18,20 +19,28 @@ export const MobileHome = ({ clientTypeId, isSignedIn }: IMobileHomeProps): JSX.
   const { Modal, show } = useModal();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
+  const [loginModalTitle, setLoginModalTitle] = useState('');
 
   const onSignInButtonClick = () => {
     if (!isSignedIn) {
+      setLoginModalTitle(translations.componentHomeModalCreateAccountHeader);
+
       return show();
     }
 
     router.push(clientTypeId ? ERoutes.DASHBOARD : ERoutes.ONBOARDING);
   };
 
+  const openLoginModal = () => {
+    show();
+    setLoginModalTitle(translations.componentHomeModalGetStartedHeader);
+  };
+
   return (
-    <HeaderAndFooterLayout openLoginModal={show}>
+    <HeaderAndFooterLayout openLoginModal={openLoginModal}>
       <S.StyledWrapper>
-        <Modal title="Create account">
-          <SignInModalContent />
+        <Modal title={loginModalTitle}>
+          <LoginModalContent />
         </Modal>
         <S.StyledTextBlockWrapper>
           <S.StyledHeader

@@ -1,5 +1,6 @@
 import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 
 import { HeaderAndFooterLayout, useModal } from '@ui';
 
@@ -7,7 +8,7 @@ import { useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { LottieAnimation, SignInModalContent } from '../../atoms';
+import { LoginModalContent, LottieAnimation } from '../../atoms';
 import { translationStrings } from './desktop-home.defaults';
 import S from './desktop-home.styles';
 import { IDesktopHomeProps } from './desktop-home.types';
@@ -16,19 +17,27 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
   const router = useRouter();
   const { Modal, show } = useModal();
   const translations = useTranslation(translationStrings);
+  const [loginModalTitle, setLoginModalTitle] = useState('');
 
   const onSignInButtonClick = () => {
     if (!isSignedIn) {
+      setLoginModalTitle(translations.componentHomeModalCreateAccountHeader);
+
       return show();
     }
 
     router.push(clientTypeId ? ERoutes.DASHBOARD : ERoutes.ONBOARDING);
   };
 
+  const openLoginModal = () => {
+    show();
+    setLoginModalTitle(translations.componentHomeModalGetStartedHeader);
+  };
+
   return (
-    <HeaderAndFooterLayout openLoginModal={show}>
-      <Modal title="Create account">
-        <SignInModalContent />
+    <HeaderAndFooterLayout openLoginModal={openLoginModal}>
+      <Modal title={loginModalTitle}>
+        <LoginModalContent />
       </Modal>
       <S.StyledContentWrapper>
         <S.StyledTextBlockWrapper>
