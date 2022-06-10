@@ -42,9 +42,6 @@ export const useModal = ({
       <MuiModal
         disableAutoFocus
         disableEnforceFocus
-        BackdropProps={{
-          transitionDuration: 0,
-        }}
         onClose={handleClose}
         {...restProps}
         open={finalOpenState}
@@ -52,6 +49,9 @@ export const useModal = ({
         <S.StyledContentWrapper
           align={align}
           alwaysFullWidth={alwaysFullWidth}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
           style={backgroundStyles}
           withBorderRadius={withBorderRadius}
           withPadding={withPadding}
