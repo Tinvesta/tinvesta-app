@@ -5,12 +5,13 @@ import { DragEvent, ForwardedRef, forwardRef, memo, useEffect, useState } from '
 import { toast } from 'react-toastify';
 import { useFilePicker } from 'use-file-picker';
 
-import { useModal } from '@ui';
+import { Modal } from '@ui';
 
 import {
   asyncTryCatchWrapper,
   repeatComponent,
   replaceVariablesInTranslation,
+  useModal,
   useTranslation,
 } from '@utils';
 
@@ -43,7 +44,11 @@ const UploadImagesComponent = (
     accept: 'image/jpg, image/jpeg, image/png',
   });
 
-  const { hide, Modal, show } = useModal();
+  const {
+    hideModal: hideCropImageModal,
+    open: isCropImageModalOpen,
+    showModal: showCropImageModal,
+  } = useModal();
   const translations = useTranslation(translationStrings);
 
   const onCompressAndSetImageSourceError = () => {
@@ -105,7 +110,7 @@ const UploadImagesComponent = (
           setImageSource(reader.result.toString());
         }
 
-        show();
+        showCropImageModal();
       });
 
       reader.readAsDataURL(compressedFile);
@@ -150,7 +155,7 @@ const UploadImagesComponent = (
     setImageSource('');
     setScaledImages([...scaledImages, scaledImage]);
 
-    hide();
+    hideCropImageModal();
   };
 
   const handleRemoveScaledImage = (index: number) => () => {
@@ -187,7 +192,11 @@ const UploadImagesComponent = (
 
   return (
     <S.StyledUploadImagesWrapper ref={ref}>
-      <Modal title={translations.componentUploadImagesModalTitle} onClose={onCropImageModalClose}>
+      <Modal
+        open={isCropImageModalOpen}
+        title={translations.componentUploadImagesModalTitle}
+        onClose={onCropImageModalClose}
+      >
         <CropImageModalContent
           buttonText={translations.componentUploadImagesModalButtonText}
           image={imageSource}

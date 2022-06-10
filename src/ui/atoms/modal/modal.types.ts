@@ -1,18 +1,14 @@
 import { ModalProps } from '@mui/material';
 import { CSSProperties } from 'react';
 
-export interface IUseModalProps {
+export interface IModalProps extends Omit<ModalProps, 'onClose'> {
   align?: 'right' | 'center' | 'left';
   alwaysFullWidth?: boolean;
   backgroundStyles?: CSSProperties;
   defaultIsOpenState?: boolean;
+  onClose?: (event: {}, reason: 'backdropClick' | 'escapeKeyDown' | 'closeIconClick') => void;
+  title?: string;
   withBorderRadius?: boolean;
   withCloseIcon?: boolean;
   withPadding?: boolean;
-}
-
-export interface IModalProps extends Omit<ModalProps, 'open' | 'onClose'> {
-  onClose?: (event: {}, reason: 'backdropClick' | 'escapeKeyDown' | 'closeIconClick') => void;
-  open?: boolean;
-  title?: string;
 }

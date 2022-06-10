@@ -1,3 +1,4 @@
+export * from './modal/modal.component';
 export * from './empty/empty.component';
 export * from './header/header.component';
 export * from './footer/footer.component';
@@ -10,6 +11,7 @@ export * from './upload-images/upload-images.component';
 export * from './location-autocomplete/location-autocomplete.component';
 export * from './linear-progress-with-label/linear-progress-with-label.component';
 
+export * from './modal/modal.types';
 export * from './select/select.types';
 export * from './loader/loader.types';
 export * from './swiper/swiper.types';
