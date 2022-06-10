@@ -39,7 +39,15 @@ const StyledContentWrapper = styled.div`
   `}
 `;
 
+const StyledLink = styled.a`
+  font-weight: 900;
+  text-decoration: none;
+  border-bottom: 1px solid;
+  color: ${({ theme }) => theme.palette.secondary.main};
+`;
+
 const S = {
+  StyledLink,
   StyledWrapper,
   StyledContentWrapper,
 };
