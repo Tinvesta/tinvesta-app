@@ -42,9 +42,6 @@ export const useModal = ({
       <MuiModal
         disableAutoFocus
         disableEnforceFocus
-        BackdropProps={{
-          transitionDuration: 0,
-        }}
         onClose={handleClose}
         {...restProps}
         open={finalOpenState}
