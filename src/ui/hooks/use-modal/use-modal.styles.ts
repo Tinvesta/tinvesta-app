@@ -1,10 +1,11 @@
 import styled from '@emotion/styled';
 import { CancelOutlined as CancelOutlinedIcon } from '@mui/icons-material';
 import { Typography } from '@mui/material';
+import { motion } from 'framer-motion';
 
 import { respondToMax } from '@infrastructure';
 
-const StyledContentWrapper = styled.div<{
+const StyledContentWrapper = styled(motion.div)<{
   align?: 'right' | 'center' | 'left';
   alwaysFullWidth?: boolean;
   backgroundColor?: string;

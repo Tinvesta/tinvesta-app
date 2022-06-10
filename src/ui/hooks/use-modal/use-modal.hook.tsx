@@ -52,6 +52,9 @@ export const useModal = ({
         <S.StyledContentWrapper
           align={align}
           alwaysFullWidth={alwaysFullWidth}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          initial={{ opacity: 0 }}
           style={backgroundStyles}
           withBorderRadius={withBorderRadius}
           withPadding={withPadding}
