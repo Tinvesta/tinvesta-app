@@ -3,13 +3,12 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { HeaderAndFooterLayout, Modal } from '@ui';
+import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
 import { useDeviceDetect, useModal, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { LoginModalContent } from '../../atoms';
 import { translationStrings } from './mobile-home.defaults';
 import S from './mobile-home.styles';
 import { IMobileHomeProps } from './mobile-home.types';

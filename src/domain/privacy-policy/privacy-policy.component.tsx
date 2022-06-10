@@ -1,19 +1,33 @@
 import { List, ListItem, Typography } from '@mui/material';
 
-import { HeaderAndFooterLayout } from '@ui';
+import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
-import { useDeviceDetect } from '@utils';
+import { useDeviceDetect, useModal, useTranslation } from '@utils';
 
+import { translationStrings } from './privacy-policy.defaults';
 import S from './privacy-policy.styles';
 
 export const PrivacyPolicy = (): JSX.Element => {
+  const {
+    hideModal: hideLoginModal,
+    open: isLoginModalOpen,
+    showModal: showLoginModal,
+  } = useModal();
   const { deviceData } = useDeviceDetect();
+  const translations = useTranslation(translationStrings);
 
   const smallTextVariant = deviceData.isSmallerThanXS ? 'body2' : 'body1';
 
   return (
-    <HeaderAndFooterLayout openLoginModal={() => console.log('Privacy policy')}>
+    <HeaderAndFooterLayout openLoginModal={showLoginModal}>
       <S.StyledWrapper>
+        <Modal
+          open={isLoginModalOpen}
+          title={translations.componentHomeModalGetStartedHeader}
+          onClose={hideLoginModal}
+        >
+          <LoginModalContent />
+        </Modal>
         <S.StyledContentWrapper>
           <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h4' : 'h3'}>
             Privacy Policy

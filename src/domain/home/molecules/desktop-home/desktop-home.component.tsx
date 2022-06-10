@@ -2,13 +2,13 @@ import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { HeaderAndFooterLayout, Modal } from '@ui';
+import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
 import { useModal, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { LoginModalContent, LottieAnimation } from '../../atoms';
+import { LottieAnimation } from '../../atoms';
 import { translationStrings } from './desktop-home.defaults';
 import S from './desktop-home.styles';
 import { IDesktopHomeProps } from './desktop-home.types';
