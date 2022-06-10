@@ -5,6 +5,14 @@ import { respondToMax } from '@infrastructure';
 const StyledWrapper = styled.div`
   width: 100%;
   padding: ${({ theme }) => theme.spacing(10, 0)};
+
+  ${({ theme }) => respondToMax.mobile`
+    padding: ${theme.spacing(8, 0)};
+  `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    padding: ${theme.spacing(5, 0)};
+  `}
 `;
 
 const StyledContentWrapper = styled.div`
@@ -13,8 +21,10 @@ const StyledContentWrapper = styled.div`
   display: flex;
   margin: 0 auto;
   max-width: 1300px;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: ${({ theme }) => theme.spacing(5)};
 
   ${respondToMax.medium`
     max-width: unset;
@@ -22,6 +32,10 @@ const StyledContentWrapper = styled.div`
 
   ${({ theme }) => respondToMax.xmobile`
     padding-right: ${theme.spacing(3)};
+  `}
+
+  ${({ theme }) => respondToMax.xmobile`
+    gap: ${theme.spacing(4)};
   `}
 `;
 
