@@ -45,13 +45,12 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
 
   const theme = useTheme();
   const { user } = useUser();
-  const translations = useTranslation(translationStrings);
-
   const {
     hideModal: hideMatchModal,
     open: isMatchModalOpen,
     showModal: showMatchModal,
   } = useModal();
+  const translations = useTranslation(translationStrings);
 
   const isStartup = isStartupProfile(clientTypeId);
 

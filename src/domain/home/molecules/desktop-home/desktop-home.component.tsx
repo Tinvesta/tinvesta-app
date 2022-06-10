@@ -16,7 +16,11 @@ import { IDesktopHomeProps } from './desktop-home.types';
 export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JSX.Element => {
   const router = useRouter();
   const translations = useTranslation(translationStrings);
-  const { open: isLoginModalOpen, showModal: showLoginModal } = useModal();
+  const {
+    hideModal: hideLoginModal,
+    open: isLoginModalOpen,
+    showModal: showLoginModal,
+  } = useModal();
 
   const [loginModalTitle, setLoginModalTitle] = useState('');
 
@@ -37,7 +41,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
 
   return (
     <HeaderAndFooterLayout openLoginModal={openLoginModal}>
-      <Modal open={isLoginModalOpen} title={loginModalTitle}>
+      <Modal open={isLoginModalOpen} title={loginModalTitle} onClose={hideLoginModal}>
         <LoginModalContent />
       </Modal>
       <S.StyledContentWrapper>

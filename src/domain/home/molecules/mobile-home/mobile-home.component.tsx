@@ -16,9 +16,13 @@ import { IMobileHomeProps } from './mobile-home.types';
 
 export const MobileHome = ({ clientTypeId, isSignedIn }: IMobileHomeProps): JSX.Element => {
   const router = useRouter();
+  const {
+    hideModal: hideLoginModal,
+    open: isLoginModalOpen,
+    showModal: showLoginModal,
+  } = useModal();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
-  const { open: isLoginModalOpen, showModal: showLoginModal } = useModal();
 
   const [loginModalTitle, setLoginModalTitle] = useState('');
 
@@ -40,7 +44,7 @@ export const MobileHome = ({ clientTypeId, isSignedIn }: IMobileHomeProps): JSX.
   return (
     <HeaderAndFooterLayout openLoginModal={openLoginModal}>
       <S.StyledWrapper>
-        <Modal open={isLoginModalOpen} title={loginModalTitle}>
+        <Modal open={isLoginModalOpen} title={loginModalTitle} onClose={hideLoginModal}>
           <LoginModalContent />
         </Modal>
         <S.StyledTextBlockWrapper>

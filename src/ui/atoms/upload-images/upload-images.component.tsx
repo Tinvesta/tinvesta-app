@@ -164,7 +164,10 @@ const UploadImagesComponent = (
     setScaledImages(scaledImages.filter((_, _scaledImageIndex) => _scaledImageIndex !== index));
   };
 
-  const onCropImageModalClose = () => setImageSource('');
+  const onCropImageModalClose = () => {
+    setImageSource('');
+    hideCropImageModal();
+  };
 
   const handleDrop = (src: string) => (event: DragEvent<HTMLSpanElement>) => {
     if (!event.dataTransfer) {

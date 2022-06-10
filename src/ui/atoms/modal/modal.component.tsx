@@ -6,15 +6,15 @@ import S from './modal.styles';
 import { IModalProps } from './modal.types';
 
 export const Modal = ({
-  align,
-  alwaysFullWidth,
+  align = 'center',
+  alwaysFullWidth = false,
   backgroundStyles,
   children,
   onClose,
   title,
-  withBorderRadius,
-  withCloseIcon,
-  withPadding,
+  withBorderRadius = true,
+  withCloseIcon = true,
+  withPadding = true,
   ...restProps
 }: IModalProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
