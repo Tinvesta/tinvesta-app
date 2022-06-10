@@ -142,13 +142,13 @@ export const Terms = (): JSX.Element => {
             <ListItem>
               <Typography variant={smallTextVariant}>
                 - <strong>Website</strong> - refers to Tinvesta, accessible from{' '}
-                <a
+                <S.StyledLink
                   href="https://www.tinvesta.io"
                   rel="external nofollow noopener noreferrer"
                   target="_blank"
                 >
                   https://www.tinvesta.io
-                </a>
+                </S.StyledLink>
                 ,
               </Typography>
             </ListItem>
