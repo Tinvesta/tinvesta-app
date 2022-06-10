@@ -1,21 +1,35 @@
 import { List, ListItem, Typography } from '@mui/material';
 
-import { HeaderAndFooterLayout } from '@ui';
+import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
-import { useDeviceDetect } from '@utils';
+import { useDeviceDetect, useModal, useTranslation } from '@utils';
 
+import { translationStrings } from './terms.defaults';
 import S from './terms.styles';
 
 export const Terms = (): JSX.Element => {
+  const {
+    hideModal: hideLoginModal,
+    open: isLoginModalOpen,
+    showModal: showLoginModal,
+  } = useModal();
   const { deviceData } = useDeviceDetect();
+  const translations = useTranslation(translationStrings);
 
   const headingVariant = deviceData.isSmallerThanXS ? 'h5' : 'h4';
   const subheadingVariant = deviceData.isSmallerThanXS ? 'h6' : 'h5';
   const smallTextVariant = deviceData.isSmallerThanXS ? 'body2' : 'body1';
 
   return (
-    <HeaderAndFooterLayout openLoginModal={() => console.log('Terms')}>
+    <HeaderAndFooterLayout openLoginModal={showLoginModal}>
       <S.StyledWrapper>
+        <Modal
+          open={isLoginModalOpen}
+          title={translations.componentHomeModalGetStartedHeader}
+          onClose={hideLoginModal}
+        >
+          <LoginModalContent />
+        </Modal>
         <S.StyledContentWrapper>
           <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h4' : 'h3'}>
             Terms and Conditions
