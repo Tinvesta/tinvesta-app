@@ -1,6 +1,6 @@
 import { Button, Typography } from '@mui/material';
 
-import { useModal } from '@ui';
+import { Modal } from '@ui';
 
 import { useDeviceDetect } from '@utils';
 
@@ -25,8 +25,6 @@ export const ConfirmationModal = ({
   } = {},
 }: IConfirmationModalProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
-
-  const { Modal } = useModal();
 
   return (
     <Modal {...modalProps} open={open} title={title} onClose={onClose}>

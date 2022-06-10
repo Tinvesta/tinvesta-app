@@ -3,9 +3,9 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { HeaderAndFooterLayout, useModal } from '@ui';
+import { HeaderAndFooterLayout, Modal } from '@ui';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { useDeviceDetect, useModal, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -16,30 +16,35 @@ import { IMobileHomeProps } from './mobile-home.types';
 
 export const MobileHome = ({ clientTypeId, isSignedIn }: IMobileHomeProps): JSX.Element => {
   const router = useRouter();
-  const { Modal, show } = useModal();
+  const {
+    hideModal: hideLoginModal,
+    open: isLoginModalOpen,
+    showModal: showLoginModal,
+  } = useModal();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
+
   const [loginModalTitle, setLoginModalTitle] = useState('');
 
   const onSignInButtonClick = () => {
     if (!isSignedIn) {
       setLoginModalTitle(translations.componentHomeModalCreateAccountHeader);
 
-      return show();
+      return showLoginModal();
     }
 
     router.push(clientTypeId ? ERoutes.DASHBOARD : ERoutes.ONBOARDING);
   };
 
   const openLoginModal = () => {
-    show();
+    showLoginModal();
     setLoginModalTitle(translations.componentHomeModalGetStartedHeader);
   };
 
   return (
     <HeaderAndFooterLayout openLoginModal={openLoginModal}>
       <S.StyledWrapper>
-        <Modal title={loginModalTitle}>
+        <Modal open={isLoginModalOpen} title={loginModalTitle} onClose={hideLoginModal}>
           <LoginModalContent />
         </Modal>
         <S.StyledTextBlockWrapper>

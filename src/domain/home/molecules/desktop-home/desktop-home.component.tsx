@@ -2,9 +2,9 @@ import { Button } from '@mui/material';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { HeaderAndFooterLayout, useModal } from '@ui';
+import { HeaderAndFooterLayout, Modal } from '@ui';
 
-import { useTranslation } from '@utils';
+import { useModal, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -15,28 +15,33 @@ import { IDesktopHomeProps } from './desktop-home.types';
 
 export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JSX.Element => {
   const router = useRouter();
-  const { Modal, show } = useModal();
   const translations = useTranslation(translationStrings);
+  const {
+    hideModal: hideLoginModal,
+    open: isLoginModalOpen,
+    showModal: showLoginModal,
+  } = useModal();
+
   const [loginModalTitle, setLoginModalTitle] = useState('');
 
   const onSignInButtonClick = () => {
     if (!isSignedIn) {
       setLoginModalTitle(translations.componentHomeModalCreateAccountHeader);
 
-      return show();
+      return showLoginModal();
     }
 
     router.push(clientTypeId ? ERoutes.DASHBOARD : ERoutes.ONBOARDING);
   };
 
   const openLoginModal = () => {
-    show();
+    showLoginModal();
     setLoginModalTitle(translations.componentHomeModalGetStartedHeader);
   };
 
   return (
     <HeaderAndFooterLayout openLoginModal={openLoginModal}>
-      <Modal title={loginModalTitle}>
+      <Modal open={isLoginModalOpen} title={loginModalTitle} onClose={hideLoginModal}>
         <LoginModalContent />
       </Modal>
       <S.StyledContentWrapper>
