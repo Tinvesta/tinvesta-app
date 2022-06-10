@@ -28,7 +28,9 @@ export const ProfileDetailsPreviewLabel = ({
           {label}
         </Typography>
       </S.StyledHeader>
-      <S.StyledContentWrapper variant="body2">{children}</S.StyledContentWrapper>
+      <S.StyledContentWrapper align="left" variant="body2">
+        {children}
+      </S.StyledContentWrapper>
     </S.StyledWrapper>
   );
 };
