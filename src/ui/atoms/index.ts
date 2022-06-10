@@ -8,6 +8,7 @@ export * from './swiper/swiper.component';
 export * from './scrollbar/scrollbar.component';
 export * from './autocomplete/autocomplete.component';
 export * from './upload-images/upload-images.component';
+export * from './login-modal-content/login-modal-content.component';
 export * from './location-autocomplete/location-autocomplete.component';
 export * from './linear-progress-with-label/linear-progress-with-label.component';
 
