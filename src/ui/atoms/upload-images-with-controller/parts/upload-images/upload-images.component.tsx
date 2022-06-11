@@ -15,6 +15,8 @@ import {
   useTranslation,
 } from '@utils';
 
+import { INDEXEDDB_TENSORFLOW_MODEL_STORAGE_KEY } from '@constants';
+
 import { CropImageModalContent } from '../crop-image-modal-content/crop-image-modal-content.component';
 import { translationStrings } from './upload-images.defaults';
 import S from './upload-images.styles';
@@ -44,6 +46,12 @@ const UploadImagesComponent = (
     accept: 'image/jpg, image/jpeg, image/png',
   });
 
+  useEffect(() => {
+    loadModel(INDEXEDDB_TENSORFLOW_MODEL_STORAGE_KEY).catch(() => {
+      loadModel().then((_model) => _model.model.save(INDEXEDDB_TENSORFLOW_MODEL_STORAGE_KEY));
+    });
+  }, []);
+
   const {
     hideModal: hideCropImageModal,
     open: isCropImageModalOpen,
@@ -66,12 +74,12 @@ const UploadImagesComponent = (
     });
 
     const model = await new Promise<NSFWJS>((resolve, reject) => {
-      loadModel('indexeddb://model')
+      loadModel(INDEXEDDB_TENSORFLOW_MODEL_STORAGE_KEY)
         .then(resolve)
         .catch(() => {
           loadModel()
             .then(async (_model) => {
-              await _model.model.save('indexeddb://model');
+              await _model.model.save(INDEXEDDB_TENSORFLOW_MODEL_STORAGE_KEY);
 
               resolve(_model);
             })
