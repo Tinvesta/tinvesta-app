@@ -1,10 +1,9 @@
 import { Button } from '@mui/material';
-import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { HeaderAndFooterLayout, IModalProps, LoginModalContent } from '@ui';
+import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
 import { useDeviceDetect, useModal, useTranslation } from '@utils';
 
@@ -13,10 +12,6 @@ import { ERoutes } from '@enums';
 import { translationStrings } from './mobile-home.defaults';
 import S from './mobile-home.styles';
 import { IMobileHomeProps } from './mobile-home.types';
-
-const Modal = dynamic<IModalProps>(() =>
-  import('@ui/atoms/modal/modal.component').then((mod) => mod.Modal),
-);
 
 export const MobileHome = ({ clientTypeId, isSignedIn }: IMobileHomeProps): JSX.Element => {
   const router = useRouter();

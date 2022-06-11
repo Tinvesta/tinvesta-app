@@ -1,9 +1,8 @@
 import { Button } from '@mui/material';
-import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
-import { HeaderAndFooterLayout, IModalProps, LoginModalContent } from '@ui';
+import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
 import { useModal, useTranslation } from '@utils';
 
@@ -13,10 +12,6 @@ import { LottieAnimation } from '../../atoms';
 import { translationStrings } from './desktop-home.defaults';
 import S from './desktop-home.styles';
 import { IDesktopHomeProps } from './desktop-home.types';
-
-const Modal = dynamic<IModalProps>(() =>
-  import('@ui/atoms/modal/modal.component').then((mod) => mod.Modal),
-);
 
 export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JSX.Element => {
   const router = useRouter();

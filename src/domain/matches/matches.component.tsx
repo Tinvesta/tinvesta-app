@@ -1,9 +1,8 @@
-import dynamic from 'next/dynamic';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
-import { IModalProps, PairsImageGallery } from '@ui';
+import { Modal, PairsImageGallery } from '@ui';
 
 import { isStartupProfile, useConfirmationModal, useModal, useTranslation } from '@utils';
 
@@ -15,10 +14,6 @@ import { matchesAction, removeMatchAction } from './api';
 import { translationStrings } from './matches.defaults';
 import { IMatchesProps } from './matches.types';
 import { ProfileDetailsPreviewModalContent } from './molecules';
-
-const Modal = dynamic<IModalProps>(() =>
-  import('@ui/atoms/modal/modal.component').then((mod) => mod.Modal),
-);
 
 export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Element => {
   const { confirm } = useConfirmationModal();
