@@ -12,48 +12,12 @@ export default class MyDocument extends Document {
         <Head>
           <link href="/manifest.json" rel="manifest" />
           <link href="/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180" />
-          <link color="#111111" href="/safari-pinned-tab.svg" rel="mask-icon" />
-          <meta content="#FAFBFC" name="theme-color" />
+          <link color="#1F1F1F" href="/safari-pinned-tab.svg" rel="mask-icon" />
+          <meta content="#EAEAEA" name="theme-color" />
           <link href="/favicon.ico" rel="icon" />
           <link href="/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png" />
           <link href="/favicon-16x16.png" rel="icon" sizes="16x16" type="image/png" />
-
-          <meta content="Tinvesta" name="application-name" />
-          <meta content="yes" name="apple-mobile-web-app-capable" />
-          <meta content="default" name="apple-mobile-web-app-status-bar-style" />
-          <meta content="Tinvesta" name="apple-mobile-web-app-title" />
-          <meta
-            content="Matchmaking app for start-ups and investors all over the world"
-            name="description"
-          />
-          <meta content="telephone=no" name="format-detection" />
-          <meta content="yes" name="mobile-web-app-capable" />
-          <meta content="#FAFBFC" name="theme-color" />
-
-          <meta content="summary" name="twitter:card" />
-          <meta content="https://www.tinvesta.io" name="twitter:url" />
-          <meta content="Tinvesta" name="twitter:title" />
-          <meta
-            content="Matchmaking app for start-ups and investors all over the world"
-            name="twitter:description"
-          />
-          <meta content="https://www.tinvesta.io/apple-touch-icon.pngg" name="twitter:image" />
-          <meta content="@PawelWojtasinski" name="twitter:creator" />
-          <meta content="website" property="og:type" />
-          <meta content="Tinvesta" property="og:title" />
-          <meta
-            content="Matchmaking app for start-ups and investors all over the world"
-            property="og:description"
-          />
-          <meta content="Tinvesta" property="og:site_name" />
-          <meta content="https://www.tinvesta.io" property="og:url" />
-          <meta content="https://www.tinvesta.io/apple-touch-icon.png" property="og:image" />
-
-          <link
-            href="/images/apple_splash_750.png"
-            rel="apple-touch-startup-image"
-            sizes="1024x138"
-          />
+          <link href="/apple-touch-icon.png" rel="apple-touch-startup-image" sizes="1024x138" />
         </Head>
         <body>
           <Main />
