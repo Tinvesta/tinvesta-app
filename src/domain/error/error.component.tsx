@@ -1,14 +1,19 @@
 import Image from 'next/image';
 
-import { CenterBlockLayout } from '@ui';
+import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { useDeviceDetect, useModal, useTranslation } from '@utils';
 
 import { translationStrings } from './error.defaults';
 import S from './error.styles';
 import { IErrorProps } from './error.types';
 
 export const Error = ({ children, code, message }: IErrorProps): JSX.Element => {
+  const {
+    hideModal: hideLoginModal,
+    open: isLoginModalOpen,
+    showModal: showLoginModal,
+  } = useModal();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
 
@@ -17,21 +22,30 @@ export const Error = ({ children, code, message }: IErrorProps): JSX.Element => 
     : '/images/background/desktop-error.svg';
 
   return (
-    <CenterBlockLayout>
-      <Image
-        priority
-        alt={translations.errorPageBackgroundImageAlt}
-        layout="fill"
-        objectFit="cover"
-        src={backgroundImageSrc}
-      />
-      <S.StyledTypography fontWeight={900} variant="h1">
-        {code}
-      </S.StyledTypography>
-      <S.StyledTypography align="center" variant={deviceData.isSmallerThanXS ? 'body2' : 'h6'}>
-        {message}
-      </S.StyledTypography>
-      <S.StyledActionsWrapper>{children}</S.StyledActionsWrapper>
-    </CenterBlockLayout>
+    <HeaderAndFooterLayout openLoginModal={showLoginModal}>
+      <Modal
+        open={isLoginModalOpen}
+        title={translations.componentHomeModalGetStartedHeader}
+        onClose={hideLoginModal}
+      >
+        <LoginModalContent />
+      </Modal>
+      <S.StyledWrapper>
+        <Image
+          priority
+          alt={translations.errorPageBackgroundImageAlt}
+          layout="fill"
+          objectFit="cover"
+          src={backgroundImageSrc}
+        />
+        <S.StyledTypography fontWeight={900} variant="h1">
+          {code}
+        </S.StyledTypography>
+        <S.StyledTypography align="center" variant={deviceData.isSmallerThanXS ? 'body2' : 'h6'}>
+          {message}
+        </S.StyledTypography>
+        <S.StyledActionsWrapper>{children}</S.StyledActionsWrapper>
+      </S.StyledWrapper>
+    </HeaderAndFooterLayout>
   );
 };
