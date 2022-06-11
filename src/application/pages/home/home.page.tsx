@@ -1,4 +1,4 @@
-import { NextSeo } from 'next-seo';
+import { BreadcrumbJsonLd, NextSeo } from 'next-seo';
 
 import { Home } from '@domain';
 
@@ -66,6 +66,15 @@ export const HomePage = (): JSX.Element => (
           content: 'telephone=no',
           name: 'format-detection',
         },
+        {
+          name: 'author',
+          content: 'Paweł Wojtasiński',
+        },
+        {
+          name: 'keywords',
+          content:
+            'matchmaking, start-ups, startups, investors, investment, crowdfunding, tinder, tinvesta, swipe, swiper, swiping, tinder for start-ups, tinder for investors',
+        },
       ]}
       canonical="https://www.tinvesta.io"
       defaultTitle="Tinvesta"
@@ -96,6 +105,20 @@ export const HomePage = (): JSX.Element => (
         handle: '@WojtasinskiPawe',
         cardType: 'summary_large_image',
       }}
+    />
+    <BreadcrumbJsonLd
+      itemListElements={[
+        {
+          position: 1,
+          name: 'Terms and conditions',
+          item: 'https://www.tinvesta.io/terms',
+        },
+        {
+          position: 2,
+          name: 'Privacy and policy',
+          item: 'https://www.tinvesta.io/privacy-policy',
+        },
+      ]}
     />
     <Home />
   </CenterBlockLayout>
