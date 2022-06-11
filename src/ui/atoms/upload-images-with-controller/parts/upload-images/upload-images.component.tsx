@@ -15,7 +15,7 @@ import {
   useTranslation,
 } from '@utils';
 
-import { CropImageModalContent } from './parts';
+import { CropImageModalContent } from '../crop-image-modal-content/crop-image-modal-content.component';
 import { translationStrings } from './upload-images.defaults';
 import S from './upload-images.styles';
 import { IUploadImagesProps } from './upload-images.types';
