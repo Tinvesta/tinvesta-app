@@ -107,10 +107,17 @@ const StyledFooterLinksLink = styled(Typography)`
   }
 `;
 
+const StyledExternalLink = styled.a`
+  width: fit-content;
+  text-decoration: none;
+  color: ${({ theme }) => theme.palette.secondary.main};
+`;
+
 const S = {
   StyledTitle,
   StyledWrapper,
   StyledFooterLeft,
+  StyledExternalLink,
   StyledWidthContainer,
   StyledFooterLinksLink,
   StyledFooterContainer,
