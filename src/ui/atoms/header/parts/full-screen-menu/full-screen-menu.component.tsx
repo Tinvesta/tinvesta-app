@@ -1,5 +1,5 @@
 import { AnimatePresence, motion } from 'framer-motion';
-import Link from 'next/link';
+import { useRouter } from 'next/router';
 
 import { useDeviceDetect, useTranslation } from '@utils';
 
@@ -10,8 +10,9 @@ import S from './full-screen-menu.styles';
 import { IFullScreenMenuProps } from './full-screen-menu.types';
 
 export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.Element => {
-  const translations = useTranslation(translationStrings);
+  const router = useRouter();
   const { deviceData } = useDeviceDetect();
+  const translations = useTranslation(translationStrings);
 
   const links = [
     { name: translations.componentFooterLinksOptionOne, to: ERoutes.HOME },
@@ -19,7 +20,13 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
     { name: translations.componentFooterLinksOptionThree, to: ERoutes.TERMS },
   ];
 
-  const handleLinkClick = (isActive: boolean) => () => !isActive && toggleMenu();
+  const handleLinkClick = (to: string, isActive: boolean) => () => {
+    if (!isActive) {
+      toggleMenu();
+
+      setTimeout(() => router.push(to), 1000);
+    }
+  };
 
   const getLinkVariant = () => {
     if (deviceData.isSmallerThanXS) {
@@ -56,18 +63,16 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
                 const whileHover = !isActive ? { scale: 1.1 } : undefined;
 
                 return (
-                  <Link key={to} href={to}>
-                    <motion.div variants={itemVariants} whileHover={whileHover}>
-                      <S.StyledLinkTypography
-                        active={isActive.toString()}
-                        color={isActive ? 'gray' : 'secondary'}
-                        variant={getLinkVariant()}
-                        onClick={handleLinkClick(isActive)}
-                      >
-                        {name}
-                      </S.StyledLinkTypography>
-                    </motion.div>
-                  </Link>
+                  <motion.div key={to} variants={itemVariants} whileHover={whileHover}>
+                    <S.StyledLinkTypography
+                      active={isActive.toString()}
+                      color={isActive ? 'gray' : 'secondary'}
+                      variant={getLinkVariant()}
+                      onClick={handleLinkClick(to, isActive)}
+                    >
+                      {name}
+                    </S.StyledLinkTypography>
+                  </motion.div>
                 );
               })}
             </S.StyledLinksContainer>

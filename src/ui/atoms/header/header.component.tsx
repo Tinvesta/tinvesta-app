@@ -54,7 +54,7 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
     animationItem.playSegments(animationSegments, true);
   };
 
-  const toggleMenu = () => cycleOpen();
+  const toggleMenu = () => onMenuClick();
 
   const redirectToHome = () => router.push(ERoutes.HOME);
 
