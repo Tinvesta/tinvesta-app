@@ -23,7 +23,7 @@ export const NotFoundPage = (): JSX.Element => {
         noindex
         defaultTitle="Tinvesta"
         description="Tinvesta is a matchmaking platform for start-ups and investors all over the world"
-        title="Tinvesta - Not Found"
+        title="Tinvesta | Not Found"
       />
       <Button
         color="secondary"

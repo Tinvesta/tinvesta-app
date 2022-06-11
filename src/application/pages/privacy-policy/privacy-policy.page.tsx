@@ -15,7 +15,7 @@ export const PrivacyPolicyPage = (): JSX.Element => (
         },
         {
           name: 'og:title',
-          content: 'Tinvesta - Privacy and Policy',
+          content: 'Tinvesta | Privacy and Policy',
         },
         {
           name: 'og:description',
@@ -40,7 +40,7 @@ export const PrivacyPolicyPage = (): JSX.Element => (
         },
         {
           name: 'og:site_name',
-          content: 'Tinvesta - Privacy and Policy',
+          content: 'Tinvesta | Privacy and Policy',
         },
         {
           name: 'twitter:image',
@@ -87,21 +87,21 @@ export const PrivacyPolicyPage = (): JSX.Element => (
       ]}
       openGraph={{
         url: 'https://www.tinvesta.io',
-        title: 'Tinvesta - Privacy and Policy',
+        title: 'Tinvesta | Privacy and Policy',
         description:
           'Tinvesta is a matchmaking platform for start-ups and investors all over the world',
         images: [
           {
             width: 800,
             height: 600,
-            alt: 'Tinvesta - Privacy and Policy',
+            alt: 'Tinvesta | Privacy and Policy',
             url: 'https://www.tinvesta.io/seo-image.png',
           },
         ],
       }}
-      title="Tinvesta - Privacy and Policy"
+      title="Tinvesta | Privacy and Policy"
       twitter={{
-        site: 'Tinvesta - Privacy and Policy',
+        site: 'Tinvesta | Privacy and Policy',
         handle: '@WojtasinskiPawe',
         cardType: 'summary_large_image',
       }}

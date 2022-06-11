@@ -23,7 +23,7 @@ export const InternalServerErrorPage = (): JSX.Element => {
         noindex
         defaultTitle="Tinvesta"
         description="Tinvesta is a matchmaking platform for start-ups and investors all over the world"
-        title="Tinvesta - Internal Server Error"
+        title="Tinvesta | Internal Server Error"
       />
       <Button
         color="secondary"

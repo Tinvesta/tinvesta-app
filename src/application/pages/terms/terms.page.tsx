@@ -15,7 +15,7 @@ export const TermsPage = (): JSX.Element => (
         },
         {
           name: 'og:title',
-          content: 'Tinvesta - Terms and Conditions',
+          content: 'Tinvesta | Terms and Conditions',
         },
         {
           name: 'og:description',
@@ -40,7 +40,7 @@ export const TermsPage = (): JSX.Element => (
         },
         {
           name: 'og:site_name',
-          content: 'Tinvesta - Terms and Conditions',
+          content: 'Tinvesta | Terms and Conditions',
         },
         {
           name: 'twitter:image',
@@ -87,21 +87,21 @@ export const TermsPage = (): JSX.Element => (
       ]}
       openGraph={{
         url: 'https://www.tinvesta.io',
-        title: 'Tinvesta - Terms and Conditions',
+        title: 'Tinvesta | Terms and Conditions',
         description:
           'Tinvesta is a matchmaking platform for start-ups and investors all over the world',
         images: [
           {
             width: 800,
             height: 600,
-            alt: 'Tinvesta - Terms and Conditions',
+            alt: 'Tinvesta | Terms and Conditions',
             url: 'https://www.tinvesta.io/seo-image.png',
           },
         ],
       }}
-      title="Tinvesta - Terms and Conditions"
+      title="Tinvesta | Terms and Conditions"
       twitter={{
-        site: 'Tinvesta - Terms and Conditions',
+        site: 'Tinvesta | Terms and Conditions',
         handle: '@WojtasinskiPawe',
         cardType: 'summary_large_image',
       }}

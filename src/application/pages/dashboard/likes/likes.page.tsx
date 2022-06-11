@@ -51,7 +51,7 @@ export const LikesPage = (props: ILikesProps): JSX.Element => {
         noindex
         defaultTitle="Tinvesta"
         description="Tinvesta is a matchmaking platform for start-ups and investors all over the world"
-        title="Tinvesta - Likes"
+        title="Tinvesta | Likes"
       />
       <Likes clientTypeId={user.client_type_id as number} {...props} />
     </DashboardLayout>

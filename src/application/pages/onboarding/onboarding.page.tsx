@@ -42,7 +42,7 @@ export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => {
         noindex
         defaultTitle="Tinvesta"
         description="Tinvesta is a matchmaking platform for start-ups and investors all over the world"
-        title="Tinvesta - Onboarding"
+        title="Tinvesta | Onboarding"
       />
       {shouldRenderLoader ? <Loading /> : <Onboarding {...props} />}
     </S.StyledWrapper>
