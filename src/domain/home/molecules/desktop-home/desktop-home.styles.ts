@@ -51,7 +51,14 @@ const StyledSubHeaderWrapper = styled.div`
 const StyledLottieAnimationWrapper = styled.div`
   width: 800px;
   overflow: hidden;
+  min-height: 700px;
+  max-height: 700px;
   position: relative;
+
+  ${respondToMax.small`
+    min-height: 640px;
+    max-height: 640px;
+  `}
 `;
 
 const StyledHeader = styled(Typography)`

@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 
@@ -8,10 +9,13 @@ import { useModal, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
-import { LottieAnimation } from '../../atoms';
 import { translationStrings } from './desktop-home.defaults';
 import S from './desktop-home.styles';
 import { IDesktopHomeProps } from './desktop-home.types';
+
+const LottieAnimation = dynamic<{}>(() =>
+  import('../../atoms').then((_module) => _module.LottieAnimation),
+);
 
 export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JSX.Element => {
   const router = useRouter();
