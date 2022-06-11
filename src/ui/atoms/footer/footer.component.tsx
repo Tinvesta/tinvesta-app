@@ -82,21 +82,33 @@ export const Footer = (): JSX.Element => {
             >
               {translations.componentFooterLinksThirdTitle}
             </S.StyledFooterLinksTitle>
-            <Link href="https://github.com/playerony">
+            <S.StyledExternalLink
+              href="https://github.com/playerony"
+              rel="external nofollow noopener noreferrer"
+              target="_blank"
+            >
               <S.StyledFooterLinksLink variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
                 {translations.componentFooterLinksThirdOptionOne}
               </S.StyledFooterLinksLink>
-            </Link>
-            <Link href="https://twitter.com/WojtasinskiPawe">
+            </S.StyledExternalLink>
+            <S.StyledExternalLink
+              href="https://twitter.com/WojtasinskiPawe"
+              rel="external nofollow noopener noreferrer"
+              target="_blank"
+            >
               <S.StyledFooterLinksLink variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
                 {translations.componentFooterLinksThirdOptionTwo}
               </S.StyledFooterLinksLink>
-            </Link>
-            <Link href="https://www.linkedin.com/in/pwojtasinski">
+            </S.StyledExternalLink>
+            <S.StyledExternalLink
+              href="https://www.linkedin.com/in/pwojtasinski"
+              rel="external nofollow noopener noreferrer"
+              target="_blank"
+            >
               <S.StyledFooterLinksLink variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
                 {translations.componentFooterLinksThirdOptionThree}
               </S.StyledFooterLinksLink>
-            </Link>
+            </S.StyledExternalLink>
           </S.StyledFooterLinksColumn>
           {deviceData.isSmallerThanMD && (
             <S.StyledFooterLeft>
