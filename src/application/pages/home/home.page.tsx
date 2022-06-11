@@ -11,16 +11,16 @@ export const HomePage = (): JSX.Element => (
         {
           name: 'description',
           content:
-            'Tinvesta is a matchmaking platform for start-ups and investors all over the world',
+            'Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.',
         },
         {
           name: 'og:title',
-          content: 'Tinvesta - Home',
+          content: 'Tinvesta | One finger movement away from finding the right business partner',
         },
         {
           name: 'og:description',
           content:
-            'Tinvesta is a matchmaking platform for start-ups and investors all over the world',
+            'Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.',
         },
         {
           name: 'og:type',
@@ -31,20 +31,12 @@ export const HomePage = (): JSX.Element => (
           name: 'og:locale',
         },
         {
-          name: 'og:url',
-          content: 'https://www.tinvesta.io',
-        },
-        {
-          name: 'og:image',
-          content: 'https://www.tinvesta.io/apple-touch-icon.png',
-        },
-        {
           name: 'og:site_name',
-          content: 'Tinvesta - Home',
+          content: 'Tinvesta | One finger movement away from finding the right business partner',
         },
         {
           name: 'twitter:image',
-          content: 'https://www.tinvesta.io/apple-touch-icon.png',
+          content: 'https://www.tinvesta.io/seo-image.png',
         },
         {
           name: 'twitter:url',
@@ -78,7 +70,7 @@ export const HomePage = (): JSX.Element => (
       ]}
       canonical="https://www.tinvesta.io"
       defaultTitle="Tinvesta"
-      description="Tinvesta is a matchmaking platform for start-ups and investors all over the world"
+      description="Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match."
       languageAlternates={[
         {
           hrefLang: 'en',
@@ -87,21 +79,21 @@ export const HomePage = (): JSX.Element => (
       ]}
       openGraph={{
         url: 'https://www.tinvesta.io',
-        title: 'Tinvesta - Home',
+        title: 'Tinvesta | One finger movement away from finding the right business partner',
         description:
-          'Tinvesta is a matchmaking platform for start-ups and investors all over the world',
+          'Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.',
         images: [
           {
-            width: 180,
-            height: 180,
-            alt: 'Tinvesta - Home',
-            url: 'https://www.tinvesta.io/apple-touch-icon.png',
+            width: 800,
+            height: 600,
+            alt: 'Tinvesta | One finger movement away from finding the right business partner',
+            url: 'https://www.tinvesta.io/seo-image.png',
           },
         ],
       }}
-      title="Tinvesta - Home"
+      title="Tinvesta | One finger movement away from finding the right business partner"
       twitter={{
-        site: 'Tinvesta - Home',
+        site: 'Tinvesta | One finger movement away from finding the right business partner',
         handle: '@WojtasinskiPawe',
         cardType: 'summary_large_image',
       }}

@@ -22,8 +22,8 @@ export const NotFoundPage = (): JSX.Element => {
       <NextSeo
         noindex
         defaultTitle="Tinvesta"
-        description="Tinvesta is a matchmaking platform for start-ups and investors all over the world"
-        title="Tinvesta - Not Found"
+        description="Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match."
+        title="Tinvesta | Not Found"
       />
       <Button
         color="secondary"
