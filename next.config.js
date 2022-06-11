@@ -55,9 +55,6 @@ module.exports = withPWA({
     disable: process.env.NEXT_PUBLIC_APP_ENV === 'local',
   },
   images: {
-    // TODO - fix later
-    // loader: 'imgix',
-    // path: 'https://noop/',
     domains: [
       'lh3.googleusercontent.com',
       'ybaxrlqelmtgmowtrzpy.supabase.co',
