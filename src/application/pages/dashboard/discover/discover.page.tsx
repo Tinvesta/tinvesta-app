@@ -50,7 +50,7 @@ export const DiscoverPage = (props: IDiscoverProps): JSX.Element => {
       <NextSeo
         noindex
         defaultTitle="Tinvesta"
-        description="Tinvesta is a matchmaking platform for start-ups and investors all over the world"
+        description="Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match."
         title="Tinvesta | Discover"
       />
       <Discover clientTypeId={user.client_type_id as number} {...props} />

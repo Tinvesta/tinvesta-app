@@ -11,7 +11,7 @@ export const PrivacyPolicyPage = (): JSX.Element => (
         {
           name: 'description',
           content:
-            'Tinvesta is a matchmaking platform for start-ups and investors all over the world',
+            'Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.',
         },
         {
           name: 'og:title',
@@ -20,7 +20,7 @@ export const PrivacyPolicyPage = (): JSX.Element => (
         {
           name: 'og:description',
           content:
-            'Tinvesta is a matchmaking platform for start-ups and investors all over the world',
+            'Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.',
         },
         {
           name: 'og:type',
@@ -29,14 +29,6 @@ export const PrivacyPolicyPage = (): JSX.Element => (
         {
           content: 'en',
           name: 'og:locale',
-        },
-        {
-          name: 'og:url',
-          content: 'https://www.tinvesta.io',
-        },
-        {
-          name: 'og:image',
-          content: 'https://www.tinvesta.io/seo-image.png',
         },
         {
           name: 'og:site_name',
@@ -78,7 +70,7 @@ export const PrivacyPolicyPage = (): JSX.Element => (
       ]}
       canonical="https://www.tinvesta.io"
       defaultTitle="Tinvesta"
-      description="Tinvesta is a matchmaking platform for start-ups and investors all over the world"
+      description="Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match."
       languageAlternates={[
         {
           hrefLang: 'en',
@@ -89,7 +81,7 @@ export const PrivacyPolicyPage = (): JSX.Element => (
         url: 'https://www.tinvesta.io',
         title: 'Tinvesta | Privacy and Policy',
         description:
-          'Tinvesta is a matchmaking platform for start-ups and investors all over the world',
+          'Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.',
         images: [
           {
             width: 800,
