@@ -1,4 +1,4 @@
-import Head from 'next/head';
+import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 
@@ -38,9 +38,12 @@ export const OnboardingPage = (props: IOnboardingPageProps): JSX.Element => {
 
   return (
     <S.StyledWrapper>
-      <Head>
-        <title>Tinvesta</title>
-      </Head>
+      <NextSeo
+        noindex
+        defaultTitle="Tinvesta"
+        description="Tinvesta is a matchmaking platform for start-ups and investors all over the world"
+        title="Tinvesta - Onboarding"
+      />
       {shouldRenderLoader ? <Loading /> : <Onboarding {...props} />}
     </S.StyledWrapper>
   );
