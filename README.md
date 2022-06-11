@@ -10,7 +10,7 @@
   <h3 align="center">Tinvesta</h3>
 
   <p align="center">
-    Matchmaking app for start-ups and investors all over the world
+    Matchmaking platform for start-ups and investors all over the world
     <br />
     <a href="https://www.tinvesta.io">View Production</a>
     ·
@@ -99,43 +99,7 @@ _Below is an example of how you can instruct your audience on installing and set
 
 ## Roadmap
 
-- [ ] Homepage
-- [ ] Privacy policy
-- [ ] Terms
-- [ ] Magic link
 - [ ] Reports / ban system
-- [ ] Error pages (400, 404, 500, 403, 402)
-- [ ] Add react-toastify
-- [ ] Desktop - startup onboarding
-- [ ] Desktop - investor onboarding
-- [ ] Login / Registration via google
-- [ ] Login / Registration via github
-- [ ] Login / Registration via apple
-- [ ] Multi step forms for startups
-- [ ] Multi step forms for investors
-- [ ] Multi-language Support
-  - [ ] Polski
-  - [ ] Angielski
-  - [ ] Hiszpański
-  - [ ] Chiński
-  - [ ] Czeski
-  - [ ] Duński
-  - [ ] Estoński
-  - [ ] Fiński
-  - [ ] Francuzki
-  - [ ] Grecki
-  - [ ] Japoński
-  - [ ] Litewski
-  - [ ] Łotewski
-  - [ ] Niderlandzki
-  - [ ] Niemiecki
-  - [ ] Portugalski
-  - [ ] Rumuński
-  - [ ] Słowacki
-  - [ ] Słoweński
-  - [ ] Szwedzki
-  - [ ] Węgierski
-  - [ ] Włoski
 
 <p align="right">(<a href="#top">back to top</a>)</p>
 
