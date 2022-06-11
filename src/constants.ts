@@ -15,6 +15,8 @@ export const INDUSTRIAL_SECTORS_LIMIT = 10;
 
 export const USER_REF_LOCAL_STORAGE_KEY = 'user-ref';
 
+export const INDEXEDDB_TENSORFLOW_MODEL_STORAGE_KEY = 'indexeddb://model';
+
 export const DEFAULT_LOCALE: ELocale =
   (process.env.NEXT_PUBLIC_DEFAULT_LOCALE as ELocale) ?? ELocale.EN;
 
