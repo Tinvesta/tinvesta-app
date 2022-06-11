@@ -10,9 +10,6 @@ import { ProfileCardActionButtons } from '..';
 import S from './motion-card-wrapper.styles';
 import { IMotionCardWrapperProps } from './motion-card-wrapper.types';
 
-const MOVE_TO_X_POSITIVE = 1500;
-const MOVE_TO_X_NEGATIVE = -1500;
-
 export const MotionCardWrapper = ({
   children,
   drag,
@@ -22,11 +19,11 @@ export const MotionCardWrapper = ({
   zIndex,
   ...restProps
 }: IMotionCardWrapperProps): JSX.Element => {
-  const { deviceData } = useDeviceDetect();
+  const { deviceData, windowSize } = useDeviceDetect();
 
   const x = useMotionValue(0);
   const animControls = useAnimation();
-  const rotate = useTransform(x, [-750, 750], [-35, 35]);
+  const rotate = useTransform(x, [-windowSize.width, windowSize.width], [-35, 35]);
   const rightIconOpacity = useTransform(x, [50, 200], [0, 200]);
   const leftIconOpacity = useTransform(x, [-200, -50], [200, 0]);
 
@@ -35,7 +32,7 @@ export const MotionCardWrapper = ({
       return;
     }
 
-    animControls.start({ x: MOVE_TO_X_POSITIVE }).then(() => {
+    animControls.start({ x: windowSize.width }).then(() => {
       onVote(true);
     });
   };
@@ -45,7 +42,7 @@ export const MotionCardWrapper = ({
       return;
     }
 
-    animControls.start({ x: MOVE_TO_X_NEGATIVE }).then(() => {
+    animControls.start({ x: -windowSize.width }).then(() => {
       onVote(false);
     });
   };
@@ -68,7 +65,7 @@ export const MotionCardWrapper = ({
     <S.StyledWrapper
       animate={animControls}
       drag={drag && !isProfilePreviewMode}
-      dragConstraints={{ left: -750, right: 750 }}
+      dragConstraints={{ left: -windowSize.width, right: windowSize.width }}
       exit={{ opacity: 0 }}
       style={{
         x,
@@ -80,7 +77,7 @@ export const MotionCardWrapper = ({
           animControls.start({ x: 0, y: 0 });
         } else {
           animControls
-            .start({ x: info.offset.x < 0 ? MOVE_TO_X_NEGATIVE : MOVE_TO_X_POSITIVE })
+            .start({ x: info.offset.x < 0 ? -windowSize.width : windowSize.width })
             .then(() => {
               onVote(info.offset.x > 0);
             });

@@ -138,7 +138,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     );
   }
 
-  if (items.length === 0) {
+  if (items.length === 0 && !isMatchModalOpen) {
     const emptyLabel = isStartup
       ? translations.componentDashboardDiscoverNoMoreRecordsLabelStartup
       : translations.componentDashboardDiscoverNoMoreRecordsLabelInvestor;
