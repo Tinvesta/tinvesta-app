@@ -1,10 +1,11 @@
 import { useTheme } from '@mui/material';
+import dynamic from 'next/dynamic';
 import { rgba } from 'polished';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
-import { Empty, MatchModalContent, Modal, PairsImageGallery } from '@ui';
+import { Empty, IModalProps, MatchModalContent, PairsImageGallery } from '@ui';
 
 import { isStartupProfile, useConfirmationModal, useModal, useTranslation, useUser } from '@utils';
 
@@ -20,6 +21,10 @@ import { likesAction } from './api';
 import { translationStrings } from './likes.defaults';
 import { ILikesProps } from './likes.types';
 import { ProfileDetailsPreviewModalContent } from './molecules';
+
+const Modal = dynamic<IModalProps>(() =>
+  import('@ui/atoms/modal/modal.component').then((mod) => mod.Modal),
+);
 
 export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element => {
   const theme = useTheme();

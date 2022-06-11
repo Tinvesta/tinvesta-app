@@ -1,8 +1,12 @@
+import dynamic from 'next/dynamic';
 import { Controller } from 'react-hook-form';
 
-import { UploadImages } from '@ui';
-
+import { IUploadImagesProps } from './parts';
 import { IUploadImagesWithControllerProps } from './upload-images-with-controller.types';
+
+const UploadImages = dynamic<IUploadImagesProps>(() =>
+  import('./parts/upload-images/upload-images.component').then((mod) => mod.UploadImages),
+);
 
 export const UploadImagesWithController = <TFieldValues,>({
   controllerProps,

@@ -1,11 +1,16 @@
 import { List, ListItem, Typography } from '@mui/material';
+import dynamic from 'next/dynamic';
 
-import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
+import { HeaderAndFooterLayout, IModalProps, LoginModalContent } from '@ui';
 
 import { useDeviceDetect, useModal, useTranslation } from '@utils';
 
 import { translationStrings } from './terms.defaults';
 import S from './terms.styles';
+
+const Modal = dynamic<IModalProps>(() =>
+  import('@ui/atoms/modal/modal.component').then((mod) => mod.Modal),
+);
 
 export const Terms = (): JSX.Element => {
   const {

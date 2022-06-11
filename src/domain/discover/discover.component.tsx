@@ -1,10 +1,11 @@
 import { useTheme } from '@mui/material';
 import { isToday } from 'date-fns';
+import dynamic from 'next/dynamic';
 import { rgba } from 'polished';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout, Empty, Loading, MatchModalContent, Modal } from '@ui';
+import { CenterBlockLayout, Empty, IModalProps, Loading, MatchModalContent } from '@ui';
 
 import {
   isStartupProfile,
@@ -27,6 +28,10 @@ import { MotionCardsStack } from './atoms';
 import { translationStrings } from './discover.defaults';
 import { IDiscoverProps } from './discover.types';
 import { Card } from './molecules';
+
+const Modal = dynamic<IModalProps>(() =>
+  import('@ui/atoms/modal/modal.component').then((mod) => mod.Modal),
+);
 
 export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.Element => {
   const { isLoading: isLikeProfileActionLoading, mutateAsync: mutateAsyncLikeProfileAction } =
