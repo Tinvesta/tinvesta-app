@@ -1,9 +1,10 @@
 import { Button } from '@mui/material';
 import { useCycle } from 'framer-motion';
-import lottie, { AnimationItem, AnimationSegment } from 'lottie-web';
+import { AnimationItem, AnimationSegment } from 'lottie-web';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
 
 import { useDeviceDetect, useTranslation, useUser } from '@utils';
 
@@ -12,35 +13,24 @@ import { ERoutes } from '@enums';
 import { translationStrings } from './header.defaults';
 import S from './header.styles';
 import { IHeaderProps } from './header.types';
-import { FullScreenMenu } from './parts';
-import { menuAnimation } from './utils';
+import { FullScreenMenu, ILottieAnimationProps } from './parts';
+
+const LottieAnimation = dynamic<ILottieAnimationProps>(
+  () =>
+    import('./parts/lottie-animation/lottie-animation.component').then(
+      (_module) => _module.LottieAnimation,
+    ),
+  { loading: () => <div /> },
+);
 
 export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Element => {
   const router = useRouter();
   const { logout, user } = useUser();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
-  const animationContainerRef = useRef<HTMLDivElement>(null);
 
   const [open, cycleOpen] = useCycle(false, true);
   const [animationItem, setAnimationItem] = useState<AnimationItem>();
-
-  useEffect(() => {
-    if (animationContainerRef.current) {
-      const item = lottie.loadAnimation({
-        loop: false,
-        autoplay: false,
-        animationData: menuAnimation,
-        container: animationContainerRef.current,
-      });
-
-      setAnimationItem(item);
-
-      return () => {
-        item.destroy();
-      };
-    }
-  }, []);
 
   const onMenuClick = (): void => {
     if (!animationItem) {
@@ -79,7 +69,7 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
     <S.StyledWrapper>
       <FullScreenMenu open={open} toggleMenu={onMenuClick} />
       <S.StyledContentWrapper>
-        <S.StyledMenuAnimation ref={animationContainerRef} onClick={onMenuClick} />
+        <LottieAnimation setAnimationItem={setAnimationItem} onClick={onMenuClick} />
         <S.StyledLogoWrapper height={imageSize} onClick={redirectToHome}>
           <Image
             priority

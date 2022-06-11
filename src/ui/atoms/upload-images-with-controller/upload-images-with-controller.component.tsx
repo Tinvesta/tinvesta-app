@@ -5,7 +5,7 @@ import { IUploadImagesProps } from './parts';
 import { IUploadImagesWithControllerProps } from './upload-images-with-controller.types';
 
 const UploadImages = dynamic<IUploadImagesProps>(() =>
-  import('./parts/upload-images/upload-images.component').then((mod) => mod.UploadImages),
+  import('./parts/upload-images/upload-images.component').then((_module) => _module.UploadImages),
 );
 
 export const UploadImagesWithController = <TFieldValues,>({
