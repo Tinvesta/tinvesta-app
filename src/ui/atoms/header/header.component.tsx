@@ -54,8 +54,6 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
     animationItem.playSegments(animationSegments, true);
   };
 
-  const toggleMenu = () => cycleOpen();
-
   const redirectToHome = () => router.push(ERoutes.HOME);
 
   const getImageSize = () => {
@@ -79,7 +77,7 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
 
   return (
     <S.StyledWrapper>
-      <FullScreenMenu open={open} toggleMenu={toggleMenu} />
+      <FullScreenMenu open={open} toggleMenu={onMenuClick} />
       <S.StyledContentWrapper>
         <S.StyledMenuAnimation ref={animationContainerRef} onClick={onMenuClick} />
         <S.StyledLogoWrapper height={imageSize} onClick={redirectToHome}>
