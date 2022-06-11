@@ -1,11 +1,12 @@
 import { Grid } from '@mui/material';
 import imageCompression from 'browser-image-compression';
+import dynamic from 'next/dynamic';
 import { NSFWJS, load as loadModel } from 'nsfwjs';
 import { DragEvent, ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
 import { useFilePicker } from 'use-file-picker';
 
-import { Modal } from '@ui';
+import { IModalProps } from '@ui';
 
 import {
   asyncTryCatchWrapper,
@@ -19,6 +20,10 @@ import { CropImageModalContent } from '../crop-image-modal-content/crop-image-mo
 import { translationStrings } from './upload-images.defaults';
 import S from './upload-images.styles';
 import { IUploadImagesProps } from './upload-images.types';
+
+const Modal = dynamic<IModalProps>(() =>
+  import('../../../modal/modal.component').then((mod) => mod.Modal),
+);
 
 const handleDragStart = (src: string) => (event: DragEvent<HTMLSpanElement>) => {
   if (!event.dataTransfer) {

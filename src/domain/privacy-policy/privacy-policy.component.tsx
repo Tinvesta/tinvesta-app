@@ -1,11 +1,16 @@
 import { List, ListItem, Typography } from '@mui/material';
+import dynamic from 'next/dynamic';
 
-import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
+import { HeaderAndFooterLayout, IModalProps, LoginModalContent } from '@ui';
 
 import { useDeviceDetect, useModal, useTranslation } from '@utils';
 
 import { translationStrings } from './privacy-policy.defaults';
 import S from './privacy-policy.styles';
+
+const Modal = dynamic<IModalProps>(() =>
+  import('../../ui/atoms/modal/modal.component').then((mod) => mod.Modal),
+);
 
 export const PrivacyPolicy = (): JSX.Element => {
   const {

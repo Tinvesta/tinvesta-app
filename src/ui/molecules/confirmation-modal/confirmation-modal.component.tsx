@@ -1,11 +1,16 @@
 import { Button, Typography } from '@mui/material';
+import dynamic from 'next/dynamic';
 
-import { Modal } from '@ui';
+import { IModalProps } from '@ui';
 
 import { useDeviceDetect } from '@utils';
 
 import S from './confirmation-modal.styles';
 import { IConfirmationModalProps } from './confirmation-modal.types';
+
+const Modal = dynamic<IModalProps>(() =>
+  import('../../atoms/modal/modal.component').then((mod) => mod.Modal),
+);
 
 export const ConfirmationModal = ({
   onCancel,
