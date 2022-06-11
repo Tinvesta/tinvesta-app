@@ -36,7 +36,7 @@ export const HomePage = (): JSX.Element => (
         },
         {
           name: 'og:image',
-          content: 'https://www.tinvesta.io/apple-touch-icon.png',
+          content: 'https://www.tinvesta.io/seo-image.png',
         },
         {
           name: 'og:site_name',
@@ -44,7 +44,7 @@ export const HomePage = (): JSX.Element => (
         },
         {
           name: 'twitter:image',
-          content: 'https://www.tinvesta.io/apple-touch-icon.png',
+          content: 'https://www.tinvesta.io/seo-image.png',
         },
         {
           name: 'twitter:url',
@@ -92,10 +92,10 @@ export const HomePage = (): JSX.Element => (
           'Tinvesta is a matchmaking platform for start-ups and investors all over the world',
         images: [
           {
-            width: 180,
-            height: 180,
+            width: 800,
+            height: 600,
             alt: 'Tinvesta - Home',
-            url: 'https://www.tinvesta.io/apple-touch-icon.png',
+            url: 'https://www.tinvesta.io/seo-image.png',
           },
         ],
       }}
