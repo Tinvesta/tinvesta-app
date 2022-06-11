@@ -1,6 +1,5 @@
 import { Logout as LogoutIcon } from '@mui/icons-material';
 import { Avatar, CircularProgress, IconButton } from '@mui/material';
-import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -30,12 +29,8 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
 
   const imageSize = deviceData.isSmallerThanXS ? 35 : 45;
 
-  // TODO - fix span styles
   return (
     <S.StyledWrapper>
-      <Head>
-        <title>Tinvesta</title>
-      </Head>
       <S.StyledTopNavigation>
         <Link passHref href={ERoutes.DASHBOARD_PROFILE}>
           <Avatar
@@ -44,26 +39,16 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
           />
         </Link>
         <Link passHref href={ERoutes.DASHBOARD_DISCOVER}>
-          <span
-            style={{
-              position: 'absolute',
-              right: '50%',
-              transform: 'translateX(50%)',
-              height: imageSize,
-            }}
-          >
+          <S.StyledLogoWrapper height={imageSize}>
             <Image
               priority
               alt="Tinvesta"
               height={imageSize}
               objectFit="fill"
               src="/images/brandmark-transparent-white.png"
-              style={{
-                cursor: 'pointer',
-              }}
               width={imageSize}
             />
-          </span>
+          </S.StyledLogoWrapper>
         </Link>
         <S.StyledRightTopNavigationWrapper>
           {isFetching || isMutating ? (
