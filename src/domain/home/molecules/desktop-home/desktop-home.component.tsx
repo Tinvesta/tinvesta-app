@@ -19,12 +19,12 @@ const LottieAnimation = dynamic<{}>(() =>
 
 export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JSX.Element => {
   const router = useRouter();
-  const translations = useTranslation(translationStrings);
   const {
     hideModal: hideLoginModal,
     open: isLoginModalOpen,
     showModal: showLoginModal,
   } = useModal();
+  const translations = useTranslation(translationStrings);
 
   const [loginModalTitle, setLoginModalTitle] = useState('');
 
