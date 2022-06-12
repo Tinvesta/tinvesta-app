@@ -4,6 +4,7 @@ import {
   CacheProvider,
   ConfirmationModalProvider,
   LocaleProvider,
+  OfflineProvider,
   QueryClientProvider,
   QueryParamProvider,
   ThemeProvider,
@@ -32,9 +33,11 @@ export const App = ({ Component, emotionCache, pageProps }: IAppProps) => {
             <LocaleProvider>
               <QueryClientProvider>
                 <ConfirmationModalProvider>
-                  <UserProvider>
-                    {isLoading ? <Loading /> : <Component {...pageProps} />}
-                  </UserProvider>
+                  <OfflineProvider>
+                    <UserProvider>
+                      {isLoading ? <Loading /> : <Component {...pageProps} />}
+                    </UserProvider>
+                  </OfflineProvider>
                 </ConfirmationModalProvider>
               </QueryClientProvider>
             </LocaleProvider>
