@@ -13,6 +13,10 @@ export default {
   'common.buttons.continue': 'Continue',
   'common.buttons.disagree': 'I disagree',
 
+  // Netword status
+  'common.offline.notification': 'You are offline.',
+  'common.online.notification': 'You are back online.',
+
   // Default Alt
   'common.default.image.alt': 'Profile image',
 
