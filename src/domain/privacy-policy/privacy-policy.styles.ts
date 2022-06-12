@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { List, Typography } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
@@ -39,9 +40,19 @@ const StyledContentWrapper = styled.div`
   `}
 `;
 
+const StyledFullWidthList = styled(List)`
+  width: 100%;
+`;
+
+const StyledFullWidthTypography = styled(Typography)`
+  width: 100%;
+`;
+
 const S = {
   StyledWrapper,
+  StyledFullWidthList,
   StyledContentWrapper,
+  StyledFullWidthTypography,
 };
 
 export default S;

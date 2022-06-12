@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { useOnlineState } from 'beautiful-react-hooks';
 import { useCycle } from 'framer-motion';
 import { AnimationItem, AnimationSegment } from 'lottie-web';
 import dynamic from 'next/dynamic';
@@ -15,12 +16,10 @@ import S from './header.styles';
 import { IHeaderProps } from './header.types';
 import { FullScreenMenu, ILottieAnimationProps } from './parts';
 
-const LottieAnimation = dynamic<ILottieAnimationProps>(
-  () =>
-    import('./parts/lottie-animation/lottie-animation.component').then(
-      (_module) => _module.LottieAnimation,
-    ),
-  { loading: () => <div /> },
+const LottieAnimation = dynamic<ILottieAnimationProps>(() =>
+  import('./parts/lottie-animation/lottie-animation.component').then(
+    (_module) => _module.LottieAnimation,
+  ),
 );
 
 export const Header = ({
@@ -29,6 +28,7 @@ export const Header = ({
   scrollToTop,
 }: IHeaderProps): JSX.Element => {
   const router = useRouter();
+  const isOnline = useOnlineState();
   const { logout, user } = useUser();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
@@ -84,10 +84,10 @@ export const Header = ({
             width={imageSize}
           />
         </S.StyledLogoWrapper>
-        {!user?.client_type_id ? (
+        {!user ? (
           <Button
             color="secondary"
-            disabled={disableLoginLogoutButton}
+            disabled={disableLoginLogoutButton || !isOnline}
             size={buttonSize}
             variant="contained"
             onClick={openLoginModal}
@@ -97,7 +97,7 @@ export const Header = ({
         ) : (
           <Button
             color="secondary"
-            disabled={disableLoginLogoutButton}
+            disabled={disableLoginLogoutButton || !isOnline}
             size={buttonSize}
             variant="contained"
             onClick={logout}
