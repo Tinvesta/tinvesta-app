@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { useOnlineState } from 'beautiful-react-hooks';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -24,6 +25,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
     open: isLoginModalOpen,
     showModal: showLoginModal,
   } = useModal();
+  const isOnline = useOnlineState();
   const translations = useTranslation(translationStrings);
 
   const [loginModalTitle, setLoginModalTitle] = useState('');
@@ -59,6 +61,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
             </S.StyledSubheader>
             <Button
               color="secondary"
+              disabled={!isOnline}
               size="large"
               variant="contained"
               onClick={onSignInButtonClick}
