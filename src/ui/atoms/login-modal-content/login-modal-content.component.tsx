@@ -1,4 +1,8 @@
-import { GitHub as GitHubIcon, Google as GoogleIcon } from '@mui/icons-material';
+import {
+  GitHub as GitHubIcon,
+  Google as GoogleIcon,
+  LinkedIn as LinkedInIcon,
+} from '@mui/icons-material';
 import { Button, Typography } from '@mui/material';
 
 import { replaceVariablesInTranslation, useTranslation, useUser } from '@utils';
@@ -10,14 +14,18 @@ import S from './login-modal-content.styles';
 
 export const LoginModalContent = (): JSX.Element => {
   const translations = useTranslation(translationStrings);
-  const { loginViaGithubProvider, loginViaGoogleProvider } = useUser();
+  const { loginViaGithubProvider, loginViaGoogleProvider, loginViaLinkedInProvider } = useUser();
 
-  const loginIn = (provider: 'github' | 'google') => async () => {
+  const loginIn = (provider: 'github' | 'google' | 'linkedin') => async () => {
     if (provider === 'github') {
       return loginViaGithubProvider();
     }
 
-    loginViaGoogleProvider();
+    if (provider === 'google') {
+      return loginViaGoogleProvider();
+    }
+
+    loginViaLinkedInProvider();
   };
 
   const parsedModalInfo = replaceVariablesInTranslation(
@@ -42,6 +50,14 @@ export const LoginModalContent = (): JSX.Element => {
           onClick={loginIn('google')}
         >
           {translations.componentHomeModalLoginViaGoogleButton}
+        </Button>
+        <Button
+          color="secondary"
+          startIcon={<LinkedInIcon />}
+          variant="outlined"
+          onClick={loginIn('linkedin')}
+        >
+          {translations.componentHomeModalLoginViaLinkedinButton}
         </Button>
         <Button
           color="secondary"

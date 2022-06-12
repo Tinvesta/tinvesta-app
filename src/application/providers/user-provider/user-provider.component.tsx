@@ -95,6 +95,16 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
       },
     );
 
+  const loginViaLinkedInProvider = () =>
+    supabaseInstance.auth.signIn(
+      {
+        provider: 'linkedin',
+      },
+      {
+        redirectTo: `${window.location.origin}?redirect=dashboard`,
+      },
+    );
+
   const logout = () =>
     supabaseInstance.auth.signOut().then(() => {
       setUser(null);
@@ -111,6 +121,7 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
     isStartupProfile,
     loginViaGithubProvider,
     loginViaGoogleProvider,
+    loginViaLinkedInProvider,
   };
 
   return <UserContext.Provider value={providerValue}>{children}</UserContext.Provider>;
