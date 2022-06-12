@@ -1,4 +1,4 @@
-import { List, ListItem, Typography } from '@mui/material';
+import { ListItem, Typography } from '@mui/material';
 
 import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
@@ -30,7 +30,7 @@ export const PrivacyPolicy = (): JSX.Element => {
         </Modal>
         <S.StyledContentWrapper>
           <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h4' : 'h3'}>
-            Privacy Policy
+            Privacy & Policy
           </Typography>
           <Typography variant={smallTextVariant}>
             Your privacy is important to us. It is Tinvesta&#39;s policy to respect your privacy and
@@ -70,7 +70,7 @@ export const PrivacyPolicy = (): JSX.Element => {
           <Typography variant={smallTextVariant}>
             We may ask for personal information which may include one or more of the following:{' '}
           </Typography>
-          <List sx={{ width: '100%' }}>
+          <S.StyledFullWidthList>
             <ListItem>
               <Typography variant={smallTextVariant}>- Name,</Typography>
             </ListItem>
@@ -80,7 +80,7 @@ export const PrivacyPolicy = (): JSX.Element => {
             <ListItem>
               <Typography variant={smallTextVariant}>- Social media profiles,</Typography>
             </ListItem>
-          </List>
+          </S.StyledFullWidthList>
           <Typography fontWeight={900} variant="h5">
             Legitimate Reasons for Processing Your Personal Information
           </Typography>
@@ -96,7 +96,7 @@ export const PrivacyPolicy = (): JSX.Element => {
             We may collect personal information from you when you do any of the following on our
             website:
           </Typography>
-          <List sx={{ width: '100%' }}>
+          <S.StyledFullWidthList>
             <ListItem>
               <Typography variant={smallTextVariant}>
                 - Use a mobile device or web browser to access our content,
@@ -112,7 +112,7 @@ export const PrivacyPolicy = (): JSX.Element => {
                 - When you mention us on social media,
               </Typography>
             </ListItem>
-          </List>
+          </S.StyledFullWidthList>
           <Typography variant={smallTextVariant}>
             We may collect, hold, use, and disclose information for the following purposes, and
             personal information will not be further processed in a manner that is incompatible with
@@ -123,7 +123,7 @@ export const PrivacyPolicy = (): JSX.Element => {
             personal information will not be further processed in a manner that is incompatible with
             these purposes:
           </Typography>
-          <List sx={{ width: '100%' }}>
+          <S.StyledFullWidthList>
             <ListItem>
               <Typography variant={smallTextVariant}>
                 - to enable you to customise or personalise your experience of our website,
@@ -140,7 +140,7 @@ export const PrivacyPolicy = (): JSX.Element => {
                 associated social media platforms,
               </Typography>
             </ListItem>
-          </List>
+          </S.StyledFullWidthList>
           <Typography variant={smallTextVariant}>
             Please be aware that we may combine information we collect about you with general
             information or research data we receive from other trusted sources.
@@ -190,7 +190,7 @@ export const PrivacyPolicy = (): JSX.Element => {
           <Typography variant={smallTextVariant}>
             We may disclose personal information to:
           </Typography>
-          <List sx={{ width: '100%' }}>
+          <S.StyledFullWidthList>
             <ListItem>
               <Typography variant={smallTextVariant}>
                 - a parent, subsidiary, or affiliate of our company,
@@ -232,7 +232,7 @@ export const PrivacyPolicy = (): JSX.Element => {
                 and process data,
               </Typography>
             </ListItem>
-          </List>
+          </S.StyledFullWidthList>
           <Typography fontWeight={900} variant="h5">
             International Transfers of Personal Information
           </Typography>
@@ -311,11 +311,11 @@ export const PrivacyPolicy = (): JSX.Element => {
             For any questions or concerns regarding your privacy, you may contact us using the
             following details:
           </Typography>
-          <Typography sx={{ width: '100%' }} variant={smallTextVariant}>
+          <S.StyledFullWidthTypography variant={smallTextVariant}>
             Paweł Wojtasiński
             <br />
             pawel.wojtasinski.1995@gmail.com
-          </Typography>
+          </S.StyledFullWidthTypography>
         </S.StyledContentWrapper>
       </S.StyledWrapper>
     </HeaderAndFooterLayout>

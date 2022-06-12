@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { List } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
@@ -46,9 +47,14 @@ const StyledLink = styled.a`
   color: ${({ theme }) => theme.palette.secondary.main};
 `;
 
+const StyledFullWidthList = styled(List)`
+  width: 100%;
+`;
+
 const S = {
   StyledLink,
   StyledWrapper,
+  StyledFullWidthList,
   StyledContentWrapper,
 };
 
