@@ -15,7 +15,7 @@ export const HomePage = (): JSX.Element => (
         },
         {
           name: 'og:title',
-          content: 'Tinvesta | One finger movement away from finding the right business partner',
+          content: 'Tinvesta | One swipe away from finding the new business partner',
         },
         {
           name: 'og:description',
@@ -32,7 +32,7 @@ export const HomePage = (): JSX.Element => (
         },
         {
           name: 'og:site_name',
-          content: 'Tinvesta | One finger movement away from finding the right business partner',
+          content: 'Tinvesta | One swipe away from finding the new business partner',
         },
         {
           name: 'twitter:image',
@@ -79,21 +79,21 @@ export const HomePage = (): JSX.Element => (
       ]}
       openGraph={{
         url: 'https://www.tinvesta.io',
-        title: 'Tinvesta | One finger movement away from finding the right business partner',
+        title: 'Tinvesta | One swipe away from finding the new business partner',
         description:
           'Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.',
         images: [
           {
             width: 800,
             height: 600,
-            alt: 'Tinvesta | One finger movement away from finding the right business partner',
+            alt: 'Tinvesta | One swipe away from finding the new business partner',
             url: 'https://www.tinvesta.io/seo-image.png',
           },
         ],
       }}
-      title="Tinvesta | One finger movement away from finding the right business partner"
+      title="Tinvesta | One swipe away from finding the new business partner"
       twitter={{
-        site: 'Tinvesta | One finger movement away from finding the right business partner',
+        site: 'Tinvesta | One swipe away from finding the new business partner',
         handle: '@WojtasinskiPawe',
         cardType: 'summary_large_image',
       }}
