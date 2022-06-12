@@ -102,12 +102,12 @@ export const HomePage = (): JSX.Element => (
       itemListElements={[
         {
           position: 1,
-          name: 'Terms & conditions',
+          name: 'Terms & Conditions',
           item: 'https://www.tinvesta.io/terms',
         },
         {
           position: 2,
-          name: 'Privacy & policy',
+          name: 'Privacy & Policy',
           item: 'https://www.tinvesta.io/privacy-policy',
         },
       ]}
