@@ -1,6 +1,7 @@
 import { ArrowBack as ArrowBackIcon, Close as CloseIcon } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
+import { useOnlineState } from 'beautiful-react-hooks';
 import Image from 'next/image';
 import { memo } from 'react';
 
@@ -22,11 +23,20 @@ const MobileOnboardingFormLayoutComponent = ({
   rowSpacing = 3,
   ...formProps
 }: IMobileOnboardingFormLayoutProps): JSX.Element => {
+  const isOnline = useOnlineState();
   const { deviceData } = useDeviceDetect();
 
   const isFirstStep = currentStep === 1;
   const progress = ((currentStep || 1) / ALL_STEPS) * 100;
   const BackIconComponent = isFirstStep ? CloseIcon : ArrowBackIcon;
+
+  const handleBackButtonClick = (): void => {
+    if (!isOnline) {
+      return;
+    }
+
+    onBackButtonClick();
+  };
 
   return (
     <S.StyledWrapper>
@@ -43,9 +53,9 @@ const MobileOnboardingFormLayoutComponent = ({
       <S.StyledContentWrapper>
         <S.StyledBackButtonWrapper>
           <BackIconComponent
-            cursor="pointer"
+            cursor={!isOnline ? 'default' : 'pointer'}
             fontSize={deviceData.isSmallerThanSM ? 'medium' : 'large'}
-            onClick={onBackButtonClick}
+            onClick={handleBackButtonClick}
           />
         </S.StyledBackButtonWrapper>
         {heading && (
@@ -66,6 +76,7 @@ const MobileOnboardingFormLayoutComponent = ({
                 <LoadingButton
                   fullWidth
                   color="secondary"
+                  disabled={!isOnline}
                   loading={isLoading}
                   size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                   type="submit"
