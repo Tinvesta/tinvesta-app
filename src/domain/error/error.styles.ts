@@ -3,6 +3,23 @@ import { Typography } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
+const StyledWrapper = styled.div`
+  display: flex;
+  min-height: 750px;
+  position: relative;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  ${respondToMax.small`
+    min-height: 600px;
+  `}
+
+  ${respondToMax.mobile`
+    min-height: 500px;
+  `}
+`;
+
 const StyledTypography = styled(Typography)`
   z-index: 1;
   max-width: 350px;
@@ -21,6 +38,7 @@ const StyledActionsWrapper = styled.div`
 `;
 
 const S = {
+  StyledWrapper,
   StyledTypography,
   StyledActionsWrapper,
 };

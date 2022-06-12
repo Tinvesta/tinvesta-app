@@ -4,9 +4,9 @@ import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
-import { Empty, MatchModalContent, PairsImageGallery, useModal } from '@ui';
+import { Empty, MatchModalContent, Modal, PairsImageGallery } from '@ui';
 
-import { isStartupProfile, useConfirmationModal, useTranslation, useUser } from '@utils';
+import { isStartupProfile, useConfirmationModal, useModal, useTranslation, useUser } from '@utils';
 
 import { likeProfileAction } from '@infrastructure';
 
@@ -31,33 +31,16 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   const [shouldLoadMore, setShouldLoadMore] = useState(false);
 
   const {
-    hide: hideProfileDetailsPreviewModalContent,
-    Modal: ModalProfileDetailsPreviewModalContent,
-    show: showProfileDetailsPreviewModalContent,
-  } = useModal({
-    withCloseIcon: false,
-    withPadding: false,
-    align: 'right',
-    backgroundStyles: {
-      height: '100%',
-    },
-    withBorderRadius: false,
-  });
+    hideModal: hideProfileDetailsPreviewModal,
+    open: isProfileDetailsPreviewModalOpen,
+    showModal: showProfileDetailsPreviewModal,
+  } = useModal();
 
   const {
-    hide: hideMatchModalContent,
-    Modal: ModalMatchModalContent,
-    show: showMatchModalContent,
-  } = useModal({
-    withCloseIcon: false,
-    alwaysFullWidth: true,
-    withBorderRadius: false,
-    backgroundStyles: {
-      height: '100%',
-      backdropFilter: 'blur(10px)',
-      backgroundColor: rgba(theme.palette.primary.main, 0.5),
-    },
-  });
+    hideModal: hideMatchModal,
+    open: isMatchModalOpen,
+    showModal: showMatchModal,
+  } = useModal();
 
   const { isLoading: isLikesActionLoading, mutateAsync: mutateAsyncLikesAction } =
     useMutation(likesAction);
@@ -80,19 +63,19 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
 
   useEffect(() => {
     if (selectedProfile) {
-      showProfileDetailsPreviewModalContent();
+      showProfileDetailsPreviewModal();
     }
   }, [selectedProfile]);
 
   useEffect(() => {
     if (likedProfileDetails) {
-      hideProfileDetailsPreviewModalContent();
-      showMatchModalContent();
+      hideProfileDetailsPreviewModal();
+      showMatchModal();
     }
   }, [JSON.stringify(likedProfileDetails)]);
 
   const onProfileDetailsPreviewModalContentCloseIconClick = () => {
-    hideProfileDetailsPreviewModalContent();
+    hideProfileDetailsPreviewModal();
     setSelectedProfile(undefined);
   };
 
@@ -101,7 +84,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
       prevItems.filter((_prevItem) => _prevItem.likeId !== selectedProfile?.likeId),
     );
 
-    hideMatchModalContent();
+    hideMatchModal();
     setLikedProfileDetails(undefined);
   };
 
@@ -158,7 +141,15 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
 
   return (
     <>
-      <ModalProfileDetailsPreviewModalContent
+      <Modal
+        align="right"
+        backgroundStyles={{
+          height: '100%',
+        }}
+        open={isProfileDetailsPreviewModalOpen}
+        withBorderRadius={false}
+        withCloseIcon={false}
+        withPadding={false}
         onClose={onProfileDetailsPreviewModalContentCloseIconClick}
       >
         <ProfileDetailsPreviewModalContent
@@ -167,14 +158,26 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
           onCloseIconClick={onProfileDetailsPreviewModalContentCloseIconClick}
           onVote={onVote}
         />
-      </ModalProfileDetailsPreviewModalContent>
-      <ModalMatchModalContent onClose={onModalMatchModalContentClose}>
+      </Modal>
+      <Modal
+        alwaysFullWidth={true}
+        backgroundStyles={{
+          height: '100%',
+          backdropFilter: 'blur(10px)',
+          backgroundColor: rgba(theme.palette.primary.main, 0.5),
+        }}
+        open={isMatchModalOpen}
+        withBorderRadius={false}
+        withCloseIcon={false}
+        onClose={onModalMatchModalContentClose}
+      >
         <MatchModalContent
+          closeButtonLabel={translations.componentDashboardLikesMatchModalCloseButton}
           likedProfileDetails={likedProfileDetails}
           loggedProfileDetails={loggedProfileDetails}
           onClose={onModalMatchModalContentClose}
         />
-      </ModalMatchModalContent>
+      </Modal>
       <PairsImageGallery
         emptyActionButtonLabel={emptyActionButtonLabel}
         emptyLabel={translations.componentDashboardLikesEmptyLabel}

@@ -1,59 +1,113 @@
 import styled from '@emotion/styled';
 import { ToastContainer } from 'react-toastify';
 
+import { darkTheme, respondToMax } from '@infrastructure';
 import { color } from '@infrastructure/styles/variables';
 
 const StyledToastContainer = styled(ToastContainer)`
   width: 400px;
   font-family: Montserrat, sans-serif;
 
-  .Toastify__toast--error {
-    background-color: ${color.gray[200]};
+  .Toastify__toast {
+    border-radius: ${darkTheme.shape.borderRadius}px;
 
-    .Toastify__progress-bar {
-      background-color: ${color.red[700]};
+    &-icon {
+      width: 24px;
+      margin-top: 2px;
+
+      ${respondToMax.mobile`
+        width: 22px;
+        margin-top: 3px;
+      `}
+
+      ${respondToMax.xmobile`
+        width: 20px;
+        margin-top: 2px;
+      `}
     }
 
-    .Toastify__toast-icon > svg {
-      fill: ${color.red[700]};
+    &-body {
+      align-items: flex-start;
     }
+
+    &-body > :last-child {
+      -webkit-box-orient: vertical;
+      display: box;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      margin: 0;
+      overflow: hidden;
+      padding: 0;
+      word-break: break-word;
+      font-size: 1.1428571428571428rem;
+      font-weight: 700;
+      color: ${color.gray[800]};
+
+      ${respondToMax.xmobile`
+        font-size: 1rem;
+      `};
+    }
+
+    &--error {
+      background-color: ${color.gray[200]};
+
+      .Toastify__progress-bar {
+        background-color: ${color.red[700]};
+      }
+
+      .Toastify__toast-icon > svg {
+        fill: ${color.red[700]};
+      }
+    }
+
+    &--info {
+      background-color: ${color.gray[200]};
+
+      .Toastify__progress-bar {
+        background-color: ${color.blue[900]};
+      }
+
+      .Toastify__toast-icon > svg {
+        fill: ${color.blue[900]};
+      }
+    }
+
+    &--warning {
+      background-color: ${color.gray[200]};
+
+      .Toastify__progress-bar {
+        background-color: ${color.yellow[700]};
+      }
+
+      .Toastify__toast-icon > svg {
+        fill: ${color.yellow[700]};
+      }
+    }
+
+    &--success {
+      background-color: ${color.gray[200]};
+
+      .Toastify__progress-bar {
+        background-color: ${color.green[600]};
+      }
+
+      .Toastify__toast-icon > svg {
+        fill: ${color.green[600]};
+      }
+    }
+
+    ${respondToMax.xmobile`
+      border-radius: 0;
+    `}
   }
 
-  .Toastify__toast--info {
-    background-color: ${color.gray[200]};
+  ${respondToMax.mobile`
+    width: 300px;
+  `}
 
-    .Toastify__progress-bar {
-      background-color: ${color.blue[900]};
-    }
-
-    .Toastify__toast-icon > svg {
-      fill: ${color.blue[900]};
-    }
-  }
-
-  .Toastify__toast--warning {
-    background-color: ${color.gray[200]};
-
-    .Toastify__progress-bar {
-      background-color: ${color.yellow[700]};
-    }
-
-    .Toastify__toast-icon > svg {
-      fill: ${color.yellow[700]};
-    }
-  }
-
-  .Toastify__toast--success {
-    background-color: ${color.gray[200]};
-
-    .Toastify__progress-bar {
-      background-color: ${color.green[600]};
-    }
-
-    .Toastify__toast-icon > svg {
-      fill: ${color.green[600]};
-    }
-  }
+  ${respondToMax.xmobile`
+    width: 100%;
+  `}
 `;
 
 const S = {

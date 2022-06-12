@@ -4,9 +4,15 @@ import { rgba } from 'polished';
 import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 
-import { CenterBlockLayout, Empty, Loading, MatchModalContent, useModal } from '@ui';
+import { CenterBlockLayout, Empty, Loading, MatchModalContent, Modal } from '@ui';
 
-import { isStartupProfile, replaceVariablesInTranslation, useTranslation, useUser } from '@utils';
+import {
+  isStartupProfile,
+  replaceVariablesInTranslation,
+  useModal,
+  useTranslation,
+  useUser,
+} from '@utils';
 
 import { likeProfileAction, supabaseInstance } from '@infrastructure';
 
@@ -39,18 +45,12 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
 
   const theme = useTheme();
   const { user } = useUser();
+  const {
+    hideModal: hideMatchModal,
+    open: isMatchModalOpen,
+    showModal: showMatchModal,
+  } = useModal();
   const translations = useTranslation(translationStrings);
-
-  const { hide, isOpen, Modal, show } = useModal({
-    withCloseIcon: false,
-    alwaysFullWidth: true,
-    withBorderRadius: false,
-    backgroundStyles: {
-      height: '100%',
-      backdropFilter: 'blur(10px)',
-      backgroundColor: rgba(theme.palette.primary.main, 0.5),
-    },
-  });
 
   const isStartup = isStartupProfile(clientTypeId);
 
@@ -80,12 +80,12 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
 
   useEffect(() => {
     if (likedProfileDetails) {
-      show();
+      showMatchModal();
     }
   }, [JSON.stringify(likedProfileDetails)]);
 
   useEffect(() => {
-    if (!user || isOpen) {
+    if (!user || isMatchModalOpen) {
       return;
     }
 
@@ -122,7 +122,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     return <Loading />;
   }
 
-  if (reachedLimit && !isOpen) {
+  if (reachedLimit && !isMatchModalOpen) {
     return (
       <Empty
         actionButtonProps={{
@@ -138,7 +138,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
     );
   }
 
-  if (items.length === 0) {
+  if (items.length === 0 && !isMatchModalOpen) {
     const emptyLabel = isStartup
       ? translations.componentDashboardDiscoverNoMoreRecordsLabelStartup
       : translations.componentDashboardDiscoverNoMoreRecordsLabelInvestor;
@@ -167,7 +167,7 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
   };
 
   const onModalClose = () => {
-    hide();
+    hideMatchModal();
     setLikedProfileDetails(undefined);
   };
 
@@ -175,7 +175,18 @@ export const Discover = ({ clientTypeId, ...restProps }: IDiscoverProps): JSX.El
 
   return (
     <>
-      <Modal onClose={onModalClose}>
+      <Modal
+        alwaysFullWidth={true}
+        backgroundStyles={{
+          height: '100%',
+          backdropFilter: 'blur(10px)',
+          backgroundColor: rgba(theme.palette.primary.main, 0.5),
+        }}
+        open={isMatchModalOpen}
+        withBorderRadius={false}
+        withCloseIcon={false}
+        onClose={onModalClose}
+      >
         <MatchModalContent
           likedProfileDetails={likedProfileDetails}
           loggedProfileDetails={loggedProfileDetails}

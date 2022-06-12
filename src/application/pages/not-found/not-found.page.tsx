@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 
 import { Error } from '@domain';
@@ -18,6 +19,12 @@ export const NotFoundPage = (): JSX.Element => {
 
   return (
     <Error code="404" message={translations.errorPageNotFoundMessage}>
+      <NextSeo
+        noindex
+        defaultTitle="Tinvesta"
+        description="Tinvesta is a matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match."
+        title="Tinvesta | Not Found"
+      />
       <Button
         color="secondary"
         size={deviceData.isSmallerThanXS ? 'medium' : 'large'}

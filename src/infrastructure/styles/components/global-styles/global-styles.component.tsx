@@ -24,6 +24,12 @@ export const GlobalStyles = (): JSX.Element => {
             scrollbar-width: thin;
             box-sizing: border-box;
             scrollbar-color: ${theme.palette.secondary.main} transparent;
+
+            -webkit-user-select: none;
+            -khtml-user-select: none;
+            -moz-user-select: -moz-none;
+            -o-user-select: none;
+            user-select: none;
           }
 
           *::-webkit-scrollbar {
@@ -49,6 +55,16 @@ export const GlobalStyles = (): JSX.Element => {
             border: 3px solid transparent;
             border-radius: ${theme.shape.borderRadius}px;
             background-color: ${theme.palette.secondary.main};
+          }
+
+          ::-moz-selection {
+            color: ${theme.palette.primary.dark};
+            background: ${theme.palette.secondary.main};
+          }
+
+          ::selection {
+            color: ${theme.palette.primary.dark};
+            background: ${theme.palette.secondary.main};
           }
         `}
       />

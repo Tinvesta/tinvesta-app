@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
 
-import { PairsImageGallery, useModal } from '@ui';
+import { Modal, PairsImageGallery } from '@ui';
 
-import { isStartupProfile, useConfirmationModal, useTranslation } from '@utils';
+import { isStartupProfile, useConfirmationModal, useModal, useTranslation } from '@utils';
 
 import { IMatch } from '@interfaces';
 
@@ -24,22 +24,14 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
   const [selectedProfile, setSelectedProfile] = useState<IMatch>();
 
   const {
-    hide: hideProfileDetailsPreviewModalContent,
-    Modal: ModalProfileDetailsPreviewModalContent,
-    show: showProfileDetailsPreviewModalContent,
-  } = useModal({
-    withCloseIcon: false,
-    withPadding: false,
-    align: 'right',
-    backgroundStyles: {
-      height: '100%',
-    },
-    withBorderRadius: false,
-  });
+    hideModal: hideProfileDetailsPreviewModal,
+    open: isProfileDetailsPreviewModalOpen,
+    showModal: showProfileDetailsPreviewModal,
+  } = useModal();
 
   useEffect(() => {
     if (selectedProfile) {
-      showProfileDetailsPreviewModalContent();
+      showProfileDetailsPreviewModal();
     }
   }, [selectedProfile]);
 
@@ -60,7 +52,7 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
       .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
 
   const onProfileDetailsPreviewModalContentCloseIconClick = () => {
-    hideProfileDetailsPreviewModalContent();
+    hideProfileDetailsPreviewModal();
     setSelectedProfile(undefined);
   };
 
@@ -96,7 +88,15 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
 
   return (
     <>
-      <ModalProfileDetailsPreviewModalContent
+      <Modal
+        align="right"
+        backgroundStyles={{
+          height: '100%',
+        }}
+        open={isProfileDetailsPreviewModalOpen}
+        withBorderRadius={false}
+        withCloseIcon={false}
+        withPadding={false}
         onClose={onProfileDetailsPreviewModalContentCloseIconClick}
       >
         <ProfileDetailsPreviewModalContent
@@ -106,7 +106,7 @@ export const Matches = ({ clientTypeId, ...restProps }: IMatchesProps): JSX.Elem
           onCloseIconClick={onProfileDetailsPreviewModalContentCloseIconClick}
           onRemoveMatchClick={handleRemoveMatchClick}
         />
-      </ModalProfileDetailsPreviewModalContent>
+      </Modal>
       <PairsImageGallery
         emptyActionButtonLabel={emptyActionButtonLabel}
         emptyLabel={translations.componentDashboardMatchesEmptyLabel}
