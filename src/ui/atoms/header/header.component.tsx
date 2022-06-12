@@ -81,11 +81,23 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
           />
         </S.StyledLogoWrapper>
         {!user?.client_type_id ? (
-          <Button color="secondary" size={buttonSize} variant="contained" onClick={openLoginModal}>
+          <Button
+            color="secondary"
+            disabled={process.env.NEXT_PUBLIC_APP_ENV !== 'local'}
+            size={buttonSize}
+            variant="contained"
+            onClick={openLoginModal}
+          >
             {translations.componentFooterButtonLogin}
           </Button>
         ) : (
-          <Button color="secondary" size={buttonSize} variant="contained" onClick={logout}>
+          <Button
+            color="secondary"
+            disabled={process.env.NEXT_PUBLIC_APP_ENV !== 'local'}
+            size={buttonSize}
+            variant="contained"
+            onClick={logout}
+          >
             {translations.componentFooterButtonLogout}
           </Button>
         )}
