@@ -91,7 +91,8 @@ export const DesktopOnboarding = ({
     mutateAsyncCreateAccountAction({ ...current.context, userRef })
       .then(() => {
         toast.success(translations.componentOnboardingCommonSuccessToastMessage);
-        router.push(ERoutes.DASHBOARD);
+
+        setTimeout(() => router.push(ERoutes.DASHBOARD), 2000);
       })
       .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
 
