@@ -65,7 +65,7 @@ export const TermsPage = (): JSX.Element => (
         {
           name: 'keywords',
           content:
-            'terms, conditions, terms and conditions, matchmaking, start-ups, startups, investors, investment, crowdfunding, tinder, tinvesta, swipe, swiper, swiping, tinder for start-ups, tinder for investors',
+            'terms, conditions, terms and conditions, matchmaking, start-ups, startups, startup, investors, investor, investment, crowdfunding, tinder, tinvesta, swipe, swiper, swiping, tinder for start-ups, tinder for investors, matching app for investors, matching app for startups, matching app for investor, matching app for startup',
         },
       ]}
       canonical="https://www.tinvesta.io"

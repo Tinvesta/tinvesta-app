@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "tinvesta-app",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "scripts": {
     "build": "next build",
     "build:mobile": "next build && next export && npx cap sync",
@@ -54,6 +54,7 @@
     "@testing-library/react-hooks": "^8.0.0",
     "@xstate/react": "^3.0.0",
     "axios": "^0.27.2",
+    "beautiful-react-hooks": "^2.1.0",
     "browser-image-compression": "^2.0.0",
     "concurrently": "^7.2.1",
     "cookie": "^0.5.0",
