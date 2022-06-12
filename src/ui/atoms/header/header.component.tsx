@@ -23,7 +23,11 @@ const LottieAnimation = dynamic<ILottieAnimationProps>(
   { loading: () => <div /> },
 );
 
-export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Element => {
+export const Header = ({
+  disableLoginLogoutButton = false,
+  openLoginModal,
+  scrollToTop,
+}: IHeaderProps): JSX.Element => {
   const router = useRouter();
   const { logout, user } = useUser();
   const { deviceData } = useDeviceDetect();
@@ -81,11 +85,23 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
           />
         </S.StyledLogoWrapper>
         {!user?.client_type_id ? (
-          <Button color="secondary" size={buttonSize} variant="contained" onClick={openLoginModal}>
+          <Button
+            color="secondary"
+            disabled={disableLoginLogoutButton}
+            size={buttonSize}
+            variant="contained"
+            onClick={openLoginModal}
+          >
             {translations.componentFooterButtonLogin}
           </Button>
         ) : (
-          <Button color="secondary" size={buttonSize} variant="contained" onClick={logout}>
+          <Button
+            color="secondary"
+            disabled={disableLoginLogoutButton}
+            size={buttonSize}
+            variant="contained"
+            onClick={logout}
+          >
             {translations.componentFooterButtonLogout}
           </Button>
         )}

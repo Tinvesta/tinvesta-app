@@ -15,6 +15,7 @@ const SHOW_BACK_TO_TOP_AT = 400;
 
 export const HeaderAndFooterLayout = ({
   children,
+  disableLoginLogoutButton,
   openLoginModal,
 }: IHeaderAndFooterLayoutProps): JSX.Element => {
   const { deviceData } = useDeviceDetect();
@@ -42,7 +43,11 @@ export const HeaderAndFooterLayout = ({
   return (
     <S.StyledWrapper>
       <Scrollbar ref={scrollbarRef} height="100%" onScroll={handleScroll}>
-        <Header openLoginModal={openLoginModal} scrollToTop={scrollToTop} />
+        <Header
+          disableLoginLogoutButton={disableLoginLogoutButton}
+          openLoginModal={openLoginModal}
+          scrollToTop={scrollToTop}
+        />
         {children}
         <Footer />
       </Scrollbar>

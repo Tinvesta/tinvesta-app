@@ -8,7 +8,12 @@ import { translationStrings } from './error.defaults';
 import S from './error.styles';
 import { IErrorProps } from './error.types';
 
-export const Error = ({ children, code, message }: IErrorProps): JSX.Element => {
+export const Error = ({
+  children,
+  code,
+  disableLoginLogoutButton,
+  message,
+}: IErrorProps): JSX.Element => {
   const {
     hideModal: hideLoginModal,
     open: isLoginModalOpen,
@@ -22,7 +27,10 @@ export const Error = ({ children, code, message }: IErrorProps): JSX.Element => 
     : '/images/background/desktop-error.svg';
 
   return (
-    <HeaderAndFooterLayout openLoginModal={showLoginModal}>
+    <HeaderAndFooterLayout
+      disableLoginLogoutButton={disableLoginLogoutButton}
+      openLoginModal={showLoginModal}
+    >
       <Modal
         open={isLoginModalOpen}
         title={translations.componentHomeModalGetStartedHeader}
