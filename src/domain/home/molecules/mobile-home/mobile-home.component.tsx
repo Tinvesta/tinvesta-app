@@ -1,4 +1,5 @@
 import { Button } from '@mui/material';
+import { useOnlineState } from 'beautiful-react-hooks';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -20,6 +21,7 @@ export const MobileHome = ({ clientTypeId, isSignedIn }: IMobileHomeProps): JSX.
     open: isLoginModalOpen,
     showModal: showLoginModal,
   } = useModal();
+  const isOnline = useOnlineState();
   const { deviceData } = useDeviceDetect();
   const translations = useTranslation(translationStrings);
 
@@ -64,6 +66,7 @@ export const MobileHome = ({ clientTypeId, isSignedIn }: IMobileHomeProps): JSX.
             </S.StyledSubheader>
             <Button
               color="secondary"
+              disabled={!isOnline}
               size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
               variant="contained"
               onClick={onSignInButtonClick}
