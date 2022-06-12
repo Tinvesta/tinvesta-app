@@ -23,7 +23,11 @@ const LottieAnimation = dynamic<ILottieAnimationProps>(
   { loading: () => <div /> },
 );
 
-export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Element => {
+export const Header = ({
+  disableLoginLogoutButton = false,
+  openLoginModal,
+  scrollToTop,
+}: IHeaderProps): JSX.Element => {
   const router = useRouter();
   const { logout, user } = useUser();
   const { deviceData } = useDeviceDetect();
@@ -83,7 +87,7 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
         {!user?.client_type_id ? (
           <Button
             color="secondary"
-            disabled={process.env.NEXT_PUBLIC_APP_ENV !== 'local'}
+            disabled={disableLoginLogoutButton}
             size={buttonSize}
             variant="contained"
             onClick={openLoginModal}
@@ -93,7 +97,7 @@ export const Header = ({ openLoginModal, scrollToTop }: IHeaderProps): JSX.Eleme
         ) : (
           <Button
             color="secondary"
-            disabled={process.env.NEXT_PUBLIC_APP_ENV !== 'local'}
+            disabled={disableLoginLogoutButton}
             size={buttonSize}
             variant="contained"
             onClick={logout}
