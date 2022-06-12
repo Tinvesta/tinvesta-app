@@ -1,5 +1,9 @@
-import { Logout as LogoutIcon } from '@mui/icons-material';
+import {
+  Logout as LogoutIcon,
+  SignalWifiConnectedNoInternet4 as SignalWifiConnectedNoInternet4Icon,
+} from '@mui/icons-material';
 import { Avatar, CircularProgress, IconButton } from '@mui/material';
+import { useOnlineState } from 'beautiful-react-hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -17,6 +21,7 @@ import { IMobileDashboardLayoutProps } from './mobile-dashboard.types';
 
 export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps): JSX.Element => {
   const router = useRouter();
+  const isOnline = useOnlineState();
   const isFetching = useIsFetching();
   const isMutating = useIsMutating();
   const { logout, user } = useUser();
@@ -54,6 +59,11 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
           {isFetching || isMutating ? (
             <CircularProgress color="secondary" size={deviceData.isSmallerThanXS ? 25 : 30} />
           ) : null}
+          {!isOnline && (
+            <SignalWifiConnectedNoInternet4Icon
+              fontSize={deviceData.isSmallerThanXS ? 'small' : 'medium'}
+            />
+          )}
           <IconButton color="secondary" size="medium" onClick={logout}>
             <LogoutIcon />
           </IconButton>

@@ -1,5 +1,10 @@
-import { Logout as LogoutIcon, Settings as SettingsIcon } from '@mui/icons-material';
+import {
+  Logout as LogoutIcon,
+  Settings as SettingsIcon,
+  SignalWifiConnectedNoInternet4 as SignalWifiConnectedNoInternet4Icon,
+} from '@mui/icons-material';
 import { CircularProgress, IconButton, Typography } from '@mui/material';
+import { useOnlineState } from 'beautiful-react-hooks';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -17,6 +22,7 @@ import { IDesktopDashboardLayoutProps } from './desktop-dashboard.types';
 
 export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProps): JSX.Element => {
   const router = useRouter();
+  const isOnline = useOnlineState();
   const isFetching = useIsFetching();
   const isMutating = useIsMutating();
   const { logout, user } = useUser();
@@ -77,6 +83,7 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
         </span>
         <S.StyledAsideBottomContentWrapper>
           {isFetching || isMutating ? <CircularProgress color="secondary" size={40} /> : null}
+          {!isOnline && <SignalWifiConnectedNoInternet4Icon />}
           <IconButton color="secondary" size="large" onClick={logout}>
             <LogoutIcon />
           </IconButton>
