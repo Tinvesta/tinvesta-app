@@ -1,4 +1,4 @@
-import { List, ListItem, Typography } from '@mui/material';
+import { ListItem, Typography } from '@mui/material';
 
 import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
@@ -32,7 +32,7 @@ export const Terms = (): JSX.Element => {
         </Modal>
         <S.StyledContentWrapper>
           <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h4' : 'h3'}>
-            Terms and Conditions
+            Terms & Conditions
           </Typography>
           <Typography variant={smallTextVariant}>Last updated: June 10, 2022</Typography>
           <Typography variant={smallTextVariant}>
@@ -55,7 +55,7 @@ export const Terms = (): JSX.Element => {
           <Typography variant={smallTextVariant}>
             For the purposes of these Terms and Conditions:
           </Typography>
-          <List>
+          <S.StyledFullWidthList>
             <ListItem>
               <Typography variant={smallTextVariant}>
                 - <strong>Application</strong> - means the software program provided by the Company
@@ -159,7 +159,7 @@ export const Terms = (): JSX.Element => {
                 using the Service, as applicable,
               </Typography>
             </ListItem>
-          </List>
+          </S.StyledFullWidthList>
           <Typography fontWeight={900} variant={headingVariant}>
             Acknowledgment
           </Typography>
@@ -319,7 +319,7 @@ export const Terms = (): JSX.Element => {
             disgust, threatening, libelous, defamatory, obscene or otherwise objectionable. Examples
             of such objectionable Content include, but are not limited to, the following:
           </Typography>
-          <List>
+          <S.StyledFullWidthList>
             <ListItem>
               <Typography variant={smallTextVariant}>
                 - Unlawful or promoting unlawful activity,
@@ -367,7 +367,7 @@ export const Terms = (): JSX.Element => {
             <ListItem>
               <Typography variant={smallTextVariant}>- False information and features,</Typography>
             </ListItem>
-          </List>
+          </S.StyledFullWidthList>
           <Typography variant={smallTextVariant}>
             The Company reserves the right, but not the obligation, to, in its sole discretion,
             determine whether or not any Content is appropriate and complies with this Terms, refuse
@@ -433,7 +433,7 @@ export const Terms = (): JSX.Element => {
             providing our Copyright Agent with the following information in writing (see 17 U.S.C
             512(c)(3) for further detail):
           </Typography>
-          <List>
+          <S.StyledFullWidthList>
             <ListItem>
               <Typography variant={smallTextVariant}>
                 - An electronic or physical signature of the person authorized to act on behalf of
@@ -471,7 +471,7 @@ export const Terms = (): JSX.Element => {
                 the copyright owner&apos;s behalf,
               </Typography>
             </ListItem>
-          </List>
+          </S.StyledFullWidthList>
           <Typography variant={smallTextVariant}>
             You can contact our copyright agent via email at pawel.wojtasinski.1995@gmail.com. Upon
             receipt of a notification, the Company will take whatever action, in its sole
@@ -667,13 +667,13 @@ export const Terms = (): JSX.Element => {
           <Typography variant={smallTextVariant}>
             If you have any questions about these Terms and Conditions, You can contact us:
           </Typography>
-          <List>
+          <S.StyledFullWidthList>
             <ListItem>
               <Typography variant={smallTextVariant}>
                 - By email: pawel.wojtasinski.1995@gmail.com,
               </Typography>
             </ListItem>
-          </List>
+          </S.StyledFullWidthList>
         </S.StyledContentWrapper>
       </S.StyledWrapper>
     </HeaderAndFooterLayout>
