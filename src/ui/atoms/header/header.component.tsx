@@ -84,7 +84,7 @@ export const Header = ({
             width={imageSize}
           />
         </S.StyledLogoWrapper>
-        {!user?.client_type_id ? (
+        {!user ? (
           <Button
             color="secondary"
             disabled={disableLoginLogoutButton || !isOnline}
