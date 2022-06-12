@@ -64,6 +64,7 @@ export const MobileHome = ({ clientTypeId, isSignedIn }: IMobileHomeProps): JSX.
             </S.StyledSubheader>
             <Button
               color="secondary"
+              disabled={process.env.NEXT_PUBLIC_APP_ENV !== 'local'}
               size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
               variant="contained"
               onClick={onSignInButtonClick}

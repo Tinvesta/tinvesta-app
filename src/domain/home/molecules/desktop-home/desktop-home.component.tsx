@@ -59,6 +59,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
             </S.StyledSubheader>
             <Button
               color="secondary"
+              disabled={process.env.NEXT_PUBLIC_APP_ENV !== 'local'}
               size="large"
               variant="contained"
               onClick={onSignInButtonClick}
