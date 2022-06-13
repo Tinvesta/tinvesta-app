@@ -21,9 +21,11 @@ export const MotionCardWrapper = ({
 }: IMotionCardWrapperProps): JSX.Element => {
   const { deviceData, windowSize } = useDeviceDetect();
 
+  const rotateWidth = Math.max(windowSize.width, 700);
+
   const x = useMotionValue(0);
   const animControls = useAnimation();
-  const rotate = useTransform(x, [-windowSize.width, windowSize.width], [-35, 35]);
+  const rotate = useTransform(x, [-rotateWidth, rotateWidth], [-35, 35]);
   const rightIconOpacity = useTransform(x, [50, 200], [0, 200]);
   const leftIconOpacity = useTransform(x, [-200, -50], [200, 0]);
 
@@ -32,7 +34,7 @@ export const MotionCardWrapper = ({
       return;
     }
 
-    animControls.start({ x: windowSize.width }).then(() => {
+    animControls.start({ x: rotateWidth }).then(() => {
       onVote(true);
     });
   };
@@ -42,7 +44,7 @@ export const MotionCardWrapper = ({
       return;
     }
 
-    animControls.start({ x: -windowSize.width }).then(() => {
+    animControls.start({ x: -rotateWidth }).then(() => {
       onVote(false);
     });
   };
@@ -65,7 +67,7 @@ export const MotionCardWrapper = ({
     <S.StyledWrapper
       animate={animControls}
       drag={drag && !isProfilePreviewMode}
-      dragConstraints={{ left: -windowSize.width, right: windowSize.width }}
+      dragConstraints={{ left: -rotateWidth, right: rotateWidth }}
       exit={{ opacity: 0 }}
       style={{
         x,
@@ -76,11 +78,9 @@ export const MotionCardWrapper = ({
         if (Math.abs(info.offset.x) < sensitive) {
           animControls.start({ x: 0, y: 0 });
         } else {
-          animControls
-            .start({ x: info.offset.x < 0 ? -windowSize.width : windowSize.width })
-            .then(() => {
-              onVote(info.offset.x > 0);
-            });
+          animControls.start({ x: info.offset.x < 0 ? -rotateWidth : rotateWidth }).then(() => {
+            onVote(info.offset.x > 0);
+          });
         }
       }}
       {...restProps}
