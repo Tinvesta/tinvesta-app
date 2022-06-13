@@ -29,7 +29,7 @@ export const Footer = (): JSX.Element => {
             alt="Tinvesta - One&#0032;swipe&#0032;away&#0032;from&#0032;finding&#0032;the&#0032;new&#0032;business&#0032;partner | Product Hunt"
             height="54"
             src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=349272&theme=light"
-            style={{ width: '250px', height: '54px' }}
+            style={{ width: '250px', height: '54px', paddingBottom: '10px' }}
             width="250"
           />
         </a>
