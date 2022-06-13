@@ -20,6 +20,7 @@ export const ProfileDetailsPreviewLabel = ({
       <S.StyledHeader>
         <Icon color="secondary">{icon}</Icon>
         <Typography
+          align="left"
           color="secondary"
           fontWeight={900}
           sx={{ textTransform: 'uppercase' }}
