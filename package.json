@@ -81,6 +81,7 @@
     "react-toastify": "^9.0.4",
     "stripe": "^9.8.0",
     "swiper": "^8.2.3",
+    "ts-object-keys": "^1.0.1",
     "use-file-picker": "^1.4.2",
     "use-subscription": "^1.7.0",
     "winston": "^3.7.2",

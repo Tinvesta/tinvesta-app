@@ -9797,6 +9797,11 @@ ts-node@^10.7.0:
     v8-compile-cache-lib "^3.0.0"
     yn "3.1.1"
 
+ts-object-keys@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/ts-object-keys/-/ts-object-keys-1.0.1.tgz#1cdfe282f35c9d20a9521191fb5e29be8a8307f2"
+  integrity sha512-+FnXn29sb5eNKL3gcy7+PmUUDm9b5VXG+pIXtaHQK2/yPM/wLggGncFgkGQh2xR5L5MJ2gjEBUfD6YS+9eb0Ng==
+
 ts-toolbelt@^6.15.1:
   version "6.15.5"
   resolved "https://registry.yarnpkg.com/ts-toolbelt/-/ts-toolbelt-6.15.5.tgz#cb3b43ed725cb63644782c64fbcad7d8f28c0a83"

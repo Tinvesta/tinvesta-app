@@ -1,6 +1,5 @@
 import { css } from '@emotion/react';
-
-import { objectKeys } from '@utils/functions';
+import { objectKeys } from 'ts-object-keys';
 
 import { deviceBreakpoint } from './respond-to.defaults';
 import { TCSSParams, TMediaFor } from './respond-to.types';

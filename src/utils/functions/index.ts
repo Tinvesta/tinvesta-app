@@ -1,7 +1,6 @@
 export * from './truncate/truncate.function';
 export * from './send-email/send-email.function';
 export * from './count-words/count-words.function';
-export * from './object-keys/object-keys.function';
 export * from './to-camel-case/to-camel-case.function';
 export * from './base64-to-file/base64-to-file.function';
 export * from './try-parse-json/try-parse-json.function';
