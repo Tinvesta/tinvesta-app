@@ -1,4 +1,5 @@
 import { nanoid } from 'nanoid';
+import { objectKeys } from 'ts-object-keys';
 
 import {
   base64ToFile,
@@ -6,7 +7,6 @@ import {
   hasOwnProperty,
   isArray,
   isStartupProfile,
-  objectKeys,
 } from '@utils';
 
 import { nextAxiosInstance, supabaseInstance } from '@infrastructure';

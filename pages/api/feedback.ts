@@ -1,7 +1,8 @@
 import cookie from 'cookie';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { objectKeys } from 'ts-object-keys';
 
-import { hasOwnProperty, objectKeys } from '@utils';
+import { hasOwnProperty } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 

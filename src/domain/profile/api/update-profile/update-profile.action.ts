@@ -1,14 +1,9 @@
 import { nanoid } from 'nanoid';
+import { objectKeys } from 'ts-object-keys';
 
 import { IEditProfileFormFieldsData } from '@domain/profile/profile.types';
 
-import {
-  base64ToFile,
-  getFileExtensionFromBase64,
-  isNumber,
-  isStringArray,
-  objectKeys,
-} from '@utils';
+import { base64ToFile, getFileExtensionFromBase64, isNumber, isStringArray } from '@utils';
 
 import { nextAxiosInstance, supabaseInstance } from '@infrastructure';
 
