@@ -1,6 +1,7 @@
+import { hasOwnProperty } from 'ts-has-own-property';
 import { objectKeys } from 'ts-object-keys';
 
-import { hasOwnProperty, isObject } from '@utils';
+import { isObject } from '@utils';
 
 import { toCamelCase } from '../to-camel-case/to-camel-case.function';
 

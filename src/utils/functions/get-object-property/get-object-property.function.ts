@@ -1,4 +1,6 @@
-import { hasOwnProperty, isObject, isString } from '@utils';
+import { hasOwnProperty } from 'ts-has-own-property';
+
+import { isObject, isString } from '@utils';
 
 export const getObjectProperty = (
   object: Record<string, unknown>,

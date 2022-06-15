@@ -1,6 +1,5 @@
 import { Children, ReactElement, useEffect, useState } from 'react';
-
-import { hasOwnProperty } from '@utils';
+import { hasOwnProperty } from 'ts-has-own-property';
 
 import { MotionCardWrapper } from '..';
 import S from './motion-cards-stack.styles';

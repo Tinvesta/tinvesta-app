@@ -1,13 +1,8 @@
 import { nanoid } from 'nanoid';
+import { hasOwnProperty } from 'ts-has-own-property';
 import { objectKeys } from 'ts-object-keys';
 
-import {
-  base64ToFile,
-  getFileExtensionFromBase64,
-  hasOwnProperty,
-  isArray,
-  isStartupProfile,
-} from '@utils';
+import { base64ToFile, getFileExtensionFromBase64, isArray, isStartupProfile } from '@utils';
 
 import { nextAxiosInstance, supabaseInstance } from '@infrastructure';
 
@@ -35,8 +30,10 @@ export const createProfileAction = async (
     const currentObject = data[_value];
 
     if (hasOwnProperty(currentObject, 'teamSizeId')) {
+      // @ts-expect-error
       currentObject.teamSizeIds = [currentObject.teamSizeId];
 
+      // @ts-expect-error
       delete currentObject.teamSizeId;
     }
 
@@ -61,7 +58,10 @@ export const createProfileAction = async (
         }
       }
 
+      // @ts-expect-error
       currentObject.imageKeys = result;
+
+      // @ts-expect-error
       delete currentObject.images;
     }
 
