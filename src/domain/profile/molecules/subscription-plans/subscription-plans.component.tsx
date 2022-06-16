@@ -1,6 +1,7 @@
 import { ArrowForward as ArrowForwardIcon, Star as StarIcon } from '@mui/icons-material';
 import { ListItem, ListItemAvatar, ListItemText, Typography } from '@mui/material';
 import { loadStripe } from '@stripe/stripe-js';
+import { isSomeEnum } from 'is-some-enum';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
@@ -9,13 +10,7 @@ import { StringParam, useQueryParam } from 'use-query-params';
 
 import { CenterBlockLayout } from '@ui';
 
-import {
-  isSomeEnum,
-  replaceVariablesInTranslation,
-  useDeviceDetect,
-  useTranslation,
-  useUser,
-} from '@utils';
+import { replaceVariablesInTranslation, useDeviceDetect, useTranslation, useUser } from '@utils';
 
 import { EPaymentStatus, ESubscriptionInterval } from '@enums';
 

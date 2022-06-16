@@ -4,5 +4,4 @@ export * from './is-string/is-string.function';
 export * from './is-object/is-object.function';
 export * from './is-boolean/is-boolean.function';
 export * from './is-function/is-function.function';
-export * from './is-some-enum/is-some-enum.function';
 export * from './is-string-array/is-string-array.function';
