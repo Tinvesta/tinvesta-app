@@ -6247,6 +6247,11 @@ is-shared-array-buffer@^1.0.1, is-shared-array-buffer@^1.0.2:
   dependencies:
     call-bind "^1.0.2"
 
+is-some-enum@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/is-some-enum/-/is-some-enum-1.0.0.tgz#d837910a941c68834616cfc71e1f0f9bbee8b567"
+  integrity sha512-lL6TvSUG1hfLpSHQsonn9DtH79ut90TY6wBEgs370fU+ZYvXUMrMs5c7i5BWORu9GjlJmXjx3Nre5tLRV6BRGQ==
+
 is-stream@1.1.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/is-stream/-/is-stream-1.1.0.tgz#12d4a3dd4e68e0b79ceb8dbc84173ae80d91ca44"
@@ -9774,10 +9779,10 @@ triple-beam@^1.3.0:
   resolved "https://registry.yarnpkg.com/triple-beam/-/triple-beam-1.3.0.tgz#a595214c7298db8339eeeee083e4d10bd8cb8dd9"
   integrity sha512-XrHUvV5HpdLmIj4uVMxHggLbFSZYIn7HEWsqePZcI50pco+MPqJ50wMGY794X7AOOhxOBAjbkqfAbEe/QMp2Lw==
 
-ts-has-own-property@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/ts-has-own-property/-/ts-has-own-property-1.0.0.tgz#d78661caf34ddc6cf120af0bf8d229917d327311"
-  integrity sha512-K666QUhUm73cuFrVovNqfjqzWnXZHvOhOc6mqh0yHQdnYEWZrtJtYRSv407Hv43E6xNk0D02BHvcn9LyahdVHQ==
+ts-has-own-property@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/ts-has-own-property/-/ts-has-own-property-1.0.2.tgz#1a4571925de3a241e408627c87fbf0d69a8db362"
+  integrity sha512-Gs/XrAadJAO2qp+g3obYkIpS0CdG5/uh1HvLdRfZ066lX0sDpBQVmSpoC2tNlzC7VgieWAE/SNtJetzIABaE2g==
 
 ts-jest@^28.0.4:
   version "28.0.4"
@@ -9812,10 +9817,10 @@ ts-node@^10.7.0:
     v8-compile-cache-lib "^3.0.0"
     yn "3.1.1"
 
-ts-object-keys@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/ts-object-keys/-/ts-object-keys-1.0.1.tgz#1cdfe282f35c9d20a9521191fb5e29be8a8307f2"
-  integrity sha512-+FnXn29sb5eNKL3gcy7+PmUUDm9b5VXG+pIXtaHQK2/yPM/wLggGncFgkGQh2xR5L5MJ2gjEBUfD6YS+9eb0Ng==
+ts-object-keys@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/ts-object-keys/-/ts-object-keys-1.0.3.tgz#4730fbd80933a0501ef7e488aa90633fee2c7fea"
+  integrity sha512-UJuO24WLP+0ESmDrsi1BOomz3iKZU7/voBWsM+E+nUa1D4zC06XDn7nFj6DXADixN/cN8CVrJDtwPQFRWUd9ag==
 
 ts-toolbelt@^6.15.1:
   version "6.15.5"
