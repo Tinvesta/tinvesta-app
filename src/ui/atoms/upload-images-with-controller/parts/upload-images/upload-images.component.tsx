@@ -3,13 +3,13 @@ import imageCompression from 'browser-image-compression';
 import { NSFWJS, load as loadModel } from 'nsfwjs';
 import { DragEvent, ForwardedRef, forwardRef, memo, useEffect, useState } from 'react';
 import { toast } from 'react-toastify';
+import { repeatComponent } from 'repeat-component';
 import { useFilePicker } from 'use-file-picker';
 
 import { Modal } from '@ui';
 
 import {
   asyncTryCatchWrapper,
-  repeatComponent,
   replaceVariablesInTranslation,
   useModal,
   useTranslation,
