@@ -1,6 +1,7 @@
 import { AxiosResponse } from 'axios';
+import isString from 'is-string';
 
-import { isString, objectToQueryString } from '@utils';
+import { objectToQueryString } from '@utils';
 
 import { mapboxAxiosInstance } from '@infrastructure';
 

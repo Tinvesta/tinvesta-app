@@ -12,7 +12,6 @@ export * from './get-window-height/get-window-height.function';
 export * from './try-catch-wrapper/try-catch-wrapper.function';
 export * from './is-startup-profile/is-startup-profile.function';
 export * from './convert-object-keys/convert-object-keys.function';
-export * from './get-object-property/get-object-property.function';
 export * from './create-emotion-cache/create-emotion-cache.function';
 export * from './create-stripe-instance/create-stripe-instance.function';
 export * from './object-to-query-string/object-to-query-string.function';
