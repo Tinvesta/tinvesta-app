@@ -2393,6 +2393,16 @@
   resolved "https://registry.yarnpkg.com/@types/is-base64/-/is-base64-1.1.1.tgz#a17d2b0075f637f80f9ab5f76f0071a65f6965d4"
   integrity sha512-JgnGhP+MeSHEQmvxcobcwPEP4Ew56voiq9/0hmP/41lyQ/3gBw/ZCIRy2v+QkEOdeCl58lRcrf6+Y6WMlJGETA==
 
+"@types/is-object@^1.0.2":
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/@types/is-object/-/is-object-1.0.2.tgz#7f9a27b8af24538f3a1483fd53deaa3cd1c62f45"
+  integrity sha512-wm2R0UbJ/JOt4DRtcZz0FtKVtybIJDjAwAXTMWtbcy3gYqpLWgkw5Z7M4FzLIOJDPOnAQKcIhmbScjfyLsrfGQ==
+
+"@types/is-string@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@types/is-string/-/is-string-1.0.0.tgz#17201e2e88119486e625e90e17874dd7f913772c"
+  integrity sha512-kSMxiEVGlNF1eJhTaCQ/Y1EvWJNu64AeK6OQOIgy1XX52WPUahnXKKglI7gdv0/Q9VGNI9J15d5vyn1yhjaHHg==
+
 "@types/istanbul-lib-coverage@*", "@types/istanbul-lib-coverage@^2.0.0", "@types/istanbul-lib-coverage@^2.0.1":
   version "2.0.4"
   resolved "https://registry.yarnpkg.com/@types/istanbul-lib-coverage/-/istanbul-lib-coverage-2.0.4.tgz#8467d4b3c087805d63580480890791277ce35c44"
@@ -5460,6 +5470,15 @@ get-intrinsic@^1.0.2, get-intrinsic@^1.1.0, get-intrinsic@^1.1.1:
     has "^1.0.3"
     has-symbols "^1.0.1"
 
+get-nested-object-property@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/get-nested-object-property/-/get-nested-object-property-1.0.1.tgz#6daf0bdf3d4677cbb3af1dcbcbb3989b0cfa294a"
+  integrity sha512-vQpvqrO8F318u07TiYbEsoZ1gEcG8G5iv//e5oDTNrTNEFUuopqDtFYHAKORKYyerXvnZYKFiHhjkST+v0p9FA==
+  dependencies:
+    is-object "^1.0.2"
+    is-string "^1.0.7"
+    ts-has-own-property "^1.0.2"
+
 get-own-enumerable-property-symbols@^3.0.0:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/get-own-enumerable-property-symbols/-/get-own-enumerable-property-symbols-3.0.2.tgz#b5fde77f22cbe35f390b4e089922c50bce6ef664"
@@ -6180,6 +6199,11 @@ is-obj@^2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/is-obj/-/is-obj-2.0.0.tgz#473fb05d973705e3fd9620545018ca8e22ef4982"
   integrity sha512-drqDG3cbczxxEJRoOXcOjtdp1J/lyp1mNn0xaznRs8+muBhgQcrnbspox5X5fOw0HnMnbfDzvnEMEtqDEJEo8w==
+
+is-object@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/is-object/-/is-object-1.0.2.tgz#a56552e1c665c9e950b4a025461da87e72f86fcf"
+  integrity sha512-2rRIahhZr2UWb45fIOuvZGpFtz0TyOZLf32KxBbSoUCeZR495zCKlWUKKUByk3geS2eAs7ZAABt0Y/Rx0GiQGA==
 
 is-path-cwd@^2.0.0, is-path-cwd@^2.2.0:
   version "2.2.0"

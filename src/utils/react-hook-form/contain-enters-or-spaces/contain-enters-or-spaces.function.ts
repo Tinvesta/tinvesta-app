@@ -1,4 +1,4 @@
-import { isString } from '@utils';
+import isString from 'is-string';
 
 import { TEXT_INPUT_REGEX } from '@constants';
 

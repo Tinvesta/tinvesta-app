@@ -1,4 +1,6 @@
-import { isArray, isString } from '@utils';
+import isString from 'is-string';
+
+import { isArray } from '@utils';
 
 export const isStringArray = (value: unknown): value is string[] => {
   if (!isArray(value)) {

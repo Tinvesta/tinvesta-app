@@ -1,4 +1,6 @@
-import { isString, tryCatchWrapper } from '@utils';
+import isString from 'is-string';
+
+import { tryCatchWrapper } from '@utils';
 
 export function tryParseJson<T = unknown>(jsonString: string): T | null {
   if (!isString(jsonString)) {
