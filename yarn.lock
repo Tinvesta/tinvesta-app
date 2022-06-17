@@ -6146,6 +6146,11 @@ is-fullwidth-code-point@^4.0.0:
   resolved "https://registry.yarnpkg.com/is-fullwidth-code-point/-/is-fullwidth-code-point-4.0.0.tgz#fae3167c729e7463f8461ce512b080a49268aa88"
   integrity sha512-O4L094N2/dZ7xqVdrXhh9r1KODPJpFms8B5sGdJLPy664AgvXsreZUyCQQNItZRDlYug4xStLjNp/sz3HvBowQ==
 
+is-function@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/is-function/-/is-function-1.0.2.tgz#4f097f30abf6efadac9833b17ca5dc03f8144e08"
+  integrity sha512-lw7DUp0aWXYg+CBCN+JKkcE0Q2RayZnSvnZBlwgxHBQhqt5pZNVy4Ri7H9GmmXkdu7LUthszM+Tor1u/2iBcpQ==
+
 is-generator-fn@^2.0.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-generator-fn/-/is-generator-fn-2.1.0.tgz#7d140adc389aaf3011a8f2a2a4cfa6faadffb118"
@@ -8721,6 +8726,13 @@ remove-accents@0.4.2:
   version "0.4.2"
   resolved "https://registry.yarnpkg.com/remove-accents/-/remove-accents-0.4.2.tgz#0a43d3aaae1e80db919e07ae254b285d9e1c7bb5"
   integrity sha1-CkPTqq4egNuRngeuJUsoXZ4ce7U=
+
+repeat-component@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/repeat-component/-/repeat-component-1.0.0.tgz#900223596ea8011c0f4acdbeeed2974758e054a4"
+  integrity sha512-5DRql2G5DMFYF7maZTTW5bhYEiMacMY8IL6agk6gVZW3Ff2eWRQ4+caWCq+6rcUZtKECbuUw6c5sDBxFOH8k+w==
+  dependencies:
+    is-function "^1.0.2"
 
 request@^2.44.0:
   version "2.88.2"
