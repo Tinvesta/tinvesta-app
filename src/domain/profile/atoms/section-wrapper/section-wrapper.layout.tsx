@@ -1,6 +1,5 @@
 import { Divider, Typography } from '@mui/material';
-
-import { useDeviceDetect } from '@utils';
+import { useDeviceDetect } from 'use-device-detect';
 
 import S from './section-wrapper.styles';
 import { ISectionWrapperProps } from './section-wrapper.types';

@@ -7,11 +7,11 @@ import { respondToMax } from '@infrastructure';
 const StyledHeader = styled(Typography)`
   margin-bottom: ${({ theme }) => theme.spacing(3)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     margin-bottom: ${theme.spacing(2)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     text-align: center;
     margin-bottom: ${theme.spacing(1)};
   `}
@@ -22,13 +22,13 @@ const StyledPapersWrapper = styled.div`
   gap: ${({ theme }) => theme.spacing(5)};
   margin-top: ${({ theme }) => theme.spacing(4)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     flex-direction: column;
     gap: ${theme.spacing(4)};
     margin-top: ${theme.spacing(3)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     width: 100%;
     gap: ${theme.spacing(3)};
     margin-top: ${theme.spacing(2)};
@@ -44,11 +44,11 @@ const StyledPaper = styled(Paper)`
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(5)};
 
-  ${respondToMax.small`
+  ${respondToMax.md`
     width: 350px;
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     width: 100%;
     padding: ${theme.spacing(4)};
 
@@ -68,7 +68,7 @@ const StyledList = styled(List)`
     align-items: center;
     justify-content: center;
 
-    ${respondToMax.xmobile`
+    ${respondToMax.xs`
       min-width: 35px;
     `}
   }

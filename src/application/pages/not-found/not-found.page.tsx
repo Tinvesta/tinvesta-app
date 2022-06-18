@@ -1,10 +1,11 @@
 import { Button } from '@mui/material';
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { Error } from '@domain';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 

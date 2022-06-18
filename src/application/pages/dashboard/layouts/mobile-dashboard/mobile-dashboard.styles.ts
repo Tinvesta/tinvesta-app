@@ -20,7 +20,7 @@ const StyledBottomNavigation = styled(BottomNavigation)`
   overflow: hidden;
   background-color: ${({ theme }) => theme.palette.primary.main};
 
-  ${respondToMax.xmobile`
+  ${respondToMax.sm`
     max-height: 60px;
     min-height: 60px;
   `}
@@ -40,7 +40,7 @@ const StyledTopNavigation = styled.nav`
   padding: ${({ theme }) => theme.spacing(0, 4)};
   background-color: ${({ theme }) => theme.palette.primary.main};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.sm`
     max-height: 60px;
     min-height: 60px;
     padding: ${theme.spacing(0, 3)};
@@ -53,7 +53,7 @@ const StyledRightTopNavigationWrapper = styled.div`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(3)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.sm`
     gap: ${theme.spacing(2)};
   `}
 `;

@@ -14,7 +14,7 @@ const StyledTypography = styled(Typography)`
   text-align: center;
   margin-top: ${({ theme }) => theme.spacing(4)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     max-width: 300px;
     margin-top: ${theme.spacing(3)};
   `}
@@ -23,7 +23,7 @@ const StyledTypography = styled(Typography)`
 const StyledActionButton = styled(Button)`
   margin-top: ${({ theme }) => theme.spacing(5)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     margin-top: ${theme.spacing(4)};
   `}
 `;

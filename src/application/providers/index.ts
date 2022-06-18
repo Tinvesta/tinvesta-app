@@ -6,4 +6,5 @@ export * from './locale-provider/locale-provider.component';
 export * from './offline-provider/offline-provider.component';
 export * from './query-param-provider/query-param-provider.component';
 export * from './query-client-provider/query-client-provider.component';
+export * from './use-device-detect-provider/use-device-detect-provider.component';
 export * from './confirmation-modal-provider/confirmation-modal-provider.component';

@@ -10,7 +10,7 @@ const StyledWrapper = styled.div`
 const StyledDialogContent = styled(DialogContent)`
   padding: ${({ theme }) => theme.spacing(5, 3)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding: ${theme.spacing(5, 3, 6, 3)};
   `}
 `;
@@ -23,11 +23,11 @@ const StyledDialogActions = styled(DialogActions)`
     margin: 0 !important;
   }
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     gap: ${theme.spacing(4)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     gap: ${theme.spacing(3)};
     flex-direction: column-reverse;
   `}

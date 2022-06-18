@@ -1,6 +1,7 @@
 import { LoadingButton } from '@mui/lab';
 import { Button, Grid } from '@mui/material';
 import { memo } from 'react';
+import { useDeviceDetect } from 'use-device-detect';
 
 import {
   AutocompleteWithController,
@@ -24,7 +25,6 @@ import {
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
   startsOrEndsWithWhitespace,
-  useDeviceDetect,
   useTranslation,
 } from '@utils';
 

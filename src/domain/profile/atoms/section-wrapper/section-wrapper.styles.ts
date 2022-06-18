@@ -5,11 +5,11 @@ import { respondToMax } from '@infrastructure';
 const StyledWrapper = styled.div`
   padding: ${({ theme }) => theme.spacing(5)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     padding: ${theme.spacing(4)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding: ${theme.spacing(3)};
   `}
 `;
@@ -17,7 +17,7 @@ const StyledWrapper = styled.div`
 const StyledContentWrapper = styled.div`
   padding-top: ${({ theme }) => theme.spacing(5)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     padding-top: ${theme.spacing(4)};
   `}
 `;

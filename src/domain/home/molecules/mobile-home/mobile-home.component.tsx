@@ -3,10 +3,11 @@ import { useOnlineState } from 'beautiful-react-hooks';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
-import { useDeviceDetect, useModal, useTranslation } from '@utils';
+import { useModal, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 

@@ -11,18 +11,18 @@ const StyledGridWrapper = styled.div`
   gap: ${({ theme }) => theme.spacing(6)};
   padding: ${({ theme }) => theme.spacing(6)};
 
-  ${({ theme }) => respondToMax.medium`
+  ${({ theme }) => respondToMax.lg`
     gap: ${theme.spacing(5)};
     padding: ${theme.spacing(5)};
   `}
 
-  ${({ theme }) => respondToMax.small`
+  ${({ theme }) => respondToMax.md`
     gap: ${theme.spacing(4)};
     padding: ${theme.spacing(4)};
     grid-template-columns: repeat(3, 1fr);
   `}
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     gap: ${theme.spacing(3)};
     padding: ${theme.spacing(3)};
     grid-template-columns: repeat(2, 1fr);
@@ -52,13 +52,13 @@ const StyledTypography = styled(Typography)`
   bottom: ${({ theme }) => theme.spacing(4)};
   width: calc(100% - ${({ theme }) => theme.spacing(4)} - ${({ theme }) => theme.spacing(4)});
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     left: ${theme.spacing(3)};
     bottom: ${theme.spacing(3)};
     width: calc(100% - ${theme.spacing(3)} - ${theme.spacing(3)});
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     left: ${theme.spacing(2)};
     bottom: ${theme.spacing(2)};
     width: calc(100% - ${theme.spacing(2)} - ${theme.spacing(2)});
@@ -78,7 +78,7 @@ const StyledGradient = styled.div`
       toDirection: 'to bottom',
     })}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     height: 50px;
   `}
 `;

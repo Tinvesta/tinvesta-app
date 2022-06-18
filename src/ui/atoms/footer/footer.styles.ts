@@ -20,16 +20,16 @@ const StyledWidthContainer = styled.div`
   justify-content: space-evenly;
   padding: ${({ theme }) => theme.spacing(15, 0)};
 
-  ${({ theme }) => respondToMax.medium`
+  ${({ theme }) => respondToMax.lg`
     width: 95%;
     padding: ${theme.spacing(13, 0)};
   `}
 
-  ${({ theme }) => respondToMax.small`
+  ${({ theme }) => respondToMax.md`
     padding: ${theme.spacing(10, 0)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding: ${theme.spacing(8, 3)};
   `}
 `;
@@ -46,7 +46,7 @@ const StyledFooterContainer = styled.div`
   justify-content: space-between;
   padding-top: ${({ theme }) => theme.spacing(10)};
 
-  ${({ theme }) => respondToMax.small`
+  ${({ theme }) => respondToMax.md`
     align-items: center;
     flex-direction: column;
     gap: ${theme.spacing(6)};
@@ -59,7 +59,7 @@ const StyledFooterLeft = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(11)};
 
-  ${respondToMax.small`
+  ${respondToMax.md`
     gap: 0;
     align-items: center;
     flex-direction: column;
@@ -71,13 +71,13 @@ const StyledFooterLinksColumn = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)};
 
-  ${({ theme }) => respondToMax.small`
+  ${({ theme }) => respondToMax.md`
     align-items: center;
     flex-direction: column;
     gap: ${theme.spacing(2)};
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     gap: 0;
   `}
 `;
@@ -85,7 +85,7 @@ const StyledFooterLinksColumn = styled.div`
 const StyledFooterLinksTitle = styled(Typography)`
   margin-bottom: ${({ theme }) => theme.spacing(4)};
 
-  ${({ theme }) => respondToMax.small`
+  ${({ theme }) => respondToMax.md`
     margin-bottom:  ${theme.spacing(2)};
   `}
 `;

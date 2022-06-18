@@ -1,12 +1,13 @@
 import { NextSeo } from 'next-seo';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { Profile } from '@domain';
 
 import { Loading } from '@ui';
 
-import { createStripeInstance, useDeviceDetect, useUser } from '@utils';
+import { createStripeInstance, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 

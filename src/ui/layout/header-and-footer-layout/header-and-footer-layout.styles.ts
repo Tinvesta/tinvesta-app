@@ -15,22 +15,22 @@ const StyledBackToTopButtonWrapper = styled(motion.div)`
   right: ${({ theme }) => theme.spacing(10)};
   bottom: ${({ theme }) => theme.spacing(10)};
 
-  ${({ theme }) => respondToMax.medium`
+  ${({ theme }) => respondToMax.lg`
     right: ${theme.spacing(8)};
     bottom: ${theme.spacing(8)};
   `}
 
-  ${({ theme }) => respondToMax.small`
+  ${({ theme }) => respondToMax.md`
     right: ${theme.spacing(7)};
     bottom: ${theme.spacing(7)};
   `}
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     right: ${theme.spacing(6)};
     bottom: ${theme.spacing(6)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     right: ${theme.spacing(5)};
     bottom: ${theme.spacing(5)};
   `}

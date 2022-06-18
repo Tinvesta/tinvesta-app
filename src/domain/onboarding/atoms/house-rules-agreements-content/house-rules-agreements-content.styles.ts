@@ -7,7 +7,7 @@ const StyledWrapper = styled.div`
   width: 400px;
   margin-bottom: ${({ theme }) => theme.spacing(5)};
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     width: 100%;
   `}
 `;
@@ -25,7 +25,7 @@ const StyledHouseRuleWrapper = styled.div`
   justify-content: center;
   margin-top: ${({ theme }) => theme.spacing(5)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     margin-top: ${theme.spacing(4)};
   `}
 `;

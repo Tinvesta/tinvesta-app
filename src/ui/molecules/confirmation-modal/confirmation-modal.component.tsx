@@ -1,8 +1,7 @@
 import { Button, Typography } from '@mui/material';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { Modal } from '@ui';
-
-import { useDeviceDetect } from '@utils';
 
 import S from './confirmation-modal.styles';
 import { IConfirmationModalProps } from './confirmation-modal.types';

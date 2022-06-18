@@ -17,7 +17,7 @@ const StyledContentWrapper = styled.div`
   max-width: 1300px;
   align-items: center;
 
-  ${respondToMax.medium`
+  ${respondToMax.lg`
     margin-left: auto;
     margin-right: 0;
   `}
@@ -39,7 +39,7 @@ const StyledSubHeaderWrapper = styled.div`
     margin-top: ${({ theme }) => theme.spacing(12)};
   }
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     margin-top: ${theme.spacing(4)};
 
     > .MuiButton-root {
@@ -55,7 +55,7 @@ const StyledLottieAnimationWrapper = styled.div`
   max-height: 700px;
   position: relative;
 
-  ${respondToMax.small`
+  ${respondToMax.sm`
     min-height: 640px;
     max-height: 640px;
   `}

@@ -16,7 +16,7 @@ const StyledHeader = styled.header`
   padding: ${({ theme }) => theme.spacing(2)};
   background-color: ${({ theme }) => theme.palette.primary.dark};
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     border-radius: 0 0 0 20px;
   `}
 `;
@@ -50,11 +50,11 @@ const StyledActionsWrapper = styled.div`
     height: fit-content;
   }
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     height: 90px;
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     height: 80px;
   `}
 

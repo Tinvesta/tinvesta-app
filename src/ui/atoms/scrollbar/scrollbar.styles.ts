@@ -16,11 +16,11 @@ const StyledTrackHorizontal = styled.div`
   bottom: 1px;
   width: 100%;
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     height: 5px !important;
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     height: 4px !important;
   `}
 `;
@@ -29,11 +29,11 @@ const StyledTrackVertical = styled.div`
   height: 100%;
   right: 1px;
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     width: 5px !important;
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     width: 4px !important;
   `}
 `;

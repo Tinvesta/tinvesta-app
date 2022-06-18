@@ -1,10 +1,9 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { memo } from 'react';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { CenterBlockLayout } from '@ui';
-
-import { useDeviceDetect } from '@utils';
 
 import S from './empty.styles';
 import { IEmptyProps } from './empty.types';

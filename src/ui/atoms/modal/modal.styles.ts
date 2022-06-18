@@ -40,14 +40,14 @@ const StyledContentWrapper = styled(motion.div)<{
     transform: translate(-100%, -50%);
   `}
 
-  ${({ theme, withPadding }) => respondToMax.mobile`
+  ${({ theme, withPadding }) => respondToMax.sm`
     width: 100%;
     height: 100%;
     border-radius: 0;
     padding: ${withPadding ? theme.spacing(4) : 0};
   `};
 
-  ${({ theme, withPadding }) => respondToMax.xmobile`
+  ${({ theme, withPadding }) => respondToMax.xs`
     padding: ${withPadding ? theme.spacing(3) : 0};
   `};
 `;
@@ -65,7 +65,7 @@ const StyledTitle = styled(Typography)`
   align-items: center;
   justify-content: center;
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     height: 25px;
   `}
 `;
@@ -84,12 +84,12 @@ const StyledCloseIcon = styled(CancelOutlinedIcon)`
     fill: ${({ theme }) => theme.palette.secondary.dark};
   }
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     top: ${theme.spacing(4)};
     right: ${theme.spacing(4)};
   `};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     top: ${theme.spacing(3)};
     right: ${theme.spacing(3)};
   `};

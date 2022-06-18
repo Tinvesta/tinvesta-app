@@ -1,8 +1,9 @@
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
+import { useDeviceDetect } from 'use-device-detect';
 import { StringParam, useQueryParam } from 'use-query-params';
 
-import { useDeviceDetect, useLocalStorage, useUser } from '@utils';
+import { useLocalStorage, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 

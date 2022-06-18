@@ -9,11 +9,11 @@ const StyledWrapper = styled.div`
   position: relative;
   padding: ${({ theme }) => theme.spacing(6)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     padding: ${theme.spacing(5, 4)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding: ${theme.spacing(4, 3)};
   `}
 `;
@@ -26,11 +26,11 @@ const StyledContentWrapper = styled.div`
   justify-content: flex-start;
   width: calc(100% - ${({ theme }) => theme.spacing(6)} * 2);
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     width: calc(100% - ${theme.spacing(4)} * 2);
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     width: calc(100% - ${theme.spacing(3)} * 2);
   `}
 `;
@@ -53,7 +53,7 @@ const StyledLinearProgress = styled(LinearProgress)`
   position: absolute;
   height: ${({ theme }) => theme.spacing(3)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     height: ${theme.spacing(2)};
   `}
 `;
@@ -63,11 +63,11 @@ const StyledBackButtonWrapper = styled.div`
   display: flex;
   margin-bottom: ${({ theme }) => theme.spacing(5)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     margin-bottom: ${theme.spacing(4)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     margin-bottom: ${theme.spacing(3)};
   `}
 `;
