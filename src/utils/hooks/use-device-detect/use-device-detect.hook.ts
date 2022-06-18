@@ -1,6 +1,7 @@
+import getClientWindowSize from 'get-client-window-size';
 import { useEffect, useState } from 'react';
 
-import { getWindowSize, useEventListener } from '@utils';
+import { useEventListener } from '@utils';
 
 import {
   LARGE_SCREEN_BREAKPOINT,
@@ -13,7 +14,7 @@ import {
 import { IDeviceDetectData } from './use-device-detect.types';
 
 const getDeviceData = () => {
-  const { width } = getWindowSize();
+  const { width } = getClientWindowSize();
 
   const isXXL = width > LARGE_SCREEN_BREAKPOINT;
   const isXS = width < XMOBILE_SCREEN_BREAKPOINT;
@@ -55,14 +56,14 @@ const getDeviceData = () => {
 };
 
 export const useDeviceDetect = () => {
-  const [windowSize, setWindowSize] = useState(getWindowSize);
+  const [windowSize, setWindowSize] = useState(getClientWindowSize);
   const [deviceData, setDeviceData] = useState<IDeviceDetectData>(getDeviceData);
 
   useEffect(() => {
     setDeviceData(getDeviceData());
   }, [windowSize.width]);
 
-  const handleResize = () => setWindowSize(getWindowSize());
+  const handleResize = () => setWindowSize(getClientWindowSize());
 
   useEventListener('resize', handleResize);
 
