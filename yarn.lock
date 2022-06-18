@@ -5466,6 +5466,14 @@ get-client-window-height@^1.0.0:
   resolved "https://registry.yarnpkg.com/get-client-window-height/-/get-client-window-height-1.0.0.tgz#033347c95b4a082b0a4f9e5aedabfedd413a6730"
   integrity sha512-a6hSGyrXbA36y+SUvcwH3FMILqpuPeQrHy6efgDQPxM1mnuFvRSgvG2AAhnTM5ynMcQjuXmGfhHqVaCA5S3Abw==
 
+get-client-window-size@^1.0.0:
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/get-client-window-size/-/get-client-window-size-1.0.0.tgz#807227be8224d6aeb08a08b273854306ce2eb855"
+  integrity sha512-MVQJ7y0+bJHARzXL5SwprF0uKLrRZ8jK5I15awlDA2wbZ4NcocG5BKz6+4xywOdxpVuEfIDYTtTHsaa95/QNBQ==
+  dependencies:
+    get-client-window-height "^1.0.0"
+    get-client-window-width "^1.0.0"
+
 get-client-window-width@^1.0.0:
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/get-client-window-width/-/get-client-window-width-1.0.0.tgz#0c4b31781ffc610adf0ff6de58f1bc6ff529a647"
