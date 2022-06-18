@@ -1,15 +1,11 @@
 import { LoadingButton } from '@mui/lab';
 import { Button, Grid, Typography } from '@mui/material';
 import { memo } from 'react';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { CenterBlockLayout, TextFieldWithController } from '@ui';
 
-import {
-  containEntersOrSpaces,
-  startsOrEndsWithWhitespace,
-  useDeviceDetect,
-  useTranslation,
-} from '@utils';
+import { containEntersOrSpaces, startsOrEndsWithWhitespace, useTranslation } from '@utils';
 
 import { translationStrings } from './feedback-form.defaults';
 import S from './feedback-form.styles';

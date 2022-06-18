@@ -1,4 +1,6 @@
-import { useDeviceDetect, useLocalStorage } from '@utils';
+import { useDeviceDetect } from 'use-device-detect';
+
+import { useLocalStorage } from '@utils';
 
 import { USER_REF_LOCAL_STORAGE_KEY } from '@constants';
 

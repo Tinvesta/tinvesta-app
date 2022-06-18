@@ -6,7 +6,7 @@ const StyledWrapper = styled.form`
   width: 100%;
   max-width: 850px;
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     max-width: 100%;
   `}
 `;

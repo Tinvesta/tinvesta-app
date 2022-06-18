@@ -1,8 +1,9 @@
 import { Typography } from '@mui/material';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useDeviceDetect } from 'use-device-detect';
 
-import { sendEmail, useDeviceDetect, useTranslation } from '@utils';
+import { sendEmail, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 

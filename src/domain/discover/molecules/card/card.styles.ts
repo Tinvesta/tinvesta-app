@@ -15,7 +15,7 @@ const StyledWrapper = styled.div`
   justify-content: flex-start;
   background-color: ${({ theme }) => theme.palette.primary.main};
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     width: 100%;
   `}
 `;
@@ -25,11 +25,11 @@ const StyledImageWrapper = styled.div`
   position: absolute;
   height: calc(100% - 100px);
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     height: calc(100% - 90px);
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     height: calc(100% - 80px);
   `}
 `;
@@ -61,11 +61,11 @@ const StyledUserInfoWrapper = styled.div`
   gap: ${({ theme }) => theme.spacing(3)};
   padding: ${({ theme }) => theme.spacing(0, 5, 15, 5)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     padding: ${theme.spacing(0, 4, 13, 4)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding: ${theme.spacing(0, 3, 12, 3)};
   `}
 `;
@@ -77,7 +77,7 @@ const StyledUserInfoGroupWrapper = styled.div`
   gap: ${({ theme }) => theme.spacing(3)};
   padding-bottom: ${({ theme }) => theme.spacing(3)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding-bottom: ${theme.spacing(2)};
   `}
 `;

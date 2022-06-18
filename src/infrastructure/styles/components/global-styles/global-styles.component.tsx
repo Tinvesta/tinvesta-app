@@ -36,12 +36,12 @@ export const GlobalStyles = (): JSX.Element => {
             height: 6px;
             width: 6px;
 
-            ${respondToMax.mobile`
+            ${respondToMax.sm`
               height: 5px;
               width: 5px;
             `}
 
-            ${respondToMax.xmobile`
+            ${respondToMax.xs`
               height: 4px;
               width: 4px;
             `}

@@ -1,7 +1,8 @@
 import { AnimatePresence, motion } from 'framer-motion';
 import { useRouter } from 'next/router';
+import { useDeviceDetect } from 'use-device-detect';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 

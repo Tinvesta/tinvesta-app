@@ -12,12 +12,12 @@ const StyledWrapper = styled(motion.div)`
   border-radius: 20px;
   background-color: ${({ theme }) => theme.palette.primary.main};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     width: calc(100% - ${theme.spacing(10)});
     height: calc(100% - ${theme.spacing(10)});
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     width: calc(100% - ${theme.spacing(4)});
     height: calc(100% - ${theme.spacing(4)});
   `}
@@ -34,7 +34,7 @@ const StyledCheckCircleOutlinedIconWrapper = styled(motion.div)`
     width: 4em;
     height: 4em;
 
-    ${respondToMax.xmobile`
+    ${respondToMax.xs`
       width: 3.5em;
       height: 3.5em;
     `}
@@ -52,7 +52,7 @@ const StyledHighlightOffOutlinedIconWrapper = styled(motion.div)`
     width: 4em;
     height: 4em;
 
-    ${respondToMax.xmobile`
+    ${respondToMax.xs`
       width: 3.5em;
       height: 3.5em;
     `}
@@ -70,11 +70,11 @@ const StyledActionButtonsWrapper = styled.div`
   justify-content: space-evenly;
   background-color: ${({ theme }) => theme.palette.primary.main};
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     height: 90px;
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     height: 80px;
     justify-content: space-between;
   `}
@@ -93,12 +93,12 @@ const StyledGradient = styled.div`
       toDirection: 'to bottom',
     })}
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     bottom: 90px;
     height: 275px;
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     bottom: 80px;
     height: 250px;
   `}

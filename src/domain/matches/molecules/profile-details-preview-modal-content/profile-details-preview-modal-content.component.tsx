@@ -1,6 +1,8 @@
+import { useDeviceDetect } from 'use-device-detect';
+
 import { ProfileDetailsPreview } from '@ui';
 
-import { sendEmail, useDeviceDetect, useTranslation } from '@utils';
+import { sendEmail, useTranslation } from '@utils';
 
 import { translationStrings } from './profile-details-preview-modal-content.defaults';
 import S from './profile-details-preview-modal-content.styles';

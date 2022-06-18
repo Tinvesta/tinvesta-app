@@ -9,6 +9,7 @@ import {
   QueryParamProvider,
   ThemeProvider,
   ToastProvider,
+  UseDeviceDetectProvider,
   UserProvider,
 } from '@application';
 
@@ -26,24 +27,26 @@ export const App = ({ Component, emotionCache, pageProps }: IAppProps) => {
   }, []);
 
   return (
-    <ThemeProvider>
-      <QueryParamProvider>
-        <CacheProvider emotionCache={emotionCache}>
-          <ToastProvider>
-            <LocaleProvider>
-              <QueryClientProvider>
-                <ConfirmationModalProvider>
-                  <OfflineProvider>
-                    <UserProvider>
-                      {isLoading ? <Loading /> : <Component {...pageProps} />}
-                    </UserProvider>
-                  </OfflineProvider>
-                </ConfirmationModalProvider>
-              </QueryClientProvider>
-            </LocaleProvider>
-          </ToastProvider>
-        </CacheProvider>
-      </QueryParamProvider>
-    </ThemeProvider>
+    <UseDeviceDetectProvider>
+      <ThemeProvider>
+        <QueryParamProvider>
+          <CacheProvider emotionCache={emotionCache}>
+            <ToastProvider>
+              <LocaleProvider>
+                <QueryClientProvider>
+                  <ConfirmationModalProvider>
+                    <OfflineProvider>
+                      <UserProvider>
+                        {isLoading ? <Loading /> : <Component {...pageProps} />}
+                      </UserProvider>
+                    </OfflineProvider>
+                  </ConfirmationModalProvider>
+                </QueryClientProvider>
+              </LocaleProvider>
+            </ToastProvider>
+          </CacheProvider>
+        </QueryParamProvider>
+      </ThemeProvider>
+    </UseDeviceDetectProvider>
   );
 };

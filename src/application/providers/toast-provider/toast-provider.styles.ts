@@ -15,12 +15,12 @@ const StyledToastContainer = styled(ToastContainer)`
       width: 24px;
       margin-top: 2px;
 
-      ${respondToMax.mobile`
+      ${respondToMax.sm`
         width: 22px;
         margin-top: 3px;
       `}
 
-      ${respondToMax.xmobile`
+      ${respondToMax.xs`
         width: 20px;
         margin-top: 2px;
       `}
@@ -43,7 +43,7 @@ const StyledToastContainer = styled(ToastContainer)`
       font-weight: 700;
       color: ${color.gray[800]};
 
-      ${respondToMax.xmobile`
+      ${respondToMax.xs`
         font-size: 1rem;
       `};
     }
@@ -96,16 +96,16 @@ const StyledToastContainer = styled(ToastContainer)`
       }
     }
 
-    ${respondToMax.xmobile`
+    ${respondToMax.xs`
       border-radius: 0;
     `}
   }
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     width: 300px;
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     width: 100%;
   `}
 `;

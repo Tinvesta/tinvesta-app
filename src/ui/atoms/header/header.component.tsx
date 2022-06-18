@@ -6,8 +6,9 @@ import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { useDeviceDetect } from 'use-device-detect';
 
-import { useDeviceDetect, useTranslation, useUser } from '@utils';
+import { useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 

@@ -3,10 +3,11 @@ import { Fab } from '@mui/material';
 import { AnimatePresence } from 'framer-motion';
 import { UIEvent, useRef, useState } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars-2';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { Footer, Header, Scrollbar } from '@ui';
 
-import { isNumber, useDeviceDetect } from '@utils';
+import { isNumber } from '@utils';
 
 import S from './header-and-footer-layout.styles';
 import { IHeaderAndFooterLayoutProps } from './header-and-footer-layout.types';

@@ -6,11 +6,12 @@ import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useMutation } from 'react-query';
 import { toast } from 'react-toastify';
+import { useDeviceDetect } from 'use-device-detect';
 import { StringParam, useQueryParam } from 'use-query-params';
 
 import { CenterBlockLayout } from '@ui';
 
-import { replaceVariablesInTranslation, useDeviceDetect, useTranslation, useUser } from '@utils';
+import { replaceVariablesInTranslation, useTranslation, useUser } from '@utils';
 
 import { EPaymentStatus, ESubscriptionInterval } from '@enums';
 

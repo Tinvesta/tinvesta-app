@@ -1,9 +1,10 @@
 import Image from 'next/image';
 import { Children, useEffect } from 'react';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { InfinityScrollImageGallery, Empty, Loading } from '@ui';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 

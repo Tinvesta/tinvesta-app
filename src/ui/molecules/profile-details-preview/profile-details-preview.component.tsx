@@ -18,6 +18,7 @@ import { Button } from '@mui/material';
 import Image from 'next/image';
 import { memo } from 'react';
 import { useQuery } from 'react-query';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { CenterBlockLayout, Loader, Scrollbar, Swiper, SwiperSlide, useCopyToClipboard } from '@ui';
 
@@ -32,7 +33,6 @@ import {
   mapStartupProfileCreatorTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
-  useDeviceDetect,
   useTranslation,
   useUser,
 } from '@utils';

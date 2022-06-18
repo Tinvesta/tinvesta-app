@@ -4,8 +4,7 @@ import { Grid } from '@mui/material';
 import { useOnlineState } from 'beautiful-react-hooks';
 import Image from 'next/image';
 import { memo } from 'react';
-
-import { useDeviceDetect } from '@utils';
+import { useDeviceDetect } from 'use-device-detect';
 
 import S from './mobile-onboarding-form-layout.styles';
 import { IMobileOnboardingFormLayoutProps } from './mobile-onboarding-form-layout.types';

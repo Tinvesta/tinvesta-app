@@ -14,11 +14,11 @@ const StyledWrapper = styled.div`
   justify-content: space-evenly;
   background-color: transparent;
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     height: 90px;
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     height: 80px;
     justify-content: space-between;
   `}
@@ -34,19 +34,19 @@ const StyledFavouriteIconButtonWrapper = styled(IconButton)`
       width: 1.5em;
       height: 1.5em;
 
-      ${respondToMax.mobile`
+      ${respondToMax.sm`
         width: 1.2em;
         height: 1.2em;
       `}
 
-      ${respondToMax.xmobile`
+      ${respondToMax.xs`
         width: 1em;
         height: 1em;
       `}
     }
   }
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     right: ${theme.spacing(10)};
   `}
 `;
@@ -61,19 +61,19 @@ const StyledCloseOutlinedIconButtonWrapper = styled(IconButton)`
       width: 1.5em;
       height: 1.5em;
 
-      ${respondToMax.mobile`
+      ${respondToMax.sm`
         width: 1.2em;
         height: 1.2em;
       `}
 
-      ${respondToMax.xmobile`
+      ${respondToMax.xs`
         width: 1em;
         height: 1em;
       `}
     }
   }
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     left: ${theme.spacing(10)};
   `}
 `;

@@ -22,7 +22,7 @@ const StyledSubHeaderWrapper = styled.div`
     margin-top: ${({ theme }) => theme.spacing(12)};
   }
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     margin-top: ${theme.spacing(4)};
 
     > .MuiButton-root {

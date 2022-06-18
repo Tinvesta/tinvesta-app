@@ -3,8 +3,7 @@ import {
   HighlightOffOutlined as HighlightOffOutlinedIcon,
 } from '@mui/icons-material';
 import { useAnimation, useMotionValue, useTransform } from 'framer-motion';
-
-import { useDeviceDetect } from '@utils';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { ProfileCardActionButtons } from '..';
 import S from './motion-card-wrapper.styles';

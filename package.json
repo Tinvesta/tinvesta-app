@@ -88,6 +88,7 @@
     "swiper": "^8.2.3",
     "ts-has-own-property": "^1.0.2",
     "ts-object-keys": "^1.0.3",
+    "use-device-detect": "^1.0.0",
     "use-file-picker": "^1.4.2",
     "use-subscription": "^1.7.0",
     "winston": "^3.7.2",

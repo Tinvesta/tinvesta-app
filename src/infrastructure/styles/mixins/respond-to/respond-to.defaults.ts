@@ -1,17 +1,17 @@
+import { TBreakpoints } from 'use-device-detect';
+
 import {
-  LARGE_SCREEN_BREAKPOINT,
-  MEDIUM_SCREEN_BREAKPOINT,
-  MOBILE_SCREEN_BREAKPOINT,
-  SMALL_SCREEN_BREAKPOINT,
-  XMOBILE_SCREEN_BREAKPOINT,
+  LG_SCREEN_BREAKPOINT,
+  MD_SCREEN_BREAKPOINT,
+  SM_SCREEN_BREAKPOINT,
+  XL_SCREEN_BREAKPOINT,
+  XS_SCREEN_BREAKPOINT,
 } from '@constants';
 
-import { TDeviceBreakpointObject } from './respond-to.types';
-
-export const deviceBreakpoint: TDeviceBreakpointObject = {
-  large: LARGE_SCREEN_BREAKPOINT,
-  small: SMALL_SCREEN_BREAKPOINT,
-  medium: MEDIUM_SCREEN_BREAKPOINT,
-  mobile: MOBILE_SCREEN_BREAKPOINT,
-  xmobile: XMOBILE_SCREEN_BREAKPOINT,
+export const deviceBreakpoint: TBreakpoints = {
+  xl: XL_SCREEN_BREAKPOINT,
+  lg: LG_SCREEN_BREAKPOINT,
+  md: MD_SCREEN_BREAKPOINT,
+  sm: SM_SCREEN_BREAKPOINT,
+  xs: XS_SCREEN_BREAKPOINT,
 };
