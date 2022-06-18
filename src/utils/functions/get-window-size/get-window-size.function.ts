@@ -1,8 +1,7 @@
+import getClientWindowHeight from 'get-client-window-height';
 import getClientWindowWidth from 'get-client-window-width';
 
-import { getWindowHeight } from '@utils';
-
 export const getWindowSize = () => ({
-  height: getWindowHeight(),
   width: getClientWindowWidth(),
+  height: getClientWindowHeight(),
 });
