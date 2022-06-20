@@ -10123,10 +10123,10 @@ uri-js@^4.2.2:
   dependencies:
     punycode "^2.1.0"
 
-use-device-detect@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/use-device-detect/-/use-device-detect-1.0.0.tgz#ff9ef02870ffe3fc6817dd8b20a9e0bb1451bda9"
-  integrity sha512-M/GQvfDiA8sgYO4I52sHCj32b9MtGt6Bd4rU3AwRktkbRtR1SJjfXeab46SfJSNDPbKM74G0gK9tqM46GTnPAA==
+use-device-detect@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/use-device-detect/-/use-device-detect-1.0.2.tgz#64f95930eab52571f9b65c371cc5eaa7e45a3068"
+  integrity sha512-V0V60MwhsCE2YL52uWSIW+thjYS4INTEzXN1uEkjUlQ97ESdLVB7P/VMDjsiMp/2zk34y90ucs2ra54m3qNuzQ==
   dependencies:
     get-client-window-size "^1.0.0"
     is-number "^7.0.0"
