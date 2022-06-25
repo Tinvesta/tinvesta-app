@@ -1,5 +1,5 @@
 
-# 💬 tinvesta-app 💬
+# 💸 tinvesta-app 💸
 
 Matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.
 
@@ -10,8 +10,8 @@ Matchmaking platform for startups and investors all over the world. The app enab
 - [✨ Getting started](#user-content--getting-started)
   - [Prerequisites](#prerequisites)
   - [Bootstrap](#bootstrap)
-- [Built With](#user-content--built-with)
-- [Roadmap](#roadmap)
+- [🏗️ Built With](#user-content-built-with)
+- [🥅 Roadmap](#user-content-roadmap)
 - [📚 Documentation](#user-content--documentation)
   - [Commit Message Guideline](#commit-message-guideline)
 
@@ -58,7 +58,7 @@ You need to have installed the following software:
    ```
 
 
-## Built With
+## 🏗️ Built With
 
 - [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
@@ -75,7 +75,7 @@ You need to have installed the following software:
 - [x-state](https://xstate.js.org/)
 - [framer-motion](https://www.framer.com/motion/)
 
-## Roadmap
+## 🥅 Roadmap
 
 - [ ] Reports / ban system
 - [ ] Account verifiction
