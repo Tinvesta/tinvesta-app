@@ -10,8 +10,8 @@ Matchmaking platform for startups and investors all over the world. The app enab
 - [✨ Getting started](#user-content--getting-started)
   - [Prerequisites](#prerequisites)
   - [Bootstrap](#bootstrap)
-- [🏗️ Built With](#user-content-built-with)
-- [🥅 Roadmap](#user-content-roadmap)
+- [🏗️ Built With](#user-content--built-with)
+- [🥅 Roadmap](#user-content--roadmap)
 - [📚 Documentation](#user-content--documentation)
   - [Commit Message Guideline](#commit-message-guideline)
 
