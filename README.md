@@ -27,7 +27,7 @@ This is a mix of:
 - clean architecture pattern,
 
 Here is an explanation of how each layer depends on each other:
-![image](https://michalzalecki.com/posts/elegant-frontend-architecture-layers@2x.png)
+![image](https://i.imgur.com/EJJGG3g.png)
 
 ## ✨ Getting started
 
