@@ -3,6 +3,7 @@ import isString from 'is-string';
 import { hasOwnProperty } from 'ts-has-own-property';
 import { objectKeys } from 'ts-object-keys';
 
+import { isArray } from '../../guards';
 import { toCamelCase } from '../to-camel-case/to-camel-case.function';
 
 const convertObjectKeys =
@@ -19,7 +20,7 @@ const convertObjectKeys =
 
         const newKeyName = keyTransformFunction(_objectKey);
 
-        if (isObject(objectValue)) {
+        if (isObject(objectValue) && !isArray(objectValue)) {
           const newValue = convertObjectKeys(keyTransformFunction)(objectValue);
 
           newObject[newKeyName] = newValue;
