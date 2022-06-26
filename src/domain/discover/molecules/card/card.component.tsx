@@ -8,6 +8,7 @@ import {
 import { Typography } from '@mui/material';
 import Image from 'next/image';
 import { useState } from 'react';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { ProfileDetailsPreview } from '@ui';
 
@@ -17,7 +18,6 @@ import {
   mapInvestmentStageTypesToDropdownOptions,
   mapInvestorDemandTypesToDropdownOptions,
   truncate,
-  useDeviceDetect,
   useTranslation,
   useUser,
 } from '@utils';

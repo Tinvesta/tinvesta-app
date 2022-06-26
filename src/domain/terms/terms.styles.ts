@@ -7,11 +7,11 @@ const StyledWrapper = styled.div`
   width: 100%;
   padding: ${({ theme }) => theme.spacing(10, 0)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     padding: ${theme.spacing(8, 0)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding: ${theme.spacing(5, 0)};
   `}
 `;
@@ -27,15 +27,15 @@ const StyledContentWrapper = styled.div`
   justify-content: space-between;
   gap: ${({ theme }) => theme.spacing(5)};
 
-  ${respondToMax.medium`
+  ${respondToMax.lg`
     max-width: unset;
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding-right: ${theme.spacing(3)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     gap: ${theme.spacing(4)};
   `}
 `;

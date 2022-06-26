@@ -7,11 +7,11 @@ const StyledWrapper = styled.div`
   height: ${({ theme }) => theme.spacing(15)};
   background-color: ${({ theme }) => theme.palette.primary.main};
 
-  ${({ theme }) => respondToMax.small`
+  ${({ theme }) => respondToMax.md`
     height: ${theme.spacing(12)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     height: ${theme.spacing(10)};
   `}
 `;
@@ -33,11 +33,11 @@ const StyledContentWrapper = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  ${respondToMax.medium`
+  ${respondToMax.lg`
     max-width: unset;
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding-right: ${theme.spacing(3)};
   `}
 `;
@@ -49,12 +49,12 @@ const StyledMenuAnimation = styled.div`
   cursor: pointer;
   position: relative;
 
-  ${respondToMax.small`
+  ${respondToMax.md`
     width: 65px;
     height: 65px;
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     width: 55px;
     height: 55px;
   `}

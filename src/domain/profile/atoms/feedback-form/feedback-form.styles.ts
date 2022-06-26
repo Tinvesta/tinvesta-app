@@ -5,7 +5,7 @@ import { respondToMax } from '@infrastructure';
 const StyledWrapper = styled.form`
   max-width: 500px;
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     max-width: 100%;
   `}
 `;

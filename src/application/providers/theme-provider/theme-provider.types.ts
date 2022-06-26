@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
 export interface IThemeProviderProps {
-  children: ReactNode | ReactNode[];
+  children: ReactNode;
 }

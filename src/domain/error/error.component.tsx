@@ -1,8 +1,9 @@
 import Image from 'next/image';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
-import { useDeviceDetect, useModal, useTranslation } from '@utils';
+import { useModal, useTranslation } from '@utils';
 
 import { translationStrings } from './error.defaults';
 import S from './error.styles';

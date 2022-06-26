@@ -1,9 +1,10 @@
 import { Typography } from '@mui/material';
 import Image from 'next/image';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { Loading, useCopyToClipboard } from '@ui';
 
-import { sendEmail, useDeviceDetect, useTranslation } from '@utils';
+import { sendEmail, useTranslation } from '@utils';
 
 import { translationStrings } from './match-modal-content.defaults';
 import S from './match-modal-content.styles';

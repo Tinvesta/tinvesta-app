@@ -1,4 +1,4 @@
-import { isString } from '@utils';
+import isString from 'is-string';
 
 const prepareResponse = (firstName: string, lastName: string) => ({ firstName, lastName });
 

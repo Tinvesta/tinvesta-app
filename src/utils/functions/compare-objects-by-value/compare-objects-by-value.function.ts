@@ -1,4 +1,4 @@
-import { getObjectProperty } from '..';
+import { getNestedObjectProperty } from 'get-nested-object-property';
 
 export const compareObjectsByValue =
   (key: string) =>
@@ -6,8 +6,8 @@ export const compareObjectsByValue =
     a: Record<string, unknown> | null | undefined,
     b: Record<string, unknown> | null | undefined,
   ) => {
-    const valueA = !a ? '' : getObjectProperty(a, key) || '';
-    const valueB = !b ? '' : getObjectProperty(b, key) || '';
+    const valueA = !a ? '' : getNestedObjectProperty(a, key) || '';
+    const valueB = !b ? '' : getNestedObjectProperty(b, key) || '';
 
     const valueAString = String(valueA).toString();
     const valueBString = String(valueB).toString();

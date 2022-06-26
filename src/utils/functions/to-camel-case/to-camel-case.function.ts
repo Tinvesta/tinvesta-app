@@ -1,4 +1,6 @@
-import { isString, stringToWords } from '@utils';
+import isString from 'is-string';
+
+import { stringToWords } from '@utils';
 
 export const toCamelCase = (string: string) => {
   if (!isString(string)) {

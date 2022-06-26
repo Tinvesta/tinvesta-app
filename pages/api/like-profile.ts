@@ -2,8 +2,9 @@ import * as R from 'ramda';
 import cookie from 'cookie';
 import { isToday } from 'date-fns';
 import { NextApiRequest, NextApiResponse } from 'next';
+import { hasOwnProperty } from 'ts-has-own-property';
 
-import { convertObjectKeysToCamelCase, hasOwnProperty } from '@utils';
+import { convertObjectKeysToCamelCase } from '@utils';
 
 import { supabaseInstance } from '@infrastructure';
 

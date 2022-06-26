@@ -1,4 +1,4 @@
-import { isString } from '@utils';
+import isString from 'is-string';
 
 export const countWords = (string: string, splitWith: string = ' ') => {
   if (!isString(string)) {

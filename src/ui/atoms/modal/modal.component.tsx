@@ -1,6 +1,5 @@
 import { Modal as MuiModal } from '@mui/material';
-
-import { useDeviceDetect } from '@utils';
+import { useDeviceDetect } from 'use-device-detect';
 
 import S from './modal.styles';
 import { IModalProps } from './modal.types';

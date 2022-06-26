@@ -1,4 +1,7 @@
-import { isArray, isNumber, isString, objectKeys } from '@utils';
+import isString from 'is-string';
+import { objectKeys } from 'ts-object-keys';
+
+import { isArray, isNumber } from '@utils';
 
 import { IEditProfileFormFieldsData } from '../../../../../profile.types';
 

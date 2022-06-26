@@ -10,11 +10,11 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
   height: calc(100% - 100px);
   background-color: ${({ theme }) => theme.palette.primary.main};
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     height: calc(100% - 90px);
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     height: calc(100% - 80px);
   `}
 
@@ -32,11 +32,11 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
       &::after {
         font-size: 40px;
 
-        ${respondToMax.mobile`
+        ${respondToMax.sm`
           font-size: 36px;
         `}
 
-        ${respondToMax.xmobile`
+        ${respondToMax.xs`
           font-size: 30px;
         `}
       }
@@ -48,7 +48,7 @@ const StyledImageWrapper = styled.div`
   width: 100%;
   height: 650px;
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     height: 450px;
   `}
 `;
@@ -57,11 +57,11 @@ const StyledContentWrapper = styled.div`
   overflow: hidden;
   padding: ${({ theme }) => theme.spacing(5)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     padding: ${theme.spacing(4)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding: ${theme.spacing(3)};
   `}
 

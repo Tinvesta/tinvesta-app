@@ -6,7 +6,7 @@ import { respondToMax } from '@infrastructure';
 const StyledWrapper = styled.div`
   padding: ${({ theme }) => theme.spacing(10, 4, 0, 4)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     padding: ${theme.spacing(6, 3, 0, 3)};
   `}
 `;
@@ -40,7 +40,7 @@ const StyledSubHeaderWrapper = styled.div`
     margin-top: ${({ theme }) => theme.spacing(7)};
   }
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     margin-top: ${theme.spacing(4)};
   `}
 `;
@@ -51,7 +51,7 @@ const StyledCardsWrapper = styled.div`
   flex-direction: column;
   gap: ${({ theme }) => theme.spacing(3)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     gap: ${theme.spacing(2)};
   `}
 `;
@@ -65,7 +65,7 @@ const StyledMaskCardWrapper = styled.div`
   max-width: 500px;
   max-height: 250px;
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     max-height: 150px;
   `}
 `;

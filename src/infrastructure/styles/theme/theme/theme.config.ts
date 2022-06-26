@@ -3,10 +3,10 @@ import { ThemeOptions, createTheme } from '@mui/material';
 import { color } from '@infrastructure/styles/variables';
 
 import {
-  MEDIUM_SCREEN_BREAKPOINT,
-  MOBILE_SCREEN_BREAKPOINT,
-  SMALL_SCREEN_BREAKPOINT,
-  XMOBILE_SCREEN_BREAKPOINT,
+  LG_SCREEN_BREAKPOINT,
+  MD_SCREEN_BREAKPOINT,
+  SM_SCREEN_BREAKPOINT,
+  XS_SCREEN_BREAKPOINT,
 } from '@constants';
 
 const defaultThemeConfig: ThemeOptions = {
@@ -34,10 +34,10 @@ const defaultThemeConfig: ThemeOptions = {
   breakpoints: {
     values: {
       xs: 0,
-      lg: SMALL_SCREEN_BREAKPOINT,
-      md: MOBILE_SCREEN_BREAKPOINT,
-      sm: XMOBILE_SCREEN_BREAKPOINT,
-      xl: MEDIUM_SCREEN_BREAKPOINT,
+      lg: MD_SCREEN_BREAKPOINT,
+      md: SM_SCREEN_BREAKPOINT,
+      sm: XS_SCREEN_BREAKPOINT,
+      xl: LG_SCREEN_BREAKPOINT,
     },
   },
 };

@@ -1,8 +1,9 @@
 import { ListItem, Typography } from '@mui/material';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { HeaderAndFooterLayout, LoginModalContent, Modal } from '@ui';
 
-import { useDeviceDetect, useModal, useTranslation } from '@utils';
+import { useModal, useTranslation } from '@utils';
 
 import { translationStrings } from './terms.defaults';
 import S from './terms.styles';

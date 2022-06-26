@@ -8,10 +8,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useIsFetching, useIsMutating } from 'react-query';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { Scrollbar } from '@ui';
 
-import { parseProfileAvatarUrl, useDeviceDetect, useTranslation, useUser } from '@utils';
+import { parseProfileAvatarUrl, useTranslation, useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 

@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
 
-export interface IQueryClientProviderProps {
+export interface IUseDeviceDetectProviderProps {
   children: ReactNode;
 }

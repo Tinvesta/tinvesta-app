@@ -9,12 +9,12 @@ const StyledWrapper = styled.div`
   cursor: pointer;
   position: relative;
 
-  ${respondToMax.small`
+  ${respondToMax.md`
     width: 65px;
     height: 65px;
   `}
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     width: 55px;
     height: 55px;
   `}

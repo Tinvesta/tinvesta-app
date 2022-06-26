@@ -1,7 +1,7 @@
-import { isBase64 } from '@utils';
+import isBase64 from 'is-base64';
 
 export const getFileExtensionFromBase64 = (base64String: string) => {
-  if (!isBase64(base64String)) {
+  if (!base64String || !isBase64(base64String, { allowMime: true })) {
     return null;
   }
 

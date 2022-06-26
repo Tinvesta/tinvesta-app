@@ -2,6 +2,9 @@ import { functionImportTest } from '@utils';
 
 import { getFileExtensionFromBase64 } from './get-file-extension-from-base64.function';
 
+const stringWithMime =
+  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABQAAAALQAQMAAAD1s08VAAAAA1BMVEX/AAAZ4gk3AAAAh0lEQVR42u3BMQEAAADCoPVPbQlPoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAB4GsTfAAGc95RKAAAAAElFTkSuQmCC';
+
 describe('getFileExtensionFromBase64 function', () => {
   functionImportTest(getFileExtensionFromBase64);
 
@@ -26,10 +29,6 @@ describe('getFileExtensionFromBase64 function', () => {
   });
 
   it('should return file extension from base64', () => {
-    expect(
-      getFileExtensionFromBase64(
-        'data:image/png;base64,iVBORw0KGgoAAAANSUhEAk4gAAgkQcAECQiAMACBJxAABB/z/wILeriOVNAAAAAElFTkSuQmCC',
-      ),
-    ).toStrictEqual('png');
+    expect(getFileExtensionFromBase64(stringWithMime)).toStrictEqual('png');
   });
 });

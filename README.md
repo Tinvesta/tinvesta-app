@@ -1,58 +1,64 @@
-<div id="top"></div>
 
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/tinvesta/Tinvesta-app">
-    <img src="https://www.tinvesta.io/icon-256x256.png" alt="Tinvesta" width="100" height="100" />
-  </a>
+# 💸 tinvesta-app 💸
 
-  <h3 align="center">Tinvesta</h3>
+Matchmaking platform for startups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.
 
-  <p align="center">
-    Matchmaking platform for start-ups and investors all over the world
-    <br />
-    <a href="https://www.tinvesta.io">View Production</a>
-    ·
-    <a href="https://tinvesta-ihoywnrfb-playerony.vercel.app">View Staging</a>
-    ·
-    <a href="https://github.com/tinvesta/Tinvesta-app/issues">Request Feature</a>
-  </p>
-</div>
+## 📖 Table of Contents
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-      <ul>
-        <li><a href="#built-with">Built With</a></li>
-      </ul>
-    </li>
-    <li>
-      <a href="#getting-started">Getting Started</a>
-      <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
-      </ul>
-    </li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#license">License</a></li>
-  </ol>
-</details>
+- [🌐 Links](#user-content--links)
+- [🎨 Architecture](#user-content--architecture)
+- [✨ Getting started](#user-content--getting-started)
+  - [Prerequisites](#prerequisites)
+  - [Bootstrap](#bootstrap)
+- [🏗️ Built With](#user-content--built-with)
+- [🥅 Roadmap](#user-content--roadmap)
+- [📚 Documentation](#user-content--documentation)
+  - [Commit Message Guideline](#commit-message-guideline)
 
-<!-- ABOUT THE PROJECT -->
+## 🌐 Links
 
-## About The Project
+- Application: https://www.tinvesta.io
 
-[![Product Name Screen Shot][product-screenshot]](https://www.tinvesta.io)
+## 🎨 Architecture
 
-Tinvesta is a matchmaking app for start-ups and investors all over the world. The app enables investors and startups to find each other in the easiest way: create a profile - swipe - match.
+This is a mix of:
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+- atomic design pattern,
+- clean architecture pattern,
 
-### Built With
+Here is an explanation of how each layer depends on each other:
+![image](https://i.imgur.com/EJJGG3g.png)
+
+## ✨ Getting started
+
+### Prerequisites
+
+You need to have installed the following software:
+
+- [nodejs](https://nodejs.org/en/) (>=16.15.0)
+- [yarn](https://npmjs.com/) (>= 1.22.19)
+- volta
+  ```sh
+  curl https://get.volta.sh | bash
+  ```
+
+### Bootstrap
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/Tinvesta/tinvesta-app.git
+   ```
+2. Install proper yarn and node versions
+   ```sh
+   volta install node yarn
+   ```
+3. Install NPM packages
+   ```sh
+   yarn
+   ```
+
+
+## 🏗️ Built With
 
 - [Next.js](https://nextjs.org/)
 - [React.js](https://reactjs.org/)
@@ -62,56 +68,24 @@ Tinvesta is a matchmaking app for start-ups and investors all over the world. Th
 - [Vercel](https://vercel.com/)
 - [Renovate](https://renovatebot.com/)
 - [Fontsource](https://fontsource.org/)
+- [Stripe](https://stripe.com/)
+- [react-hook-form](https://react-hook-form.com/)
+- [Mapbox](https://www.mapbox.com/)
+- [TensorFlow](https://www.tensorflow.org/js)
+- [x-state](https://xstate.js.org/)
+- [framer-motion](https://www.framer.com/motion/)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- GETTING STARTED -->
-
-## Getting Started
-
-### Prerequisites
-
-- volta
-  ```sh
-  curl https://get.volta.sh | bash
-  ```
-
-### Installation
-
-_Below is an example of how you can instruct your audience on installing and setting up your app. This template doesn't rely on any external dependencies or services._
-
-1. Clone the repo
-   ```sh
-   git clone https://github.com/Tinvesta/tinvesta-app.git
-   ```
-2. Install proper yarn and node versions
-   ```sh
-   volta install node
-   ```
-3. Install NPM packages
-   ```sh
-   yarn install
-   ```
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- ROADMAP -->
-
-## Roadmap
+## 🥅 Roadmap
 
 - [ ] Reports / ban system
+- [ ] Account verifiction
+- [ ] Multiple language support
+- [ ] Remove account function
 
-<p align="right">(<a href="#top">back to top</a>)</p>
 
-<!-- LICENSE -->
+## 📚 Documentation
 
-## License
+### Commit Message Guideline
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-<!-- MARKDOWN LINKS & IMAGES -->
-<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-
-[product-screenshot]: https://www.tinvesta.io/images/readme/screenshot.png
+- For easier commit type recognition commit messages are used a commitlint convenction
+- See available [commitlint.js.org](https://commitlint.js.org)

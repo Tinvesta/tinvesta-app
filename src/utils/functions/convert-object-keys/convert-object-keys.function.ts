@@ -1,5 +1,9 @@
-import { hasOwnProperty, isObject, objectKeys } from '@utils';
+import isObject from 'is-object';
+import isString from 'is-string';
+import { hasOwnProperty } from 'ts-has-own-property';
+import { objectKeys } from 'ts-object-keys';
 
+import { isArray } from '../../guards';
 import { toCamelCase } from '../to-camel-case/to-camel-case.function';
 
 const convertObjectKeys =
@@ -11,12 +15,12 @@ const convertObjectKeys =
     const newObject: Record<string, unknown> = {};
 
     for (const _objectKey of objectKeys(object)) {
-      if (hasOwnProperty(object, _objectKey)) {
+      if (hasOwnProperty(object, _objectKey) && isString(_objectKey)) {
         const objectValue = object[_objectKey];
 
         const newKeyName = keyTransformFunction(_objectKey);
 
-        if (isObject(objectValue)) {
+        if (isObject(objectValue) && !isArray(objectValue)) {
           const newValue = convertObjectKeys(keyTransformFunction)(objectValue);
 
           newObject[newKeyName] = newValue;

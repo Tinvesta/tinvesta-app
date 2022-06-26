@@ -5,7 +5,7 @@ import { respondToMax } from '@infrastructure';
 const StyledWrapper = styled.div`
   margin-right: -35px;
 
-  ${respondToMax.medium`
+  ${respondToMax.lg`
     margin-right: -250px;
   `}
 `;

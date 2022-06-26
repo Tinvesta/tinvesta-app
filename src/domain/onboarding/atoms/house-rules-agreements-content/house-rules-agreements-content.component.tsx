@@ -1,10 +1,11 @@
 import { Done as DoneIcon } from '@mui/icons-material';
 import { Typography } from '@mui/material';
 import Image from 'next/image';
+import { useDeviceDetect } from 'use-device-detect';
 
 import { CenterBlockLayout } from '@ui';
 
-import { useDeviceDetect, useTranslation } from '@utils';
+import { useTranslation } from '@utils';
 
 import { translationStrings } from './house-rules-agreements-content.defaults';
 import S from './house-rules-agreements-content.styles';

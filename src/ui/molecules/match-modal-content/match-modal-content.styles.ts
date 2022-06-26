@@ -10,7 +10,7 @@ const StyledWrapper = styled.div`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(6)};
 
-  ${respondToMax.mobile`
+  ${respondToMax.sm`
     justify-content: flex-start;
   `}
 `;
@@ -21,11 +21,11 @@ const StyledImageContainer = styled.div`
   justify-content: center;
   gap: ${({ theme }) => theme.spacing(3)};
 
-  ${({ theme }) => respondToMax.mobile`
+  ${({ theme }) => respondToMax.sm`
     gap: ${theme.spacing(2)};
   `}
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     gap: ${theme.spacing(1)};
   `}
 `;
@@ -52,7 +52,7 @@ const StyledButtonsWrapper = styled.div`
   gap: ${({ theme }) => theme.spacing(4)};
   margin-top: ${({ theme }) => theme.spacing(2)};
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     width: 100%;
     gap: ${theme.spacing(3)};
   `}
@@ -61,7 +61,7 @@ const StyledButtonsWrapper = styled.div`
 const StyledButton = styled(Button)`
   min-width: 250px;
 
-  ${respondToMax.xmobile`
+  ${respondToMax.xs`
     width: 100%;
     max-width: 250px;
     min-width: initial;

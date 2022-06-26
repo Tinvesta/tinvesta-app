@@ -16,14 +16,14 @@ const StyledModalContentWrapper = styled.div`
     touch-action: none;
     border-radius: ${({ theme }) => theme.shape.borderRadius}px;
 
-    ${({ theme }) => respondToMax.xmobile`
+    ${({ theme }) => respondToMax.xs`
       width: 250px !important;
       height: 375px !important;
       margin: ${theme.spacing(3, 0)};
     `}
   }
 
-  ${({ theme }) => respondToMax.xmobile`
+  ${({ theme }) => respondToMax.xs`
     gap: ${theme.spacing(4)};
     padding-top: ${theme.spacing(3)};
   `}

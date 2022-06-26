@@ -1,8 +1,9 @@
 import { Button, useTheme } from '@mui/material';
 import { createRef } from 'react';
 import AvatarEditor from 'react-avatar-editor';
+import { useDeviceDetect } from 'use-device-detect';
 
-import { isNumber, useDeviceDetect } from '@utils';
+import { isNumber } from '@utils';
 
 import S from './crop-image-modal-content.styles';
 import { ICropImageModalContentProps } from './crop-image-modal-content.types';
