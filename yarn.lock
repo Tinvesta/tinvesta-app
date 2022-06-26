@@ -3417,7 +3417,7 @@ bcrypt-pbkdf@^1.0.0:
   dependencies:
     tweetnacl "^0.14.3"
 
-beautiful-react-hooks@^3.5.1:
+beautiful-react-hooks@^3.5.2:
   version "3.5.2"
   resolved "https://registry.yarnpkg.com/beautiful-react-hooks/-/beautiful-react-hooks-3.5.2.tgz#0324db2208ca70b08622eabcd13161aa70109014"
   integrity sha512-GUEfKczqUwZmcEVZt5Lg+wCtpKGbzQqW4s3g8nlgdlDmtT0Mfalp1xcYtiYzEowvmAfIyrzmbT9PnGaah/Oi3Q==
