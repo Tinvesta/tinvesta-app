@@ -41,7 +41,7 @@ export const updateProfileAction = async ({ clientTypeId, newData, oldData }: II
             throw new Error(avatarUploadError.message);
           }
 
-          result.push(avatarUploadData?.Key ? avatarUploadData?.Key : _image);
+          result.push(avatarUploadData?.Key ?? _image);
         } else {
           result.push(_image);
         }
