@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "tinvesta-app",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "scripts": {
     "build": "next build",
     "build:mobile": "next build && next export && npx cap sync",
