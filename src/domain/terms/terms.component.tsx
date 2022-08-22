@@ -35,7 +35,7 @@ export const Terms = (): JSX.Element => {
           <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'h4' : 'h3'}>
             Terms & Conditions
           </Typography>
-          <Typography variant={smallTextVariant}>Last updated: June 10, 2022</Typography>
+          <Typography variant={smallTextVariant}>Last updated: Aug 22, 2022</Typography>
           <Typography variant={smallTextVariant}>
             Please read these terms and conditions carefully before using Our Service.
           </Typography>
@@ -419,8 +419,8 @@ export const Terms = (): JSX.Element => {
             If You are a copyright owner, or authorized on behalf of one, and You believe that the
             copyrighted work has been copied in a way that constitutes copyright infringement that
             is taking place through the Service, You must submit Your notice in writing to the
-            attention of our copyright agent via email at pawel.wojtasinski.1995@gmail.com and
-            include in Your notice a detailed description of the alleged infringement.
+            attention of our copyright agent via email at tinvesta.contact@gmail.com and include in
+            Your notice a detailed description of the alleged infringement.
           </Typography>
           <Typography variant={smallTextVariant}>
             You may be held accountable for damages (including costs and attorneys&apos; fees) for
@@ -474,7 +474,7 @@ export const Terms = (): JSX.Element => {
             </ListItem>
           </S.StyledFullWidthList>
           <Typography variant={smallTextVariant}>
-            You can contact our copyright agent via email at pawel.wojtasinski.1995@gmail.com. Upon
+            You can contact our copyright agent via email at tinvesta.contact@gmail.com. Upon
             receipt of a notification, the Company will take whatever action, in its sole
             discretion, it deems appropriate, including removal of the challenged content from the
             Service.
@@ -671,7 +671,7 @@ export const Terms = (): JSX.Element => {
           <S.StyledFullWidthList>
             <ListItem>
               <Typography variant={smallTextVariant}>
-                - By email: pawel.wojtasinski.1995@gmail.com,
+                - By email: tinvesta.contact@gmail.com,
               </Typography>
             </ListItem>
           </S.StyledFullWidthList>
