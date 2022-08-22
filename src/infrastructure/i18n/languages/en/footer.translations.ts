@@ -9,7 +9,7 @@ export default {
 
   // Second links section
   'component.footer.links.second.title': 'Get in touch',
-  'component.footer.links.second.option.one': 'pawel.wojtasinski.1995@gmail.com',
+  'component.footer.links.second.option.one': 'tinvesta.contact@gmail.com',
 
   // Third links section
   'component.footer.links.third.title': 'Follow me',
