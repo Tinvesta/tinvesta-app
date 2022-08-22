@@ -40,7 +40,7 @@ export const PrivacyPolicy = (): JSX.Element => {
             sites we own and operate.
           </Typography>
           <Typography variant={smallTextVariant}>
-            This policy is effective as of 10 June 2022 and was last updated on 10 June 2022.{' '}
+            This policy is effective as of 10 June 2022 and was last updated on 22 Aug 2022.{' '}
           </Typography>
           <Typography fontWeight={900} variant="h5">
             Information We Collect
@@ -315,7 +315,7 @@ export const PrivacyPolicy = (): JSX.Element => {
           <S.StyledFullWidthTypography variant={smallTextVariant}>
             Paweł Wojtasiński
             <br />
-            pawel.wojtasinski.1995@gmail.com
+            tinvesta.contact@gmail.com
           </S.StyledFullWidthTypography>
         </S.StyledContentWrapper>
       </S.StyledWrapper>
