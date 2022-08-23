@@ -1,10 +1,10 @@
 import isObject from 'is-object';
 import isString from 'is-string';
+import toCamelCase from 'to-camel-case';
 import { hasOwnProperty } from 'ts-has-own-property';
 import { objectKeys } from 'ts-object-keys';
 
 import { isArray } from '../../guards';
-import { toCamelCase } from '../to-camel-case/to-camel-case.function';
 
 const convertObjectKeys =
   (keyTransformFunction: (string: string) => string) => (object: unknown) => {

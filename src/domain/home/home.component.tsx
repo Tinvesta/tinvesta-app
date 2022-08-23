@@ -1,9 +1,10 @@
+import { useLocalStorage } from 'beautiful-react-hooks';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDeviceDetect } from 'use-device-detect';
 import { StringParam, useQueryParam } from 'use-query-params';
 
-import { useLocalStorage, useUser } from '@utils';
+import { useUser } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -17,7 +18,7 @@ export const Home = (): JSX.Element => {
   const { deviceData } = useDeviceDetect();
   const [refQueryParam] = useQueryParam('ref', StringParam);
   const [redirectQueryParam] = useQueryParam('redirect', StringParam);
-  const [userRefLocalStorage, setUserRefLocalStorage] = useLocalStorage(
+  const [userRefLocalStorage, setUserRefLocalStorage] = useLocalStorage<string>(
     USER_REF_LOCAL_STORAGE_KEY,
     '',
   );
