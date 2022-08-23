@@ -14,4 +14,5 @@ module.exports = {
   testMatch: ['**/?(*.)+(spec).+(ts|tsx)'],
   modulePathIgnorePatterns: ['/node_modules/', '/.next/'],
   setupFilesAfterEnv: ['<rootDir>/src/infrastructure/jest/setup-tests.ts'],
+  transformIgnorePatterns: ['node_modules/camelcase'],
 };
