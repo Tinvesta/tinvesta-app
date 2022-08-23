@@ -57,20 +57,20 @@ export const LoginModalContent = (): JSX.Element => {
         <Button
           color="secondary"
           disabled={!isOnline}
-          startIcon={<LinkedInIcon />}
-          variant="outlined"
-          onClick={loginIn('linkedin')}
-        >
-          {translations.componentHomeModalLoginViaLinkedinButton}
-        </Button>
-        <Button
-          color="secondary"
-          disabled={!isOnline}
           startIcon={<GitHubIcon />}
           variant="outlined"
           onClick={loginIn('github')}
         >
           {translations.componentHomeModalLoginViaGithubButton}
+        </Button>
+        <Button
+          color="secondary"
+          disabled={!isOnline}
+          startIcon={<LinkedInIcon />}
+          variant="outlined"
+          onClick={loginIn('linkedin')}
+        >
+          {translations.componentHomeModalLoginViaLinkedinButton}
         </Button>
       </S.StyledButtonsWrapper>
     </S.StyledWrapper>

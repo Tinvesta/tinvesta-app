@@ -9,7 +9,6 @@ export * from './convert-object-keys/convert-object-keys.function';
 export * from './create-emotion-cache/create-emotion-cache.function';
 export * from './create-stripe-instance/create-stripe-instance.function';
 export * from './object-to-query-string/object-to-query-string.function';
-export * from './async-try-catch-wrapper/async-try-catch-wrapper.function';
 export * from './get-available-languages/get-available-languages.function';
 export * from './compare-objects-by-value/compare-objects-by-value.function';
 export * from './parse-profile-avatar-url/parse-profile-avatar-url.function';
