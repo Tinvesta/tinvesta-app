@@ -8,12 +8,7 @@ import { useFilePicker } from 'use-file-picker';
 
 import { Modal } from '@ui';
 
-import {
-  asyncTryCatchWrapper,
-  replaceVariablesInTranslation,
-  useModal,
-  useTranslation,
-} from '@utils';
+import { replaceVariablesInTranslation, useModal, useTranslation } from '@utils';
 
 import { INDEXEDDB_TENSORFLOW_MODEL_STORAGE_KEY } from '@constants';
 
@@ -65,7 +60,7 @@ const UploadImagesComponent = (
     toast.error(translations.componentUploadImagesErrorCompression);
   };
 
-  const compressAndSetImageSource = (file: File) => async () => {
+  const compressAndSetImageSource = async (file: File) => {
     const reader = new FileReader();
     const compressedFile = await imageCompression(file, {
       useWebWorker: true,
@@ -149,7 +144,11 @@ const UploadImagesComponent = (
       return;
     }
 
-    asyncTryCatchWrapper(compressAndSetImageSource(firstFile), onCompressAndSetImageSourceError);
+    try {
+      await compressAndSetImageSource(firstFile);
+    } catch {
+      onCompressAndSetImageSourceError();
+    }
   };
 
   useEffect(() => {
