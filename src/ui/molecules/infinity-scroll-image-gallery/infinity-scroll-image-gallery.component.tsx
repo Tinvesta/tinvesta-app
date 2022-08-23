@@ -1,9 +1,8 @@
+import { useGlobalEvent } from 'beautiful-react-hooks';
 import { debounce } from 'debounce';
 import { useState } from 'react';
 
 import { Loading } from '@ui';
-
-import { useEventListener } from '@utils';
 
 import S from './infinity-scroll-image-gallery.styles';
 import { IInfinityScrollImageGalleryProps } from './infinity-scroll-image-gallery.types';
@@ -35,7 +34,9 @@ export const InfinityScrollImageGallery = ({
     }
   }, 500);
 
-  useEventListener('scroll', handleScroll, true);
+  const onGlobalScroll = useGlobalEvent('scroll', { passive: true });
+
+  onGlobalScroll(handleScroll);
 
   return (
     <S.StyledWrapper>
