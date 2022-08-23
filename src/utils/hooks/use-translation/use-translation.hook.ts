@@ -1,4 +1,6 @@
-import { toCamelCase, useLocale } from '@utils';
+import toCamelCase from 'camelcase';
+
+import { useLocale } from '@utils';
 
 import { TMessages } from './use-translation.types';
 

@@ -1,9 +1,7 @@
 export * from './truncate/truncate.function';
 export * from './send-email/send-email.function';
 export * from './count-words/count-words.function';
-export * from './to-camel-case/to-camel-case.function';
 export * from './base64-to-file/base64-to-file.function';
-export * from './string-to-words/string-to-words.function';
 export * from './is-startup-profile/is-startup-profile.function';
 export * from './convert-object-keys/convert-object-keys.function';
 export * from './create-emotion-cache/create-emotion-cache.function';
@@ -12,7 +10,6 @@ export * from './object-to-query-string/object-to-query-string.function';
 export * from './get-available-languages/get-available-languages.function';
 export * from './compare-objects-by-value/compare-objects-by-value.function';
 export * from './parse-profile-avatar-url/parse-profile-avatar-url.function';
-export * from './string-array-to-lower-case/string-array-to-lower-case.function';
 export * from './get-file-extension-from-base64/get-file-extension-from-base64.function';
 export * from './replace-variables-in-translation/replace-variables-in-translation.function';
 export * from './map-team-sizes-to-dropdown-options/map-team-sizes-to-dropdown-options.function';
