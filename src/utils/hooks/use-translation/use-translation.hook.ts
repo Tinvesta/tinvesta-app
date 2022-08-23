@@ -1,4 +1,4 @@
-import toCamelCase from 'camelcase';
+import toCamelCase from 'to-camel-case';
 
 import { useLocale } from '@utils';
 
