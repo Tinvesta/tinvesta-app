@@ -12,7 +12,7 @@ const StyledAsideWrapper = styled.aside`
   max-width: 150px;
   flex-direction: column;
   justify-content: space-between;
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.background.paper};
 `;
 
 const StyledAsideBottomContentWrapper = styled.div`
@@ -95,7 +95,7 @@ const StyledMenuItem = styled.a<{ active: boolean }>`
       left: inherit;
       right: 0;
       top: -30px;
-      background-color: ${theme.palette.primary.main};
+      background-color: ${theme.palette.background.paper};
     }
 
     &::after {
@@ -111,7 +111,7 @@ const StyledMenuItem = styled.a<{ active: boolean }>`
       right: 0;
       top: inherit;
       bottom: -30px;
-      background-color: ${theme.palette.primary.main};
+      background-color: ${theme.palette.background.paper};
     }
   `}
 `;

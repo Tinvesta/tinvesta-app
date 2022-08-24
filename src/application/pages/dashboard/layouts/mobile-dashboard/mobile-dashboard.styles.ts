@@ -18,7 +18,7 @@ const StyledBottomNavigation = styled(BottomNavigation)`
   max-height: 70px;
   min-height: 70px;
   overflow: hidden;
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.background.paper};
 
   ${respondToMax.sm`
     max-height: 60px;
@@ -38,7 +38,7 @@ const StyledTopNavigation = styled.nav`
   align-items: center;
   justify-content: space-between;
   padding: ${({ theme }) => theme.spacing(0, 4)};
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.background.paper};
 
   ${({ theme }) => respondToMax.sm`
     max-height: 60px;
