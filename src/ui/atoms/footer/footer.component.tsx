@@ -37,7 +37,7 @@ export const Footer = (): JSX.Element => {
                   alt="Tinvesta"
                   height={50}
                   objectFit="fill"
-                  src="/images/brandmark-transparent-white.png"
+                  src="/images/brandmark-transparent-black.png"
                   width={50}
                 />
               </span>
@@ -119,7 +119,7 @@ export const Footer = (): JSX.Element => {
                   alt="Tinvesta"
                   height={50}
                   objectFit="fill"
-                  src="/images/brandmark-transparent-white.png"
+                  src="/images/brandmark-transparent-black.png"
                   width={50}
                 />
               </span>

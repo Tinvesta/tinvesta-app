@@ -23,7 +23,7 @@ export const HouseRulesAgreementsContent = (): JSX.Element => {
             alt="Tinvesta"
             height={deviceData.isSmallerThanXS ? 50 : 60}
             objectFit="scale-down"
-            src="/images/brandmark-transparent-white.png"
+            src="/images/brandmark-transparent-black.png"
             width={deviceData.isSmallerThanXS ? 50 : 60}
           />
           <Typography fontWeight={900} variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>

@@ -63,7 +63,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
               color="secondary"
               disabled={!isOnline}
               size="large"
-              variant="contained"
+              variant="outlined"
               onClick={onSignInButtonClick}
             >
               {translations.componentHomeButtonLabel}

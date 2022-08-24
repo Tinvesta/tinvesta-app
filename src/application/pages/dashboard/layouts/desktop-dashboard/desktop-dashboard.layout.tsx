@@ -43,7 +43,7 @@ export const DesktopDashboardLayout = ({ children }: IDesktopDashboardLayoutProp
                 alt="Tinvesta"
                 height={50}
                 objectFit="fill"
-                src="/images/brandmark-transparent-white.png"
+                src="/images/brandmark-transparent-black.png"
                 style={{ cursor: 'pointer' }}
                 width={50}
               />

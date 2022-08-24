@@ -57,8 +57,8 @@ export const darkTheme = createTheme({
     },
     warning: color.yellow,
     background: {
-      paper: color.black[500],
-      default: color.black[700],
+      paper: color.black[600],
+      default: color.black[500],
     },
     text: {
       primary: color.black[200],

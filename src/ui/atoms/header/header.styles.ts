@@ -5,7 +5,7 @@ import { respondToMax } from '@infrastructure';
 const StyledWrapper = styled.div`
   width: 100%;
   height: ${({ theme }) => theme.spacing(15)};
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.background.paper};
 
   ${({ theme }) => respondToMax.md`
     height: ${theme.spacing(12)};

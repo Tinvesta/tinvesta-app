@@ -81,7 +81,7 @@ export const Header = ({
             alt="Tinvesta"
             height={imageSize}
             objectFit="fill"
-            src="/images/brandmark-transparent-white.png"
+            src="/images/brandmark-transparent-black.png"
             width={imageSize}
           />
         </S.StyledLogoWrapper>
@@ -90,7 +90,7 @@ export const Header = ({
             color="secondary"
             disabled={disableLoginLogoutButton || !isOnline}
             size={buttonSize}
-            variant="contained"
+            variant="outlined"
             onClick={openLoginModal}
           >
             {translations.componentFooterButtonLogin}
@@ -100,7 +100,7 @@ export const Header = ({
             color="secondary"
             disabled={disableLoginLogoutButton || !isOnline}
             size={buttonSize}
-            variant="contained"
+            variant="outlined"
             onClick={logout}
           >
             {translations.componentFooterButtonLogout}

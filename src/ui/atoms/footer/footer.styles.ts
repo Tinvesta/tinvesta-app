@@ -9,7 +9,7 @@ const StyledWrapper = styled.div`
   position: relative;
   align-items: center;
   justify-content: center;
-  background-color: ${({ theme }) => theme.palette.primary.main};
+  background-color: ${({ theme }) => theme.palette.background.paper};
 `;
 
 const StyledWidthContainer = styled.div`

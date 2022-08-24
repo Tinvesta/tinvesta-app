@@ -51,7 +51,7 @@ export const MobileDashboardLayout = ({ children }: IMobileDashboardLayoutProps)
               alt="Tinvesta"
               height={imageSize}
               objectFit="fill"
-              src="/images/brandmark-transparent-white.png"
+              src="/images/brandmark-transparent-black.png"
               width={imageSize}
             />
           </S.StyledLogoWrapper>

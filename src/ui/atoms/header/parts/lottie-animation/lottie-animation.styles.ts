@@ -9,6 +9,10 @@ const StyledWrapper = styled.div`
   cursor: pointer;
   position: relative;
 
+  path {
+    fill: ${({ theme }) => theme.palette.secondary.main} !important;
+  }
+
   ${respondToMax.md`
     width: 65px;
     height: 65px;
