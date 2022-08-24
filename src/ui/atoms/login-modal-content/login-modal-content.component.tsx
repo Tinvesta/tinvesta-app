@@ -32,8 +32,8 @@ export const LoginModalContent = (): JSX.Element => {
 
   const parsedModalInfo = replaceVariablesInTranslation(
     translations.componentHomeModalInfo,
-    `<a href="${ERoutes.PRIVACY_POLICY}" style="text-decoration:none;color:#EAEAEA;font-weight:900;border-bottom:1px solid;">${translations.componentHomeModalPrivacyAndPolicy}</a>`,
-    `<a href="${ERoutes.TERMS}" style="text-decoration:none;color:#EAEAEA;font-weight:900;border-bottom:1px solid;">${translations.componentHomeModalTermsAndConditions}</a>`,
+    `<a href="${ERoutes.PRIVACY_POLICY}" style="text-decoration:none;color:#1F1F1F;font-weight:900;border-bottom:1px solid;">${translations.componentHomeModalPrivacyAndPolicy}</a>`,
+    `<a href="${ERoutes.TERMS}" style="text-decoration:none;color:#1F1F1F;font-weight:900;border-bottom:1px solid;">${translations.componentHomeModalTermsAndConditions}</a>`,
   );
 
   return (

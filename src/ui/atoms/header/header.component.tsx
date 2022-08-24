@@ -90,7 +90,7 @@ export const Header = ({
             color="secondary"
             disabled={disableLoginLogoutButton || !isOnline}
             size={buttonSize}
-            variant="outlined"
+            variant="contained"
             onClick={openLoginModal}
           >
             {translations.componentFooterButtonLogin}
@@ -100,7 +100,7 @@ export const Header = ({
             color="secondary"
             disabled={disableLoginLogoutButton || !isOnline}
             size={buttonSize}
-            variant="outlined"
+            variant="contained"
             onClick={logout}
           >
             {translations.componentFooterButtonLogout}
