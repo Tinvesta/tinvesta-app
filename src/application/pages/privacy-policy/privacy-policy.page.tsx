@@ -1,8 +1,13 @@
 import { NextSeo } from 'next-seo';
-
-import { PrivacyPolicy } from '@domain';
+import dynamic from 'next/dynamic';
 
 import { CenterBlockLayout } from '@ui';
+
+const PrivacyPolicy = dynamic<{}>(() =>
+  import('../../../domain/privacy-policy/privacy-policy.component').then(
+    (_module) => _module.PrivacyPolicy,
+  ),
+);
 
 export const PrivacyPolicyPage = (): JSX.Element => (
   <CenterBlockLayout>
