@@ -171,7 +171,7 @@ const StyledAvatarIconButtonHover = styled(IconButton)`
   cursor: pointer;
   position: absolute;
   transition: all 250ms ease-in-out;
-  background-color: ${({ theme }) => theme.palette.info.main};
+  background-color: ${({ theme }) => theme.palette.info.dark};
 `;
 
 const S = {
