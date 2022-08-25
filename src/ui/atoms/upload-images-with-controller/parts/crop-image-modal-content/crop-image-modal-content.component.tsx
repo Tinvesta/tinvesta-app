@@ -40,7 +40,7 @@ export const CropImageModalContent = ({
         width={400}
       />
       <Button
-        color="secondary"
+        color="info"
         fullWidth={deviceData.isSmallerThanXS}
         size={deviceData.isSmallerThanXS ? 'small' : 'medium'}
         sx={{ minWidth: '150px' }}

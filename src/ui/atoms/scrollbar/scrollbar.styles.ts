@@ -4,12 +4,12 @@ import { respondToMax } from '@infrastructure';
 
 const StyledThumbHorizontal = styled.div`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-  background-color: ${({ theme }) => theme.palette.secondary.main};
+  background-color: ${({ theme }) => theme.palette.info.main};
 `;
 
 const StyledThumbVertical = styled.div`
   border-radius: ${({ theme }) => theme.shape.borderRadius}px;
-  background-color: ${({ theme }) => theme.palette.secondary.main};
+  background-color: ${({ theme }) => theme.palette.info.main};
 `;
 
 const StyledTrackHorizontal = styled.div`

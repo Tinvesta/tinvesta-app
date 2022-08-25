@@ -96,7 +96,7 @@ const FeedbackFormComponent = ({
             <Grid item xs={6}>
               <LoadingButton
                 fullWidth
-                color="secondary"
+                color="info"
                 disabled={!isDirty}
                 loading={isLoading}
                 size={buttonSize}

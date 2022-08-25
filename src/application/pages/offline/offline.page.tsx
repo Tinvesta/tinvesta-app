@@ -27,7 +27,7 @@ export const OfflinePage = (): JSX.Element => {
         title="Tinvesta | Offline"
       />
       <Button
-        color="secondary"
+        color="info"
         size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
         variant="contained"
         onClick={backToHome}

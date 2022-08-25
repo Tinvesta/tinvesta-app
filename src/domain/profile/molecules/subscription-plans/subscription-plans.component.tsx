@@ -119,11 +119,11 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                 </span>
                 {showSubscribeButton && (
                   <S.StyledSubscriptionPaperButton
-                    color="secondary"
+                    color="info"
                     endIcon={<ArrowForwardIcon />}
                     loading={isLoading || isSubscriptionActionLoading}
                     size={buttonSize}
-                    variant="outlined"
+                    variant="contained"
                     onClick={processSubscription(_plan.id)}
                   >
                     {
@@ -135,11 +135,11 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
                 )}
                 {showManageSubscriptionButton && (
                   <S.StyledSubscriptionPaperButton
-                    color="secondary"
+                    color="info"
                     endIcon={<ArrowForwardIcon />}
                     loading={isLoading || isStripePortalActionLoading}
                     size={buttonSize}
-                    variant="outlined"
+                    variant="contained"
                     onClick={loadStripePortal}
                   >
                     {translations.componentDashboardSubscriptionManageButton}

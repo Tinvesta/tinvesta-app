@@ -70,7 +70,7 @@ const DesktopOnboardingFormLayoutComponent = ({
                   <Grid item xs={3}>
                     <LoadingButton
                       fullWidth
-                      color="secondary"
+                      color="info"
                       disabled={!isOnline}
                       loading={isLoading}
                       size="large"

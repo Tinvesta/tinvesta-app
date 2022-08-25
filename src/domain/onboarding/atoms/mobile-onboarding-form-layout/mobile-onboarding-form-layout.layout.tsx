@@ -74,7 +74,7 @@ const MobileOnboardingFormLayoutComponent = ({
               <Grid item marginTop={deviceData.isSmallerThanXS ? 4 : 5} xs={12}>
                 <LoadingButton
                   fullWidth
-                  color="secondary"
+                  color="info"
                   disabled={!isOnline}
                   loading={isLoading}
                   size={deviceData.isSmallerThanXS ? 'medium' : 'large'}

@@ -60,7 +60,7 @@ export const ConfirmationModal = ({
             {confirmationText && (
               <Button
                 fullWidth
-                color="secondary"
+                color="info"
                 size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
                 variant="contained"
                 {...confirmationButtonProps}
