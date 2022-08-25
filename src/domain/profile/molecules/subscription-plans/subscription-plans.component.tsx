@@ -86,7 +86,7 @@ export const SubscriptionPlans = ({ plans }: ISubscriptionPlansProps): JSX.Eleme
           {subscriptionBenefits.map((_subscriptionBenefit) => (
             <ListItem key={_subscriptionBenefit}>
               <ListItemAvatar>
-                <StarIcon />
+                <StarIcon color="warning" />
               </ListItemAvatar>
               <ListItemText>
                 {replaceVariablesInTranslation(_subscriptionBenefit, DISCOVER_LIKES_LIMIT)}
