@@ -1,4 +1,5 @@
 import { ThemeOptions, createTheme } from '@mui/material';
+import { green } from '@mui/material/colors';
 
 import { color } from '@infrastructure/styles/variables';
 
@@ -45,17 +46,15 @@ const defaultThemeConfig: ThemeOptions = {
 export const darkTheme = createTheme({
   palette: {
     grey: color.gray,
-    error: color.red,
     primary: {
       ...color.black,
       main: color.black[500],
     },
-    success: color.green,
+    success: green,
     secondary: {
       ...color.gray,
       main: color.gray[500],
     },
-    warning: color.yellow,
     background: {
       paper: color.black[500],
       default: color.black[700],
@@ -72,7 +71,6 @@ export const darkTheme = createTheme({
     action: {
       selectedOpacity: 0.5,
     },
-    info: color.blue,
     mode: 'dark',
     divider: color.black[400],
   },

@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+import { blue, green, red, yellow } from '@mui/material/colors';
 import { ToastContainer } from 'react-toastify';
 
 import { darkTheme, respondToMax } from '@infrastructure';
@@ -52,11 +53,11 @@ const StyledToastContainer = styled(ToastContainer)`
       background-color: ${color.gray[200]};
 
       .Toastify__progress-bar {
-        background-color: ${color.red[700]};
+        background-color: ${red[700]};
       }
 
       .Toastify__toast-icon > svg {
-        fill: ${color.red[700]};
+        fill: ${red[700]};
       }
     }
 
@@ -64,11 +65,11 @@ const StyledToastContainer = styled(ToastContainer)`
       background-color: ${color.gray[200]};
 
       .Toastify__progress-bar {
-        background-color: ${color.blue[900]};
+        background-color: ${blue[700]};
       }
 
       .Toastify__toast-icon > svg {
-        fill: ${color.blue[900]};
+        fill: ${blue[700]};
       }
     }
 
@@ -76,11 +77,11 @@ const StyledToastContainer = styled(ToastContainer)`
       background-color: ${color.gray[200]};
 
       .Toastify__progress-bar {
-        background-color: ${color.yellow[700]};
+        background-color: ${yellow[700]};
       }
 
       .Toastify__toast-icon > svg {
-        fill: ${color.yellow[700]};
+        fill: ${yellow[700]};
       }
     }
 
@@ -88,11 +89,11 @@ const StyledToastContainer = styled(ToastContainer)`
       background-color: ${color.gray[200]};
 
       .Toastify__progress-bar {
-        background-color: ${color.green[600]};
+        background-color: ${green[700]};
       }
 
       .Toastify__toast-icon > svg {
-        fill: ${color.green[600]};
+        fill: ${green[700]};
       }
     }
 

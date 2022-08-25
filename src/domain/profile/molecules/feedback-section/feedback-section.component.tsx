@@ -19,13 +19,19 @@ export const FeedbackSection = (): JSX.Element => {
     defaultValues: defaultFormFieldsValues,
   });
 
-  const onSubmit = (data: IFeedbackFormFieldsData) =>
+  const onSubmit = (data: IFeedbackFormFieldsData) => {
+    toast.info('Pogchamp');
+    toast.error('Pogchamp');
+    toast.success('Pogchamp');
+    toast.warning('Pogchamp');
+
     mutateAsyncFeedbackAction(data)
       .then(() => {
         reset(defaultFormFieldsValues);
         toast.success(translations.componentDashboardFeedbackFormMessagesSuccess);
       })
       .catch(() => toast.error(translations.commonErrorsSomethingWentWrong));
+  };
 
   const handleResetButtonClick = () => reset(defaultFormFieldsValues);
 
