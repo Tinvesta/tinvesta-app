@@ -55,7 +55,7 @@ const StyledLottieAnimationWrapper = styled.div`
   max-height: 700px;
   position: relative;
 
-  ${respondToMax.sm`
+  ${respondToMax.md`
     min-height: 640px;
     max-height: 640px;
   `}
