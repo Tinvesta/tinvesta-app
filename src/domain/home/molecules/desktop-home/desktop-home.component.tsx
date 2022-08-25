@@ -60,7 +60,7 @@ export const DesktopHome = ({ clientTypeId, isSignedIn }: IDesktopHomeProps): JS
               {translations.componentHomeSubheader}
             </S.StyledSubheader>
             <Button
-              color="secondary"
+              color="info"
               disabled={!isOnline}
               size="large"
               variant="contained"

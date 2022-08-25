@@ -514,7 +514,7 @@ const InvestorEditProfileFormComponent = ({
             <Grid item xs={deviceData.isSmallerThanSM ? 6 : 3}>
               <LoadingButton
                 fullWidth
-                color="secondary"
+                color="info"
                 disabled={!isDirty}
                 loading={isLoading}
                 size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
