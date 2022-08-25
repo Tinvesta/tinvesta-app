@@ -1,8 +1,11 @@
 import { NextSeo } from 'next-seo';
-
-import { Terms } from '@domain';
+import dynamic from 'next/dynamic';
 
 import { CenterBlockLayout } from '@ui';
+
+const Terms = dynamic<{}>(() =>
+  import('../../../domain/terms/terms.component').then((_module) => _module.Terms),
+);
 
 export const TermsPage = (): JSX.Element => (
   <CenterBlockLayout>
