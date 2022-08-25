@@ -84,21 +84,21 @@ export const Footer = (): JSX.Element => {
               {translations.componentFooterLinksThirdTitle}
             </S.StyledFooterLinksTitle>
             <S.StyledExternalLink
-              href="https://github.com/playerony"
-              rel="external nofollow noopener noreferrer"
-              target="_blank"
-            >
-              <S.StyledFooterLinksLink variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
-                {translations.componentFooterLinksThirdOptionOne}
-              </S.StyledFooterLinksLink>
-            </S.StyledExternalLink>
-            <S.StyledExternalLink
               href="https://twitter.com/WojtasinskiPawe"
               rel="external nofollow noopener noreferrer"
               target="_blank"
             >
               <S.StyledFooterLinksLink variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
                 {translations.componentFooterLinksThirdOptionTwo}
+              </S.StyledFooterLinksLink>
+            </S.StyledExternalLink>
+            <S.StyledExternalLink
+              href="https://github.com/playerony"
+              rel="external nofollow noopener noreferrer"
+              target="_blank"
+            >
+              <S.StyledFooterLinksLink variant={deviceData.isSmallerThanXS ? 'body2' : 'body1'}>
+                {translations.componentFooterLinksThirdOptionOne}
               </S.StyledFooterLinksLink>
             </S.StyledExternalLink>
             <S.StyledExternalLink

@@ -57,7 +57,7 @@ const StyledFooterContainer = styled.div`
 const StyledFooterLeft = styled.div`
   display: flex;
   flex-direction: column;
-  gap: ${({ theme }) => theme.spacing(11)};
+  gap: ${({ theme }) => theme.spacing(2)};
 
   ${respondToMax.md`
     gap: 0;
