@@ -27,7 +27,7 @@ export const NotFoundPage = (): JSX.Element => {
         title="Tinvesta | Not Found"
       />
       <Button
-        color="secondary"
+        color="info"
         size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
         variant="contained"
         onClick={backToHome}

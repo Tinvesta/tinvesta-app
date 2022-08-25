@@ -27,7 +27,7 @@ export const InternalServerErrorPage = (): JSX.Element => {
         title="Tinvesta | Internal Server Error"
       />
       <Button
-        color="secondary"
+        color="info"
         size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
         variant="contained"
         onClick={backToHome}

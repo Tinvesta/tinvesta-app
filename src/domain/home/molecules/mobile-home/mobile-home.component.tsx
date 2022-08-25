@@ -66,7 +66,7 @@ export const MobileHome = ({ clientTypeId, isSignedIn }: IMobileHomeProps): JSX.
               {translations.componentHomeSubheader}
             </S.StyledSubheader>
             <Button
-              color="secondary"
+              color="info"
               disabled={!isOnline}
               size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
               variant="contained"

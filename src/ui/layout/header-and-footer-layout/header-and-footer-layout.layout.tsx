@@ -60,7 +60,7 @@ export const HeaderAndFooterLayout = ({
             initial={{ opacity: 0 }}
           >
             <Fab
-              color="secondary"
+              color="info"
               size={deviceData.isSmallerThanXS ? 'medium' : 'large'}
               onClick={scrollToTop}
             >

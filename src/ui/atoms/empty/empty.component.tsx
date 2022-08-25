@@ -26,7 +26,7 @@ const EmptyComponent = ({
         {label && <S.StyledTypography variant={typographyVariant}>{label}</S.StyledTypography>}
         {actionButtonProps && (
           <Link passHref href={actionButtonProps.linkTo}>
-            <S.StyledActionButton color="secondary" size={buttonSize} variant="contained">
+            <S.StyledActionButton color="info" size={buttonSize} variant="contained">
               {actionButtonProps.label}
             </S.StyledActionButton>
           </Link>
