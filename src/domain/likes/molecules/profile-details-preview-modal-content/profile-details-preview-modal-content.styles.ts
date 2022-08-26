@@ -1,5 +1,6 @@
 import styled from '@emotion/styled';
 import { CancelOutlined as CancelOutlinedIcon } from '@mui/icons-material';
+import { Button } from '@mui/material';
 
 import { respondToMax } from '@infrastructure';
 
@@ -63,19 +64,10 @@ const StyledActionsWrapper = styled.div`
   }
 `;
 
-const StyledActionButton = styled.div`
+const StyledActionButton = styled(Button)`
   width: 50%;
-  height: 100%;
-  display: flex;
-  cursor: pointer;
-  text-align: center;
-  align-items: center;
-  justify-content: center;
-  transition: all 250ms ease-in-out;
-
-  &:hover {
-    background-color: ${({ theme }) => theme.palette.primary.dark};
-  }
+  border-radius: 0;
+  height: 100% !important;
 `;
 
 const S = {

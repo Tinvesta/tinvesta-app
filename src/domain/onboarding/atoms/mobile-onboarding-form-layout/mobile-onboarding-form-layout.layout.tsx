@@ -47,7 +47,7 @@ const MobileOnboardingFormLayoutComponent = ({
         src="/images/background/mobile-onboarding.svg"
       />
       {currentStep !== undefined && (
-        <S.StyledLinearProgress color="inherit" value={progress} variant="determinate" />
+        <S.StyledLinearProgress color="info" value={progress} variant="determinate" />
       )}
       <S.StyledContentWrapper>
         <S.StyledBackButtonWrapper>
