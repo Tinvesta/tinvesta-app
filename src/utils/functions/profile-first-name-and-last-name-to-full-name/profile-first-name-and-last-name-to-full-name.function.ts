@@ -1,6 +1,8 @@
 import { IProfileDetails } from '@interfaces';
 
-export const profileFirstNameAndLastNameToFullName = (profileDetails: IProfileDetails) => {
+export const profileFirstNameAndLastNameToFullName = (
+  profileDetails: Pick<IProfileDetails, 'firstName' | 'lastName'>,
+) => {
   if (!profileDetails || !profileDetails.firstName) {
     return '';
   }

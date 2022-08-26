@@ -102,7 +102,9 @@ export interface ISubscriptionPlan {
 export interface IPair {
   avatars: string[];
   companyName: string;
+  firstName: string;
   id: string;
+  lastName: string;
 }
 
 export interface ILike extends IPair {

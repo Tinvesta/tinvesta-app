@@ -33,6 +33,7 @@ import {
   mapStartupProfileCreatorTypesToDropdownOptions,
   mapStartupSectorsToDropdownOptions,
   mapTeamSizesToDropdownOptions,
+  profileFirstNameAndLastNameToFullName,
   useTranslation,
   useUser,
 } from '@utils';
@@ -43,7 +44,7 @@ import { ProfileDetailsPreviewLabel } from './parts';
 import { translationStrings } from './profile-details-preview.defaults';
 import S from './profile-details-preview.styles';
 import { IProfileDetailsPreviewProps } from './profile-details-preview.types';
-import { profileFirstNameAndLastNameToFullName, transformNumberArrayToChips } from './utils';
+import { transformNumberArrayToChips } from './utils';
 
 const ProfileDetailsPreviewComponent = ({
   focusMarkets,

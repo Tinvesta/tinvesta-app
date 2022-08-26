@@ -22,7 +22,6 @@ describe('profileFirstNameAndLastNameToFullName function', () => {
 
   it('should combine firstName and lastName into one thing', () => {
     expect(
-      // @ts-expect-error
       profileFirstNameAndLastNameToFullName({ firstName: 'FIRST_NAME', lastName: 'LAST_NAME' }),
     ).toBe('FIRST_NAME LAST_NAME');
   });
