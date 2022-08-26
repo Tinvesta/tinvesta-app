@@ -34,10 +34,10 @@ export const ProfileDetailsPreviewModalContent = ({
         profileDetails={selectedProfile}
       />
       <S.StyledActionsWrapper>
-        <S.StyledActionButton onClick={onRemoveMatchClick}>
+        <S.StyledActionButton color="error" onClick={onRemoveMatchClick}>
           {translations.componentDashboardMatchesProfileDetailsPreviewModalContentRemoveMatchButton}
         </S.StyledActionButton>
-        <S.StyledActionButton onClick={handleSendEmail}>
+        <S.StyledActionButton color="secondary" onClick={handleSendEmail}>
           {translations.componentDashboardMatchesProfileDetailsPreviewModalContentSendEmailButton}
         </S.StyledActionButton>
       </S.StyledActionsWrapper>
