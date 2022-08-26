@@ -33,10 +33,10 @@ export const ProfileDetailsPreviewModalContent = ({
         profileDetails={selectedProfile}
       />
       <S.StyledActionsWrapper>
-        <S.StyledActionButton onClick={handleVote(false)}>
+        <S.StyledActionButton color="error" onClick={handleVote(false)}>
           {translations.componentDashboardLikesProfileDetailsPreviewModalContentDislikeButton}
         </S.StyledActionButton>
-        <S.StyledActionButton onClick={handleVote(true)}>
+        <S.StyledActionButton color="success" onClick={handleVote(true)}>
           {translations.componentDashboardLikesProfileDetailsPreviewModalContentLikeButton}
         </S.StyledActionButton>
       </S.StyledActionsWrapper>
