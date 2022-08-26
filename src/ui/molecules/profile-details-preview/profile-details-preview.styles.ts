@@ -44,6 +44,10 @@ const StyledWrapper = styled.div<{ swiperPaginationBullets: number }>`
   }
 `;
 
+const StyledSwiperWrapper = styled.div`
+  position: relative;
+`;
+
 const StyledImageWrapper = styled.div`
   width: 100%;
   height: 650px;
@@ -80,6 +84,7 @@ const StyledButtonEllipsis = styled.span`
 const S = {
   StyledWrapper,
   StyledImageWrapper,
+  StyledSwiperWrapper,
   StyledButtonEllipsis,
   StyledContentWrapper,
 };
