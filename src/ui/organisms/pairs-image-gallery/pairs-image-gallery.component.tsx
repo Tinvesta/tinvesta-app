@@ -4,7 +4,7 @@ import { useDeviceDetect } from 'use-device-detect';
 
 import { InfinityScrollImageGallery, Empty, Loading } from '@ui';
 
-import { useTranslation } from '@utils';
+import { profileFirstNameAndLastNameToFullName, useTranslation } from '@utils';
 
 import { ERoutes } from '@enums';
 
@@ -57,24 +57,28 @@ export const PairsImageGallery = <TItem extends IPair>({
     >
       <S.StyledGridWrapper>
         {Children.toArray(
-          items.map((_item) => (
-            <S.StyledImageWrapper key={_item.avatars[0]} onClick={handleRecordClick(_item)}>
-              <Image
-                alt={translations.commonDefaultImageAlt}
-                height={600}
-                layout="responsive"
-                src={_item.avatars[0]}
-                width={400}
-              />
-              <S.StyledTypography
-                fontWeight={900}
-                variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
-              >
-                {_item.companyName}
-              </S.StyledTypography>
-              <S.StyledGradient />
-            </S.StyledImageWrapper>
-          )),
+          items.map((_item) => {
+            const fullName = profileFirstNameAndLastNameToFullName(_item);
+
+            return (
+              <S.StyledImageWrapper key={_item.avatars[0]} onClick={handleRecordClick(_item)}>
+                <Image
+                  alt={translations.commonDefaultImageAlt}
+                  height={600}
+                  layout="responsive"
+                  src={_item.avatars[0]}
+                  width={400}
+                />
+                <S.StyledTypography
+                  fontWeight={900}
+                  variant={deviceData.isSmallerThanXS ? 'h6' : 'h5'}
+                >
+                  {_item.companyName || fullName}
+                </S.StyledTypography>
+                <S.StyledGradient />
+              </S.StyledImageWrapper>
+            );
+          }),
         )}
       </S.StyledGridWrapper>
     </InfinityScrollImageGallery>
