@@ -15,6 +15,7 @@ import {
   ScreenRotation as ScreenRotationIcon,
 } from '@mui/icons-material';
 import { Button } from '@mui/material';
+import dynamic from 'next/dynamic';
 import Image from 'next/image';
 import { memo } from 'react';
 import { useQuery } from 'react-query';
@@ -45,6 +46,12 @@ import { translationStrings } from './profile-details-preview.defaults';
 import S from './profile-details-preview.styles';
 import { IProfileDetailsPreviewProps } from './profile-details-preview.types';
 import { transformNumberArrayToChips } from './utils';
+
+const LottieAnimation = dynamic<{}>(() =>
+  import('./parts/lottie-animation/lottie-animation.component').then(
+    (_module) => _module.LottieAnimation,
+  ),
+);
 
 const ProfileDetailsPreviewComponent = ({
   focusMarkets,
@@ -170,26 +177,29 @@ const ProfileDetailsPreviewComponent = ({
   return (
     <S.StyledWrapper swiperPaginationBullets={mergedProfileDetails.avatars.length}>
       <Scrollbar height="100%">
-        <Swiper
-          grabCursor
-          navigation
-          touchMoveStopPropagation
-          modules={['keyboard', 'scrollbar', 'pagination', 'navigation']}
-          pagination={{ clickable: true }}
-        >
-          {mergedProfileDetails.avatars.map((_avatar) => (
-            <SwiperSlide key={_avatar}>
-              <S.StyledImageWrapper>
-                <Image
-                  alt={translations.commonDefaultImageAlt}
-                  layout="fill"
-                  objectFit="cover"
-                  src={_avatar}
-                />
-              </S.StyledImageWrapper>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+        <S.StyledSwiperWrapper>
+          <Swiper
+            grabCursor
+            navigation
+            touchMoveStopPropagation
+            modules={['keyboard', 'scrollbar', 'pagination', 'navigation']}
+            pagination={{ clickable: true }}
+          >
+            {mergedProfileDetails.avatars.map((_avatar) => (
+              <SwiperSlide key={_avatar}>
+                <S.StyledImageWrapper>
+                  <Image
+                    alt={translations.commonDefaultImageAlt}
+                    layout="fill"
+                    objectFit="cover"
+                    src={_avatar}
+                  />
+                </S.StyledImageWrapper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+          <LottieAnimation />
+        </S.StyledSwiperWrapper>
         <S.StyledContentWrapper>
           {isProfileDetailsActionLoading ? (
             <CenterBlockLayout>
