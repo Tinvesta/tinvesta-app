@@ -1,5 +1,5 @@
 import { memo } from 'react';
-import { Keyboard, Navigation, Pagination, Scrollbar } from 'swiper';
+import { Keyboard, Navigation, Scrollbar } from 'swiper';
 import 'swiper/css/bundle';
 import { Swiper as ReactSwiper } from 'swiper/react';
 
@@ -8,7 +8,6 @@ import { ISwiperProps, TSwiperModulesObject } from './swiper.types';
 const swiperModulesMapper: TSwiperModulesObject = {
   keyboard: Keyboard,
   scrollbar: Scrollbar,
-  pagination: Pagination,
   navigation: Navigation,
 };
 
