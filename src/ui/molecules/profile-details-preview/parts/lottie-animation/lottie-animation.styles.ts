@@ -10,7 +10,7 @@ const StyledWrapper = styled.div`
   position: absolute;
   border-radius: 100%;
   transform: translateX(50%);
-  bottom: -${({ theme }) => theme.spacing(2)};
+  bottom: ${({ theme }) => theme.spacing(4)};
   background-color: ${({ theme }) => theme.palette.secondary.main};
 
   ${respondToMax.md`
@@ -18,9 +18,15 @@ const StyledWrapper = styled.div`
     height: 35px;
   `}
 
-  ${respondToMax.sm`
+  ${({ theme }) => respondToMax.sm`
     width: 30px;
     height: 30px;
+    bottom: ${theme.spacing(3)};
+  `}
+
+  ${respondToMax.xs`
+    width: 25px;
+    height: 25px;
   `}
 `;
 
