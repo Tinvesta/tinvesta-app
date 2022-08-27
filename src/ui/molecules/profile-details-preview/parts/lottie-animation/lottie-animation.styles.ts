@@ -3,14 +3,14 @@ import styled from '@emotion/styled';
 import { respondToMax } from '@infrastructure';
 
 const StyledWrapper = styled.div`
+  right: 50%;
   width: 35px;
+  z-index: 20;
   height: 35px;
   position: absolute;
-  right: ${({ theme }) => theme.spacing(5)};
-  bottom: ${({ theme }) => theme.spacing(5)};
-  position: absolute;
-  z-index: 20;
   border-radius: 100%;
+  transform: translateX(50%);
+  bottom: ${({ theme }) => theme.spacing(4)};
   background-color: ${({ theme }) => theme.palette.secondary.main};
 
   ${respondToMax.md`
@@ -21,13 +21,12 @@ const StyledWrapper = styled.div`
   ${({ theme }) => respondToMax.sm`
     width: 30px;
     height: 30px;
-    right: ${theme.spacing(4)};
-    bottom: ${theme.spacing(4)};
+    bottom: ${theme.spacing(3)};
   `}
 
-  ${({ theme }) => respondToMax.xs`
-    right: ${theme.spacing(3)};
-    bottom: ${theme.spacing(3)};
+  ${respondToMax.xs`
+    width: 25px;
+    height: 25px;
   `}
 `;
 
