@@ -18,11 +18,11 @@ import {
 import { IMobileOnboardingStepEightInvestorProps } from './mobile-onboarding-step-eight-investor.types';
 
 export const MobileOnboardingStepEightInvestor = ({
-  investorDemandTypes,
-  teamSizes,
-  onBackButtonClick,
   defaultValues = defaultMobileOnboardingStepEightInvestorFormData,
+  investorDemandTypes,
+  onBackButtonClick,
   onContinueButtonClick,
+  teamSizes,
 }: IMobileOnboardingStepEightInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepEightInvestorData>({
     defaultValues,

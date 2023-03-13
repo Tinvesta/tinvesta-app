@@ -15,8 +15,8 @@ import { IMobileOnboardingStepOneProps } from './mobile-onboarding-step-one.type
 
 export const MobileOnboardingStepOne = ({
   defaultValues = defaultMobileOnboardingStepOneFormData,
-  onContinueButtonClick,
   onBackButtonClick,
+  onContinueButtonClick,
 }: IMobileOnboardingStepOneProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepOneData>({
     defaultValues,

@@ -6,9 +6,9 @@ import { Select } from '@ui';
 import { ISelectWithControllerProps } from './select-with-controller.types';
 
 export const SelectWithController = <TFieldValues,>({
-  selectProps,
   controllerProps,
   formControlProps = {},
+  selectProps,
 }: ISelectWithControllerProps<TFieldValues>): JSX.Element => (
   <Controller
     {...controllerProps}

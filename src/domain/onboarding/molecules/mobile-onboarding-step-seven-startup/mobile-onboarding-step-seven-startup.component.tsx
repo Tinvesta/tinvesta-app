@@ -18,11 +18,11 @@ import {
 import { IMobileOnboardingStepSevenStartupProps } from './mobile-onboarding-step-seven-startup.types';
 
 export const MobileOnboardingStepSevenStartup = ({
+  defaultValues = defaultMobileOnboardingStepSevenStartupFormData,
   focusMarkets,
   investmentSizes,
-  defaultValues = defaultMobileOnboardingStepSevenStartupFormData,
-  onContinueButtonClick,
   onBackButtonClick,
+  onContinueButtonClick,
 }: IMobileOnboardingStepSevenStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepSevenStartupData>({
     defaultValues,

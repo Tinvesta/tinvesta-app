@@ -23,14 +23,14 @@ import {
 import { IDesktopOnboardingStepThreeStartupProps } from './desktop-onboarding-step-three-startup.types';
 
 export const DesktopOnboardingStepThreeStartup = ({
+  defaultValues = defaultDesktopOnboardingStepThreeStartupFormData,
   focusMarkets,
   industrialSectors,
+  onBackButtonClick,
+  onContinueButtonClick,
   startupProfileCreatorTypes,
   startupSectors,
   teamSizes,
-  onBackButtonClick,
-  onContinueButtonClick,
-  defaultValues = defaultDesktopOnboardingStepThreeStartupFormData,
 }: IDesktopOnboardingStepThreeStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepThreeStartupData>({
     defaultValues,

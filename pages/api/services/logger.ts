@@ -18,7 +18,7 @@ const getLogger = () => {
       format.errors({ stack: true }),
       format.splat(),
       format.printf(
-        ({ level, message, label = process.env.NEXT_PUBLIC_APP_ENV, timestamp }) =>
+        ({ label = process.env.NEXT_PUBLIC_APP_ENV, level, message, timestamp }) =>
           `${timestamp} [${label}] ${level}: ${message}`,
       ),
     ),

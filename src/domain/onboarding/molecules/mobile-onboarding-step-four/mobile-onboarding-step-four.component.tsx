@@ -15,8 +15,8 @@ import { IMobileOnboardingStepFourProps } from './mobile-onboarding-step-four.ty
 
 export const MobileOnboardingStepFour = ({
   defaultValues = defaultMobileOnboardingStepFourFormData,
-  onContinueButtonClick,
   onBackButtonClick,
+  onContinueButtonClick,
 }: IMobileOnboardingStepFourProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepFourData>({
     defaultValues,

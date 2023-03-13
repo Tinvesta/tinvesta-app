@@ -14,9 +14,9 @@ import {
 import { IDesktopOnboardingStepFiveStartupProps } from './desktop-onboarding-step-five-startup.types';
 
 export const DesktopOnboardingStepFiveStartup = ({
+  defaultValues = defaultDesktopOnboardingStepFiveStartupFormData,
   onBackButtonClick,
   onContinueButtonClick,
-  defaultValues = defaultDesktopOnboardingStepFiveStartupFormData,
 }: IDesktopOnboardingStepFiveStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepFiveStartupData>({
     defaultValues,

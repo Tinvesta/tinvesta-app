@@ -18,10 +18,10 @@ import {
 import { IMobileOnboardingStepFiveInvestorProps } from './mobile-onboarding-step-five-investor.types';
 
 export const MobileOnboardingStepFiveInvestor = ({
+  defaultValues = defaultMobileOnboardingStepFiveInvestorFormData,
   focusMarkets,
   investorProfileTypes,
   onBackButtonClick,
-  defaultValues = defaultMobileOnboardingStepFiveInvestorFormData,
   onContinueButtonClick,
 }: IMobileOnboardingStepFiveInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepFiveInvestorData>({

@@ -22,9 +22,9 @@ export const DesktopOnboardingStepFourInvestor = ({
   defaultValues = defaultDesktopOnboardingStepFourInvestorFormData,
   investmentSizes,
   investmentStageTypes,
-  teamSizes,
   onBackButtonClick,
   onContinueButtonClick,
+  teamSizes,
 }: IDesktopOnboardingStepFourInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepFourInvestorData>({
     defaultValues,
