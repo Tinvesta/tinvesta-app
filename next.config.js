@@ -1,4 +1,4 @@
-const withPWA = require('next-pwa');
+const nextPwa = require('next-pwa');
 
 const ContentSecurityPolicy = `
   script-src * 'unsafe-inline' 'unsafe-eval' blob:;
@@ -43,15 +43,15 @@ const securityHeaders = [
   },
 ];
 
-module.exports = withPWA({
+const withPwa = nextPwa({
+  dest: 'public',
+  register: true,
+  skipWaiting: true,
+  disable: process.env.NEXT_PUBLIC_APP_ENV === 'local',
+});
+
+module.exports = withPwa({
   reactStrictMode: false,
-  experimental: {
-    esmExternals: false,
-  },
-  pwa: {
-    dest: 'public',
-    disable: process.env.NEXT_PUBLIC_APP_ENV === 'local',
-  },
   images: {
     domains: [
       'lh3.googleusercontent.com',
