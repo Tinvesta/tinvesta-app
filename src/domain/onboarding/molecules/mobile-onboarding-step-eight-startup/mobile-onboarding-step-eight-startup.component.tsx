@@ -19,9 +19,9 @@ import {
 import { IMobileOnboardingStepEightStartupProps } from './mobile-onboarding-step-eight-startup.types';
 
 export const MobileOnboardingStepEightStartup = ({
+  defaultValues = defaultMobileOnboardingStepEightStartupFormData,
   investmentStageTypes,
   onBackButtonClick,
-  defaultValues = defaultMobileOnboardingStepEightStartupFormData,
   onContinueButtonClick,
 }: IMobileOnboardingStepEightStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepEightStartupData>({

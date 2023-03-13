@@ -8,9 +8,9 @@ import { IConfirmationModalProps } from './confirmation-modal.types';
 
 export const ConfirmationModal = ({
   onCancel,
+  onClose,
   onConfirm,
   open,
-  onClose,
   options: {
     cancellationButtonProps,
     cancellationText,

@@ -15,8 +15,8 @@ import { IMobileOnboardingStepNineStartupProps } from './mobile-onboarding-step-
 
 export const MobileOnboardingStepNineStartup = ({
   defaultValues = defaultMobileOnboardingStepNineStartupFormData,
-  onContinueButtonClick,
   onBackButtonClick,
+  onContinueButtonClick,
 }: IMobileOnboardingStepNineStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepNineStartupData>({
     defaultValues,

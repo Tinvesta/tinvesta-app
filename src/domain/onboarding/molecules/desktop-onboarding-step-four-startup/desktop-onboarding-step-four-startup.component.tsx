@@ -20,11 +20,11 @@ import {
 import { IDesktopOnboardingStepFourStartupProps } from './desktop-onboarding-step-four-startup.types';
 
 export const DesktopOnboardingStepFourStartup = ({
+  defaultValues = defaultDesktopOnboardingStepFourStartupFormData,
   investmentSizes,
   investmentStageTypes,
   onBackButtonClick,
   onContinueButtonClick,
-  defaultValues = defaultDesktopOnboardingStepFourStartupFormData,
 }: IDesktopOnboardingStepFourStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepFourStartupData>({
     defaultValues,
