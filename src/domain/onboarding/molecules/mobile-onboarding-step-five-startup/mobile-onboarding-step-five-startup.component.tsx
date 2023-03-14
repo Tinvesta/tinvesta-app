@@ -18,11 +18,11 @@ import {
 import { IMobileOnboardingStepFiveStartupProps } from './mobile-onboarding-step-five-startup.types';
 
 export const MobileOnboardingStepFiveStartup = ({
+  defaultValues = defaultMobileOnboardingStepFiveStartupFormData,
+  onBackButtonClick,
+  onContinueButtonClick,
   startupProfileCreatorTypes,
   teamSizes,
-  onBackButtonClick,
-  defaultValues = defaultMobileOnboardingStepFiveStartupFormData,
-  onContinueButtonClick,
 }: IMobileOnboardingStepFiveStartupProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepFiveStartupData>({
     defaultValues,

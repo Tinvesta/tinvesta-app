@@ -22,13 +22,13 @@ import {
 import { IDesktopOnboardingStepThreeInvestorProps } from './desktop-onboarding-step-three-investor.types';
 
 export const DesktopOnboardingStepThreeInvestor = ({
+  defaultValues = defaultDesktopOnboardingStepThreeInvestorFormData,
   focusMarkets,
   industrialSectors,
   investorProfileTypes,
-  startupSectors,
   onBackButtonClick,
   onContinueButtonClick,
-  defaultValues = defaultDesktopOnboardingStepThreeInvestorFormData,
+  startupSectors,
 }: IDesktopOnboardingStepThreeInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepThreeInvestorData>({
     defaultValues,

@@ -21,8 +21,8 @@ import { IDesktopOnboardingStepTwoProps } from './desktop-onboarding-step-two.ty
 
 export const DesktopOnboardingStepTwo = ({
   clientTypes,
-  onBackButtonClick,
   defaultValues = defaultDesktopOnboardingStepTwoFormData,
+  onBackButtonClick,
   onContinueButtonClick,
 }: IDesktopOnboardingStepTwoProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepTwoData>({

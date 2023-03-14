@@ -20,10 +20,10 @@ import {
 import { IMobileOnboardingStepSixInvestorProps } from './mobile-onboarding-step-six-investor.types';
 
 export const MobileOnboardingStepSixInvestor = ({
-  industrialSectors,
   defaultValues = defaultMobileOnboardingStepSixInvestorFormData,
-  onContinueButtonClick,
+  industrialSectors,
   onBackButtonClick,
+  onContinueButtonClick,
   startupSectors,
 }: IMobileOnboardingStepSixInvestorProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepSixInvestorData>({

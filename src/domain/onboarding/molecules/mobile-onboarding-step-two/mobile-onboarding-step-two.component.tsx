@@ -23,8 +23,8 @@ import { IMobileOnboardingStepTwoProps } from './mobile-onboarding-step-two.type
 export const MobileOnboardingStepTwo = ({
   clientTypes,
   defaultValues = defaultMobileOnboardingStepTwoFormData,
-  onContinueButtonClick,
   onBackButtonClick,
+  onContinueButtonClick,
 }: IMobileOnboardingStepTwoProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IMobileOnboardingStepTwoData>({
     defaultValues,

@@ -22,8 +22,8 @@ import { IDesktopOnboardingStepOneProps } from './desktop-onboarding-step-one.ty
 
 export const DesktopOnboardingStepOne = ({
   defaultValues = defaultDesktopOnboardingStepOneFormData,
-  onContinueButtonClick,
   onBackButtonClick,
+  onContinueButtonClick,
 }: IDesktopOnboardingStepOneProps): JSX.Element => {
   const { control, handleSubmit } = useForm<IDesktopOnboardingStepOneData>({
     defaultValues,
