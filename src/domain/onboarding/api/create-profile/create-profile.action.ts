@@ -33,7 +33,6 @@ export const createProfileAction = async (
       // @ts-expect-error
       currentObject.teamSizeIds = [currentObject.teamSizeId];
 
-      // @ts-expect-error
       delete currentObject.teamSizeId;
     }
 
@@ -61,7 +60,6 @@ export const createProfileAction = async (
       // @ts-expect-error
       currentObject.imageKeys = result;
 
-      // @ts-expect-error
       delete currentObject.images;
     }
 

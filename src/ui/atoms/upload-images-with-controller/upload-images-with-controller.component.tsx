@@ -1,5 +1,5 @@
 import dynamic from 'next/dynamic';
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 
 import { CenterBlockLayout, Loader } from '@ui';
 
@@ -18,7 +18,7 @@ const UploadImages = dynamic<IUploadImagesProps>(
   },
 );
 
-export const UploadImagesWithController = <TFieldValues,>({
+export const UploadImagesWithController = <TFieldValues extends FieldValues = FieldValues>({
   controllerProps,
   uploadImagesProps,
 }: IUploadImagesWithControllerProps<TFieldValues>): JSX.Element => (
@@ -30,8 +30,6 @@ export const UploadImagesWithController = <TFieldValues,>({
         {...field}
         error={invalid}
         helperText={error?.message || ' '}
-        id={field.name}
-        // @ts-expect-error
         scaledImages={field.value}
         setScaledImages={field.onChange}
       />

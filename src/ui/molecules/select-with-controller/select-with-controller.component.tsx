@@ -1,11 +1,11 @@
 import { FormControl, FormHelperText, InputLabel } from '@mui/material';
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 
 import { Select } from '@ui';
 
 import { ISelectWithControllerProps } from './select-with-controller.types';
 
-export const SelectWithController = <TFieldValues,>({
+export const SelectWithController = <TFieldValues extends FieldValues = FieldValues>({
   controllerProps,
   formControlProps = {},
   selectProps,
