@@ -1,11 +1,11 @@
 import { TextField } from '@mui/material';
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 
 import { Autocomplete } from '@ui';
 
 import { IAutocompleteWithControllerProps } from './autocomplete-with-controller.types';
 
-export const AutocompleteWithController = <TFieldValues,>({
+export const AutocompleteWithController = <TFieldValues extends FieldValues = FieldValues>({
   autocompleteProps,
   controllerProps,
   inputProps,
@@ -13,6 +13,7 @@ export const AutocompleteWithController = <TFieldValues,>({
   <Controller
     {...controllerProps}
     render={({ field, fieldState: { error, invalid } }) => (
+      // @ts-expect-error
       <Autocomplete
         {...autocompleteProps}
         {...field}
@@ -26,7 +27,6 @@ export const AutocompleteWithController = <TFieldValues,>({
             {...inputProps}
           />
         )}
-        // @ts-expect-error
         value={field.value}
         onChange={(_, newValue) => field.onChange(newValue.map((_value) => _value.value))}
       />

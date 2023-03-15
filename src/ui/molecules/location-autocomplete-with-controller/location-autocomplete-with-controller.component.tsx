@@ -1,11 +1,11 @@
 import { TextField } from '@mui/material';
-import { Controller } from 'react-hook-form';
+import { Controller, FieldValues } from 'react-hook-form';
 
 import { LocationAutocomplete } from '@ui';
 
 import { ILocationAutocompleteWithControllerProps } from './location-autocomplete-with-controller.types';
 
-export const LocationAutocompleteWithController = <TFieldValues,>({
+export const LocationAutocompleteWithController = <TFieldValues extends FieldValues = FieldValues>({
   autocompleteProps,
   controllerProps,
   inputProps,
@@ -26,7 +26,6 @@ export const LocationAutocompleteWithController = <TFieldValues,>({
             {...inputProps}
           />
         )}
-        // @ts-expect-error
         value={field.value}
         onChange={(_, newValue) => field.onChange(newValue)}
       />
