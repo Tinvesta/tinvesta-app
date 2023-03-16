@@ -4,7 +4,7 @@ import {
   LinkedIn as LinkedInIcon,
 } from '@mui/icons-material';
 import { Button, Typography } from '@mui/material';
-import { useOnlineState } from 'beautiful-react-hooks';
+import useOnlineState from 'beautiful-react-hooks/useOnlineState';
 
 import { replaceVariablesInTranslation, useTranslation, useUser } from '@utils';
 

@@ -33,7 +33,7 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     const event = stripe.webhooks.constructEvent(requestBuffer, signature, stripeSigningSecret);
 
     switch (event.type) {
-      case 'customer.subscription.updated':
+      case 'customer.subscription.updated': {
         // eslint-disable-next-line no-lone-blocks
         {
           const { error: updatedSubscriptionError } = await supabaseInstance
@@ -51,8 +51,9 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
           }
         }
         break;
+      }
 
-      case 'customer.subscription.deleted':
+      case 'customer.subscription.deleted': {
         // eslint-disable-next-line no-lone-blocks
         {
           const { error: updatedSubscriptionError } = await supabaseInstance
@@ -69,9 +70,11 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
           }
         }
         break;
+      }
 
-      default:
+      default: {
         break;
+      }
     }
   } catch (error) {
     logApiError('STRIPE_HOOKS', EApiError.INTERNAL_SERVER_ERROR, 'Error', error);

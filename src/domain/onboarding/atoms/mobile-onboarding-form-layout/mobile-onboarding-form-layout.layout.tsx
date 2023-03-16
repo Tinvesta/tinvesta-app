@@ -1,7 +1,7 @@
 import { ArrowBack as ArrowBackIcon, Close as CloseIcon } from '@mui/icons-material';
 import { LoadingButton } from '@mui/lab';
 import { Grid } from '@mui/material';
-import { useOnlineState } from 'beautiful-react-hooks';
+import useOnlineState from 'beautiful-react-hooks/useOnlineState';
 import Image from 'next/image';
 import { memo } from 'react';
 import { useDeviceDetect } from 'use-device-detect';
@@ -52,7 +52,7 @@ const MobileOnboardingFormLayoutComponent = ({
       <S.StyledContentWrapper>
         <S.StyledBackButtonWrapper>
           <BackIconComponent
-            cursor={!isOnline ? 'default' : 'pointer'}
+            cursor={isOnline ? 'pointer' : 'default'}
             fontSize={deviceData.isSmallerThanSM ? 'medium' : 'large'}
             onClick={handleBackButtonClick}
           />

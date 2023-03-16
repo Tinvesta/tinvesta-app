@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { useOnlineState } from 'beautiful-react-hooks';
+import useOnlineState from 'beautiful-react-hooks/useOnlineState';
 import dynamic from 'next/dynamic';
 import { useRouter } from 'next/router';
 import { useState } from 'react';

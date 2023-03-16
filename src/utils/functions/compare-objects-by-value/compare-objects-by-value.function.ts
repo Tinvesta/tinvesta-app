@@ -6,8 +6,8 @@ export const compareObjectsByValue =
     a: Record<string, unknown> | null | undefined,
     b: Record<string, unknown> | null | undefined,
   ) => {
-    const valueA = !a ? '' : getNestedObjectProperty(a, key) || '';
-    const valueB = !b ? '' : getNestedObjectProperty(b, key) || '';
+    const valueA = a ? getNestedObjectProperty(a, key) || '' : '';
+    const valueB = b ? getNestedObjectProperty(b, key) || '' : '';
 
     const valueAString = String(valueA).toString();
     const valueBString = String(valueB).toString();

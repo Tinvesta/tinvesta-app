@@ -3,7 +3,7 @@ import {
   SignalWifiConnectedNoInternet4 as SignalWifiConnectedNoInternet4Icon,
 } from '@mui/icons-material';
 import { Avatar, CircularProgress, IconButton } from '@mui/material';
-import { useOnlineState } from 'beautiful-react-hooks';
+import useOnlineState from 'beautiful-react-hooks/useOnlineState';
 import Image from 'next/image';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
