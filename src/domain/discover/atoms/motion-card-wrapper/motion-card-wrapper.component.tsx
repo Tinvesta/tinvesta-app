@@ -84,15 +84,17 @@ export const MotionCardWrapper = ({
       }}
       {...restProps}
     >
-      <S.StyledCheckCircleOutlinedIconWrapper style={{ opacity: rightIconOpacity }}>
-        <CheckCircleOutlinedIcon color="success" />
-      </S.StyledCheckCircleOutlinedIconWrapper>
-      <S.StyledHighlightOffOutlinedIconWrapper style={{ opacity: leftIconOpacity }}>
-        <HighlightOffOutlinedIcon color="error" />
-      </S.StyledHighlightOffOutlinedIconWrapper>
-      {!isProfilePreviewMode && <S.StyledGradient />}
-      {children}
-      <ProfileCardActionButtons markAsNotVoted={markAsNotVoted} markAsVoted={markAsVoted} />
+      <>
+        <S.StyledCheckCircleOutlinedIconWrapper style={{ opacity: rightIconOpacity }}>
+          <CheckCircleOutlinedIcon color="success" />
+        </S.StyledCheckCircleOutlinedIconWrapper>
+        <S.StyledHighlightOffOutlinedIconWrapper style={{ opacity: leftIconOpacity }}>
+          <HighlightOffOutlinedIcon color="error" />
+        </S.StyledHighlightOffOutlinedIconWrapper>
+        {!isProfilePreviewMode && <S.StyledGradient />}
+        {children}
+        <ProfileCardActionButtons markAsNotVoted={markAsNotVoted} markAsVoted={markAsVoted} />
+      </>
     </S.StyledWrapper>
   );
 };
