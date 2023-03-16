@@ -61,7 +61,7 @@ export const FullScreenMenu = ({ open, toggleMenu }: IFullScreenMenuProps): JSX.
             >
               {links.map(({ name, to }) => {
                 const isActive = window.location.pathname === to;
-                const whileHover = !isActive ? { scale: 1.1 } : undefined;
+                const whileHover = isActive ? undefined : { scale: 1.1 };
 
                 return (
                   <motion.div key={to} variants={itemVariants} whileHover={whileHover}>

@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { useOnlineState } from 'beautiful-react-hooks';
+import useOnlineState from 'beautiful-react-hooks/useOnlineState';
 import { useCycle } from 'framer-motion';
 import { AnimationItem, AnimationSegment } from 'lottie-web';
 import dynamic from 'next/dynamic';
@@ -42,7 +42,7 @@ export const Header = ({
       return;
     }
 
-    const animationSegments: AnimationSegment = !open ? [0, 60] : [60, 0];
+    const animationSegments: AnimationSegment = open ? [60, 0] : [0, 60];
 
     cycleOpen();
     scrollToTop();
@@ -85,17 +85,7 @@ export const Header = ({
             width={imageSize}
           />
         </S.StyledLogoWrapper>
-        {!user ? (
-          <Button
-            color="secondary"
-            disabled={disableLoginLogoutButton || !isOnline}
-            size={buttonSize}
-            variant="outlined"
-            onClick={openLoginModal}
-          >
-            {translations.componentFooterButtonLogin}
-          </Button>
-        ) : (
+        {user ? (
           <Button
             color="secondary"
             disabled={disableLoginLogoutButton || !isOnline}
@@ -104,6 +94,16 @@ export const Header = ({
             onClick={logout}
           >
             {translations.componentFooterButtonLogout}
+          </Button>
+        ) : (
+          <Button
+            color="secondary"
+            disabled={disableLoginLogoutButton || !isOnline}
+            size={buttonSize}
+            variant="outlined"
+            onClick={openLoginModal}
+          >
+            {translations.componentFooterButtonLogin}
           </Button>
         )}
       </S.StyledContentWrapper>

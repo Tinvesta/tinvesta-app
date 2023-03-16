@@ -243,7 +243,23 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(assignProfilesTeamSizesError);
   }
 
-  if (!isStartup) {
+  if (isStartup) {
+    const { error: deletedProfilesInvestorDemandTypesError } = await supabaseInstance
+      .from('profiles_investor_demand_types')
+      .delete()
+      .eq('profile_id', user.id);
+
+    if (deletedProfilesInvestorDemandTypesError) {
+      logApiError(
+        EApiEndpoint.CREATE_PROFILE,
+        EApiError.INTERNAL_SERVER_ERROR,
+        'Error',
+        deletedProfilesInvestorDemandTypesError,
+      );
+
+      return response.status(500).send(deletedProfilesInvestorDemandTypesError);
+    }
+  } else {
     // assign investor demand types
     const { error: assignInvestorDemandTypesError } = await assignWithBulkInsert(
       user.id,
@@ -261,22 +277,6 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       );
 
       return response.status(500).send(assignInvestorDemandTypesError);
-    }
-  } else {
-    const { error: deletedProfilesInvestorDemandTypesError } = await supabaseInstance
-      .from('profiles_investor_demand_types')
-      .delete()
-      .eq('profile_id', user.id);
-
-    if (deletedProfilesInvestorDemandTypesError) {
-      logApiError(
-        EApiEndpoint.CREATE_PROFILE,
-        EApiError.INTERNAL_SERVER_ERROR,
-        'Error',
-        deletedProfilesInvestorDemandTypesError,
-      );
-
-      return response.status(500).send(deletedProfilesInvestorDemandTypesError);
     }
   }
 
@@ -306,19 +306,19 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(updatedProfileError);
   }
 
-  const { error: updateStartupOrInvestorError } = await (!isStartup
-    ? supabaseInstance.from('investors').insert({
-        profile_id: user.id,
-        investor_profile_type_id: userData.investorProfileTypeId,
-        why_startup_should_match_with_you: userData.whyStartupShouldMatchWithYou,
-      })
-    : supabaseInstance.from('startups').insert({
+  const { error: updateStartupOrInvestorError } = await (isStartup
+    ? supabaseInstance.from('startups').insert({
         profile_id: user.id,
         startup_claim: userData.startupClaim,
         vision_statement: userData.visionStatement,
         mission_statement: userData.missionStatement,
         investor_profile_type_id: userData.investorProfileTypeId,
         startup_profile_creator_type_id: userData.startupProfileCreatorTypeId,
+      })
+    : supabaseInstance.from('investors').insert({
+        profile_id: user.id,
+        investor_profile_type_id: userData.investorProfileTypeId,
+        why_startup_should_match_with_you: userData.whyStartupShouldMatchWithYou,
       }));
 
   if (updateStartupOrInvestorError) {

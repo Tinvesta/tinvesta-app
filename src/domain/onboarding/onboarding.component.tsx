@@ -1,4 +1,4 @@
-import { useLocalStorage } from 'beautiful-react-hooks';
+import useLocalStorage from 'beautiful-react-hooks/useLocalStorage';
 import { useDeviceDetect } from 'use-device-detect';
 
 import { USER_REF_LOCAL_STORAGE_KEY } from '@constants';
@@ -12,5 +12,5 @@ export const Onboarding = (props: IOnboardingProps): JSX.Element => {
 
   const OnboardingComponent = deviceData.isSmallerThanLG ? MobileOnboarding : DesktopOnboarding;
 
-  return <OnboardingComponent {...props} userRef={userRefLocalStorage} />;
+  return <OnboardingComponent {...props} userRef={userRefLocalStorage || undefined} />;
 };

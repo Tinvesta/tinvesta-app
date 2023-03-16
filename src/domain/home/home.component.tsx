@@ -1,4 +1,4 @@
-import { useLocalStorage } from 'beautiful-react-hooks';
+import useLocalStorage from 'beautiful-react-hooks/useLocalStorage';
 import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { useDeviceDetect } from 'use-device-detect';
