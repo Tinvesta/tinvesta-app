@@ -89,8 +89,9 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
   };
 
   const onVote = async (profile: ILike, vote: boolean) => {
-    const conditionalPromise = !vote
-      ? confirm({
+    const conditionalPromise = vote
+      ? Promise.resolve()
+      : confirm({
           title: translations.commonPromptUnsavedTitle,
           cancellationText: translations.commonButtonsCancel,
           confirmationText: translations.commonButtonsDelete,
@@ -98,8 +99,7 @@ export const Likes = ({ clientTypeId, ...restProps }: ILikesProps): JSX.Element 
             color: 'error',
           },
           description: translations.componentDashboardLikesConfirmationModalDescription,
-        })
-      : Promise.resolve();
+        });
 
     conditionalPromise.then(() =>
       mutateAsyncLikeProfileAction({ profileId: profile.id, vote })

@@ -199,9 +199,7 @@ export const Card = ({
           />
         )}
       </S.StyledImageWrapper>
-      {!displayProfileDetails ? (
-        <>{isStartup ? renderStartupUserInfo() : renderInvestorUserInfo()}</>
-      ) : (
+      {displayProfileDetails ? (
         <S.StyledProfilePreviewWrapper>
           <ProfileDetailsPreview
             focusMarkets={focusMarkets}
@@ -216,6 +214,8 @@ export const Card = ({
             teamSizes={teamSizes}
           />
         </S.StyledProfilePreviewWrapper>
+      ) : (
+        <>{isStartup ? renderStartupUserInfo() : renderInvestorUserInfo()}</>
       )}
     </S.StyledWrapper>
   );

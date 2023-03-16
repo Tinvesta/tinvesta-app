@@ -52,7 +52,7 @@ const MobileOnboardingFormLayoutComponent = ({
       <S.StyledContentWrapper>
         <S.StyledBackButtonWrapper>
           <BackIconComponent
-            cursor={!isOnline ? 'default' : 'pointer'}
+            cursor={isOnline ? 'pointer' : 'default'}
             fontSize={deviceData.isSmallerThanSM ? 'medium' : 'large'}
             onClick={handleBackButtonClick}
           />

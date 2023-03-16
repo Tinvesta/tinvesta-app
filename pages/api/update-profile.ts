@@ -341,7 +341,23 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(assignProfilesTeamSizesError);
   }
 
-  if (!isStartup) {
+  if (isStartup) {
+    const { error: profilesInvestorDemandTypesError } = await supabaseInstance
+      .from('profiles_investor_demand_types')
+      .delete()
+      .eq('profile_id', user.id);
+
+    if (profilesInvestorDemandTypesError) {
+      logApiError(
+        EApiEndpoint.UPDATE_PROFILE,
+        EApiError.INTERNAL_SERVER_ERROR,
+        'Error',
+        profilesInvestorDemandTypesError,
+      );
+
+      return response.status(500).send(profilesInvestorDemandTypesError);
+    }
+  } else {
     // assign investor demand types
     const { error: assignInvestorDemandTypesError } = await assignWithBulkInsert(
       user.id,
@@ -359,22 +375,6 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
       );
 
       return response.status(500).send(assignInvestorDemandTypesError);
-    }
-  } else {
-    const { error: profilesInvestorDemandTypesError } = await supabaseInstance
-      .from('profiles_investor_demand_types')
-      .delete()
-      .eq('profile_id', user.id);
-
-    if (profilesInvestorDemandTypesError) {
-      logApiError(
-        EApiEndpoint.UPDATE_PROFILE,
-        EApiError.INTERNAL_SERVER_ERROR,
-        'Error',
-        profilesInvestorDemandTypesError,
-      );
-
-      return response.status(500).send(profilesInvestorDemandTypesError);
     }
   }
 
@@ -401,21 +401,21 @@ const handler = async (request: NextApiRequest, response: NextApiResponse) => {
     return response.status(500).send(updatedProfileError);
   }
 
-  const { error: updateStartupOrInvestorError } = await (!isStartup
+  const { error: updateStartupOrInvestorError } = await (isStartup
     ? supabaseInstance
-        .from('investors')
-        .update({
-          investor_profile_type_id: userData.investorProfileTypeId,
-          why_startup_should_match_with_you: userData.whyStartupShouldMatchWithYou,
-        })
-        .eq('profile_id', user.id)
-    : supabaseInstance
         .from('startups')
         .update({
           startup_claim: userData.startupClaim,
           vision_statement: userData.visionStatement,
           mission_statement: userData.missionStatement,
           startup_profile_creator_type_id: userData.startupProfileCreatorTypeId,
+        })
+        .eq('profile_id', user.id)
+    : supabaseInstance
+        .from('investors')
+        .update({
+          investor_profile_type_id: userData.investorProfileTypeId,
+          why_startup_should_match_with_you: userData.whyStartupShouldMatchWithYou,
         })
         .eq('profile_id', user.id));
 
