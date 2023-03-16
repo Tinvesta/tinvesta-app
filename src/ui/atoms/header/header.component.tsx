@@ -1,5 +1,5 @@
 import { Button } from '@mui/material';
-import { useOnlineState } from 'beautiful-react-hooks';
+import useOnlineState from 'beautiful-react-hooks/useOnlineState';
 import { useCycle } from 'framer-motion';
 import { AnimationItem, AnimationSegment } from 'lottie-web';
 import dynamic from 'next/dynamic';

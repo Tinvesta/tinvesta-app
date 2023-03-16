@@ -1,4 +1,4 @@
-import { useGlobalEvent } from 'beautiful-react-hooks';
+import useGlobalEvent from 'beautiful-react-hooks/useGlobalEvent';
 import { debounce } from 'debounce';
 import { useState } from 'react';
 

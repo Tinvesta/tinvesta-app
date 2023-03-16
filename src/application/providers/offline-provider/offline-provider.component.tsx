@@ -1,4 +1,5 @@
-import { useOnlineState, usePreviousValue } from 'beautiful-react-hooks';
+import useOnlineState from 'beautiful-react-hooks/useOnlineState';
+import usePreviousValue from 'beautiful-react-hooks/usePreviousValue';
 import { useEffect } from 'react';
 import { toast } from 'react-toastify';
 
