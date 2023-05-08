@@ -127,7 +127,7 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-typescript-sort-keys": "^2.3.0",
-    "eslint-plugin-unicorn": "^47.0.0",
+    "eslint-plugin-unicorn": "^46.0.1",
     "husky": "^8.0.3",
     "inquirer-directory": "^2.2.0",
     "jest": "^28.1.3",
