@@ -42,7 +42,6 @@ export interface IUserContextValue {
   isLoading: boolean;
   loginViaGithubProvider: () => TProviderReturn;
   loginViaGoogleProvider: () => TProviderReturn;
-  loginViaLinkedInProvider: () => TProviderReturn;
   logout: () => void;
   user: IUser | null;
 }

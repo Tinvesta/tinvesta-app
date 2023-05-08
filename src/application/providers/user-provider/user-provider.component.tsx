@@ -6,8 +6,6 @@ import { IUser, UserContext, supabaseInstance } from '@infrastructure';
 
 import { EApiEndpoint, ERoutes } from '@enums';
 
-import { STARTUP_CLIENT_TYPE_ID } from '@constants';
-
 import { IUserProviderProps } from './user-provider.types';
 
 export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
@@ -95,16 +93,6 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
       },
     );
 
-  const loginViaLinkedInProvider = () =>
-    supabaseInstance.auth.signIn(
-      {
-        provider: 'linkedin',
-      },
-      {
-        redirectTo: `${window.location.origin}?redirect=dashboard`,
-      },
-    );
-
   const logout = () =>
     supabaseInstance.auth.signOut().then(() => {
       setUser(null);
@@ -112,17 +100,17 @@ export const UserProvider = ({ children }: IUserProviderProps): JSX.Element => {
       router.push(ERoutes.HOME);
     });
 
-  const isStartupProfile = () => user?.client_type_id === STARTUP_CLIENT_TYPE_ID;
-
-  const providerValue = {
-    user,
-    logout,
-    isLoading,
-    isStartupProfile,
-    loginViaGithubProvider,
-    loginViaGoogleProvider,
-    loginViaLinkedInProvider,
-  };
-
-  return <UserContext.Provider value={providerValue}>{children}</UserContext.Provider>;
+  return (
+    <UserContext.Provider
+      value={{
+        user,
+        logout,
+        isLoading,
+        loginViaGithubProvider,
+        loginViaGoogleProvider,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 };
