@@ -1,8 +1,4 @@
-import {
-  GitHub as GitHubIcon,
-  Google as GoogleIcon,
-  LinkedIn as LinkedInIcon,
-} from '@mui/icons-material';
+import { GitHub as GitHubIcon, Google as GoogleIcon } from '@mui/icons-material';
 import { Button, Typography } from '@mui/material';
 import useOnlineState from 'beautiful-react-hooks/useOnlineState';
 
@@ -16,18 +12,14 @@ import S from './login-modal-content.styles';
 export const LoginModalContent = (): JSX.Element => {
   const isOnline = useOnlineState();
   const translations = useTranslation(translationStrings);
-  const { loginViaGithubProvider, loginViaGoogleProvider, loginViaLinkedInProvider } = useUser();
+  const { loginViaGithubProvider, loginViaGoogleProvider } = useUser();
 
-  const loginIn = (provider: 'github' | 'google' | 'linkedin') => async () => {
+  const loginIn = (provider: 'github' | 'google') => async () => {
     if (provider === 'github') {
       return loginViaGithubProvider();
     }
 
-    if (provider === 'google') {
-      return loginViaGoogleProvider();
-    }
-
-    loginViaLinkedInProvider();
+    return loginViaGoogleProvider();
   };
 
   const parsedModalInfo = replaceVariablesInTranslation(
@@ -62,15 +54,6 @@ export const LoginModalContent = (): JSX.Element => {
           onClick={loginIn('github')}
         >
           {translations.componentHomeModalLoginViaGithubButton}
-        </Button>
-        <Button
-          color="secondary"
-          disabled={!isOnline}
-          startIcon={<LinkedInIcon />}
-          variant="outlined"
-          onClick={loginIn('linkedin')}
-        >
-          {translations.componentHomeModalLoginViaLinkedinButton}
         </Button>
       </S.StyledButtonsWrapper>
     </S.StyledWrapper>
