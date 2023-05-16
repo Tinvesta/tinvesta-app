@@ -9,7 +9,6 @@ export default {
   'component.home.modal.get.started.header': 'Get started',
   'component.home.modal.create.account.header': 'Create account',
   'component.home.modal.login.via.google.button': 'Login via Google',
-  'component.home.modal.login.via.linkedin.button': 'Login via LinkedIn',
   'component.home.modal.login.via.github.button': 'Login via GitHub',
   'component.home.modal.privacy.and.policy': 'Privacy & Policy',
   'component.home.modal.terms.and.conditions': 'Terms & Conditions',
